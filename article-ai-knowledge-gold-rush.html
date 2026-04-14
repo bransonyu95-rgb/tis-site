@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The AI Knowledge Gold Rush: How Skills and Courses Are Being Monetised — The Industrial Scribe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #111827; line-height: 1.7; }
+    nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e7eb; z-index: 100; padding: 0 5%; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-family: Georgia, serif; font-size: 1.3rem; font-weight: 700; color: #111827; text-decoration: none; }
+    .nav-cats { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-cats a { font-size: 0.85rem; font-weight: 500; color: #6b7280; text-decoration: none; letter-spacing: 0.02em; }
+    .nav-cats a:hover { color: #111827; }
+    .nav-sub-btn { font-size: 0.8rem; font-weight: 600; color: #1d4ed8; border: 1.5px solid #1d4ed8; padding: 0.4rem 0.9rem; border-radius: 4px; text-decoration: none; white-space: nowrap; }
+    .nav-sub-btn:hover { background: #1d4ed8; color: #fff; }
+    .article-wrap { max-width: 780px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
+    .article-category { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1d4ed8; margin-bottom: 0.75rem; }
+    .article-headline { font-family: Georgia, serif; font-size: 2.2rem; line-height: 1.25; color: #111827; margin-bottom: 1rem; font-weight: 700; }
+    .article-meta { font-size: 0.85rem; color: #6b7280; margin-bottom: 2rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem; }
+    .article-image-placeholder { width: 100%; height: 400px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.9rem; margin-bottom: 2rem; border-radius: 4px; }
+    .article-body h2 { font-family: Georgia, serif; font-size: 1.5rem; margin: 2rem 0 0.75rem; color: #111827; }
+    .article-body h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #1f2937; }
+    .article-body p { margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.75; }
+    .article-body ul, .article-body ol { margin: 0.75rem 0 1.2rem 1.5rem; }
+    .article-body li { margin-bottom: 0.4rem; line-height: 1.7; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .article-body th { background: #1f2937; color: white; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.8rem; }
+    .article-body td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #e5e7eb; }
+    .article-body tr:nth-child(even) td { background: #f9fafb; }
+    .inline-sub { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 1rem 1.25rem; margin: 2rem 0; border-radius: 0 6px 6px 0; }
+    .inline-sub p { font-size: 0.9rem; color: #1e3a5f; margin-bottom: 0.5rem; }
+    .inline-sub a { display: inline-block; background: #1d4ed8; color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-top: 0.25rem; }
+    .related-section { border-top: 1px solid #e5e7eb; padding-top: 2rem; margin-top: 3rem; }
+    .related-section h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; margin-bottom: 1.25rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .related-card { border: 1px solid #e5e7eb; border-radius: 6px; overflow: hidden; text-decoration: none; color: inherit; }
+    .related-card:hover { border-color: #1d4ed8; }
+    .related-img { height: 120px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.75rem; }
+    .related-content { padding: 0.75rem; }
+    .related-cat { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #1d4ed8; margin-bottom: 0.3rem; }
+    .related-title { font-family: Georgia, serif; font-size: 0.9rem; line-height: 1.35; color: #111827; font-weight: 600; }
+    footer { background: #111827; color: #9ca3af; padding: 3rem 5% 2rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-bottom: 2rem; }
+    .footer-col h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #f9fafb; margin-bottom: 0.75rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.4rem; font-size: 0.85rem; }
+    .footer-col a { color: #9ca3af; text-decoration: none; }
+    .footer-col a:hover { color: #f9fafb; }
+    .footer-bottom { border-top: 1px solid #374151; padding-top: 1.5rem; text-align: center; font-size: 0.8rem; }
+    @media (max-width: 768px) {
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .article-headline { font-size: 1.6rem; }
+      .nav-cats { display: none; }
+    }
+  </style>
+  <link rel="stylesheet" href="paywall.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">The Industrial Scribe</a>
+    <ul class="nav-cats">
+      <li><a href="index.html">All</a></li>
+      <li><a href="index.html">Production Planning</a></li>
+      <li><a href="index.html">Quality &amp; Compliance</a></li>
+      <li><a href="index.html">Business Development</a></li>
+      <li><a href="index.html">Automation</a></li>
+    </ul>
+    <a href="index.html#subscribe" class="nav-sub-btn">Subscribe USD 1.99/mo</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <div class="article-category">AI Trends</div>
+  <h1 class="article-headline">The AI Knowledge Gold Rush: How Skills and Courses Are Being Monetised</h1>
+  <div class="article-meta">The Industrial Scribe | AI Trends &nbsp;·&nbsp; 10 min read &nbsp;·&nbsp; March 2026</div>
+
+  <img src="img-blueprint-desk.jpg" alt="Article Image" style="width:100%;height:400px;object-fit:cover;border-radius:4px;margin-bottom:2rem;">
+
+  <div class="article-body">
+
+    <p>In 2024, the money was in building AI models. In 2025, it moved to building AI applications. In 2026, the fastest-growing segment is none of these. It's selling the know-how.</p>
+
+    <p>A new creator economy has emerged around AI knowledge — and the people earning the most aren't engineers. They're domain experts who figured out how to use AI in their specific field and packaged that knowledge for others.</p>
+
+    <p>The numbers tell the story. Anthropic's MCP ecosystem has exploded to over 19,000 listed servers across marketplaces like MCP.so and LobeHub. Claude Skills marketplaces like SkillHub now host 7,000+ installable skills. And platforms like Gumroad, Whop, and Teachable report that AI-related digital products are their fastest-growing category in 2026.</p>
+
+    <div class="inline-sub">
+      <p><strong>This article is part of The Industrial Scribe.</strong> Subscribe for USD 1.99/month for unlimited access to all articles, templates &amp; community.</p>
+      <a href="index.html#subscribe">Subscribe Now</a>
+    </div>
+
+    <p>But here's the part nobody is talking about: almost all of this content is generic. The skills teach "data analysis." The courses teach "prompt engineering." The MCP servers connect to developer tools. The massive, untapped market is vertical-specific AI knowledge — and manufacturing is one of the largest verticals with almost zero coverage.</p>
+
+    <h2>The Market Map: Who Is Selling What</h2>
+
+    <h3>MCP Servers: The Infrastructure Layer</h3>
+    <p>MCP servers are small programs that connect AI tools to external applications. The marketplace leader, MCPize, allows creators to build, host, and sell MCP servers with an 85% revenue share. Reported creator earnings range from $50/month for niche tools to over $4,000/month for popular ones. One creator documented hitting $400/month within 60 days using a freemium model.</p>
+
+    <p>The market is developer-dominated. The top-earning MCP servers connect to GitHub, databases, and code editors. Servers for connecting AI to manufacturing tools — ERP systems, quality databases, production scheduling — do not exist yet.</p>
+
+    <h3>Claude Skills: The Knowledge Layer</h3>
+    <p>Skills are instruction files that teach AI how to handle specific tasks. Multiple marketplaces have emerged: ClaudeSkillsMarket.com, SkillHub (7,000+ skills), and ClaudeSkills.info. Creator revenue shares typically run 80–90%.</p>
+
+    <p>Most skills are free and generic. The paid skills that do sell are bundled — individual skills at $5–9 struggle, while bundles of 5–10 skills at $29–49 convert significantly better. Domain-specific skills command the highest prices because generic alternatives can't compete with embedded industry expertise.</p>
+
+    <h3>Courses &amp; Communities: The Premium Layer</h3>
+    <p>The highest-value products in the AI knowledge economy aren't files — they're access. Premium communities on Whop and Skool charge $29–99/month for ongoing AI training, new templates each month, and expert Q&amp;A. Self-paced courses on Teachable and Thinkific range from $149 to $2,900, with B2B-focused courses commanding significantly higher prices than consumer-facing ones.</p>
+
+    <h2>The Pricing Landscape</h2>
+
+    <table>
+      <thead>
+        <tr><th>Product Type</th><th>Price Range</th><th>Platform</th><th>Conversion Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Individual AI Skill</td><td>Free – $9</td><td>Skills marketplaces</td><td>Most are free. Hard to sell individually.</td></tr>
+        <tr><td>Skill Bundle (5–10 skills)</td><td>$29 – $49</td><td>Gumroad, marketplaces</td><td>Bundling is the only proven model.</td></tr>
+        <tr><td>AI Template / Prompt Pack</td><td>$17 – $39</td><td>Gumroad, Etsy</td><td>Median Gumroad product: $12. Niche = higher.</td></tr>
+        <tr><td>PDF Guide Bundle</td><td>$19 – $47</td><td>Gumroad</td><td>Educational content. Lead magnet potential.</td></tr>
+        <tr><td>Premium Community</td><td>$29 – $99/mo</td><td>Whop, Skool</td><td>Recurring revenue. Highest LTV.</td></tr>
+        <tr><td>Self-Paced Course</td><td>$149 – $497</td><td>Teachable, Thinkific</td><td>B2B audiences pay 3–5x more.</td></tr>
+        <tr><td>B2B Workshop</td><td>$2,000 – $10,000</td><td>Direct sales</td><td>Highest per-engagement value.</td></tr>
+        <tr><td>MCP Server (SaaS)</td><td>$5 – $29/mo</td><td>MCPize</td><td>Recurring. Requires maintenance.</td></tr>
+      </tbody>
+    </table>
+
+    <p>The generic AI market is crowded and cheap. The vertical-specific AI market is empty and high-value. A generic "data analysis prompt pack" competes with thousands of free alternatives and sells for $12. A manufacturing-specific "factory data analyst skill bundle" that knows what Preclosure rows are and calculates NPI rates has zero competition and can command $39–49. B2B audiences demonstrate 3–5x higher price tolerance than consumer audiences because the ROI is directly measurable.</p>
+
+    <h2>The Proven Funnel: From Free Content to Paid Products</h2>
+
+    <p>The creators earning the most in the AI knowledge economy aren't selling cold. They're running a content-to-product funnel that consistently converts free readers into paying customers.</p>
+
+    <h3>Stage 1: Free Content Builds Authority</h3>
+    <p>Published articles, case studies, and LinkedIn posts establish domain expertise. This content is not the product — it's the proof that the creator knows what they're talking about. Manufacturing professionals don't buy from strangers. They buy from people who clearly understand their world.</p>
+
+    <h3>Stage 2: Low-Ticket Digital Product Captures Email</h3>
+    <p>A $19–39 skill bundle or PDF guide on Gumroad serves two purposes: it generates revenue and it captures the buyer's email address. The Gumroad median product price is $12, but niche products consistently sell at 2–3x that because the buyer knows generic alternatives won't solve their specific problem.</p>
+
+    <h3>Stage 3: Community Converts Buyers to Members</h3>
+    <p>The $39 one-time buyer becomes a $29/month community member. Platforms like Whop and Skool make this transition seamless. The community offers ongoing value: new skills each month, live Q&amp;A, early access to new content, and peer discussion. At 200 members, that's $5,800/month in recurring revenue.</p>
+
+    <h3>Stage 4: Course or Workshop Monetises Depth</h3>
+    <p>A structured course ($197–497) or a live B2B workshop ($2,000–10,000) sits at the top of the funnel. These products don't need volume — they need trust. And trust comes from the free content, the digital products, and the community that preceded them.</p>
+
+    <table>
+      <thead>
+        <tr><th>Stage</th><th>Product</th><th>Price</th><th>Volume Needed</th><th>Monthly Revenue</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Free content (articles, LinkedIn)</td><td>Free</td><td>1,000+ readers</td><td>$0 (builds audience)</td></tr>
+        <tr><td>2</td><td>Skill bundle / PDF guides</td><td>$29–49</td><td>50–100 sales/month</td><td>$1,450–$4,900</td></tr>
+        <tr><td>3</td><td>Monthly community</td><td>$29/month</td><td>200 members</td><td>$5,800</td></tr>
+        <tr><td>4</td><td>Course or workshop</td><td>$197–$5,000</td><td>5–10 per month</td><td>$985–$50,000</td></tr>
+      </tbody>
+    </table>
+
+    <h2>The Manufacturing Gap: Why This Vertical Is Wide Open</h2>
+
+    <p>A survey of the top AI knowledge marketplaces reveals a striking pattern:</p>
+
+    <table>
+      <thead>
+        <tr><th>Vertical</th><th># of AI Skills/Courses Available</th><th>Competition Level</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Software Development</td><td>2,000+</td><td>Extremely high</td></tr>
+        <tr><td>Marketing / Content</td><td>1,500+</td><td>Very high</td></tr>
+        <tr><td>Finance / Trading</td><td>500+</td><td>High</td></tr>
+        <tr><td>Healthcare</td><td>200+</td><td>Moderate</td></tr>
+        <tr><td>Legal</td><td>100+</td><td>Moderate</td></tr>
+        <tr><td>Manufacturing</td><td>&lt;10</td><td>Almost zero</td></tr>
+        <tr><td>Manufacturing (ASEAN-specific)</td><td>0</td><td>None</td></tr>
+      </tbody>
+    </table>
+
+    <p>The reasons are straightforward. Most AI content creators are in tech, marketing, or finance. They've never set foot on a factory floor. They don't know what WIP data looks like, how OTD is measured, what an NPI rate predicts, or why advance payment proposals require a specific structure. Manufacturing AI knowledge requires manufacturing experience — and the people with that experience haven't yet realised they're sitting on a monetisable asset.</p>
+
+    <p>The combination of deep domain expertise + practical AI application knowledge + a specific underserved audience is the formula for premium pricing and low competition. A marketing AI course competes with 1,500 alternatives. A manufacturing AI course competes with almost nothing. The creator who moves first owns the niche.</p>
+
+    <h2>Revenue Models That Work in 2026</h2>
+
+    <h3>Model A: The Digital Product Creator</h3>
+    <p>Sell skill bundles, PDF guides, and template packs on Gumroad. Low overhead, no recurring commitment. Gumroad takes 10% + $0.50 per sale. Typical range: $500–$5,000/month at scale for niche creators. Best for: individuals with established content and social media presence who want passive income.</p>
+
+    <h3>Model B: The Community Builder</h3>
+    <p>Run a paid membership on Whop or Skool. Monthly subscription model with community features: new content drops, live Q&amp;A, peer discussion, skill library access. Whop takes 3% per transaction. Typical range: $2,000–$10,000/month at 100–400 members. Best for: creators who can commit to weekly content and community engagement.</p>
+
+    <h3>Model C: The Course Creator</h3>
+    <p>Build a structured learning programme on Teachable or Thinkific. One-time purchase or cohort-based. Teachable takes 5% on the basic plan. Typical range: $3,000–$20,000/month for established niche courses. Best for: creators with a proven framework and student success stories.</p>
+
+    <h3>Model D: The B2B Consultant</h3>
+    <p>Deliver workshops and consulting engagements directly to manufacturing companies. Half-day AI readiness assessment: $2,000–$5,000. Full implementation support: $10,000–$50,000. No platform fees. Typical range: $5,000–$30,000/month with 2–6 clients. Best for: creators with credibility and a network in the industry.</p>
+
+    <h2>The Risk: What Could Go Wrong</h2>
+
+    <p>No market analysis is honest without acknowledging the risks.</p>
+
+    <ul>
+      <li><strong>AI Tools Get So Good That Skills Become Unnecessary.</strong> If Claude or ChatGPT learn to handle manufacturing data perfectly without a skill, the skill market collapses. Current trajectory suggests this is 2–3 years away for domain-specific tasks.</li>
+      <li><strong>Platform Risk.</strong> Gumroad could change fees. Whop could shut down. Anthropic could change how Skills work. Mitigation: own your email list, diversify across platforms, and build a direct audience.</li>
+      <li><strong>The Window Closes.</strong> First-mover advantage in niche markets is real but temporary. Once one creator proves that manufacturing AI knowledge sells, others will follow. The window for establishing dominance is measured in months, not years.</li>
+    </ul>
+
+    <h2>The Bottom Line</h2>
+
+    <p>The AI knowledge economy in 2026 rewards two things: domain expertise and speed to market. Generic AI content is a commodity. Vertical-specific AI knowledge is a premium product.</p>
+
+    <p>Manufacturing is one of the largest underserved verticals, with fewer than 10 dedicated AI skills or courses available globally — and zero targeting ASEAN manufacturers specifically. The market is not asking "Is there demand?" The 98% of manufacturers exploring AI already answered that question. The market is asking "Who will be the trusted source?" That position is open. It won't be for long.</p>
+
+  </div>
+
+  <div class="related-section">
+    <h3>Related Articles</h3>
+    <div class="related-grid">
+      <a href="article-80-percent-problem.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">AI Trends</div>
+          <div class="related-title">The 80% Problem: 98% of Manufacturers Are Exploring AI. Only 20% Are Ready.</div>
+        </div>
+      </a>
+      <a href="article-20-dollar-revolution.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">AI Trends</div>
+          <div class="related-title">The $20 Revolution: The Most Lopsided ROI in Manufacturing History</div>
+        </div>
+      </a>
+      <a href="article-what-are-skills.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">AI Fundamentals</div>
+          <div class="related-title">What Are Skills? How to Make AI Remember Your Best Practices</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>The Industrial Scribe</h4>
+      <p style="font-size: 0.85rem; line-height: 1.6;">AI automation intelligence for SEA manufacturing professionals. Production Planners, QC Executives, BD Managers, Operations Leads.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="index.html">All Articles</a></li>
+        <li><a href="article-production-report.html">Production Planning</a></li>
+        <li><a href="article-rca-report.html">Quality &amp; Compliance</a></li>
+        <li><a href="article-quotation-framework.html">Business Development</a></li>
+        <li><a href="article-sop-writing.html">Automation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Articles</h4>
+      <ul>
+        <li><a href="article-80-percent-problem.html">The 80% Problem</a></li>
+        <li><a href="article-agentic-ai-is-here.html">Agentic AI Is Here</a></li>
+        <li><a href="article-what-is-llm.html">What Is an LLM?</a></li>
+        <li><a href="article-what-is-mcp.html">What Is MCP?</a></li>
+        <li><a href="article-20-dollar-revolution.html">The $20 Revolution</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Subscribe</h4>
+      <ul>
+        <li><a href="index.html#subscribe">USD 1.99/month — All Access</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Instagram</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Download Free Playbook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 The Industrial Scribe · All rights reserved</div>
+</footer>
+
+<script src="paywall.js"></script>
+</body>
+</html>

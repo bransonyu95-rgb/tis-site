@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Powered Business Presentations: Building Professional Slides in Minutes — The Industrial Scribe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #111827; line-height: 1.7; }
+
+    nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e7eb; z-index: 100; padding: 0 5%; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-family: Georgia, serif; font-size: 1.3rem; font-weight: 700; color: #111827; text-decoration: none; }
+    .nav-cats { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-cats a { font-size: 0.85rem; font-weight: 500; color: #6b7280; text-decoration: none; letter-spacing: 0.02em; }
+    .nav-cats a:hover { color: #111827; }
+    .nav-sub-btn { font-size: 0.8rem; font-weight: 600; color: #1d4ed8; border: 1.5px solid #1d4ed8; padding: 0.4rem 0.9rem; border-radius: 4px; text-decoration: none; white-space: nowrap; }
+    .nav-sub-btn:hover { background: #1d4ed8; color: #fff; }
+
+    .article-wrap { max-width: 780px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
+    .article-category { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #d97706; margin-bottom: 0.75rem; }
+    .article-headline { font-family: Georgia, serif; font-size: 2.2rem; line-height: 1.25; color: #111827; margin-bottom: 1rem; font-weight: 700; }
+    .article-meta { font-size: 0.85rem; color: #6b7280; margin-bottom: 2rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem; }
+    .article-image-placeholder { width: 100%; height: 400px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.9rem; margin-bottom: 2rem; border-radius: 4px; }
+    .article-body h2 { font-family: Georgia, serif; font-size: 1.5rem; margin: 2rem 0 0.75rem; color: #111827; }
+    .article-body h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #1f2937; }
+    .article-body p { margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.75; }
+    .article-body ul, .article-body ol { margin: 0.75rem 0 1.2rem 1.5rem; }
+    .article-body li { margin-bottom: 0.4rem; line-height: 1.7; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .article-body th { background: #1f2937; color: white; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.8rem; }
+    .article-body td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #e5e7eb; }
+    .article-body tr:nth-child(even) td { background: #f9fafb; }
+    .prompt-block { background: #1e293b; color: #e2e8f0; padding: 1.25rem 1.5rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; line-height: 1.6; margin: 1.5rem 0; white-space: pre-wrap; word-break: break-word; }
+    .prompt-label { font-size: 0.7rem; font-weight: 700; color: #d97706; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .inline-sub { background: #fffbeb; border-left: 4px solid #d97706; padding: 1rem 1.25rem; margin: 2rem 0; border-radius: 0 6px 6px 0; }
+    .inline-sub p { font-size: 0.9rem; color: #78350f; margin-bottom: 0.5rem; }
+    .inline-sub a { display: inline-block; background: #d97706; color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-top: 0.25rem; }
+    .product-cta-box { background: #f9fafb; border: 1px solid #e5e7eb; padding: 1.25rem 1.5rem; border-radius: 6px; margin: 2.5rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .product-cta-text strong { display: block; font-size: 1rem; color: #111827; margin-bottom: 0.25rem; }
+    .product-cta-text span { font-size: 0.85rem; color: #6b7280; }
+    .product-cta-box a { background: #111827; color: white; padding: 0.5rem 1.25rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .checklist-box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+    .checklist-box h4 { font-size: 0.9rem; font-weight: 700; color: #111827; margin-bottom: 0.75rem; }
+    .checklist-box ul { list-style: none; margin: 0; }
+    .checklist-box li { padding: 0.3rem 0; font-size: 0.9rem; color: #374151; }
+    .checklist-box li::before { content: "☐ "; font-size: 1rem; }
+
+    .related-section { border-top: 1px solid #e5e7eb; padding-top: 2rem; margin-top: 3rem; }
+    .related-section h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; margin-bottom: 1.25rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .related-card { border: 1px solid #e5e7eb; border-radius: 6px; overflow: hidden; text-decoration: none; color: inherit; }
+    .related-card:hover { border-color: #d97706; }
+    .related-img { height: 120px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.75rem; }
+    .related-content { padding: 0.75rem; }
+    .related-cat { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #d97706; margin-bottom: 0.3rem; }
+    .related-title { font-family: Georgia, serif; font-size: 0.9rem; line-height: 1.35; color: #111827; font-weight: 600; }
+
+    footer { background: #111827; color: #9ca3af; padding: 3rem 5% 2rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-bottom: 2rem; }
+    .footer-col h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #f9fafb; margin-bottom: 0.75rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.4rem; font-size: 0.85rem; }
+    .footer-col a { color: #9ca3af; text-decoration: none; }
+    .footer-col a:hover { color: #f9fafb; }
+    .footer-bottom { border-top: 1px solid #374151; padding-top: 1.5rem; text-align: center; font-size: 0.8rem; }
+
+    @media (max-width: 768px) {
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .article-headline { font-size: 1.6rem; }
+      .product-cta-box { flex-direction: column; }
+      .nav-cats { display: none; }
+    }
+  </style>
+  <link rel="stylesheet" href="paywall.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">The Industrial Scribe</a>
+    <ul class="nav-cats">
+      <li><a href="index.html">All</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Production Planning</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Quality &amp; Compliance</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Business Development</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Automation</a></li>
+    </ul>
+    <a href="index.html#subscribe" class="nav-sub-btn">Subscribe USD 1.99/mo</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <div class="article-category">Case Study</div>
+  <h1 class="article-headline">AI-Powered Business Presentations: Building Professional Slides in Minutes</h1>
+  <div class="article-meta">The Industrial Scribe | Case Study &nbsp;·&nbsp; 5 min read &nbsp;·&nbsp; March 2026</div>
+
+  <img src="img-blueprint-desk.jpg" alt="Article Image" style="width:100%;height:400px;object-fit:cover;border-radius:4px;margin-bottom:2rem;">
+
+  <div class="article-body">
+
+    <p>Your boss walks in and tells you the customer call is in ten minutes. He needs a nine-slide presentation summarising the full year's purchase order performance, delivery metrics, quality data, and resource allocation. Ten minutes. You open PowerPoint and stare at a blank slide.</p>
+
+    <p>This is not a hypothetical. This is a scenario that happens regularly in manufacturing business development — customer reviews called with minimal notice, stakeholder requests mid-meeting, last-minute additions to the deck right before someone walks into the room. The traditional response is stress, rushed work, and slides that look nothing like the corporate template. The AI-powered response is a complete, branded, data-accurate deck in under ten minutes.</p>
+
+    <p>This case study documents a real AI-assisted session in which a manufacturing BD team created a nine-slide customer review presentation for a multinational account — from raw Excel data to export-ready PowerPoint file — in a single working session. The same workflow was then used three more times across the quarter for different customer accounts.</p>
+
+    <div class="inline-sub">
+      <p><strong>This article is part of The Industrial Scribe.</strong> Subscribe for USD 1.99/month for unlimited access to all articles, templates &amp; community.</p>
+      <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Subscribe Now</a>
+    </div>
+
+    <h2>The Time Pressure Problem in Manufacturing BD</h2>
+
+    <p>Customer review presentations in contract manufacturing are high-stakes documents. They summarise purchase order volume, delivery performance against OTD targets, quality metrics like QPPM, machine and resource allocation, and sometimes VMI or consignment stock status. Getting the data right matters. Getting the formatting right matters. Getting it done in the time available is the actual constraint.</p>
+
+    <p>The traditional approach — open PowerPoint, manually create charts, adjust colours, align elements, format tables, check consistency against the last version of the template — takes thirty to sixty minutes for a polished deck under ideal conditions. Under time pressure, with raw data that still needs to be pulled from multiple sources, it takes longer and produces worse results.</p>
+
+    <p>The AI workflow changes the constraint. Instead of spending time on formatting, you spend time on the content decisions. The AI handles the construction.</p>
+
+    <h2>How the Session Worked</h2>
+
+    <p>The session began with a single upload: the raw Excel export containing the account's full-year data. Shipment records, machine allocation tables, quality incident logs, OTD performance by month. No cleaning, no pre-formatting. The file went in as it came out of ERP.</p>
+
+    <p>The first instruction was plain language: <em>"Create a PO summary presentation for Year 2025 with sales performance, resource allocation, delivery metrics, quality data, and VMI overview."</em> Within three minutes, the AI had parsed the data, generated a presentation structure, and returned a preview image of the first three slides.</p>
+
+    <p>What followed was iterative refinement — not from scratch each time, but surgical adjustments. The status breakdown on slide seven needed a count correction: the machine count changed from eleven to eight after a mid-year reallocation that the original data hadn't captured cleanly. The VMI category labels needed to reflect the actual programme nomenclature rather than the generic labels the AI had inferred from the column headers. An OEE correlation chart was added to the delivery performance slide to give the customer a fuller picture of why OTD improved in Q3. Each change took one to two minutes.</p>
+
+    <h2>The Nine Slides That Were Built</h2>
+
+    <p>The final presentation covered everything a multinational procurement team would expect to see in a quarterly business review. Slide one opened with the title and a three-year sales growth visualisation — a 26-times growth trajectory that anchored the relationship story immediately. Slide two covered machine and resource allocation, including a dedicated equipment table with capacity percentages. Slide three presented the additional machine expansion approved mid-year, with a before-and-after capacity comparison.</p>
+
+    <p>Slides four and five handled performance: OTD by month as a bar chart, with an OEE correlation chart showing the relationship between equipment uptime and delivery reliability; then quality performance with QPPM metrics, defect tracking by category, and a data table the customer could audit against their own incoming inspection records. Slides six and seven covered programme breadth — active part numbers, status distribution as a doughnut chart, and sales concentration by part family. Slide eight presented the VMI programme status with challenge resolution tracking. Slide nine closed with a consolidated metrics summary the customer's procurement director could screenshot and paste into their own internal report.</p>
+
+    <p>Total time from Excel upload to export-ready PPTX: nine minutes.</p>
+
+    <h2>What AI Is Actually Doing Here</h2>
+
+    <p>The reason this works at the quality level it does is that the AI is not producing generic slides. It is parsing the actual data, calculating derived metrics — percentages, period-over-period comparisons, totals — and applying consistent visual logic across all charts. Bar chart colour thresholds are consistent. Typography scales correctly. The corporate colour palette, once specified in the first session, is carried through every subsequent chart without needing to be restated.</p>
+
+    <p>This is the capability that traditional tools don't offer at this speed. PowerPoint requires manual chart creation. Excel charts require copy-paste and reformatting. An AI tool with code execution can generate the entire visual layer from data in a single step, then modify individual elements without rebuilding the rest.</p>
+
+    <p>The lessons learned from this session reinforced a consistent set of practices. Upload raw data files rather than describing the data verbally — the AI reads the file better than it reads a description of the file. Specify colour codes and branding requirements at the start of the session, not mid-way through. Review preview images before requesting changes — catching a label error on the preview takes fifteen seconds; fixing it after export takes longer. Save the style documentation the AI generates at the end of the session, because the next customer presentation will need the same colours and the same font sizes, and having them documented means the next session starts in two minutes, not twenty.</p>
+
+    <h2>The Three Scenarios This Solves</h2>
+
+    <p>The case study documented one scenario, but the workflow applies to three recurring situations in manufacturing BD. The first is the time-pressure build: your boss needs a complete presentation in ten minutes before a call. The second is the mid-meeting addition: stakeholders in the room ask for a new slide showing machine allocation changes, needed before the meeting ends. The third is the style-matching request: quality data needs to be visualised with the same corporate styling as a presentation built six months ago by a different person on the team.</p>
+
+    <p>All three collapse into the same workflow once you have the data and the style guide. The time required to respond to an urgent presentation request drops from an hour of stressful manual work to ten minutes of structured AI collaboration. The consistency of output goes up. The error rate goes down. And when the meeting ends, you have a file the customer can actually use — not a rushed deck that needs a revision before it can go anywhere.</p>
+
+    <div class="checklist-box">
+      <h4>Before Your Next AI Presentation Session</h4>
+      <ul>
+        <li>Export raw data from ERP or source system — don't pre-format it</li>
+        <li>Have your corporate colour hex codes ready to specify upfront</li>
+        <li>Know which slides are mandatory for this customer's review format</li>
+        <li>Review the preview image before requesting changes</li>
+        <li>Make one change at a time — iterating one element per prompt produces better results than bundling changes</li>
+        <li>Save the style guide the AI generates at session end for future presentations</li>
+      </ul>
+    </div>
+
+  </div><!-- /article-body -->
+
+  <!-- Related Articles -->
+  <div class="related-section">
+    <h3>Related Articles</h3>
+    <div class="related-grid">
+
+      <a href="article-ai-negotiation.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Case Study</div>
+          <div class="related-title">How I Used AI to Structure a High-Stakes Supplier Negotiation</div>
+        </div>
+      </a>
+
+      <a href="article-20-dollar-revolution.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Business Development</div>
+          <div class="related-title">The $20 AI Revolution in Manufacturing</div>
+        </div>
+      </a>
+
+      <a href="article-quotation-case-study.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Case Study</div>
+          <div class="related-title">How One Johor Manufacturer Cut Quotation Time by 70% Using AI</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div><!-- /article-wrap -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>The Industrial Scribe</h4>
+      <p style="font-size: 0.85rem; line-height: 1.6;">AI automation intelligence for SEA manufacturing professionals. Production Planners, QC Executives, BD Managers, Operations Leads.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="index.html">All Articles</a></li>
+        <li><a href="article-production-report.html">Production Planning</a></li>
+        <li><a href="article-rca-report.html">Quality &amp; Compliance</a></li>
+        <li><a href="article-quotation-framework.html">Business Development</a></li>
+        <li><a href="article-sop-writing.html">Automation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Articles</h4>
+      <ul>
+        <li><a href="article-rca-report.html">RCA Report Guide</a></li>
+        <li><a href="article-production-report.html">Production Report Checklist</a></li>
+        <li><a href="article-quotation-framework.html">3-Gate Quotation Framework</a></li>
+        <li><a href="article-sop-writing.html">SOP Writing with AI</a></li>
+        <li><a href="article-quotation-case-study.html">Quotation Case Study</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Subscribe</h4>
+      <ul>
+        <li><a href="index.html#subscribe">USD 1.99/month — All Access</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Instagram</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Download Free Playbook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 The Industrial Scribe · All rights reserved</div>
+</footer>
+
+<script src="paywall.js"></script>
+</body>
+</html>

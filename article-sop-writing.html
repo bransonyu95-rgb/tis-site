@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Write Any Manufacturing SOP in 30 Minutes Using AI — The Industrial Scribe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #111827; line-height: 1.7; }
+
+    nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e7eb; z-index: 100; padding: 0 5%; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-family: Georgia, serif; font-size: 1.3rem; font-weight: 700; color: #111827; text-decoration: none; }
+    .nav-cats { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-cats a { font-size: 0.85rem; font-weight: 500; color: #6b7280; text-decoration: none; letter-spacing: 0.02em; }
+    .nav-cats a:hover { color: #111827; }
+    .nav-sub-btn { font-size: 0.8rem; font-weight: 600; color: #1d4ed8; border: 1.5px solid #1d4ed8; padding: 0.4rem 0.9rem; border-radius: 4px; text-decoration: none; white-space: nowrap; }
+    .nav-sub-btn:hover { background: #1d4ed8; color: #fff; }
+
+    .article-wrap { max-width: 780px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
+    .article-category { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1d4ed8; margin-bottom: 0.75rem; }
+    .article-headline { font-family: Georgia, serif; font-size: 2.2rem; line-height: 1.25; color: #111827; margin-bottom: 1rem; font-weight: 700; }
+    .article-meta { font-size: 0.85rem; color: #6b7280; margin-bottom: 2rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem; }
+    .article-image-placeholder { width: 100%; height: 400px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.9rem; margin-bottom: 2rem; border-radius: 4px; }
+    .article-body h2 { font-family: Georgia, serif; font-size: 1.5rem; margin: 2rem 0 0.75rem; color: #111827; }
+    .article-body h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #1f2937; }
+    .article-body p { margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.75; }
+    .article-body ul, .article-body ol { margin: 0.75rem 0 1.2rem 1.5rem; }
+    .article-body li { margin-bottom: 0.4rem; line-height: 1.7; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .article-body th { background: #1f2937; color: white; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.8rem; }
+    .article-body td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
+    .article-body tr:nth-child(even) td { background: #f9fafb; }
+    .prompt-block { background: #1e293b; color: #e2e8f0; padding: 1.25rem 1.5rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; line-height: 1.6; margin: 1.5rem 0; white-space: pre-wrap; word-break: break-word; }
+    .prompt-label { font-size: 0.7rem; font-weight: 700; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .inline-sub { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 1rem 1.25rem; margin: 2rem 0; border-radius: 0 6px 6px 0; }
+    .inline-sub p { font-size: 0.9rem; color: #1e3a5f; margin-bottom: 0.5rem; }
+    .inline-sub a { display: inline-block; background: #1d4ed8; color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-top: 0.25rem; }
+    .product-cta-box { background: #f9fafb; border: 1px solid #e5e7eb; padding: 1.25rem 1.5rem; border-radius: 6px; margin: 2.5rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .product-cta-text strong { display: block; font-size: 1rem; color: #111827; margin-bottom: 0.25rem; }
+    .product-cta-text span { font-size: 0.85rem; color: #6b7280; }
+    .product-cta-box a { background: #111827; color: white; padding: 0.5rem 1.25rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .download-btn { display: inline-block; background: #1d4ed8; color: white; padding: 0.75rem 1.5rem; border-radius: 4px; font-size: 0.95rem; font-weight: 600; text-decoration: none; margin: 1rem 0 2rem; }
+    .format-card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 1.25rem 1.5rem; margin: 1rem 0; }
+    .format-card h4 { font-size: 1rem; font-weight: 700; color: #111827; margin-bottom: 0.4rem; }
+    .format-card .use-when { font-size: 0.8rem; font-weight: 600; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    .format-card p { font-size: 0.9rem; color: #374151; margin-bottom: 0; }
+    .checklist-box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+    .checklist-box h4 { font-size: 0.9rem; font-weight: 700; color: #111827; margin-bottom: 0.75rem; }
+    .checklist-box ul { list-style: none; margin: 0; }
+    .checklist-box li { padding: 0.3rem 0; font-size: 0.9rem; color: #374151; }
+    .checklist-box li::before { content: "☐ "; font-size: 1rem; }
+
+    .related-section { border-top: 1px solid #e5e7eb; padding-top: 2rem; margin-top: 3rem; }
+    .related-section h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; margin-bottom: 1.25rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .related-card { border: 1px solid #e5e7eb; border-radius: 6px; overflow: hidden; text-decoration: none; color: inherit; }
+    .related-card:hover { border-color: #1d4ed8; }
+    .related-img { height: 120px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.75rem; }
+    .related-content { padding: 0.75rem; }
+    .related-cat { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #1d4ed8; margin-bottom: 0.3rem; }
+    .related-title { font-family: Georgia, serif; font-size: 0.9rem; line-height: 1.35; color: #111827; font-weight: 600; }
+
+    footer { background: #111827; color: #9ca3af; padding: 3rem 5% 2rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-bottom: 2rem; }
+    .footer-col h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #f9fafb; margin-bottom: 0.75rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.4rem; font-size: 0.85rem; }
+    .footer-col a { color: #9ca3af; text-decoration: none; }
+    .footer-col a:hover { color: #f9fafb; }
+    .footer-bottom { border-top: 1px solid #374151; padding-top: 1.5rem; text-align: center; font-size: 0.8rem; }
+
+    @media (max-width: 768px) {
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .article-headline { font-size: 1.6rem; }
+      .product-cta-box { flex-direction: column; }
+      .nav-cats { display: none; }
+    }
+  </style>
+  <link rel="stylesheet" href="paywall.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">The Industrial Scribe</a>
+    <ul class="nav-cats">
+      <li><a href="index.html">All</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Production Planning</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Quality &amp; Compliance</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Business Development</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Automation</a></li>
+    </ul>
+    <a href="index.html#subscribe" class="nav-sub-btn">Subscribe USD 1.99/mo</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <div class="article-category">Automation</div>
+  <h1 class="article-headline">How to Write Any Manufacturing SOP in 30 Minutes Using AI</h1>
+  <div class="article-meta">The Industrial Scribe | Automation &nbsp;·&nbsp; 7 min read &nbsp;·&nbsp; March 2026</div>
+
+  <img src="img-sop-binders.jpg" alt="Article Image" style="width:100%;height:400px;object-fit:cover;border-radius:4px;margin-bottom:2rem;">
+
+  <div class="article-body">
+
+    <p>You know how to do the process. You've done it 200 times. You could walk someone through it in your sleep. But writing the SOP? That's different. You open a blank Word document and stare at it. You're not sure what level of detail to include. You don't know whether to use ISO 9001 format or the company's existing template. You write two paragraphs, decide they're wrong, and start over.</p>
+
+    <p>Four hours later, you have a draft that your QC manager will probably revise anyway. The bottleneck is not your process knowledge. The bottleneck is the translation — turning what's in your head into a structured, compliant document.</p>
+
+    <p>AI solves this translation problem completely. This guide shows you exactly how. A QC engineer at a precision machining company in Malaysia needed to document their CMM First Article Inspection procedure. It was all in his head. He spent 12 minutes filling in a structured template and got a complete SOP draft from AI in 8 minutes. The process that used to take half a day took 25 minutes total.</p>
+
+    <div class="inline-sub">
+      <p><strong>This article is part of The Industrial Scribe.</strong> Subscribe for USD 1.99/month for unlimited access to all articles, templates &amp; community.</p>
+      <a href="index.html#subscribe">Subscribe Now</a>
+    </div>
+
+    <p>After working through this guide, you will be able to extract your process knowledge in a format AI can work with in under 10 minutes, choose the right SOP format for your use case, build an AI prompt that produces a usable first draft, review and validate the output for technical accuracy and compliance, and get the SOP adopted on the floor — not filed and forgotten.</p>
+
+    <h2>Step 1 — Brain Dump the Process</h2>
+
+    <p>Don't open a Word document. Don't try to write in SOP format yet. Just dump everything you know about the process into a structured bullet list. Use this format — fill in what you know, leave blanks where you're unsure. The goal is to externalise your tacit knowledge before it goes into a prompt.</p>
+
+    <div class="prompt-label">Brain Dump Format</div>
+    <div class="prompt-block">PROCESS NAME: [e.g. "First Article Inspection (FAI) for new part number"]
+
+PURPOSE:
+- Why does this process exist? What goes wrong if it's not done?
+- [e.g. "To verify that a new or revised part meets drawing requirements before full production run"]
+
+TRIGGER / WHEN TO DO THIS:
+- When does this process start? What event triggers it?
+- [e.g. "Triggered when: new part number approved, drawing revision, machine transfer, or 90-day gap in production"]
+
+INPUTS (what you need before starting):
+- [e.g. "Approved engineering drawing (latest revision)"]
+- [e.g. "Customer-approved inspection plan, CMM program, First-off part from production"]
+
+THE STEPS (rough, in order — don't worry about formatting):
+- [Step 1: what to do]
+- [Step 2: what to do]
+- [continue through all steps]
+
+CRITICAL CHECKS (what can go wrong, what to verify):
+- [e.g. "Confirm drawing revision level matches CMM program revision"]
+- [e.g. "Check GD&amp;T callouts — positional tolerance requires CMM, not manual measurement"]
+
+OUTPUTS (what comes out of this process):
+- [e.g. "Completed FAI report", "Signed-off sample part tagged and stored"]
+
+REFERENCES:
+- [ISO standard, work instruction number, customer spec, etc.]</div>
+
+    <h2>Step 2 — Choose the Right SOP Format</h2>
+
+    <p>Using the wrong format is one of the biggest reasons SOPs don't get used. Rule of thumb: if it needs to be audited, use ISO format. If it needs to be followed on the floor, use Work Instruction. If it needs to be stuck next to the machine, use QRG.</p>
+
+    <div class="format-card">
+      <div class="use-when">Use when: Audit-required procedures</div>
+      <h4>ISO 9001 Standard SOP</h4>
+      <p>Use when the procedure is part of your QMS, subject to audit, or required by a customer standard (IATF 16949, AS9100, ISO 13485). Structure: Purpose → Scope → Definitions / Acronyms → Responsibilities → Procedure → References → Revision history. Audience: engineers, QC staff, management, customer auditors. Tone: formal, passive constructions acceptable.</p>
+    </div>
+
+    <div class="format-card">
+      <div class="use-when">Use when: Production floor tasks</div>
+      <h4>Work Instruction (WI)</h4>
+      <p>Use for specific tasks on the production floor performed by operators, not engineers. Must be clear enough for a new hire to follow. Structure: operation name → required tools and materials → safety precautions → step-by-step instructions → acceptance criteria → what to do if something is wrong. Tone: direct, imperative verbs. "Insert the workpiece" — not "The workpiece should be inserted."</p>
+    </div>
+
+    <div class="format-card">
+      <div class="use-when">Use when: Visual reminders for experienced operators</div>
+      <h4>Quick Reference Guide (QRG)</h4>
+      <p>Use when experienced operators need a visual reminder, not a full procedure. One page or one laminated card. Key parameters prominently displayed. Pass/fail criteria in a box. Minimal text — let the table or diagram do the work.</p>
+    </div>
+
+    <h2>Step 3 — Build the AI Prompt</h2>
+
+    <p>This is the full prompt. Copy, fill in your details from Step 1, and paste into your AI tool of choice (ChatGPT GPT-4 or above, Claude, or Gemini — all work).</p>
+
+    <div class="prompt-label">AI Prompt — SOP Draft</div>
+    <div class="prompt-block">You are a Quality Systems Engineer with 10 years of experience writing manufacturing SOPs for ISO 9001-certified contract manufacturers. You write procedures that are technically accurate, audit-ready, and clear enough for operators to follow without supervision.
+
+I need you to write a complete [ISO 9001 SOP / Work Instruction / Quick Reference Guide] for the following process.
+
+FORMAT:
+Use [ISO 9001 format with numbered sections including Purpose, Scope, Definitions, Responsibilities, Procedure, References, Revision History / Work Instruction format with safety first, numbered steps, acceptance criteria / QRG one-page table format].
+
+TONE:
+[Formal and procedural (for ISO SOP) / Direct imperative — "Do this, then do that" (for Work Instruction) / Minimal text, table-based (for QRG)]
+
+PROCESS INFORMATION:
+[PASTE YOUR BRAIN DUMP FROM STEP 1 HERE]
+
+ADDITIONAL REQUIREMENTS:
+- Include a document number placeholder: [DOC-XXX]
+- Include a revision field: Rev 01 | Date: [DATE]
+- Include a document owner field: [DEPARTMENT / ROLE]
+- Flag any step where you need more information from me
+- If any step has a common error or safety risk, add a NOTE or WARNING callout
+
+Write the complete document. No placeholders left unfilled except document number, date, and owner fields.</div>
+
+    <p>After the first output: read the full document before asking for changes. Ask for one section at a time: <em>"Rewrite Section 5 — the steps need to be more specific about X."</em> If steps are too generic: <em>"Add specific acceptance criteria for each checkpoint in Section 5. What measurement method and tolerance range applies?"</em></p>
+
+    <h2>Step 4 — Review for Accuracy and Compliance</h2>
+
+    <p>AI will produce a well-structured, grammatically clean SOP. It will also make assumptions. Here's what to check.</p>
+
+    <h3>Technical Accuracy</h3>
+    <p>Go through every step and ask: "Is this actually how we do it?" AI doesn't know your specific machines, tools, or tolerances. It will use reasonable generic values. Replace every generic specification with your actual numbers.</p>
+
+    <p>Common issues: measurement tolerances stated as general ranges instead of your drawing requirements, machine settings described generically instead of referencing your specific model, inspection frequency stated as "periodic" instead of your actual frequency, material specifications referencing common grades that may not match your actual BOM.</p>
+
+    <div class="checklist-box">
+      <h4>Compliance Check — If This SOP Needs to Pass an Audit</h4>
+      <ul>
+        <li>Scope statement accurately describes what this SOP covers — and what it doesn't</li>
+        <li>Responsibilities are assigned to roles, not people (roles don't change, people do)</li>
+        <li>References section cites the correct standard numbers and revisions</li>
+        <li>Any regulatory requirement (REACH, RoHS, customer-specific flow-down) is called out correctly</li>
+        <li>The procedure links to any related forms or records (inspection report, sign-off sheet, etc.)</li>
+      </ul>
+    </div>
+
+    <h3>Floor Reality Check</h3>
+    <p>Take the draft to whoever actually does the job. Ask them to read it — or better, follow it. Watch where they hesitate or add a step from memory that isn't in the document. Those gaps are the SOP's gaps. This step is not optional. A technically correct SOP that doesn't match what actually happens on the floor is worse than no SOP. It creates audit risk and confuses new operators.</p>
+
+    <h2>Step 5 — Make It Stick</h2>
+
+    <p>This is where most SOPs fail. The document is perfect. It sits in a folder. Nobody reads it. Five practices that actually drive adoption:</p>
+
+    <ol>
+      <li><strong>Post it where the work happens.</strong> A work instruction for a CNC setup belongs at the machine — laminated, on the wall. An inspection procedure belongs at the inspection station. Not in a binder in the QC office.</li>
+      <li><strong>Walk through it once with the team.</strong> 5-minute briefing at the start of a shift. "New SOP for [process]. Here are the three things that changed." That's it.</li>
+      <li><strong>Use it for training sign-off.</strong> New operator training should reference the SOP. Sign-off should be documented: "Operator trained to [SOP number] on [date], verified by [supervisor]." This protects you in an audit.</li>
+      <li><strong>Build the revision process into the SOP itself.</strong> Add a line: "Any team member who identifies an inaccuracy or improvement should notify [role] for review." People correct SOPs when they feel ownership.</li>
+      <li><strong>Audit it within 60 days.</strong> Is the SOP being followed? Does it match the actual current process? An SOP that's 6 months old and never been reviewed is a compliance risk.</li>
+    </ol>
+
+    <h2>Common Mistakes to Avoid</h2>
+
+    <p><strong>Writing for the auditor, not the operator.</strong> If your SOP is full of passive voice and vague references — it might pass an audit but it won't prevent defects. Write for the person doing the job.</p>
+
+    <p><strong>Skipping the brain dump and prompting AI with just a process name.</strong> "Write an SOP for incoming inspection" will produce a generic document that doesn't match your process, your equipment, or your customer requirements. Garbage in, garbage out.</p>
+
+    <p><strong>Not assigning an owner.</strong> Every SOP needs a document owner — the role responsible for keeping it current. Without an owner, it drifts.</p>
+
+    <p><strong>Writing steps that assume too much.</strong> "Inspect the part" is not a step. "Measure OD at three points using CMM program [CMM-XXX]. Record in Inspection Report [FORM-XXX]. Accept if within drawing tolerance ±0.02mm." That's a step.</p>
+
+    <p><strong>Treating the first AI draft as the final version.</strong> Treat it as a 70% draft. Your 30% — specific values, local context, floor reality — makes it complete.</p>
+
+    <p><strong>Never revising.</strong> Processes change. Machines get upgraded. Customer specs get revised. An SOP that hasn't been reviewed in two years is probably wrong in at least three places.</p>
+
+    <h2>What Changes After You Use This</h2>
+
+    <p>After your first three SOPs using this method: what used to take 3–4 hours now takes 25–35 minutes. The knowledge extraction step is 10 minutes. The AI drafting is 8–10 minutes. Validation and floor check is the remaining time. Documents are more complete on the first pass because the prompt structure forces you to think through inputs, outputs, and critical checks before you start writing.</p>
+
+    <p>Every hour you spend manually writing documentation is an hour not spent on problem-solving, customer management, or process improvement. Documentation should be fast. This method makes it fast.</p>
+
+    <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="download-btn">→ Download the full template and checklist for USD 9.99</a>
+
+    <div class="product-cta-box">
+      <div class="product-cta-text">
+        <strong>SOP Writing with AI Guide — USD 9.99</strong>
+        <span>Brain dump template, full AI prompt, ISO and WI format examples, compliance checklist. Instant download.</span>
+      </div>
+      <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Get This PDF →</a>
+    </div>
+
+  </div><!-- /article-body -->
+
+  <!-- Related Articles -->
+  <div class="related-section">
+    <h3>Related Articles</h3>
+    <div class="related-grid">
+
+      <a href="article-rca-report.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Quality &amp; Compliance</div>
+          <div class="related-title">How to Write an RCA Report Your Customer Won't Send Back</div>
+        </div>
+      </a>
+
+      <a href="article-production-report.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Production Planning</div>
+          <div class="related-title">The 12 Numbers Every Production Manager Should Track Every Week</div>
+        </div>
+      </a>
+
+      <a href="article-quotation-framework.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Business Development</div>
+          <div class="related-title">The 3-Gate Framework: How to Price Manufacturing Jobs Without Leaving Money on the Table</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div><!-- /article-wrap -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>The Industrial Scribe</h4>
+      <p style="font-size: 0.85rem; line-height: 1.6;">AI automation intelligence for SEA manufacturing professionals. Production Planners, QC Executives, BD Managers, Operations Leads.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="index.html">All Articles</a></li>
+        <li><a href="article-production-report.html">Production Planning</a></li>
+        <li><a href="article-rca-report.html">Quality &amp; Compliance</a></li>
+        <li><a href="article-quotation-framework.html">Business Development</a></li>
+        <li><a href="article-sop-writing.html">Automation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Articles</h4>
+      <ul>
+        <li><a href="article-rca-report.html">RCA Report Guide</a></li>
+        <li><a href="article-production-report.html">Production Report Checklist</a></li>
+        <li><a href="article-quotation-framework.html">3-Gate Quotation Framework</a></li>
+        <li><a href="article-sop-writing.html">SOP Writing with AI</a></li>
+        <li><a href="article-quotation-case-study.html">Quotation Case Study</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Subscribe</h4>
+      <ul>
+        <li><a href="index.html#subscribe">USD 1.99/month — All Access</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Instagram</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Download Free Playbook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 The Industrial Scribe · All rights reserved</div>
+</footer>
+
+<script src="paywall.js"></script>
+</body>
+</html>

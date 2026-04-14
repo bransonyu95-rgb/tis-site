@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How I Connected AI to My Company Outlook in 60 Minutes — The Industrial Scribe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #111827; line-height: 1.7; }
+
+    nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e7eb; z-index: 100; padding: 0 5%; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-family: Georgia, serif; font-size: 1.3rem; font-weight: 700; color: #111827; text-decoration: none; }
+    .nav-cats { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-cats a { font-size: 0.85rem; font-weight: 500; color: #6b7280; text-decoration: none; letter-spacing: 0.02em; }
+    .nav-cats a:hover { color: #111827; }
+    .nav-sub-btn { font-size: 0.8rem; font-weight: 600; color: #1d4ed8; border: 1.5px solid #1d4ed8; padding: 0.4rem 0.9rem; border-radius: 4px; text-decoration: none; white-space: nowrap; }
+    .nav-sub-btn:hover { background: #1d4ed8; color: #fff; }
+
+    .article-wrap { max-width: 780px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
+    .article-category { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #d97706; margin-bottom: 0.75rem; }
+    .article-headline { font-family: Georgia, serif; font-size: 2.2rem; line-height: 1.25; color: #111827; margin-bottom: 1rem; font-weight: 700; }
+    .article-meta { font-size: 0.85rem; color: #6b7280; margin-bottom: 2rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem; }
+    .article-image-placeholder { width: 100%; height: 400px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.9rem; margin-bottom: 2rem; border-radius: 4px; }
+    .article-body h2 { font-family: Georgia, serif; font-size: 1.5rem; margin: 2rem 0 0.75rem; color: #111827; }
+    .article-body h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #1f2937; }
+    .article-body p { margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.75; }
+    .article-body ul, .article-body ol { margin: 0.75rem 0 1.2rem 1.5rem; }
+    .article-body li { margin-bottom: 0.4rem; line-height: 1.7; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .article-body th { background: #1f2937; color: white; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.8rem; }
+    .article-body td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #e5e7eb; }
+    .article-body tr:nth-child(even) td { background: #f9fafb; }
+    .prompt-block { background: #1e293b; color: #e2e8f0; padding: 1.25rem 1.5rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; line-height: 1.6; margin: 1.5rem 0; white-space: pre-wrap; word-break: break-word; }
+    .prompt-label { font-size: 0.7rem; font-weight: 700; color: #d97706; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .inline-sub { background: #fffbeb; border-left: 4px solid #d97706; padding: 1rem 1.25rem; margin: 2rem 0; border-radius: 0 6px 6px 0; }
+    .inline-sub p { font-size: 0.9rem; color: #78350f; margin-bottom: 0.5rem; }
+    .inline-sub a { display: inline-block; background: #d97706; color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-top: 0.25rem; }
+    .checklist-box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+    .checklist-box h4 { font-size: 0.9rem; font-weight: 700; color: #111827; margin-bottom: 0.75rem; }
+    .checklist-box ul { list-style: none; margin: 0; }
+    .checklist-box li { padding: 0.3rem 0; font-size: 0.9rem; color: #374151; }
+    .checklist-box li::before { content: "☐ "; font-size: 1rem; }
+
+    .related-section { border-top: 1px solid #e5e7eb; padding-top: 2rem; margin-top: 3rem; }
+    .related-section h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; margin-bottom: 1.25rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .related-card { border: 1px solid #e5e7eb; border-radius: 6px; overflow: hidden; text-decoration: none; color: inherit; }
+    .related-card:hover { border-color: #d97706; }
+    .related-img { height: 120px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.75rem; }
+    .related-content { padding: 0.75rem; }
+    .related-cat { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #d97706; margin-bottom: 0.3rem; }
+    .related-title { font-family: Georgia, serif; font-size: 0.9rem; line-height: 1.35; color: #111827; font-weight: 600; }
+
+    footer { background: #111827; color: #9ca3af; padding: 3rem 5% 2rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-bottom: 2rem; }
+    .footer-col h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #f9fafb; margin-bottom: 0.75rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.4rem; font-size: 0.85rem; }
+    .footer-col a { color: #9ca3af; text-decoration: none; }
+    .footer-col a:hover { color: #f9fafb; }
+    .footer-bottom { border-top: 1px solid #374151; padding-top: 1.5rem; text-align: center; font-size: 0.8rem; }
+
+    @media (max-width: 768px) {
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .article-headline { font-size: 1.6rem; }
+      .nav-cats { display: none; }
+    }
+  </style>
+  <link rel="stylesheet" href="paywall.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">The Industrial Scribe</a>
+    <ul class="nav-cats">
+      <li><a href="index.html">All</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Production Planning</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Quality &amp; Compliance</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Business Development</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Automation</a></li>
+    </ul>
+    <a href="index.html#subscribe" class="nav-sub-btn">Subscribe USD 1.99/mo</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <div class="article-category">Case Study</div>
+  <h1 class="article-headline">How I Connected AI to My Company Outlook in 60 Minutes</h1>
+  <div class="article-meta">The Industrial Scribe | Case Study &nbsp;·&nbsp; 7 min read &nbsp;·&nbsp; March 2026</div>
+
+  <img src="img-erp-screen.jpg" alt="Article Image" style="width:100%;height:400px;object-fit:cover;border-radius:4px;margin-bottom:2rem;">
+
+  <div class="article-body">
+
+    <p>Every BD manager in manufacturing lives in their inbox. Customer PO acknowledgements, delivery status requests, NCR escalations, price negotiation threads, supplier confirmations — the email volume is constant and the cost of a slow response is real. Missing a customer's delivery enquiry by four hours can mean a complaint. Missing a procurement team's price validity question can mean losing the order to the competitor who replied first.</p>
+
+    <p>The standard workflow is to check email manually, draft responses from scratch, and switch between Outlook and whatever tool you're using to pull information. It works. It's also slow, and it breaks down at volume. This case study documents a different approach: connecting Claude directly to a company Microsoft Outlook account using MCP — the Model Context Protocol — so that the AI can read emails, search specific threads, and draft or send replies from the terminal, without ever opening a browser tab.</p>
+
+    <p>The setup took sixty minutes. The mistakes made along the way, and the specific fixes for each of them, are documented here so that anyone replicating this on a company Outlook account doesn't have to rediscover them.</p>
+
+    <div class="inline-sub">
+      <p><strong>This article is part of The Industrial Scribe.</strong> Subscribe for USD 1.99/month for unlimited access to all articles, templates &amp; community.</p>
+      <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Subscribe Now</a>
+    </div>
+
+    <h2>What MCP Is and Why It Matters Here</h2>
+
+    <p>MCP stands for Model Context Protocol. It's the mechanism that lets an AI tool like Claude connect to external systems — email, calendars, files, databases — and interact with them in real time rather than just responding to text you paste into a chat window. Without MCP, you copy an email into Claude, get a reply drafted, and paste it back into Outlook. With MCP, Claude reads the email directly, drafts the response, and sends it — all from a single instruction.</p>
+
+    <p>For a BD manager handling thirty to fifty emails a day across multiple customer accounts, the difference is significant. The manual copy-paste workflow adds two to three minutes per email. At forty emails a day, that's over an hour of mechanical work that produces no thinking, no decision-making, and no relationship value. The MCP workflow compresses that to a fraction of the time and lets the BD manager focus on the emails that require judgement rather than the ones that just require a response.</p>
+
+    <p>The connection method used in this case study was the Microsoft Graph API — the official interface Microsoft provides for third-party applications to interact with Outlook, Teams, OneDrive, and other Microsoft 365 services. It requires an Azure app registration, which sounds more intimidating than it is. The actual registration process takes about fifteen minutes if you follow the steps below without guessing.</p>
+
+    <h2>Step 1 — Register an Azure Application</h2>
+
+    <p>Open the Azure portal at portal.azure.com and navigate to Azure Active Directory, then App Registrations, then New Registration. Name the application something recognisable — "Claude Outlook Connector" works. Set the account type to "Accounts in this organisational directory only" if you're working with a corporate Outlook account on a company tenant. If you're using a personal Microsoft account, choose the multi-tenant option instead.</p>
+
+    <p>For the redirect URI, enter <code>http://localhost</code>. This is used during the OAuth authentication flow and won't be a real web address — it's just where the authentication token gets redirected during the initial setup.</p>
+
+    <p>Once the app is registered, note the Application (client) ID and the Directory (tenant) ID from the overview page. You'll need both in the configuration step. Then navigate to Certificates &amp; Secrets, create a new client secret, set the expiry to your preference, and copy the secret value immediately — it won't be shown again after you leave the page. This is the first gotcha most people hit: they navigate away before copying the secret, then have to regenerate it and start the configuration over.</p>
+
+    <h2>Step 2 — Configure API Permissions</h2>
+
+    <p>Navigate to API Permissions in the app registration and add the following Microsoft Graph permissions: <code>Mail.Read</code>, <code>Mail.Send</code>, <code>Mail.ReadWrite</code>, and <code>User.Read</code>. Set these as Delegated permissions, not Application permissions — delegated means the access operates on behalf of a signed-in user, which is the correct model for this use case.</p>
+
+    <p>If your company Outlook account is on a corporate tenant with admin-controlled permissions, you will need an administrator to grant consent for the application. This is the second gotcha. If the company's IT policy requires admin approval for new app registrations, the self-service setup path won't work without either getting IT to whitelist the app or registering it on a personal Microsoft account instead.</p>
+
+    <p>For most SEA manufacturing companies, the IT environment is either a managed Microsoft 365 tenant where admin consent is required, or a lighter setup where users have more latitude. If you're unsure which applies to your company, the permission configuration page will tell you — it will show a warning if admin consent is required and not yet granted.</p>
+
+    <h2>Step 3 — Install and Configure the MCP Server</h2>
+
+    <p>The MCP server for Microsoft Graph is an open-source package. Install it via npm with <code>npm install -g @modelcontextprotocol/server-microsoft-graph</code>. Once installed, create a configuration file — typically called <code>mcp-config.json</code> — in your home directory or a project folder. The file structure looks like this:</p>
+
+    <div class="prompt-label">MCP Configuration File</div>
+    <div class="prompt-block">{
+  "mcpServers": {
+    "microsoft-graph": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-microsoft-graph"],
+      "env": {
+        "MICROSOFT_CLIENT_ID": "your-application-client-id",
+        "MICROSOFT_CLIENT_SECRET": "your-client-secret-value",
+        "MICROSOFT_TENANT_ID": "your-directory-tenant-id"
+      }
+    }
+  }
+}</div>
+
+    <p>Replace the placeholder values with your actual client ID, client secret, and tenant ID from the Azure registration. Save the file, then point Claude's MCP configuration to this file path. The exact method depends on whether you're running Claude Desktop or the Claude CLI — in both cases, there is a settings interface where you specify the path to your MCP config.</p>
+
+    <h2>Step 4 — Authenticate and Test</h2>
+
+    <p>The first time you run Claude with the Outlook MCP server active, it will prompt for authentication. Open the URL it provides in a browser, sign in with your Microsoft account, and grant the permissions the app requests. You'll be redirected to <code>localhost</code> — the page won't load, but the URL bar will contain an authorisation code. Copy that code and paste it back into the terminal when prompted.</p>
+
+    <p>This is the third gotcha: the redirect URL needs to be copied exactly, including everything after the <code>code=</code> parameter. Some people copy only the short code and miss the trailing state parameter, which causes the authentication to fail silently. Copy the entire URL from <code>localhost</code> onwards.</p>
+
+    <p>Once authentication is complete, test the connection with a simple instruction: <em>"List my five most recent emails from the past 24 hours."</em> If the server is configured correctly, Claude will return a list of email subjects, senders, and timestamps pulled directly from your Outlook inbox. If it returns an error about insufficient permissions, return to the Azure portal and verify that all four API permissions are set to Delegated and that admin consent is granted if your tenant requires it.</p>
+
+    <h2>What You Can Do Once It's Connected</h2>
+
+    <p>The practical applications for a manufacturing BD manager are immediate. Search a specific customer's email thread: <em>"Find all emails from procurement@customer.com in the last thirty days and summarise the open action items."</em> Draft a reply to a delivery enquiry: <em>"Read the latest email from [customer name] about the March shipment and draft a reply confirming dispatch with our standard OTD format."</em> Send a follow-up: <em>"Send a follow-up to the quotation email I sent on Tuesday, asking if they need any clarification on the unit price breakdown."</em></p>
+
+    <p>The key discipline is the same as with any AI tool: be specific about what you want. Vague instructions produce vague outputs. Specific instructions — with the customer name, the date range, the email subject, the desired tone — produce responses you can send with minimal editing.</p>
+
+    <p>One important boundary: review AI-drafted emails before sending, especially for anything with commercial implications. The AI will write a professional reply, but it doesn't know the relationship nuances that you carry from twelve months of account management. A reply that is technically correct but misses the tone of a sensitive negotiation thread can do more damage than a slow response. Use AI to draft; use your judgement to approve.</p>
+
+    <h2>The Gotchas, Summarised</h2>
+
+    <p>For anyone replicating this setup, the four issues most likely to add time are: copying the client secret before navigating away from the secrets page; corporate IT admin consent requirements blocking self-registration; copying the full redirect URL during authentication rather than just the code value; and mismatched permission types — delegated versus application — which causes silent failures that are hard to diagnose without knowing what to look for.</p>
+
+    <p>With those four addressed upfront, the setup runs cleanly. Sixty minutes is a realistic estimate for someone who hasn't done Azure app registrations before. For anyone who has, it's closer to twenty minutes. Either way, the productivity return starts on the same day.</p>
+
+    <div class="checklist-box">
+      <h4>Outlook MCP Setup Checklist</h4>
+      <ul>
+        <li>Azure app registration complete — note client ID and tenant ID</li>
+        <li>Client secret created and copied immediately before navigating away</li>
+        <li>API permissions set: Mail.Read, Mail.Send, Mail.ReadWrite, User.Read (Delegated)</li>
+        <li>Admin consent granted if required by company tenant</li>
+        <li>MCP config file created with correct credentials</li>
+        <li>Authentication flow completed — full redirect URL copied during auth</li>
+        <li>Test query run successfully: email list returned from inbox</li>
+      </ul>
+    </div>
+
+  </div><!-- /article-body -->
+
+  <!-- Related Articles -->
+  <div class="related-section">
+    <h3>Related Articles</h3>
+    <div class="related-grid">
+
+      <a href="article-what-is-mcp.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">AI Fundamentals</div>
+          <div class="related-title">What is MCP — How AI Connects to Your Company Tools</div>
+        </div>
+      </a>
+
+      <a href="article-ai-controls-desktop.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Automation</div>
+          <div class="related-title">AI Controls the Desktop: What That Means for Manufacturing Workflows</div>
+        </div>
+      </a>
+
+      <a href="article-factory-intelligence.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Case Study</div>
+          <div class="related-title">How One BD Manager Turned 334,000 Rows of Factory Data Into a Growth Strategy</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div><!-- /article-wrap -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>The Industrial Scribe</h4>
+      <p style="font-size: 0.85rem; line-height: 1.6;">AI automation intelligence for SEA manufacturing professionals. Production Planners, QC Executives, BD Managers, Operations Leads.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="index.html">All Articles</a></li>
+        <li><a href="article-production-report.html">Production Planning</a></li>
+        <li><a href="article-rca-report.html">Quality &amp; Compliance</a></li>
+        <li><a href="article-quotation-framework.html">Business Development</a></li>
+        <li><a href="article-sop-writing.html">Automation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Articles</h4>
+      <ul>
+        <li><a href="article-rca-report.html">RCA Report Guide</a></li>
+        <li><a href="article-production-report.html">Production Report Checklist</a></li>
+        <li><a href="article-quotation-framework.html">3-Gate Quotation Framework</a></li>
+        <li><a href="article-sop-writing.html">SOP Writing with AI</a></li>
+        <li><a href="article-quotation-case-study.html">Quotation Case Study</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Subscribe</h4>
+      <ul>
+        <li><a href="index.html#subscribe">USD 1.99/month — All Access</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Instagram</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Download Free Playbook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 The Industrial Scribe · All rights reserved</div>
+</footer>
+
+<script src="paywall.js"></script>
+</body>
+</html>

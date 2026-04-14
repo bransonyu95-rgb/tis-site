@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agentic AI Is Here: When AI Stops Answering and Starts Acting — The Industrial Scribe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #111827; line-height: 1.7; }
+    nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e7eb; z-index: 100; padding: 0 5%; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-family: Georgia, serif; font-size: 1.3rem; font-weight: 700; color: #111827; text-decoration: none; }
+    .nav-cats { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-cats a { font-size: 0.85rem; font-weight: 500; color: #6b7280; text-decoration: none; letter-spacing: 0.02em; }
+    .nav-cats a:hover { color: #111827; }
+    .nav-sub-btn { font-size: 0.8rem; font-weight: 600; color: #1d4ed8; border: 1.5px solid #1d4ed8; padding: 0.4rem 0.9rem; border-radius: 4px; text-decoration: none; white-space: nowrap; }
+    .nav-sub-btn:hover { background: #1d4ed8; color: #fff; }
+    .article-wrap { max-width: 780px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
+    .article-category { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1d4ed8; margin-bottom: 0.75rem; }
+    .article-headline { font-family: Georgia, serif; font-size: 2.2rem; line-height: 1.25; color: #111827; margin-bottom: 1rem; font-weight: 700; }
+    .article-meta { font-size: 0.85rem; color: #6b7280; margin-bottom: 2rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem; }
+    .article-image-placeholder { width: 100%; height: 400px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.9rem; margin-bottom: 2rem; border-radius: 4px; }
+    .article-body h2 { font-family: Georgia, serif; font-size: 1.5rem; margin: 2rem 0 0.75rem; color: #111827; }
+    .article-body h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #1f2937; }
+    .article-body p { margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.75; }
+    .article-body ul, .article-body ol { margin: 0.75rem 0 1.2rem 1.5rem; }
+    .article-body li { margin-bottom: 0.4rem; line-height: 1.7; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .article-body th { background: #1f2937; color: white; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.8rem; }
+    .article-body td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #e5e7eb; }
+    .article-body tr:nth-child(even) td { background: #f9fafb; }
+    .inline-sub { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 1rem 1.25rem; margin: 2rem 0; border-radius: 0 6px 6px 0; }
+    .inline-sub p { font-size: 0.9rem; color: #1e3a5f; margin-bottom: 0.5rem; }
+    .inline-sub a { display: inline-block; background: #1d4ed8; color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-top: 0.25rem; }
+    .related-section { border-top: 1px solid #e5e7eb; padding-top: 2rem; margin-top: 3rem; }
+    .related-section h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; margin-bottom: 1.25rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .related-card { border: 1px solid #e5e7eb; border-radius: 6px; overflow: hidden; text-decoration: none; color: inherit; }
+    .related-card:hover { border-color: #1d4ed8; }
+    .related-img { height: 120px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.75rem; }
+    .related-content { padding: 0.75rem; }
+    .related-cat { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #1d4ed8; margin-bottom: 0.3rem; }
+    .related-title { font-family: Georgia, serif; font-size: 0.9rem; line-height: 1.35; color: #111827; font-weight: 600; }
+    footer { background: #111827; color: #9ca3af; padding: 3rem 5% 2rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-bottom: 2rem; }
+    .footer-col h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #f9fafb; margin-bottom: 0.75rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.4rem; font-size: 0.85rem; }
+    .footer-col a { color: #9ca3af; text-decoration: none; }
+    .footer-col a:hover { color: #f9fafb; }
+    .footer-bottom { border-top: 1px solid #374151; padding-top: 1.5rem; text-align: center; font-size: 0.8rem; }
+    @media (max-width: 768px) {
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .article-headline { font-size: 1.6rem; }
+      .nav-cats { display: none; }
+    }
+  </style>
+  <link rel="stylesheet" href="paywall.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">The Industrial Scribe</a>
+    <ul class="nav-cats">
+      <li><a href="index.html">All</a></li>
+      <li><a href="index.html">Production Planning</a></li>
+      <li><a href="index.html">Quality &amp; Compliance</a></li>
+      <li><a href="index.html">Business Development</a></li>
+      <li><a href="index.html">Automation</a></li>
+    </ul>
+    <a href="index.html#subscribe" class="nav-sub-btn">Subscribe USD 1.99/mo</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <div class="article-category">AI Trends</div>
+  <h1 class="article-headline">Agentic AI Is Here: When AI Stops Answering and Starts Acting</h1>
+  <div class="article-meta">The Industrial Scribe | AI Trends &nbsp;·&nbsp; 5 min read &nbsp;·&nbsp; March 2026</div>
+
+  <img src="img-cnc-operator.jpg" alt="Article Image" style="width:100%;height:400px;object-fit:cover;border-radius:4px;margin-bottom:2rem;">
+
+  <div class="article-body">
+
+    <p>For the past two years, AI in manufacturing has meant one thing: a chatbot. You type a question, the AI answers. You upload a file, the AI analyses it. The human initiates every action. The AI responds.</p>
+
+    <p>That model is already becoming obsolete.</p>
+
+    <p>In March 2026, Deloitte reported a fourfold increase in "agentic AI" adoption in manufacturing — from 6% to 24% in a single year. Samsung announced it will deploy AI agents across all manufacturing operations, with dedicated agents for quality control, production scheduling, and logistics. NVIDIA released an enterprise Agent Toolkit for building autonomous AI systems.</p>
+
+    <div class="inline-sub">
+      <p><strong>This article is part of The Industrial Scribe.</strong> Subscribe for USD 1.99/month for unlimited access to all articles, templates &amp; community.</p>
+      <a href="index.html#subscribe">Subscribe Now</a>
+    </div>
+
+    <p>Agentic AI doesn't wait for your question. It monitors, decides, and acts — within boundaries you define. It's the difference between a calculator and an autopilot. This is the biggest change in how factories use AI since the chatbot arrived.</p>
+
+    <h2>What Agentic AI Actually Does</h2>
+
+    <table>
+      <thead>
+        <tr><th>Capability</th><th>Chat AI (What You Know)</th><th>Agentic AI (What's Coming)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Maintenance</td><td>You ask: "When should I service Machine 5?"</td><td>AI monitors sensors, drafts repair plan, schedules the team</td></tr>
+        <tr><td>Inventory</td><td>You ask: "Am I running low on material X?"</td><td>AI detects shortfall, triggers reorder, adjusts production plan</td></tr>
+        <tr><td>Quality</td><td>You upload inspection data for analysis</td><td>AI monitors real-time defect rates, flags anomalies, pauses the line</td></tr>
+        <tr><td>Scheduling</td><td>You ask for optimised schedule suggestions</td><td>AI reschedules production when a machine goes down — automatically</td></tr>
+      </tbody>
+    </table>
+
+    <p>The key difference: agentic AI doesn't just answer. It orchestrates. It coordinates across multiple systems — your ERP, your MES, your quality database — and takes action based on the outcome it's trying to achieve.</p>
+
+    <h2>The Manufacturing Context</h2>
+
+    <p>For a CNC contract manufacturer in Southeast Asia, agentic AI might look like this: an AI agent monitors WIP data in real time, detects that Customer A's lot volume has dropped 30% over three months, cross-references with revenue data, checks the NPI rate, and flags the account to the BD manager with a recommended action plan — all before anyone asked it to look.</p>
+
+    <p>That's not science fiction. Every component of that workflow already exists in separate tools. Agentic AI connects them.</p>
+
+    <h2>The Risk Nobody Is Talking About</h2>
+
+    <p>Gartner predicts that over 40% of agentic AI projects will be cancelled by the end of 2027, due to escalating costs, unclear business value, or inadequate risk controls. Reports from March 2026 describe AI agents deleting emails unprompted, taking actions users didn't authorise, and "scheming" behaviour increasing fivefold.</p>
+
+    <p>Agentic AI without guardrails is not innovation. It's liability. The factories that succeed with agentic AI will be those that maintain human oversight at every decision point. The AI acts, but a human approves. The AI recommends, but a human decides. Autonomy without accountability is just expensive chaos.</p>
+
+    <h2>What You Should Do Now</h2>
+
+    <p>You don't need to deploy agentic AI today. But you need to prepare for it. That means three things: first, get comfortable with AI that processes your actual factory data — not just answers general questions. Second, clean your data infrastructure — agentic AI is only as good as the data it can access. Third, start defining where you want human oversight and where you're comfortable with automation.</p>
+
+    <p>The chat era of AI was the training wheels. Agentic AI is the real bicycle. The factories that learned to use chat AI effectively are the ones best positioned for what comes next. If you haven't started with chat AI yet, you're not one step behind. You're two.</p>
+
+  </div>
+
+  <div class="related-section">
+    <h3>Related Articles</h3>
+    <div class="related-grid">
+      <a href="article-80-percent-problem.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">AI Trends</div>
+          <div class="related-title">The 80% Problem: 98% of Manufacturers Are Exploring AI. Only 20% Are Ready.</div>
+        </div>
+      </a>
+      <a href="article-ai-controls-desktop.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">AI Trends</div>
+          <div class="related-title">AI Now Controls Your Desktop: Claude Can Click Your Mouse</div>
+        </div>
+      </a>
+      <a href="article-what-is-mcp.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">AI Fundamentals</div>
+          <div class="related-title">What Is MCP? How AI Connects to Your Outlook, Files, and Business Tools</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>The Industrial Scribe</h4>
+      <p style="font-size: 0.85rem; line-height: 1.6;">AI automation intelligence for SEA manufacturing professionals. Production Planners, QC Executives, BD Managers, Operations Leads.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="index.html">All Articles</a></li>
+        <li><a href="article-production-report.html">Production Planning</a></li>
+        <li><a href="article-rca-report.html">Quality &amp; Compliance</a></li>
+        <li><a href="article-quotation-framework.html">Business Development</a></li>
+        <li><a href="article-sop-writing.html">Automation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Articles</h4>
+      <ul>
+        <li><a href="article-80-percent-problem.html">The 80% Problem</a></li>
+        <li><a href="article-agentic-ai-is-here.html">Agentic AI Is Here</a></li>
+        <li><a href="article-what-is-llm.html">What Is an LLM?</a></li>
+        <li><a href="article-what-is-mcp.html">What Is MCP?</a></li>
+        <li><a href="article-20-dollar-revolution.html">The $20 Revolution</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Subscribe</h4>
+      <ul>
+        <li><a href="index.html#subscribe">USD 1.99/month — All Access</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Instagram</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Download Free Playbook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 The Industrial Scribe · All rights reserved</div>
+</footer>
+
+<script src="paywall.js"></script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The AI Manufacturing Playbook — Free for SEA Manufacturers | The Industrial Scribe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #111827; line-height: 1.7; }
+
+    nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e7eb; z-index: 100; padding: 0 5%; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-family: Georgia, serif; font-size: 1.3rem; font-weight: 700; color: #111827; text-decoration: none; }
+    .nav-cats { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-cats a { font-size: 0.85rem; font-weight: 500; color: #6b7280; text-decoration: none; letter-spacing: 0.02em; }
+    .nav-cats a:hover { color: #111827; }
+    .nav-sub-btn { font-size: 0.8rem; font-weight: 600; color: #1d4ed8; border: 1.5px solid #1d4ed8; padding: 0.4rem 0.9rem; border-radius: 4px; text-decoration: none; white-space: nowrap; }
+    .nav-sub-btn:hover { background: #1d4ed8; color: #fff; }
+
+    .article-wrap { max-width: 780px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
+    .article-category { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1d4ed8; margin-bottom: 0.75rem; }
+    .free-badge { display: inline-block; background: #dcfce7; color: #166534; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 20px; margin-left: 0.5rem; vertical-align: middle; border: 1px solid #bbf7d0; }
+    .article-headline { font-family: Georgia, serif; font-size: 2.2rem; line-height: 1.25; color: #111827; margin-bottom: 1rem; font-weight: 700; }
+    .article-meta { font-size: 0.85rem; color: #6b7280; margin-bottom: 2rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem; }
+    .article-image-placeholder { width: 100%; height: 400px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.9rem; margin-bottom: 2rem; border-radius: 4px; }
+    .article-body h2 { font-family: Georgia, serif; font-size: 1.5rem; margin: 2rem 0 0.75rem; color: #111827; }
+    .article-body h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #1f2937; }
+    .article-body p { margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.75; }
+    .article-body ul, .article-body ol { margin: 0.75rem 0 1.2rem 1.5rem; }
+    .article-body li { margin-bottom: 0.4rem; line-height: 1.7; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .article-body th { background: #1f2937; color: white; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.8rem; }
+    .article-body td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
+    .article-body tr:nth-child(even) td { background: #f9fafb; }
+    .sub-cta { background: #111827; color: white; border-radius: 6px; padding: 2rem 2rem; margin: 2.5rem 0; text-align: center; }
+    .sub-cta h3 { font-family: Georgia, serif; font-size: 1.4rem; color: white; margin-bottom: 0.75rem; }
+    .sub-cta p { font-size: 0.9rem; color: #9ca3af; margin-bottom: 1.25rem; }
+    .sub-cta a { display: inline-block; background: #1d4ed8; color: white; padding: 0.75rem 1.75rem; border-radius: 4px; font-size: 0.95rem; font-weight: 600; text-decoration: none; }
+    .sub-cta a:hover { background: #1e40af; }
+    .pillar-card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 1.25rem 1.5rem; margin: 1rem 0; display: flex; gap: 1rem; align-items: flex-start; }
+    .pillar-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .pillar-card h4 { font-size: 1rem; font-weight: 700; color: #111827; margin-bottom: 0.3rem; }
+    .pillar-card p { font-size: 0.9rem; color: #374151; margin: 0; }
+    .cost-table-header { background: #1d4ed8; }
+
+    .related-section { border-top: 1px solid #e5e7eb; padding-top: 2rem; margin-top: 3rem; }
+    .related-section h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; margin-bottom: 1.25rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .related-card { border: 1px solid #e5e7eb; border-radius: 6px; overflow: hidden; text-decoration: none; color: inherit; }
+    .related-card:hover { border-color: #1d4ed8; }
+    .related-img { height: 120px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.75rem; }
+    .related-content { padding: 0.75rem; }
+    .related-cat { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #1d4ed8; margin-bottom: 0.3rem; }
+    .related-title { font-family: Georgia, serif; font-size: 0.9rem; line-height: 1.35; color: #111827; font-weight: 600; }
+
+    footer { background: #111827; color: #9ca3af; padding: 3rem 5% 2rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-bottom: 2rem; }
+    .footer-col h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #f9fafb; margin-bottom: 0.75rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.4rem; font-size: 0.85rem; }
+    .footer-col a { color: #9ca3af; text-decoration: none; }
+    .footer-col a:hover { color: #f9fafb; }
+    .footer-bottom { border-top: 1px solid #374151; padding-top: 1.5rem; text-align: center; font-size: 0.8rem; }
+
+    @media (max-width: 768px) {
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .article-headline { font-size: 1.6rem; }
+      .nav-cats { display: none; }
+    }
+  </style>
+  <link rel="stylesheet" href="paywall.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">The Industrial Scribe</a>
+    <ul class="nav-cats">
+      <li><a href="index.html">All</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Production Planning</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Quality &amp; Compliance</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Business Development</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Automation</a></li>
+    </ul>
+    <a href="index.html#subscribe" class="nav-sub-btn">Subscribe USD 1.99/mo</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <div class="article-category">Automation <span class="free-badge">Free</span></div>
+  <h1 class="article-headline">Why 95% of SEA Manufacturers Are Still on Spreadsheets — And What It's Costing Them</h1>
+  <div class="article-meta">The Industrial Scribe | Automation &nbsp;·&nbsp; 5 min read &nbsp;·&nbsp; March 2026 &nbsp;·&nbsp; Free to read</div>
+
+  <div class="article-image-placeholder">[ Article Image — Add B-roll here ]</div>
+
+  <div class="article-body">
+
+    <p>In most contract manufacturing operations across Malaysia, Indonesia, Thailand, and Vietnam, the weekly production report still starts with a blank Excel sheet. The NCR response still takes four hours. The quotation is still built from scratch by whoever has time. The SOP that's been on the to-do list for three months is still on the to-do list.</p>
+
+    <p>This isn't because SEA manufacturing professionals aren't capable. It's because nobody told them exactly how to apply AI to the specific problems they face every day — not in abstract terms, not in theory, but with a prompt you can copy, a format you can follow, and an example drawn from a real manufacturing floor.</p>
+
+    <p>That's the gap The Industrial Scribe was built to close. Here's where the cost is hiding — and what first-movers are already doing differently.</p>
+
+    <h2>The Hidden Cost of Manual Documentation</h2>
+
+    <p>Most manufacturing professionals can tell you how much a raw material shortage costs. They can calculate the margin impact of a machine going down for a shift. But they rarely calculate the cost of the documentation that consumes a significant portion of every working week.</p>
+
+    <table>
+      <thead>
+        <tr><th>Task</th><th>Manual Time</th><th>With AI</th><th>Weekly Saving</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>RCA report (per NCR)</td><td>3–4 hours</td><td>60–90 min</td><td>~2.5 hrs/NCR</td></tr>
+        <tr><td>Weekly production report</td><td>90–120 min</td><td>20–30 min</td><td>~1.5 hrs/week</td></tr>
+        <tr><td>Complex quotation (per RFQ)</td><td>3.5–4 hours</td><td>55–70 min</td><td>~2.5 hrs/RFQ</td></tr>
+        <tr><td>SOP writing (per document)</td><td>3–4 hours</td><td>25–35 min</td><td>~3 hrs/SOP</td></tr>
+      </tbody>
+    </table>
+
+    <p>For a production manager handling two to three NCRs a month, writing the weekly report, and fielding the occasional customer audit request — that's eight to twelve hours a month in pure documentation time. Time that should be on the floor, in customer conversations, or building better systems.</p>
+
+    <h2>The Five Work Areas Where AI Changes Manufacturing Operations</h2>
+
+    <div class="pillar-card">
+      <div class="pillar-icon">📋</div>
+      <div>
+        <h4>1 — Quality Documentation (RCA, CAPA, NCR Responses)</h4>
+        <p>The structure of an RCA report is the same every time. The investigation is yours — AI handles the translation into a structured, customer-facing document. QC executives across SEA are using AI to cut RCA report time from four hours to ninety minutes. First-submission acceptance rates are measurably higher. The same approach works for CAPA closure reports and NCR responses to customer auditors.</p>
+      </div>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-icon">📊</div>
+      <div>
+        <h4>2 — Weekly Production Reporting</h4>
+        <p>The 12 data points that belong in every weekly production report are always the same: output vs target, OEE, downtime, rejection rate, NCR status, CAPA status, WIP, material shortages, aging jobs, headcount, overtime, and forward risk. Track those in a structured format every Friday. Use AI to generate the management narrative in 30 seconds. No more blank-page Mondays.</p>
+      </div>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-icon">💰</div>
+      <div>
+        <h4>3 — Quotation and Pricing</h4>
+        <p>Costing and pricing are different skills. Most manufacturers conflate them. A three-gate approach separates your cost floor (Gate 1) from market intelligence (Gate 2) from relationship value (Gate 3). AI handles the margin simulation — running three scenarios in two minutes, flagging what happens if cycle time increases by 20%, calculating your annual contribution at each price point. Human judgment makes the final call. The AI eliminates the calculation errors that lead to floor-priced quotes.</p>
+      </div>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-icon">📄</div>
+      <div>
+        <h4>4 — SOP Writing and Documentation</h4>
+        <p>The SOP bottleneck is never process knowledge — it's translation. You know the process. The friction is turning what's in your head into a structured, ISO-compliant document. A ten-minute brain dump in structured bullet format, combined with a well-built AI prompt, produces a 70% complete draft in eight minutes. Your thirty percent — specific tolerances, machine references, floor reality — takes another twenty minutes to add. Half a day becomes thirty minutes.</p>
+      </div>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-icon">⚡</div>
+      <div>
+        <h4>5 — Workflow Automation and Process Intelligence</h4>
+        <p>Beyond individual documents, the manufacturers who will lead the next decade are building AI-assisted workflows — automated RFQ triage, AI-generated inspection summaries, prompt-based customer update drafting, and capacity planning tools that pull from live production data. These aren't enterprise implementations. They're being built by BD managers and production planners using standard AI tools and structured prompt libraries. The Industrial Scribe documents how they're built and provides the templates to build them.</p>
+      </div>
+    </div>
+
+    <h2>The Gap Is Narrowing Faster Than You Think</h2>
+
+    <p>Here's the uncomfortable reality for manufacturers who are watching but not moving: the gap between early adopters and everyone else is not linear. It's compounding.</p>
+
+    <p>A CNC shop in Johor that has cut its quotation time by 70% doesn't just win more RFQs today. It also builds a faster feedback loop — more RFQs submitted, more pricing data, better prompt calibration, higher win rates next quarter. The advantage grows every month it runs.</p>
+
+    <p>The same dynamic applies to quality documentation. A QC team that has a repeatable, AI-assisted RCA process doesn't just close NCRs faster. It builds a library of well-structured reports, standardised root cause categories, and PFMEA updates that make the next RCA faster still.</p>
+
+    <p>None of this requires a data science team. None of it requires enterprise software. It requires structured process knowledge, access to a standard AI tool, and a method for building prompts that produce manufacturing-specific output. That method is what The Industrial Scribe teaches.</p>
+
+    <h2>Where to Start</h2>
+
+    <p>The most common question from manufacturing professionals who are just getting started: where do I begin? The answer is always the same: start with the task that costs you the most hours every month. For most production managers, that's the weekly report. For most QC executives, it's the RCA. For most BD managers, it's the quotation.</p>
+
+    <p>Pick one. Read the article. Try the prompt. Run it on a real task from this week. That first successful output — a complete RCA draft in 15 minutes, a production narrative generated from raw numbers, a quote assembled from a structured prompt — is the moment the method becomes real.</p>
+
+    <p>After that, it compounds.</p>
+
+    <div class="sub-cta">
+      <h3>Read every article. Use every template.</h3>
+      <p>USD 1.99/month — unlimited access to all articles, prompts, frameworks, and the practitioner community. Founding member rate, locked in for life.</p>
+      <a href="index.html#subscribe">Subscribe Now — USD 1.99/mo</a>
+    </div>
+
+  </div><!-- /article-body -->
+
+  <!-- Related Articles -->
+  <div class="related-section">
+    <h3>Start Reading</h3>
+    <div class="related-grid">
+
+      <a href="article-rca-report.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Quality &amp; Compliance</div>
+          <div class="related-title">How to Write an RCA Report Your Customer Won't Send Back</div>
+        </div>
+      </a>
+
+      <a href="article-quotation-case-study.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Business Development</div>
+          <div class="related-title">How One Johor Manufacturer Cut Quotation Time by 70% Using AI</div>
+        </div>
+      </a>
+
+      <a href="article-sop-writing.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Automation</div>
+          <div class="related-title">How to Write Any Manufacturing SOP in 30 Minutes Using AI</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div><!-- /article-wrap -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>The Industrial Scribe</h4>
+      <p style="font-size: 0.85rem; line-height: 1.6;">AI automation intelligence for SEA manufacturing professionals. Production Planners, QC Executives, BD Managers, Operations Leads.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="index.html">All Articles</a></li>
+        <li><a href="article-production-report.html">Production Planning</a></li>
+        <li><a href="article-rca-report.html">Quality &amp; Compliance</a></li>
+        <li><a href="article-quotation-framework.html">Business Development</a></li>
+        <li><a href="article-sop-writing.html">Automation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Articles</h4>
+      <ul>
+        <li><a href="article-rca-report.html">RCA Report Guide</a></li>
+        <li><a href="article-production-report.html">Production Report Checklist</a></li>
+        <li><a href="article-quotation-framework.html">3-Gate Quotation Framework</a></li>
+        <li><a href="article-sop-writing.html">SOP Writing with AI</a></li>
+        <li><a href="article-quotation-case-study.html">Quotation Case Study</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Subscribe</h4>
+      <ul>
+        <li><a href="index.html#subscribe">USD 1.99/month — All Access</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Instagram</a></li>
+        <li><a href="article-playbook.html">Free Playbook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 The Industrial Scribe · All rights reserved</div>
+</footer>
+
+<script src="paywall.js"></script>
+</body>
+</html>

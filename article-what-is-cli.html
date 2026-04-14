@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Is a CLI? The Text Interface That Unlocks Advanced AI — The Industrial Scribe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #111827; line-height: 1.7; }
+    nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e7eb; z-index: 100; padding: 0 5%; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-family: Georgia, serif; font-size: 1.3rem; font-weight: 700; color: #111827; text-decoration: none; }
+    .nav-cats { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-cats a { font-size: 0.85rem; font-weight: 500; color: #6b7280; text-decoration: none; letter-spacing: 0.02em; }
+    .nav-cats a:hover { color: #111827; }
+    .nav-sub-btn { font-size: 0.8rem; font-weight: 600; color: #1d4ed8; border: 1.5px solid #1d4ed8; padding: 0.4rem 0.9rem; border-radius: 4px; text-decoration: none; white-space: nowrap; }
+    .nav-sub-btn:hover { background: #1d4ed8; color: #fff; }
+    .article-wrap { max-width: 780px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
+    .article-category { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1d4ed8; margin-bottom: 0.75rem; }
+    .article-headline { font-family: Georgia, serif; font-size: 2.2rem; line-height: 1.25; color: #111827; margin-bottom: 1rem; font-weight: 700; }
+    .article-meta { font-size: 0.85rem; color: #6b7280; margin-bottom: 2rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem; }
+    .article-image-placeholder { width: 100%; height: 400px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.9rem; margin-bottom: 2rem; border-radius: 4px; }
+    .article-body h2 { font-family: Georgia, serif; font-size: 1.5rem; margin: 2rem 0 0.75rem; color: #111827; }
+    .article-body h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #1f2937; }
+    .article-body p { margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.75; }
+    .article-body ul, .article-body ol { margin: 0.75rem 0 1.2rem 1.5rem; }
+    .article-body li { margin-bottom: 0.4rem; line-height: 1.7; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .article-body th { background: #1f2937; color: white; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.8rem; }
+    .article-body td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #e5e7eb; }
+    .article-body tr:nth-child(even) td { background: #f9fafb; }
+    .prompt-block { background: #1e293b; color: #e2e8f0; padding: 1.25rem 1.5rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; line-height: 1.6; margin: 1.5rem 0; white-space: pre-wrap; word-break: break-word; }
+    .prompt-label { font-size: 0.7rem; font-weight: 700; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .inline-sub { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 1rem 1.25rem; margin: 2rem 0; border-radius: 0 6px 6px 0; }
+    .inline-sub p { font-size: 0.9rem; color: #1e3a5f; margin-bottom: 0.5rem; }
+    .inline-sub a { display: inline-block; background: #1d4ed8; color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-top: 0.25rem; }
+    .related-section { border-top: 1px solid #e5e7eb; padding-top: 2rem; margin-top: 3rem; }
+    .related-section h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; margin-bottom: 1.25rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .related-card { border: 1px solid #e5e7eb; border-radius: 6px; overflow: hidden; text-decoration: none; color: inherit; }
+    .related-card:hover { border-color: #1d4ed8; }
+    .related-img { height: 120px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.75rem; }
+    .related-content { padding: 0.75rem; }
+    .related-cat { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #1d4ed8; margin-bottom: 0.3rem; }
+    .related-title { font-family: Georgia, serif; font-size: 0.9rem; line-height: 1.35; color: #111827; font-weight: 600; }
+    footer { background: #111827; color: #9ca3af; padding: 3rem 5% 2rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-bottom: 2rem; }
+    .footer-col h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #f9fafb; margin-bottom: 0.75rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.4rem; font-size: 0.85rem; }
+    .footer-col a { color: #9ca3af; text-decoration: none; }
+    .footer-col a:hover { color: #f9fafb; }
+    .footer-bottom { border-top: 1px solid #374151; padding-top: 1.5rem; text-align: center; font-size: 0.8rem; }
+    @media (max-width: 768px) {
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .article-headline { font-size: 1.6rem; }
+      .nav-cats { display: none; }
+    }
+  </style>
+  <link rel="stylesheet" href="paywall.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">The Industrial Scribe</a>
+    <ul class="nav-cats">
+      <li><a href="index.html">All</a></li>
+      <li><a href="index.html">Production Planning</a></li>
+      <li><a href="index.html">Quality &amp; Compliance</a></li>
+      <li><a href="index.html">Business Development</a></li>
+      <li><a href="index.html">Automation</a></li>
+    </ul>
+    <a href="index.html#subscribe" class="nav-sub-btn">Subscribe USD 1.99/mo</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <div class="article-category">AI Fundamentals</div>
+  <h1 class="article-headline">What Is a CLI? The Text Interface That Unlocks Advanced AI</h1>
+  <div class="article-meta">The Industrial Scribe | AI Fundamentals &nbsp;·&nbsp; 6 min read &nbsp;·&nbsp; March 2026</div>
+
+  <img src="img-sop-binders.jpg" alt="Article Image" style="width:100%;height:400px;object-fit:cover;border-radius:4px;margin-bottom:2rem;">
+
+  <div class="article-body">
+
+    <p>You've been using ChatGPT or Claude through a website — typing messages in a chat box, uploading files with a button, downloading outputs one at a time. It works. But you keep hearing about "Claude Code" or "the command line" or "terminal" and it sounds like something only programmers use.</p>
+
+    <p>Then you read a case study where someone connected AI directly to their Outlook inbox, or ran an analysis on files sitting on their computer without uploading anything.</p>
+
+    <p>That's the CLI. And it's not as scary as it looks.</p>
+
+    <div class="inline-sub">
+      <p><strong>This article is part of The Industrial Scribe.</strong> Subscribe for USD 1.99/month for unlimited access to all articles, templates &amp; community.</p>
+      <a href="index.html#subscribe">Subscribe Now</a>
+    </div>
+
+    <h2>What is a CLI?</h2>
+
+    <p>CLI stands for Command Line Interface. It's a way to interact with your computer by typing text commands instead of clicking buttons and icons. Every computer has one. On Windows, it's called Command Prompt or PowerShell. On Mac, it's called Terminal. It's a blank window where you type instructions and the computer responds with text.</p>
+
+    <h2>The Factory Analogy</h2>
+
+    <p>Your CNC machine has two ways to operate: manual mode (turning handwheels, pressing buttons on the panel) and G-code mode (typing precise instructions that the machine follows automatically).</p>
+
+    <p>The chat interface (ChatGPT website, Claude.ai) is like manual mode — intuitive, visual, good for simple jobs. The CLI is like G-code — text-based, more powerful, and it can do things that manual mode simply cannot. You don't need to be a programmer to use the CLI. You need to know 5–10 basic commands, just like a machinist needs to know basic G-codes to set up a job.</p>
+
+    <h2>Why CLI Matters for Manufacturing Professionals</h2>
+
+    <h3>1. Direct File Access</h3>
+    <p>In the chat interface, you upload files one at a time through a browser. With a CLI tool like Claude Code, the AI can read files directly from your computer — including entire folders of Excel files, PDFs, and reports. No uploading. No file size limits imposed by the browser.</p>
+
+    <h3>2. Tool Connections</h3>
+    <p>A BD manager can connect Claude Code to his company email through the CLI. This isn't possible from the chat interface. The CLI is the gateway to connecting AI with your existing business tools — email, calendar, databases, and ERP system APIs.</p>
+
+    <h3>3. Automation</h3>
+    <p>Once you've run a command that works, you can save it and run it again. "Refresh the dashboard with this month's data" becomes a single command instead of a 30-minute upload-and-chat session.</p>
+
+    <h2>What the CLI Looks Like in Practice</h2>
+
+    <p>Here's what a real CLI interaction looks like:</p>
+
+    <div class="prompt-label">Example: Asking Claude Code to Read Your Files</div>
+    <div class="prompt-block">&gt; claude
+You: "Read the 3 Excel files in my WIP folder and tell me how many unique customers and lots there are"
+Claude: "I found 3 files with 334,582 total rows, 84 unique customers, and 86,822 unique lots..."</div>
+
+    <p>That's it. You typed a question in plain English. The AI read your files directly. No uploading. No browser tabs.</p>
+
+    <h2>Do You Need the CLI?</h2>
+
+    <table>
+      <thead>
+        <tr><th>If You...</th><th>Use This</th><th>CLI Needed?</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Ask AI questions, upload small files</td><td>ChatGPT / Claude.ai website</td><td>No</td></tr>
+        <tr><td>Process large datasets (50K+ rows)</td><td>Claude.ai or Claude Code</td><td>Optional but helpful</td></tr>
+        <tr><td>Want AI to access your local files directly</td><td>Claude Code (CLI)</td><td>Yes</td></tr>
+        <tr><td>Want to connect AI to Outlook / tools</td><td>Claude Code + MCP</td><td>Yes</td></tr>
+        <tr><td>Want to automate repeated workflows</td><td>Claude Code (CLI)</td><td>Yes</td></tr>
+      </tbody>
+    </table>
+
+    <h2>The Bottom Line</h2>
+
+    <p>The CLI is a text-based interface to your computer. It's how tools like Claude Code let AI access your files, connect to your tools, and automate your workflows — things the chat website cannot do.</p>
+
+    <p>You don't need the CLI to start using AI. But when you're ready to move beyond copy-pasting into a chat box, the CLI is the door that opens. And it only takes about 60 minutes to set up.</p>
+
+  </div>
+
+  <div class="related-section">
+    <h3>Related Articles</h3>
+    <div class="related-grid">
+      <a href="article-what-is-mcp.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">AI Fundamentals</div>
+          <div class="related-title">What Is MCP? How AI Connects to Your Outlook, Files, and Business Tools</div>
+        </div>
+      </a>
+      <a href="article-what-are-tokens.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">AI Fundamentals</div>
+          <div class="related-title">What Are Tokens? How AI Reads Your Data and What It Costs</div>
+        </div>
+      </a>
+      <a href="article-ai-controls-desktop.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">AI Trends</div>
+          <div class="related-title">AI Now Controls Your Desktop: Claude Can Click Your Mouse</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>The Industrial Scribe</h4>
+      <p style="font-size: 0.85rem; line-height: 1.6;">AI automation intelligence for SEA manufacturing professionals. Production Planners, QC Executives, BD Managers, Operations Leads.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="index.html">All Articles</a></li>
+        <li><a href="article-production-report.html">Production Planning</a></li>
+        <li><a href="article-rca-report.html">Quality &amp; Compliance</a></li>
+        <li><a href="article-quotation-framework.html">Business Development</a></li>
+        <li><a href="article-sop-writing.html">Automation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Articles</h4>
+      <ul>
+        <li><a href="article-what-are-skills.html">What Are Skills?</a></li>
+        <li><a href="article-what-are-tokens.html">What Are Tokens?</a></li>
+        <li><a href="article-what-is-cli.html">What Is a CLI?</a></li>
+        <li><a href="article-what-is-llm.html">What Is an LLM?</a></li>
+        <li><a href="article-what-is-mcp.html">What Is MCP?</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Subscribe</h4>
+      <ul>
+        <li><a href="index.html#subscribe">USD 1.99/month — All Access</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Instagram</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Download Free Playbook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 The Industrial Scribe · All rights reserved</div>
+</footer>
+
+<script src="paywall.js"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Is MCP? How AI Connects to Your Outlook, Files, and Business Tools — The Industrial Scribe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #111827; line-height: 1.7; }
+    nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e7eb; z-index: 100; padding: 0 5%; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-family: Georgia, serif; font-size: 1.3rem; font-weight: 700; color: #111827; text-decoration: none; }
+    .nav-cats { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-cats a { font-size: 0.85rem; font-weight: 500; color: #6b7280; text-decoration: none; letter-spacing: 0.02em; }
+    .nav-cats a:hover { color: #111827; }
+    .nav-sub-btn { font-size: 0.8rem; font-weight: 600; color: #1d4ed8; border: 1.5px solid #1d4ed8; padding: 0.4rem 0.9rem; border-radius: 4px; text-decoration: none; white-space: nowrap; }
+    .nav-sub-btn:hover { background: #1d4ed8; color: #fff; }
+    .article-wrap { max-width: 780px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
+    .article-category { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1d4ed8; margin-bottom: 0.75rem; }
+    .article-headline { font-family: Georgia, serif; font-size: 2.2rem; line-height: 1.25; color: #111827; margin-bottom: 1rem; font-weight: 700; }
+    .article-meta { font-size: 0.85rem; color: #6b7280; margin-bottom: 2rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem; }
+    .article-image-placeholder { width: 100%; height: 400px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.9rem; margin-bottom: 2rem; border-radius: 4px; }
+    .article-body h2 { font-family: Georgia, serif; font-size: 1.5rem; margin: 2rem 0 0.75rem; color: #111827; }
+    .article-body h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #1f2937; }
+    .article-body p { margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.75; }
+    .article-body ul, .article-body ol { margin: 0.75rem 0 1.2rem 1.5rem; }
+    .article-body li { margin-bottom: 0.4rem; line-height: 1.7; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .article-body th { background: #1f2937; color: white; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.8rem; }
+    .article-body td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #e5e7eb; }
+    .article-body tr:nth-child(even) td { background: #f9fafb; }
+    .inline-sub { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 1rem 1.25rem; margin: 2rem 0; border-radius: 0 6px 6px 0; }
+    .inline-sub p { font-size: 0.9rem; color: #1e3a5f; margin-bottom: 0.5rem; }
+    .inline-sub a { display: inline-block; background: #1d4ed8; color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-top: 0.25rem; }
+    .related-section { border-top: 1px solid #e5e7eb; padding-top: 2rem; margin-top: 3rem; }
+    .related-section h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; margin-bottom: 1.25rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .related-card { border: 1px solid #e5e7eb; border-radius: 6px; overflow: hidden; text-decoration: none; color: inherit; }
+    .related-card:hover { border-color: #1d4ed8; }
+    .related-img { height: 120px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.75rem; }
+    .related-content { padding: 0.75rem; }
+    .related-cat { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #1d4ed8; margin-bottom: 0.3rem; }
+    .related-title { font-family: Georgia, serif; font-size: 0.9rem; line-height: 1.35; color: #111827; font-weight: 600; }
+    footer { background: #111827; color: #9ca3af; padding: 3rem 5% 2rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-bottom: 2rem; }
+    .footer-col h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #f9fafb; margin-bottom: 0.75rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.4rem; font-size: 0.85rem; }
+    .footer-col a { color: #9ca3af; text-decoration: none; }
+    .footer-col a:hover { color: #f9fafb; }
+    .footer-bottom { border-top: 1px solid #374151; padding-top: 1.5rem; text-align: center; font-size: 0.8rem; }
+    @media (max-width: 768px) {
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .article-headline { font-size: 1.6rem; }
+      .nav-cats { display: none; }
+    }
+  </style>
+  <link rel="stylesheet" href="paywall.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">The Industrial Scribe</a>
+    <ul class="nav-cats">
+      <li><a href="index.html">All</a></li>
+      <li><a href="index.html">Production Planning</a></li>
+      <li><a href="index.html">Quality &amp; Compliance</a></li>
+      <li><a href="index.html">Business Development</a></li>
+      <li><a href="index.html">Automation</a></li>
+    </ul>
+    <a href="index.html#subscribe" class="nav-sub-btn">Subscribe USD 1.99/mo</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <div class="article-category">AI Fundamentals</div>
+  <h1 class="article-headline">What Is MCP? How AI Connects to Your Outlook, Files, and Business Tools</h1>
+  <div class="article-meta">The Industrial Scribe | AI Fundamentals &nbsp;·&nbsp; 6 min read &nbsp;·&nbsp; March 2026</div>
+
+  <img src="img-erp-screen.jpg" alt="Article Image" style="width:100%;height:400px;object-fit:cover;border-radius:4px;margin-bottom:2rem;">
+
+  <div class="article-body">
+
+    <p>Your AI lives in a browser tab. Your emails live in Outlook. Your data lives in Excel files on your desktop. Your ERP lives on the company server. None of them talk to each other.</p>
+
+    <p>You spend your day being the copy-paste middleman: copying an email into the AI, pasting the response back, downloading the output, uploading to another tool.</p>
+
+    <p>MCP is the bridge that connects your AI to your actual work tools — so you can stop being the middleman.</p>
+
+    <div class="inline-sub">
+      <p><strong>This article is part of The Industrial Scribe.</strong> Subscribe for USD 1.99/month for unlimited access to all articles, templates &amp; community.</p>
+      <a href="index.html#subscribe">Subscribe Now</a>
+    </div>
+
+    <h2>What is MCP?</h2>
+
+    <p>MCP stands for Model Context Protocol. It's a standard way for AI tools to connect to external applications and data sources. Think of it as a universal adapter that lets your AI talk to other software.</p>
+
+    <p>When you install an MCP server, you're giving your AI tool (like Claude Code) the ability to read from and write to another application — your email, your calendar, your file system, or even your company database.</p>
+
+    <h2>The Factory Analogy</h2>
+
+    <p>Your factory has different machines from different manufacturers — Fanuc, Mazak, Haas. Each speaks its own control language. To get them to share data (for OEE tracking or scheduling), you need a protocol — a common language they all understand. In manufacturing, that's often OPC-UA or MT Connect. For AI tools, it's MCP.</p>
+
+    <p>MCP is the OPC-UA of the AI world. It's a standard that lets different AI tools connect to different applications through a common interface.</p>
+
+    <h2>How MCP Works</h2>
+
+    <table>
+      <thead>
+        <tr><th>Component</th><th>What It Is</th><th>Factory Equivalent</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>MCP Host</td><td>Your AI tool (e.g., Claude Code)</td><td>The operator at the workstation</td></tr>
+        <tr><td>MCP Server</td><td>A small program that connects to a specific app</td><td>The communication adapter on each machine</td></tr>
+        <tr><td>External App</td><td>The tool being connected (Outlook, database, etc.)</td><td>The CNC machine itself</td></tr>
+      </tbody>
+    </table>
+
+    <p>When a BD manager sets up MCP, he installs a small MCP server program on his computer. That program knows how to talk to Microsoft's email system (Graph API). Claude Code talks to the MCP server. The MCP server talks to Outlook. The result: Claude can read, search, and draft emails without ever opening a browser.</p>
+
+    <h2>What Can MCP Connect To?</h2>
+
+    <ul>
+      <li><strong>Email</strong> — Read your inbox, search for messages, draft replies (Outlook, Gmail)</li>
+      <li><strong>Calendar</strong> — Check your schedule, find available slots</li>
+      <li><strong>File systems</strong> — Read and write files on your computer or network drives</li>
+      <li><strong>Databases</strong> — Query your company data directly</li>
+      <li><strong>Web services</strong> — Pull data from APIs, websites, and cloud platforms</li>
+      <li><strong>Slack / Teams</strong> — Read and send messages in work channels</li>
+      <li><strong>GitHub</strong> — Manage code repositories (for technical teams)</li>
+    </ul>
+
+    <p>New MCP servers are being created regularly. As the ecosystem grows, the number of tools your AI can connect to keeps expanding.</p>
+
+    <h2>What MCP is NOT</h2>
+
+    <ul>
+      <li><strong>Not automatic.</strong> Someone has to set it up (one-time, ~60 minutes for most connections).</li>
+      <li><strong>Not cloud-based.</strong> The MCP server runs on YOUR computer. Your data stays local. No third-party cloud service involved.</li>
+      <li><strong>Not required.</strong> You can use AI perfectly well without MCP. It just removes the copy-paste friction.</li>
+      <li><strong>Not risk-free.</strong> Connecting AI to your email means the AI can read your emails. Set up permissions carefully.</li>
+    </ul>
+
+    <h2>The Bottom Line</h2>
+
+    <p>MCP is a universal adapter that connects AI tools to your existing business applications. It runs locally on your computer and lets the AI read from and write to tools like Outlook, databases, and file systems.</p>
+
+    <p>You don't need MCP to start using AI. But once you're tired of copying and pasting between your AI and your work tools, MCP is how you eliminate that friction. Setup takes about 60 minutes. The time saved is permanent.</p>
+
+  </div>
+
+  <div class="related-section">
+    <h3>Related Articles</h3>
+    <div class="related-grid">
+      <a href="article-what-is-cli.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">AI Fundamentals</div>
+          <div class="related-title">What Is a CLI? The Text Interface That Unlocks Advanced AI</div>
+        </div>
+      </a>
+      <a href="article-what-are-skills.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">AI Fundamentals</div>
+          <div class="related-title">What Are Skills? How to Make AI Remember Your Best Practices</div>
+        </div>
+      </a>
+      <a href="article-agentic-ai-is-here.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">AI Trends</div>
+          <div class="related-title">Agentic AI Is Here: When AI Stops Answering and Starts Acting</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>The Industrial Scribe</h4>
+      <p style="font-size: 0.85rem; line-height: 1.6;">AI automation intelligence for SEA manufacturing professionals. Production Planners, QC Executives, BD Managers, Operations Leads.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="index.html">All Articles</a></li>
+        <li><a href="article-production-report.html">Production Planning</a></li>
+        <li><a href="article-rca-report.html">Quality &amp; Compliance</a></li>
+        <li><a href="article-quotation-framework.html">Business Development</a></li>
+        <li><a href="article-sop-writing.html">Automation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Articles</h4>
+      <ul>
+        <li><a href="article-what-are-skills.html">What Are Skills?</a></li>
+        <li><a href="article-what-are-tokens.html">What Are Tokens?</a></li>
+        <li><a href="article-what-is-cli.html">What Is a CLI?</a></li>
+        <li><a href="article-what-is-llm.html">What Is an LLM?</a></li>
+        <li><a href="article-what-is-mcp.html">What Is MCP?</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Subscribe</h4>
+      <ul>
+        <li><a href="index.html#subscribe">USD 1.99/month — All Access</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Instagram</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Download Free Playbook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 The Industrial Scribe · All rights reserved</div>
+</footer>
+
+<script src="paywall.js"></script>
+</body>
+</html>

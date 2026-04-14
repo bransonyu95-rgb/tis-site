@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketplace — The Industrial Scribe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fafafa; color: #111827; line-height: 1.7; }
+
+    /* ── NAV ── */
+    nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e7eb; z-index: 100; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    .logo { font-family: 'Playfair Display', Georgia, serif; font-size: 1.35rem; font-weight: 800; color: #111827; text-decoration: none; white-space: nowrap; letter-spacing: -0.02em; }
+    .nav-cats { display: flex; gap: 0.25rem; list-style: none; }
+    .nav-cats a { font-size: 0.78rem; font-weight: 500; color: #6b7280; text-decoration: none; padding: 0.35rem 0.65rem; border-radius: 4px; transition: all 0.15s; white-space: nowrap; }
+    .nav-cats a:hover, .nav-cats a.active { color: #111827; background: #f3f4f6; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-sub-btn { font-size: 0.78rem; font-weight: 600; color: #fff; background: #111827; padding: 0.45rem 1rem; border-radius: 6px; text-decoration: none; white-space: nowrap; transition: all 0.15s; }
+    .nav-sub-btn:hover { background: #1d4ed8; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.4rem; color: #111827; }
+    .mobile-menu { display: none; background: #fff; border-bottom: 1px solid #e5e7eb; padding: 1rem 1.5rem; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 0.6rem 0; font-size: 0.9rem; color: #374151; text-decoration: none; border-bottom: 1px solid #f3f4f6; }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: #1d4ed8; }
+
+    /* ── CATEGORY PILL BAR ── */
+    .cat-bar { background: #fff; border-bottom: 1px solid #f3f4f6; padding: 0.65rem 0; }
+    .cat-bar-inner { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; gap: 0.5rem; overflow-x: auto; scrollbar-width: none; }
+    .cat-bar-inner::-webkit-scrollbar { display: none; }
+    .cat-pill { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.78rem; font-weight: 600; text-decoration: none; white-space: nowrap; border: 1.5px solid; transition: all 0.15s; cursor: pointer; }
+    .cat-pill:hover { transform: translateY(-1px); box-shadow: 0 3px 8px rgba(0,0,0,0.08); }
+    .cat-pill span { font-size: 0.95rem; }
+    .cat-pill--all { color: #111827; border-color: #e5e7eb; background: #f9fafb; }
+    .cat-pill--all:hover, .cat-pill--all.active { background: #111827; color: #fff; border-color: #111827; }
+    .cat-pill--ai { color: #7c3aed; border-color: #ede9fe; background: #f5f3ff; }
+    .cat-pill--ai:hover, .cat-pill--ai.active { background: #7c3aed; color: #fff; border-color: #7c3aed; }
+    .cat-pill--ops { color: #0369a1; border-color: #e0f2fe; background: #f0f9ff; }
+    .cat-pill--ops:hover, .cat-pill--ops.active { background: #0369a1; color: #fff; border-color: #0369a1; }
+    .cat-pill--quality { color: #b45309; border-color: #fef3c7; background: #fffbeb; }
+    .cat-pill--quality:hover, .cat-pill--quality.active { background: #b45309; color: #fff; border-color: #b45309; }
+    .cat-pill--strategy { color: #0f766e; border-color: #ccfbf1; background: #f0fdfa; }
+    .cat-pill--strategy:hover, .cat-pill--strategy.active { background: #0f766e; color: #fff; border-color: #0f766e; }
+    .cat-pill--supply { color: #be185d; border-color: #fce7f3; background: #fdf2f8; }
+    .cat-pill--supply:hover, .cat-pill--supply.active { background: #be185d; color: #fff; border-color: #be185d; }
+    .cat-pill--people { color: #c2410c; border-color: #ffedd5; background: #fff7ed; }
+    .cat-pill--people:hover, .cat-pill--people.active { background: #c2410c; color: #fff; border-color: #c2410c; }
+    .cat-pill--pulse { color: #dc2626; border-color: #fee2e2; background: #fef2f2; }
+    .cat-pill--pulse:hover, .cat-pill--pulse.active { background: #dc2626; color: #fff; border-color: #dc2626; }
+    .cat-pill--toolbox { color: #4338ca; border-color: #e0e7ff; background: #eef2ff; }
+    .cat-pill--toolbox:hover, .cat-pill--toolbox.active { background: #4338ca; color: #fff; border-color: #4338ca; }
+
+    /* ── PAGE WRAP ── */
+    .page-wrap { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ── MARKETPLACE HERO (MIT Tech Review-inspired dark section) ── */
+    .mp-hero { background: #111827; padding: 4rem 1.5rem 3.5rem; position: relative; overflow: hidden; }
+    .mp-hero::before { content: ''; position: absolute; top: -40%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(29,78,216,0.15), transparent 70%); border-radius: 50%; }
+    .mp-hero::after { content: ''; position: absolute; bottom: -30%; left: -5%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(124,58,237,0.1), transparent 70%); border-radius: 50%; }
+    .mp-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+    .mp-hero-badge { display: inline-block; background: rgba(29,78,216,0.2); color: #93c5fd; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 20px; margin-bottom: 1.25rem; border: 1px solid rgba(29,78,216,0.3); }
+    .mp-hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 1rem; max-width: 700px; }
+    .mp-hero p { font-size: 1.05rem; color: #9ca3af; line-height: 1.65; max-width: 600px; margin-bottom: 2rem; }
+    .mp-hero-stats { display: flex; gap: 2.5rem; }
+    .mp-hero-stat { display: flex; flex-direction: column; }
+    .mp-hero-stat .stat-number { font-family: 'Playfair Display', Georgia, serif; font-size: 1.75rem; font-weight: 800; color: #fff; }
+    .mp-hero-stat .stat-label { font-size: 0.78rem; color: #6b7280; font-weight: 500; }
+
+    /* ── SECTION HEADERS ── */
+    .section-block { margin: 2.5rem 0; }
+    .section-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+    .section-header h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.3rem; font-weight: 800; color: #111827; white-space: nowrap; }
+    .section-header-line { flex: 1; height: 1px; background: #e5e7eb; }
+
+    /* ── FEATURED PRODUCTS (large cards) ── */
+    .featured-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .product-card-featured { background: #fff; border: 1.5px solid #e5e7eb; border-radius: 10px; overflow: hidden; text-decoration: none; color: inherit; transition: all 0.2s; display: flex; flex-direction: column; }
+    .product-card-featured:hover { border-color: #1d4ed8; box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-3px); }
+    .product-card-featured .pf-img { position: relative; height: 220px; overflow: hidden; }
+    .product-card-featured .pf-img img { width: 100%; height: 100%; object-fit: cover; }
+    .product-card-featured .pf-img .product-badge { position: absolute; top: 0.75rem; left: 0.75rem; font-size: 0.65rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 4px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .product-badge--featured { background: #fef3c7; color: #92400e; }
+    .product-badge--new { background: #d1fae5; color: #065f46; }
+    .product-card-featured .pf-img .product-type { position: absolute; top: 0.75rem; right: 0.75rem; background: rgba(0,0,0,0.7); color: #fff; font-size: 0.65rem; font-weight: 600; padding: 0.25rem 0.6rem; border-radius: 4px; backdrop-filter: blur(4px); }
+    .product-card-featured .pf-content { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .product-card-featured .pf-cat { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .pf-cat--quality { color: #b45309; }
+    .pf-cat--ops { color: #0369a1; }
+    .pf-cat--strategy { color: #0f766e; }
+    .pf-cat--toolbox { color: #4338ca; }
+    .pf-cat--ai { color: #7c3aed; }
+    .product-card-featured h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.2rem; font-weight: 700; color: #111827; line-height: 1.3; margin-bottom: 0.5rem; }
+    .product-card-featured .pf-desc { font-size: 0.85rem; color: #6b7280; line-height: 1.6; flex: 1; }
+    .product-card-featured .pf-article { font-size: 0.78rem; color: #1d4ed8; text-decoration: none; margin-top: 0.75rem; display: inline-block; }
+    .product-card-featured .pf-article:hover { text-decoration: underline; }
+    .product-card-featured .pf-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #f3f4f6; }
+    .pf-price { font-family: 'Playfair Display', Georgia, serif; font-size: 1.5rem; font-weight: 800; color: #111827; }
+    .pf-buy { background: #111827; color: #fff; padding: 0.55rem 1.25rem; border-radius: 6px; font-size: 0.82rem; font-weight: 600; text-decoration: none; transition: background 0.15s; }
+    .pf-buy:hover { background: #1d4ed8; }
+
+    /* ── PRODUCT GRID (3-column) ── */
+    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .product-card { background: #fff; border: 1.5px solid #e5e7eb; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.2s; }
+    .product-card:hover { border-color: #1d4ed8; box-shadow: 0 6px 20px rgba(0,0,0,0.07); transform: translateY(-2px); }
+    .product-card .pc-img { position: relative; height: 170px; overflow: hidden; }
+    .product-card .pc-img img { width: 100%; height: 100%; object-fit: cover; }
+    .product-card .pc-img .product-badge { position: absolute; top: 0.65rem; left: 0.65rem; font-size: 0.6rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .product-card .pc-img .product-type { position: absolute; top: 0.65rem; right: 0.65rem; background: rgba(0,0,0,0.7); color: #fff; font-size: 0.6rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 4px; backdrop-filter: blur(4px); }
+    .product-card .pc-content { padding: 1.1rem; flex: 1; display: flex; flex-direction: column; }
+    .pc-cat { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.3rem; }
+    .product-card h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 0.95rem; font-weight: 700; color: #111827; line-height: 1.3; margin-bottom: 0.4rem; }
+    .product-card .pc-desc { font-size: 0.8rem; color: #6b7280; line-height: 1.55; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .product-card .pc-article { font-size: 0.72rem; color: #1d4ed8; text-decoration: none; margin-top: 0.6rem; display: inline-block; }
+    .product-card .pc-article:hover { text-decoration: underline; }
+    .product-card .pc-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #f3f4f6; }
+    .pc-price { font-family: 'Playfair Display', Georgia, serif; font-size: 1.2rem; font-weight: 800; color: #111827; }
+    .pc-buy { background: #111827; color: #fff; padding: 0.45rem 1rem; border-radius: 6px; font-size: 0.78rem; font-weight: 600; text-decoration: none; transition: background 0.15s; }
+    .pc-buy:hover { background: #1d4ed8; }
+
+    /* ── COMING SOON CARDS ── */
+    .product-card--soon { border-style: dashed; border-color: #d1d5db; opacity: 0.85; }
+    .product-card--soon:hover { border-color: #9ca3af; transform: none; box-shadow: none; }
+    .product-card--soon .pc-img { background: #f3f4f6; display: flex; align-items: center; justify-content: center; }
+    .product-card--soon .pc-img .soon-icon { font-size: 2.5rem; }
+    .pc-notify { display: inline-block; background: #f3f4f6; color: #374151; padding: 0.45rem 1rem; border-radius: 6px; font-size: 0.78rem; font-weight: 600; text-decoration: none; text-align: center; width: 100%; transition: all 0.15s; }
+    .pc-notify:hover { background: #e5e7eb; }
+
+    /* ── VALUE BANNER ── */
+    .mp-value { background: #111827; border-radius: 12px; padding: 2.5rem 2rem; margin: 3rem 0; }
+    .mp-value h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.4rem; font-weight: 800; color: #fff; text-align: center; margin-bottom: 2rem; }
+    .mp-value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: center; }
+    .mp-value-item .value-icon { font-size: 2rem; margin-bottom: 0.6rem; display: block; }
+    .mp-value-item h4 { font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem; }
+    .mp-value-item p { font-size: 0.8rem; color: #9ca3af; line-height: 1.5; }
+
+    /* ── CTA BANNER ── */
+    .mp-cta { background: linear-gradient(135deg, #1e40af, #7c3aed); border-radius: 12px; padding: 2.5rem 2rem; margin: 0 0 2rem; text-align: center; }
+    .mp-cta h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem; }
+    .mp-cta p { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; }
+    .mp-cta a { display: inline-block; background: #fff; color: #1e40af; padding: 0.7rem 2rem; border-radius: 8px; font-size: 0.9rem; font-weight: 700; text-decoration: none; transition: all 0.15s; }
+    .mp-cta a:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+
+    /* ── FOOTER ── */
+    footer { background: #111827; color: #9ca3af; padding: 3.5rem 1.5rem 2rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+    .footer-col h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #f9fafb; margin-bottom: 0.75rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.4rem; }
+    .footer-col a { color: #9ca3af; text-decoration: none; font-size: 0.85rem; transition: color 0.15s; }
+    .footer-col a:hover { color: #f9fafb; }
+    .footer-col p { font-size: 0.83rem; line-height: 1.6; }
+    .footer-newsletter { margin-top: 1rem; }
+    .footer-newsletter input { width: 100%; padding: 0.55rem 0.75rem; border-radius: 6px; border: 1px solid #374151; background: #1f2937; color: #fff; font-size: 0.82rem; font-family: 'Inter', sans-serif; margin-bottom: 0.5rem; outline: none; }
+    .footer-newsletter input:focus { border-color: #60a5fa; }
+    .footer-newsletter button { width: 100%; background: #1d4ed8; color: #fff; border: none; padding: 0.55rem; border-radius: 6px; font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.15s; }
+    .footer-newsletter button:hover { background: #2563eb; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; border-top: 1px solid #374151; padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; }
+    .footer-bottom-links { display: flex; gap: 1.5rem; }
+    .footer-bottom-links a { color: #6b7280; text-decoration: none; }
+    .footer-bottom-links a:hover { color: #f9fafb; }
+
+    /* ── NO RESULTS ── */
+    .no-results { display: none; text-align: center; padding: 3rem 1rem; color: #9ca3af; font-size: 0.9rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .product-grid { grid-template-columns: 1fr 1fr; }
+      .mp-value-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+    @media (max-width: 768px) {
+      .nav-cats { display: none; }
+      .hamburger { display: flex; }
+      .featured-grid { grid-template-columns: 1fr; }
+      .product-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .mp-hero h1 { font-size: 1.75rem; }
+      .mp-hero-stats { gap: 1.5rem; }
+      .mp-hero { padding: 2.5rem 1.5rem 2rem; }
+    }
+    @media (max-width: 480px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; }
+      .mp-hero-stats { flex-direction: column; gap: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">The Industrial Scribe</a>
+    <ul class="nav-cats">
+      <li><a href="index.html">Articles</a></li>
+      <li><a href="marketplace.html" class="active">Marketplace</a></li>
+      <li><a href="index.html">AI &amp; Automation</a></li>
+      <li><a href="index.html">Operations</a></li>
+      <li><a href="index.html">Quality</a></li>
+      <li><a href="index.html">Strategy &amp; Growth</a></li>
+      <li><a href="index.html">Supply Chain</a></li>
+      <li><a href="index.html">Toolbox</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="nav-sub-btn">Subscribe</a>
+      <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-menu">
+  <a href="index.html">Articles</a>
+  <a href="marketplace.html" style="color:#1d4ed8;font-weight:600;">Marketplace</a>
+  <a href="index.html">AI &amp; Automation</a>
+  <a href="index.html">Operations</a>
+  <a href="index.html">Quality &amp; Compliance</a>
+  <a href="index.html">Strategy &amp; Growth</a>
+  <a href="index.html">Supply Chain</a>
+  <a href="index.html">People &amp; Culture</a>
+  <a href="index.html">Industry Pulse</a>
+  <a href="index.html">Toolbox</a>
+  <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" style="color:#1d4ed8;font-weight:600;">Subscribe — USD 1.99/mo</a>
+</div>
+
+<!-- ── CATEGORY FILTER BAR ── -->
+<div class="cat-bar">
+  <div class="cat-bar-inner">
+    <button class="cat-pill cat-pill--all active" data-filter="all"><span>All</span></button>
+    <button class="cat-pill cat-pill--quality" data-filter="quality"><span>✅</span> Quality</button>
+    <button class="cat-pill cat-pill--ops" data-filter="ops"><span>⚙️</span> Operations</button>
+    <button class="cat-pill cat-pill--strategy" data-filter="strategy"><span>📈</span> Strategy &amp; Growth</button>
+    <button class="cat-pill cat-pill--toolbox" data-filter="toolbox"><span>🧰</span> Toolbox</button>
+    <button class="cat-pill cat-pill--ai" data-filter="ai"><span>🤖</span> AI &amp; Automation</button>
+    <button class="cat-pill cat-pill--supply" data-filter="supply"><span>🚛</span> Supply Chain</button>
+    <button class="cat-pill cat-pill--people" data-filter="people"><span>👥</span> People</button>
+    <button class="cat-pill cat-pill--pulse" data-filter="pulse"><span>📡</span> Industry Pulse</button>
+  </div>
+</div>
+
+<!-- ── HERO ── -->
+<section class="mp-hero">
+  <div class="mp-hero-inner">
+    <div class="mp-hero-badge">Marketplace</div>
+    <h1>Practical guides built for the factory floor.</h1>
+    <p>Each product pairs with a free article. Read first, then go deeper with frameworks, templates, and case studies designed for SEA manufacturing professionals.</p>
+    <div class="mp-hero-stats">
+      <div class="mp-hero-stat">
+        <span class="stat-number">5</span>
+        <span class="stat-label">Products available</span>
+      </div>
+      <div class="mp-hero-stat">
+        <span class="stat-number">$9.99</span>
+        <span class="stat-label">Starting from</span>
+      </div>
+      <div class="mp-hero-stat">
+        <span class="stat-number">Instant</span>
+        <span class="stat-label">PDF download</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="page-wrap">
+
+  <!-- ── FEATURED PRODUCTS ── -->
+  <section class="section-block">
+    <div class="section-header">
+      <h2>Featured</h2>
+      <div class="section-header-line"></div>
+    </div>
+    <div class="featured-grid">
+
+      <!-- Featured 1: RCA Report Guide -->
+      <div class="product-card-featured" data-category="quality">
+        <div class="pf-img">
+          <img src="img-ncr-desk.jpg" alt="RCA Report Guide">
+          <span class="product-badge product-badge--featured">Featured</span>
+          <span class="product-type">PDF Guide</span>
+        </div>
+        <div class="pf-content">
+          <div class="pf-cat pf-cat--quality">QUALITY &amp; COMPLIANCE</div>
+          <h3>RCA Report Guide: Write Reports That Don't Get Sent Back</h3>
+          <p class="pf-desc">Full template, 8D worksheet, 5-Why table, AI prompts, and SEA manufacturing case studies. Cut your RCA report time from 4 hours to 90 minutes.</p>
+          <a href="article-rca-report.html" class="pf-article">Read companion article &rarr;</a>
+          <div class="pf-footer">
+            <span class="pf-price">$9.99</span>
+            <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="pf-buy">Buy Now &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured 2: 3-Gate Quotation Framework -->
+      <div class="product-card-featured" data-category="strategy">
+        <div class="pf-img">
+          <img src="img-quotation-desk.jpg" alt="3-Gate Quotation Framework">
+          <span class="product-badge product-badge--featured">Featured</span>
+          <span class="product-type">Framework</span>
+        </div>
+        <div class="pf-content">
+          <div class="pf-cat pf-cat--strategy">STRATEGY &amp; GROWTH</div>
+          <h3>3-Gate Quotation Framework: Stop Quoting Jobs You Can't Win</h3>
+          <p class="pf-desc">A decision system to filter, qualify, and price manufacturing enquiries faster. Includes scoring template, pricing calculator, and real case walkthrough.</p>
+          <a href="article-quotation-framework.html" class="pf-article">Read companion article &rarr;</a>
+          <div class="pf-footer">
+            <span class="pf-price">$9.99</span>
+            <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="pf-buy">Buy Now &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── ALL PRODUCTS ── -->
+  <section class="section-block">
+    <div class="section-header">
+      <h2>All Products</h2>
+      <div class="section-header-line"></div>
+    </div>
+    <div class="product-grid" id="productGrid">
+
+      <!-- Product 1: RCA Report Guide -->
+      <div class="product-card" data-category="quality">
+        <div class="pc-img">
+          <img src="img-ncr-desk.jpg" alt="RCA Report Guide">
+          <span class="product-badge product-badge--featured">Featured</span>
+          <span class="product-type">PDF Guide</span>
+        </div>
+        <div class="pc-content">
+          <div class="pc-cat pf-cat--quality">QUALITY &amp; COMPLIANCE</div>
+          <h3>RCA Report Guide</h3>
+          <p class="pc-desc">Full template, 8D worksheet, 5-Why table, AI prompts, and SEA case studies for writing RCA reports faster.</p>
+          <a href="article-rca-report.html" class="pc-article">Companion article &rarr;</a>
+          <div class="pc-footer">
+            <span class="pc-price">$9.99</span>
+            <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="pc-buy">Buy &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2: Weekly Production Checklist -->
+      <div class="product-card" data-category="ops">
+        <div class="pc-img">
+          <img src="img-production-board.jpg" alt="Production Report Checklist">
+          <span class="product-badge product-badge--new">New</span>
+          <span class="product-type">Checklist</span>
+        </div>
+        <div class="pc-content">
+          <div class="pc-cat pf-cat--ops">OPERATIONS</div>
+          <h3>Weekly Production Report Checklist</h3>
+          <p class="pc-desc">12 data points every production manager needs. Printable checklist with KPI definitions and benchmarks.</p>
+          <a href="article-production-report.html" class="pc-article">Companion article &rarr;</a>
+          <div class="pc-footer">
+            <span class="pc-price">$9.99</span>
+            <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="pc-buy">Buy &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3: 3-Gate Framework -->
+      <div class="product-card" data-category="strategy">
+        <div class="pc-img">
+          <img src="img-quotation-desk.jpg" alt="3-Gate Quotation Framework">
+          <span class="product-badge product-badge--featured">Featured</span>
+          <span class="product-type">Framework</span>
+        </div>
+        <div class="pc-content">
+          <div class="pc-cat pf-cat--strategy">STRATEGY &amp; GROWTH</div>
+          <h3>3-Gate Quotation Framework</h3>
+          <p class="pc-desc">Decision system to filter, qualify, and price manufacturing enquiries. Scoring template and pricing calculator included.</p>
+          <a href="article-quotation-framework.html" class="pc-article">Companion article &rarr;</a>
+          <div class="pc-footer">
+            <span class="pc-price">$9.99</span>
+            <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="pc-buy">Buy &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4: SOP Writing with AI -->
+      <div class="product-card" data-category="toolbox">
+        <div class="pc-img">
+          <img src="img-sop-binders.jpg" alt="SOP Writing with AI">
+          <span class="product-type">PDF Guide</span>
+        </div>
+        <div class="pc-content">
+          <div class="pc-cat pf-cat--toolbox">TOOLBOX</div>
+          <h3>SOP Writing with AI</h3>
+          <p class="pc-desc">Exact prompt structure and workflow to turn raw process knowledge into audit-ready SOPs in 30 minutes.</p>
+          <a href="article-sop-writing.html" class="pc-article">Companion article &rarr;</a>
+          <div class="pc-footer">
+            <span class="pc-price">$9.99</span>
+            <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="pc-buy">Buy &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 5: Quotation Case Study -->
+      <div class="product-card" data-category="strategy">
+        <div class="pc-img">
+          <img src="img-aerial-industrial.jpg" alt="Quotation AI Case Study">
+          <span class="product-type">Case Study</span>
+        </div>
+        <div class="pc-content">
+          <div class="pc-cat pf-cat--strategy">STRATEGY &amp; GROWTH</div>
+          <h3>How a Johor Manufacturer Cut Quotation Time by 70%</h3>
+          <p class="pc-desc">Full case study from a contract machining shop in Muar. Includes the exact AI workflow, prompts, and before/after data.</p>
+          <a href="article-quotation-case-study.html" class="pc-article">Companion article &rarr;</a>
+          <div class="pc-footer">
+            <span class="pc-price">$9.99</span>
+            <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="pc-buy">Buy &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="no-results" id="noResults">No products in this category yet. Check back soon.</div>
+  </section>
+
+  <!-- ── COMING SOON ── -->
+  <section class="section-block">
+    <div class="section-header">
+      <h2>Coming Soon</h2>
+      <div class="section-header-line"></div>
+    </div>
+    <div class="product-grid" id="comingSoonGrid">
+
+      <div class="product-card product-card--soon" data-category="ops">
+        <div class="pc-img">
+          <span class="soon-icon">📊</span>
+        </div>
+        <div class="pc-content">
+          <div class="pc-cat pf-cat--ops">OPERATIONS</div>
+          <h3>Production Planning Template Pack</h3>
+          <p class="pc-desc">Ready-to-use production planning spreadsheets, scheduling templates, and capacity dashboards.</p>
+          <div class="pc-footer" style="border:none;padding:0;margin-top:auto;">
+            <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="pc-notify">Notify Me</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card product-card--soon" data-category="ai">
+        <div class="pc-img">
+          <span class="soon-icon">🤖</span>
+        </div>
+        <div class="pc-content">
+          <div class="pc-cat pf-cat--ai">AI &amp; AUTOMATION</div>
+          <h3>Manufacturing AI Skill Pack</h3>
+          <p class="pc-desc">Pre-built AI prompts and workflows for RCA writing, SOP drafting, report generation, and supplier analysis.</p>
+          <div class="pc-footer" style="border:none;padding:0;margin-top:auto;">
+            <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="pc-notify">Notify Me</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card product-card--soon" data-category="toolbox">
+        <div class="pc-img">
+          <span class="soon-icon">💻</span>
+        </div>
+        <div class="pc-content">
+          <div class="pc-cat pf-cat--toolbox">TOOLBOX</div>
+          <h3>ERP Automation Code Bundle</h3>
+          <p class="pc-desc">Scripts and automation templates for common ERP workflows — data extraction, report generation, and cross-system sync.</p>
+          <div class="pc-footer" style="border:none;padding:0;margin-top:auto;">
+            <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="pc-notify">Notify Me</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── VALUE PROPOSITION ── -->
+  <div class="mp-value">
+    <h2>Why Buy From The Industrial Scribe?</h2>
+    <div class="mp-value-grid">
+      <div class="mp-value-item">
+        <span class="value-icon">🏭</span>
+        <h4>Built for Manufacturing</h4>
+        <p>Every product uses real SEA manufacturing scenarios — not generic business templates.</p>
+      </div>
+      <div class="mp-value-item">
+        <span class="value-icon">⚡</span>
+        <h4>Instant Download</h4>
+        <p>Pay once, download immediately. No subscriptions, no DRM, no recurring charges.</p>
+      </div>
+      <div class="mp-value-item">
+        <span class="value-icon">📖</span>
+        <h4>Pairs with Free Articles</h4>
+        <p>Every product has a companion article. Read the theory free, then buy the execution toolkit.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CTA BANNER ── -->
+  <div class="mp-cta">
+    <h2>Want unlimited access to all articles?</h2>
+    <p>Subscribe to The Industrial Scribe for USD 1.99/month. New guides and case studies every week.</p>
+    <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Subscribe — USD 1.99/month</a>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>The Industrial Scribe</h4>
+      <p>AI automation intelligence for SEA manufacturing professionals. Production Planners, QC Executives, BD Managers, Operations Leads.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="index.html">AI &amp; Automation</a></li>
+        <li><a href="index.html">Operations</a></li>
+        <li><a href="index.html">Quality &amp; Compliance</a></li>
+        <li><a href="index.html">Strategy &amp; Growth</a></li>
+        <li><a href="index.html">Supply Chain</a></li>
+        <li><a href="index.html">People &amp; Culture</a></li>
+        <li><a href="index.html">Industry Pulse</a></li>
+        <li><a href="index.html">Toolbox</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="marketplace.html">Marketplace</a></li>
+        <li><a href="marketplace.html">PDF Guides</a></li>
+        <li><a href="marketplace.html">Frameworks</a></li>
+        <li><a href="marketplace.html">Case Studies</a></li>
+        <li><a href="marketplace.html">Templates</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Stay Updated</h4>
+      <p>Get weekly AI insights for manufacturing — straight to your inbox.</p>
+      <div class="footer-newsletter">
+        <input type="email" placeholder="Your email address">
+        <button onclick="this.textContent='Subscribed!';this.previousElementSibling.value='';">Subscribe Free</button>
+      </div>
+      <ul style="margin-top:1rem;">
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">USD 1.99/month — All Access</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 The Industrial Scribe. All rights reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="index.html">Privacy</a>
+      <a href="index.html">Terms</a>
+      <a href="mailto:hello@theindustrialscribe.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Category filtering
+  var pills = document.querySelectorAll('.cat-pill[data-filter]');
+  var productCards = document.querySelectorAll('.product-card[data-category], .product-card-featured[data-category]');
+  var soonCards = document.querySelectorAll('.product-card--soon[data-category]');
+  var noResults = document.getElementById('noResults');
+
+  pills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      var filter = this.getAttribute('data-filter');
+
+      // Update active pill
+      pills.forEach(function (p) { p.classList.remove('active'); });
+      this.classList.add('active');
+
+      // Filter cards
+      var visibleCount = 0;
+      productCards.forEach(function (card) {
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      soonCards.forEach(function (card) {
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Show/hide no results message
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    });
+  });
+</script>
+
+</body>
+</html>

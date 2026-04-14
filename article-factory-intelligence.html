@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How One BD Manager Turned 334,000 Rows of Factory Data Into a Growth Strategy — The Industrial Scribe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #111827; line-height: 1.7; }
+
+    nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e7eb; z-index: 100; padding: 0 5%; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-family: Georgia, serif; font-size: 1.3rem; font-weight: 700; color: #111827; text-decoration: none; }
+    .nav-cats { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-cats a { font-size: 0.85rem; font-weight: 500; color: #6b7280; text-decoration: none; letter-spacing: 0.02em; }
+    .nav-cats a:hover { color: #111827; }
+    .nav-sub-btn { font-size: 0.8rem; font-weight: 600; color: #1d4ed8; border: 1.5px solid #1d4ed8; padding: 0.4rem 0.9rem; border-radius: 4px; text-decoration: none; white-space: nowrap; }
+    .nav-sub-btn:hover { background: #1d4ed8; color: #fff; }
+
+    .article-wrap { max-width: 780px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
+    .article-category { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #d97706; margin-bottom: 0.75rem; }
+    .article-headline { font-family: Georgia, serif; font-size: 2.2rem; line-height: 1.25; color: #111827; margin-bottom: 1rem; font-weight: 700; }
+    .article-meta { font-size: 0.85rem; color: #6b7280; margin-bottom: 2rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem; }
+    .article-image-placeholder { width: 100%; height: 400px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.9rem; margin-bottom: 2rem; border-radius: 4px; }
+    .article-body h2 { font-family: Georgia, serif; font-size: 1.5rem; margin: 2rem 0 0.75rem; color: #111827; }
+    .article-body h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #1f2937; }
+    .article-body p { margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.75; }
+    .article-body ul, .article-body ol { margin: 0.75rem 0 1.2rem 1.5rem; }
+    .article-body li { margin-bottom: 0.4rem; line-height: 1.7; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .article-body th { background: #1f2937; color: white; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.8rem; }
+    .article-body td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #e5e7eb; }
+    .article-body tr:nth-child(even) td { background: #f9fafb; }
+    .prompt-block { background: #1e293b; color: #e2e8f0; padding: 1.25rem 1.5rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; line-height: 1.6; margin: 1.5rem 0; white-space: pre-wrap; word-break: break-word; }
+    .prompt-label { font-size: 0.7rem; font-weight: 700; color: #d97706; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .inline-sub { background: #fffbeb; border-left: 4px solid #d97706; padding: 1rem 1.25rem; margin: 2rem 0; border-radius: 0 6px 6px 0; }
+    .inline-sub p { font-size: 0.9rem; color: #78350f; margin-bottom: 0.5rem; }
+    .inline-sub a { display: inline-block; background: #d97706; color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-top: 0.25rem; }
+    .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1.5rem 0 2rem; }
+    .stat-card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 1rem; text-align: center; }
+    .stat-card .stat-num { font-family: Georgia, serif; font-size: 1.6rem; font-weight: 700; color: #111827; display: block; }
+    .stat-card .stat-label { font-size: 0.75rem; color: #6b7280; margin-top: 0.25rem; }
+    .checklist-box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+    .checklist-box h4 { font-size: 0.9rem; font-weight: 700; color: #111827; margin-bottom: 0.75rem; }
+    .checklist-box ul { list-style: none; margin: 0; }
+    .checklist-box li { padding: 0.3rem 0; font-size: 0.9rem; color: #374151; }
+    .checklist-box li::before { content: "☐ "; font-size: 1rem; }
+
+    .related-section { border-top: 1px solid #e5e7eb; padding-top: 2rem; margin-top: 3rem; }
+    .related-section h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; margin-bottom: 1.25rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .related-card { border: 1px solid #e5e7eb; border-radius: 6px; overflow: hidden; text-decoration: none; color: inherit; }
+    .related-card:hover { border-color: #d97706; }
+    .related-img { height: 120px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.75rem; }
+    .related-content { padding: 0.75rem; }
+    .related-cat { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #d97706; margin-bottom: 0.3rem; }
+    .related-title { font-family: Georgia, serif; font-size: 0.9rem; line-height: 1.35; color: #111827; font-weight: 600; }
+
+    footer { background: #111827; color: #9ca3af; padding: 3rem 5% 2rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-bottom: 2rem; }
+    .footer-col h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #f9fafb; margin-bottom: 0.75rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.4rem; font-size: 0.85rem; }
+    .footer-col a { color: #9ca3af; text-decoration: none; }
+    .footer-col a:hover { color: #f9fafb; }
+    .footer-bottom { border-top: 1px solid #374151; padding-top: 1.5rem; text-align: center; font-size: 0.8rem; }
+
+    @media (max-width: 768px) {
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .article-headline { font-size: 1.6rem; }
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-cats { display: none; }
+    }
+  </style>
+  <link rel="stylesheet" href="paywall.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">The Industrial Scribe</a>
+    <ul class="nav-cats">
+      <li><a href="index.html">All</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Production Planning</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Quality &amp; Compliance</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Business Development</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Automation</a></li>
+    </ul>
+    <a href="index.html#subscribe" class="nav-sub-btn">Subscribe USD 1.99/mo</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <div class="article-category">Case Study</div>
+  <h1 class="article-headline">How One BD Manager Turned 334,000 Rows of Factory Data Into a Growth Strategy</h1>
+  <div class="article-meta">The Industrial Scribe | Case Study &nbsp;·&nbsp; 8 min read &nbsp;·&nbsp; March 2026</div>
+
+  <img src="img-aerial-industrial.jpg" alt="Article Image" style="width:100%;height:400px;object-fit:cover;border-radius:4px;margin-bottom:2rem;">
+
+  <div class="article-body">
+
+    <p>No data science team. No BI software. No six-week project plan with a consultant and a dashboard that nobody uses after the first month. Just raw Excel exports from ERP, an AI conversation, and a BD manager who knew which questions were worth asking. In one session, a Southeast Asian CNC factory serving multinational corporations went from a spreadsheet nobody could navigate to a growth strategy built on the most granular production data they had ever properly analysed.</p>
+
+    <p>The numbers involved: 334,582 rows of production data. 56,835 individual lots processed. RM 54.2 million in 2025 revenue. A 2026 forecast of RM 60 million. All of it was sitting in the ERP system, exportable as Excel files, completely unanalysed beyond the monthly revenue totals that went into the management report. The BD manager knew the factory was growing. He didn't know where the growth was coming from, which customers were driving it, which part families were margin-positive, or where the concentration risk was hiding.</p>
+
+    <p>That question — where is the concentration risk? — turned out to be the most important one. The answer changed the BD team's priorities for the following quarter.</p>
+
+    <div class="inline-sub">
+      <p><strong>This article is part of The Industrial Scribe.</strong> Subscribe for USD 1.99/month for unlimited access to all articles, templates &amp; community.</p>
+      <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Subscribe Now</a>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <span class="stat-num">334,582</span>
+        <div class="stat-label">Raw Data Rows</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">56,835</span>
+        <div class="stat-label">Lots Analysed</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">RM 54.2M</span>
+        <div class="stat-label">2025 Revenue</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">1 Session</span>
+        <div class="stat-label">Time to Insight</div>
+      </div>
+    </div>
+
+    <h2>The Data Problem Most Factories Have</h2>
+
+    <p>Manufacturing companies generate enormous amounts of operational data. ERP systems record every production order, every lot, every shipment, every material movement, every machine downtime event. The data is there. It's been there for years. The problem is that it exists in a format that requires either a dedicated analyst to interpret it or a BI tool that someone has to build, maintain, and train the team to use — both of which require investment, time, and organisational will that most mid-sized contract manufacturers don't have.</p>
+
+    <p>The result is that most of the insight in a factory's operational data is never extracted. Monthly reports show revenue totals and headcount. Quarterly reviews show year-over-year growth. The deeper questions — which customers have the highest lot rejection rates, which part families have the longest average cycle times, where is our revenue most concentrated and what happens to the business if that customer's program is cancelled — don't get answered because there's no infrastructure to answer them efficiently.</p>
+
+    <p>AI changes that equation. Not because it replaces the need for good data, but because it removes the infrastructure requirement for extracting insight from data that already exists.</p>
+
+    <h2>What the Session Actually Looked Like</h2>
+
+    <p>The BD manager exported three files from the ERP system: a production order file covering the full calendar year, a shipment and delivery performance file, and a customer account file linking part numbers to customer accounts and programme codes. The exports were raw — column headers in mixed formats, some fields blank, date formats inconsistent across the three files. No cleaning was done before upload.</p>
+
+    <p>The first instruction was broad: <em>"I have three Excel files from our factory ERP. I want to understand our business better — revenue by customer, revenue by part family, delivery performance by account, and where we have concentration risk. Start by telling me what's in these files."</em></p>
+
+    <p>The AI parsed all three files, identified the key fields, flagged two data quality issues — a date formatting inconsistency in the shipment file and a small number of duplicate lot records in the production file — and returned a summary of what the data could and couldn't answer. That initial orientation took four minutes. In a traditional analysis workflow, the equivalent step — opening three large Excel files, understanding the schema, checking for data quality issues — takes the better part of a morning.</p>
+
+    <h2>The Five Questions That Changed the Strategy</h2>
+
+    <p>The session was structured around five questions, each building on the answer to the previous one. This is the part of the workflow that requires the BD manager's knowledge — not technical skill, but commercial intuition about which questions matter.</p>
+
+    <p><strong>Question one: Who are our top ten revenue-generating accounts and what percentage of total revenue do they represent?</strong> The answer revealed that the top three accounts represented 71% of total revenue. The largest single account was 43%. That number had never been calculated before. The management team knew the account was large. They didn't know it was that large.</p>
+
+    <p><strong>Question two: Within the top account, what is the revenue split by part family?</strong> The concentration narrowed further. Two part families within the top account represented 67% of the revenue that came from that account. The factory was effectively dependent on four part numbers across two families for more than a quarter of its total annual revenue.</p>
+
+    <p><strong>Question three: What is the lot rejection and rework rate by part family, and does it correlate with machine allocation?</strong> This question took the analysis from revenue concentration to operational risk. Three part families had rejection rates more than double the factory average. Two of those families were in the top account. The correlation with machine allocation showed that the high-rejection families shared two machines that were due for scheduled maintenance — a connection the production team had not made because nobody had looked at the rejection data and the maintenance schedule simultaneously.</p>
+
+    <p><strong>Question four: Which accounts are growing and which are flat or declining in lot volume?</strong> This identified two mid-sized accounts that had grown more than 40% in lot volume over the year but had not seen proportional revenue growth — a signal that pricing for those accounts hadn't kept pace with the volume increase. The BD manager knew both accounts well. He hadn't noticed the pricing gap because he was looking at revenue totals, not volume-adjusted margins.</p>
+
+    <p><strong>Question five: If we lost the top account tomorrow, what would our revenue look like and how quickly could we replace it?</strong> The scenario analysis was uncomfortable. The honest answer, based on the data, was that replacing 43% of revenue in a twelve-month window would require either winning two new accounts of the same size or significantly accelerating growth across six to eight mid-tier accounts simultaneously — neither of which was in the current BD plan.</p>
+
+    <h2>What Changed After the Session</h2>
+
+    <p>Three immediate changes came out of the analysis. First, the BD team reprioritised its new account pipeline to target a specific segment — precision components for semiconductor equipment — where the factory had existing capability but limited current revenue, and where two accounts were at late-stage qualification. Winning either of those accounts would materially reduce concentration in the top customer.</p>
+
+    <p>Second, the pricing review for the two mid-tier high-growth accounts was accelerated to the next quarterly review rather than the annual one. The BD manager entered those conversations with the actual volume and revenue data on hand — not a general sense that the relationship was growing, but specific numbers showing the volume increase and the corresponding pricing gap.</p>
+
+    <p>Third, the production team was briefed on the machine-to-rejection correlation for the high-risk part families. The scheduled maintenance was moved forward by six weeks. Whether that would have happened without the data analysis is uncertain. What is certain is that the connection between rejection rate and machine condition had not been surfaced in any previous review.</p>
+
+    <h2>The Questions Are the Skill</h2>
+
+    <p>The technical part of this story — uploading Excel files, running analysis with AI — is straightforward. Anyone can do it. The part that requires genuine skill is knowing which questions to ask and in what order. The five questions above didn't come from a template. They came from a BD manager with fifteen years of manufacturing commercial experience who knew what he was worried about and used the session to test those worries against the actual data.</p>
+
+    <p>That's the correct way to think about AI business intelligence: not as a system that generates insight automatically, but as a tool that allows experienced people to test their commercial intuitions against real data at a speed that was previously impossible without specialist infrastructure. The AI doesn't know your factory. It doesn't know that your largest account is going through a procurement review or that your second-largest account just brought on a new supply chain director who prefers local suppliers. You know those things. The AI knows how to find patterns in 334,000 rows of data in the time it takes to ask the question.</p>
+
+    <p>The combination is what produces the result: your commercial knowledge plus AI's analytical speed, applied to data that's been sitting in your ERP since the day you went live.</p>
+
+    <div class="checklist-box">
+      <h4>Before Your First Factory Data Analysis Session</h4>
+      <ul>
+        <li>Export production, delivery, and customer data from ERP — raw is fine</li>
+        <li>Write down your five most important business questions before opening the AI tool</li>
+        <li>Start broad — let the AI orient on the data before asking for specific analysis</li>
+        <li>Ask about data quality issues before drawing conclusions from the numbers</li>
+        <li>Sequence questions so each answer informs the next question</li>
+        <li>Document the findings immediately — insights without action are just information</li>
+        <li>Turn at least one finding into a concrete change within the same week</li>
+      </ul>
+    </div>
+
+  </div><!-- /article-body -->
+
+  <!-- Related Articles -->
+  <div class="related-section">
+    <h3>Related Articles</h3>
+    <div class="related-grid">
+
+      <a href="article-80-percent-problem.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Business Development</div>
+          <div class="related-title">The 80% Problem: Why Most Manufacturing BD Teams Are Flying Blind</div>
+        </div>
+      </a>
+
+      <a href="article-ai-negotiation.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Case Study</div>
+          <div class="related-title">How I Used AI to Structure a High-Stakes Supplier Negotiation</div>
+        </div>
+      </a>
+
+      <a href="article-what-are-tokens.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">AI Fundamentals</div>
+          <div class="related-title">What Are Tokens — How AI Reads Your Data (And Why It Matters for Cost)</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div><!-- /article-wrap -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>The Industrial Scribe</h4>
+      <p style="font-size: 0.85rem; line-height: 1.6;">AI automation intelligence for SEA manufacturing professionals. Production Planners, QC Executives, BD Managers, Operations Leads.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="index.html">All Articles</a></li>
+        <li><a href="article-production-report.html">Production Planning</a></li>
+        <li><a href="article-rca-report.html">Quality &amp; Compliance</a></li>
+        <li><a href="article-quotation-framework.html">Business Development</a></li>
+        <li><a href="article-sop-writing.html">Automation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Articles</h4>
+      <ul>
+        <li><a href="article-rca-report.html">RCA Report Guide</a></li>
+        <li><a href="article-production-report.html">Production Report Checklist</a></li>
+        <li><a href="article-quotation-framework.html">3-Gate Quotation Framework</a></li>
+        <li><a href="article-sop-writing.html">SOP Writing with AI</a></li>
+        <li><a href="article-quotation-case-study.html">Quotation Case Study</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Subscribe</h4>
+      <ul>
+        <li><a href="index.html#subscribe">USD 1.99/month — All Access</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Instagram</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Download Free Playbook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 The Industrial Scribe · All rights reserved</div>
+</footer>
+
+<script src="paywall.js"></script>
+</body>
+</html>

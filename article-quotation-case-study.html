@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How One Johor Manufacturer Cut Quotation Time by 70% Using AI — The Industrial Scribe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #111827; line-height: 1.7; }
+
+    nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e7eb; z-index: 100; padding: 0 5%; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-family: Georgia, serif; font-size: 1.3rem; font-weight: 700; color: #111827; text-decoration: none; }
+    .nav-cats { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-cats a { font-size: 0.85rem; font-weight: 500; color: #6b7280; text-decoration: none; letter-spacing: 0.02em; }
+    .nav-cats a:hover { color: #111827; }
+    .nav-sub-btn { font-size: 0.8rem; font-weight: 600; color: #1d4ed8; border: 1.5px solid #1d4ed8; padding: 0.4rem 0.9rem; border-radius: 4px; text-decoration: none; white-space: nowrap; }
+    .nav-sub-btn:hover { background: #1d4ed8; color: #fff; }
+
+    .article-wrap { max-width: 780px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
+    .article-category { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1d4ed8; margin-bottom: 0.75rem; }
+    .article-headline { font-family: Georgia, serif; font-size: 2.2rem; line-height: 1.25; color: #111827; margin-bottom: 1rem; font-weight: 700; }
+    .article-meta { font-size: 0.85rem; color: #6b7280; margin-bottom: 2rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem; }
+    .article-image-placeholder { width: 100%; height: 400px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.9rem; margin-bottom: 2rem; border-radius: 4px; }
+    .article-body h2 { font-family: Georgia, serif; font-size: 1.5rem; margin: 2rem 0 0.75rem; color: #111827; }
+    .article-body h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #1f2937; }
+    .article-body p { margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.75; }
+    .article-body ul, .article-body ol { margin: 0.75rem 0 1.2rem 1.5rem; }
+    .article-body li { margin-bottom: 0.4rem; line-height: 1.7; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .article-body th { background: #1f2937; color: white; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.8rem; }
+    .article-body td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
+    .article-body tr:nth-child(even) td { background: #f9fafb; }
+    .inline-sub { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 1rem 1.25rem; margin: 2rem 0; border-radius: 0 6px 6px 0; }
+    .inline-sub p { font-size: 0.9rem; color: #1e3a5f; margin-bottom: 0.5rem; }
+    .inline-sub a { display: inline-block; background: #1d4ed8; color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-top: 0.25rem; }
+    .product-cta-box { background: #f9fafb; border: 1px solid #e5e7eb; padding: 1.25rem 1.5rem; border-radius: 6px; margin: 2.5rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .product-cta-text strong { display: block; font-size: 1rem; color: #111827; margin-bottom: 0.25rem; }
+    .product-cta-text span { font-size: 0.85rem; color: #6b7280; }
+    .product-cta-box a { background: #111827; color: white; padding: 0.5rem 1.25rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .download-btn { display: inline-block; background: #1d4ed8; color: white; padding: 0.75rem 1.5rem; border-radius: 4px; font-size: 0.95rem; font-weight: 600; text-decoration: none; margin: 1rem 0 2rem; }
+    .stat-block { background: #111827; color: white; border-radius: 6px; padding: 1.5rem 2rem; margin: 2rem 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center; }
+    .stat-block .stat-num { font-family: Georgia, serif; font-size: 2.2rem; font-weight: 700; color: #34d399; line-height: 1.1; }
+    .stat-block .stat-label { font-size: 0.8rem; color: #9ca3af; margin-top: 0.3rem; }
+    .phase-box { background: #f9fafb; border-left: 4px solid #1d4ed8; padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 4px 4px 0; }
+    .phase-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #6b7280; margin-bottom: 0.3rem; }
+    .phase-box h4 { font-size: 1rem; font-weight: 700; color: #111827; margin-bottom: 0.4rem; }
+    .phase-box p { font-size: 0.9rem; color: #374151; margin-bottom: 0; }
+    .takeaway-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 1.25rem 1.5rem; margin: 1rem 0; }
+    .takeaway-box .num { font-size: 1.2rem; font-weight: 700; color: #1d4ed8; margin-right: 0.5rem; }
+    .takeaway-box p { font-size: 0.95rem; color: #1e3a5f; margin: 0; }
+
+    .related-section { border-top: 1px solid #e5e7eb; padding-top: 2rem; margin-top: 3rem; }
+    .related-section h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; margin-bottom: 1.25rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .related-card { border: 1px solid #e5e7eb; border-radius: 6px; overflow: hidden; text-decoration: none; color: inherit; }
+    .related-card:hover { border-color: #1d4ed8; }
+    .related-img { height: 120px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.75rem; }
+    .related-content { padding: 0.75rem; }
+    .related-cat { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #1d4ed8; margin-bottom: 0.3rem; }
+    .related-title { font-family: Georgia, serif; font-size: 0.9rem; line-height: 1.35; color: #111827; font-weight: 600; }
+
+    footer { background: #111827; color: #9ca3af; padding: 3rem 5% 2rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-bottom: 2rem; }
+    .footer-col h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #f9fafb; margin-bottom: 0.75rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.4rem; font-size: 0.85rem; }
+    .footer-col a { color: #9ca3af; text-decoration: none; }
+    .footer-col a:hover { color: #f9fafb; }
+    .footer-bottom { border-top: 1px solid #374151; padding-top: 1.5rem; text-align: center; font-size: 0.8rem; }
+
+    @media (max-width: 768px) {
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .article-headline { font-size: 1.6rem; }
+      .product-cta-box { flex-direction: column; }
+      .nav-cats { display: none; }
+      .stat-block { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="paywall.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">The Industrial Scribe</a>
+    <ul class="nav-cats">
+      <li><a href="index.html">All</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Production Planning</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Quality &amp; Compliance</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Business Development</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Automation</a></li>
+    </ul>
+    <a href="index.html#subscribe" class="nav-sub-btn">Subscribe USD 1.99/mo</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <div class="article-category">Business Development</div>
+  <h1 class="article-headline">How One Johor Manufacturer Cut Quotation Time by 70% Using AI</h1>
+  <div class="article-meta">The Industrial Scribe | Business Development &nbsp;·&nbsp; 7 min read &nbsp;·&nbsp; March 2026</div>
+
+  <img src="img-aerial-industrial.jpg" alt="Article Image" style="width:100%;height:400px;object-fit:cover;border-radius:4px;margin-bottom:2rem;">
+
+  <div class="article-body">
+
+    <p>A 120-person CNC precision machining company based in Johor, Malaysia, was losing fast-turnaround bids it should have been winning. Not on price. On speed. A semiconductor customer sends a 12-part RFQ with complex drawings, tight tolerances, and multiple surface treatment requirements. Someone has to calculate every part. That takes most of a working day. And when the customer needs a quote in 24 hours — and your response comes in at 48 — you lose to a supplier who responded in four hours with a comparable price.</p>
+
+    <p>This is the story of how that company fixed it in seven weeks, with no data science team, no budget for enterprise software, and two BD executives doing the implementation alongside their normal workload.</p>
+
+    <p>All names and identifying details have been anonymised at the company's request.</p>
+
+    <div class="inline-sub">
+      <p><strong>This article is part of The Industrial Scribe.</strong> Subscribe for USD 1.99/month for unlimited access to all articles, templates &amp; community.</p>
+      <a href="index.html#subscribe">Subscribe Now</a>
+    </div>
+
+    <div class="stat-block">
+      <div>
+        <div class="stat-num">70%</div>
+        <div class="stat-label">Reduction in quote time</div>
+      </div>
+      <div>
+        <div class="stat-num">64%</div>
+        <div class="stat-label">Fast-turnaround win rate (up from 33%)</div>
+      </div>
+      <div>
+        <div class="stat-num">7 wks</div>
+        <div class="stat-label">Implementation timeline</div>
+      </div>
+    </div>
+
+    <h2>The Company</h2>
+
+    <p>The operation: 120 employees, over 20 years established, CNC turning, milling, jig grinding, and surface treatment coordination. 35,000 sq ft facility, 28 CNC machines, in-house CMM inspection. ISO 9001:2015 certified. Customer base: semiconductor equipment manufacturers (60%), oil &amp; gas (30%), industrial automation (10%). A significant portion of revenue comes through competitive RFQs.</p>
+
+    <h2>Three Problems That Were Costing Them</h2>
+
+    <h3>Problem 1: Complex Quotes Took 3–4 Hours Each</h3>
+    <p>Every BD professional at this company knew the pain. A 12-part RFQ with mixed complexity — complex drawings, tight tolerances, multiple surface treatments — could consume most of a working day. Simple parts: 30–45 minutes each. Complex multi-feature components: an hour or more. The BD team had two people. Complex RFQs competed for the same hours as customer meetings, order management, and account development.</p>
+
+    <h3>Problem 2: Losing Fast-Turnaround Bids</h3>
+    <p>Some customers — particularly in the semiconductor sector — need quotes in 24 hours. Their equipment procurement teams are under timeline pressure. A supplier who responds in 48 hours with a good price often loses to a supplier who responds in four hours with a comparable price. "We knew we were losing jobs we should have won," said the Operations Manager. "We just didn't have a way to move faster."</p>
+
+    <h3>Problem 3: Inconsistent Margins</h3>
+    <p>When two people calculate the same job independently, they get different numbers. Different assumptions about cycle time. Different overhead allocations. Different machine selections. The result: quotes for similar jobs at different margins. Some customers were receiving prices 15–20% below what they could have been. Others received prices that felt inconsistent compared to previous orders. Each quote was its own calculation, built from scratch, by whoever was available.</p>
+
+    <h2>The Implementation — 7 Weeks</h2>
+
+    <div class="phase-box">
+      <div class="phase-label">Week 1</div>
+      <h4>Map Before You Automate</h4>
+      <p>The company didn't start with AI. They started with observation. The Operations Manager and the senior BD executive mapped exactly how a quotation currently worked — from RFQ receipt to price submission. Every step, every decision, every handover. The process map revealed three bottlenecks: inconsistent material estimation, cycle time estimation locked in one person's head, and 45–60 minutes of document assembly after all calculations were done.</p>
+    </div>
+
+    <div class="phase-box">
+      <div class="phase-label">Weeks 2–3</div>
+      <h4>Build the AI Costing Prompt</h4>
+      <p>The company focused on Bottleneck 2 first — cycle time estimation — because it was the highest-variance step. Working from The Industrial Scribe framework, they built a structured AI prompt that accepted part geometry description, material grade, key tolerances and GD&T requirements, required surface treatments, and quantity and batch size. Output: estimated cycle time range with reasoning, recommended machine type, tooling considerations, and flags for features requiring manual review (deep bores, interrupted cuts, exotic material). This shift alone cut the estimation step from 45 minutes to 15 minutes per part.</p>
+    </div>
+
+    <div class="phase-box">
+      <div class="phase-label">Week 3</div>
+      <h4>Standardise Material Costing</h4>
+      <p>The company built an AI-assisted material cost calculator using material grade and form, part dimensions to calculate minimum blank size, standard scrap factors by material group, and a monthly-updated price list in shared Excel. Output: a standard material cost per piece — consistent regardless of who ran the calculation.</p>
+    </div>
+
+    <div class="phase-box">
+      <div class="phase-label">Week 4</div>
+      <h4>Automate Quote Assembly</h4>
+      <p>The third bottleneck — document assembly — was addressed with a separate AI prompt. After costing was complete, the BD executive pasted raw numbers into a prompt that generated the formatted quote cover letter, line-item pricing table, standard terms and delivery notes, and a one-paragraph value statement for strategic accounts. This eliminated 45–60 minutes of formatting and writing per complex RFQ.</p>
+    </div>
+
+    <div class="phase-box">
+      <div class="phase-label">Weeks 4–6</div>
+      <h4>Testing and Calibration</h4>
+      <p>The new workflow was tested against 12 historical RFQs where the actual margin was known. AI-assisted estimates were compared to actual outcomes. Material cost estimates: within 5% accuracy for standard materials, 8–12% for specialty alloys (flagged for manual review). Cycle time estimates: within 15% for standard turned and milled parts; complex multi-axis parts flagged for manual review. The scope was defined: standard parts → AI estimate, complex or non-standard → flag for senior machinist review.</p>
+    </div>
+
+    <div class="phase-box">
+      <div class="phase-label">Weeks 6–7</div>
+      <h4>Training and Documentation</h4>
+      <p>The workflow was documented as a one-page work instruction. Both BD executives were trained in a half-day session. The senior machinist reviewed the prompt logic and validated cycle time assumptions — identifying two adjustments that improved accuracy for their specific machine configurations.</p>
+    </div>
+
+    <h2>The Results</h2>
+
+    <h3>Quote Time: 3.5 Hours → Under 1 Hour</h3>
+    <p>For a complex 8-part RFQ with mixed machined components and outsourced surface treatment: before implementation, 3.5–4 hours. After implementation, 55–70 minutes. The reduction came from three places: cycle time estimation (−30 minutes per RFQ), material cost calculation (−20 minutes per RFQ), and document assembly (−45 minutes per RFQ).</p>
+
+    <h3>Fast-Turnaround Win Rate Doubled</h3>
+    <p>In the 8 weeks after implementation, the company responded to 11 RFQs with a 24-hour turnaround requirement. They won 7 — a 64% win rate. In the prior 8 weeks, they had responded to 9 such RFQs and won 3 (33%). Same prices. Faster response. More wins.</p>
+
+    <h3>Margin Consistency Improved Significantly</h3>
+
+    <table>
+      <thead>
+        <tr><th></th><th>Before Implementation</th><th>After Implementation</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Gross margin range (similar complexity)</td><td>18% to 34% (16 pp spread)</td><td>24% to 31% (7 pp spread)</td></tr>
+        <tr><td>Average margin direction</td><td>Baseline</td><td>Moved up</td></tr>
+        <tr><td>Floor-priced quotes giving money away</td><td>Present</td><td>Eliminated</td></tr>
+        <tr><td>Over-priced quotes losing competitive bids</td><td>Present</td><td>Corrected</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Less Dependency on One Person</h3>
+    <p>Before the workflow, the senior machinist was a single point of failure for cycle time estimation. If he was on the floor or on annual leave, RFQs were delayed. After the workflow, the AI-assisted estimate handled 70% of standard jobs independently. The senior machinist reviewed flags and exceptions — a task taking 30 minutes per day instead of reactive on-demand sessions throughout the week.</p>
+
+    <h2>5 Takeaways You Can Apply This Week</h2>
+
+    <div class="takeaway-box">
+      <p><span class="num">1</span><strong>Map before you automate.</strong> Don't start with an AI tool. Start with a process map. You need to know where your bottlenecks are before you can build a fix. This company saved two weeks of trial and error by spending one week on observation first.</p>
+    </div>
+
+    <div class="takeaway-box">
+      <p><span class="num">2</span><strong>Build for your specific context, not a generic template.</strong> Generic AI prompts produce generic outputs. The cycle time prompt works because it was built around this company's machine mix, their typical materials, their common tolerance ranges. Specificity is the difference between a useful tool and a waste of time.</p>
+    </div>
+
+    <div class="takeaway-box">
+      <p><span class="num">3</span><strong>AI handles the standard; humans handle the exceptions.</strong> The workflow works because the scope was defined clearly. Standard parts → AI estimate. Complex, non-standard, or high-risk parts → flag for human review. Don't try to automate everything. Automate the 70% and redeploy the humans where they add real value.</p>
+    </div>
+
+    <div class="takeaway-box">
+      <p><span class="num">4</span><strong>Consistency is a competitive advantage.</strong> Inconsistent quoting isn't just a margin problem. It's a customer trust problem. Customers notice when your prices vary unexpectedly. A consistent, systematic process builds credibility — especially with strategic accounts you're trying to grow.</p>
+    </div>
+
+    <div class="takeaway-box">
+      <p><span class="num">5</span><strong>The bottleneck is rarely where you think it is.</strong> This company assumed their quoting problem was cycle time estimation. It was — but the documentation and assembly step was actually taking more time. The process map revealed it. Without mapping, they would have optimised the wrong thing.</p>
+    </div>
+
+    <h2>How to Apply This to Your Situation</h2>
+
+    <p>You don't need 120 people and 28 machines to implement a version of this. The principles scale down to a 15-person shop. Here's how to start:</p>
+
+    <ol>
+      <li><strong>Time your current quoting process.</strong> For your next three complex RFQs, time each stage: drawing review, material costing, cycle time estimation, document assembly. Be honest. Most manufacturers discover their quote time is longer than they think.</li>
+      <li><strong>Identify your single biggest bottleneck.</strong> Is it cycle time? Material cost? Document formatting? Start with just one.</li>
+      <li><strong>Build one AI prompt for that bottleneck.</strong> Test it on 5 historical jobs where you know the outcome. Calibrate. Then move to the next bottleneck.</li>
+      <li><strong>Get your senior technical person to validate the logic.</strong> Your AI prompt is only as good as the assumptions baked into it. Your most experienced machinist or engineer holds knowledge that textbooks don't have.</li>
+      <li><strong>Document the workflow before you train anyone.</strong> A one-page work instruction prevents the workflow from dying when the person who built it is on leave.</li>
+    </ol>
+
+    <p>The company in this case study didn't have a data science team. They didn't hire a consultant for six months. They had a BD manager, a senior machinist, and seven weeks of focused work. The result was a 70% reduction in quote time, improved margin consistency, and more wins on the bids that mattered. You have the same process knowledge. You have access to the same AI tools. The only difference is the system.</p>
+
+    <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="download-btn">→ Download the full template and checklist for USD 9.99</a>
+
+    <div class="product-cta-box">
+      <div class="product-cta-text">
+        <strong>3-Gate Quotation Framework Template — USD 9.99</strong>
+        <span>The framework used in this case study — full worksheet, AI margin simulation prompt, and blank template. Instant download.</span>
+      </div>
+      <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Get This PDF →</a>
+    </div>
+
+  </div><!-- /article-body -->
+
+  <!-- Related Articles -->
+  <div class="related-section">
+    <h3>Related Articles</h3>
+    <div class="related-grid">
+
+      <a href="article-quotation-framework.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Business Development</div>
+          <div class="related-title">The 3-Gate Framework: How to Price Manufacturing Jobs Without Leaving Money on the Table</div>
+        </div>
+      </a>
+
+      <a href="article-production-report.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Production Planning</div>
+          <div class="related-title">The 12 Numbers Every Production Manager Should Track Every Week</div>
+        </div>
+      </a>
+
+      <a href="article-sop-writing.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Automation</div>
+          <div class="related-title">How to Write Any Manufacturing SOP in 30 Minutes Using AI</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div><!-- /article-wrap -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>The Industrial Scribe</h4>
+      <p style="font-size: 0.85rem; line-height: 1.6;">AI automation intelligence for SEA manufacturing professionals. Production Planners, QC Executives, BD Managers, Operations Leads.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="index.html">All Articles</a></li>
+        <li><a href="article-production-report.html">Production Planning</a></li>
+        <li><a href="article-rca-report.html">Quality &amp; Compliance</a></li>
+        <li><a href="article-quotation-framework.html">Business Development</a></li>
+        <li><a href="article-sop-writing.html">Automation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Articles</h4>
+      <ul>
+        <li><a href="article-rca-report.html">RCA Report Guide</a></li>
+        <li><a href="article-production-report.html">Production Report Checklist</a></li>
+        <li><a href="article-quotation-framework.html">3-Gate Quotation Framework</a></li>
+        <li><a href="article-sop-writing.html">SOP Writing with AI</a></li>
+        <li><a href="article-quotation-case-study.html">Quotation Case Study</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Subscribe</h4>
+      <ul>
+        <li><a href="index.html#subscribe">USD 1.99/month — All Access</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Instagram</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Download Free Playbook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 The Industrial Scribe · All rights reserved</div>
+</footer>
+
+<script src="paywall.js"></script>
+</body>
+</html>

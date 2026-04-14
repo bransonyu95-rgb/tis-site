@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Industrial Scribe — AI Automation Intelligence for SEA Manufacturing Professionals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fafafa; color: #111827; line-height: 1.7; }
+
+    /* ── NAV ── */
+    nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e7eb; z-index: 100; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    .logo { font-family: 'Playfair Display', Georgia, serif; font-size: 1.35rem; font-weight: 800; color: #111827; text-decoration: none; white-space: nowrap; letter-spacing: -0.02em; }
+    .nav-cats { display: flex; gap: 0.25rem; list-style: none; }
+    .nav-cats a { font-size: 0.78rem; font-weight: 500; color: #6b7280; text-decoration: none; padding: 0.35rem 0.65rem; border-radius: 4px; transition: all 0.15s; white-space: nowrap; }
+    .nav-cats a:hover, .nav-cats a.active { color: #111827; background: #f3f4f6; }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-search-btn { background: none; border: none; cursor: pointer; color: #6b7280; padding: 0.4rem; border-radius: 6px; display: flex; align-items: center; }
+    .nav-search-btn:hover { background: #f3f4f6; color: #111827; }
+    .nav-sub-btn { font-size: 0.78rem; font-weight: 600; color: #fff; background: #111827; padding: 0.45rem 1rem; border-radius: 6px; text-decoration: none; white-space: nowrap; transition: all 0.15s; }
+    .nav-sub-btn:hover { background: #1d4ed8; }
+
+    /* ── HAMBURGER ── */
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.4rem; color: #111827; }
+    .mobile-menu { display: none; background: #fff; border-bottom: 1px solid #e5e7eb; padding: 1rem 1.5rem; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; padding: 0.6rem 0; font-size: 0.9rem; color: #374151; text-decoration: none; border-bottom: 1px solid #f3f4f6; }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: #1d4ed8; }
+
+    /* ── SEARCH OVERLAY ── */
+    .search-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; align-items: flex-start; justify-content: center; padding-top: 120px; }
+    .search-overlay.open { display: flex; }
+    .search-box { background: #fff; border-radius: 12px; padding: 1.5rem; width: 90%; max-width: 600px; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+    .search-box input { width: 100%; border: 2px solid #e5e7eb; border-radius: 8px; padding: 0.8rem 1rem; font-size: 1rem; font-family: 'Inter', sans-serif; outline: none; }
+    .search-box input:focus { border-color: #1d4ed8; }
+    .search-box p { font-size: 0.8rem; color: #9ca3af; margin-top: 0.5rem; }
+
+    /* ── CATEGORY PILL BAR ── */
+    .cat-bar { background: #fff; border-bottom: 1px solid #f3f4f6; padding: 0.65rem 0; }
+    .cat-bar-inner { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; gap: 0.5rem; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+    .cat-bar-inner::-webkit-scrollbar { display: none; }
+    .cat-pill { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.78rem; font-weight: 600; text-decoration: none; white-space: nowrap; border: 1.5px solid; transition: all 0.15s; }
+    .cat-pill:hover { transform: translateY(-1px); box-shadow: 0 3px 8px rgba(0,0,0,0.08); }
+    .cat-pill span { font-size: 0.95rem; }
+    .cat-pill--ai { color: #7c3aed; border-color: #ede9fe; background: #f5f3ff; }
+    .cat-pill--ai:hover { background: #ede9fe; border-color: #7c3aed; }
+    .cat-pill--ops { color: #0369a1; border-color: #e0f2fe; background: #f0f9ff; }
+    .cat-pill--ops:hover { background: #e0f2fe; border-color: #0369a1; }
+    .cat-pill--quality { color: #b45309; border-color: #fef3c7; background: #fffbeb; }
+    .cat-pill--quality:hover { background: #fef3c7; border-color: #b45309; }
+    .cat-pill--strategy { color: #0f766e; border-color: #ccfbf1; background: #f0fdfa; }
+    .cat-pill--strategy:hover { background: #ccfbf1; border-color: #0f766e; }
+    .cat-pill--supply { color: #be185d; border-color: #fce7f3; background: #fdf2f8; }
+    .cat-pill--supply:hover { background: #fce7f3; border-color: #be185d; }
+    .cat-pill--people { color: #c2410c; border-color: #ffedd5; background: #fff7ed; }
+    .cat-pill--people:hover { background: #ffedd5; border-color: #c2410c; }
+    .cat-pill--pulse { color: #dc2626; border-color: #fee2e2; background: #fef2f2; }
+    .cat-pill--pulse:hover { background: #fee2e2; border-color: #dc2626; }
+    .cat-pill--toolbox { color: #4338ca; border-color: #e0e7ff; background: #eef2ff; }
+    .cat-pill--toolbox:hover { background: #e0e7ff; border-color: #4338ca; }
+
+    /* ── EXPLORE TOPICS SECTION ── */
+    .explore-section { padding: 2.5rem 0 1.5rem; }
+    .explore-section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.3rem; font-weight: 800; color: #111827; margin-bottom: 1.25rem; }
+    .explore-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .explore-card { background: #fff; border: 1.5px solid #e5e7eb; border-radius: 10px; padding: 1.25rem; text-decoration: none; color: inherit; transition: all 0.2s; position: relative; overflow: hidden; }
+    .explore-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
+    .explore-card-icon { font-size: 1.6rem; margin-bottom: 0.6rem; display: block; }
+    .explore-card h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 0.95rem; font-weight: 700; color: #111827; margin-bottom: 0.3rem; line-height: 1.3; }
+    .explore-card p { font-size: 0.78rem; color: #6b7280; line-height: 1.5; }
+    .explore-card .explore-count { font-size: 0.68rem; font-weight: 600; color: #9ca3af; margin-top: 0.6rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .explore-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .explore-card--ai::before { background: #7c3aed; }
+    .explore-card--ops::before { background: #0369a1; }
+    .explore-card--quality::before { background: #b45309; }
+    .explore-card--strategy::before { background: #0f766e; }
+    .explore-card--supply::before { background: #be185d; }
+    .explore-card--people::before { background: #c2410c; }
+    .explore-card--pulse::before { background: #dc2626; }
+    .explore-card--toolbox::before { background: #4338ca; }
+
+    @media (max-width: 1024px) {
+      .explore-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .explore-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── PAGE WRAP ── */
+    .page-wrap { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ── HERO ── */
+    .hero-section { padding: 2rem 0 1.5rem; }
+    .hero-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.5rem; align-items: stretch; }
+    .hero-featured { position: relative; border-radius: 10px; overflow: hidden; min-height: 420px; }
+    .hero-featured img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-featured-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.85)); padding: 2rem 1.75rem 1.5rem; }
+    .hero-featured-overlay .hero-category { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #60a5fa; margin-bottom: 0.5rem; }
+    .hero-featured-overlay h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.75rem; line-height: 1.25; color: #fff; font-weight: 800; margin-bottom: 0.5rem; }
+    .hero-featured-overlay p { font-size: 0.88rem; color: rgba(255,255,255,0.8); line-height: 1.55; }
+    .hero-featured a { text-decoration: none; color: inherit; display: block; height: 100%; }
+
+    .hero-sidebar { display: flex; flex-direction: column; gap: 0; }
+    .hero-side-card { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #e5e7eb; text-decoration: none; color: inherit; transition: all 0.15s; }
+    .hero-side-card:first-child { padding-top: 0; }
+    .hero-side-card:last-child { border-bottom: none; }
+    .hero-side-card:hover .side-headline { color: #1d4ed8; }
+    .hero-side-card img { width: 140px; height: 95px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
+    .side-meta { display: flex; flex-direction: column; gap: 0.3rem; justify-content: center; }
+    .side-cat { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #1d4ed8; }
+    .side-headline { font-family: 'Playfair Display', Georgia, serif; font-size: 0.92rem; line-height: 1.3; color: #111827; font-weight: 700; transition: color 0.15s; }
+    .side-date { font-size: 0.72rem; color: #9ca3af; margin-top: 0.2rem; }
+
+    /* ── NEWSLETTER BANNER ── */
+    .newsletter-banner { background: #111827; border-radius: 10px; padding: 2rem 2.5rem; margin: 2rem 0; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+    .newsletter-banner-text h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.25rem; color: #fff; font-weight: 800; margin-bottom: 0.3rem; }
+    .newsletter-banner-text p { font-size: 0.85rem; color: #9ca3af; }
+    .newsletter-form { display: flex; gap: 0.5rem; flex-shrink: 0; }
+    .newsletter-form input { padding: 0.6rem 1rem; border-radius: 6px; border: 1px solid #374151; background: #1f2937; color: #fff; font-size: 0.85rem; font-family: 'Inter', sans-serif; width: 240px; outline: none; }
+    .newsletter-form input::placeholder { color: #6b7280; }
+    .newsletter-form input:focus { border-color: #60a5fa; }
+    .newsletter-form button { background: #1d4ed8; color: #fff; border: none; padding: 0.6rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; white-space: nowrap; font-family: 'Inter', sans-serif; transition: background 0.15s; }
+    .newsletter-form button:hover { background: #2563eb; }
+
+    /* ── SECTION HEADERS ── */
+    .section-block { margin: 2.5rem 0; }
+    .section-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+    .section-header h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.3rem; font-weight: 800; color: #111827; white-space: nowrap; }
+    .section-header-line { flex: 1; height: 1px; background: #e5e7eb; }
+    .section-header a { font-size: 0.78rem; font-weight: 600; color: #1d4ed8; text-decoration: none; white-space: nowrap; }
+    .section-header a:hover { text-decoration: underline; }
+
+    /* ── ARTICLE CARDS ── */
+    .articles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .articles-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+    .article-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: all 0.2s; }
+    .article-card:hover { border-color: #1d4ed8; box-shadow: 0 4px 16px rgba(0,0,0,0.06); transform: translateY(-2px); }
+    .article-card img { width: 100%; height: 180px; object-fit: cover; display: block; }
+    .article-card-content { padding: 1.1rem; flex: 1; display: flex; flex-direction: column; gap: 0.35rem; }
+    .article-card-cat { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1d4ed8; }
+    .article-card-headline { font-family: 'Playfair Display', Georgia, serif; font-size: 1rem; line-height: 1.3; color: #111827; font-weight: 700; }
+    .article-card-excerpt { font-size: 0.83rem; color: #6b7280; line-height: 1.55; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .article-card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid #f3f4f6; }
+    .article-card-meta { font-size: 0.72rem; color: #9ca3af; }
+    .article-card-read { font-size: 0.78rem; font-weight: 600; color: #1d4ed8; }
+
+    /* ── FEATURED ROW (large + small) ── */
+    .featured-row { display: grid; grid-template-columns: 1.5fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .article-card-large img { height: 260px; }
+    .article-card-large .article-card-headline { font-size: 1.15rem; }
+
+    /* ── INLINE SUBSCRIBE BANNER ── */
+    .sub-banner { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 1rem 1.5rem; border-radius: 0 8px 8px 0; margin: 2.5rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .sub-banner-text { font-size: 0.9rem; color: #1e3a5f; font-weight: 500; }
+    .sub-banner-actions { display: flex; gap: 0.75rem; }
+    .sub-banner-actions a.primary { background: #1d4ed8; color: #fff; padding: 0.45rem 1.1rem; border-radius: 6px; font-size: 0.82rem; font-weight: 600; text-decoration: none; white-space: nowrap; transition: background 0.15s; }
+    .sub-banner-actions a.primary:hover { background: #1e40af; }
+    .sub-banner-actions a.secondary { background: transparent; color: #1d4ed8; border: 1.5px solid #1d4ed8; padding: 0.45rem 1.1rem; border-radius: 6px; font-size: 0.82rem; font-weight: 600; text-decoration: none; white-space: nowrap; transition: all 0.15s; }
+    .sub-banner-actions a.secondary:hover { background: #dbeafe; }
+
+    /* ── STICKY BOTTOM BAR ── */
+    .sticky-bottom { position: fixed; bottom: 0; left: 0; right: 0; background: #111827; z-index: 150; transform: translateY(100%); transition: transform 0.3s ease; }
+    .sticky-bottom.visible { transform: translateY(0); }
+    .sticky-bottom-inner { max-width: 1200px; margin: 0 auto; padding: 0.75rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+    .sticky-bottom-text { color: #e5e7eb; font-size: 0.85rem; }
+    .sticky-bottom-text strong { color: #fff; }
+    .sticky-bottom-actions { display: flex; gap: 0.75rem; align-items: center; }
+    .sticky-bottom-btn { background: #1d4ed8; color: #fff; padding: 0.5rem 1.25rem; border-radius: 6px; font-size: 0.82rem; font-weight: 600; text-decoration: none; transition: background 0.15s; }
+    .sticky-bottom-btn:hover { background: #2563eb; }
+    .sticky-bottom-close { background: none; border: none; color: #6b7280; cursor: pointer; padding: 0.4rem; font-size: 1.1rem; line-height: 1; }
+    .sticky-bottom-close:hover { color: #fff; }
+
+    /* ── FOOTER ── */
+    footer { background: #111827; color: #9ca3af; padding: 3.5rem 1.5rem 2rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+    .footer-col h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #f9fafb; margin-bottom: 0.75rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.4rem; }
+    .footer-col a { color: #9ca3af; text-decoration: none; font-size: 0.85rem; transition: color 0.15s; }
+    .footer-col a:hover { color: #f9fafb; }
+    .footer-col p { font-size: 0.83rem; line-height: 1.6; }
+    .footer-newsletter { margin-top: 1rem; }
+    .footer-newsletter input { width: 100%; padding: 0.55rem 0.75rem; border-radius: 6px; border: 1px solid #374151; background: #1f2937; color: #fff; font-size: 0.82rem; font-family: 'Inter', sans-serif; margin-bottom: 0.5rem; outline: none; }
+    .footer-newsletter input:focus { border-color: #60a5fa; }
+    .footer-newsletter button { width: 100%; background: #1d4ed8; color: #fff; border: none; padding: 0.55rem; border-radius: 6px; font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.15s; }
+    .footer-newsletter button:hover { background: #2563eb; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; border-top: 1px solid #374151; padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; }
+    .footer-bottom-links { display: flex; gap: 1.5rem; }
+    .footer-bottom-links a { color: #6b7280; text-decoration: none; }
+    .footer-bottom-links a:hover { color: #f9fafb; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .articles-grid-3 { grid-template-columns: 1fr 1fr; }
+      .featured-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-cats { display: none; }
+      .hamburger { display: flex; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-featured { min-height: 300px; }
+      .articles-grid, .articles-grid-3 { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .hero-featured-overlay h1 { font-size: 1.35rem; }
+      .newsletter-banner { flex-direction: column; padding: 1.5rem; text-align: center; }
+      .newsletter-form { flex-direction: column; width: 100%; }
+      .newsletter-form input { width: 100%; }
+      .sub-banner { flex-direction: column; align-items: flex-start; }
+      .sticky-bottom-text { font-size: 0.78rem; }
+    }
+    @media (max-width: 480px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">The Industrial Scribe</a>
+    <ul class="nav-cats">
+      <li><a href="index.html" class="active">All</a></li>
+      <li><a href="marketplace.html">Marketplace</a></li>
+      <li><a href="index.html">AI &amp; Automation</a></li>
+      <li><a href="index.html">Operations</a></li>
+      <li><a href="index.html">Quality</a></li>
+      <li><a href="index.html">Strategy &amp; Growth</a></li>
+      <li><a href="index.html">Supply Chain</a></li>
+      <li><a href="index.html">People</a></li>
+      <li><a href="index.html">Industry Pulse</a></li>
+      <li><a href="index.html">Toolbox</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="nav-search-btn" onclick="document.querySelector('.search-overlay').classList.add('open')" aria-label="Search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="nav-sub-btn">Subscribe</a>
+      <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-menu">
+  <a href="index.html">All Articles</a>
+  <a href="marketplace.html" style="color:#1d4ed8;font-weight:600;">Marketplace</a>
+  <a href="index.html">AI &amp; Automation</a>
+  <a href="index.html">Operations</a>
+  <a href="index.html">Quality &amp; Compliance</a>
+  <a href="index.html">Strategy &amp; Growth</a>
+  <a href="index.html">Supply Chain</a>
+  <a href="index.html">People &amp; Culture</a>
+  <a href="index.html">Industry Pulse</a>
+  <a href="index.html">Toolbox</a>
+  <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" style="color:#1d4ed8;font-weight:600;">Subscribe — USD 1.99/mo</a>
+</div>
+
+<!-- ── SEARCH OVERLAY ── -->
+<div class="search-overlay" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="search-box">
+    <input type="text" placeholder="Search articles..." autofocus>
+    <p>Try: supply chain tariffs, RCA report, AI workforce, quotation framework</p>
+  </div>
+</div>
+
+<!-- ── CATEGORY PILL BAR ── -->
+<div class="cat-bar">
+  <div class="cat-bar-inner">
+    <a href="index.html" class="cat-pill cat-pill--ai"><span>🤖</span> AI &amp; Automation</a>
+    <a href="index.html" class="cat-pill cat-pill--ops"><span>⚙️</span> Operations</a>
+    <a href="index.html" class="cat-pill cat-pill--quality"><span>✅</span> Quality &amp; Compliance</a>
+    <a href="index.html" class="cat-pill cat-pill--strategy"><span>📈</span> Strategy &amp; Growth</a>
+    <a href="index.html" class="cat-pill cat-pill--supply"><span>🚛</span> Supply Chain</a>
+    <a href="index.html" class="cat-pill cat-pill--people"><span>👥</span> People &amp; Culture</a>
+    <a href="index.html" class="cat-pill cat-pill--pulse"><span>📡</span> Industry Pulse</a>
+    <a href="index.html" class="cat-pill cat-pill--toolbox"><span>🧰</span> Toolbox</a>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- ── HERO ── -->
+  <section class="hero-section">
+    <div class="hero-grid">
+
+      <!-- Featured Article (overlay style like MIT Tech Review) -->
+      <div class="hero-featured">
+        <a href="article-80-percent-problem.html">
+          <img src="img-factory-floor.jpg" alt="Factory floor with AI automation">
+          <div class="hero-featured-overlay">
+            <div class="hero-category">AI &amp; AUTOMATION</div>
+            <h1>The 80% Problem: 98% of Manufacturers Are Exploring AI. Only 20% Are Ready.</h1>
+            <p>The execution gap between AI explorers and AI operators is widening every quarter. Here's what the first-movers are already doing.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Sidebar (compact article list like Manufacturing Dive) -->
+      <aside class="hero-sidebar">
+
+        <a href="article-rca-report.html" class="hero-side-card">
+          <img src="img-ncr-desk.jpg" alt="RCA Report">
+          <div class="side-meta">
+            <div class="side-cat">QUALITY &amp; COMPLIANCE</div>
+            <div class="side-headline">How to Write an RCA Report Your Customer Won't Send Back</div>
+            <div class="side-date">Apr 5, 2026</div>
+          </div>
+        </a>
+
+        <a href="article-production-report.html" class="hero-side-card">
+          <img src="img-production-board.jpg" alt="Production Report">
+          <div class="side-meta">
+            <div class="side-cat">OPERATIONS</div>
+            <div class="side-headline">The 12 Numbers Every Production Manager Should Track Every Week</div>
+            <div class="side-date">Apr 3, 2026</div>
+          </div>
+        </a>
+
+        <a href="article-agentic-ai-is-here.html" class="hero-side-card">
+          <img src="img-cnc-operator.jpg" alt="Agentic AI">
+          <div class="side-meta">
+            <div class="side-cat">AI &amp; AUTOMATION</div>
+            <div class="side-headline">Agentic AI Is Here — And It's Already Running in Manufacturing Plants</div>
+            <div class="side-date">Apr 1, 2026</div>
+          </div>
+        </a>
+
+        <a href="article-asean-data-problem.html" class="hero-side-card">
+          <img src="img-erp-screen.jpg" alt="ASEAN Data Problem">
+          <div class="side-meta">
+            <div class="side-cat">INDUSTRY PULSE</div>
+            <div class="side-headline">The ASEAN Data Problem: Why Most SEA Factories Can't Unlock AI Yet</div>
+            <div class="side-date">Mar 28, 2026</div>
+          </div>
+        </a>
+
+      </aside>
+    </div>
+  </section>
+
+  <!-- ── NEWSLETTER BANNER (replaces empty ad slot) ── -->
+  <div class="newsletter-banner">
+    <div class="newsletter-banner-text">
+      <h3>Stay ahead of AI in manufacturing</h3>
+      <p>Join 500+ SEA manufacturing professionals. Free weekly insights, no spam.</p>
+    </div>
+    <form class="newsletter-form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed!';this.querySelector('input').value='';">
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit">Subscribe Free</button>
+    </form>
+  </div>
+
+  <!-- ── EXPLORE TOPICS ── -->
+  <section class="explore-section">
+    <h2>Explore Topics</h2>
+    <div class="explore-grid">
+      <a href="index.html" class="explore-card explore-card--ai">
+        <span class="explore-card-icon">🤖</span>
+        <h3>AI &amp; Automation</h3>
+        <p>How AI is reshaping the factory floor — trends, tools, and real use cases from SEA manufacturers.</p>
+        <div class="explore-count">12 articles</div>
+      </a>
+      <a href="index.html" class="explore-card explore-card--ops">
+        <span class="explore-card-icon">⚙️</span>
+        <h3>Operations</h3>
+        <p>Production planning, lean manufacturing, scheduling, and efficiency frameworks that work.</p>
+        <div class="explore-count">4 articles</div>
+      </a>
+      <a href="index.html" class="explore-card explore-card--quality">
+        <span class="explore-card-icon">✅</span>
+        <h3>Quality &amp; Compliance</h3>
+        <p>RCA reports, audit prep, ISO documentation, and customer complaint handling — done right.</p>
+        <div class="explore-count">3 articles</div>
+      </a>
+      <a href="index.html" class="explore-card explore-card--strategy">
+        <span class="explore-card-icon">📈</span>
+        <h3>Strategy &amp; Growth</h3>
+        <p>Pricing, BD playbooks, market positioning, and leadership insights for factory owners and directors.</p>
+        <div class="explore-count">5 articles</div>
+      </a>
+      <a href="index.html" class="explore-card explore-card--supply">
+        <span class="explore-card-icon">🚛</span>
+        <h3>Supply Chain</h3>
+        <p>Procurement, logistics, tariffs, and vendor management across ASEAN markets.</p>
+        <div class="explore-count">Coming soon</div>
+      </a>
+      <a href="index.html" class="explore-card explore-card--people">
+        <span class="explore-card-icon">👥</span>
+        <h3>People &amp; Culture</h3>
+        <p>Workforce training, hiring in manufacturing, upskilling teams for AI, and retention strategies.</p>
+        <div class="explore-count">Coming soon</div>
+      </a>
+      <a href="index.html" class="explore-card explore-card--pulse">
+        <span class="explore-card-icon">📡</span>
+        <h3>Industry Pulse</h3>
+        <p>SEA manufacturing news, regulation updates, trade policy changes, and market signals.</p>
+        <div class="explore-count">Coming soon</div>
+      </a>
+      <a href="index.html" class="explore-card explore-card--toolbox">
+        <span class="explore-card-icon">🧰</span>
+        <h3>Toolbox</h3>
+        <p>Step-by-step tutorials, prompt templates, AI tool guides, and downloadable frameworks.</p>
+        <div class="explore-count">6 articles</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── SECTION 1: GUIDES & FRAMEWORKS ── -->
+  <section class="section-block">
+    <div class="section-header">
+      <h2>Guides &amp; Frameworks</h2>
+      <div class="section-header-line"></div>
+      <a href="index.html">View all</a>
+    </div>
+
+    <!-- Featured row: 1 large + 1 small -->
+    <div class="featured-row">
+      <a href="article-quotation-framework.html" class="article-card article-card-large">
+        <img src="img-quotation-desk.jpg" alt="3-Gate Quotation Framework">
+        <div class="article-card-content">
+          <div class="article-card-cat">STRATEGY &amp; GROWTH</div>
+          <div class="article-card-headline">3-Gate Quotation Framework: Stop Quoting Jobs You Can't Win</div>
+          <div class="article-card-excerpt">A practical three-gate decision system to filter, qualify, and price manufacturing enquiries faster — without leaving margin on the table.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Apr 6 &middot; 9 min read</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+      <a href="article-sop-writing.html" class="article-card">
+        <img src="img-sop-binders.jpg" alt="SOP Writing in 30 Minutes">
+        <div class="article-card-content">
+          <div class="article-card-cat">TOOLBOX</div>
+          <div class="article-card-headline">How to Write Any Manufacturing SOP in 30 Minutes Using AI</div>
+          <div class="article-card-excerpt">The exact prompt structure and workflow that turns raw process knowledge into a complete, audit-ready SOP.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Apr 4 &middot; 7 min read</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="articles-grid">
+      <a href="article-quotation-case-study.html" class="article-card">
+        <img src="img-aerial-industrial.jpg" alt="Quotation Case Study">
+        <div class="article-card-content">
+          <div class="article-card-cat">STRATEGY &amp; GROWTH</div>
+          <div class="article-card-headline">How One Johor Manufacturer Cut Quotation Time by 70% Using AI</div>
+          <div class="article-card-excerpt">A contract machining shop in Muar eliminated the quoting bottleneck that was costing them new business every quarter.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Apr 2 &middot; 7 min read</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="article-ai-negotiation.html" class="article-card">
+        <img src="img-quotation-desk.jpg" alt="AI Supplier Negotiation">
+        <div class="article-card-content">
+          <div class="article-card-cat">STRATEGY &amp; GROWTH</div>
+          <div class="article-card-headline">How I Used AI to Structure a High-Stakes Supplier Negotiation</div>
+          <div class="article-card-excerpt">When a key raw material supplier pushed for a 15% price increase, one BD manager used AI to build a counter-proposal that held the line.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Mar 30 &middot; 6 min read</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="article-ai-presentation.html" class="article-card">
+        <img src="img-blueprint-desk.jpg" alt="AI Business Presentations">
+        <div class="article-card-content">
+          <div class="article-card-cat">STRATEGY &amp; GROWTH</div>
+          <div class="article-card-headline">AI-Powered Business Presentations: From Briefing to Boardroom in Half the Time</div>
+          <div class="article-card-excerpt">How manufacturing BD professionals are using AI to structure, write, and design client-facing decks that actually close deals.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Mar 27 &middot; 5 min read</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="article-factory-intelligence.html" class="article-card">
+        <img src="img-aerial-industrial.jpg" alt="Factory Intelligence">
+        <div class="article-card-content">
+          <div class="article-card-cat">STRATEGY &amp; GROWTH</div>
+          <div class="article-card-headline">How One BD Manager Turned 334,000 Rows Into a Growth Strategy</div>
+          <div class="article-card-excerpt">Buried inside three years of sales data was a pattern that pointed directly to the next RM 2M account.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Mar 24 &middot; 8 min read</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── SUBSCRIPTION BANNER ── -->
+  <div class="sub-banner">
+    <div class="sub-banner-text">You're reading The Industrial Scribe. USD 1.99/month — unlimited access to all articles.</div>
+    <div class="sub-banner-actions">
+      <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="primary">Subscribe — USD 1.99/mo</a>
+      <a href="article-rca-report.html" class="secondary">Read Free Articles &rarr;</a>
+    </div>
+  </div>
+
+  <!-- ── SECTION 2: AI TRENDS 2026 ── -->
+  <section class="section-block">
+    <div class="section-header">
+      <h2>AI &amp; Automation</h2>
+      <div class="section-header-line"></div>
+      <a href="index.html">View all</a>
+    </div>
+    <div class="articles-grid-3">
+
+      <a href="article-80-percent-problem.html" class="article-card">
+        <img src="img-factory-floor.jpg" alt="The 80% Problem">
+        <div class="article-card-content">
+          <div class="article-card-cat">AI &amp; AUTOMATION</div>
+          <div class="article-card-headline">The 80% Problem: 98% Are Exploring AI. Only 20% Are Ready.</div>
+          <div class="article-card-excerpt">The execution gap between AI explorers and AI operators is widening — here's what the data actually shows.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Apr 6 &middot; 5 min</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="article-agentic-ai-is-here.html" class="article-card">
+        <img src="img-cnc-operator.jpg" alt="Agentic AI">
+        <div class="article-card-content">
+          <div class="article-card-cat">AI &amp; AUTOMATION</div>
+          <div class="article-card-headline">Agentic AI Is Here — And It's Already Running in Manufacturing Plants</div>
+          <div class="article-card-excerpt">AI that doesn't just answer questions but takes multi-step actions is moving from pilot to production across SEA factories.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Apr 1 &middot; 4 min</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="article-asean-data-problem.html" class="article-card">
+        <img src="img-erp-screen.jpg" alt="ASEAN Data Problem">
+        <div class="article-card-content">
+          <div class="article-card-cat">AI &amp; AUTOMATION</div>
+          <div class="article-card-headline">The ASEAN Data Problem: Why Most SEA Factories Can't Unlock AI Yet</div>
+          <div class="article-card-excerpt">Fragmented ERP systems, paper-based records, and multi-language data are slowing AI adoption across the region.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Mar 28 &middot; 5 min</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="article-ai-middle-management.html" class="article-card">
+        <img src="img-erp-screen.jpg" alt="AI Middle Management">
+        <div class="article-card-content">
+          <div class="article-card-cat">AI &amp; AUTOMATION</div>
+          <div class="article-card-headline">AI Is Coming for Middle Management — What Manufacturing Supervisors Need to Know</div>
+          <div class="article-card-excerpt">Scheduling, reporting, and escalation decisions that used to require a supervisor are now being handled by AI.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Mar 25 &middot; 4 min</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="article-ai-regulation-sea.html" class="article-card">
+        <img src="img-factory-floor.jpg" alt="AI Regulation SEA">
+        <div class="article-card-content">
+          <div class="article-card-cat">AI &amp; AUTOMATION</div>
+          <div class="article-card-headline">AI Regulation Hits Southeast Asia: What Manufacturers Need to Know in 2026</div>
+          <div class="article-card-excerpt">Malaysia, Singapore, and Thailand are drafting AI governance frameworks — contract manufacturers exporting to Europe need to pay attention.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Mar 22 &middot; 4 min</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="article-ai-controls-desktop.html" class="article-card">
+        <img src="img-sop-binders.jpg" alt="AI Controls Desktop">
+        <div class="article-card-content">
+          <div class="article-card-cat">AI &amp; AUTOMATION</div>
+          <div class="article-card-headline">AI Now Controls Your Desktop — What Computer-Use AI Means for the Factory Office</div>
+          <div class="article-card-excerpt">The latest AI models can see your screen and operate your software — here's how manufacturing teams should think about it.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Mar 19 &middot; 3 min</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="article-20-dollar-revolution.html" class="article-card">
+        <img src="img-cnc-operator.jpg" alt="The $20 Revolution">
+        <div class="article-card-content">
+          <div class="article-card-cat">AI &amp; AUTOMATION</div>
+          <div class="article-card-headline">The $20 Revolution: How Cheap AI Is Flattening the Playing Field</div>
+          <div class="article-card-excerpt">When a world-class AI analyst costs USD 20 a month, the advantage belongs to whoever figures out how to use it first.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Mar 16 &middot; 4 min</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="article-ai-knowledge-gold-rush.html" class="article-card">
+        <img src="img-blueprint-desk.jpg" alt="AI Knowledge Gold Rush">
+        <div class="article-card-content">
+          <div class="article-card-cat">AI &amp; AUTOMATION</div>
+          <div class="article-card-headline">The AI Knowledge Gold Rush: Your Factory's Expertise Is Now a Strategic Asset</div>
+          <div class="article-card-excerpt">Companies that encode operational knowledge into AI systems before their competitors will have a compounding advantage.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Mar 13 &middot; 5 min</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="article-ai-to-outlook.html" class="article-card">
+        <img src="img-assembly-workstation.jpg" alt="AI to Outlook">
+        <div class="article-card-content">
+          <div class="article-card-cat">TOOLBOX</div>
+          <div class="article-card-headline">From AI Chat to Outlook: How to Turn Any AI Output Into a Professional Email</div>
+          <div class="article-card-excerpt">A step-by-step workflow for manufacturing professionals who use AI to draft but need polished emails sent fast.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Mar 10 &middot; 4 min</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── SECTION 3: AI FUNDAMENTALS ── -->
+  <section class="section-block">
+    <div class="section-header">
+      <h2>Toolbox &amp; Tutorials</h2>
+      <div class="section-header-line"></div>
+      <a href="index.html">View all</a>
+    </div>
+    <div class="articles-grid-3">
+
+      <a href="article-what-is-llm.html" class="article-card">
+        <img src="img-assembly-workstation.jpg" alt="What Is an LLM">
+        <div class="article-card-content">
+          <div class="article-card-cat">TOOLBOX</div>
+          <div class="article-card-headline">What Is an LLM? A Plain-English Explanation for Manufacturing Professionals</div>
+          <div class="article-card-excerpt">Large Language Models explained without the jargon — what they actually are, how they work, and why they matter on the factory floor.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Mar 8 &middot; 4 min</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="article-what-are-tokens.html" class="article-card">
+        <img src="img-erp-screen.jpg" alt="What Are Tokens">
+        <div class="article-card-content">
+          <div class="article-card-cat">TOOLBOX</div>
+          <div class="article-card-headline">What Are Tokens? Understanding the Currency of AI Language Models</div>
+          <div class="article-card-excerpt">Tokens control how much AI can read and write in one go — understanding them helps you get better output and avoid wasted prompts.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Mar 5 &middot; 4 min</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="article-what-is-cli.html" class="article-card">
+        <img src="img-sop-binders.jpg" alt="What Is a CLI">
+        <div class="article-card-content">
+          <div class="article-card-cat">TOOLBOX</div>
+          <div class="article-card-headline">What Is a CLI? Why the Command Line Still Matters in the Age of AI</div>
+          <div class="article-card-excerpt">The command line interface isn't just for developers — manufacturing professionals using AI tools will encounter it.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Mar 2 &middot; 3 min</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="article-what-is-mcp.html" class="article-card">
+        <img src="img-erp-screen.jpg" alt="What Is MCP">
+        <div class="article-card-content">
+          <div class="article-card-cat">TOOLBOX</div>
+          <div class="article-card-headline">What Is MCP? The Protocol That Lets AI Connect to Your Business Systems</div>
+          <div class="article-card-excerpt">Model Context Protocol is how AI agents talk to external software — ERP, spreadsheets, databases — and why it's becoming the plumbing of factory AI.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Feb 28 &middot; 5 min</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="article-what-are-skills.html" class="article-card">
+        <img src="img-assembly-workstation.jpg" alt="What Are Skills">
+        <div class="article-card-content">
+          <div class="article-card-cat">TOOLBOX</div>
+          <div class="article-card-headline">What Are Skills? How AI Agents Learn to Do Specific Jobs</div>
+          <div class="article-card-excerpt">AI skills are reusable instruction sets that teach agents how to handle specific tasks — think of them as SOPs for your AI workforce.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Feb 25 &middot; 3 min</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="article-playbook.html" class="article-card">
+        <img src="img-blueprint-desk.jpg" alt="AI Playbook">
+        <div class="article-card-content">
+          <div class="article-card-cat">TOOLBOX</div>
+          <div class="article-card-headline">The Manufacturing AI Playbook: Where to Start, What to Skip</div>
+          <div class="article-card-excerpt">A no-nonsense guide to picking your first AI use case in manufacturing — based on what's actually working in SEA factories today.</div>
+          <div class="article-card-footer">
+            <span class="article-card-meta">Feb 22 &middot; 6 min</span>
+            <span class="article-card-read">Read &rarr;</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+</div><!-- /page-wrap -->
+
+<!-- ── STICKY BOTTOM SUBSCRIBE BAR ── -->
+<div class="sticky-bottom" id="stickyBar">
+  <div class="sticky-bottom-inner">
+    <div class="sticky-bottom-text"><strong>The Industrial Scribe</strong> — USD 1.99/month for unlimited access to all articles.</div>
+    <div class="sticky-bottom-actions">
+      <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="sticky-bottom-btn">Subscribe Now</a>
+      <button class="sticky-bottom-close" onclick="document.getElementById('stickyBar').style.display='none'" aria-label="Close">&times;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>The Industrial Scribe</h4>
+      <p>AI automation intelligence for SEA manufacturing professionals. Production Planners, QC Executives, BD Managers, Operations Leads.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="index.html">AI &amp; Automation</a></li>
+        <li><a href="index.html">Operations</a></li>
+        <li><a href="index.html">Quality &amp; Compliance</a></li>
+        <li><a href="index.html">Strategy &amp; Growth</a></li>
+        <li><a href="index.html">Supply Chain</a></li>
+        <li><a href="index.html">People &amp; Culture</a></li>
+        <li><a href="index.html">Industry Pulse</a></li>
+        <li><a href="index.html">Toolbox</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="marketplace.html">Marketplace</a></li>
+        <li><a href="marketplace.html">PDF Guides</a></li>
+        <li><a href="marketplace.html">Frameworks</a></li>
+        <li><a href="marketplace.html">Case Studies</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Stay Updated</h4>
+      <p>Get weekly AI insights for manufacturing — straight to your inbox.</p>
+      <div class="footer-newsletter">
+        <input type="email" placeholder="Your email address">
+        <button onclick="this.textContent='Subscribed!';this.previousElementSibling.value='';">Subscribe Free</button>
+      </div>
+      <ul style="margin-top:1rem;">
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">USD 1.99/month — All Access</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 The Industrial Scribe. All rights reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="index.html">Privacy</a>
+      <a href="index.html">Terms</a>
+      <a href="mailto:hello@theindustrialscribe.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Show sticky bar after scrolling past newsletter banner
+  const stickyBar = document.getElementById('stickyBar');
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 800 && window.scrollY > lastScroll) {
+      stickyBar.classList.add('visible');
+    } else if (window.scrollY < 400) {
+      stickyBar.classList.remove('visible');
+    }
+    lastScroll = window.scrollY;
+  });
+
+  // Close search with Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelector('.search-overlay').classList.remove('open');
+    }
+  });
+</script>
+
+</body>
+</html>

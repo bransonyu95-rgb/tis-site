@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 12 Numbers Every Production Manager Should Track Every Week — The Industrial Scribe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #111827; line-height: 1.7; }
+
+    nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e7eb; z-index: 100; padding: 0 5%; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-family: Georgia, serif; font-size: 1.3rem; font-weight: 700; color: #111827; text-decoration: none; }
+    .nav-cats { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-cats a { font-size: 0.85rem; font-weight: 500; color: #6b7280; text-decoration: none; letter-spacing: 0.02em; }
+    .nav-cats a:hover { color: #111827; }
+    .nav-sub-btn { font-size: 0.8rem; font-weight: 600; color: #1d4ed8; border: 1.5px solid #1d4ed8; padding: 0.4rem 0.9rem; border-radius: 4px; text-decoration: none; white-space: nowrap; }
+    .nav-sub-btn:hover { background: #1d4ed8; color: #fff; }
+
+    .article-wrap { max-width: 780px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
+    .article-category { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1d4ed8; margin-bottom: 0.75rem; }
+    .article-headline { font-family: Georgia, serif; font-size: 2.2rem; line-height: 1.25; color: #111827; margin-bottom: 1rem; font-weight: 700; }
+    .article-meta { font-size: 0.85rem; color: #6b7280; margin-bottom: 2rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem; }
+    .article-image-placeholder { width: 100%; height: 400px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.9rem; margin-bottom: 2rem; border-radius: 4px; }
+    .article-body h2 { font-family: Georgia, serif; font-size: 1.5rem; margin: 2rem 0 0.75rem; color: #111827; }
+    .article-body h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #1f2937; }
+    .article-body p { margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.75; }
+    .article-body ul, .article-body ol { margin: 0.75rem 0 1.2rem 1.5rem; }
+    .article-body li { margin-bottom: 0.4rem; line-height: 1.7; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .article-body th { background: #1f2937; color: white; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.8rem; }
+    .article-body td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
+    .article-body tr:nth-child(even) td { background: #f9fafb; }
+    .prompt-block { background: #1e293b; color: #e2e8f0; padding: 1.25rem 1.5rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; line-height: 1.6; margin: 1.5rem 0; white-space: pre-wrap; word-break: break-word; }
+    .prompt-label { font-size: 0.7rem; font-weight: 700; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .inline-sub { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 1rem 1.25rem; margin: 2rem 0; border-radius: 0 6px 6px 0; }
+    .inline-sub p { font-size: 0.9rem; color: #1e3a5f; margin-bottom: 0.5rem; }
+    .inline-sub a { display: inline-block; background: #1d4ed8; color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-top: 0.25rem; }
+    .product-cta-box { background: #f9fafb; border: 1px solid #e5e7eb; padding: 1.25rem 1.5rem; border-radius: 6px; margin: 2.5rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .product-cta-text strong { display: block; font-size: 1rem; color: #111827; margin-bottom: 0.25rem; }
+    .product-cta-text span { font-size: 0.85rem; color: #6b7280; }
+    .product-cta-box a { background: #111827; color: white; padding: 0.5rem 1.25rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .download-btn { display: inline-block; background: #1d4ed8; color: white; padding: 0.75rem 1.5rem; border-radius: 4px; font-size: 0.95rem; font-weight: 600; text-decoration: none; margin: 1rem 0 2rem; }
+    .data-point-box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+    .data-point-num { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #1d4ed8; margin-bottom: 0.4rem; }
+    .data-point-box h4 { font-size: 1rem; font-weight: 700; color: #111827; margin-bottom: 0.5rem; }
+    .data-point-box p { font-size: 0.9rem; color: #374151; margin-bottom: 0.5rem; }
+    .data-point-box .note { font-size: 0.85rem; color: #6b7280; font-style: italic; }
+
+    .related-section { border-top: 1px solid #e5e7eb; padding-top: 2rem; margin-top: 3rem; }
+    .related-section h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; margin-bottom: 1.25rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .related-card { border: 1px solid #e5e7eb; border-radius: 6px; overflow: hidden; text-decoration: none; color: inherit; }
+    .related-card:hover { border-color: #1d4ed8; }
+    .related-img { height: 120px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.75rem; }
+    .related-content { padding: 0.75rem; }
+    .related-cat { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #1d4ed8; margin-bottom: 0.3rem; }
+    .related-title { font-family: Georgia, serif; font-size: 0.9rem; line-height: 1.35; color: #111827; font-weight: 600; }
+
+    footer { background: #111827; color: #9ca3af; padding: 3rem 5% 2rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-bottom: 2rem; }
+    .footer-col h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #f9fafb; margin-bottom: 0.75rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.4rem; font-size: 0.85rem; }
+    .footer-col a { color: #9ca3af; text-decoration: none; }
+    .footer-col a:hover { color: #f9fafb; }
+    .footer-bottom { border-top: 1px solid #374151; padding-top: 1.5rem; text-align: center; font-size: 0.8rem; }
+
+    @media (max-width: 768px) {
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .article-headline { font-size: 1.6rem; }
+      .product-cta-box { flex-direction: column; }
+      .nav-cats { display: none; }
+    }
+  </style>
+  <link rel="stylesheet" href="paywall.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">The Industrial Scribe</a>
+    <ul class="nav-cats">
+      <li><a href="index.html">All</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Production Planning</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Quality &amp; Compliance</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Business Development</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Automation</a></li>
+    </ul>
+    <a href="index.html#subscribe" class="nav-sub-btn">Subscribe USD 1.99/mo</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <div class="article-category">Production Planning</div>
+  <h1 class="article-headline">The 12 Numbers Every Production Manager Should Track Every Week</h1>
+  <div class="article-meta">The Industrial Scribe | Production Planning &nbsp;·&nbsp; 6 min read &nbsp;·&nbsp; March 2026</div>
+
+  <img src="img-production-board.jpg" alt="Article Image" style="width:100%;height:400px;object-fit:cover;border-radius:4px;margin-bottom:2rem;">
+
+  <div class="article-body">
+
+    <p>Every Monday morning, someone in your factory has to produce a weekly production report. Maybe that's you. You open a blank Excel sheet. You start pulling numbers from ERP. You add a few rows about downtime. You remember halfway through that last week had a material shortage — should that go in? What about the CAPA that's overdue? Or the job that's been sitting in WIP for 11 days?</p>
+
+    <p>By the time you're done, it's two hours later and you're still not sure if the report says what it should. The manager asks a question. You don't have the answer. You go back to pull more data.</p>
+
+    <p>The problem is not the data. The problem is not knowing which 12 data points actually matter — and tracking them every single week, in the same format. This checklist ends that guessing. It gives you the exact framework used in high-performing contract manufacturing operations.</p>
+
+    <div class="inline-sub">
+      <p><strong>This article is part of The Industrial Scribe.</strong> Subscribe for USD 1.99/month for unlimited access to all articles, templates &amp; community.</p>
+      <a href="index.html#subscribe">Subscribe Now</a>
+    </div>
+
+    <p>Before diving in: use this checklist every Friday afternoon before you leave. Friday data is cleaner than Monday recollection. Fill it out — whether by hand, in Excel, or as the basis for an AI prompt (covered at the end). Don't aim for perfection. If a data point is missing, note why. Gaps tell a story too.</p>
+
+    <h2>Section 1 — Production Performance</h2>
+
+    <p>These three data points tell you how much you produced, and how efficiently you ran. They are the numbers your customer cares about most.</p>
+
+    <div class="data-point-box">
+      <div class="data-point-num">Data Point 1</div>
+      <h4>Output vs Target</h4>
+      <p>Planned output vs actual output vs variance (+ or −). If negative variance: one-sentence reason.</p>
+      <p class="note">Example: A CNC subcontractor running 8 machines planned 3,200 turned parts per week. Actual output: 2,850. Variance: −350 pcs (−10.9%). Reason: M/C 04 offline 14 hours, spindle bearing failure. If you shipped less than planned, you need to explain it before the customer calls and asks.</p>
+    </div>
+
+    <div class="data-point-box">
+      <div class="data-point-num">Data Point 2</div>
+      <h4>OEE — Overall Equipment Effectiveness</h4>
+      <p>Availability (actual run time ÷ planned run time) × Performance (actual output rate ÷ theoretical max) × Quality (good parts ÷ total parts produced) = OEE%. World-class benchmark: 85%.</p>
+      <p class="note">OEE tells you whether your production loss is a machine problem, a speed problem, or a quality problem. Each has a different fix. If you don't track OEE formally, start with Availability only — it's the most impactful single metric for most SEA SMEs.</p>
+    </div>
+
+    <div class="data-point-box">
+      <div class="data-point-num">Data Point 3</div>
+      <h4>Downtime — Planned vs Unplanned</h4>
+      <p>Total planned downtime (PM, setup, scheduled maintenance) vs total unplanned downtime, top cause, downtime report raised yes/no.</p>
+      <p class="note">Unplanned downtime above 5% of planned production time is a problem signal. Track it now — before it becomes a customer delivery issue.</p>
+    </div>
+
+    <h2>Section 2 — Quality Metrics</h2>
+
+    <p>How much did you make right the first time? What's open on quality? These three numbers tell you your quality exposure for the week.</p>
+
+    <div class="data-point-box">
+      <div class="data-point-num">Data Point 4</div>
+      <h4>Rejection Rate</h4>
+      <p>Total parts / jobs completed, total rejected (internal), internal rejection rate %, total customer returns or complaints, external rejection rate (PPM or %).</p>
+      <p class="note">Target: Customer complaints = 0 per week. Internal rejection rate below your defined target. Track both separately — internal rejections are caught by your system; external rejections mean your system failed.</p>
+    </div>
+
+    <div class="data-point-box">
+      <div class="data-point-num">Data Point 5</div>
+      <h4>NCR Count and Status</h4>
+      <p>New NCRs opened, NCRs closed, NCRs currently open (total), NCRs overdue (past target close date), list any overdue NCR by number and reason.</p>
+      <p class="note">An open NCR is an open risk. NCRs that age past 14 days almost always cause customer escalations. Flag overdue ones in every weekly report.</p>
+    </div>
+
+    <div class="data-point-box">
+      <div class="data-point-num">Data Point 6</div>
+      <h4>CAPA Status</h4>
+      <p>CAPAs currently open, CAPAs due for closure this week, CAPAs completed and verified effective, any CAPA where effectiveness is not yet verified.</p>
+      <p class="note">A corrective action that's "implemented but not verified" is still open. Mark it open until you have evidence it worked.</p>
+    </div>
+
+    <h2>Section 3 — Inventory &amp; WIP</h2>
+
+    <p>What's in the system, and is anything stuck? WIP that doesn't move is tied-up cash, blocked capacity, and a delivery risk.</p>
+
+    <div class="data-point-box">
+      <div class="data-point-num">Data Point 7</div>
+      <h4>WIP Carry-Forward</h4>
+      <p>Jobs in progress at end of week. Jobs that were in progress last week AND still in progress this week (aging WIP). Any job older than 7 days in WIP and reason.</p>
+      <p class="note">Aging WIP over 10 days usually signals a hidden bottleneck. It's also tied-up capital your customer may have already paid for.</p>
+    </div>
+
+    <div class="data-point-box">
+      <div class="data-point-num">Data Point 8</div>
+      <h4>Material Shortages</h4>
+      <p>Jobs on hold due to material unavailability, list of affected jobs and material awaited, earliest expected material arrival, customer commitments at risk.</p>
+      <p class="note">If you're constantly filling in this section, the problem is your PO lead time buffer — not the supplier. Look at the system, not the symptom.</p>
+    </div>
+
+    <div class="data-point-box">
+      <div class="data-point-num">Data Point 9</div>
+      <h4>Aging Jobs</h4>
+      <p>Jobs on the floor longer than your threshold without progress update. Reason (machine queue, awaiting inspection, hold from QC, customer change). Action to be taken by whom and by when.</p>
+    </div>
+
+    <h2>Section 4 — People &amp; Capacity</h2>
+
+    <p>Do you have the people and capacity to hit next week's plan? These three data points surface people-related risks before they become delivery problems.</p>
+
+    <div class="data-point-box">
+      <div class="data-point-num">Data Point 10</div>
+      <h4>Headcount vs Required</h4>
+      <p>Required headcount for this week's production vs actual available headcount (excluding planned leave, MC). Variance. Any critical skill gaps (e.g. only one operator certified for M/C 09).</p>
+    </div>
+
+    <div class="data-point-box">
+      <div class="data-point-num">Data Point 11</div>
+      <h4>Overtime This Week</h4>
+      <p>Total OT hours worked, approved vs actual, departments or machines that drove OT, whether OT is covering a permanent capacity gap or a one-off spike.</p>
+      <p class="note">Recurring OT on the same machine or department every week is a capacity signal, not a workload spike. Fix the root cause, not the symptom.</p>
+    </div>
+
+    <div class="data-point-box">
+      <div class="data-point-num">Data Point 12</div>
+      <h4>Upcoming Leave</h4>
+      <p>Planned leave next week by department or machine criticality. Any critical operator on leave next week. Backup plan confirmed yes/no/needed.</p>
+    </div>
+
+    <h2>Section 5 — Forward Look</h2>
+
+    <p>What's coming next week that needs to be managed now? This section surfaces delivery risks before they land on your customer's desk.</p>
+
+    <p>Cover: top 3 delivery commitments at risk next week, planned maintenance or tooling changes that will impact capacity, new jobs starting that require setup or FAI, customer deliveries confirmed, any customer requesting updates or expedite, any FAI due, tooling due for replacement, scheduled PM, and any machine at risk of unplanned downtime due to known wear or intermittent faults.</p>
+
+    <h2>The AI Prompt — Auto-Generate Your Narrative Summary</h2>
+
+    <p>Once your checklist is filled in, copy your raw data and paste it into this prompt. The AI will generate a professional 150–200 word executive summary for your report in 30 seconds. You still review it. You still own the numbers. But you stop staring at a blank text box every Monday morning.</p>
+
+    <div class="prompt-label">AI Prompt — Weekly Production Narrative</div>
+    <div class="prompt-block">You are a production reporting specialist for a contract manufacturing company. Write a clear, professional weekly production summary based on the data below.
+
+Format:
+- 3 paragraphs: Performance | Risks &amp; Issues | Next Week Outlook
+- Each paragraph: max 4 sentences
+- Tone: direct and factual. No corporate fluff.
+- Highlight any metric that is below target or overdue
+- Do not add data that is not in my input
+
+Data:
+[PASTE YOUR FILLED CHECKLIST DATA HERE]</div>
+
+    <p>Example output based on a real CNC operation: <em>"This week's output reached 2,850 pcs against a target of 3,200 — a shortfall of 10.9% driven by 14 hours of unplanned downtime on M/C 04 (spindle bearing failure). OEE dropped to 71%. Rejection rate held at 1.2%, within acceptable range, though 2 NCRs remain open past their target closure date and require immediate action. Material shortage on 6082-T6 aluminium bar is holding 3 jobs; earliest arrival is confirmed for Tuesday. Next week carries two time-sensitive commitments. Capacity is tight — one senior CNC operator is on approved leave from Wednesday. Overtime authorisation for Thursday and Friday is recommended."</em></p>
+
+    <p>Use this checklist every Friday. Fill it in. Use the AI prompt to generate your narrative. Next week will be easier. By week four, this takes less than 30 minutes — and your reports will be better than most of what your management has seen before.</p>
+
+    <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="download-btn">→ Download the full template and checklist for USD 9.99</a>
+
+    <div class="product-cta-box">
+      <div class="product-cta-text">
+        <strong>Weekly Production Report Checklist — USD 9.99</strong>
+        <span>Full 12-point checklist, AI narrative prompt, and Excel template. Instant download.</span>
+      </div>
+      <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Get This PDF →</a>
+    </div>
+
+  </div><!-- /article-body -->
+
+  <!-- Related Articles -->
+  <div class="related-section">
+    <h3>Related Articles</h3>
+    <div class="related-grid">
+
+      <a href="article-rca-report.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Quality &amp; Compliance</div>
+          <div class="related-title">How to Write an RCA Report Your Customer Won't Send Back</div>
+        </div>
+      </a>
+
+      <a href="article-sop-writing.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Automation</div>
+          <div class="related-title">How to Write Any Manufacturing SOP in 30 Minutes Using AI</div>
+        </div>
+      </a>
+
+      <a href="article-quotation-framework.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Business Development</div>
+          <div class="related-title">The 3-Gate Framework: How to Price Manufacturing Jobs Without Leaving Money on the Table</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div><!-- /article-wrap -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>The Industrial Scribe</h4>
+      <p style="font-size: 0.85rem; line-height: 1.6;">AI automation intelligence for SEA manufacturing professionals. Production Planners, QC Executives, BD Managers, Operations Leads.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="index.html">All Articles</a></li>
+        <li><a href="article-production-report.html">Production Planning</a></li>
+        <li><a href="article-rca-report.html">Quality &amp; Compliance</a></li>
+        <li><a href="article-quotation-framework.html">Business Development</a></li>
+        <li><a href="article-sop-writing.html">Automation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Articles</h4>
+      <ul>
+        <li><a href="article-rca-report.html">RCA Report Guide</a></li>
+        <li><a href="article-production-report.html">Production Report Checklist</a></li>
+        <li><a href="article-quotation-framework.html">3-Gate Quotation Framework</a></li>
+        <li><a href="article-sop-writing.html">SOP Writing with AI</a></li>
+        <li><a href="article-quotation-case-study.html">Quotation Case Study</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Subscribe</h4>
+      <ul>
+        <li><a href="index.html#subscribe">USD 1.99/month — All Access</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Instagram</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Download Free Playbook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 The Industrial Scribe · All rights reserved</div>
+</footer>
+
+<script src="paywall.js"></script>
+</body>
+</html>

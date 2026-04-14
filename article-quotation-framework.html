@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 3-Gate Framework: How to Price Manufacturing Jobs Without Leaving Money on the Table — The Industrial Scribe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #111827; line-height: 1.7; }
+
+    nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e7eb; z-index: 100; padding: 0 5%; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-family: Georgia, serif; font-size: 1.3rem; font-weight: 700; color: #111827; text-decoration: none; }
+    .nav-cats { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-cats a { font-size: 0.85rem; font-weight: 500; color: #6b7280; text-decoration: none; letter-spacing: 0.02em; }
+    .nav-cats a:hover { color: #111827; }
+    .nav-sub-btn { font-size: 0.8rem; font-weight: 600; color: #1d4ed8; border: 1.5px solid #1d4ed8; padding: 0.4rem 0.9rem; border-radius: 4px; text-decoration: none; white-space: nowrap; }
+    .nav-sub-btn:hover { background: #1d4ed8; color: #fff; }
+
+    .article-wrap { max-width: 780px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
+    .article-category { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1d4ed8; margin-bottom: 0.75rem; }
+    .article-headline { font-family: Georgia, serif; font-size: 2.2rem; line-height: 1.25; color: #111827; margin-bottom: 1rem; font-weight: 700; }
+    .article-meta { font-size: 0.85rem; color: #6b7280; margin-bottom: 2rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem; }
+    .article-image-placeholder { width: 100%; height: 400px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.9rem; margin-bottom: 2rem; border-radius: 4px; }
+    .article-body h2 { font-family: Georgia, serif; font-size: 1.5rem; margin: 2rem 0 0.75rem; color: #111827; }
+    .article-body h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #1f2937; }
+    .article-body p { margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.75; }
+    .article-body ul, .article-body ol { margin: 0.75rem 0 1.2rem 1.5rem; }
+    .article-body li { margin-bottom: 0.4rem; line-height: 1.7; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .article-body th { background: #1f2937; color: white; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.8rem; }
+    .article-body td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
+    .article-body tr:nth-child(even) td { background: #f9fafb; }
+    .prompt-block { background: #1e293b; color: #e2e8f0; padding: 1.25rem 1.5rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; line-height: 1.6; margin: 1.5rem 0; white-space: pre-wrap; word-break: break-word; }
+    .prompt-label { font-size: 0.7rem; font-weight: 700; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .inline-sub { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 1rem 1.25rem; margin: 2rem 0; border-radius: 0 6px 6px 0; }
+    .inline-sub p { font-size: 0.9rem; color: #1e3a5f; margin-bottom: 0.5rem; }
+    .inline-sub a { display: inline-block; background: #1d4ed8; color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-top: 0.25rem; }
+    .product-cta-box { background: #f9fafb; border: 1px solid #e5e7eb; padding: 1.25rem 1.5rem; border-radius: 6px; margin: 2.5rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .product-cta-text strong { display: block; font-size: 1rem; color: #111827; margin-bottom: 0.25rem; }
+    .product-cta-text span { font-size: 0.85rem; color: #6b7280; }
+    .product-cta-box a { background: #111827; color: white; padding: 0.5rem 1.25rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .download-btn { display: inline-block; background: #1d4ed8; color: white; padding: 0.75rem 1.5rem; border-radius: 4px; font-size: 0.95rem; font-weight: 600; text-decoration: none; margin: 1rem 0 2rem; }
+    .gate-box { background: #f9fafb; border-left: 4px solid #1d4ed8; padding: 1.25rem 1.5rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .gate-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #1d4ed8; margin-bottom: 0.4rem; }
+    .gate-box h4 { font-size: 1rem; font-weight: 700; color: #111827; margin-bottom: 0.5rem; }
+    .formula-block { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 4px; padding: 1rem 1.25rem; margin: 1rem 0; font-family: monospace; font-size: 0.9rem; color: #1e293b; line-height: 1.8; }
+
+    .related-section { border-top: 1px solid #e5e7eb; padding-top: 2rem; margin-top: 3rem; }
+    .related-section h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; margin-bottom: 1.25rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .related-card { border: 1px solid #e5e7eb; border-radius: 6px; overflow: hidden; text-decoration: none; color: inherit; }
+    .related-card:hover { border-color: #1d4ed8; }
+    .related-img { height: 120px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.75rem; }
+    .related-content { padding: 0.75rem; }
+    .related-cat { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #1d4ed8; margin-bottom: 0.3rem; }
+    .related-title { font-family: Georgia, serif; font-size: 0.9rem; line-height: 1.35; color: #111827; font-weight: 600; }
+
+    footer { background: #111827; color: #9ca3af; padding: 3rem 5% 2rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-bottom: 2rem; }
+    .footer-col h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #f9fafb; margin-bottom: 0.75rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.4rem; font-size: 0.85rem; }
+    .footer-col a { color: #9ca3af; text-decoration: none; }
+    .footer-col a:hover { color: #f9fafb; }
+    .footer-bottom { border-top: 1px solid #374151; padding-top: 1.5rem; text-align: center; font-size: 0.8rem; }
+
+    @media (max-width: 768px) {
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .article-headline { font-size: 1.6rem; }
+      .product-cta-box { flex-direction: column; }
+      .nav-cats { display: none; }
+    }
+  </style>
+  <link rel="stylesheet" href="paywall.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">The Industrial Scribe</a>
+    <ul class="nav-cats">
+      <li><a href="index.html">All</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Production Planning</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Quality &amp; Compliance</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Business Development</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Automation</a></li>
+    </ul>
+    <a href="index.html#subscribe" class="nav-sub-btn">Subscribe USD 1.99/mo</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <div class="article-category">Business Development</div>
+  <h1 class="article-headline">The 3-Gate Framework: How to Price Manufacturing Jobs Without Leaving Money on the Table</h1>
+  <div class="article-meta">The Industrial Scribe | Business Development &nbsp;·&nbsp; 9 min read &nbsp;·&nbsp; March 2026</div>
+
+  <img src="img-quotation-desk.jpg" alt="Article Image" style="width:100%;height:400px;object-fit:cover;border-radius:4px;margin-bottom:2rem;">
+
+  <div class="article-body">
+
+    <p>You've been quoting manufacturing jobs for years. You know how to calculate material cost. You know your machine hourly rate. You know your overheads. And yet, you still underquote jobs. You win the order, then realise the margin isn't there.</p>
+
+    <p>Or you overquote — and lose a job you could have won with better intelligence on what the customer was willing to pay. Sometimes you quote a new customer the same rate as your best account. Sometimes you give a volume discount before checking if the volume is actually guaranteed. And every quote is built from scratch, which means every quote reflects whoever happened to be doing the calculation that day.</p>
+
+    <p>The problem isn't that you don't know your costs. The problem is that costing and pricing are two different things — and most manufacturers conflate them. This framework separates them.</p>
+
+    <div class="inline-sub">
+      <p><strong>This article is part of The Industrial Scribe.</strong> Subscribe for USD 1.99/month for unlimited access to all articles, templates &amp; community.</p>
+      <a href="index.html#subscribe">Subscribe Now</a>
+    </div>
+
+    <p>The 3-Gate Framework gives you a repeatable three-gate process that ensures you cover your costs, understand your market position, and capture the full value of your relationship — without guessing at any stage. Most manufacturers quote like this: Cost + fixed markup = price. That's Gate 1 only. You're leaving Gates 2 and 3 empty.</p>
+
+    <p>The framework works like a decision filter. Your quote passes through each gate before it becomes a number. Each gate asks a different question. Gate 1 is your floor — you never go below it. Gate 2 tells you where you sit in the market. Gate 3 tells you how much you can adjust, up or down, based on the relationship.</p>
+
+    <h2>Gate 1 — Cost Floor</h2>
+
+    <p>Gate 1 is the minimum price at which you can do this job without losing money. It is non-negotiable. If your price lands below Gate 1, you do not quote. You either re-engineer the job or you decline it.</p>
+
+    <h3>Material Cost</h3>
+    <div class="formula-block">Raw material weight (kg) × Material unit cost (RM/kg) × Scrap factor (1.05–1.15 typical)
+= Material cost per piece</div>
+    <p>For CNC turned/milled parts, use a 5–8% scrap factor for standard aluminium and mild steel. Increase to 10–15% for titanium, Inconel, or any difficult-to-machine alloy.</p>
+
+    <h3>Machining Cost</h3>
+    <div class="formula-block">Cycle time (minutes) ÷ 60 × Machine hourly rate (RM/hr)
+= Machining cost per piece</div>
+    <p>Your machine hourly rate must include depreciation on the machine, tooling consumption (calculated per job, not monthly average), electricity, and operator cost. Most Malaysian CNC SMEs run at RM 35–80/hr depending on machine type and age. VMC/HMC rates are higher than turning centres. If you haven't calculated your actual rate in the last 12 months — recalculate. Costs have moved.</p>
+
+    <h3>Overhead Allocation</h3>
+    <div class="formula-block">(Monthly overhead ÷ Monthly machine hours) × Job cycle time in hours
+= Overhead per piece</div>
+    <p>Overhead includes rent, indirect labour, utilities (non-production), admin, and insurance. Divide by total production hours per month to get your overhead rate per machine-hour.</p>
+
+    <h3>Gate 1 Floor Price</h3>
+    <div class="formula-block">Material cost per piece
++ Machining cost per piece
++ Overhead per piece
++ Minimum acceptable profit margin (e.g. 15%)
+= Gate 1 Floor Price (RM per piece)</div>
+
+    <p><strong>Gate 1 is your walk-away price. Write it down before you do anything else.</strong></p>
+
+    <h2>Gate 2 — Market Positioning</h2>
+
+    <p>Gate 2 is intelligence. It doesn't change your costs — but it tells you how much room you have to move. After Gate 2, you should know one of three things:</p>
+
+    <ul>
+      <li><strong>Your Gate 1 is below market</strong> → You have pricing power. You can move up.</li>
+      <li><strong>Your Gate 1 is at market</strong> → You're competitive. Focus on value and speed.</li>
+      <li><strong>Your Gate 1 is above market</strong> → You have a cost problem, not a pricing problem. Fix Gate 1 before submitting the quote.</li>
+    </ul>
+
+    <h3>How to Find Market Position</h3>
+    <p><strong>Method 1: RFQ history.</strong> Review the last 12 months of RFQs where you received feedback on price. Build a simple table: part type, quantity bracket, your price, customer's response (won/lost/too high/comparable). Patterns will emerge.</p>
+
+    <p><strong>Method 2: Industry benchmarks.</strong> For standard CNC turned parts (aluminium, brass, mild steel), Malaysian contract manufacturers generally land in these ranges: simple turned parts ≥500 pcs/month at RM 2–8/pc depending on complexity, milled components at RM 15–60/pc, multi-axis complex parts at RM 80–300+ per piece. These are reference ranges, not targets.</p>
+
+    <p><strong>Method 3: Ask the customer directly.</strong> BD managers underuse this. At RFQ stage, it is entirely professional to ask: "Do you have a target price you're working toward?" Many customers will tell you.</p>
+
+    <p>Do not submit a quote where Gate 1 exceeds the market rate without understanding why. Either your costs are higher than competitors (investigate), or this customer has unrealistic expectations (educate or walk away).</p>
+
+    <h2>Gate 3 — Relationship Premium</h2>
+
+    <p>Gate 3 is where experienced BD managers earn their money. Two customers asking for the same part at the same volume do not always deserve the same price — because they don't deliver the same value to your business.</p>
+
+    <h3>Factors That Justify a Premium (+5% to +20%)</h3>
+    <ul>
+      <li>Customer is growing — this order is the door to larger volumes next year</li>
+      <li>Customer is in a high-value sector (semiconductor, medical, aerospace) — a reference win here unlocks other doors</li>
+      <li>Customer pays on time, consistently, without chasing</li>
+      <li>Customer provides long-term rolling POs or blanket orders</li>
+      <li>Customer is new and you want to establish the relationship at a sustainable price</li>
+    </ul>
+
+    <h3>Factors That Justify a Discount (−5% to −15%)</h3>
+    <ul>
+      <li>Customer is a long-standing account with guaranteed high-volume orders</li>
+      <li>Customer provides schedule visibility 3–6 months ahead</li>
+      <li>Customer takes multiple product lines — bundled relationship value</li>
+      <li>Strategic account where you are the sole source</li>
+      <li>Customer is stretching budget on a new project and you want to invest in the relationship</li>
+    </ul>
+
+    <p><strong>Never give a Gate 3 discount based on pressure alone.</strong> A customer who calls and says "your price is too high — give me 10% off" is using pressure, not value. Ask what changed. If nothing changed, there is no Gate 3 basis for a discount. Never go below Gate 1 floor regardless of the Gate 3 calculation.</p>
+
+    <h2>Worked Example — Penang Semiconductor Customer</h2>
+
+    <p>Job: CNC turned aluminium (6061-T6) bush, 500 pcs/month, 12-month PO. Customer: established semiconductor equipment manufacturer in Penang. Drawing: Ø38mm × 62mm, ±0.02mm OD tolerance, G2.5 dynamic balance required, anodised (outsourced).</p>
+
+    <table>
+      <thead>
+        <tr><th>Cost Element</th><th>Calculation</th><th>Amount (RM/pc)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Material (6061-T6 bar stock)</td><td>0.18 kg/pc × RM 9.50/kg × 1.06 scrap factor</td><td>RM 1.81</td></tr>
+        <tr><td>Machining (CNC turning, 8-min cycle)</td><td>8 min ÷ 60 × RM 55/hr machine rate</td><td>RM 7.33</td></tr>
+        <tr><td>Anodising (outsourced)</td><td>Market rate, Type II</td><td>RM 2.80</td></tr>
+        <tr><td>Overhead allocation</td><td>8 min ÷ 60 × RM 22/hr overhead rate</td><td>RM 2.93</td></tr>
+        <tr><td><strong>Total Cost</strong></td><td></td><td><strong>RM 14.87</strong></td></tr>
+        <tr><td><strong>Gate 1 Floor (cost + 15% margin)</strong></td><td>RM 14.87 × 1.15</td><td><strong>RM 17.10</strong></td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>Gate 2:</strong> RFQ history for comparable turned aluminium parts at 500 pcs/month: RM 16–22/pc range. Gate 1 of RM 17.10 is in the lower third of the market. Pricing power exists. Market anchor: RM 19.50/pc.</p>
+
+    <p><strong>Gate 3:</strong> This customer has been buying for 18 months, always pays on 30 days, and is expanding production — this PO is likely to grow to 800–1,000 pcs/month in 6 months. Reference win in semiconductor sector is valuable for other bids. Decision: apply +8% relationship premium.</p>
+
+    <p>RM 19.50 × 1.08 = <strong>RM 21.06/pc → Final quote: RM 21.00/pc</strong></p>
+
+    <p>Margin check: (RM 21.00 − RM 14.87) ÷ RM 21.00 = <strong>29.2% gross margin ✓</strong></p>
+
+    <h2>AI Prompt — Margin Simulation</h2>
+
+    <p>Before locking your final price, run this simulation. It takes two minutes and catches errors in your cost assumptions before they become margin problems on a signed PO.</p>
+
+    <div class="prompt-label">AI Prompt — Margin Simulation</div>
+    <div class="prompt-block">You are a costing analyst for a CNC contract manufacturing company in Malaysia. Simulate the margin outcomes for the following quotation scenario.
+
+Job details:
+- Part: [description]
+- Material: [grade and weight per piece]
+- Cycle time: [minutes]
+- Batch size: [pcs/month]
+- Contract term: [months]
+
+Cost assumptions:
+- Material unit cost: RM [X]/kg, scrap factor [X]%
+- Machine hourly rate: RM [X]/hr
+- Overhead rate: RM [X]/hr
+- Any outsourced processes: RM [X]/pc
+
+Run three scenarios:
+1. Base case — quote at Gate 2 market rate of RM [X]/pc
+2. Premium case — quote at RM [X]/pc (Gate 3 premium)
+3. Floor case — quote at Gate 1 floor of RM [X]/pc
+
+For each scenario, show:
+- Gross margin per piece (RM and %)
+- Monthly gross contribution (RM)
+- Annual gross contribution (RM)
+- Break-even volume at Gate 1 floor
+
+Flag: Which scenario gives best risk-adjusted return? What happens to margin if cycle time increases by 20%?</div>
+
+    <h2>The Blank Template — Use This for Every Quote</h2>
+
+    <p>Use this worksheet for every RFQ. Copy it into a spreadsheet or print it. The goal is consistency: the same framework, the same inputs, the same discipline — regardless of who in your team builds the quote that day.</p>
+
+    <table>
+      <thead><tr><th>Field</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Customer</td><td></td></tr>
+        <tr><td>Part Number</td><td></td></tr>
+        <tr><td>Drawing Reference</td><td></td></tr>
+        <tr><td>Quantity (pcs/month)</td><td></td></tr>
+        <tr><td>Contract Term</td><td></td></tr>
+        <tr><td>RFQ Date</td><td></td></tr>
+        <tr><td>Quote Deadline</td><td></td></tr>
+      </tbody>
+    </table>
+
+    <p>Complete columns for Gate 1 (material, machining, outsourced, overhead, total cost, target margin, floor price), Gate 2 (RFQ history benchmarks, customer target price if known, industry reference range, market anchor), and Gate 3 (relationship factors, net adjustment, final quote price). Always include a margin check: final price, total cost, gross margin %, monthly contribution, annual contribution — and a sign-off confirming price is above Gate 1 floor before proceeding.</p>
+
+    <p>The manufacturers who win the next decade aren't just cheaper. They're smarter about which jobs to take, at what price, and why.</p>
+
+    <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="download-btn">→ Download the full template and checklist for USD 9.99</a>
+
+    <div class="product-cta-box">
+      <div class="product-cta-text">
+        <strong>3-Gate Quotation Framework Template — USD 9.99</strong>
+        <span>Full worksheet, AI margin simulation prompt, worked examples, and blank template. Instant download.</span>
+      </div>
+      <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Get This PDF →</a>
+    </div>
+
+  </div><!-- /article-body -->
+
+  <!-- Related Articles -->
+  <div class="related-section">
+    <h3>Related Articles</h3>
+    <div class="related-grid">
+
+      <a href="article-quotation-case-study.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Business Development</div>
+          <div class="related-title">How One Johor Manufacturer Cut Quotation Time by 70% Using AI</div>
+        </div>
+      </a>
+
+      <a href="article-production-report.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Production Planning</div>
+          <div class="related-title">The 12 Numbers Every Production Manager Should Track Every Week</div>
+        </div>
+      </a>
+
+      <a href="article-rca-report.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Quality &amp; Compliance</div>
+          <div class="related-title">How to Write an RCA Report Your Customer Won't Send Back</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div><!-- /article-wrap -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>The Industrial Scribe</h4>
+      <p style="font-size: 0.85rem; line-height: 1.6;">AI automation intelligence for SEA manufacturing professionals. Production Planners, QC Executives, BD Managers, Operations Leads.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="index.html">All Articles</a></li>
+        <li><a href="article-production-report.html">Production Planning</a></li>
+        <li><a href="article-rca-report.html">Quality &amp; Compliance</a></li>
+        <li><a href="article-quotation-framework.html">Business Development</a></li>
+        <li><a href="article-sop-writing.html">Automation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Articles</h4>
+      <ul>
+        <li><a href="article-rca-report.html">RCA Report Guide</a></li>
+        <li><a href="article-production-report.html">Production Report Checklist</a></li>
+        <li><a href="article-quotation-framework.html">3-Gate Quotation Framework</a></li>
+        <li><a href="article-sop-writing.html">SOP Writing with AI</a></li>
+        <li><a href="article-quotation-case-study.html">Quotation Case Study</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Subscribe</h4>
+      <ul>
+        <li><a href="index.html#subscribe">USD 1.99/month — All Access</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Instagram</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Download Free Playbook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 The Industrial Scribe · All rights reserved</div>
+</footer>
+
+<script src="paywall.js"></script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Write an RCA Report Your Customer Won't Send Back — The Industrial Scribe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #111827; line-height: 1.7; }
+
+    nav { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e5e7eb; z-index: 100; padding: 0 5%; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-family: Georgia, serif; font-size: 1.3rem; font-weight: 700; color: #111827; text-decoration: none; }
+    .nav-cats { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-cats a { font-size: 0.85rem; font-weight: 500; color: #6b7280; text-decoration: none; letter-spacing: 0.02em; }
+    .nav-cats a:hover { color: #111827; }
+    .nav-sub-btn { font-size: 0.8rem; font-weight: 600; color: #1d4ed8; border: 1.5px solid #1d4ed8; padding: 0.4rem 0.9rem; border-radius: 4px; text-decoration: none; white-space: nowrap; }
+    .nav-sub-btn:hover { background: #1d4ed8; color: #fff; }
+
+    .article-wrap { max-width: 780px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
+    .article-category { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1d4ed8; margin-bottom: 0.75rem; }
+    .article-headline { font-family: Georgia, serif; font-size: 2.2rem; line-height: 1.25; color: #111827; margin-bottom: 1rem; font-weight: 700; }
+    .article-meta { font-size: 0.85rem; color: #6b7280; margin-bottom: 2rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem; }
+    .article-image-placeholder { width: 100%; height: 400px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.9rem; margin-bottom: 2rem; border-radius: 4px; }
+    .article-body h2 { font-family: Georgia, serif; font-size: 1.5rem; margin: 2rem 0 0.75rem; color: #111827; }
+    .article-body h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #1f2937; }
+    .article-body p { margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.75; }
+    .article-body ul, .article-body ol { margin: 0.75rem 0 1.2rem 1.5rem; }
+    .article-body li { margin-bottom: 0.4rem; line-height: 1.7; }
+    .article-body table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .article-body th { background: #1f2937; color: white; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.8rem; }
+    .article-body td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #e5e7eb; }
+    .article-body tr:nth-child(even) td { background: #f9fafb; }
+    .prompt-block { background: #1e293b; color: #e2e8f0; padding: 1.25rem 1.5rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; line-height: 1.6; margin: 1.5rem 0; white-space: pre-wrap; word-break: break-word; }
+    .prompt-label { font-size: 0.7rem; font-weight: 700; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .inline-sub { background: #eff6ff; border-left: 4px solid #1d4ed8; padding: 1rem 1.25rem; margin: 2rem 0; border-radius: 0 6px 6px 0; }
+    .inline-sub p { font-size: 0.9rem; color: #1e3a5f; margin-bottom: 0.5rem; }
+    .inline-sub a { display: inline-block; background: #1d4ed8; color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-top: 0.25rem; }
+    .product-cta-box { background: #f9fafb; border: 1px solid #e5e7eb; padding: 1.25rem 1.5rem; border-radius: 6px; margin: 2.5rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .product-cta-text strong { display: block; font-size: 1rem; color: #111827; margin-bottom: 0.25rem; }
+    .product-cta-text span { font-size: 0.85rem; color: #6b7280; }
+    .product-cta-box a { background: #111827; color: white; padding: 0.5rem 1.25rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .download-btn { display: inline-block; background: #1d4ed8; color: white; padding: 0.75rem 1.5rem; border-radius: 4px; font-size: 0.95rem; font-weight: 600; text-decoration: none; margin: 1rem 0 2rem; }
+    .download-btn:hover { background: #1e40af; }
+    .checklist-box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+    .checklist-box h4 { font-size: 0.9rem; font-weight: 700; color: #111827; margin-bottom: 0.75rem; }
+    .checklist-box ul { list-style: none; margin: 0; }
+    .checklist-box li { padding: 0.3rem 0; font-size: 0.9rem; color: #374151; }
+    .checklist-box li::before { content: "☐ "; font-size: 1rem; }
+
+    .related-section { border-top: 1px solid #e5e7eb; padding-top: 2rem; margin-top: 3rem; }
+    .related-section h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; margin-bottom: 1.25rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .related-card { border: 1px solid #e5e7eb; border-radius: 6px; overflow: hidden; text-decoration: none; color: inherit; }
+    .related-card:hover { border-color: #1d4ed8; }
+    .related-img { height: 120px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.75rem; }
+    .related-content { padding: 0.75rem; }
+    .related-cat { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #1d4ed8; margin-bottom: 0.3rem; }
+    .related-title { font-family: Georgia, serif; font-size: 0.9rem; line-height: 1.35; color: #111827; font-weight: 600; }
+
+    footer { background: #111827; color: #9ca3af; padding: 3rem 5% 2rem; margin-top: 4rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-bottom: 2rem; }
+    .footer-col h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #f9fafb; margin-bottom: 0.75rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.4rem; font-size: 0.85rem; }
+    .footer-col a { color: #9ca3af; text-decoration: none; }
+    .footer-col a:hover { color: #f9fafb; }
+    .footer-bottom { border-top: 1px solid #374151; padding-top: 1.5rem; text-align: center; font-size: 0.8rem; }
+
+    @media (max-width: 768px) {
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .article-headline { font-size: 1.6rem; }
+      .product-cta-box { flex-direction: column; }
+      .nav-cats { display: none; }
+    }
+  </style>
+  <link rel="stylesheet" href="paywall.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">The Industrial Scribe</a>
+    <ul class="nav-cats">
+      <li><a href="index.html">All</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Production Planning</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Quality &amp; Compliance</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Business Development</a></li>
+      <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Automation</a></li>
+    </ul>
+    <a href="index.html#subscribe" class="nav-sub-btn">Subscribe USD 1.99/mo</a>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <div class="article-category">Quality &amp; Compliance</div>
+  <h1 class="article-headline">How to Write an RCA Report Your Customer Won't Send Back</h1>
+  <div class="article-meta">The Industrial Scribe | Quality &amp; Compliance &nbsp;·&nbsp; 8 min read &nbsp;·&nbsp; March 2026</div>
+
+  <img src="img-ncr-desk.jpg" alt="Article Image" style="width:100%;height:400px;object-fit:cover;border-radius:4px;margin-bottom:2rem;">
+
+  <div class="article-body">
+
+    <p>You already know what happened. You were there. You pulled the parts, reviewed the CMM data, traced the batch back through ERP, and sat in the debrief. Now you have to write the RCA report — and it takes four hours you don't have.</p>
+
+    <p>Worse, the customer sends it back. "Not detailed enough." "Root cause is unclear." "Where's the containment evidence?" You revise it twice. You lose a full day. And somewhere in there, you're supposed to be running the rest of your quality system.</p>
+
+    <p>The problem isn't your knowledge. It's the translation — turning investigation notes into a structured document that satisfies an automotive, semiconductor, or O&G customer's specific format. That translation gap is where the hours go. This guide closes that gap using AI. You bring the context. AI does the heavy lifting on structure, language, and formatting.</p>
+
+    <div class="inline-sub">
+      <p><strong>This article is part of The Industrial Scribe.</strong> Subscribe for USD 1.99/month for unlimited access to all articles, templates &amp; community.</p>
+      <a href="index.html#subscribe">Subscribe Now</a>
+    </div>
+
+    <p>After working through this guide, you will be able to cut your average RCA report time from 3–4 hours to under 90 minutes, achieve higher first-submission acceptance rates, and build a repeatable system that works for the next NCR, and the one after that.</p>
+
+    <p>Before you start, have these ready: your raw investigation notes (bullet points, WhatsApp messages, photos, CMM printouts — whatever you captured during the investigation), the customer's required format (8D or DMAIC), access to an AI tool (ChatGPT GPT-4 or above, Claude, or Gemini), and the original NCR or complaint document with customer complaint number, date, part number, quantity, and stated defect.</p>
+
+    <h2>Step 1 — Capture Your Investigation Notes in the Right Format</h2>
+
+    <p>Most QC executives lose time here because they dump notes into a Word doc randomly. AI can't work well with a wall of unstructured text. Use this structured bullet format instead. A good set of structured bullets takes 15 minutes to write and saves you two hours of prompt re-running.</p>
+
+    <div class="prompt-label">Investigation Notes Format</div>
+    <div class="prompt-block">DEFECT:
+- Part number: [PN]
+- Lot/batch: [number]
+- Quantity affected: [X] pcs
+- Defect description: [what the customer found, in their words]
+- Where found: [customer incoming, our final inspection, field]
+
+TIMELINE:
+- Date of production: [date]
+- Date of shipment: [date]
+- Date of complaint received: [date]
+
+INVESTIGATION FINDINGS:
+- CMM result: [specific measurement, spec vs actual]
+- Visual inspection: [what was seen]
+- Process audit finding: [what was found during process review]
+- Material trace: [batch/heat number, supplier, cert status]
+- Machine: [machine ID, last maintenance date, last calibration]
+- Operator: [shift, training status — anonymise for external report]
+
+CONTAINMENT ALREADY DONE:
+- [Action 1 — e.g. "100% inspection of remaining stock at customer, 23 pcs passed"]
+- [Action 2 — e.g. "Hold on next scheduled shipment pending root cause closure"]</div>
+
+    <p>A real example: a QC executive at a precision turned parts supplier was writing an RCA for a thread depth rejection. Her raw notes were in a WhatsApp thread and two Excel sheets. She spent 45 minutes just organising them. With this format, she now spends 15 minutes and gets better AI output.</p>
+
+    <h2>Step 2 — Choose the Right RCA Framework</h2>
+
+    <p>Picking the wrong framework wastes time and frustrates customers. Here's a simple decision guide for the three most common formats used across SEA contract manufacturing.</p>
+
+    <h3>5-Why Analysis</h3>
+    <p>Use when the defect has a clear, single failure chain. Good for process escapes, operator errors, or equipment failures with one root cause thread. Example: a surface finish rejection traced back to contaminated coolant → coolant not changed per schedule → no PM checklist in place → 5-Why is clean and complete. Avoid when multiple machines, multiple operators, or multiple contributing factors are involved.</p>
+
+    <h3>8D Report (Eight Disciplines)</h3>
+    <p>Use when the customer explicitly requires it — common in automotive, semiconductor, and electronics. Also use when the problem recurred after a previous CAPA. The D4/D5 distinction is critical: root cause is not the same as corrective action. "Operator error" is never a root cause. "No defined work instruction for tool changeover" is.</p>
+
+    <table>
+      <thead>
+        <tr><th>Discipline</th><th>Content</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>D1</td><td>Team</td></tr>
+        <tr><td>D2</td><td>Problem description</td></tr>
+        <tr><td>D3</td><td>Containment</td></tr>
+        <tr><td>D4</td><td>Root cause (this is where 5-Why or Fishbone feeds in)</td></tr>
+        <tr><td>D5</td><td>Corrective action</td></tr>
+        <tr><td>D6</td><td>Implementation and verification</td></tr>
+        <tr><td>D7</td><td>Prevent recurrence (PFMEA update, SOP revision)</td></tr>
+        <tr><td>D8</td><td>Team recognition</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Fishbone (Ishikawa) Diagram</h3>
+    <p>Use when the root cause is genuinely unclear and you need to explore multiple categories. Good for first-occurrence defects on new processes or after a major changeover. Categories: Man, Machine, Method, Material, Measurement, Environment (the 6Ms). In practice: most QC executives use Fishbone in their internal investigation, then present 5-Why or 8D to the customer. The customer doesn't need to see your whole discovery process — just the confirmed root cause and what you're doing about it.</p>
+
+    <h2>Step 3 — Build the AI Prompt</h2>
+
+    <p>This is the core of the method. Copy, customise, and paste this prompt directly into your AI tool. Fill in your structured investigation notes from Step 1 where indicated.</p>
+
+    <div class="prompt-label">AI Prompt — Copy This</div>
+    <div class="prompt-block">You are a Quality Assurance specialist with 15 years of experience in contract manufacturing. You write RCA reports for customers in the semiconductor, automotive, and oil &amp; gas sectors. Your reports are clear, technically credible, and accepted on first submission.
+
+I need you to write a complete [8D / 5-Why / Fishbone summary] Root Cause Analysis report based on the investigation notes below.
+
+FORMAT REQUIREMENTS:
+- Use [8D format with D1 through D8 / 5-Why table with "Why" chain / Fishbone summary with probable and confirmed root cause]
+- Language: formal but direct. No passive voice where possible.
+- Root cause must be systemic, not person-based
+- Corrective action must be specific and include a target completion date placeholder
+- Preventive action must reference either PFMEA update, SOP revision, or both
+
+INVESTIGATION NOTES:
+[PASTE YOUR STRUCTURED NOTES FROM STEP 1 HERE]
+
+CUSTOMER REQUIREMENT:
+[State customer name or industry, e.g. "Semiconductor customer, requires 8D format, submission deadline in 5 working days"]
+
+OUTPUT:
+Write the complete report. Include all sections. Use placeholder [DATE] and [NAME] where specific information is needed. Flag any section where you need more information from me.</div>
+
+    <p>Tips for better output: run the prompt once and read the full output before asking for revisions. Ask for one section to be revised at a time. If D4 (root cause) is weak, add this follow-up: <em>"The root cause in D4 sounds like a symptom. Push one level deeper — what systemic gap allowed this to happen?"</em> If the language sounds too generic, add: <em>"Rewrite using specific manufacturing process terminology relevant to [CNC turning / stamping / injection moulding]."</em></p>
+
+    <h2>Step 4 — Review and Validate AI Output</h2>
+
+    <p>AI will get most of it right. It will also get some things wrong. Here's what to watch for.</p>
+
+    <h3>What AI Gets Right</h3>
+    <p>Report structure and section completeness. Formal, customer-facing language. Logical flow from problem to root cause to action. Completeness of 8D sections — it won't skip D7 or D8.</p>
+
+    <h3>What AI Gets Wrong</h3>
+    <p><strong>The root cause is too shallow.</strong> AI will often land on "operator did not follow procedure." That's a symptom. Push deeper: why wasn't the procedure followed? Was there no work instruction? Was training not conducted?</p>
+
+    <p><strong>Dates and traceability are generic.</strong> AI will write "[Date of occurrence]" or "Lot XXXXX." You must fill in your actual numbers. Never send an AI-generated report with unfilled placeholders.</p>
+
+    <p><strong>Corrective actions are vague.</strong> "Retrain operators" is not a corrective action. "Conduct tooling changeover refresher training for all CNC operators on M/C 07 and M/C 09 by [date], verified by QC sign-off" is a corrective action. Sharpen every action item.</p>
+
+    <p><strong>PFMEA linkage is missing.</strong> Automotive and semiconductor customers expect D7 to reference PFMEA updates. AI will write generic preventive actions. Add the specific PFMEA line item reference yourself.</p>
+
+    <p><strong>Containment evidence is assumed, not stated.</strong> AI will say "100% inspection performed." Your customer wants to know: who inspected, using what criteria, on what date, with what result.</p>
+
+    <div class="checklist-box">
+      <h4>5-Minute Validation Checklist — Run This Before Sending</h4>
+      <ul>
+        <li>Root cause is systemic (process gap, not person failure)</li>
+        <li>Containment evidence is specific — quantity, date, method, result</li>
+        <li>Corrective actions have owners and dates</li>
+        <li>D7 / preventive action references PFMEA or SOP revision</li>
+        <li>No placeholder text remaining ([DATE], [NAME], etc.)</li>
+        <li>Part number, lot number, and NCR reference are correct</li>
+      </ul>
+    </div>
+
+    <h2>Step 5 — Format for Your Customer</h2>
+
+    <p>Every customer wants the same information. They just want it in a different box. Here's how to adapt efficiently without rebuilding from scratch.</p>
+
+    <h3>Adapting to an 8D Template</h3>
+    <p>Most 8D templates are Excel-based. Map your AI output section by section: D1 → Team table, D2 → Problem description, D3 → Containment (add dates and quantities), D4 → Root cause (copy from AI, then deepen manually), D5 → Corrective action table (action, owner, target date), D6 → Add evidence column (photo references, inspection records), D7 → PFMEA reference + SOP revision number, D8 → Team sign-off.</p>
+
+    <h3>Adapting to DMAIC</h3>
+    <p>Map as follows: Define = D2 (problem description), Measure = D3 + investigation data (CMM, rejection rates), Analyse = D4 (Fishbone or 5-Why), Improve = D5 (corrective actions), Control = D7 (PFMEA, SOP, monitoring plan).</p>
+
+    <h3>Adapting to Custom Templates</h3>
+    <p>Scan the form for any field asking for "RCA method used," "Effectiveness verification," and "Lessons learned." Structure adapts. Content doesn't. Your root cause and corrective actions are the same regardless of the template. You're just moving furniture around.</p>
+
+    <h2>Common Mistakes to Avoid</h2>
+
+    <p><strong>Treating AI output as the final report.</strong> It isn't. It's a first draft. Validate every specific claim against your actual data.</p>
+
+    <p><strong>Writing the root cause as a person failure.</strong> "Operator failed to check" is not a root cause. The real root cause is the system that allowed that failure — missing work instruction, no second-check requirement, no poka-yoke.</p>
+
+    <p><strong>Skipping the PFMEA update.</strong> Customers who see a corrective action without a corresponding PFMEA update know you're not serious. If your PFMEA doesn't exist or is outdated — that itself is a finding.</p>
+
+    <p><strong>Sending before validating placeholders.</strong> One placeholder in a submitted RCA looks careless. Check every line.</p>
+
+    <p><strong>Starting from scratch every time.</strong> After your third report using this method, save your best prompts and note structures. Build a folder. Future-you will thank you.</p>
+
+    <h2>What Changes After You Use This</h2>
+
+    <p>After your first two or three reports using this method, RCA reports that took 3–4 hours now take 60–90 minutes. First-submission acceptance rate goes up. Customers stop sending reports back for clarification because the structure is complete and the language is clear. Once you have a working prompt, you can brief your QC engineers to use the same process. The quality of team-submitted RCAs standardises upward.</p>
+
+    <p>The AI doesn't know your process better than you do. What it does is take your knowledge and translate it into a structured, professional document faster than you can type it from scratch. That's the trade.</p>
+
+    <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="download-btn">→ Download the full template and checklist for USD 9.99</a>
+
+    <div class="product-cta-box">
+      <div class="product-cta-text">
+        <strong>RCA Report Guide — USD 9.99</strong>
+        <span>Full template, 8D worksheet, 5-Why table, AI prompts, and SEA case studies. Instant download.</span>
+      </div>
+      <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Get This PDF →</a>
+    </div>
+
+  </div><!-- /article-body -->
+
+  <!-- Related Articles -->
+  <div class="related-section">
+    <h3>Related Articles</h3>
+    <div class="related-grid">
+
+      <a href="article-sop-writing.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Automation</div>
+          <div class="related-title">How to Write Any Manufacturing SOP in 30 Minutes Using AI</div>
+        </div>
+      </a>
+
+      <a href="article-production-report.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Production Planning</div>
+          <div class="related-title">The 12 Numbers Every Production Manager Should Track Every Week</div>
+        </div>
+      </a>
+
+      <a href="article-quotation-case-study.html" class="related-card">
+        <div class="related-img">[ Article Image ]</div>
+        <div class="related-content">
+          <div class="related-cat">Business Development</div>
+          <div class="related-title">How One Johor Manufacturer Cut Quotation Time by 70% Using AI</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div><!-- /article-wrap -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>The Industrial Scribe</h4>
+      <p style="font-size: 0.85rem; line-height: 1.6;">AI automation intelligence for SEA manufacturing professionals. Production Planners, QC Executives, BD Managers, Operations Leads.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="index.html">All Articles</a></li>
+        <li><a href="article-production-report.html">Production Planning</a></li>
+        <li><a href="article-rca-report.html">Quality &amp; Compliance</a></li>
+        <li><a href="article-quotation-framework.html">Business Development</a></li>
+        <li><a href="article-sop-writing.html">Automation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Articles</h4>
+      <ul>
+        <li><a href="article-rca-report.html">RCA Report Guide</a></li>
+        <li><a href="article-production-report.html">Production Report Checklist</a></li>
+        <li><a href="article-quotation-framework.html">3-Gate Quotation Framework</a></li>
+        <li><a href="article-sop-writing.html">SOP Writing with AI</a></li>
+        <li><a href="article-quotation-case-study.html">Quotation Case Study</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Subscribe</h4>
+      <ul>
+        <li><a href="index.html#subscribe">USD 1.99/month — All Access</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Instagram</a></li>
+        <li><a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00">Download Free Playbook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 The Industrial Scribe · All rights reserved</div>
+</footer>
+
+<script src="paywall.js"></script>
+</body>
+</html>
