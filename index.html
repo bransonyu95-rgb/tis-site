@@ -7,504 +7,491 @@
   <meta name="description" content="Editorial coverage of AI automation, agents, and operational intelligence for Southeast Asian manufacturing professionals.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:wght@400;700&family=Newsreader:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     /* ─────────────────────────────────────
-       DESIGN TOKENS — VERGE-INSPIRED
+       DESIGN TOKENS — WIRED-INSPIRED
        ───────────────────────────────────── */
     :root {
-      --mint: #3cffd0;
-      --mint-border: #309875;
-      --ultraviolet: #5200ff;
-      --purple-rule: #3d00bf;
-      --link-hover: #3860be;
-      --focus: #1eaedb;
-      --canvas: #131313;
-      --slate: #2d2d2d;
-      --image-frame: #313131;
-      --hairline: #ffffff;
-      --text: #ffffff;
-      --text-muted: #e9e9e9;
-      --text-meta: #949494;
-      --text-dim: #8c8c8c;
-      --text-inverted: #131313;
-      --tile-yellow: #ffd400;
-      --tile-pink:   #ff5cae;
-      --tile-orange: #ff6a13;
-      --tile-blue:   #1e6dff;
-      --tile-white:  #ffffff;
-      --display: 'Anton', Impact, 'Helvetica Neue', sans-serif;
-      --sans: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
-      --mono: 'Space Mono', 'Courier New', monospace;
-      --serif: 'Newsreader', Georgia, serif;
+      --ink-black: #000000;
+      --ink-page:  #1a1a1a;
+      --paper:     #ffffff;
+      --gray-cap:  #757575;
+      --gray-dis:  #999999;
+      --hairline:  #e2e8f0;
+      --link-blue: #057dbc;
+
+      --display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --serif:   'Source Serif 4', Georgia, 'Times New Roman', serif;
+      --sans:    'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+      --mono:    'Space Mono', 'Courier New', Courier, monospace;
     }
 
+    /* ─────────────────────────────────────
+       RESET + BASE
+       ───────────────────────────────────── */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { -webkit-text-size-adjust: 100%; }
     body {
-      font-family: var(--sans);
-      background: var(--canvas);
-      color: var(--text);
-      line-height: 1.6;
+      font-family: var(--serif);
+      background: var(--paper);
+      color: var(--ink-page);
+      line-height: 1.5;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
-    a { color: inherit; text-decoration: none; transition: color 150ms ease; }
-    a:hover { color: var(--link-hover); }
+    a { color: inherit; text-decoration: none; transition: color 120ms ease; }
+    a:hover { color: var(--link-blue); }
     img { display: block; max-width: 100%; height: auto; }
     button { font-family: inherit; cursor: pointer; }
     ul { list-style: none; }
+    hr { border: 0; border-top: 1px solid var(--hairline); margin: 0; }
 
-    .label-caps {
+    /* ─────────────────────────────────────
+       TYPE UTILITIES
+       ───────────────────────────────────── */
+    .kicker {
       font-family: var(--mono);
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 700;
-      line-height: 1.3;
-      letter-spacing: 0.13em;
+      line-height: 1.23;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
+      color: var(--ink-page);
+      display: inline-block;
+      margin-bottom: 8px;
     }
     .timestamp {
       font-family: var(--mono);
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--text-meta);
-    }
-    .whisper {
-      font-family: var(--sans);
-      font-size: 0.95rem;
-      font-weight: 300;
-      line-height: 1.2;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-meta);
-    }
-
-    .container { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
-    @media (min-width: 768px) { .container { padding: 0 48px; } }
-
-    section { padding: 64px 0; }
-    @media (max-width: 767px) { section { padding: 40px 0; } }
-
-    .section-head {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 32px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--hairline);
-    }
-    .section-head h2 {
-      font-family: var(--display);
-      font-size: clamp(36px, 5vw, 72px);
+      font-size: 0.72rem;
       font-weight: 400;
-      line-height: 0.95;
+      line-height: 1.33;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      letter-spacing: -0.005em;
+      color: var(--gray-cap);
     }
-    .section-head .label-caps { color: var(--mint); }
+    .ui-label {
+      font-family: var(--sans);
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      color: var(--ink-page);
+    }
 
-    /* NAV */
-    nav {
+    /* ─────────────────────────────────────
+       LAYOUT
+       ───────────────────────────────────── */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    @media (min-width: 768px)  { .container { padding: 0 40px; } }
+    @media (min-width: 1280px) { .container { padding: 0 64px; } }
+
+    section { padding: 48px 0; }
+    @media (max-width: 767px) { section { padding: 32px 0; } }
+
+    .rule-1 { border-top: 1px solid var(--ink-black); }
+    .rule-2 { border-top: 2px solid var(--ink-black); }
+    .rule-hairline { border-top: 1px solid var(--hairline); }
+
+    /* ─────────────────────────────────────
+       UTILITY BAR (top black strip)
+       ───────────────────────────────────── */
+    .utility-bar {
+      background: var(--ink-black);
+      color: var(--paper);
+    }
+    .utility-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 36px;
+    }
+    @media (min-width: 768px)  { .utility-inner { padding: 0 40px; } }
+    @media (min-width: 1280px) { .utility-inner { padding: 0 64px; } }
+
+    .utility-bar a, .utility-bar span {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--paper);
+    }
+    .utility-bar a:hover { color: var(--link-blue); }
+    .utility-left { display: flex; gap: 18px; align-items: center; }
+    .utility-right { display: flex; gap: 18px; align-items: center; }
+    @media (max-width: 599px) {
+      .utility-left span:not(:first-child) { display: none; }
+    }
+
+    /* ─────────────────────────────────────
+       MAIN NAV
+       ───────────────────────────────────── */
+    nav.main-nav {
+      background: var(--paper);
+      border-bottom: 1px solid var(--ink-black);
       position: sticky; top: 0; z-index: 100;
-      background: var(--canvas);
-      border-bottom: 1px solid var(--hairline);
     }
     .nav-inner {
-      max-width: 1300px; margin: 0 auto; padding: 0 24px;
-      height: 72px;
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      max-width: 1280px; margin: 0 auto; padding: 18px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
     }
-    @media (min-width: 768px) { .nav-inner { padding: 0 48px; } }
+    @media (min-width: 768px)  { .nav-inner { padding: 22px 40px; } }
+    @media (min-width: 1280px) { .nav-inner { padding: 26px 64px; } }
 
-    .wordmark-small {
+    .bug-logo {
       font-family: var(--display);
-      font-size: 1.55rem;
-      font-weight: 400;
-      letter-spacing: 0.01em;
-      text-transform: uppercase;
-      color: var(--text);
+      font-weight: 900;
+      font-size: 1.75rem;
+      line-height: 0.9;
+      letter-spacing: -0.01em;
+      color: var(--ink-black);
       white-space: nowrap;
     }
-    .wordmark-small em { font-style: normal; color: var(--mint); }
-
-    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links { display: flex; gap: 26px; align-items: center; }
     .nav-links a {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-meta);
-      padding: 4px 0;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--ink-page);
     }
-    .nav-links a:hover { color: var(--text); }
-    .nav-links a.active { color: var(--text); box-shadow: 0 -1px 0 0 inset var(--mint); }
+    .nav-links a:hover, .nav-links a.active { color: var(--link-blue); }
 
-    .pill-mint {
+    .btn-subscribe {
       display: inline-flex; align-items: center; justify-content: center;
-      background: var(--mint);
-      color: #000;
-      font-family: var(--mono);
-      font-size: 0.7rem;
+      background: var(--paper);
+      color: var(--ink-black);
+      font-family: var(--sans);
+      font-size: 0.82rem;
       font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      padding: 12px 22px;
-      border: none;
-      border-radius: 24px;
-      transition: background 180ms ease, box-shadow 180ms ease, color 180ms ease;
-    }
-    .pill-mint:hover {
-      background: rgba(255, 255, 255, 0.15);
-      color: #fff;
-      box-shadow: 0 0 0 1px #c2c2c2;
-    }
-    .pill-outline-mint {
-      display: inline-flex; align-items: center; justify-content: center;
-      background: transparent;
-      color: var(--mint);
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
+      letter-spacing: 0.03em;
       padding: 11px 22px;
-      border: 1px solid var(--mint);
-      border-radius: 40px;
-      transition: all 150ms ease;
+      border: 2px solid var(--ink-black);
+      border-radius: 0;
+      transition: background 150ms ease, color 150ms ease;
     }
-    .pill-outline-mint:hover { background: var(--mint); color: #000; }
+    .btn-subscribe:hover { background: var(--ink-black); color: var(--paper); }
 
     .nav-burger {
       display: none;
       background: transparent;
-      border: 1px solid var(--hairline);
-      color: var(--text);
-      width: 44px; height: 44px;
-      border-radius: 50%;
+      border: 2px solid var(--ink-black);
+      width: 40px; height: 40px;
+      border-radius: 0;
       align-items: center; justify-content: center;
       font-size: 1.1rem;
+      color: var(--ink-black);
     }
     @media (max-width: 899px) {
       .nav-links { display: none; }
       .nav-burger { display: inline-flex; }
-      .nav-cta-desktop { display: none; }
+      .btn-subscribe { display: none; }
     }
 
-    /* MASTHEAD */
-    .masthead { padding: 56px 0 32px; border-bottom: 1px solid var(--hairline); }
-    .masthead .whisper { display: block; margin-bottom: 24px; color: var(--mint); }
-    .masthead h1.wordmark-hero {
-      font-family: var(--display);
-      font-weight: 400;
-      font-size: clamp(56px, 13vw, 168px);
-      line-height: 0.88;
-      letter-spacing: -0.015em;
-      text-transform: uppercase;
-      color: var(--text);
-    }
-    .masthead h1.wordmark-hero em { font-style: normal; color: var(--mint); }
-    .masthead .masthead-sub {
-      margin-top: 28px;
-      max-width: 760px;
-      font-family: var(--sans);
-      font-size: 1.1rem;
-      font-weight: 400;
-      line-height: 1.5;
-      color: var(--text-muted);
-    }
-    .masthead-meta {
-      display: flex; flex-wrap: wrap; gap: 20px;
-      margin-top: 32px;
-      align-items: center;
-    }
-
-    /* FEATURE HERO */
-    .feature-hero {
+    /* ─────────────────────────────────────
+       HERO / MASTHEAD STORY
+       ───────────────────────────────────── */
+    .hero { padding: 48px 0 32px; }
+    .hero-grid {
       display: grid;
-      grid-template-columns: 1.6fr 1fr;
-      gap: 24px;
-      padding: 48px 0 64px;
+      grid-template-columns: 2fr 1fr;
+      gap: 48px;
     }
-    @media (max-width: 899px) { .feature-hero { grid-template-columns: 1fr; } }
+    @media (max-width: 899px) { .hero-grid { grid-template-columns: 1fr; gap: 32px; } }
 
-    .feature-card {
-      background: var(--canvas);
-      border: 1px solid var(--hairline);
-      border-radius: 24px;
-      padding: 28px;
-      display: flex; flex-direction: column;
-      overflow: hidden;
-      transition: border-color 150ms ease;
-    }
-    .feature-card:hover { border-color: var(--mint); }
-    .feature-card:hover h2 { color: var(--mint); }
-    .feature-card .feature-img {
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid var(--image-frame);
-      margin-bottom: 24px;
+    .hero-main img {
+      width: 100%;
       aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
     }
-    .feature-card .feature-img img { width: 100%; height: 100%; object-fit: cover; }
-    .feature-card .label-caps { color: var(--mint); margin-bottom: 14px; }
-    .feature-card h2 {
+    .hero-main .kicker { margin-top: 18px; color: var(--ink-black); }
+    .hero-main h1 {
       font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(40px, 6vw, 76px);
+      line-height: 1.02;
+      letter-spacing: -0.018em;
+      color: var(--ink-page);
+      margin: 8px 0 16px;
+    }
+    .hero-main .deck {
+      font-family: var(--serif);
+      font-size: 1.19rem;
       font-weight: 400;
-      font-size: clamp(32px, 4.5vw, 60px);
-      line-height: 0.95;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-      transition: color 150ms ease;
+      line-height: 1.47;
+      color: var(--ink-page);
+      max-width: 640px;
+      margin-bottom: 16px;
     }
-    .feature-card p { color: var(--text-muted); font-size: 1rem; line-height: 1.55; margin-bottom: 22px; }
-    .feature-card .timestamp { margin-top: auto; }
+    .hero-main .byline {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--gray-cap);
+      letter-spacing: 0.02em;
+    }
+    .hero-main:hover h1 { color: var(--link-blue); }
 
-    .feature-side { display: flex; flex-direction: column; gap: 16px; }
-    .side-card {
-      background: var(--canvas);
-      border: 1px solid var(--hairline);
-      border-radius: 20px;
-      padding: 18px;
-      display: grid;
-      grid-template-columns: 1fr 92px;
-      gap: 14px;
-      align-items: center;
-      transition: border-color 150ms ease;
+    .hero-side { display: flex; flex-direction: column; }
+    .hero-side .side-story {
+      display: block;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--hairline);
     }
-    .side-card:hover { border-color: var(--mint); }
-    .side-card:hover h3 { color: var(--mint); }
-    .side-card .label-caps { color: var(--mint); display: block; margin-bottom: 8px; }
-    .side-card h3 { font-family: var(--sans); font-size: 0.98rem; font-weight: 700; line-height: 1.2; transition: color 150ms ease; }
-    .side-card .side-img {
-      width: 92px; height: 92px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--image-frame);
-    }
-    .side-card .side-img img { width: 100%; height: 100%; object-fit: cover; }
-
-    /* EXPLORE PILLS */
-    .explore { padding: 32px 0 48px; border-top: 1px solid var(--hairline); }
-    .explore .label-caps { color: var(--mint); display: block; margin-bottom: 18px; }
-    .explore-pills { display: flex; flex-wrap: wrap; gap: 10px; }
-    .explore-pill {
-      display: inline-flex; align-items: center;
-      padding: 10px 18px;
-      border: 1px solid var(--hairline);
-      border-radius: 20px;
-      font-family: var(--mono);
-      font-size: 0.68rem;
+    .hero-side .side-story:first-child { padding-top: 0; }
+    .hero-side .side-story:last-child { border-bottom: none; }
+    .hero-side .side-story .kicker { color: var(--ink-black); }
+    .hero-side .side-story h3 {
+      font-family: var(--display);
+      font-size: 1.4rem;
       font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text);
-      transition: all 150ms ease;
+      line-height: 1.15;
+      color: var(--ink-page);
+      transition: color 120ms ease;
     }
-    .explore-pill:hover { background: var(--mint); color: #000; border-color: var(--mint); }
+    .hero-side .side-story:hover h3 { color: var(--link-blue); }
 
-    /* STORY GRID */
+    /* ─────────────────────────────────────
+       BLACK RIBBON SECTION HEADER
+       ───────────────────────────────────── */
+    .ribbon {
+      background: var(--ink-black);
+      color: var(--paper);
+      padding: 14px 24px;
+      margin-bottom: 32px;
+    }
+    .ribbon span {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--paper);
+    }
+    @media (min-width: 768px)  { .ribbon { padding: 14px 40px; } }
+    @media (min-width: 1280px) { .ribbon { padding: 14px 64px; } }
+
+    .ribbon-wrap { max-width: 1280px; margin: 0 auto; }
+    .section-block { margin-top: 48px; }
+
+    /* ─────────────────────────────────────
+       STORY GRID
+       ───────────────────────────────────── */
     .story-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 0;
     }
     @media (max-width: 1023px) { .story-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 599px)  { .story-grid { grid-template-columns: 1fr; } }
 
     .story-tile {
-      background: var(--canvas);
-      border: 1px solid var(--hairline);
-      border-radius: 20px;
-      padding: 22px;
-      display: flex; flex-direction: column; gap: 14px;
-      transition: border-color 150ms ease;
+      display: block;
+      padding: 0 24px 32px 24px;
+      border-right: 1px solid var(--ink-black);
+      border-bottom: 1px solid var(--ink-black);
     }
-    .story-tile:hover { border-color: var(--mint); }
-    .story-tile:hover h3 { color: var(--mint); }
-    .story-tile .tile-img {
-      aspect-ratio: 16/9;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--image-frame);
+    .story-tile:first-child { padding-left: 0; }
+    @media (min-width: 1024px) {
+      .story-tile:nth-child(3n) { border-right: none; padding-right: 0; }
+      .story-tile:nth-child(3n+1) { padding-left: 0; }
     }
-    .story-tile .tile-img img { width: 100%; height: 100%; object-fit: cover; }
-    .story-tile .label-caps { color: var(--mint); }
-    .story-tile h3 {
-      font-family: var(--sans);
-      font-size: 1.2rem;
-      font-weight: 700;
-      line-height: 1.2;
-      transition: color 150ms ease;
+    @media (max-width: 1023px) and (min-width: 600px) {
+      .story-tile:nth-child(2n) { border-right: none; padding-right: 0; }
+      .story-tile:nth-child(2n+1) { padding-left: 0; }
     }
-    .story-tile p { font-size: 0.88rem; color: var(--text-meta); line-height: 1.55; }
-    .story-tile .timestamp { margin-top: auto; padding-top: 6px; }
-
-    /* Accent tile variants */
-    .tile-mint { background: var(--mint); border: none; }
-    .tile-mint h3, .tile-mint p, .tile-mint .timestamp { color: #000; }
-    .tile-mint .label-caps { color: var(--ultraviolet); }
-    .tile-mint .tile-img { border-color: rgba(0,0,0,0.25); }
-    .tile-mint:hover h3 { color: var(--ultraviolet); }
-
-    .tile-uv { background: var(--ultraviolet); border: none; }
-    .tile-uv h3, .tile-uv p, .tile-uv .timestamp { color: #fff; }
-    .tile-uv .label-caps { color: var(--mint); }
-    .tile-uv .tile-img { border-color: rgba(255,255,255,0.25); }
-    .tile-uv:hover h3 { color: var(--mint); }
-
-    .tile-yellow { background: var(--tile-yellow); border: none; }
-    .tile-yellow h3, .tile-yellow p, .tile-yellow .timestamp { color: #000; }
-    .tile-yellow .label-caps { color: var(--ultraviolet); }
-    .tile-yellow:hover h3 { color: var(--ultraviolet); }
-
-    .tile-pink { background: var(--tile-pink); border: none; }
-    .tile-pink h3, .tile-pink p, .tile-pink .timestamp { color: #000; }
-    .tile-pink .label-caps { color: var(--ultraviolet); }
-    .tile-pink:hover h3 { color: var(--ultraviolet); }
-
-    .tile-white { background: var(--tile-white); border: none; }
-    .tile-white h3, .tile-white p, .tile-white .timestamp { color: #000; }
-    .tile-white .label-caps { color: var(--ultraviolet); }
-    .tile-white:hover h3 { color: var(--ultraviolet); }
-
-    .tile-orange { background: var(--tile-orange); border: none; }
-    .tile-orange h3, .tile-orange p, .tile-orange .timestamp { color: #000; }
-    .tile-orange .label-caps { color: var(--canvas); }
-    .tile-orange:hover h3 { color: var(--canvas); }
-
-    /* STORYSTREAM */
-    .stream { position: relative; padding-left: 36px; }
-    .stream::before {
-      content: '';
-      position: absolute;
-      left: 8px; top: 8px; bottom: 8px;
-      width: 1px;
-      background: repeating-linear-gradient(to bottom, var(--purple-rule) 0 6px, transparent 6px 12px);
-    }
-    .stream-item { position: relative; margin-bottom: 16px; }
-    .stream-item::before {
-      content: '';
-      position: absolute;
-      left: -32px; top: 28px;
-      width: 9px; height: 9px;
-      border-radius: 50%;
-      background: var(--mint);
-      box-shadow: 0 0 0 3px var(--canvas), 0 0 0 4px var(--mint);
-    }
-    .stream-item .timestamp { display: block; margin-bottom: 8px; }
-
-    .stream-card {
-      background: var(--canvas);
-      border: 1px solid var(--hairline);
-      border-radius: 20px;
-      padding: 20px 24px;
-      display: grid;
-      grid-template-columns: 1fr 144px;
-      gap: 24px;
-      align-items: center;
-      transition: border-color 150ms ease;
-    }
-    .stream-card:hover { border-color: var(--mint); }
-    .stream-card:hover h3 { color: var(--mint); }
-    .stream-card .label-caps { color: var(--mint); }
-    .stream-card h3 {
-      font-family: var(--sans);
-      font-size: 1.3rem;
-      font-weight: 700;
-      line-height: 1.2;
-      margin: 8px 0;
-      transition: color 150ms ease;
-    }
-    .stream-card p { font-size: 0.88rem; color: var(--text-meta); line-height: 1.5; }
-    .stream-card .stream-img {
-      width: 144px; height: 100px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--image-frame);
-    }
-    .stream-card .stream-img img { width: 100%; height: 100%; object-fit: cover; }
     @media (max-width: 599px) {
-      .stream { padding-left: 24px; }
-      .stream-item::before { left: -20px; }
-      .stream-card { grid-template-columns: 1fr; }
-      .stream-card .stream-img { width: 100%; height: auto; aspect-ratio: 16/9; }
+      .story-tile { border-right: none; padding-left: 0; padding-right: 0; }
     }
+    .story-tile img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 14px;
+    }
+    .story-tile .kicker { color: var(--ink-black); }
+    .story-tile h3 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.6rem;
+      line-height: 1.1;
+      color: var(--ink-page);
+      margin: 4px 0 10px;
+      transition: color 120ms ease;
+    }
+    .story-tile p {
+      font-family: var(--serif);
+      font-size: 0.94rem;
+      line-height: 1.5;
+      color: var(--ink-page);
+      margin-bottom: 12px;
+    }
+    .story-tile .timestamp { display: block; }
+    .story-tile:hover h3 { color: var(--link-blue); }
 
-    /* SUBSCRIBE BANNER */
-    .subscribe-banner {
-      background: var(--mint);
-      color: #000;
-      border-radius: 24px;
-      padding: 56px 48px;
+    /* ─────────────────────────────────────
+       TWO-COLUMN: FEATURED + MOST POPULAR
+       ───────────────────────────────────── */
+    .twocol {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 48px;
+      padding-top: 32px;
+    }
+    @media (max-width: 1023px) { .twocol { grid-template-columns: 1fr; gap: 32px; } }
+
+    .featured-list .feat-item {
       display: grid;
       grid-template-columns: 1.4fr 1fr;
-      gap: 32px;
-      align-items: center;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--hairline);
+      align-items: start;
     }
-    @media (max-width: 899px) { .subscribe-banner { grid-template-columns: 1fr; padding: 40px 28px; } }
-    .subscribe-banner h2 {
+    .featured-list .feat-item:first-child { padding-top: 0; }
+    .featured-list .feat-item img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+    .featured-list .feat-item h3 {
       font-family: var(--display);
-      font-weight: 400;
-      font-size: clamp(40px, 6vw, 84px);
-      line-height: 0.92;
-      text-transform: uppercase;
-      color: #000;
-      margin-top: 12px;
-    }
-    .subscribe-banner p {
-      font-size: 1rem;
-      line-height: 1.55;
-      color: #000;
-      margin-top: 16px;
-      max-width: 480px;
-    }
-    .subscribe-banner .label-caps { color: var(--ultraviolet); }
-    .subscribe-banner .price-block { text-align: right; }
-    @media (max-width: 899px) { .subscribe-banner .price-block { text-align: left; } }
-    .subscribe-banner .amount {
-      font-family: var(--display);
-      font-size: clamp(80px, 11vw, 160px);
-      font-weight: 400;
-      line-height: 0.85;
-      color: #000;
-    }
-    .subscribe-banner .amount-meta {
-      font-family: var(--mono);
-      font-size: 0.72rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #000;
-      margin-top: 8px;
+      font-size: 1.65rem;
+      line-height: 1.12;
+      color: var(--ink-page);
+      margin: 4px 0 8px;
+      transition: color 120ms ease;
     }
-    .pill-uv-dark {
-      display: inline-flex; align-items: center; justify-content: center;
-      background: var(--ultraviolet);
-      color: #fff;
+    .featured-list .feat-item p {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--ink-page);
+      margin-bottom: 8px;
+    }
+    .featured-list .feat-item:hover h3 { color: var(--link-blue); }
+    @media (max-width: 599px) {
+      .featured-list .feat-item { grid-template-columns: 1fr; }
+    }
+
+    /* ─────────────── MOST POPULAR ─────────────── */
+    .popular { border-top: 2px solid var(--ink-black); padding-top: 0; }
+    .popular .pop-ribbon {
+      background: var(--ink-black);
+      color: var(--paper);
+      padding: 12px 16px;
+      margin-bottom: 8px;
+    }
+    .popular .pop-ribbon span {
       font-family: var(--mono);
       font-size: 0.74rem;
       font-weight: 700;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
-      padding: 14px 28px;
-      border: none;
-      border-radius: 30px;
-      margin-top: 24px;
-      transition: all 180ms ease;
+      color: var(--paper);
     }
-    .pill-uv-dark:hover { background: #000; color: var(--mint); }
+    .popular .pop-list { padding: 0; }
+    .popular .pop-item {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--hairline);
+      align-items: start;
+    }
+    .popular .pop-item:last-child { border-bottom: none; }
+    .popular .pop-num {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 2.6rem;
+      line-height: 0.9;
+      color: var(--ink-page);
+    }
+    .popular .pop-item h4 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      line-height: 1.18;
+      color: var(--ink-page);
+      transition: color 120ms ease;
+    }
+    .popular .pop-item .kicker { font-size: 0.66rem; margin-bottom: 4px; color: var(--ink-black); }
+    .popular .pop-item:hover h4 { color: var(--link-blue); }
 
-    /* FOOTER */
-    footer {
-      background: var(--canvas);
-      border-top: 1px solid var(--hairline);
-      padding: 64px 0 32px;
-      margin-top: 32px;
+    /* ─────────────────────────────────────
+       NEWSLETTER STRIP
+       ───────────────────────────────────── */
+    .newsletter {
+      border-top: 2px solid var(--ink-black);
+      border-bottom: 2px solid var(--ink-black);
+      padding: 56px 0;
+      text-align: center;
     }
+    .newsletter .kicker { color: var(--ink-black); margin-bottom: 12px; }
+    .newsletter h2 {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1.02;
+      letter-spacing: -0.015em;
+      color: var(--ink-page);
+      max-width: 820px;
+      margin: 0 auto 16px;
+    }
+    .newsletter p {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      line-height: 1.5;
+      color: var(--ink-page);
+      max-width: 560px;
+      margin: 0 auto 28px;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 0;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: 13px 16px;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      color: var(--ink-page);
+      background: var(--paper);
+      border: 2px solid var(--ink-black);
+      border-right: 0;
+      border-radius: 0;
+      outline: none;
+    }
+    .newsletter-form input::placeholder { color: var(--gray-cap); }
+    .newsletter-form button {
+      padding: 13px 24px;
+      background: var(--ink-black);
+      color: var(--paper);
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 2px solid var(--ink-black);
+      border-radius: 0;
+      transition: background 150ms ease, color 150ms ease;
+    }
+    .newsletter-form button:hover { background: var(--paper); color: var(--ink-black); }
+    @media (max-width: 599px) {
+      .newsletter-form { flex-direction: column; }
+      .newsletter-form input { border-right: 2px solid var(--ink-black); border-bottom: 0; }
+      .newsletter-form button { border-top: 0; }
+    }
+
+    /* ─────────────────────────────────────
+       FOOTER (only inverted region)
+       ───────────────────────────────────── */
+    footer {
+      background: var(--ink-page);
+      color: var(--paper);
+      padding: 64px 0 32px;
+      margin-top: 0;
+    }
+    footer .bug-logo { color: var(--paper); display: block; margin-bottom: 32px; font-size: 2.2rem; }
     .footer-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -513,95 +500,112 @@
     @media (max-width: 899px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 599px) { .footer-grid { grid-template-columns: 1fr; } }
 
-    .footer-brand .display-medium {
-      font-family: var(--display);
-      font-weight: 400;
-      font-size: clamp(36px, 4vw, 60px);
-      line-height: 0.95;
-      text-transform: uppercase;
-    }
-    .footer-brand .display-medium em { font-style: normal; color: var(--mint); }
     .footer-brand p {
-      margin-top: 18px;
-      font-size: 0.92rem;
-      line-height: 1.6;
-      color: var(--text-meta);
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--paper);
       max-width: 380px;
+      opacity: 0.85;
     }
-
     .footer-col h4 {
       font-family: var(--mono);
       font-size: 0.7rem;
       font-weight: 700;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
-      color: var(--mint);
-      margin-bottom: 18px;
+      color: var(--paper);
+      margin-bottom: 16px;
     }
     .footer-col li { margin-bottom: 10px; }
-    .footer-col a { font-family: var(--sans); font-size: 0.92rem; color: var(--text-muted); }
-    .footer-col a:hover { color: var(--link-hover); }
+    .footer-col a {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--paper);
+      opacity: 0.75;
+    }
+    .footer-col a:hover { color: var(--link-blue); opacity: 1; }
 
     .footer-bar {
       margin-top: 56px;
       padding-top: 24px;
-      border-top: 1px solid var(--image-frame);
+      border-top: 1px solid #333;
       display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
     }
     .footer-bar p {
       font-family: var(--mono);
-      font-size: 0.66rem;
-      letter-spacing: 0.14em;
+      font-size: 0.65rem;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
-      color: var(--text-meta);
+      color: var(--paper);
+      opacity: 0.6;
     }
 
-    /* MOBILE DRAWER */
+    /* ─────────────────────────────────────
+       MOBILE DRAWER
+       ───────────────────────────────────── */
     .drawer {
       position: fixed; inset: 0;
-      background: var(--canvas);
+      background: var(--paper);
       z-index: 200;
-      padding: 32px 24px;
+      padding: 24px;
       transform: translateY(-100%);
       transition: transform 280ms cubic-bezier(.7,.05,.3,1);
       display: flex; flex-direction: column;
+      border-bottom: 2px solid var(--ink-black);
     }
     .drawer.open { transform: translateY(0); }
     .drawer-head {
       display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 32px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--hairline);
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 2px solid var(--ink-black);
     }
     .drawer-close {
       background: transparent;
-      border: 1px solid var(--hairline);
-      color: var(--text);
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      font-size: 1.4rem;
+      border: 2px solid var(--ink-black);
+      color: var(--ink-black);
+      width: 40px; height: 40px;
+      font-size: 1.2rem;
+      border-radius: 0;
     }
-    .drawer ul { display: flex; flex-direction: column; gap: 0; }
+    .drawer ul { display: flex; flex-direction: column; }
     .drawer ul a {
       display: block;
-      padding: 18px 0;
+      padding: 16px 0;
       font-family: var(--mono);
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       font-weight: 700;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--text);
-      border-bottom: 1px solid var(--image-frame);
+      color: var(--ink-page);
+      border-bottom: 1px solid var(--hairline);
     }
-    .drawer .pill-mint { margin-top: 32px; align-self: flex-start; }
+    .drawer .btn-subscribe { margin-top: 24px; align-self: flex-start; display: inline-flex; }
   </style>
 </head>
 <body>
 
-  <!-- ─────────── NAV ─────────── -->
-  <nav>
+  <!-- ─────────── UTILITY BAR ─────────── -->
+  <div class="utility-bar">
+    <div class="utility-inner">
+      <div class="utility-left">
+        <span>15 APR 2026</span>
+        <span>Muar, Johor · 28°C</span>
+        <span>Edition №26</span>
+      </div>
+      <div class="utility-right">
+        <a href="#subscribe">Subscribe</a>
+        <a href="mailto:theindustrialscribe@gmail.com">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────── MAIN NAV ─────────── -->
+  <nav class="main-nav">
     <div class="nav-inner">
-      <a href="index.html" class="wordmark-small">The <em>Industrial</em> Scribe</a>
+      <a href="index.html" class="bug-logo">THE INDUSTRIAL SCRIBE</a>
       <ul class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="#ai-automation">AI &amp; Automation</a></li>
@@ -609,7 +613,7 @@
         <li><a href="#toolbox">Toolbox</a></li>
         <li><a href="marketplace.html">Marketplace</a></li>
       </ul>
-      <a href="#subscribe" class="pill-mint nav-cta-desktop">Subscribe</a>
+      <a href="#subscribe" class="btn-subscribe">Subscribe</a>
       <button class="nav-burger" id="burgerOpen" aria-label="Open menu">☰</button>
     </div>
   </nav>
@@ -617,7 +621,7 @@
   <!-- ─────────── MOBILE DRAWER ─────────── -->
   <aside class="drawer" id="drawer">
     <div class="drawer-head">
-      <span class="wordmark-small">The <em>Industrial</em> Scribe</span>
+      <span class="bug-logo" style="font-size:1.4rem;">THE INDUSTRIAL SCRIBE</span>
       <button class="drawer-close" id="burgerClose" aria-label="Close menu">×</button>
     </div>
     <ul>
@@ -627,131 +631,91 @@
       <li><a href="#toolbox">Toolbox &amp; Tutorials</a></li>
       <li><a href="marketplace.html">Marketplace</a></li>
     </ul>
-    <a href="#subscribe" class="pill-mint">Subscribe — $1.99/mo</a>
+    <a href="#subscribe" class="btn-subscribe">Subscribe — $1.99/mo</a>
   </aside>
 
-  <!-- ─────────── MASTHEAD ─────────── -->
-  <header class="container masthead">
-    <span class="whisper">Edition №26 · April 2026 · Muar, Johor</span>
-    <h1 class="wordmark-hero">The <em>Industrial</em> Scribe</h1>
-    <p class="masthead-sub">AI automation intelligence for Southeast Asian manufacturing professionals — agents, operations, and the operators making it work.</p>
-    <div class="masthead-meta">
-      <span class="label-caps" style="color: var(--mint);">⏱ Updated weekly</span>
-      <span class="label-caps" style="color: var(--text-meta);">23 stories live</span>
-      <a href="#subscribe" class="pill-outline-mint">Join the stream →</a>
-    </div>
-  </header>
-
-  <!-- ─────────── FEATURE HERO STORY ─────────── -->
-  <section class="container" style="padding-top: 0;">
-    <div class="feature-hero">
-      <a href="article-80-percent-problem.html" class="feature-card">
-        <div class="feature-img"><img src="img-factory-floor.jpg" alt="Factory floor with AI automation" loading="eager"></div>
-        <span class="label-caps">▌ Top Story · AI Adoption</span>
-        <h2>The 80% Problem: 98% Are Exploring AI. Only 20% Are Ready.</h2>
-        <p>The execution gap between AI explorers and AI operators is widening — here's what the data actually shows about which manufacturers will compound and which will stall.</p>
-        <span class="timestamp">15 APR 2026 · 8 MIN READ</span>
+  <!-- ─────────── HERO ─────────── -->
+  <section class="container hero">
+    <div class="hero-grid">
+      <a href="article-80-percent-problem.html" class="hero-main">
+        <img src="img-factory-floor.jpg" alt="Factory floor with AI automation" loading="eager">
+        <span class="kicker">▌ Adoption Report</span>
+        <h1>The 80% Problem: 98% of Manufacturers Are Exploring AI. Only 20% Are Ready.</h1>
+        <p class="deck">The execution gap between AI explorers and AI operators is widening — here's what the data actually shows about which manufacturers will compound and which will stall.</p>
+        <span class="byline">BY THE INDUSTRIAL SCRIBE · 8 MIN READ · 15 APR 2026</span>
       </a>
 
-      <div class="feature-side">
-        <a href="article-rca-report.html" class="side-card">
-          <div>
-            <span class="label-caps">⊞ Quality</span>
-            <h3>Write a 5-Why RCA in 10 Minutes With AI</h3>
-          </div>
-          <div class="side-img"><img src="img-ncr-desk.jpg" alt="RCA Report"></div>
+      <aside class="hero-side">
+        <a href="article-rca-report.html" class="side-story">
+          <span class="kicker">Quality</span>
+          <h3>Write a 5-Why RCA in 10 Minutes With AI</h3>
         </a>
-        <a href="article-production-report.html" class="side-card">
-          <div>
-            <span class="label-caps">⊞ Operations</span>
-            <h3>The Weekly Production Report, Automated</h3>
-          </div>
-          <div class="side-img"><img src="img-production-board.jpg" alt="Production Report"></div>
+        <a href="article-production-report.html" class="side-story">
+          <span class="kicker">Operations</span>
+          <h3>The Weekly Production Report, Automated</h3>
         </a>
-        <a href="article-agentic-ai-is-here.html" class="side-card">
-          <div>
-            <span class="label-caps">⊞ Agents</span>
-            <h3>Agentic AI Is Here — And It's Running in SEA Plants</h3>
-          </div>
-          <div class="side-img"><img src="img-cnc-operator.jpg" alt="Agentic AI"></div>
+        <a href="article-agentic-ai-is-here.html" class="side-story">
+          <span class="kicker">Agents</span>
+          <h3>Agentic AI Is Here — And It's Running in SEA Plants</h3>
         </a>
-        <a href="article-asean-data-problem.html" class="side-card">
-          <div>
-            <span class="label-caps">⊞ Data</span>
-            <h3>The ASEAN Data Problem: Why SEA Factories Can't Unlock AI Yet</h3>
-          </div>
-          <div class="side-img"><img src="img-erp-screen.jpg" alt="ASEAN Data Problem"></div>
+        <a href="article-asean-data-problem.html" class="side-story">
+          <span class="kicker">Data</span>
+          <h3>The ASEAN Data Problem: Why SEA Factories Can't Unlock AI Yet</h3>
         </a>
-      </div>
+      </aside>
     </div>
   </section>
 
-  <!-- ─────────── EXPLORE TOPICS ─────────── -->
-  <section class="container explore">
-    <span class="label-caps">▼ Explore Topics</span>
-    <div class="explore-pills">
-      <a href="#ai-automation" class="explore-pill">AI &amp; Automation</a>
-      <a href="#guides" class="explore-pill">Operations</a>
-      <a href="#guides" class="explore-pill">Quality</a>
-      <a href="#guides" class="explore-pill">Strategy &amp; Growth</a>
-      <a href="#guides" class="explore-pill">Supply Chain</a>
-      <a href="#ai-automation" class="explore-pill">People &amp; Culture</a>
-      <a href="#ai-automation" class="explore-pill">Industry Pulse</a>
-      <a href="#toolbox" class="explore-pill">Toolbox</a>
-    </div>
-  </section>
-
-  <!-- ─────────── SECTION: GUIDES & FRAMEWORKS ─────────── -->
-  <section class="container" id="guides">
-    <div class="section-head">
-      <h2>Guides &amp; Frameworks</h2>
-      <span class="label-caps">§01 · 6 stories</span>
-    </div>
+  <!-- ─────────── GUIDES & FRAMEWORKS ─────────── -->
+  <div class="ribbon-wrap">
+    <div class="ribbon"><span>§01 · Guides &amp; Frameworks</span></div>
+  </div>
+  <section class="container" id="guides" style="padding-top:0;">
     <div class="story-grid">
 
-      <a href="article-quotation-framework.html" class="story-tile tile-mint">
-        <div class="tile-img"><img src="img-quotation-desk.jpg" alt="3-Gate Quotation Framework"></div>
-        <span class="label-caps">▌ Strategy · Featured</span>
+      <a href="article-quotation-framework.html" class="story-tile">
+        <img src="img-quotation-desk.jpg" alt="3-Gate Quotation Framework">
+        <span class="kicker">Strategy</span>
         <h3>3-Gate Quotation Framework: Stop Quoting Jobs You Can't Win</h3>
         <p>A practical three-gate decision system to filter, qualify, and price manufacturing enquiries faster — without leaving margin on the table.</p>
         <span class="timestamp">10 APR 2026 · 12 MIN</span>
       </a>
 
       <a href="article-sop-writing.html" class="story-tile">
-        <div class="tile-img"><img src="img-sop-binders.jpg" alt="SOP Writing in 30 Minutes"></div>
-        <span class="label-caps">⊞ Toolbox</span>
+        <img src="img-sop-binders.jpg" alt="SOP Writing in 30 Minutes">
+        <span class="kicker">Toolbox</span>
         <h3>How to Write Any Manufacturing SOP in 30 Minutes Using AI</h3>
         <p>The exact prompt structure and workflow that turns raw process knowledge into a complete, audit-ready SOP.</p>
         <span class="timestamp">08 APR 2026 · 9 MIN</span>
       </a>
 
-      <a href="article-quotation-case-study.html" class="story-tile tile-uv">
-        <div class="tile-img"><img src="img-aerial-industrial.jpg" alt="Quotation Case Study"></div>
-        <span class="label-caps">★ Case Study</span>
+      <a href="article-quotation-case-study.html" class="story-tile">
+        <img src="img-aerial-industrial.jpg" alt="Quotation Case Study">
+        <span class="kicker">Case Study</span>
         <h3>How One Johor Manufacturer Cut Quotation Time by 70% Using AI</h3>
         <p>A contract machining shop in Muar eliminated the quoting bottleneck that was costing them new business every quarter.</p>
         <span class="timestamp">05 APR 2026 · 7 MIN</span>
       </a>
 
       <a href="article-ai-negotiation.html" class="story-tile">
-        <div class="tile-img"><img src="img-quotation-desk.jpg" alt="AI Supplier Negotiation"></div>
-        <span class="label-caps">⊞ Strategy</span>
+        <img src="img-quotation-desk.jpg" alt="AI Supplier Negotiation">
+        <span class="kicker">Strategy</span>
         <h3>How I Used AI to Structure a High-Stakes Supplier Negotiation</h3>
         <p>When a key supplier pushed for a 15% price increase, one BD manager built an AI-assisted counter-proposal that held the line.</p>
         <span class="timestamp">02 APR 2026 · 11 MIN</span>
       </a>
 
-      <a href="article-ai-presentation.html" class="story-tile tile-yellow">
-        <div class="tile-img"><img src="img-blueprint-desk.jpg" alt="AI Business Presentations"></div>
-        <span class="label-caps">▌ Featured</span>
+      <a href="article-ai-presentation.html" class="story-tile">
+        <img src="img-blueprint-desk.jpg" alt="AI Business Presentations">
+        <span class="kicker">Workflow</span>
         <h3>AI-Powered Business Presentations: Briefing to Boardroom in Half the Time</h3>
         <p>How manufacturing BD professionals use AI to structure, write, and design client-facing decks that actually close deals.</p>
         <span class="timestamp">29 MAR 2026 · 10 MIN</span>
       </a>
 
       <a href="article-factory-intelligence.html" class="story-tile">
-        <div class="tile-img"><img src="img-aerial-industrial.jpg" alt="Factory Intelligence"></div>
-        <span class="label-caps">⊞ Analytics</span>
+        <img src="img-aerial-industrial.jpg" alt="Factory Intelligence">
+        <span class="kicker">Analytics</span>
         <h3>How One BD Manager Turned 334,000 Rows Into a Growth Strategy</h3>
         <p>Buried inside three years of sales data was a pattern that pointed directly to the next RM 2M account.</p>
         <span class="timestamp">26 MAR 2026 · 13 MIN</span>
@@ -760,193 +724,167 @@
     </div>
   </section>
 
-  <!-- ─────────── SECTION: AI & AUTOMATION (StoryStream) ─────────── -->
-  <section class="container" id="ai-automation">
-    <div class="section-head">
-      <h2>AI &amp; Automation</h2>
-      <span class="label-caps">§02 · Live Stream · 9 stories</span>
-    </div>
+  <!-- ─────────── AI & AUTOMATION (Featured + Most Popular) ─────────── -->
+  <div class="ribbon-wrap">
+    <div class="ribbon"><span>§02 · AI &amp; Automation</span></div>
+  </div>
+  <section class="container" id="ai-automation" style="padding-top:0;">
+    <div class="twocol">
 
-    <div class="stream">
-
-      <div class="stream-item">
-        <span class="timestamp">15 APR · 14:32 SGT</span>
-        <a href="article-80-percent-problem.html" class="stream-card">
+      <div class="featured-list">
+        <a href="article-80-percent-problem.html" class="feat-item">
+          <img src="img-factory-floor.jpg" alt="80% Problem">
           <div>
-            <span class="label-caps">▌ Adoption Report</span>
+            <span class="kicker">Adoption</span>
             <h3>The 80% Problem: 98% Are Exploring AI. Only 20% Are Ready.</h3>
-            <p>The execution gap between AI explorers and AI operators is widening — here's what the data actually shows.</p>
+            <p>The execution gap between AI explorers and AI operators is widening.</p>
+            <span class="timestamp">15 APR 2026</span>
           </div>
-          <div class="stream-img"><img src="img-factory-floor.jpg" alt="80% Problem"></div>
         </a>
-      </div>
 
-      <div class="stream-item">
-        <span class="timestamp">12 APR · 09:18 SGT</span>
-        <a href="article-agentic-ai-is-here.html" class="stream-card">
+        <a href="article-agentic-ai-is-here.html" class="feat-item">
+          <img src="img-cnc-operator.jpg" alt="Agentic AI">
           <div>
-            <span class="label-caps">▌ Agents</span>
+            <span class="kicker">Agents</span>
             <h3>Agentic AI Is Here — And It's Already Running in Manufacturing Plants</h3>
-            <p>AI that doesn't just answer questions but takes multi-step actions is moving from pilot to production across SEA factories.</p>
+            <p>AI that doesn't just answer questions but takes multi-step actions is moving from pilot to production.</p>
+            <span class="timestamp">12 APR 2026</span>
           </div>
-          <div class="stream-img"><img src="img-cnc-operator.jpg" alt="Agentic AI"></div>
         </a>
-      </div>
 
-      <div class="stream-item">
-        <span class="timestamp">10 APR · 16:45 SGT</span>
-        <a href="article-asean-data-problem.html" class="stream-card">
+        <a href="article-asean-data-problem.html" class="feat-item">
+          <img src="img-erp-screen.jpg" alt="ASEAN Data Problem">
           <div>
-            <span class="label-caps">▌ Data Infrastructure</span>
+            <span class="kicker">Data Infrastructure</span>
             <h3>The ASEAN Data Problem: Why Most SEA Factories Can't Unlock AI Yet</h3>
             <p>Fragmented ERP systems, paper-based records, and multi-language data are slowing AI adoption across the region.</p>
+            <span class="timestamp">10 APR 2026</span>
           </div>
-          <div class="stream-img"><img src="img-erp-screen.jpg" alt="ASEAN Data Problem"></div>
         </a>
-      </div>
 
-      <div class="stream-item">
-        <span class="timestamp">08 APR · 11:02 SGT</span>
-        <a href="article-ai-middle-management.html" class="stream-card">
+        <a href="article-ai-middle-management.html" class="feat-item">
+          <img src="img-erp-screen.jpg" alt="AI Middle Management">
           <div>
-            <span class="label-caps">▌ Workforce</span>
+            <span class="kicker">Workforce</span>
             <h3>AI Is Coming for Middle Management — What Manufacturing Supervisors Need to Know</h3>
             <p>Scheduling, reporting, and escalation decisions that used to require a supervisor are now being handled by AI.</p>
+            <span class="timestamp">08 APR 2026</span>
           </div>
-          <div class="stream-img"><img src="img-erp-screen.jpg" alt="AI Middle Management"></div>
         </a>
       </div>
 
-      <div class="stream-item">
-        <span class="timestamp">05 APR · 19:30 SGT</span>
-        <a href="article-ai-regulation-sea.html" class="stream-card">
-          <div>
-            <span class="label-caps">▌ Policy</span>
-            <h3>AI Regulation Hits Southeast Asia: What Manufacturers Need to Know in 2026</h3>
-            <p>Malaysia, Singapore, and Thailand are drafting AI governance frameworks — exporters to Europe need to pay attention.</p>
-          </div>
-          <div class="stream-img"><img src="img-factory-floor.jpg" alt="AI Regulation SEA"></div>
-        </a>
-      </div>
+      <aside class="popular">
+        <div class="pop-ribbon"><span>★ Most Popular</span></div>
+        <div class="pop-list">
 
-      <div class="stream-item">
-        <span class="timestamp">02 APR · 08:55 SGT</span>
-        <a href="article-ai-controls-desktop.html" class="stream-card">
-          <div>
-            <span class="label-caps">▌ Computer Use</span>
-            <h3>AI Now Controls Your Desktop — What Computer-Use AI Means for the Factory Office</h3>
-            <p>The latest AI models can see your screen and operate your software — here's how manufacturing teams should think about it.</p>
-          </div>
-          <div class="stream-img"><img src="img-sop-binders.jpg" alt="AI Controls Desktop"></div>
-        </a>
-      </div>
+          <a href="article-ai-regulation-sea.html" class="pop-item">
+            <span class="pop-num">01</span>
+            <div>
+              <span class="kicker">Policy</span>
+              <h4>AI Regulation Hits Southeast Asia: What Manufacturers Need to Know in 2026</h4>
+            </div>
+          </a>
 
-      <div class="stream-item">
-        <span class="timestamp">30 MAR · 13:21 SGT</span>
-        <a href="article-20-dollar-revolution.html" class="stream-card">
-          <div>
-            <span class="label-caps">▌ Economics</span>
-            <h3>The $20 Revolution: How Cheap AI Is Flattening the Playing Field</h3>
-            <p>When a world-class AI analyst costs USD 20 a month, the advantage belongs to whoever figures out how to use it first.</p>
-          </div>
-          <div class="stream-img"><img src="img-cnc-operator.jpg" alt="$20 Revolution"></div>
-        </a>
-      </div>
+          <a href="article-ai-controls-desktop.html" class="pop-item">
+            <span class="pop-num">02</span>
+            <div>
+              <span class="kicker">Computer Use</span>
+              <h4>AI Now Controls Your Desktop — What It Means for the Factory Office</h4>
+            </div>
+          </a>
 
-      <div class="stream-item">
-        <span class="timestamp">27 MAR · 17:44 SGT</span>
-        <a href="article-ai-knowledge-gold-rush.html" class="stream-card">
-          <div>
-            <span class="label-caps">▌ Knowledge Capital</span>
-            <h3>The AI Knowledge Gold Rush: Your Factory's Expertise Is Now a Strategic Asset</h3>
-            <p>Companies that encode operational knowledge into AI systems before competitors will have a compounding advantage.</p>
-          </div>
-          <div class="stream-img"><img src="img-blueprint-desk.jpg" alt="Knowledge Gold Rush"></div>
-        </a>
-      </div>
+          <a href="article-20-dollar-revolution.html" class="pop-item">
+            <span class="pop-num">03</span>
+            <div>
+              <span class="kicker">Economics</span>
+              <h4>The $20 Revolution: How Cheap AI Is Flattening the Playing Field</h4>
+            </div>
+          </a>
 
-      <div class="stream-item">
-        <span class="timestamp">25 MAR · 10:09 SGT</span>
-        <a href="article-ai-to-outlook.html" class="stream-card">
-          <div>
-            <span class="label-caps">▌ Workflow</span>
-            <h3>From AI Chat to Outlook: Turn Any AI Output Into a Professional Email</h3>
-            <p>A step-by-step workflow for manufacturing professionals who use AI to draft but need polished emails sent fast.</p>
-          </div>
-          <div class="stream-img"><img src="img-assembly-workstation.jpg" alt="AI to Outlook"></div>
-        </a>
-      </div>
+          <a href="article-ai-knowledge-gold-rush.html" class="pop-item">
+            <span class="pop-num">04</span>
+            <div>
+              <span class="kicker">Knowledge Capital</span>
+              <h4>The AI Knowledge Gold Rush: Your Factory's Expertise Is Now a Strategic Asset</h4>
+            </div>
+          </a>
 
+          <a href="article-ai-to-outlook.html" class="pop-item">
+            <span class="pop-num">05</span>
+            <div>
+              <span class="kicker">Workflow</span>
+              <h4>From AI Chat to Outlook: Turn Any AI Output Into a Professional Email</h4>
+            </div>
+          </a>
+
+        </div>
+      </aside>
     </div>
   </section>
 
-  <!-- ─────────── SUBSCRIBE BANNER ─────────── -->
-  <section class="container" id="subscribe">
-    <div class="subscribe-banner">
-      <div>
-        <span class="label-caps">▌ Founding Member Offer</span>
-        <h2>Join The<br>Stream.</h2>
-        <p>Unlimited access to every article, weekly guides, and case studies built for SEA manufacturing operators. Cancel anytime.</p>
-        <a href="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" class="pill-uv-dark">Subscribe — USD 1.99/mo →</a>
-      </div>
-      <div class="price-block">
-        <div class="amount">$1.99</div>
-        <div class="amount-meta">USD / Month</div>
-      </div>
+  <!-- ─────────── NEWSLETTER STRIP ─────────── -->
+  <section class="newsletter" id="subscribe">
+    <div class="container">
+      <span class="kicker">▌ Founding Member Offer · USD 1.99/mo</span>
+      <h2>Join The Industrial Scribe.</h2>
+      <p>Unlimited access to every article, weekly guides, and case studies built for SEA manufacturing operators. Cancel anytime.</p>
+      <form class="newsletter-form" action="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" method="get" onsubmit="return true;">
+        <input type="email" placeholder="your@email.com" required>
+        <button type="submit">Subscribe →</button>
+      </form>
     </div>
   </section>
 
-  <!-- ─────────── SECTION: TOOLBOX ─────────── -->
-  <section class="container" id="toolbox">
-    <div class="section-head">
-      <h2>Toolbox &amp; Tutorials</h2>
-      <span class="label-caps">§03 · 6 stories</span>
-    </div>
+  <!-- ─────────── TOOLBOX & TUTORIALS ─────────── -->
+  <div class="ribbon-wrap">
+    <div class="ribbon"><span>§03 · Toolbox &amp; Tutorials</span></div>
+  </div>
+  <section class="container" id="toolbox" style="padding-top:0;">
     <div class="story-grid">
 
-      <a href="article-what-is-llm.html" class="story-tile tile-pink">
-        <div class="tile-img"><img src="img-assembly-workstation.jpg" alt="What Is an LLM"></div>
-        <span class="label-caps">▌ Plain English</span>
+      <a href="article-what-is-llm.html" class="story-tile">
+        <img src="img-assembly-workstation.jpg" alt="What Is an LLM">
+        <span class="kicker">Plain English</span>
         <h3>What Is an LLM? A Plain-English Explanation for Manufacturing Pros</h3>
         <p>Large Language Models explained without the jargon — what they are, how they work, and why they matter on the factory floor.</p>
         <span class="timestamp">22 MAR 2026 · 6 MIN</span>
       </a>
 
       <a href="article-what-are-tokens.html" class="story-tile">
-        <div class="tile-img"><img src="img-erp-screen.jpg" alt="What Are Tokens"></div>
-        <span class="label-caps">⊞ Fundamentals</span>
+        <img src="img-erp-screen.jpg" alt="What Are Tokens">
+        <span class="kicker">Fundamentals</span>
         <h3>What Are Tokens? The Currency of AI Language Models</h3>
         <p>Tokens control how much AI can read and write in one go — understanding them helps you get better output and avoid wasted prompts.</p>
         <span class="timestamp">19 MAR 2026 · 5 MIN</span>
       </a>
 
-      <a href="article-what-is-cli.html" class="story-tile tile-white">
-        <div class="tile-img"><img src="img-sop-binders.jpg" alt="What Is a CLI"></div>
-        <span class="label-caps">▌ Tools</span>
+      <a href="article-what-is-cli.html" class="story-tile">
+        <img src="img-sop-binders.jpg" alt="What Is a CLI">
+        <span class="kicker">Tools</span>
         <h3>What Is a CLI? Why the Command Line Still Matters in the Age of AI</h3>
         <p>The command line interface isn't just for developers — manufacturing professionals using AI tools will encounter it.</p>
         <span class="timestamp">16 MAR 2026 · 7 MIN</span>
       </a>
 
       <a href="article-what-is-mcp.html" class="story-tile">
-        <div class="tile-img"><img src="img-erp-screen.jpg" alt="What Is MCP"></div>
-        <span class="label-caps">⊞ Protocol</span>
+        <img src="img-erp-screen.jpg" alt="What Is MCP">
+        <span class="kicker">Protocol</span>
         <h3>What Is MCP? The Protocol That Lets AI Connect to Your Business Systems</h3>
         <p>Model Context Protocol is how AI agents talk to ERP, spreadsheets, and databases — the plumbing of factory AI.</p>
         <span class="timestamp">13 MAR 2026 · 8 MIN</span>
       </a>
 
-      <a href="article-what-are-skills.html" class="story-tile tile-orange">
-        <div class="tile-img"><img src="img-assembly-workstation.jpg" alt="What Are Skills"></div>
-        <span class="label-caps">▌ Agents</span>
+      <a href="article-what-are-skills.html" class="story-tile">
+        <img src="img-assembly-workstation.jpg" alt="What Are Skills">
+        <span class="kicker">Agents</span>
         <h3>What Are Skills? How AI Agents Learn to Do Specific Jobs</h3>
         <p>AI skills are reusable instruction sets that teach agents how to handle specific tasks — SOPs for your AI workforce.</p>
         <span class="timestamp">10 MAR 2026 · 6 MIN</span>
       </a>
 
       <a href="article-playbook.html" class="story-tile">
-        <div class="tile-img"><img src="img-blueprint-desk.jpg" alt="AI Playbook"></div>
-        <span class="label-caps">⊞ Playbook</span>
+        <img src="img-blueprint-desk.jpg" alt="AI Playbook">
+        <span class="kicker">Playbook</span>
         <h3>The Manufacturing AI Playbook: Where to Start, What to Skip</h3>
         <p>A no-nonsense guide to picking your first AI use case in manufacturing — based on what's actually working in SEA factories today.</p>
         <span class="timestamp">07 MAR 2026 · 14 MIN</span>
@@ -958,13 +896,13 @@
   <!-- ─────────── FOOTER ─────────── -->
   <footer>
     <div class="container">
+      <a href="index.html" class="bug-logo">THE INDUSTRIAL SCRIBE</a>
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="display-medium">The <em>Industrial</em> Scribe</div>
           <p>AI automation intelligence for Southeast Asian manufacturing professionals. Built in Muar, Johor — for the operators making it work.</p>
         </div>
         <div class="footer-col">
-          <h4>▌ Sections</h4>
+          <h4>Sections</h4>
           <ul>
             <li><a href="#guides">Guides &amp; Frameworks</a></li>
             <li><a href="#ai-automation">AI &amp; Automation</a></li>
@@ -972,7 +910,7 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>▌ Products</h4>
+          <h4>Products</h4>
           <ul>
             <li><a href="marketplace.html">Marketplace</a></li>
             <li><a href="marketplace.html">PDF Guides</a></li>
@@ -981,7 +919,7 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>▌ Contact</h4>
+          <h4>Contact</h4>
           <ul>
             <li><a href="mailto:theindustrialscribe@gmail.com">Email</a></li>
             <li><a href="#subscribe">Subscribe</a></li>
@@ -991,7 +929,7 @@
       </div>
       <div class="footer-bar">
         <p>© 2026 The Industrial Scribe · Muar, Johor</p>
-        <p>Built for operators ⟶ Read in 60+ countries</p>
+        <p>Built for operators · Read in 60+ countries</p>
       </div>
     </div>
   </footer>
