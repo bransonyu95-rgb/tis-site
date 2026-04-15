@@ -609,15 +609,192 @@
       border-bottom: 1px solid var(--hairline);
     }
     .drawer .btn-subscribe { margin-top: 24px; align-self: flex-start; display: inline-flex; }
+
+    /* ─────────────────────────────────────
+       LIVE LAYER — ticker, mesh, stats, motion
+       ───────────────────────────────────── */
+
+    /* Live ticker bar */
+    .ticker-bar {
+      background: var(--ink-black);
+      color: var(--paper);
+      border-bottom: 1px solid #1f1f23;
+      overflow: hidden;
+      position: relative;
+      height: 32px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker-bar::before {
+      content: 'LIVE';
+      flex-shrink: 0;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      background: var(--accent);
+      color: var(--paper-pure);
+      padding: 4px 10px;
+      margin: 0 16px 0 24px;
+      border-radius: 3px;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @media (min-width: 768px)  { .ticker-bar::before { margin-left: 40px; } }
+    @media (min-width: 1280px) { .ticker-bar::before { margin-left: 64px; } }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(91,91,214,0.6); }
+      50%      { opacity: 0.78; box-shadow: 0 0 0 6px rgba(91,91,214,0); }
+    }
+    .ticker-track {
+      display: flex;
+      gap: 48px;
+      white-space: nowrap;
+      animation: ticker-scroll 55s linear infinite;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      will-change: transform;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-track span { display: inline-flex; align-items: center; gap: 8px; }
+    .tk-up   { color: #4ade80; }
+    .tk-down { color: #f87171; }
+    .tk-mid  { color: var(--gray-dis); }
+    @keyframes ticker-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* Live clock blink */
+    .live-dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      background: #4ade80;
+      border-radius: 50%;
+      margin-right: 6px;
+      animation: blink 1.4s ease-in-out infinite;
+      vertical-align: middle;
+    }
+    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.25; } }
+
+    /* Sticky nav shrink */
+    nav.main-nav { transition: padding 200ms ease, box-shadow 200ms ease; }
+    nav.main-nav.shrink .nav-inner { padding-top: 12px; padding-bottom: 12px; }
+    nav.main-nav.shrink { box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 6px 24px -12px rgba(10,10,10,0.18); }
+    nav.main-nav.shrink .bug-logo { font-size: 1.35rem; }
+    .nav-inner { transition: padding 200ms ease; }
+    .bug-logo { transition: font-size 200ms ease; }
+
+    /* Animated hero mesh background */
+    .hero { position: relative; overflow: hidden; }
+    .hero-mesh {
+      position: absolute; inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(60px);
+      opacity: 0.55;
+    }
+    .hero-mesh span {
+      position: absolute;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      mix-blend-mode: multiply;
+    }
+    .hero-mesh .blob-1 { background: #5b5bd6; top: -120px; left: -80px; animation: drift1 18s ease-in-out infinite; }
+    .hero-mesh .blob-2 { background: #22d3ee; top: 40px;   right: -100px; animation: drift2 22s ease-in-out infinite; }
+    .hero-mesh .blob-3 { background: #a78bfa; bottom: -140px; left: 30%; animation: drift3 26s ease-in-out infinite; }
+    @keyframes drift1 {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50%      { transform: translate(80px, 60px) scale(1.15); }
+    }
+    @keyframes drift2 {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50%      { transform: translate(-90px, 80px) scale(1.2); }
+    }
+    @keyframes drift3 {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50%      { transform: translate(60px, -70px) scale(1.1); }
+    }
+    .hero-grid { position: relative; z-index: 1; }
+    .hero-main img { transition: transform 600ms cubic-bezier(.2,.8,.2,1); }
+    .hero-main:hover img { transform: scale(1.025); }
+
+    /* Count-up stats strip */
+    .stats-strip {
+      background: var(--ink-black);
+      color: var(--paper);
+      border-top: 1px solid var(--ink-black);
+      border-bottom: 1px solid var(--ink-black);
+    }
+    .stats-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 36px 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    @media (min-width: 768px)  { .stats-inner { padding: 40px 40px; } }
+    @media (min-width: 1280px) { .stats-inner { padding: 44px 64px; } }
+    @media (max-width: 767px)  { .stats-inner { grid-template-columns: repeat(2, 1fr); } }
+
+    .stat-cell {
+      border-left: 2px solid var(--accent);
+      padding-left: 16px;
+    }
+    .stat-num {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(36px, 4vw, 56px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--paper-pure);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .stat-num .stat-suffix { color: var(--accent); font-size: 0.6em; vertical-align: top; margin-left: 2px; }
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray-dis);
+    }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 600ms ease, transform 600ms cubic-bezier(.2,.8,.2,1); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* Story tile image hover zoom */
+    .story-tile { overflow: hidden; }
+    .story-tile .img-wrap { overflow: hidden; margin-bottom: 14px; }
+    .story-tile .img-wrap img { margin-bottom: 0; transition: transform 600ms cubic-bezier(.2,.8,.2,1); }
+    .story-tile:hover .img-wrap img { transform: scale(1.06); }
+    .featured-list .feat-item { overflow: hidden; }
+    .featured-list .feat-item img { transition: transform 600ms cubic-bezier(.2,.8,.2,1); }
+    .featured-list .feat-item:hover img { transform: scale(1.04); }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .hero-mesh span, .ticker-track, .live-dot, .ticker-bar::before { animation: none !important; }
+      .reveal { opacity: 1; transform: none; }
+      *, *::before, *::after { transition: none !important; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- ─────────── LIVE TICKER ─────────── -->
+  <div class="ticker-bar" aria-hidden="true">
+    <div class="ticker-track" id="tickerTrack"></div>
+  </div>
 
   <!-- ─────────── UTILITY BAR ─────────── -->
   <div class="utility-bar">
     <div class="utility-inner">
       <div class="utility-left">
-        <span>15 APR 2026</span>
+        <span><span class="live-dot"></span><span id="liveClock">MUAR · 14:32 MYT</span></span>
         <span>Muar, Johor · 28°C</span>
         <span>Edition №26</span>
       </div>
@@ -660,6 +837,11 @@
 
   <!-- ─────────── HERO ─────────── -->
   <section class="container hero">
+    <div class="hero-mesh" aria-hidden="true">
+      <span class="blob-1"></span>
+      <span class="blob-2"></span>
+      <span class="blob-3"></span>
+    </div>
     <div class="hero-grid">
       <a href="article-80-percent-problem.html" class="hero-main">
         <img src="img-factory-floor.jpg" alt="Factory floor with AI automation" loading="eager">
@@ -687,6 +869,28 @@
           <h3>The ASEAN Data Problem: Why SEA Factories Can't Unlock AI Yet</h3>
         </a>
       </aside>
+    </div>
+  </section>
+
+  <!-- ─────────── LIVE STATS STRIP ─────────── -->
+  <section class="stats-strip" aria-label="Live newsroom stats">
+    <div class="stats-inner">
+      <div class="stat-cell">
+        <span class="stat-num" data-count="23">0</span>
+        <span class="stat-label">Articles Shipped</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num"><span data-count="1247">0</span></span>
+        <span class="stat-label">Monthly Readers</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num"><span data-count="62">0</span><span class="stat-suffix">+</span></span>
+        <span class="stat-label">Countries Reached</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num"><span data-count="999" data-divide="10">0</span><span class="stat-suffix">%</span></span>
+        <span class="stat-label">Newsroom Uptime</span>
+      </div>
     </div>
   </section>
 
@@ -950,10 +1154,101 @@
   </footer>
 
   <script>
+    // Mobile drawer
     var drawer = document.getElementById('drawer');
     document.getElementById('burgerOpen').addEventListener('click', function () { drawer.classList.add('open'); });
     document.getElementById('burgerClose').addEventListener('click', function () { drawer.classList.remove('open'); });
     drawer.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { drawer.classList.remove('open'); }); });
+
+    // ── Live ticker (rotating manufacturing stats) ──
+    var tickerItems = [
+      ['SEA AI ADOPTION', '31%', 'up'],
+      ['CNC UPTIME (AVG)', '87%', 'up'],
+      ['QUOTATION TURNAROUND', '−42%', 'up'],
+      ['MFG GDP · MY', 'RM 412B', 'mid'],
+      ['SOP AUTOMATION', '+18%', 'up'],
+      ['SCRAP RATE', '−6.4%', 'up'],
+      ['AGENT DEPLOYMENTS', '1,204', 'up'],
+      ['FX · USD/MYR', '4.71', 'mid'],
+      ['ENERGY COST · KWH', '0.52', 'down'],
+      ['NEW READERS · 7D', '+312', 'up'],
+      ['ASEAN MFG PMI', '51.3', 'up'],
+      ['ROBOT DENSITY · SEA', '74/10K', 'mid']
+    ];
+    function buildTicker() {
+      var html = '';
+      var build = function () {
+        return tickerItems.map(function (t) {
+          var arrow = t[2] === 'up' ? '▲' : t[2] === 'down' ? '▼' : '·';
+          var cls = t[2] === 'up' ? 'tk-up' : t[2] === 'down' ? 'tk-down' : 'tk-mid';
+          return '<span><em style="font-style:normal;color:#a1a1aa">' + t[0] + '</em> <strong style="font-weight:700">' + t[1] + '</strong> <span class="' + cls + '">' + arrow + '</span></span>';
+        }).join('');
+      };
+      // duplicate for seamless loop
+      document.getElementById('tickerTrack').innerHTML = build() + build();
+    }
+    buildTicker();
+
+    // ── Live clock (Muar / MYT, UTC+8) ──
+    function tickClock() {
+      var now = new Date();
+      var utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+      var myt = new Date(utc + 8 * 3600000);
+      var hh = String(myt.getHours()).padStart(2, '0');
+      var mm = String(myt.getMinutes()).padStart(2, '0');
+      var ss = String(myt.getSeconds()).padStart(2, '0');
+      document.getElementById('liveClock').textContent = 'MUAR · ' + hh + ':' + mm + ':' + ss + ' MYT';
+    }
+    tickClock();
+    setInterval(tickClock, 1000);
+
+    // ── Sticky nav shrink on scroll ──
+    var navEl = document.querySelector('nav.main-nav');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 40) navEl.classList.add('shrink');
+      else navEl.classList.remove('shrink');
+    }, { passive: true });
+
+    // ── Scroll reveal + count-up via IntersectionObserver ──
+    var revealTargets = document.querySelectorAll('.story-tile, .feat-item, .pop-item, .stat-cell, .side-story');
+    revealTargets.forEach(function (el, i) {
+      el.classList.add('reveal');
+      el.style.transitionDelay = (i % 6) * 60 + 'ms';
+    });
+
+    function countUp(el) {
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      var divide = parseInt(el.getAttribute('data-divide') || '1', 10);
+      var dur = 1400;
+      var start = performance.now();
+      function step(now) {
+        var p = Math.min((now - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        var v = Math.floor(target * eased);
+        if (divide > 1) el.textContent = (v / divide).toFixed(1);
+        else el.textContent = v.toLocaleString();
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('in');
+          var nums = e.target.querySelectorAll('[data-count]');
+          nums.forEach(function (n) {
+            if (!n.dataset.done) { n.dataset.done = '1'; countUp(n); }
+          });
+          io.unobserve(e.target);
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      revealTargets.forEach(function (el) { io.observe(el); });
+    } else {
+      revealTargets.forEach(function (el) { el.classList.add('in'); });
+      document.querySelectorAll('[data-count]').forEach(countUp);
+    }
   </script>
 
 </body>
