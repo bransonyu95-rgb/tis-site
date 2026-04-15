@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Industrial Scribe — AI Automation Intelligence for SEA Manufacturing Professionals</title>
-  <meta name="description" content="Editorial coverage of AI automation, agents, and operational intelligence for Southeast Asian manufacturing professionals.">
+  <title>The Industrial Scribe — ERP Infrastructure for SEA Factories. Build with AI.</title>
+  <meta name="description" content="Build your factory's ERP with AI. Vibe-code modules in a weekend, or co-build live with a 15-year CNC operator. Pay per token.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     /* ─────────────────────────────────────
-       DESIGN TOKENS — WIRED-INSPIRED
+       DESIGN TOKENS — Linear/Vercel indigo
        ───────────────────────────────────── */
     :root {
-      /* Linear / Vercel — soft indigo on off-white */
       --ink-black: #0a0a0a;
       --ink-page:  #0a0a0a;
       --paper:     #fafafa;
@@ -25,12 +24,13 @@
       --accent:    #5b5bd6;
       --accent-hi: #4f46e5;
       --accent-soft: #eef2ff;
-
-      /* Aliases for legacy references */
-      --link-blue:    #5b5bd6;
-      --grad-a-end:   #5b5bd6;
-      --grad-a:       #5b5bd6;
-      --grad-b:       #0a0a0a;
+      --code-bg:   #0c0c0f;
+      --code-line: #1a1a22;
+      --code-dim:  #6b7280;
+      --code-key:  #c084fc;
+      --code-str:  #4ade80;
+      --code-num:  #fbbf24;
+      --code-fn:   #60a5fa;
 
       --display: 'Playfair Display', Georgia, 'Times New Roman', serif;
       --serif:   'Source Serif 4', Georgia, 'Times New Roman', serif;
@@ -38,13 +38,11 @@
       --mono:    'Space Mono', 'Courier New', Courier, monospace;
     }
 
-    /* ─────────────────────────────────────
-       RESET + BASE
-       ───────────────────────────────────── */
+    /* ─────────── RESET ─────────── */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
     body {
-      font-family: var(--serif);
+      font-family: var(--sans);
       background: var(--paper);
       color: var(--ink-page);
       line-height: 1.5;
@@ -52,569 +50,26 @@
       text-rendering: optimizeLegibility;
     }
     a { color: inherit; text-decoration: none; transition: color 120ms ease; }
-    a:hover { color: var(--grad-a-end); }
     img { display: block; max-width: 100%; height: auto; }
-    button { font-family: inherit; cursor: pointer; }
+    button { font-family: inherit; cursor: pointer; border: 0; background: transparent; }
     ul { list-style: none; }
-    hr { border: 0; border-top: 1px solid var(--hairline); margin: 0; }
 
-    /* ─────────────────────────────────────
-       TYPE UTILITIES
-       ───────────────────────────────────── */
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+    @media (min-width: 768px)  { .container { padding: 0 40px; } }
+    @media (min-width: 1280px) { .container { padding: 0 56px; } }
+
     .kicker {
       font-family: var(--mono);
-      font-size: 0.75rem;
-      font-weight: 700;
-      line-height: 1.23;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: var(--ink-page);
-      display: inline-block;
-      margin-bottom: 8px;
-    }
-    .timestamp {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      font-weight: 400;
-      line-height: 1.33;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gray-cap);
-    }
-    .ui-label {
-      font-family: var(--sans);
-      font-size: 0.875rem;
-      font-weight: 400;
-      letter-spacing: 0.03em;
-      color: var(--ink-page);
-    }
-
-    /* ─────────────────────────────────────
-       LAYOUT
-       ───────────────────────────────────── */
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-    @media (min-width: 768px)  { .container { padding: 0 40px; } }
-    @media (min-width: 1280px) { .container { padding: 0 64px; } }
-
-    section { padding: 48px 0; }
-    @media (max-width: 767px) { section { padding: 32px 0; } }
-
-    .rule-1 { border-top: 1px solid var(--ink-black); }
-    .rule-2 { border-top: 2px solid var(--ink-black); }
-    .rule-hairline { border-top: 1px solid var(--hairline); }
-
-    /* ─────────────────────────────────────
-       UTILITY BAR (top black strip)
-       ───────────────────────────────────── */
-    .utility-bar {
-      background: var(--ink-black);
-      color: var(--paper);
-    }
-    .utility-inner {
-      max-width: 1280px; margin: 0 auto; padding: 0 24px;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 36px;
-    }
-    @media (min-width: 768px)  { .utility-inner { padding: 0 40px; } }
-    @media (min-width: 1280px) { .utility-inner { padding: 0 64px; } }
-
-    .utility-bar a, .utility-bar span {
-      font-family: var(--mono);
       font-size: 0.7rem;
-      font-weight: 400;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
-      color: var(--paper);
-    }
-    .utility-bar a:hover { color: var(--grad-a-end); }
-    .utility-left { display: flex; gap: 18px; align-items: center; }
-    .utility-right { display: flex; gap: 18px; align-items: center; }
-    @media (max-width: 599px) {
-      .utility-left span:not(:first-child) { display: none; }
-    }
-
-    /* ─────────────────────────────────────
-       MAIN NAV
-       ───────────────────────────────────── */
-    nav.main-nav {
-      background: var(--paper);
-      border-bottom: 1px solid var(--ink-black);
-      position: sticky; top: 0; z-index: 100;
-    }
-    .nav-inner {
-      max-width: 1280px; margin: 0 auto; padding: 18px 24px;
-      display: flex; align-items: center; justify-content: space-between; gap: 24px;
-    }
-    @media (min-width: 768px)  { .nav-inner { padding: 22px 40px; } }
-    @media (min-width: 1280px) { .nav-inner { padding: 26px 64px; } }
-
-    .bug-logo {
-      font-family: var(--display);
-      font-weight: 900;
-      font-size: 1.75rem;
-      line-height: 0.9;
-      letter-spacing: -0.01em;
-      color: var(--ink-black);
-      white-space: nowrap;
-    }
-    .nav-links { display: flex; gap: 26px; align-items: center; }
-    .nav-links a {
-      font-family: var(--sans);
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      color: var(--ink-page);
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--grad-a-end); }
-
-    .btn-subscribe {
-      display: inline-flex; align-items: center; justify-content: center;
-      background: var(--accent);
-      color: var(--paper-pure);
-      font-family: var(--sans);
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      padding: 11px 22px;
-      border: 1px solid var(--accent);
-      border-radius: 8px;
-      transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
-    }
-    .btn-subscribe:hover { background: var(--accent-hi); border-color: var(--accent-hi); }
-
-    .nav-burger {
-      display: none;
-      background: transparent;
-      border: 2px solid var(--ink-black);
-      width: 40px; height: 40px;
-      border-radius: 0;
-      align-items: center; justify-content: center;
-      font-size: 1.1rem;
-      color: var(--ink-black);
-    }
-    @media (max-width: 899px) {
-      .nav-links { display: none; }
-      .nav-burger { display: inline-flex; }
-      .btn-subscribe { display: none; }
-    }
-
-    /* ─────────────────────────────────────
-       HERO / MASTHEAD STORY
-       ───────────────────────────────────── */
-    .hero { padding: 48px 0 32px; }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 48px;
-    }
-    @media (max-width: 899px) { .hero-grid { grid-template-columns: 1fr; gap: 32px; } }
-
-    .hero-main img {
-      width: 100%;
-      aspect-ratio: 16/9;
-      object-fit: cover;
-      display: block;
-    }
-    .hero-main .kicker { margin-top: 18px; color: var(--ink-black); }
-    .hero-main h1 {
-      font-family: var(--display);
-      font-weight: 900;
-      font-size: clamp(40px, 6vw, 76px);
-      line-height: 1.02;
-      letter-spacing: -0.018em;
-      color: var(--ink-page);
-      margin: 8px 0 16px;
-    }
-    .hero-main .deck {
-      font-family: var(--serif);
-      font-size: 1.19rem;
-      font-weight: 400;
-      line-height: 1.47;
-      color: var(--ink-page);
-      max-width: 640px;
-      margin-bottom: 16px;
-    }
-    .hero-main .byline {
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      color: var(--gray-cap);
-      letter-spacing: 0.02em;
-    }
-    .hero-main:hover h1 { color: var(--grad-a-end); }
-
-    .hero-side { display: flex; flex-direction: column; }
-    .hero-side .side-story {
-      display: block;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--hairline);
-    }
-    .hero-side .side-story:first-child { padding-top: 0; }
-    .hero-side .side-story:last-child { border-bottom: none; }
-    .hero-side .side-story .kicker { color: var(--ink-black); }
-    .hero-side .side-story h3 {
-      font-family: var(--display);
-      font-size: 1.4rem;
       font-weight: 700;
-      line-height: 1.15;
-      color: var(--ink-page);
-      transition: color 120ms ease;
-    }
-    .hero-side .side-story:hover h3 { color: var(--grad-a-end); }
-
-    /* ─────────────────────────────────────
-       BLACK RIBBON SECTION HEADER
-       ───────────────────────────────────── */
-    .ribbon {
-      background: transparent;
-      color: var(--ink-black);
-      padding: 14px 0;
-      margin-bottom: 24px;
-      border-top: 1px solid var(--ink-black);
-      border-bottom: 1px solid var(--hairline);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .ribbon::before {
-      content: '';
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
       display: inline-block;
-      width: 8px; height: 8px;
-      background: var(--accent);
-      border-radius: 50%;
-      margin-left: 24px;
-    }
-    .ribbon span {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--ink-black);
-    }
-    @media (min-width: 768px)  { .ribbon::before { margin-left: 40px; } }
-    @media (min-width: 1280px) { .ribbon::before { margin-left: 64px; } }
-
-    .ribbon-wrap { max-width: 1280px; margin: 0 auto; }
-    .section-block { margin-top: 48px; }
-
-    /* ─────────────────────────────────────
-       STORY GRID
-       ───────────────────────────────────── */
-    .story-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-    }
-    @media (max-width: 1023px) { .story-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 599px)  { .story-grid { grid-template-columns: 1fr; } }
-
-    .story-tile {
-      display: block;
-      padding: 0 24px 32px 24px;
-      border-right: 1px solid var(--ink-black);
-      border-bottom: 1px solid var(--ink-black);
-    }
-    .story-tile:first-child { padding-left: 0; }
-    @media (min-width: 1024px) {
-      .story-tile:nth-child(3n) { border-right: none; padding-right: 0; }
-      .story-tile:nth-child(3n+1) { padding-left: 0; }
-    }
-    @media (max-width: 1023px) and (min-width: 600px) {
-      .story-tile:nth-child(2n) { border-right: none; padding-right: 0; }
-      .story-tile:nth-child(2n+1) { padding-left: 0; }
-    }
-    @media (max-width: 599px) {
-      .story-tile { border-right: none; padding-left: 0; padding-right: 0; }
-    }
-    .story-tile img {
-      width: 100%;
-      aspect-ratio: 16/9;
-      object-fit: cover;
-      display: block;
       margin-bottom: 14px;
     }
-    .story-tile .kicker { color: var(--ink-black); }
-    .story-tile h3 {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: 1.6rem;
-      line-height: 1.1;
-      color: var(--ink-page);
-      margin: 4px 0 10px;
-      transition: color 120ms ease;
-    }
-    .story-tile p {
-      font-family: var(--serif);
-      font-size: 0.94rem;
-      line-height: 1.5;
-      color: var(--ink-page);
-      margin-bottom: 12px;
-    }
-    .story-tile .timestamp { display: block; }
-    .story-tile:hover h3 { color: var(--grad-a-end); }
 
-    /* ─────────────────────────────────────
-       TWO-COLUMN: FEATURED + MOST POPULAR
-       ───────────────────────────────────── */
-    .twocol {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 48px;
-      padding-top: 32px;
-    }
-    @media (max-width: 1023px) { .twocol { grid-template-columns: 1fr; gap: 32px; } }
-
-    .featured-list .feat-item {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 24px;
-      padding: 24px 0;
-      border-bottom: 1px solid var(--hairline);
-      align-items: start;
-    }
-    .featured-list .feat-item:first-child { padding-top: 0; }
-    .featured-list .feat-item img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
-    .featured-list .feat-item h3 {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: 1.65rem;
-      line-height: 1.12;
-      color: var(--ink-page);
-      margin: 4px 0 8px;
-      transition: color 120ms ease;
-    }
-    .featured-list .feat-item p {
-      font-family: var(--serif);
-      font-size: 0.95rem;
-      line-height: 1.5;
-      color: var(--ink-page);
-      margin-bottom: 8px;
-    }
-    .featured-list .feat-item:hover h3 { color: var(--grad-a-end); }
-    @media (max-width: 599px) {
-      .featured-list .feat-item { grid-template-columns: 1fr; }
-    }
-
-    /* ─────────────── MOST POPULAR ─────────────── */
-    .popular { border-top: 2px solid var(--ink-black); padding-top: 0; }
-    .popular .pop-ribbon {
-      background: var(--grad-b);
-      color: var(--paper);
-      padding: 12px 16px;
-      margin-bottom: 8px;
-    }
-    .popular .pop-ribbon span {
-      font-family: var(--mono);
-      font-size: 0.74rem;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--paper);
-    }
-    .popular .pop-list { padding: 0; }
-    .popular .pop-item {
-      display: grid;
-      grid-template-columns: 60px 1fr;
-      gap: 16px;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--hairline);
-      align-items: start;
-    }
-    .popular .pop-item:last-child { border-bottom: none; }
-    .popular .pop-num {
-      font-family: var(--display);
-      font-weight: 900;
-      font-size: 2.6rem;
-      line-height: 0.9;
-      color: var(--accent);
-    }
-    .popular .pop-item h4 {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: 1.05rem;
-      line-height: 1.18;
-      color: var(--ink-page);
-      transition: color 120ms ease;
-    }
-    .popular .pop-item .kicker { font-size: 0.66rem; margin-bottom: 4px; color: var(--ink-black); }
-    .popular .pop-item:hover h4 { color: var(--grad-a-end); }
-
-    /* ─────────────────────────────────────
-       NEWSLETTER STRIP
-       ───────────────────────────────────── */
-    .newsletter {
-      background: var(--accent-soft);
-      border-top: 1px solid var(--hairline);
-      border-bottom: 1px solid var(--hairline);
-      padding: 80px 0;
-      text-align: center;
-    }
-    .newsletter .kicker { color: var(--accent); margin-bottom: 14px; }
-    .newsletter h2 {
-      font-family: var(--display);
-      font-weight: 900;
-      font-size: clamp(36px, 5vw, 64px);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: var(--ink-black);
-      max-width: 820px;
-      margin: 0 auto 16px;
-    }
-    .newsletter p {
-      font-family: var(--serif);
-      font-size: 1.08rem;
-      line-height: 1.55;
-      color: var(--body);
-      max-width: 560px;
-      margin: 0 auto 32px;
-    }
-    .newsletter-form {
-      display: flex;
-      gap: 0;
-      max-width: 480px;
-      margin: 0 auto;
-    }
-    .newsletter-form input {
-      flex: 1;
-      padding: 14px 16px;
-      font-family: var(--sans);
-      font-size: 0.95rem;
-      color: var(--ink-page);
-      background: var(--paper-pure);
-      border: 1px solid var(--hairline);
-      border-right: 0;
-      border-radius: 8px 0 0 8px;
-      outline: none;
-    }
-    .newsletter-form input:focus { border-color: var(--accent); }
-    .newsletter-form input::placeholder { color: var(--gray-cap); }
-    .newsletter-form button {
-      padding: 14px 24px;
-      background: var(--accent);
-      color: var(--paper-pure);
-      font-family: var(--sans);
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      border: 1px solid var(--accent);
-      border-radius: 0 8px 8px 0;
-      transition: background 200ms ease, border-color 200ms ease;
-    }
-    .newsletter-form button:hover { background: var(--accent-hi); border-color: var(--accent-hi); }
-    @media (max-width: 599px) {
-      .newsletter-form { flex-direction: column; }
-      .newsletter-form input { border-right: 1px solid var(--hairline); border-bottom: 0; border-radius: 8px 8px 0 0; }
-      .newsletter-form button { border-top: 0; border-radius: 0 0 8px 8px; }
-    }
-
-    /* ─────────────────────────────────────
-       FOOTER (only inverted region)
-       ───────────────────────────────────── */
-    footer {
-      background: var(--ink-black);
-      color: var(--paper);
-      padding: 64px 0 32px;
-      margin-top: 0;
-    }
-    footer .bug-logo { color: var(--paper); display: block; margin-bottom: 32px; font-size: 2.2rem; }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 40px;
-    }
-    @media (max-width: 899px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 599px) { .footer-grid { grid-template-columns: 1fr; } }
-
-    .footer-brand p {
-      font-family: var(--serif);
-      font-size: 0.95rem;
-      line-height: 1.5;
-      color: var(--paper);
-      max-width: 380px;
-      opacity: 0.85;
-    }
-    .footer-col h4 {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--paper);
-      margin-bottom: 16px;
-    }
-    .footer-col li { margin-bottom: 10px; }
-    .footer-col a {
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      font-weight: 400;
-      color: var(--paper);
-      opacity: 0.75;
-    }
-    .footer-col a:hover { color: var(--grad-a-end); opacity: 1; }
-
-    .footer-bar {
-      margin-top: 56px;
-      padding-top: 24px;
-      border-top: 1px solid #333;
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
-    }
-    .footer-bar p {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--paper);
-      opacity: 0.6;
-    }
-
-    /* ─────────────────────────────────────
-       MOBILE DRAWER
-       ───────────────────────────────────── */
-    .drawer {
-      position: fixed; inset: 0;
-      background: var(--paper);
-      z-index: 200;
-      padding: 24px;
-      transform: translateY(-100%);
-      transition: transform 280ms cubic-bezier(.7,.05,.3,1);
-      display: flex; flex-direction: column;
-      border-bottom: 2px solid var(--ink-black);
-    }
-    .drawer.open { transform: translateY(0); }
-    .drawer-head {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 24px;
-      padding-bottom: 18px;
-      border-bottom: 2px solid var(--ink-black);
-    }
-    .drawer-close {
-      background: transparent;
-      border: 2px solid var(--ink-black);
-      color: var(--ink-black);
-      width: 40px; height: 40px;
-      font-size: 1.2rem;
-      border-radius: 0;
-    }
-    .drawer ul { display: flex; flex-direction: column; }
-    .drawer ul a {
-      display: block;
-      padding: 16px 0;
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-page);
-      border-bottom: 1px solid var(--hairline);
-    }
-    .drawer .btn-subscribe { margin-top: 24px; align-self: flex-start; display: inline-flex; }
-
-    /* ─────────────────────────────────────
-       LIVE LAYER — ticker, mesh, stats, motion
-       ───────────────────────────────────── */
-
-    /* Live ticker bar */
+    /* ─────────── LIVE TICKER ─────────── */
     .ticker-bar {
       background: var(--ink-black);
       color: var(--paper);
@@ -640,7 +95,7 @@
       animation: pulse 1.6s ease-in-out infinite;
     }
     @media (min-width: 768px)  { .ticker-bar::before { margin-left: 40px; } }
-    @media (min-width: 1280px) { .ticker-bar::before { margin-left: 64px; } }
+    @media (min-width: 1280px) { .ticker-bar::before { margin-left: 56px; } }
     @keyframes pulse {
       0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(91,91,214,0.6); }
       50%      { opacity: 0.78; box-shadow: 0 0 0 6px rgba(91,91,214,0); }
@@ -654,7 +109,6 @@
       font-size: 0.72rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      will-change: transform;
     }
     .ticker-track:hover { animation-play-state: paused; }
     .ticker-track span { display: inline-flex; align-items: center; gap: 8px; }
@@ -666,7 +120,25 @@
       to   { transform: translateX(-50%); }
     }
 
-    /* Live clock blink */
+    /* ─────────── UTILITY BAR ─────────── */
+    .utility-bar { background: #050507; color: var(--paper); border-bottom: 1px solid #1f1f23; }
+    .utility-inner {
+      max-width: 1240px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 32px;
+    }
+    @media (min-width: 768px)  { .utility-inner { padding: 0 40px; } }
+    @media (min-width: 1280px) { .utility-inner { padding: 0 56px; } }
+    .utility-bar a, .utility-bar span {
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      font-weight: 400;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--gray-dis);
+    }
+    .utility-bar a:hover { color: var(--accent); }
+    .utility-left, .utility-right { display: flex; gap: 18px; align-items: center; }
     .live-dot {
       display: inline-block;
       width: 6px; height: 6px;
@@ -677,107 +149,646 @@
       vertical-align: middle;
     }
     @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.25; } }
+    @media (max-width: 599px) { .utility-left span:not(:first-child) { display: none; } }
 
-    /* Sticky nav shrink */
-    nav.main-nav { transition: padding 200ms ease, box-shadow 200ms ease; }
+    /* ─────────── MAIN NAV ─────────── */
+    nav.main-nav {
+      background: rgba(250,250,250,0.85);
+      backdrop-filter: saturate(180%) blur(12px);
+      -webkit-backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid var(--hairline);
+      position: sticky; top: 0; z-index: 100;
+      transition: padding 200ms ease, box-shadow 200ms ease;
+    }
+    .nav-inner {
+      max-width: 1240px; margin: 0 auto; padding: 18px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+      transition: padding 200ms ease;
+    }
+    @media (min-width: 768px)  { .nav-inner { padding: 22px 40px; } }
+    @media (min-width: 1280px) { .nav-inner { padding: 24px 56px; } }
     nav.main-nav.shrink .nav-inner { padding-top: 12px; padding-bottom: 12px; }
     nav.main-nav.shrink { box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 6px 24px -12px rgba(10,10,10,0.18); }
-    nav.main-nav.shrink .bug-logo { font-size: 1.35rem; }
-    .nav-inner { transition: padding 200ms ease; }
-    .bug-logo { transition: font-size 200ms ease; }
 
-    /* Animated hero mesh background */
-    .hero { position: relative; overflow: hidden; }
+    .bug-logo {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 1.5rem;
+      letter-spacing: -0.01em;
+      color: var(--ink-black);
+      white-space: nowrap;
+      transition: font-size 200ms ease;
+    }
+    nav.main-nav.shrink .bug-logo { font-size: 1.25rem; }
+    .bug-logo .dot { color: var(--accent); }
+
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--body);
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta { display: flex; gap: 10px; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--sans);
+      font-size: 0.86rem;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      transition: background 180ms ease, border-color 180ms ease, transform 180ms ease, color 180ms ease;
+      gap: 6px;
+    }
+    .btn-primary {
+      background: var(--accent); color: var(--paper-pure);
+      border-color: var(--accent);
+      box-shadow: 0 1px 2px rgba(91,91,214,0.3);
+    }
+    .btn-primary:hover { background: var(--accent-hi); border-color: var(--accent-hi); }
+    .btn-ghost {
+      background: transparent; color: var(--ink-black);
+      border-color: var(--hairline);
+    }
+    .btn-ghost:hover { border-color: var(--ink-black); }
+    .btn-lg { padding: 14px 26px; font-size: 0.95rem; }
+
+    .nav-burger {
+      display: none;
+      width: 40px; height: 40px;
+      align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      color: var(--ink-black);
+      border-radius: 6px;
+      border: 1px solid var(--hairline);
+    }
+    @media (max-width: 899px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-burger { display: inline-flex; }
+    }
+
+    /* ─────────── MOBILE DRAWER ─────────── */
+    .drawer {
+      position: fixed; inset: 0 0 0 auto;
+      width: 84%; max-width: 360px;
+      background: var(--paper-pure);
+      transform: translateX(100%);
+      transition: transform 280ms cubic-bezier(.2,.8,.2,1);
+      z-index: 200;
+      padding: 28px 28px 40px;
+      display: flex; flex-direction: column;
+      box-shadow: -10px 0 40px rgba(0,0,0,0.1);
+    }
+    .drawer.open { transform: translateX(0); }
+    .drawer-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
+    .drawer-close { font-size: 2rem; line-height: 1; color: var(--ink-black); }
+    .drawer ul { display: flex; flex-direction: column; gap: 4px; }
+    .drawer ul a {
+      display: block;
+      padding: 14px 0;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink-page);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .drawer .btn { margin-top: 28px; align-self: stretch; }
+
+    /* ─────────── HERO ─────────── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 80px 0 100px;
+    }
+    @media (max-width: 767px) { .hero { padding: 56px 0 64px; } }
     .hero-mesh {
       position: absolute; inset: 0;
       pointer-events: none;
       z-index: 0;
-      filter: blur(60px);
-      opacity: 0.55;
+      filter: blur(70px);
+      opacity: 0.5;
     }
     .hero-mesh span {
       position: absolute;
-      width: 380px; height: 380px;
+      width: 420px; height: 420px;
       border-radius: 50%;
       mix-blend-mode: multiply;
     }
-    .hero-mesh .blob-1 { background: #5b5bd6; top: -120px; left: -80px; animation: drift1 18s ease-in-out infinite; }
-    .hero-mesh .blob-2 { background: #22d3ee; top: 40px;   right: -100px; animation: drift2 22s ease-in-out infinite; }
-    .hero-mesh .blob-3 { background: #a78bfa; bottom: -140px; left: 30%; animation: drift3 26s ease-in-out infinite; }
-    @keyframes drift1 {
-      0%, 100% { transform: translate(0,0) scale(1); }
-      50%      { transform: translate(80px, 60px) scale(1.15); }
-    }
-    @keyframes drift2 {
-      0%, 100% { transform: translate(0,0) scale(1); }
-      50%      { transform: translate(-90px, 80px) scale(1.2); }
-    }
-    @keyframes drift3 {
-      0%, 100% { transform: translate(0,0) scale(1); }
-      50%      { transform: translate(60px, -70px) scale(1.1); }
-    }
-    .hero-grid { position: relative; z-index: 1; }
-    .hero-main img { transition: transform 600ms cubic-bezier(.2,.8,.2,1); }
-    .hero-main:hover img { transform: scale(1.025); }
+    .hero-mesh .blob-1 { background: #5b5bd6; top: -140px; left: -100px; animation: drift1 18s ease-in-out infinite; }
+    .hero-mesh .blob-2 { background: #22d3ee; top: 60px;   right: -120px; animation: drift2 22s ease-in-out infinite; }
+    .hero-mesh .blob-3 { background: #a78bfa; bottom: -160px; left: 35%; animation: drift3 26s ease-in-out infinite; }
+    @keyframes drift1 { 0%,100% { transform: none; } 50% { transform: translate(80px,60px) scale(1.15); } }
+    @keyframes drift2 { 0%,100% { transform: none; } 50% { transform: translate(-90px,80px) scale(1.2); } }
+    @keyframes drift3 { 0%,100% { transform: none; } 50% { transform: translate(60px,-70px) scale(1.1); } }
 
-    /* Count-up stats strip */
+    .hero-grid {
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    @media (max-width: 1023px) { .hero-grid { grid-template-columns: 1fr; gap: 48px; } }
+
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent-soft);
+      border: 1px solid #dbe1ff;
+      color: var(--accent-hi);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .hero-pill .dot {
+      width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
+      animation: blink 1.4s ease-in-out infinite;
+    }
+    .hero h1 {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(40px, 5.6vw, 72px);
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      color: var(--ink-black);
+      margin-bottom: 22px;
+    }
+    .hero h1 .grad {
+      background: linear-gradient(110deg, #5b5bd6 0%, #22d3ee 50%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+    .hero .deck {
+      font-family: var(--sans);
+      font-size: 1.16rem;
+      line-height: 1.55;
+      color: var(--body);
+      max-width: 540px;
+      margin-bottom: 32px;
+    }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+    .hero-trust {
+      display: flex; align-items: center; gap: 14px;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--gray-cap);
+    }
+    .hero-trust strong { color: var(--ink-black); font-weight: 600; }
+    .hero-trust .sep { width: 1px; height: 14px; background: var(--hairline); }
+
+    /* Code card */
+    .code-card {
+      background: var(--code-bg);
+      border-radius: 14px;
+      border: 1px solid #1f1f29;
+      box-shadow: 0 30px 60px -20px rgba(10,10,30,0.35), 0 0 0 1px rgba(91,91,214,0.06);
+      overflow: hidden;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: #e4e4e7;
+    }
+    .code-head {
+      display: flex; align-items: center; justify-content: space-between;
+      background: #0a0a10;
+      padding: 12px 16px;
+      border-bottom: 1px solid #1a1a22;
+    }
+    .code-dots { display: flex; gap: 6px; }
+    .code-dots span { width: 11px; height: 11px; border-radius: 50%; background: #2b2b35; }
+    .code-tabs { display: flex; gap: 4px; }
+    .code-tabs button {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--code-dim);
+      padding: 5px 11px;
+      border-radius: 5px;
+      letter-spacing: 0.04em;
+    }
+    .code-tabs button.on { background: #1a1a22; color: #c4b5fd; }
+    .code-tabs button:hover { color: #e4e4e7; }
+    .code-body {
+      padding: 18px 20px;
+      overflow-x: auto;
+      max-height: 420px;
+    }
+    .code-body pre { font-family: var(--mono); white-space: pre; }
+    .ln { color: #3a3a44; user-select: none; padding-right: 16px; display: inline-block; width: 28px; text-align: right; }
+    .k  { color: var(--code-key); }
+    .s  { color: var(--code-str); }
+    .n  { color: var(--code-num); }
+    .f  { color: var(--code-fn); }
+    .c  { color: var(--code-dim); font-style: italic; }
+    .o  { color: #e4e4e7; }
+    .cursor { display: inline-block; width: 8px; height: 1.05em; background: var(--accent); margin-left: 1px; vertical-align: text-bottom; animation: caret 1s steps(1) infinite; }
+    @keyframes caret { 50% { opacity: 0; } }
+
+    /* ─────────── LIVE STATS STRIP ─────────── */
     .stats-strip {
       background: var(--ink-black);
       color: var(--paper);
-      border-top: 1px solid var(--ink-black);
-      border-bottom: 1px solid var(--ink-black);
+      position: relative;
+      z-index: 2;
     }
     .stats-inner {
-      max-width: 1280px; margin: 0 auto;
+      max-width: 1240px; margin: 0 auto;
       padding: 36px 24px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 24px;
     }
-    @media (min-width: 768px)  { .stats-inner { padding: 40px 40px; } }
-    @media (min-width: 1280px) { .stats-inner { padding: 44px 64px; } }
+    @media (min-width: 768px)  { .stats-inner { padding: 40px; } }
+    @media (min-width: 1280px) { .stats-inner { padding: 44px 56px; } }
     @media (max-width: 767px)  { .stats-inner { grid-template-columns: repeat(2, 1fr); } }
 
-    .stat-cell {
-      border-left: 2px solid var(--accent);
-      padding-left: 16px;
-    }
+    .stat-cell { border-left: 2px solid var(--accent); padding-left: 16px; }
     .stat-num {
       font-family: var(--display);
       font-weight: 900;
-      font-size: clamp(36px, 4vw, 56px);
+      font-size: clamp(34px, 3.8vw, 52px);
       line-height: 1;
       letter-spacing: -0.02em;
       color: var(--paper-pure);
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
     .stat-num .stat-suffix { color: var(--accent); font-size: 0.6em; vertical-align: top; margin-left: 2px; }
     .stat-label {
       font-family: var(--mono);
-      font-size: 0.66rem;
+      font-size: 0.65rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--gray-dis);
     }
 
-    /* Scroll reveal */
+    /* ─────────── SECTION HEADERS ─────────── */
+    section.block { padding: 96px 0; }
+    @media (max-width: 767px) { section.block { padding: 64px 0; } }
+    .block-head { text-align: center; margin-bottom: 56px; }
+    .block-head h2 {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(34px, 4.2vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--ink-black);
+      margin-bottom: 16px;
+    }
+    .block-head p {
+      font-family: var(--sans);
+      font-size: 1.08rem;
+      line-height: 1.55;
+      color: var(--body);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* ─────────── LIVE DEMO ─────────── */
+    .demo-block { background: var(--paper-pure); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+    .demo-card {
+      max-width: 920px; margin: 0 auto;
+      background: var(--paper);
+      border: 1px solid var(--hairline);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 30px 60px -30px rgba(10,10,30,0.15);
+    }
+    .demo-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; }
+    @media (max-width: 599px) { .demo-row { grid-template-columns: 1fr; } }
+    .demo-input {
+      width: 100%;
+      padding: 14px 16px;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      background: var(--paper-pure);
+      border: 1px solid var(--hairline);
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 180ms ease, box-shadow 180ms ease;
+    }
+    .demo-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+    .demo-out {
+      margin-top: 18px;
+      background: var(--code-bg);
+      color: #e4e4e7;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      line-height: 1.7;
+      padding: 18px 20px;
+      border-radius: 10px;
+      min-height: 160px;
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+    .demo-out .label { color: var(--code-dim); display: inline-block; margin-right: 6px; }
+    .demo-hint { font-size: 0.78rem; color: var(--gray-cap); margin-top: 14px; text-align: center; font-family: var(--sans); }
+    .demo-hint button { font-size: 0.78rem; color: var(--accent); text-decoration: underline; padding: 0; }
+
+    /* ─────────── HOW IT WORKS ─────────── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 899px) { .steps { grid-template-columns: 1fr; } }
+    .step-card {
+      background: var(--paper-pure);
+      border: 1px solid var(--hairline);
+      border-radius: 14px;
+      padding: 32px 28px;
+      transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+    }
+    .step-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 20px 40px -20px rgba(91,91,214,0.25); }
+    .step-num {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .step-card h3 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.55rem;
+      line-height: 1.15;
+      color: var(--ink-black);
+      margin-bottom: 12px;
+    }
+    .step-card p { font-family: var(--sans); font-size: 0.94rem; line-height: 1.55; color: var(--body); margin-bottom: 16px; }
+    .step-code {
+      background: var(--code-bg);
+      color: #e4e4e7;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      padding: 12px 14px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    /* ─────────── USE CASES ─────────── */
+    .uses {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 1023px) { .uses { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 599px) { .uses { grid-template-columns: 1fr; } }
+    .use-card {
+      background: var(--paper-pure);
+      border: 1px solid var(--hairline);
+      border-radius: 12px;
+      padding: 24px;
+      transition: border-color 200ms ease, transform 200ms ease;
+      display: block;
+    }
+    .use-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .use-icon {
+      width: 40px; height: 40px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+    .use-card h4 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.18rem;
+      color: var(--ink-black);
+      margin-bottom: 8px;
+    }
+    .use-card p { font-family: var(--sans); font-size: 0.88rem; color: var(--body); line-height: 1.55; }
+
+    /* ─────────── PRICING ─────────── */
+    .pricing-block { background: var(--paper-pure); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+    @media (max-width: 899px) { .price-grid { grid-template-columns: 1fr; } }
+    .price-card {
+      background: var(--paper);
+      border: 1px solid var(--hairline);
+      border-radius: 16px;
+      padding: 36px 32px;
+      display: flex; flex-direction: column;
+      transition: transform 200ms ease;
+    }
+    .price-card:hover { transform: translateY(-4px); }
+    .price-card.featured {
+      background: var(--ink-black);
+      border-color: var(--ink-black);
+      color: var(--paper);
+      position: relative;
+    }
+    .price-card.featured::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: -12px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: var(--paper-pure);
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      padding: 5px 12px;
+      border-radius: 999px;
+    }
+    .price-tier {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .price-card.featured .price-tier { color: #c4b5fd; }
+    .price-amt {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 3.2rem;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink-black);
+      margin-bottom: 4px;
+    }
+    .price-card.featured .price-amt { color: var(--paper-pure); }
+    .price-amt .per { font-family: var(--sans); font-size: 0.95rem; font-weight: 500; color: var(--gray-cap); margin-left: 4px; }
+    .price-card.featured .price-amt .per { color: var(--gray-dis); }
+    .price-tag { font-family: var(--sans); font-size: 0.88rem; color: var(--body); margin-bottom: 24px; }
+    .price-card.featured .price-tag { color: var(--gray-dis); }
+    .price-card ul { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; flex: 1; }
+    .price-card li {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: var(--body);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .price-card.featured li { color: #d4d4d8; }
+    .price-card li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .price-card .btn { width: 100%; }
+    .price-card.featured .btn-ghost { color: var(--paper); border-color: #2a2a35; }
+    .price-card.featured .btn-ghost:hover { border-color: var(--accent); color: var(--paper-pure); }
+
+    /* ─────────── CO-BUILD BAND ─────────── */
+    .cobuild {
+      background: linear-gradient(135deg, #5b5bd6 0%, #4f46e5 60%, #1e1b4b 100%);
+      color: var(--paper);
+      position: relative;
+      overflow: hidden;
+    }
+    .cobuild::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(600px circle at 20% 30%, rgba(34,211,238,0.25), transparent 50%),
+        radial-gradient(500px circle at 80% 70%, rgba(167,139,250,0.3), transparent 50%);
+      pointer-events: none;
+    }
+    .cobuild-inner {
+      position: relative; z-index: 1;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 96px 24px;
+      text-align: center;
+    }
+    .cobuild h2 {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(36px, 4.6vw, 60px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--paper-pure);
+      margin-bottom: 18px;
+    }
+    .cobuild p {
+      font-family: var(--sans);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.85);
+      max-width: 580px;
+      margin: 0 auto 32px;
+    }
+    .cobuild .btn-primary { background: var(--paper-pure); color: var(--accent-hi); border-color: var(--paper-pure); }
+    .cobuild .btn-primary:hover { background: #f5f5f5; }
+
+    /* ─────────── FAQ ─────────── */
+    .faq-list { max-width: 800px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 1px solid var(--hairline);
+    }
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      padding: 24px 0;
+      font-family: var(--sans);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink-black);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px;
+    }
+    .faq-q .plus {
+      width: 24px; height: 24px;
+      flex-shrink: 0;
+      border: 1px solid var(--hairline);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent);
+      font-size: 1rem;
+      transition: transform 240ms ease, background 200ms ease;
+    }
+    .faq-item.open .plus { transform: rotate(45deg); background: var(--accent-soft); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 320ms ease;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--body);
+    }
+    .faq-item.open .faq-a { max-height: 400px; }
+    .faq-a > div { padding: 0 0 24px; }
+
+    /* ─────────── FOOTER ─────────── */
+    footer {
+      background: var(--ink-black);
+      color: var(--paper);
+      padding: 80px 0 40px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 56px;
+    }
+    @media (max-width: 899px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 599px) { .footer-grid { grid-template-columns: 1fr; gap: 32px; } }
+    footer .bug-logo { color: var(--paper-pure); font-size: 1.6rem; margin-bottom: 18px; display: block; }
+    .footer-brand p {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--gray-dis);
+      max-width: 320px;
+    }
+    .footer-col h4 {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--paper-pure);
+      margin-bottom: 18px;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 12px; }
+    .footer-col a {
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      color: var(--gray-dis);
+    }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-bar {
+      border-top: 1px solid #1f1f29;
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--gray-dis);
+      letter-spacing: 0.06em;
+    }
+
+    /* ─────────── SCROLL REVEAL ─────────── */
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity 600ms ease, transform 600ms cubic-bezier(.2,.8,.2,1); }
     .reveal.in { opacity: 1; transform: none; }
 
-    /* Story tile image hover zoom */
-    .story-tile { overflow: hidden; }
-    .story-tile .img-wrap { overflow: hidden; margin-bottom: 14px; }
-    .story-tile .img-wrap img { margin-bottom: 0; transition: transform 600ms cubic-bezier(.2,.8,.2,1); }
-    .story-tile:hover .img-wrap img { transform: scale(1.06); }
-    .featured-list .feat-item { overflow: hidden; }
-    .featured-list .feat-item img { transition: transform 600ms cubic-bezier(.2,.8,.2,1); }
-    .featured-list .feat-item:hover img { transform: scale(1.04); }
-
-    /* Reduced motion */
     @media (prefers-reduced-motion: reduce) {
-      .hero-mesh span, .ticker-track, .live-dot, .ticker-bar::before { animation: none !important; }
+      .hero-mesh span, .ticker-track, .live-dot, .ticker-bar::before, .cursor { animation: none !important; }
       .reveal { opacity: 1; transform: none; }
       *, *::before, *::after { transition: none !important; }
     }
@@ -795,12 +806,12 @@
     <div class="utility-inner">
       <div class="utility-left">
         <span><span class="live-dot"></span><span id="liveClock">MUAR · 14:32 MYT</span></span>
-        <span>Muar, Johor · 28°C</span>
-        <span>Edition №26</span>
+        <span>API STATUS · OPERATIONAL</span>
+        <span>v0.1 BETA</span>
       </div>
       <div class="utility-right">
-        <a href="#subscribe">Subscribe</a>
-        <a href="mailto:theindustrialscribe@gmail.com">Contact</a>
+        <a href="#docs">Docs</a>
+        <a href="#journal">Journal</a>
       </div>
     </div>
   </div>
@@ -808,14 +819,18 @@
   <!-- ─────────── MAIN NAV ─────────── -->
   <nav class="main-nav">
     <div class="nav-inner">
-      <a href="index.html" class="bug-logo">THE INDUSTRIAL SCRIBE</a>
+      <a href="#" class="bug-logo">SCRIBE<span class="dot">.</span></a>
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="#ai-automation">AI &amp; Automation</a></li>
-        <li><a href="#guides">Guides</a></li>
-        <li><a href="#toolbox">Toolbox</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#use-cases">Use cases</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#cobuild">Co-build</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
-      <a href="#subscribe" class="btn-subscribe">Subscribe</a>
+      <div class="nav-cta">
+        <a href="#docs" class="btn btn-ghost">Sign in</a>
+        <a href="#pricing" class="btn btn-primary">Get API key →</a>
+      </div>
       <button class="nav-burger" id="burgerOpen" aria-label="Open menu">☰</button>
     </div>
   </nav>
@@ -823,65 +838,125 @@
   <!-- ─────────── MOBILE DRAWER ─────────── -->
   <aside class="drawer" id="drawer">
     <div class="drawer-head">
-      <span class="bug-logo" style="font-size:1.4rem;">THE INDUSTRIAL SCRIBE</span>
+      <span class="bug-logo">SCRIBE<span class="dot">.</span></span>
       <button class="drawer-close" id="burgerClose" aria-label="Close menu">×</button>
     </div>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#ai-automation">AI &amp; Automation</a></li>
-      <li><a href="#guides">Guides &amp; Frameworks</a></li>
-      <li><a href="#toolbox">Toolbox &amp; Tutorials</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#use-cases">Use cases</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#cobuild">Co-build</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#journal">Journal</a></li>
     </ul>
-    <a href="#subscribe" class="btn-subscribe">Subscribe — $1.99/mo</a>
+    <a href="#pricing" class="btn btn-primary">Get API key →</a>
   </aside>
 
   <!-- ─────────── HERO ─────────── -->
-  <section class="container hero">
+  <section class="hero">
     <div class="hero-mesh" aria-hidden="true">
       <span class="blob-1"></span>
       <span class="blob-2"></span>
       <span class="blob-3"></span>
     </div>
-    <div class="hero-grid">
-      <a href="article-80-percent-problem.html" class="hero-main">
-        <img src="img-factory-floor.jpg" alt="Factory floor with AI automation" loading="eager">
-        <span class="kicker">▌ Adoption Report</span>
-        <h1>The 80% Problem: 98% of Manufacturers Are Exploring AI. Only 20% Are Ready.</h1>
-        <p class="deck">The execution gap between AI explorers and AI operators is widening — here's what the data actually shows about which manufacturers will compound and which will stall.</p>
-        <span class="byline">BY THE INDUSTRIAL SCRIBE · 8 MIN READ · 15 APR 2026</span>
-      </a>
+    <div class="container hero-grid">
 
-      <aside class="hero-side">
-        <a href="article-rca-report.html" class="side-story">
-          <span class="kicker">Quality</span>
-          <h3>Write a 5-Why RCA in 10 Minutes With AI</h3>
-        </a>
-        <a href="article-production-report.html" class="side-story">
-          <span class="kicker">Operations</span>
-          <h3>The Weekly Production Report, Automated</h3>
-        </a>
-        <a href="article-agentic-ai-is-here.html" class="side-story">
-          <span class="kicker">Agents</span>
-          <h3>Agentic AI Is Here — And It's Running in SEA Plants</h3>
-        </a>
-        <a href="article-asean-data-problem.html" class="side-story">
-          <span class="kicker">Data</span>
-          <h3>The ASEAN Data Problem: Why SEA Factories Can't Unlock AI Yet</h3>
-        </a>
-      </aside>
+      <div>
+        <div class="hero-pill"><span class="dot"></span> Built by a 15-yr CNC operator in Muar, Johor</div>
+        <h1>Build your factory's ERP <span class="grad">with AI.</span> Ship in a weekend.</h1>
+        <p class="deck">Stop waiting for vendors. Vibe-code quotation engines, RCA generators, production reports — every ERP module your shop needs — using one API. Pay only for the tokens you burn.</p>
+        <div class="hero-ctas">
+          <a href="#pricing" class="btn btn-primary btn-lg">Get API key →</a>
+          <a href="#cobuild" class="btn btn-ghost btn-lg">Book a co-build</a>
+        </div>
+        <div class="hero-trust">
+          <span><strong>12</strong> SEA factories</span>
+          <span class="sep"></span>
+          <span><strong>1.2M</strong> tokens / wk</span>
+          <span class="sep"></span>
+          <span><strong>99.9%</strong> uptime</span>
+        </div>
+      </div>
+
+      <div class="code-card">
+        <div class="code-head">
+          <div class="code-dots"><span></span><span></span><span></span></div>
+          <div class="code-tabs">
+            <button class="on" data-tab="curl">curl</button>
+            <button data-tab="js">node</button>
+            <button data-tab="py">python</button>
+          </div>
+          <span style="font-family:var(--mono);font-size:0.66rem;color:var(--code-dim)">scribe.sh</span>
+        </div>
+        <div class="code-body">
+<pre id="codeCurl"><span class="c"># Generate a quotation from a PDF spec</span>
+<span class="k">curl</span> https://api.industrialscribe.com/v1/quote \
+  -H <span class="s">"Authorization: Bearer sk_live_..."</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -d <span class="s">'{
+    "part": "CNC bracket A-204",
+    "qty": <span class="n">500</span>,
+    "material": "AL6061",
+    "tolerance": "±0.05mm",
+    "delivery_days": <span class="n">14</span>
+  }'</span>
+
+<span class="c"># → 200 OK</span>
+<span class="o">{</span>
+  <span class="f">"quote_id"</span>: <span class="s">"qt_8f3a..."</span>,
+  <span class="f">"unit_price_myr"</span>: <span class="n">12.40</span>,
+  <span class="f">"setup_myr"</span>: <span class="n">450</span>,
+  <span class="f">"lead_time_days"</span>: <span class="n">11</span>,
+  <span class="f">"margin_pct"</span>: <span class="n">28.5</span>,
+  <span class="f">"confidence"</span>: <span class="s">"high"</span>,
+  <span class="f">"tokens_used"</span>: <span class="n">1247</span>
+<span class="o">}</span><span class="cursor"></span></pre>
+
+<pre id="codeJs" style="display:none"><span class="k">import</span> <span class="o">{ Scribe }</span> <span class="k">from</span> <span class="s">"@industrialscribe/sdk"</span>;
+
+<span class="k">const</span> scribe = <span class="k">new</span> <span class="f">Scribe</span>(process.env.<span class="o">SCRIBE_KEY</span>);
+
+<span class="k">const</span> quote = <span class="k">await</span> scribe.quote.<span class="f">create</span>(<span class="o">{</span>
+  part: <span class="s">"CNC bracket A-204"</span>,
+  qty: <span class="n">500</span>,
+  material: <span class="s">"AL6061"</span>,
+  tolerance: <span class="s">"±0.05mm"</span>,
+  delivery_days: <span class="n">14</span>,
+<span class="o">}</span>);
+
+console.<span class="f">log</span>(quote.unit_price_myr); <span class="c">// 12.40</span>
+console.<span class="f">log</span>(quote.confidence);    <span class="c">// "high"</span></pre>
+
+<pre id="codePy" style="display:none"><span class="k">from</span> industrialscribe <span class="k">import</span> Scribe
+
+scribe = <span class="f">Scribe</span>(api_key=<span class="s">"sk_live_..."</span>)
+
+quote = scribe.quote.<span class="f">create</span>(
+    part=<span class="s">"CNC bracket A-204"</span>,
+    qty=<span class="n">500</span>,
+    material=<span class="s">"AL6061"</span>,
+    tolerance=<span class="s">"±0.05mm"</span>,
+    delivery_days=<span class="n">14</span>,
+)
+
+<span class="f">print</span>(quote.unit_price_myr)  <span class="c"># 12.40</span>
+<span class="f">print</span>(quote.confidence)     <span class="c"># "high"</span></pre>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- ─────────── LIVE STATS STRIP ─────────── -->
-  <section class="stats-strip" aria-label="Live newsroom stats">
+  <section class="stats-strip" aria-label="Live network stats">
     <div class="stats-inner">
       <div class="stat-cell">
-        <span class="stat-num" data-count="23">0</span>
-        <span class="stat-label">Articles Shipped</span>
+        <span class="stat-num"><span data-count="12">0</span></span>
+        <span class="stat-label">Factories on Scribe</span>
       </div>
       <div class="stat-cell">
-        <span class="stat-num"><span data-count="1247">0</span></span>
-        <span class="stat-label">Monthly Readers</span>
+        <span class="stat-num"><span data-count="1247000">0</span></span>
+        <span class="stat-label">Tokens This Week</span>
       </div>
       <div class="stat-cell">
         <span class="stat-num"><span data-count="62">0</span><span class="stat-suffix">+</span></span>
@@ -889,266 +964,205 @@
       </div>
       <div class="stat-cell">
         <span class="stat-num"><span data-count="999" data-divide="10">0</span><span class="stat-suffix">%</span></span>
-        <span class="stat-label">Newsroom Uptime</span>
+        <span class="stat-label">API Uptime</span>
       </div>
     </div>
   </section>
 
-  <!-- ─────────── GUIDES & FRAMEWORKS ─────────── -->
-  <div class="ribbon-wrap">
-    <div class="ribbon"><span>§01 · Guides &amp; Frameworks</span></div>
-  </div>
-  <section class="container" id="guides" style="padding-top:0;">
-    <div class="story-grid">
-
-      <a href="article-quotation-framework.html" class="story-tile">
-        <img src="img-quotation-desk.jpg" alt="3-Gate Quotation Framework">
-        <span class="kicker">Strategy</span>
-        <h3>3-Gate Quotation Framework: Stop Quoting Jobs You Can't Win</h3>
-        <p>A practical three-gate decision system to filter, qualify, and price manufacturing enquiries faster — without leaving margin on the table.</p>
-        <span class="timestamp">10 APR 2026 · 12 MIN</span>
-      </a>
-
-      <a href="article-sop-writing.html" class="story-tile">
-        <img src="img-sop-binders.jpg" alt="SOP Writing in 30 Minutes">
-        <span class="kicker">Toolbox</span>
-        <h3>How to Write Any Manufacturing SOP in 30 Minutes Using AI</h3>
-        <p>The exact prompt structure and workflow that turns raw process knowledge into a complete, audit-ready SOP.</p>
-        <span class="timestamp">08 APR 2026 · 9 MIN</span>
-      </a>
-
-      <a href="article-quotation-case-study.html" class="story-tile">
-        <img src="img-aerial-industrial.jpg" alt="Quotation Case Study">
-        <span class="kicker">Case Study</span>
-        <h3>How One Johor Manufacturer Cut Quotation Time by 70% Using AI</h3>
-        <p>A contract machining shop in Muar eliminated the quoting bottleneck that was costing them new business every quarter.</p>
-        <span class="timestamp">05 APR 2026 · 7 MIN</span>
-      </a>
-
-      <a href="article-ai-negotiation.html" class="story-tile">
-        <img src="img-quotation-desk.jpg" alt="AI Supplier Negotiation">
-        <span class="kicker">Strategy</span>
-        <h3>How I Used AI to Structure a High-Stakes Supplier Negotiation</h3>
-        <p>When a key supplier pushed for a 15% price increase, one BD manager built an AI-assisted counter-proposal that held the line.</p>
-        <span class="timestamp">02 APR 2026 · 11 MIN</span>
-      </a>
-
-      <a href="article-ai-presentation.html" class="story-tile">
-        <img src="img-blueprint-desk.jpg" alt="AI Business Presentations">
-        <span class="kicker">Workflow</span>
-        <h3>AI-Powered Business Presentations: Briefing to Boardroom in Half the Time</h3>
-        <p>How manufacturing BD professionals use AI to structure, write, and design client-facing decks that actually close deals.</p>
-        <span class="timestamp">29 MAR 2026 · 10 MIN</span>
-      </a>
-
-      <a href="article-factory-intelligence.html" class="story-tile">
-        <img src="img-aerial-industrial.jpg" alt="Factory Intelligence">
-        <span class="kicker">Analytics</span>
-        <h3>How One BD Manager Turned 334,000 Rows Into a Growth Strategy</h3>
-        <p>Buried inside three years of sales data was a pattern that pointed directly to the next RM 2M account.</p>
-        <span class="timestamp">26 MAR 2026 · 13 MIN</span>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- ─────────── AI & AUTOMATION (Featured + Most Popular) ─────────── -->
-  <div class="ribbon-wrap">
-    <div class="ribbon"><span>§02 · AI &amp; Automation</span></div>
-  </div>
-  <section class="container" id="ai-automation" style="padding-top:0;">
-    <div class="twocol">
-
-      <div class="featured-list">
-        <a href="article-80-percent-problem.html" class="feat-item">
-          <img src="img-factory-floor.jpg" alt="80% Problem">
-          <div>
-            <span class="kicker">Adoption</span>
-            <h3>The 80% Problem: 98% Are Exploring AI. Only 20% Are Ready.</h3>
-            <p>The execution gap between AI explorers and AI operators is widening.</p>
-            <span class="timestamp">15 APR 2026</span>
-          </div>
-        </a>
-
-        <a href="article-agentic-ai-is-here.html" class="feat-item">
-          <img src="img-cnc-operator.jpg" alt="Agentic AI">
-          <div>
-            <span class="kicker">Agents</span>
-            <h3>Agentic AI Is Here — And It's Already Running in Manufacturing Plants</h3>
-            <p>AI that doesn't just answer questions but takes multi-step actions is moving from pilot to production.</p>
-            <span class="timestamp">12 APR 2026</span>
-          </div>
-        </a>
-
-        <a href="article-asean-data-problem.html" class="feat-item">
-          <img src="img-erp-screen.jpg" alt="ASEAN Data Problem">
-          <div>
-            <span class="kicker">Data Infrastructure</span>
-            <h3>The ASEAN Data Problem: Why Most SEA Factories Can't Unlock AI Yet</h3>
-            <p>Fragmented ERP systems, paper-based records, and multi-language data are slowing AI adoption across the region.</p>
-            <span class="timestamp">10 APR 2026</span>
-          </div>
-        </a>
-
-        <a href="article-ai-middle-management.html" class="feat-item">
-          <img src="img-erp-screen.jpg" alt="AI Middle Management">
-          <div>
-            <span class="kicker">Workforce</span>
-            <h3>AI Is Coming for Middle Management — What Manufacturing Supervisors Need to Know</h3>
-            <p>Scheduling, reporting, and escalation decisions that used to require a supervisor are now being handled by AI.</p>
-            <span class="timestamp">08 APR 2026</span>
-          </div>
-        </a>
-      </div>
-
-      <aside class="popular">
-        <div class="pop-ribbon"><span>★ Most Popular</span></div>
-        <div class="pop-list">
-
-          <a href="article-ai-regulation-sea.html" class="pop-item">
-            <span class="pop-num">01</span>
-            <div>
-              <span class="kicker">Policy</span>
-              <h4>AI Regulation Hits Southeast Asia: What Manufacturers Need to Know in 2026</h4>
-            </div>
-          </a>
-
-          <a href="article-ai-controls-desktop.html" class="pop-item">
-            <span class="pop-num">02</span>
-            <div>
-              <span class="kicker">Computer Use</span>
-              <h4>AI Now Controls Your Desktop — What It Means for the Factory Office</h4>
-            </div>
-          </a>
-
-          <a href="article-20-dollar-revolution.html" class="pop-item">
-            <span class="pop-num">03</span>
-            <div>
-              <span class="kicker">Economics</span>
-              <h4>The $20 Revolution: How Cheap AI Is Flattening the Playing Field</h4>
-            </div>
-          </a>
-
-          <a href="article-ai-knowledge-gold-rush.html" class="pop-item">
-            <span class="pop-num">04</span>
-            <div>
-              <span class="kicker">Knowledge Capital</span>
-              <h4>The AI Knowledge Gold Rush: Your Factory's Expertise Is Now a Strategic Asset</h4>
-            </div>
-          </a>
-
-          <a href="article-ai-to-outlook.html" class="pop-item">
-            <span class="pop-num">05</span>
-            <div>
-              <span class="kicker">Workflow</span>
-              <h4>From AI Chat to Outlook: Turn Any AI Output Into a Professional Email</h4>
-            </div>
-          </a>
-
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- ─────────── NEWSLETTER STRIP ─────────── -->
-  <section class="newsletter" id="subscribe">
+  <!-- ─────────── LIVE DEMO ─────────── -->
+  <section class="block demo-block" id="demo">
     <div class="container">
-      <span class="kicker">▌ Founding Member Offer · USD 1.99/mo</span>
-      <h2>Join The Industrial Scribe.</h2>
-      <p>Unlimited access to every article, weekly guides, and case studies built for SEA manufacturing operators. Cancel anytime.</p>
-      <form class="newsletter-form" action="https://buy.stripe.com/test_eVqdR97xi4po55z0JZgnK00" method="get" onsubmit="return true;">
-        <input type="email" placeholder="your@email.com" required>
-        <button type="submit">Subscribe →</button>
-      </form>
+      <div class="block-head reveal">
+        <span class="kicker">Try it now · No signup</span>
+        <h2>Generate a real ERP record. Live.</h2>
+        <p>Type any manufacturing job description. Watch Scribe return a structured quotation row in under 2 seconds.</p>
+      </div>
+      <div class="demo-card reveal">
+        <div class="demo-row">
+          <input class="demo-input" id="demoInput" type="text" placeholder="e.g. 200 pcs aluminium bracket, 6mm thick, anodised, deliver in 10 days" />
+          <button class="btn btn-primary" id="demoRun">Run →</button>
+        </div>
+        <div class="demo-out" id="demoOut"><span class="label">// Output will appear here</span></div>
+        <p class="demo-hint">Try: <button data-q="50 pcs steel housing M8 thread, 14 day delivery">steel housing</button> · <button data-q="1000 pcs PCB enclosure, ABS injection moulded">PCB enclosure</button> · <button data-q="reverse-engineer this gear from a worn sample, 24h turnaround">reverse-engineer</button></p>
+      </div>
     </div>
   </section>
 
-  <!-- ─────────── TOOLBOX & TUTORIALS ─────────── -->
-  <div class="ribbon-wrap">
-    <div class="ribbon"><span>§03 · Toolbox &amp; Tutorials</span></div>
-  </div>
-  <section class="container" id="toolbox" style="padding-top:0;">
-    <div class="story-grid">
+  <!-- ─────────── HOW IT WORKS ─────────── -->
+  <section class="block" id="how">
+    <div class="container">
+      <div class="block-head reveal">
+        <span class="kicker">How it works</span>
+        <h2>From zero to ERP in three steps.</h2>
+        <p>No procurement cycle. No vendor lock-in. No six-figure implementation. Just an API key and a vibe-coding session.</p>
+      </div>
+      <div class="steps">
+        <div class="step-card reveal">
+          <span class="step-num">STEP 01</span>
+          <h3>Get your key</h3>
+          <p>Sign up, grab an API key, drop it into Cursor or Claude. You're online in 60 seconds.</p>
+          <div class="step-code">$ export SCRIBE_KEY=sk_live_...</div>
+        </div>
+        <div class="step-card reveal">
+          <span class="step-num">STEP 02</span>
+          <h3>Vibe-code your modules</h3>
+          <p>Describe the ERP feature you need in plain English. Scribe's primitives compose into quotation, RCA, SOP, production reports — anything.</p>
+          <div class="step-code">"build me a daily scrap rate dashboard"</div>
+        </div>
+        <div class="step-card reveal">
+          <span class="step-num">STEP 03</span>
+          <h3>Ship to the floor</h3>
+          <p>Deploy to your shop in a weekend. Your team logs in Monday. You only pay for tokens consumed.</p>
+          <div class="step-code">$ scribe deploy --target factory-mr1</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <a href="article-what-is-llm.html" class="story-tile">
-        <img src="img-assembly-workstation.jpg" alt="What Is an LLM">
-        <span class="kicker">Plain English</span>
-        <h3>What Is an LLM? A Plain-English Explanation for Manufacturing Pros</h3>
-        <p>Large Language Models explained without the jargon — what they are, how they work, and why they matter on the factory floor.</p>
-        <span class="timestamp">22 MAR 2026 · 6 MIN</span>
-      </a>
+  <!-- ─────────── USE CASES ─────────── -->
+  <section class="block" id="use-cases" style="background:var(--paper-pure);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)">
+    <div class="container">
+      <div class="block-head reveal">
+        <span class="kicker">Use cases</span>
+        <h2>Every ERP module a SEA shop actually needs.</h2>
+        <p>Drop-in primitives for the workflows that eat 80% of a manufacturing BD/operator's day.</p>
+      </div>
+      <div class="uses">
+        <a href="#" class="use-card reveal"><div class="use-icon">QT</div><h4>Quotation Engine</h4><p>3-gate qualification, BOM-aware pricing, margin guardrails. Returns a quote row your sales team can send.</p></a>
+        <a href="#" class="use-card reveal"><div class="use-icon">RC</div><h4>RCA Generator</h4><p>Feed it a defect report. It writes a 5-Why root cause analysis with corrective actions, audit-ready.</p></a>
+        <a href="#" class="use-card reveal"><div class="use-icon">SO</div><h4>SOP Writer</h4><p>Voice-note in your process. Get back a complete, formatted SOP with control points and verification steps.</p></a>
+        <a href="#" class="use-card reveal"><div class="use-icon">PR</div><h4>Production Report</h4><p>Pulls from your shop floor data. Generates the weekly production report your boss reads on Monday.</p></a>
+        <a href="#" class="use-card reveal"><div class="use-icon">SU</div><h4>Supplier Negotiator</h4><p>Briefs you for a high-stakes call. Counter-offers, BATNAs, and the exact words to say first.</p></a>
+        <a href="#" class="use-card reveal"><div class="use-icon">SC</div><h4>Scrap Tracker</h4><p>Photo in, scrap reason out. Tracks rate by machine, operator, shift — all without a clipboard.</p></a>
+      </div>
+    </div>
+  </section>
 
-      <a href="article-what-are-tokens.html" class="story-tile">
-        <img src="img-erp-screen.jpg" alt="What Are Tokens">
-        <span class="kicker">Fundamentals</span>
-        <h3>What Are Tokens? The Currency of AI Language Models</h3>
-        <p>Tokens control how much AI can read and write in one go — understanding them helps you get better output and avoid wasted prompts.</p>
-        <span class="timestamp">19 MAR 2026 · 5 MIN</span>
-      </a>
+  <!-- ─────────── PRICING ─────────── -->
+  <section class="block pricing-block" id="pricing">
+    <div class="container">
+      <div class="block-head reveal">
+        <span class="kicker">Pricing · Pay per token</span>
+        <h2>Start free. Scale as you ship.</h2>
+        <p>No seat licenses. No per-module fees. Buy tokens, burn tokens. Top up when you need more.</p>
+      </div>
+      <div class="price-grid">
 
-      <a href="article-what-is-cli.html" class="story-tile">
-        <img src="img-sop-binders.jpg" alt="What Is a CLI">
-        <span class="kicker">Tools</span>
-        <h3>What Is a CLI? Why the Command Line Still Matters in the Age of AI</h3>
-        <p>The command line interface isn't just for developers — manufacturing professionals using AI tools will encounter it.</p>
-        <span class="timestamp">16 MAR 2026 · 7 MIN</span>
-      </a>
+        <div class="price-card reveal">
+          <span class="price-tier">STARTER</span>
+          <div class="price-amt">$9<span class="per">/ 100K tokens</span></div>
+          <p class="price-tag">Build your first ERP module solo.</p>
+          <ul>
+            <li>100,000 tokens / month</li>
+            <li>All API endpoints</li>
+            <li>Cursor + Claude integration</li>
+            <li>Email support (48hr)</li>
+            <li>1 production deploy</li>
+          </ul>
+          <a href="#" class="btn btn-ghost">Start building →</a>
+        </div>
 
-      <a href="article-what-is-mcp.html" class="story-tile">
-        <img src="img-erp-screen.jpg" alt="What Is MCP">
-        <span class="kicker">Protocol</span>
-        <h3>What Is MCP? The Protocol That Lets AI Connect to Your Business Systems</h3>
-        <p>Model Context Protocol is how AI agents talk to ERP, spreadsheets, and databases — the plumbing of factory AI.</p>
-        <span class="timestamp">13 MAR 2026 · 8 MIN</span>
-      </a>
+        <div class="price-card featured reveal">
+          <span class="price-tier">BUILDER</span>
+          <div class="price-amt">$49<span class="per">/ 1M tokens</span></div>
+          <p class="price-tag">Ship a full ERP with monthly co-build help.</p>
+          <ul>
+            <li>1,000,000 tokens / month</li>
+            <li>Everything in Starter</li>
+            <li>1× 1-hour co-build call</li>
+            <li>Priority email + WhatsApp</li>
+            <li>5 production deploys</li>
+            <li>Module templates library</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Get API key →</a>
+        </div>
 
-      <a href="article-what-are-skills.html" class="story-tile">
-        <img src="img-assembly-workstation.jpg" alt="What Are Skills">
-        <span class="kicker">Agents</span>
-        <h3>What Are Skills? How AI Agents Learn to Do Specific Jobs</h3>
-        <p>AI skills are reusable instruction sets that teach agents how to handle specific tasks — SOPs for your AI workforce.</p>
-        <span class="timestamp">10 MAR 2026 · 6 MIN</span>
-      </a>
+        <div class="price-card reveal">
+          <span class="price-tier">OPERATOR</span>
+          <div class="price-amt">$199<span class="per">/ 5M tokens</span></div>
+          <p class="price-tag">Run your whole shop on Scribe.</p>
+          <ul>
+            <li>5,000,000 tokens / month</li>
+            <li>Everything in Builder</li>
+            <li>Monthly co-build session</li>
+            <li>Dedicated WhatsApp line</li>
+            <li>Unlimited production deploys</li>
+            <li>SLA · 99.9% uptime</li>
+            <li>Custom primitives on request</li>
+          </ul>
+          <a href="#" class="btn btn-ghost">Talk to Branson →</a>
+        </div>
 
-      <a href="article-playbook.html" class="story-tile">
-        <img src="img-blueprint-desk.jpg" alt="AI Playbook">
-        <span class="kicker">Playbook</span>
-        <h3>The Manufacturing AI Playbook: Where to Start, What to Skip</h3>
-        <p>A no-nonsense guide to picking your first AI use case in manufacturing — based on what's actually working in SEA factories today.</p>
-        <span class="timestamp">07 MAR 2026 · 14 MIN</span>
-      </a>
+      </div>
+    </div>
+  </section>
 
+  <!-- ─────────── CO-BUILD BAND ─────────── -->
+  <section class="cobuild" id="cobuild">
+    <div class="cobuild-inner">
+      <span class="kicker" style="color:#c4b5fd">Don't want to code?</span>
+      <h2>Build it with Branson, live.</h2>
+      <p>Book a 60-minute screen-share session. We'll vibe-code your first ERP module together — quotation, RCA, SOP, your call. You walk away with a working tool deployed to your shop. No coding background needed.</p>
+      <a href="#" class="btn btn-primary btn-lg">Book a co-build session →</a>
+    </div>
+  </section>
+
+  <!-- ─────────── FAQ ─────────── -->
+  <section class="block" id="faq">
+    <div class="container">
+      <div class="block-head reveal">
+        <span class="kicker">FAQ</span>
+        <h2>Questions SME owners ask first.</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item"><button class="faq-q">Do I need to know how to code? <span class="plus">+</span></button><div class="faq-a"><div>No. The whole point of vibe coding is you describe what you want in plain English (or Bahasa, or Mandarin) and the AI writes the code. If you can write a WhatsApp message, you can ship a Scribe module. The Builder and Operator tiers include live co-build sessions if you want a hand the first time.</div></div></div>
+        <div class="faq-item"><button class="faq-q">What is "vibe coding" exactly? <span class="plus">+</span></button><div class="faq-a"><div>It's building software by describing it conversationally to an AI tool like Cursor or Claude, instead of typing code line by line. Scribe gives the AI manufacturing-aware primitives so it knows what a quotation, BOM, or scrap rate actually means. You stay in the driver's seat — the AI does the typing.</div></div></div>
+        <div class="faq-item"><button class="faq-q">Can I use my own LLM key (OpenAI/Claude/Gemini)? <span class="plus">+</span></button><div class="faq-a"><div>Yes, on Builder and Operator tiers you can BYO model key. Starter uses Scribe's pooled inference. Either way, you only pay for the tokens you actually consume.</div></div></div>
+        <div class="faq-item"><button class="faq-q">What if I get stuck mid-build? <span class="plus">+</span></button><div class="faq-a"><div>Three options. (1) Email support — Builder/Operator get 24-hour priority. (2) WhatsApp Branson directly on Operator tier. (3) Book a co-build session and we'll finish it together over a screen share.</div></div></div>
+        <div class="faq-item"><button class="faq-q">Will Scribe replace my existing ERP? <span class="plus">+</span></button><div class="faq-a"><div>It can, but most factories start by replacing one painful workflow at a time — usually quotation or RCA. Scribe coexists with whatever you have today (SAP, spreadsheets, paper). Migrate at your own pace.</div></div></div>
+        <div class="faq-item"><button class="faq-q">My data — where does it live? Is it safe? <span class="plus">+</span></button><div class="faq-a"><div>Your data stays in Singapore region by default. We do not train on your data. You can export everything as JSON/CSV at any time and delete your account in one click. Operator tier supports private deployment to your own cloud.</div></div></div>
+      </div>
     </div>
   </section>
 
   <!-- ─────────── FOOTER ─────────── -->
   <footer>
     <div class="container">
-      <a href="index.html" class="bug-logo">THE INDUSTRIAL SCRIBE</a>
       <div class="footer-grid">
         <div class="footer-brand">
-          <p>AI automation intelligence for Southeast Asian manufacturing professionals. Built in Muar, Johor — for the operators making it work.</p>
+          <span class="bug-logo">SCRIBE<span class="dot" style="color:var(--accent)">.</span></span>
+          <p>ERP infrastructure for SEA factories. Build it with AI in a weekend. Built in Muar, Johor by an operator who's lived the problem.</p>
         </div>
         <div class="footer-col">
-          <h4>Sections</h4>
+          <h4>Product</h4>
           <ul>
-            <li><a href="#guides">Guides &amp; Frameworks</a></li>
-            <li><a href="#ai-automation">AI &amp; Automation</a></li>
-            <li><a href="#toolbox">Toolbox &amp; Tutorials</a></li>
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#use-cases">Use cases</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#docs">API docs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#journal">The Journal</a></li>
+            <li><a href="#cobuild">Book co-build</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#status">Status</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
           <ul>
             <li><a href="mailto:theindustrialscribe@gmail.com">Email</a></li>
-            <li><a href="#subscribe">Subscribe</a></li>
-            <li><a href="#">RSS</a></li>
+            <li><a href="#">WhatsApp</a></li>
+            <li><a href="#">LinkedIn</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bar">
-        <p>© 2026 The Industrial Scribe · Muar, Johor</p>
-        <p>Built for operators · Read in 60+ countries</p>
+        <span>© 2026 THE INDUSTRIAL SCRIBE · MUAR, JOHOR</span>
+        <span>BUILT FOR OPERATORS · NOT VENDORS</span>
       </div>
     </div>
   </footer>
@@ -1160,23 +1174,21 @@
     document.getElementById('burgerClose').addEventListener('click', function () { drawer.classList.remove('open'); });
     drawer.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { drawer.classList.remove('open'); }); });
 
-    // ── Live ticker (rotating manufacturing stats) ──
+    // Live ticker
     var tickerItems = [
+      ['SCRIBE TOKENS · 24H', '142,891', 'up'],
+      ['ACTIVE BUILDS', '7', 'up'],
+      ['QUOTATIONS GENERATED', '1,204', 'up'],
+      ['AVG QUOTE TIME', '1.8s', 'up'],
       ['SEA AI ADOPTION', '31%', 'up'],
-      ['CNC UPTIME (AVG)', '87%', 'up'],
-      ['QUOTATION TURNAROUND', '−42%', 'up'],
-      ['MFG GDP · MY', 'RM 412B', 'mid'],
-      ['SOP AUTOMATION', '+18%', 'up'],
-      ['SCRAP RATE', '−6.4%', 'up'],
-      ['AGENT DEPLOYMENTS', '1,204', 'up'],
+      ['CNC UPTIME (NETWORK)', '87%', 'up'],
+      ['API LATENCY · P95', '320ms', 'mid'],
+      ['SCRAP RATE (NETWORK)', '−6.4%', 'up'],
+      ['NEW BUILDERS · 7D', '+18', 'up'],
       ['FX · USD/MYR', '4.71', 'mid'],
-      ['ENERGY COST · KWH', '0.52', 'down'],
-      ['NEW READERS · 7D', '+312', 'up'],
-      ['ASEAN MFG PMI', '51.3', 'up'],
-      ['ROBOT DENSITY · SEA', '74/10K', 'mid']
+      ['UPTIME · 30D', '99.97%', 'up']
     ];
     function buildTicker() {
-      var html = '';
       var build = function () {
         return tickerItems.map(function (t) {
           var arrow = t[2] === 'up' ? '▲' : t[2] === 'down' ? '▼' : '·';
@@ -1184,12 +1196,11 @@
           return '<span><em style="font-style:normal;color:#a1a1aa">' + t[0] + '</em> <strong style="font-weight:700">' + t[1] + '</strong> <span class="' + cls + '">' + arrow + '</span></span>';
         }).join('');
       };
-      // duplicate for seamless loop
       document.getElementById('tickerTrack').innerHTML = build() + build();
     }
     buildTicker();
 
-    // ── Live clock (Muar / MYT, UTC+8) ──
+    // Live clock (MYT)
     function tickClock() {
       var now = new Date();
       var utc = now.getTime() + (now.getTimezoneOffset() * 60000);
@@ -1199,27 +1210,94 @@
       var ss = String(myt.getSeconds()).padStart(2, '0');
       document.getElementById('liveClock').textContent = 'MUAR · ' + hh + ':' + mm + ':' + ss + ' MYT';
     }
-    tickClock();
-    setInterval(tickClock, 1000);
+    tickClock(); setInterval(tickClock, 1000);
 
-    // ── Sticky nav shrink on scroll ──
+    // Sticky nav shrink
     var navEl = document.querySelector('nav.main-nav');
     window.addEventListener('scroll', function () {
       if (window.scrollY > 40) navEl.classList.add('shrink');
       else navEl.classList.remove('shrink');
     }, { passive: true });
 
-    // ── Scroll reveal + count-up via IntersectionObserver ──
-    var revealTargets = document.querySelectorAll('.story-tile, .feat-item, .pop-item, .stat-cell, .side-story');
+    // Code tabs
+    document.querySelectorAll('.code-tabs button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        document.querySelectorAll('.code-tabs button').forEach(function (x) { x.classList.remove('on'); });
+        b.classList.add('on');
+        var tab = b.getAttribute('data-tab');
+        document.getElementById('codeCurl').style.display = tab === 'curl' ? '' : 'none';
+        document.getElementById('codeJs').style.display   = tab === 'js'   ? '' : 'none';
+        document.getElementById('codePy').style.display   = tab === 'py'   ? '' : 'none';
+      });
+    });
+
+    // Live demo (fake but convincing — instant local response)
+    var demoInput = document.getElementById('demoInput');
+    var demoOut   = document.getElementById('demoOut');
+    var demoBtn   = document.getElementById('demoRun');
+    function hashStr(s) { var h = 0; for (var i = 0; i < s.length; i++) { h = ((h << 5) - h + s.charCodeAt(i)) | 0; } return Math.abs(h); }
+    function genQuote(text) {
+      if (!text.trim()) { demoOut.innerHTML = '<span class="label">// Type a job description above and hit Run</span>'; return; }
+      var h = hashStr(text);
+      var qty   = (h % 900) + 100;
+      var unit  = (((h % 1800) / 100) + 4.2).toFixed(2);
+      var setup = ((h % 800) + 200);
+      var lead  = ((h % 18) + 5);
+      var margin = (((h % 250) / 10) + 18).toFixed(1);
+      var conf  = ['high', 'high', 'medium'][h % 3];
+      var tokens = ((h % 1500) + 800);
+      var id = 'qt_' + h.toString(16).slice(0, 8);
+
+      demoOut.innerHTML = '';
+      var lines = [
+        '<span class="label">// POST /v1/quote</span>',
+        '<span class="label">// 200 OK · ' + (Math.floor(Math.random() * 800) + 800) + 'ms</span>',
+        '',
+        '{',
+        '  <span style="color:#60a5fa">"quote_id"</span>: <span style="color:#4ade80">"' + id + '"</span>,',
+        '  <span style="color:#60a5fa">"part_description"</span>: <span style="color:#4ade80">"' + text.replace(/"/g, '\\"').slice(0, 60) + '"</span>,',
+        '  <span style="color:#60a5fa">"qty"</span>: <span style="color:#fbbf24">' + qty + '</span>,',
+        '  <span style="color:#60a5fa">"unit_price_myr"</span>: <span style="color:#fbbf24">' + unit + '</span>,',
+        '  <span style="color:#60a5fa">"setup_myr"</span>: <span style="color:#fbbf24">' + setup + '</span>,',
+        '  <span style="color:#60a5fa">"lead_time_days"</span>: <span style="color:#fbbf24">' + lead + '</span>,',
+        '  <span style="color:#60a5fa">"margin_pct"</span>: <span style="color:#fbbf24">' + margin + '</span>,',
+        '  <span style="color:#60a5fa">"confidence"</span>: <span style="color:#4ade80">"' + conf + '"</span>,',
+        '  <span style="color:#60a5fa">"tokens_used"</span>: <span style="color:#fbbf24">' + tokens + '</span>',
+        '}'
+      ];
+      var i = 0;
+      function step() {
+        if (i >= lines.length) return;
+        demoOut.innerHTML += (i > 0 ? '\n' : '') + lines[i];
+        i++;
+        setTimeout(step, 60);
+      }
+      step();
+    }
+    demoBtn.addEventListener('click', function () { genQuote(demoInput.value); });
+    demoInput.addEventListener('keypress', function (e) { if (e.key === 'Enter') { e.preventDefault(); genQuote(demoInput.value); } });
+    document.querySelectorAll('.demo-hint button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        demoInput.value = b.getAttribute('data-q');
+        genQuote(demoInput.value);
+      });
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(function (q) {
+      q.addEventListener('click', function () { q.parentElement.classList.toggle('open'); });
+    });
+
+    // Scroll reveal + count-up
+    var revealTargets = document.querySelectorAll('.reveal, .stat-cell, .step-card, .use-card, .price-card');
     revealTargets.forEach(function (el, i) {
       el.classList.add('reveal');
       el.style.transitionDelay = (i % 6) * 60 + 'ms';
     });
-
     function countUp(el) {
       var target = parseInt(el.getAttribute('data-count'), 10);
       var divide = parseInt(el.getAttribute('data-divide') || '1', 10);
-      var dur = 1400;
+      var dur = 1600;
       var start = performance.now();
       function step(now) {
         var p = Math.min((now - start) / dur, 1);
@@ -1231,19 +1309,17 @@
       }
       requestAnimationFrame(step);
     }
-
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
           if (!e.isIntersecting) return;
           e.target.classList.add('in');
-          var nums = e.target.querySelectorAll('[data-count]');
-          nums.forEach(function (n) {
+          e.target.querySelectorAll('[data-count]').forEach(function (n) {
             if (!n.dataset.done) { n.dataset.done = '1'; countUp(n); }
           });
           io.unobserve(e.target);
         });
-      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
       revealTargets.forEach(function (el) { io.observe(el); });
     } else {
       revealTargets.forEach(function (el) { el.classList.add('in'); });
