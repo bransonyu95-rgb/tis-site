@@ -10,7 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     /* ─────────────────────────────────────
-       DESIGN TOKENS — Linear/Vercel indigo
+       DESIGN TOKENS — TIS Brand Gradients
+       Grad A: #00f6ff → #18269e (cyan → deep blue)
+       Grad B: #371959 → #0ac186 (purple → emerald)
        ───────────────────────────────────── */
     :root {
       --ink-black: #0a0a0a;
@@ -21,14 +23,26 @@
       --gray-cap:  #71717a;
       --gray-dis:  #a1a1aa;
       --hairline:  #e4e4e7;
-      --accent:    #5b5bd6;
-      --accent-hi: #4f46e5;
-      --accent-soft: #eef2ff;
+
+      /* Brand gradients */
+      --grad-a-start: #00f6ff;
+      --grad-a-end:   #18269e;
+      --grad-a:       linear-gradient(135deg, #00f6ff 0%, #18269e 100%);
+      --grad-b-start: #371959;
+      --grad-b-end:   #0ac186;
+      --grad-b:       linear-gradient(135deg, #371959 0%, #0ac186 100%);
+
+      /* Functional aliases */
+      --accent:       #00f6ff;
+      --accent-hi:    #18269e;
+      --accent-soft:  rgba(0, 246, 255, 0.08);
+      --accent-b:     #0ac186;
+
       --code-bg:   #0c0c0f;
       --code-line: #1a1a22;
       --code-dim:  #6b7280;
-      --code-key:  #c084fc;
-      --code-str:  #4ade80;
+      --code-key:  #00f6ff;
+      --code-str:  #0ac186;
       --code-num:  #fbbf24;
       --code-fn:   #60a5fa;
 
@@ -97,8 +111,8 @@
     @media (min-width: 768px)  { .ticker-bar::before { margin-left: 40px; } }
     @media (min-width: 1280px) { .ticker-bar::before { margin-left: 56px; } }
     @keyframes pulse {
-      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(91,91,214,0.6); }
-      50%      { opacity: 0.78; box-shadow: 0 0 0 6px rgba(91,91,214,0); }
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,246,255,0.6); }
+      50%      { opacity: 0.78; box-shadow: 0 0 0 6px rgba(0,246,255,0); }
     }
     .ticker-track {
       display: flex;
@@ -168,7 +182,7 @@
     @media (min-width: 768px)  { .nav-inner { padding: 22px 40px; } }
     @media (min-width: 1280px) { .nav-inner { padding: 24px 56px; } }
     nav.main-nav.shrink .nav-inner { padding-top: 12px; padding-bottom: 12px; }
-    nav.main-nav.shrink { box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 6px 24px -12px rgba(10,10,10,0.18); }
+    nav.main-nav.shrink { box-shadow: 0 1px 0 rgba(0,246,255,0.06), 0 6px 24px -12px rgba(10,10,10,0.18); }
 
     .bug-logo {
       font-family: var(--display);
@@ -180,7 +194,7 @@
       transition: font-size 200ms ease;
     }
     nav.main-nav.shrink .bug-logo { font-size: 1.25rem; }
-    .bug-logo .dot { color: var(--accent); }
+    .bug-logo .dot { color: #00f6ff; }
 
     .nav-links { display: flex; gap: 28px; align-items: center; }
     .nav-links a {
@@ -204,11 +218,11 @@
       gap: 6px;
     }
     .btn-primary {
-      background: var(--accent); color: var(--paper-pure);
-      border-color: var(--accent);
-      box-shadow: 0 1px 2px rgba(91,91,214,0.3);
+      background: var(--grad-a); color: var(--paper-pure);
+      border-color: transparent;
+      box-shadow: 0 1px 2px rgba(0,246,255,0.3), 0 0 20px -8px rgba(0,246,255,0.25);
     }
-    .btn-primary:hover { background: var(--accent-hi); border-color: var(--accent-hi); }
+    .btn-primary:hover { filter: brightness(1.15); box-shadow: 0 2px 8px rgba(0,246,255,0.4); }
     .btn-ghost {
       background: transparent; color: var(--ink-black);
       border-color: var(--hairline);
@@ -277,9 +291,10 @@
       border-radius: 50%;
       mix-blend-mode: multiply;
     }
-    .hero-mesh .blob-1 { background: #5b5bd6; top: -140px; left: -100px; animation: drift1 18s ease-in-out infinite; }
-    .hero-mesh .blob-2 { background: #22d3ee; top: 60px;   right: -120px; animation: drift2 22s ease-in-out infinite; }
-    .hero-mesh .blob-3 { background: #a78bfa; bottom: -160px; left: 35%; animation: drift3 26s ease-in-out infinite; }
+    .hero-mesh .blob-1 { background: #00f6ff; top: -140px; left: -100px; animation: drift1 18s ease-in-out infinite; }
+    .hero-mesh .blob-2 { background: #18269e; top: 60px;   right: -120px; animation: drift2 22s ease-in-out infinite; }
+    .hero-mesh .blob-3 { background: #0ac186; bottom: -160px; left: 35%; animation: drift3 26s ease-in-out infinite; }
+    .hero-mesh .blob-4 { background: #371959; top: 50%; right: 20%; width: 300px; height: 300px; animation: drift1 24s ease-in-out infinite reverse; }
     @keyframes drift1 { 0%,100% { transform: none; } 50% { transform: translate(80px,60px) scale(1.15); } }
     @keyframes drift2 { 0%,100% { transform: none; } 50% { transform: translate(-90px,80px) scale(1.2); } }
     @keyframes drift3 { 0%,100% { transform: none; } 50% { transform: translate(60px,-70px) scale(1.1); } }
@@ -295,9 +310,9 @@
 
     .hero-pill {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--accent-soft);
-      border: 1px solid #dbe1ff;
-      color: var(--accent-hi);
+      background: rgba(0,246,255,0.08);
+      border: 1px solid rgba(0,246,255,0.2);
+      color: var(--accent);
       padding: 6px 12px;
       border-radius: 999px;
       font-family: var(--sans);
@@ -319,7 +334,7 @@
       margin-bottom: 22px;
     }
     .hero h1 .grad {
-      background: linear-gradient(110deg, #5b5bd6 0%, #22d3ee 50%, #a78bfa 100%);
+      background: linear-gradient(110deg, #00f6ff 0%, #18269e 40%, #371959 60%, #0ac186 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -348,7 +363,7 @@
       background: var(--code-bg);
       border-radius: 14px;
       border: 1px solid #1f1f29;
-      box-shadow: 0 30px 60px -20px rgba(10,10,30,0.35), 0 0 0 1px rgba(91,91,214,0.06);
+      box-shadow: 0 30px 60px -20px rgba(10,10,30,0.35), 0 0 0 1px rgba(0,246,255,0.1);
       overflow: hidden;
       font-family: var(--mono);
       font-size: 0.82rem;
@@ -372,7 +387,7 @@
       border-radius: 5px;
       letter-spacing: 0.04em;
     }
-    .code-tabs button.on { background: #1a1a22; color: #c4b5fd; }
+    .code-tabs button.on { background: #1a1a22; color: #00f6ff; }
     .code-tabs button:hover { color: #e4e4e7; }
     .code-body {
       padding: 18px 20px;
@@ -408,7 +423,7 @@
     @media (min-width: 1280px) { .stats-inner { padding: 44px 56px; } }
     @media (max-width: 767px)  { .stats-inner { grid-template-columns: repeat(2, 1fr); } }
 
-    .stat-cell { border-left: 2px solid var(--accent); padding-left: 16px; }
+    .stat-cell { border-left: 2px solid; border-image: var(--grad-a) 1; padding-left: 16px; }
     .stat-num {
       font-family: var(--display);
       font-weight: 900;
@@ -419,7 +434,7 @@
       display: block;
       margin-bottom: 8px;
     }
-    .stat-num .stat-suffix { color: var(--accent); font-size: 0.6em; vertical-align: top; margin-left: 2px; }
+    .stat-num .stat-suffix { color: #00f6ff; font-size: 0.6em; vertical-align: top; margin-left: 2px; }
     .stat-label {
       font-family: var(--mono);
       font-size: 0.65rem;
@@ -474,7 +489,7 @@
       outline: none;
       transition: border-color 180ms ease, box-shadow 180ms ease;
     }
-    .demo-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+    .demo-input:focus { border-color: #00f6ff; box-shadow: 0 0 0 4px rgba(0,246,255,0.1); }
     .demo-out {
       margin-top: 18px;
       background: var(--code-bg);
@@ -506,7 +521,7 @@
       padding: 32px 28px;
       transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
     }
-    .step-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 20px 40px -20px rgba(91,91,214,0.25); }
+    .step-card:hover { transform: translateY(-4px); border-color: #00f6ff; box-shadow: 0 20px 40px -20px rgba(0,246,255,0.25); }
     .step-num {
       font-family: var(--mono);
       font-size: 0.72rem;
@@ -551,11 +566,11 @@
       transition: border-color 200ms ease, transform 200ms ease;
       display: block;
     }
-    .use-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .use-card:hover { border-color: #00f6ff; transform: translateY(-3px); box-shadow: 0 16px 32px -16px rgba(0,246,255,0.2); }
     .use-icon {
       width: 40px; height: 40px;
-      background: var(--accent-soft);
-      color: var(--accent);
+      background: rgba(0,246,255,0.08);
+      color: #00f6ff;
       border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
       font-family: var(--mono);
@@ -601,7 +616,7 @@
       position: absolute;
       top: -12px; left: 50%;
       transform: translateX(-50%);
-      background: var(--accent);
+      background: var(--grad-a);
       color: var(--paper-pure);
       font-family: var(--mono);
       font-size: 0.66rem;
@@ -618,7 +633,7 @@
       color: var(--accent);
       margin-bottom: 14px;
     }
-    .price-card.featured .price-tier { color: #c4b5fd; }
+    .price-card.featured .price-tier { color: #00f6ff; }
     .price-amt {
       font-family: var(--display);
       font-weight: 900;
@@ -649,11 +664,11 @@
     }
     .price-card .btn { width: 100%; }
     .price-card.featured .btn-ghost { color: var(--paper); border-color: #2a2a35; }
-    .price-card.featured .btn-ghost:hover { border-color: var(--accent); color: var(--paper-pure); }
+    .price-card.featured .btn-ghost:hover { border-color: #00f6ff; color: #00f6ff; }
 
     /* ─────────── CO-BUILD BAND ─────────── */
     .cobuild {
-      background: linear-gradient(135deg, #5b5bd6 0%, #4f46e5 60%, #1e1b4b 100%);
+      background: linear-gradient(135deg, #371959 0%, #1a1a2e 40%, #0a0a0a 70%, #0ac186 100%);
       color: var(--paper);
       position: relative;
       overflow: hidden;
@@ -662,8 +677,8 @@
       content: '';
       position: absolute; inset: 0;
       background:
-        radial-gradient(600px circle at 20% 30%, rgba(34,211,238,0.25), transparent 50%),
-        radial-gradient(500px circle at 80% 70%, rgba(167,139,250,0.3), transparent 50%);
+        radial-gradient(600px circle at 20% 30%, rgba(0,246,255,0.18), transparent 50%),
+        radial-gradient(500px circle at 80% 70%, rgba(10,193,134,0.22), transparent 50%);
       pointer-events: none;
     }
     .cobuild-inner {
@@ -690,8 +705,8 @@
       max-width: 580px;
       margin: 0 auto 32px;
     }
-    .cobuild .btn-primary { background: var(--paper-pure); color: var(--accent-hi); border-color: var(--paper-pure); }
-    .cobuild .btn-primary:hover { background: #f5f5f5; }
+    .cobuild .btn-primary { background: var(--grad-a); color: var(--ink-black); border-color: transparent; font-weight: 700; }
+    .cobuild .btn-primary:hover { filter: brightness(1.15); }
 
     /* ─────────── FAQ ─────────── */
     .faq-list { max-width: 800px; margin: 0 auto; }
@@ -719,7 +734,7 @@
       font-size: 1rem;
       transition: transform 240ms ease, background 200ms ease;
     }
-    .faq-item.open .plus { transform: rotate(45deg); background: var(--accent-soft); }
+    .faq-item.open .plus { transform: rotate(45deg); background: rgba(0,246,255,0.1); }
     .faq-a {
       max-height: 0;
       overflow: hidden;
@@ -769,7 +784,7 @@
       font-size: 0.88rem;
       color: var(--gray-dis);
     }
-    .footer-col a:hover { color: var(--accent); }
+    .footer-col a:hover { color: #00f6ff; }
     .footer-bar {
       border-top: 1px solid #1f1f29;
       padding-top: 28px;
@@ -819,7 +834,7 @@
   <!-- ─────────── MAIN NAV ─────────── -->
   <nav class="main-nav">
     <div class="nav-inner">
-      <a href="#" class="bug-logo">TIS<span class="dot">.</span> <span style="font-family:var(--mono);font-size:0.62rem;font-weight:700;letter-spacing:0.14em;color:var(--accent);background:var(--accent-soft);padding:4px 8px;border-radius:4px;vertical-align:middle;margin-left:6px;">SCRIBEERP</span></a>
+      <a href="#" class="bug-logo">TIS<span class="dot">.</span> <span style="font-family:var(--mono);font-size:0.62rem;font-weight:700;letter-spacing:0.14em;color:#00f6ff;background:rgba(0,246,255,0.1);padding:4px 8px;border-radius:4px;vertical-align:middle;margin-left:6px;">SCRIBEERP</span></a>
       <ul class="nav-links">
         <li><a href="#how">How it works</a></li>
         <li><a href="#use-cases">Use cases</a></li>
@@ -858,6 +873,7 @@
       <span class="blob-1"></span>
       <span class="blob-2"></span>
       <span class="blob-3"></span>
+      <span class="blob-4"></span>
     </div>
     <div class="container hero-grid">
 
@@ -1100,7 +1116,7 @@ quote = scribe.quote.<span class="f">create</span>(
   <!-- ─────────── CO-BUILD BAND ─────────── -->
   <section class="cobuild" id="cobuild">
     <div class="cobuild-inner">
-      <span class="kicker" style="color:#c4b5fd">Don't want to code?</span>
+      <span class="kicker" style="color:#00f6ff">Don't want to code?</span>
       <h2>Build it with us, live.</h2>
       <p>Book a 60-minute screen-share session. We'll vibe-code your first ERP module together — quotation, RCA, SOP, your call. You walk away with a working tool deployed to your shop. No coding background needed.</p>
       <a href="#" class="btn btn-primary btn-lg">Book a co-build session →</a>
@@ -1130,7 +1146,7 @@ quote = scribe.quote.<span class="f">create</span>(
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <span class="bug-logo">SCRIBE<span class="dot" style="color:var(--accent)">.</span></span>
+          <span class="bug-logo">SCRIBE<span class="dot" style="color:#00f6ff">.</span></span>
           <p><strong style="color:var(--paper-pure)">The Industrial Scribe</strong> — ERP infrastructure for SEA factories. ScribeERP is our flagship product. Built in Muar, Johor — by operators, for operators.</p>
         </div>
         <div class="footer-col">
