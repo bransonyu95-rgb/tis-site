@@ -3,17 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Industrial Scribe — ScribeERP · Build Your Factory's ERP with AI</title>
-  <meta name="description" content="ScribeERP by The Industrial Scribe. Vibe-code your factory's ERP modules with AI. Ship in a weekend. Pay per token.">
+  <title>The Industrial Scribe — Free Guides for SEA Factory Floors</title>
+  <meta name="description" content="Free templates and shop-floor playbooks for SEA manufacturing practitioners. WIP reports, NCR drafts, weekly production reports, SOP guides. Built for the people doing the work.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* ─────────────────────────────────────
-       DESIGN TOKENS — TIS Brand Gradients
-       Grad A: #00f6ff → #18269e (cyan → deep blue)
-       Grad B: #371959 → #0ac186 (purple → emerald)
-       ───────────────────────────────────── */
+    /* ───────── TOKENS · TIS Brand Gradients ───────── */
     :root {
       --ink-black: #0a0a0a;
       --ink-page:  #0a0a0a;
@@ -24,35 +20,24 @@
       --gray-dis:  #a1a1aa;
       --hairline:  #e4e4e7;
 
-      /* Brand gradients */
       --grad-a-start: #00f6ff;
       --grad-a-end:   #18269e;
       --grad-a:       linear-gradient(135deg, #00f6ff 0%, #18269e 100%);
       --grad-b-start: #371959;
       --grad-b-end:   #0ac186;
       --grad-b:       linear-gradient(135deg, #371959 0%, #0ac186 100%);
+      --accent:       #18269e;
+      --accent-hi:    #0a1563;
+      --accent-cyan:  #00f6ff;
+      --accent-emer:  #0ac186;
+      --accent-purp:  #371959;
 
-      /* Functional aliases */
-      --accent:       #00f6ff;
-      --accent-hi:    #18269e;
-      --accent-soft:  rgba(0, 246, 255, 0.08);
-      --accent-b:     #0ac186;
-
-      --code-bg:   #0c0c0f;
-      --code-line: #1a1a22;
-      --code-dim:  #6b7280;
-      --code-key:  #00f6ff;
-      --code-str:  #0ac186;
-      --code-num:  #fbbf24;
-      --code-fn:   #60a5fa;
-
-      --display: 'Playfair Display', Georgia, 'Times New Roman', serif;
-      --serif:   'Source Serif 4', Georgia, 'Times New Roman', serif;
+      --display: 'Playfair Display', Georgia, serif;
+      --serif:   'Source Serif 4', Georgia, serif;
       --sans:    'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
-      --mono:    'Space Mono', 'Courier New', Courier, monospace;
+      --mono:    'Space Mono', 'Courier New', monospace;
     }
 
-    /* ─────────── RESET ─────────── */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
     body {
@@ -68,13 +53,13 @@
     button { font-family: inherit; cursor: pointer; border: 0; background: transparent; }
     ul { list-style: none; }
 
-    .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
     @media (min-width: 768px)  { .container { padding: 0 40px; } }
     @media (min-width: 1280px) { .container { padding: 0 56px; } }
 
     .kicker {
       font-family: var(--mono);
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -83,63 +68,16 @@
       margin-bottom: 14px;
     }
 
-    /* ─────────── LIVE TICKER ─────────── */
-    .ticker-bar {
+    /* ───────── UTILITY BAR ───────── */
+    .utility-bar {
       background: var(--ink-black);
       color: var(--paper);
       border-bottom: 1px solid #1f1f23;
-      overflow: hidden;
-      position: relative;
-      height: 32px;
-      display: flex;
-      align-items: center;
     }
-    .ticker-bar::before {
-      content: 'LIVE';
-      flex-shrink: 0;
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      background: var(--accent);
-      color: var(--paper-pure);
-      padding: 4px 10px;
-      margin: 0 16px 0 24px;
-      border-radius: 3px;
-      animation: pulse 1.6s ease-in-out infinite;
-    }
-    @media (min-width: 768px)  { .ticker-bar::before { margin-left: 40px; } }
-    @media (min-width: 1280px) { .ticker-bar::before { margin-left: 56px; } }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,246,255,0.6); }
-      50%      { opacity: 0.78; box-shadow: 0 0 0 6px rgba(0,246,255,0); }
-    }
-    .ticker-track {
-      display: flex;
-      gap: 48px;
-      white-space: nowrap;
-      animation: ticker-scroll 55s linear infinite;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .ticker-track:hover { animation-play-state: paused; }
-    .ticker-track span { display: inline-flex; align-items: center; gap: 8px; }
-    .tk-up   { color: #4ade80; }
-    .tk-down { color: #f87171; }
-    .tk-mid  { color: var(--gray-dis); }
-    @keyframes ticker-scroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-
-    /* ─────────── UTILITY BAR ─────────── */
-    .utility-bar { background: #050507; color: var(--paper); border-bottom: 1px solid #1f1f23; }
     .utility-inner {
-      max-width: 1240px; margin: 0 auto; padding: 0 24px;
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
       display: flex; align-items: center; justify-content: space-between;
-      height: 32px;
+      height: 36px;
     }
     @media (min-width: 768px)  { .utility-inner { padding: 0 40px; } }
     @media (min-width: 1280px) { .utility-inner { padding: 0 56px; } }
@@ -147,27 +85,17 @@
       font-family: var(--mono);
       font-size: 0.66rem;
       font-weight: 400;
-      letter-spacing: 0.11em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--gray-dis);
     }
-    .utility-bar a:hover { color: var(--accent); }
+    .utility-bar a:hover { color: var(--accent-cyan); }
     .utility-left, .utility-right { display: flex; gap: 18px; align-items: center; }
-    .live-dot {
-      display: inline-block;
-      width: 6px; height: 6px;
-      background: #4ade80;
-      border-radius: 50%;
-      margin-right: 6px;
-      animation: blink 1.4s ease-in-out infinite;
-      vertical-align: middle;
-    }
-    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.25; } }
     @media (max-width: 599px) { .utility-left span:not(:first-child) { display: none; } }
 
-    /* ─────────── MAIN NAV ─────────── */
+    /* ───────── NAV ───────── */
     nav.main-nav {
-      background: rgba(250,250,250,0.85);
+      background: rgba(250,250,250,0.88);
       backdrop-filter: saturate(180%) blur(12px);
       -webkit-backdrop-filter: saturate(180%) blur(12px);
       border-bottom: 1px solid var(--hairline);
@@ -175,7 +103,7 @@
       transition: padding 200ms ease, box-shadow 200ms ease;
     }
     .nav-inner {
-      max-width: 1240px; margin: 0 auto; padding: 18px 24px;
+      max-width: 1200px; margin: 0 auto; padding: 18px 24px;
       display: flex; align-items: center; justify-content: space-between; gap: 24px;
       transition: padding 200ms ease;
     }
@@ -194,41 +122,47 @@
       transition: font-size 200ms ease;
     }
     nav.main-nav.shrink .bug-logo { font-size: 1.25rem; }
-    .bug-logo .dot { color: #00f6ff; }
+    .bug-logo .dot {
+      background: var(--grad-a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
 
     .nav-links { display: flex; gap: 28px; align-items: center; }
     .nav-links a {
       font-family: var(--sans);
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 500;
       color: var(--body);
     }
     .nav-links a:hover { color: var(--accent); }
 
-    .nav-cta { display: flex; gap: 10px; align-items: center; }
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
       font-family: var(--sans);
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       font-weight: 600;
       padding: 10px 18px;
       border-radius: 8px;
       border: 1px solid transparent;
-      transition: background 180ms ease, border-color 180ms ease, transform 180ms ease, color 180ms ease;
+      transition: transform 180ms ease, filter 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
       gap: 6px;
+      white-space: nowrap;
     }
     .btn-primary {
-      background: var(--grad-a); color: var(--paper-pure);
-      border-color: transparent;
-      box-shadow: 0 1px 2px rgba(0,246,255,0.3), 0 0 20px -8px rgba(0,246,255,0.25);
+      background: var(--grad-a);
+      color: var(--paper-pure);
+      box-shadow: 0 4px 14px -6px rgba(24,38,158,0.5), 0 0 0 0 rgba(0,246,255,0);
     }
-    .btn-primary:hover { filter: brightness(1.15); box-shadow: 0 2px 8px rgba(0,246,255,0.4); }
+    .btn-primary:hover { filter: brightness(1.12); box-shadow: 0 6px 22px -6px rgba(0,246,255,0.45); }
     .btn-ghost {
       background: transparent; color: var(--ink-black);
       border-color: var(--hairline);
     }
     .btn-ghost:hover { border-color: var(--ink-black); }
-    .btn-lg { padding: 14px 26px; font-size: 0.95rem; }
+    .btn-lg { padding: 14px 26px; font-size: 0.98rem; }
 
     .nav-burger {
       display: none;
@@ -240,11 +174,11 @@
       border: 1px solid var(--hairline);
     }
     @media (max-width: 899px) {
-      .nav-links, .nav-cta { display: none; }
+      .nav-links, .nav-inner > .btn { display: none; }
       .nav-burger { display: inline-flex; }
     }
 
-    /* ─────────── MOBILE DRAWER ─────────── */
+    /* ───────── DRAWER ───────── */
     .drawer {
       position: fixed; inset: 0 0 0 auto;
       width: 84%; max-width: 360px;
@@ -258,20 +192,18 @@
     }
     .drawer.open { transform: translateX(0); }
     .drawer-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
-    .drawer-close { font-size: 2rem; line-height: 1; color: var(--ink-black); }
+    .drawer-close { font-size: 2rem; line-height: 1; }
     .drawer ul { display: flex; flex-direction: column; gap: 4px; }
     .drawer ul a {
       display: block;
       padding: 14px 0;
-      font-family: var(--sans);
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       font-weight: 600;
-      color: var(--ink-page);
       border-bottom: 1px solid var(--hairline);
     }
     .drawer .btn { margin-top: 28px; align-self: stretch; }
 
-    /* ─────────── HERO ─────────── */
+    /* ───────── HERO ───────── */
     .hero {
       position: relative;
       overflow: hidden;
@@ -280,10 +212,8 @@
     @media (max-width: 767px) { .hero { padding: 56px 0 64px; } }
     .hero-mesh {
       position: absolute; inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      filter: blur(70px);
-      opacity: 0.5;
+      pointer-events: none; z-index: 0;
+      filter: blur(70px); opacity: 0.5;
     }
     .hero-mesh span {
       position: absolute;
@@ -291,13 +221,13 @@
       border-radius: 50%;
       mix-blend-mode: multiply;
     }
-    .hero-mesh .blob-1 { background: #00f6ff; top: -140px; left: -100px; animation: drift1 18s ease-in-out infinite; }
-    .hero-mesh .blob-2 { background: #18269e; top: 60px;   right: -120px; animation: drift2 22s ease-in-out infinite; }
-    .hero-mesh .blob-3 { background: #0ac186; bottom: -160px; left: 35%; animation: drift3 26s ease-in-out infinite; }
-    .hero-mesh .blob-4 { background: #371959; top: 50%; right: 20%; width: 300px; height: 300px; animation: drift1 24s ease-in-out infinite reverse; }
-    @keyframes drift1 { 0%,100% { transform: none; } 50% { transform: translate(80px,60px) scale(1.15); } }
-    @keyframes drift2 { 0%,100% { transform: none; } 50% { transform: translate(-90px,80px) scale(1.2); } }
-    @keyframes drift3 { 0%,100% { transform: none; } 50% { transform: translate(60px,-70px) scale(1.1); } }
+    .hero-mesh .b1 { background: #00f6ff; top: -140px; left: -100px; animation: d1 18s ease-in-out infinite; }
+    .hero-mesh .b2 { background: #18269e; top: 60px;   right: -120px; animation: d2 22s ease-in-out infinite; }
+    .hero-mesh .b3 { background: #0ac186; bottom: -160px; left: 35%; animation: d3 26s ease-in-out infinite; }
+    .hero-mesh .b4 { background: #371959; top: 40%; right: 15%; width: 300px; height: 300px; animation: d1 24s ease-in-out infinite reverse; }
+    @keyframes d1 { 0%,100% { transform: none; } 50% { transform: translate(80px,60px) scale(1.15); } }
+    @keyframes d2 { 0%,100% { transform: none; } 50% { transform: translate(-90px,80px) scale(1.2); } }
+    @keyframes d3 { 0%,100% { transform: none; } 50% { transform: translate(60px,-70px) scale(1.1); } }
 
     .hero-grid {
       position: relative; z-index: 1;
@@ -311,19 +241,21 @@
     .hero-pill {
       display: inline-flex; align-items: center; gap: 8px;
       background: rgba(0,246,255,0.08);
-      border: 1px solid rgba(0,246,255,0.2);
+      border: 1px solid rgba(0,246,255,0.22);
       color: var(--accent);
-      padding: 6px 12px;
+      padding: 7px 14px;
       border-radius: 999px;
-      font-family: var(--sans);
       font-size: 0.78rem;
       font-weight: 600;
       margin-bottom: 24px;
     }
     .hero-pill .dot {
-      width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent-cyan);
       animation: blink 1.4s ease-in-out infinite;
     }
+    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+
     .hero h1 {
       font-family: var(--display);
       font-weight: 900;
@@ -341,113 +273,136 @@
       color: transparent;
     }
     .hero .deck {
-      font-family: var(--sans);
-      font-size: 1.16rem;
-      line-height: 1.55;
+      font-size: 1.14rem;
+      line-height: 1.6;
       color: var(--body);
       max-width: 540px;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
-    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
-    .hero-trust {
-      display: flex; align-items: center; gap: 14px;
-      font-family: var(--sans);
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+    .hero-note {
       font-size: 0.82rem;
       color: var(--gray-cap);
+      display: flex; align-items: center; gap: 8px;
     }
-    .hero-trust strong { color: var(--ink-black); font-weight: 600; }
-    .hero-trust .sep { width: 1px; height: 14px; background: var(--hairline); }
+    .hero-note::before {
+      content: '✓';
+      color: var(--accent-emer);
+      font-weight: 700;
+    }
 
-    /* Code card */
-    .code-card {
-      background: var(--code-bg);
+    /* ───────── HERO VISUAL: TEMPLATE PREVIEW ───────── */
+    .tpl-stack { position: relative; perspective: 1200px; }
+    .tpl-card {
+      background: var(--paper-pure);
       border-radius: 14px;
-      border: 1px solid #1f1f29;
-      box-shadow: 0 30px 60px -20px rgba(10,10,30,0.35), 0 0 0 1px rgba(0,246,255,0.1);
+      border: 1px solid var(--hairline);
+      box-shadow: 0 30px 60px -20px rgba(10,10,30,0.2), 0 0 0 1px rgba(0,246,255,0.1);
       overflow: hidden;
-      font-family: var(--mono);
-      font-size: 0.82rem;
-      line-height: 1.7;
-      color: #e4e4e7;
+      transform: rotate(-1.5deg);
+      transition: transform 300ms ease;
     }
-    .code-head {
-      display: flex; align-items: center; justify-content: space-between;
-      background: #0a0a10;
-      padding: 12px 16px;
-      border-bottom: 1px solid #1a1a22;
+    .tpl-card:hover { transform: rotate(-0.5deg) translateY(-4px); }
+    .tpl-card-2 {
+      position: absolute;
+      top: 32px; left: -28px; right: 28px;
+      background: var(--paper-pure);
+      border-radius: 14px;
+      border: 1px solid var(--hairline);
+      z-index: -1;
+      transform: rotate(3deg);
+      height: 92%;
+      box-shadow: 0 20px 40px -20px rgba(55,25,89,0.2);
     }
-    .code-dots { display: flex; gap: 6px; }
-    .code-dots span { width: 11px; height: 11px; border-radius: 50%; background: #2b2b35; }
-    .code-tabs { display: flex; gap: 4px; }
-    .code-tabs button {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      color: var(--code-dim);
-      padding: 5px 11px;
-      border-radius: 5px;
-      letter-spacing: 0.04em;
-    }
-    .code-tabs button.on { background: #1a1a22; color: #00f6ff; }
-    .code-tabs button:hover { color: #e4e4e7; }
-    .code-body {
-      padding: 18px 20px;
-      overflow-x: auto;
-      max-height: 420px;
-    }
-    .code-body pre { font-family: var(--mono); white-space: pre; }
-    .ln { color: #3a3a44; user-select: none; padding-right: 16px; display: inline-block; width: 28px; text-align: right; }
-    .k  { color: var(--code-key); }
-    .s  { color: var(--code-str); }
-    .n  { color: var(--code-num); }
-    .f  { color: var(--code-fn); }
-    .c  { color: var(--code-dim); font-style: italic; }
-    .o  { color: #e4e4e7; }
-    .cursor { display: inline-block; width: 8px; height: 1.05em; background: var(--accent); margin-left: 1px; vertical-align: text-bottom; animation: caret 1s steps(1) infinite; }
-    @keyframes caret { 50% { opacity: 0; } }
-
-    /* ─────────── LIVE STATS STRIP ─────────── */
-    .stats-strip {
+    .tpl-head {
       background: var(--ink-black);
       color: var(--paper);
-      position: relative;
-      z-index: 2;
+      padding: 14px 20px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    .stats-inner {
-      max-width: 1240px; margin: 0 auto;
-      padding: 36px 24px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-    @media (min-width: 768px)  { .stats-inner { padding: 40px; } }
-    @media (min-width: 1280px) { .stats-inner { padding: 44px 56px; } }
-    @media (max-width: 767px)  { .stats-inner { grid-template-columns: repeat(2, 1fr); } }
-
-    .stat-cell { border-left: 2px solid; border-image: var(--grad-a) 1; padding-left: 16px; }
-    .stat-num {
-      font-family: var(--display);
-      font-weight: 900;
-      font-size: clamp(34px, 3.8vw, 52px);
-      line-height: 1;
-      letter-spacing: -0.02em;
-      color: var(--paper-pure);
-      display: block;
-      margin-bottom: 8px;
-    }
-    .stat-num .stat-suffix { color: #00f6ff; font-size: 0.6em; vertical-align: top; margin-left: 2px; }
-    .stat-label {
+    .tpl-title {
       font-family: var(--mono);
-      font-size: 0.65rem;
+      font-size: 0.74rem;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.13em;
+    }
+    .tpl-ver {
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      color: var(--accent-cyan);
+      background: rgba(0,246,255,0.1);
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.1em;
+    }
+    .tpl-body { padding: 18px 20px; }
+    .tpl-row {
+      display: grid;
+      grid-template-columns: 60px 1fr 50px 90px;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--hairline);
+      font-size: 0.78rem;
+      align-items: center;
+    }
+    .tpl-row:last-child { border-bottom: 0; }
+    .tpl-row.head {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gray-dis);
+      color: var(--gray-cap);
+      border-bottom: 1px solid var(--ink-black);
+      padding-bottom: 8px;
+    }
+    .tpl-row code {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-black);
+    }
+    .tpl-row .part { color: var(--body); }
+    .tpl-pill {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 3px 8px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+    .pill-ok    { background: rgba(10,193,134,0.14); color: #059669; }
+    .pill-wait  { background: rgba(0,246,255,0.14);  color: #0369a1; }
+    .pill-hold  { background: rgba(55,25,89,0.14);   color: #4c1d95; }
+    .pill-late  { background: rgba(239,68,68,0.12);  color: #b91c1c; }
+    .tpl-qty { font-family: var(--mono); font-weight: 700; color: var(--ink-black); text-align: right; font-size: 0.8rem; }
+    .tpl-foot {
+      border-top: 1px solid var(--hairline);
+      padding: 12px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--paper);
+    }
+    .tpl-foot .meta {
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.1em;
+      color: var(--gray-cap);
+      text-transform: uppercase;
+    }
+    .tpl-foot .dl {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
     }
 
-    /* ─────────── SECTION HEADERS ─────────── */
+    /* ───────── SECTIONS ───────── */
     section.block { padding: 96px 0; }
     @media (max-width: 767px) { section.block { padding: 64px 0; } }
-    .block-head { text-align: center; margin-bottom: 56px; }
+    .block-head { text-align: center; margin-bottom: 56px; max-width: 720px; margin-left: auto; margin-right: auto; }
     .block-head h2 {
       font-family: var(--display);
       font-weight: 900;
@@ -458,56 +413,91 @@
       margin-bottom: 16px;
     }
     .block-head p {
-      font-family: var(--sans);
       font-size: 1.08rem;
-      line-height: 1.55;
+      line-height: 1.6;
       color: var(--body);
-      max-width: 620px;
-      margin: 0 auto;
     }
 
-    /* ─────────── LIVE DEMO ─────────── */
-    .demo-block { background: var(--paper-pure); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
-    .demo-card {
-      max-width: 920px; margin: 0 auto;
+    /* ───────── WHAT'S AVAILABLE ───────── */
+    .guides-block {
+      background: var(--paper-pure);
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .guides {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 1023px) { .guides { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 599px)  { .guides { grid-template-columns: 1fr; } }
+
+    .guide-card {
       background: var(--paper);
       border: 1px solid var(--hairline);
-      border-radius: 16px;
+      border-radius: 14px;
       padding: 28px;
-      box-shadow: 0 30px 60px -30px rgba(10,10,30,0.15);
+      display: flex; flex-direction: column;
+      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+      position: relative;
     }
-    .demo-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; }
-    @media (max-width: 599px) { .demo-row { grid-template-columns: 1fr; } }
-    .demo-input {
-      width: 100%;
-      padding: 14px 16px;
-      font-family: var(--sans);
-      font-size: 0.95rem;
-      background: var(--paper-pure);
-      border: 1px solid var(--hairline);
-      border-radius: 10px;
-      outline: none;
-      transition: border-color 180ms ease, box-shadow 180ms ease;
+    .guide-card:hover {
+      transform: translateY(-4px);
+      border-color: transparent;
+      box-shadow: 0 24px 40px -20px rgba(0,246,255,0.2), 0 0 0 1px rgba(0,246,255,0.3);
     }
-    .demo-input:focus { border-color: #00f6ff; box-shadow: 0 0 0 4px rgba(0,246,255,0.1); }
-    .demo-out {
-      margin-top: 18px;
-      background: var(--code-bg);
-      color: #e4e4e7;
+    .guide-status {
+      position: absolute;
+      top: 16px; right: 16px;
       font-family: var(--mono);
-      font-size: 0.78rem;
-      line-height: 1.7;
-      padding: 18px 20px;
-      border-radius: 10px;
-      min-height: 160px;
-      white-space: pre-wrap;
-      overflow-x: auto;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      padding: 4px 10px;
+      border-radius: 999px;
     }
-    .demo-out .label { color: var(--code-dim); display: inline-block; margin-right: 6px; }
-    .demo-hint { font-size: 0.78rem; color: var(--gray-cap); margin-top: 14px; text-align: center; font-family: var(--sans); }
-    .demo-hint button { font-size: 0.78rem; color: var(--accent); text-decoration: underline; padding: 0; }
+    .status-free { background: rgba(10,193,134,0.14); color: #059669; }
+    .status-wip  { background: rgba(55,25,89,0.12); color: #4c1d95; }
+    .guide-icon {
+      width: 44px; height: 44px;
+      background: var(--grad-a);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--paper-pure);
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 0.98rem;
+      margin-bottom: 18px;
+      letter-spacing: 0.05em;
+    }
+    .guide-card h3 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.38rem;
+      line-height: 1.18;
+      color: var(--ink-black);
+      margin-bottom: 10px;
+    }
+    .guide-card p {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--body);
+      margin-bottom: 18px;
+      flex: 1;
+    }
+    .guide-meta {
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-cap);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .guide-meta .arrow { color: var(--accent); font-weight: 700; }
+    .guide-card.wip .guide-icon { background: var(--grad-b); }
+    .guide-card.wip h3 { color: var(--accent-purp); }
 
-    /* ─────────── HOW IT WORKS ─────────── */
+    /* ───────── HOW IT WORKS ───────── */
     .steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -515,21 +505,21 @@
     }
     @media (max-width: 899px) { .steps { grid-template-columns: 1fr; } }
     .step-card {
-      background: var(--paper-pure);
-      border: 1px solid var(--hairline);
-      border-radius: 14px;
-      padding: 32px 28px;
-      transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+      padding: 32px 0;
+      position: relative;
     }
-    .step-card:hover { transform: translateY(-4px); border-color: #00f6ff; box-shadow: 0 20px 40px -20px rgba(0,246,255,0.25); }
     .step-num {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      color: var(--accent);
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 4rem;
+      line-height: 1;
+      background: var(--grad-a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
       margin-bottom: 16px;
-      display: block;
+      letter-spacing: -0.03em;
     }
     .step-card h3 {
       font-family: var(--display);
@@ -539,141 +529,56 @@
       color: var(--ink-black);
       margin-bottom: 12px;
     }
-    .step-card p { font-family: var(--sans); font-size: 0.94rem; line-height: 1.55; color: var(--body); margin-bottom: 16px; }
-    .step-code {
-      background: var(--code-bg);
-      color: #e4e4e7;
-      font-family: var(--mono);
-      font-size: 0.74rem;
-      padding: 12px 14px;
-      border-radius: 8px;
-      overflow-x: auto;
-    }
+    .step-card p { font-size: 0.96rem; line-height: 1.6; color: var(--body); }
 
-    /* ─────────── USE CASES ─────────── */
-    .uses {
+    /* ───────── ROADMAP ───────── */
+    .roadmap-block { background: var(--paper-pure); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+    .roadmap {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
-    @media (max-width: 1023px) { .uses { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 599px) { .uses { grid-template-columns: 1fr; } }
-    .use-card {
-      background: var(--paper-pure);
-      border: 1px solid var(--hairline);
-      border-radius: 12px;
-      padding: 24px;
-      transition: border-color 200ms ease, transform 200ms ease;
-      display: block;
-    }
-    .use-card:hover { border-color: #00f6ff; transform: translateY(-3px); box-shadow: 0 16px 32px -16px rgba(0,246,255,0.2); }
-    .use-icon {
-      width: 40px; height: 40px;
-      background: rgba(0,246,255,0.08);
-      color: #00f6ff;
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--mono);
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin-bottom: 14px;
-    }
-    .use-card h4 {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: 1.18rem;
-      color: var(--ink-black);
-      margin-bottom: 8px;
-    }
-    .use-card p { font-family: var(--sans); font-size: 0.88rem; color: var(--body); line-height: 1.55; }
-
-    /* ─────────── PRICING ─────────── */
-    .pricing-block { background: var(--paper-pure); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
-    .price-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      align-items: stretch;
-    }
-    @media (max-width: 899px) { .price-grid { grid-template-columns: 1fr; } }
-    .price-card {
+    @media (max-width: 899px) { .roadmap { grid-template-columns: 1fr; } }
+    .road-card {
       background: var(--paper);
-      border: 1px solid var(--hairline);
-      border-radius: 16px;
-      padding: 36px 32px;
-      display: flex; flex-direction: column;
-      transition: transform 200ms ease;
-    }
-    .price-card:hover { transform: translateY(-4px); }
-    .price-card.featured {
-      background: var(--ink-black);
-      border-color: var(--ink-black);
-      color: var(--paper);
+      border: 1px dashed var(--hairline);
+      border-radius: 14px;
+      padding: 28px;
       position: relative;
     }
-    .price-card.featured::before {
-      content: 'MOST POPULAR';
-      position: absolute;
-      top: -12px; left: 50%;
-      transform: translateX(-50%);
-      background: var(--grad-a);
-      color: var(--paper-pure);
+    .road-card.next { border-style: solid; border-color: var(--accent-cyan); background: linear-gradient(180deg, rgba(0,246,255,0.04) 0%, var(--paper) 100%); }
+    .road-phase {
       font-family: var(--mono);
       font-size: 0.66rem;
       font-weight: 700;
       letter-spacing: 0.14em;
-      padding: 5px 12px;
-      border-radius: 999px;
+      color: var(--gray-cap);
+      margin-bottom: 12px;
+      display: flex; align-items: center; gap: 8px;
     }
-    .price-tier {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      color: var(--accent);
-      margin-bottom: 14px;
+    .road-card.next .road-phase { color: var(--accent); }
+    .road-card.next .road-phase::before {
+      content: ''; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent-cyan);
+      animation: blink 1.4s ease-in-out infinite;
     }
-    .price-card.featured .price-tier { color: #00f6ff; }
-    .price-amt {
+    .road-card h3 {
       font-family: var(--display);
-      font-weight: 900;
-      font-size: 3.2rem;
-      line-height: 1;
-      letter-spacing: -0.02em;
-      color: var(--ink-black);
-      margin-bottom: 4px;
-    }
-    .price-card.featured .price-amt { color: var(--paper-pure); }
-    .price-amt .per { font-family: var(--sans); font-size: 0.95rem; font-weight: 500; color: var(--gray-cap); margin-left: 4px; }
-    .price-card.featured .price-amt .per { color: var(--gray-dis); }
-    .price-tag { font-family: var(--sans); font-size: 0.88rem; color: var(--body); margin-bottom: 24px; }
-    .price-card.featured .price-tag { color: var(--gray-dis); }
-    .price-card ul { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; flex: 1; }
-    .price-card li {
-      font-family: var(--sans);
-      font-size: 0.9rem;
-      color: var(--body);
-      display: flex; align-items: flex-start; gap: 10px;
-    }
-    .price-card.featured li { color: #d4d4d8; }
-    .price-card li::before {
-      content: '✓';
-      color: var(--accent);
       font-weight: 700;
-      flex-shrink: 0;
+      font-size: 1.35rem;
+      color: var(--ink-black);
+      margin-bottom: 10px;
     }
-    .price-card .btn { width: 100%; }
-    .price-card.featured .btn-ghost { color: var(--paper); border-color: #2a2a35; }
-    .price-card.featured .btn-ghost:hover { border-color: #00f6ff; color: #00f6ff; }
+    .road-card p { font-size: 0.9rem; line-height: 1.55; color: var(--body); }
 
-    /* ─────────── CO-BUILD BAND ─────────── */
-    .cobuild {
-      background: linear-gradient(135deg, #371959 0%, #1a1a2e 40%, #0a0a0a 70%, #0ac186 100%);
+    /* ───────── NEWSLETTER CAPTURE ───────── */
+    .capture {
+      background: linear-gradient(135deg, #371959 0%, #1a1a2e 40%, #0a0a0a 65%, #0ac186 100%);
       color: var(--paper);
       position: relative;
       overflow: hidden;
     }
-    .cobuild::before {
+    .capture::before {
       content: '';
       position: absolute; inset: 0;
       background:
@@ -681,43 +586,75 @@
         radial-gradient(500px circle at 80% 70%, rgba(10,193,134,0.22), transparent 50%);
       pointer-events: none;
     }
-    .cobuild-inner {
+    .capture-inner {
       position: relative; z-index: 1;
-      max-width: 920px;
+      max-width: 780px;
       margin: 0 auto;
       padding: 96px 24px;
       text-align: center;
     }
-    .cobuild h2 {
+    .capture h2 {
       font-family: var(--display);
       font-weight: 900;
-      font-size: clamp(36px, 4.6vw, 60px);
+      font-size: clamp(36px, 4.6vw, 56px);
       line-height: 1.05;
       letter-spacing: -0.02em;
       color: var(--paper-pure);
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
-    .cobuild p {
-      font-family: var(--sans);
-      font-size: 1.1rem;
+    .capture p {
+      font-size: 1.08rem;
       line-height: 1.6;
-      color: rgba(255,255,255,0.85);
-      max-width: 580px;
-      margin: 0 auto 32px;
+      color: rgba(255,255,255,0.82);
+      max-width: 560px;
+      margin: 0 auto 36px;
     }
-    .cobuild .btn-primary { background: var(--grad-a); color: var(--ink-black); border-color: transparent; font-weight: 700; }
-    .cobuild .btn-primary:hover { filter: brightness(1.15); }
+    .capture-form {
+      display: flex; gap: 10px;
+      max-width: 520px;
+      margin: 0 auto 16px;
+    }
+    .capture-form input {
+      flex: 1;
+      padding: 14px 18px;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      color: var(--ink-page);
+      background: var(--paper-pure);
+      border: 1px solid transparent;
+      border-radius: 10px;
+      outline: none;
+      transition: box-shadow 180ms ease;
+    }
+    .capture-form input:focus { box-shadow: 0 0 0 4px rgba(0,246,255,0.35); }
+    .capture-form input::placeholder { color: var(--gray-cap); }
+    .capture-form button {
+      padding: 14px 24px;
+      background: var(--grad-a);
+      color: var(--paper-pure);
+      font-weight: 700;
+      font-size: 0.92rem;
+      border-radius: 10px;
+      transition: filter 180ms ease;
+      white-space: nowrap;
+    }
+    .capture-form button:hover { filter: brightness(1.15); }
+    .capture-note {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    @media (max-width: 599px) { .capture-form { flex-direction: column; } }
 
-    /* ─────────── FAQ ─────────── */
+    /* ───────── FAQ ───────── */
     .faq-list { max-width: 800px; margin: 0 auto; }
-    .faq-item {
-      border-bottom: 1px solid var(--hairline);
-    }
+    .faq-item { border-bottom: 1px solid var(--hairline); }
     .faq-q {
       width: 100%;
       text-align: left;
       padding: 24px 0;
-      font-family: var(--sans);
       font-size: 1.05rem;
       font-weight: 600;
       color: var(--ink-black);
@@ -725,13 +662,12 @@
       gap: 16px;
     }
     .faq-q .plus {
-      width: 24px; height: 24px;
+      width: 26px; height: 26px;
       flex-shrink: 0;
       border: 1px solid var(--hairline);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       color: var(--accent);
-      font-size: 1rem;
       transition: transform 240ms ease, background 200ms ease;
     }
     .faq-item.open .plus { transform: rotate(45deg); background: rgba(0,246,255,0.1); }
@@ -739,15 +675,14 @@
       max-height: 0;
       overflow: hidden;
       transition: max-height 320ms ease;
-      font-family: var(--sans);
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 0.96rem;
+      line-height: 1.62;
       color: var(--body);
     }
-    .faq-item.open .faq-a { max-height: 400px; }
+    .faq-item.open .faq-a { max-height: 500px; }
     .faq-a > div { padding: 0 0 24px; }
 
-    /* ─────────── FOOTER ─────────── */
+    /* ───────── FOOTER ───────── */
     footer {
       background: var(--ink-black);
       color: var(--paper);
@@ -757,17 +692,16 @@
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 40px;
-      margin-bottom: 56px;
+      margin-bottom: 48px;
     }
     @media (max-width: 899px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 599px) { .footer-grid { grid-template-columns: 1fr; gap: 32px; } }
-    footer .bug-logo { color: var(--paper-pure); font-size: 1.6rem; margin-bottom: 18px; display: block; }
+    footer .bug-logo { color: var(--paper-pure); font-size: 1.6rem; margin-bottom: 16px; display: block; }
     .footer-brand p {
-      font-family: var(--sans);
       font-size: 0.9rem;
       line-height: 1.6;
       color: var(--gray-dis);
-      max-width: 320px;
+      max-width: 360px;
     }
     .footer-col h4 {
       font-family: var(--mono);
@@ -779,12 +713,8 @@
       margin-bottom: 18px;
     }
     .footer-col ul { display: flex; flex-direction: column; gap: 12px; }
-    .footer-col a {
-      font-family: var(--sans);
-      font-size: 0.88rem;
-      color: var(--gray-dis);
-    }
-    .footer-col a:hover { color: #00f6ff; }
+    .footer-col a { font-size: 0.88rem; color: var(--gray-dis); }
+    .footer-col a:hover { color: var(--accent-cyan); }
     .footer-bar {
       border-top: 1px solid #1f1f29;
       padding-top: 28px;
@@ -793,17 +723,18 @@
       flex-wrap: wrap;
       gap: 12px;
       font-family: var(--mono);
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: var(--gray-dis);
-      letter-spacing: 0.06em;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
-    /* ─────────── SCROLL REVEAL ─────────── */
+    /* ───────── REVEAL ───────── */
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity 600ms ease, transform 600ms cubic-bezier(.2,.8,.2,1); }
     .reveal.in { opacity: 1; transform: none; }
 
     @media (prefers-reduced-motion: reduce) {
-      .hero-mesh span, .ticker-track, .live-dot, .ticker-bar::before, .cursor { animation: none !important; }
+      .hero-mesh span, .road-card.next .road-phase::before, .hero-pill .dot { animation: none !important; }
       .reveal { opacity: 1; transform: none; }
       *, *::before, *::after { transition: none !important; }
     }
@@ -811,374 +742,308 @@
 </head>
 <body>
 
-  <!-- ─────────── LIVE TICKER ─────────── -->
-  <div class="ticker-bar" aria-hidden="true">
-    <div class="ticker-track" id="tickerTrack"></div>
-  </div>
-
-  <!-- ─────────── UTILITY BAR ─────────── -->
+  <!-- UTILITY BAR -->
   <div class="utility-bar">
     <div class="utility-inner">
       <div class="utility-left">
-        <span><span class="live-dot"></span><span id="liveClock">MUAR · 14:32 MYT</span></span>
-        <span>API STATUS · OPERATIONAL</span>
-        <span>v0.1 BETA</span>
+        <span>MUAR, JOHOR · SEA MANUFACTURING</span>
+        <span>Est. for operators, by operators</span>
       </div>
       <div class="utility-right">
-        <a href="#docs">Docs</a>
         <a href="#journal">Journal</a>
+        <a href="mailto:theindustrialscribe@gmail.com">Contact</a>
       </div>
     </div>
   </div>
 
-  <!-- ─────────── MAIN NAV ─────────── -->
+  <!-- NAV -->
   <nav class="main-nav">
     <div class="nav-inner">
-      <a href="#" class="bug-logo">TIS<span class="dot">.</span> <span style="font-family:var(--mono);font-size:0.62rem;font-weight:700;letter-spacing:0.14em;color:#00f6ff;background:rgba(0,246,255,0.1);padding:4px 8px;border-radius:4px;vertical-align:middle;margin-left:6px;">SCRIBEERP</span></a>
+      <a href="#" class="bug-logo">TIS<span class="dot">.</span></a>
       <ul class="nav-links">
+        <li><a href="#guides">Free Guides</a></li>
         <li><a href="#how">How it works</a></li>
-        <li><a href="#use-cases">Use cases</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#cobuild">Co-build</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="#journal">Journal</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
-      <div class="nav-cta">
-        <a href="#docs" class="btn btn-ghost">Sign in</a>
-        <a href="#pricing" class="btn btn-primary">Get API key →</a>
-      </div>
+      <a href="#join" class="btn btn-primary">Get free guides →</a>
       <button class="nav-burger" id="burgerOpen" aria-label="Open menu">☰</button>
     </div>
   </nav>
 
-  <!-- ─────────── MOBILE DRAWER ─────────── -->
+  <!-- DRAWER -->
   <aside class="drawer" id="drawer">
     <div class="drawer-head">
       <span class="bug-logo">TIS<span class="dot">.</span></span>
       <button class="drawer-close" id="burgerClose" aria-label="Close menu">×</button>
     </div>
     <ul>
+      <li><a href="#guides">Free Guides</a></li>
       <li><a href="#how">How it works</a></li>
-      <li><a href="#use-cases">Use cases</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#cobuild">Co-build</a></li>
-      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
       <li><a href="#journal">Journal</a></li>
+      <li><a href="#faq">FAQ</a></li>
     </ul>
-    <a href="#pricing" class="btn btn-primary">Get API key →</a>
+    <a href="#join" class="btn btn-primary">Get free guides →</a>
   </aside>
 
-  <!-- ─────────── HERO ─────────── -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-mesh" aria-hidden="true">
-      <span class="blob-1"></span>
-      <span class="blob-2"></span>
-      <span class="blob-3"></span>
-      <span class="blob-4"></span>
+      <span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span>
     </div>
     <div class="container hero-grid">
-
       <div>
-        <div class="hero-pill"><span class="dot"></span> ScribeERP · A product by The Industrial Scribe</div>
-        <h1>Build your factory's ERP <span class="grad">with AI.</span> Ship in a weekend.</h1>
-        <p class="deck">ScribeERP gives you the primitives — quotation engines, RCA generators, production reports, every module your shop needs — behind one API. Vibe-code it with Cursor or Claude. Pay only for the tokens you burn.</p>
+        <div class="hero-pill"><span class="dot"></span> The Industrial Scribe · Free for practitioners</div>
+        <h1>Stop spending Sunday night on the <span class="grad">same reports.</span></h1>
+        <p class="deck">Free templates and shop-floor playbooks for SEA manufacturing practitioners. WIP status. 5-Why RCA. Weekly production recap. SOP drafting. Built by people who've lived the late-night reporting grind — for the people still living it.</p>
         <div class="hero-ctas">
-          <a href="#pricing" class="btn btn-primary btn-lg">Get API key →</a>
-          <a href="#cobuild" class="btn btn-ghost btn-lg">Book a co-build</a>
+          <a href="#join" class="btn btn-primary btn-lg">Get free guides →</a>
+          <a href="#guides" class="btn btn-ghost btn-lg">See what's inside</a>
         </div>
-        <div class="hero-trust">
-          <span><strong>12</strong> SEA factories</span>
-          <span class="sep"></span>
-          <span><strong>1.2M</strong> tokens / wk</span>
-          <span class="sep"></span>
-          <span><strong>99.9%</strong> uptime</span>
-        </div>
+        <div class="hero-note">No signup tricks · Just the templates · Unsubscribe anytime</div>
       </div>
 
-      <div class="code-card">
-        <div class="code-head">
-          <div class="code-dots"><span></span><span></span><span></span></div>
-          <div class="code-tabs">
-            <button class="on" data-tab="curl">curl</button>
-            <button data-tab="js">node</button>
-            <button data-tab="py">python</button>
+      <!-- Template preview visual -->
+      <div class="tpl-stack">
+        <div class="tpl-card-2"></div>
+        <div class="tpl-card">
+          <div class="tpl-head">
+            <span class="tpl-title">WEEKLY WIP STATUS</span>
+            <span class="tpl-ver">v1 · TEMPLATE</span>
           </div>
-          <span style="font-family:var(--mono);font-size:0.66rem;color:var(--code-dim)">scribe.sh</span>
+          <div class="tpl-body">
+            <div class="tpl-row head">
+              <span>JOB</span><span>PART</span><span>QTY</span><span>STATUS</span>
+            </div>
+            <div class="tpl-row">
+              <code>J-0847</code>
+              <span class="part">CNC bracket A-204</span>
+              <span class="tpl-qty">500</span>
+              <span><span class="tpl-pill pill-ok">On track</span></span>
+            </div>
+            <div class="tpl-row">
+              <code>J-0851</code>
+              <span class="part">Steel housing M8</span>
+              <span class="tpl-qty">200</span>
+              <span><span class="tpl-pill pill-wait">Queued</span></span>
+            </div>
+            <div class="tpl-row">
+              <code>J-0852</code>
+              <span class="part">PCB enclosure</span>
+              <span class="tpl-qty">1,000</span>
+              <span><span class="tpl-pill pill-hold">Hold · QA</span></span>
+            </div>
+            <div class="tpl-row">
+              <code>J-0844</code>
+              <span class="part">Aluminium plate</span>
+              <span class="tpl-qty">120</span>
+              <span><span class="tpl-pill pill-late">Late</span></span>
+            </div>
+            <div class="tpl-row">
+              <code>J-0853</code>
+              <span class="part">Gear assembly</span>
+              <span class="tpl-qty">80</span>
+              <span><span class="tpl-pill pill-ok">On track</span></span>
+            </div>
+          </div>
+          <div class="tpl-foot">
+            <span class="meta">XLSX · 32 KB</span>
+            <span class="dl">↓ Download free</span>
+          </div>
         </div>
-        <div class="code-body">
-<pre id="codeCurl"><span class="c"># Generate a quotation from a PDF spec</span>
-<span class="k">curl</span> https://api.industrialscribe.com/v1/quote \
-  -H <span class="s">"Authorization: Bearer sk_live_..."</span> \
-  -H <span class="s">"Content-Type: application/json"</span> \
-  -d <span class="s">'{
-    "part": "CNC bracket A-204",
-    "qty": <span class="n">500</span>,
-    "material": "AL6061",
-    "tolerance": "±0.05mm",
-    "delivery_days": <span class="n">14</span>
-  }'</span>
-
-<span class="c"># → 200 OK</span>
-<span class="o">{</span>
-  <span class="f">"quote_id"</span>: <span class="s">"qt_8f3a..."</span>,
-  <span class="f">"unit_price_myr"</span>: <span class="n">12.40</span>,
-  <span class="f">"setup_myr"</span>: <span class="n">450</span>,
-  <span class="f">"lead_time_days"</span>: <span class="n">11</span>,
-  <span class="f">"margin_pct"</span>: <span class="n">28.5</span>,
-  <span class="f">"confidence"</span>: <span class="s">"high"</span>,
-  <span class="f">"tokens_used"</span>: <span class="n">1247</span>
-<span class="o">}</span><span class="cursor"></span></pre>
-
-<pre id="codeJs" style="display:none"><span class="k">import</span> <span class="o">{ Scribe }</span> <span class="k">from</span> <span class="s">"@industrialscribe/sdk"</span>;
-
-<span class="k">const</span> scribe = <span class="k">new</span> <span class="f">Scribe</span>(process.env.<span class="o">SCRIBE_KEY</span>);
-
-<span class="k">const</span> quote = <span class="k">await</span> scribe.quote.<span class="f">create</span>(<span class="o">{</span>
-  part: <span class="s">"CNC bracket A-204"</span>,
-  qty: <span class="n">500</span>,
-  material: <span class="s">"AL6061"</span>,
-  tolerance: <span class="s">"±0.05mm"</span>,
-  delivery_days: <span class="n">14</span>,
-<span class="o">}</span>);
-
-console.<span class="f">log</span>(quote.unit_price_myr); <span class="c">// 12.40</span>
-console.<span class="f">log</span>(quote.confidence);    <span class="c">// "high"</span></pre>
-
-<pre id="codePy" style="display:none"><span class="k">from</span> industrialscribe <span class="k">import</span> Scribe
-
-scribe = <span class="f">Scribe</span>(api_key=<span class="s">"sk_live_..."</span>)
-
-quote = scribe.quote.<span class="f">create</span>(
-    part=<span class="s">"CNC bracket A-204"</span>,
-    qty=<span class="n">500</span>,
-    material=<span class="s">"AL6061"</span>,
-    tolerance=<span class="s">"±0.05mm"</span>,
-    delivery_days=<span class="n">14</span>,
-)
-
-<span class="f">print</span>(quote.unit_price_myr)  <span class="c"># 12.40</span>
-<span class="f">print</span>(quote.confidence)     <span class="c"># "high"</span></pre>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ─────────── LIVE STATS STRIP ─────────── -->
-  <section class="stats-strip" aria-label="Live network stats">
-    <div class="stats-inner">
-      <div class="stat-cell">
-        <span class="stat-num"><span data-count="12">0</span></span>
-        <span class="stat-label">Factories on Scribe</span>
-      </div>
-      <div class="stat-cell">
-        <span class="stat-num"><span data-count="1247000">0</span></span>
-        <span class="stat-label">Tokens This Week</span>
-      </div>
-      <div class="stat-cell">
-        <span class="stat-num"><span data-count="62">0</span><span class="stat-suffix">+</span></span>
-        <span class="stat-label">Countries Reached</span>
-      </div>
-      <div class="stat-cell">
-        <span class="stat-num"><span data-count="999" data-divide="10">0</span><span class="stat-suffix">%</span></span>
-        <span class="stat-label">API Uptime</span>
       </div>
     </div>
   </section>
 
-  <!-- ─────────── LIVE DEMO ─────────── -->
-  <section class="block demo-block" id="demo">
+  <!-- WHAT'S AVAILABLE -->
+  <section class="block guides-block" id="guides">
     <div class="container">
       <div class="block-head reveal">
-        <span class="kicker">Try it now · No signup</span>
-        <h2>Generate a real ERP record. Live.</h2>
-        <p>Type any manufacturing job description. Watch ScribeERP return a structured quotation row in under 2 seconds.</p>
+        <span class="kicker">Free · Take what you need</span>
+        <h2>The templates we wish we had ten years ago.</h2>
+        <p>Every one of these was built to solve a weekly headache on a real SEA shop floor. They're yours — no paywall, no "Pro tier" tricks. The AI-powered versions are in progress and will be offered to subscribers when ready.</p>
       </div>
-      <div class="demo-card reveal">
-        <div class="demo-row">
-          <input class="demo-input" id="demoInput" type="text" placeholder="e.g. 200 pcs aluminium bracket, 6mm thick, anodised, deliver in 10 days" />
-          <button class="btn btn-primary" id="demoRun">Run →</button>
+      <div class="guides">
+
+        <div class="guide-card reveal">
+          <span class="guide-status status-free">FREE · READY</span>
+          <div class="guide-icon">WIP</div>
+          <h3>Weekly WIP Status Report</h3>
+          <p>The Excel template that replaces your Sunday-night PowerPoint. Job list, status pills, aging buckets, auto-roll-up.</p>
+          <span class="guide-meta">XLSX + PLAYBOOK <span class="arrow">→</span></span>
         </div>
-        <div class="demo-out" id="demoOut"><span class="label">// Output will appear here</span></div>
-        <p class="demo-hint">Try: <button data-q="50 pcs steel housing M8 thread, 14 day delivery">steel housing</button> · <button data-q="1000 pcs PCB enclosure, ABS injection moulded">PCB enclosure</button> · <button data-q="reverse-engineer this gear from a worn sample, 24h turnaround">reverse-engineer</button></p>
+
+        <div class="guide-card reveal">
+          <span class="guide-status status-free">FREE · READY</span>
+          <div class="guide-icon">RCA</div>
+          <h3>NCR &amp; 5-Why RCA Drafter</h3>
+          <p>A structured worksheet that walks you through a defect investigation in 10 minutes. Corrective action, audit-ready.</p>
+          <span class="guide-meta">DOCX + PLAYBOOK <span class="arrow">→</span></span>
+        </div>
+
+        <div class="guide-card reveal">
+          <span class="guide-status status-free">FREE · READY</span>
+          <div class="guide-icon">PR</div>
+          <h3>Weekly Production Report</h3>
+          <p>Output vs. plan, scrap rate, downtime, top losers. The exact format your boss actually reads on Monday.</p>
+          <span class="guide-meta">XLSX + PLAYBOOK <span class="arrow">→</span></span>
+        </div>
+
+        <div class="guide-card reveal">
+          <span class="guide-status status-free">FREE · READY</span>
+          <div class="guide-icon">SOP</div>
+          <h3>SOP Drafting Playbook</h3>
+          <p>The three-page guide on writing any manufacturing SOP in 30 minutes — with control points, verification, and handoffs.</p>
+          <span class="guide-meta">PDF PLAYBOOK <span class="arrow">→</span></span>
+        </div>
+
+        <div class="guide-card wip reveal">
+          <span class="guide-status status-wip">IN PROGRESS</span>
+          <div class="guide-icon">AI</div>
+          <h3>AI Processing · WIP Report</h3>
+          <p>Upload your raw job list. Get a cleaned, formatted, emailable WIP report in under a minute. Beta access via the waitlist.</p>
+          <span class="guide-meta">COMING SOON <span class="arrow">→</span></span>
+        </div>
+
+        <div class="guide-card wip reveal">
+          <span class="guide-status status-wip">IN PROGRESS</span>
+          <div class="guide-icon">AI</div>
+          <h3>AI Processing · NCR Drafter</h3>
+          <p>Paste a defect description. Get a complete 5-Why RCA draft with corrective action, ready for your QA review.</p>
+          <span class="guide-meta">COMING SOON <span class="arrow">→</span></span>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ─────────── HOW IT WORKS ─────────── -->
+  <!-- HOW IT WORKS -->
   <section class="block" id="how">
     <div class="container">
       <div class="block-head reveal">
         <span class="kicker">How it works</span>
-        <h2>From zero to ERP in three steps.</h2>
-        <p>No procurement cycle. No vendor lock-in. No six-figure implementation. Just a ScribeERP key and a vibe-coding session.</p>
+        <h2>Three steps. No code. No learning curve.</h2>
+        <p>These are tools for people doing the work — not tools for people who want to be software engineers.</p>
       </div>
       <div class="steps">
         <div class="step-card reveal">
-          <span class="step-num">STEP 01</span>
-          <h3>Get your key</h3>
-          <p>Sign up, grab a ScribeERP API key, drop it into Cursor or Claude. You're online in 60 seconds.</p>
-          <div class="step-code">$ export SCRIBEERP_KEY=sk_live_...</div>
+          <div class="step-num">01</div>
+          <h3>Drop your email.</h3>
+          <p>We send the templates and playbooks straight to your inbox. No account to create, no dashboard to log into.</p>
         </div>
         <div class="step-card reveal">
-          <span class="step-num">STEP 02</span>
-          <h3>Vibe-code your modules</h3>
-          <p>Describe the ERP feature you need in plain English. ScribeERP primitives compose into quotation, RCA, SOP, production reports — anything.</p>
-          <div class="step-code">"build me a daily scrap rate dashboard"</div>
+          <div class="step-num">02</div>
+          <h3>Open the template.</h3>
+          <p>Excel, Word, or PDF — familiar tools. Read the one-page playbook that comes with each one. Swap in your data.</p>
         </div>
         <div class="step-card reveal">
-          <span class="step-num">STEP 03</span>
-          <h3>Ship to the floor</h3>
-          <p>Deploy to your shop in a weekend. Your team logs in Monday. You only pay for tokens consumed.</p>
-          <div class="step-code">$ scribeerp deploy --target factory-mr1</div>
+          <div class="step-num">03</div>
+          <h3>Send the report.</h3>
+          <p>Hand it off to your boss, your auditor, your client. Go home on time. Repeat next week in half the time.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─────────── USE CASES ─────────── -->
-  <section class="block" id="use-cases" style="background:var(--paper-pure);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)">
+  <!-- ROADMAP -->
+  <section class="block roadmap-block" id="roadmap">
     <div class="container">
       <div class="block-head reveal">
-        <span class="kicker">Use cases</span>
-        <h2>Every ERP module a SEA shop actually needs.</h2>
-        <p>Drop-in primitives for the workflows that eat 80% of a manufacturing BD/operator's day.</p>
+        <span class="kicker">Roadmap · What we're building next</span>
+        <h2>AI workflows — in progress.</h2>
+        <p>The templates are the foundation. On top of them, we're building AI-powered versions that do the data entry and drafting for you. These are on-hold until we're confident they're worth your time.</p>
       </div>
-      <div class="uses">
-        <a href="#" class="use-card reveal"><div class="use-icon">QT</div><h4>Quotation Engine</h4><p>3-gate qualification, BOM-aware pricing, margin guardrails. Returns a quote row your sales team can send.</p></a>
-        <a href="#" class="use-card reveal"><div class="use-icon">RC</div><h4>RCA Generator</h4><p>Feed it a defect report. It writes a 5-Why root cause analysis with corrective actions, audit-ready.</p></a>
-        <a href="#" class="use-card reveal"><div class="use-icon">SO</div><h4>SOP Writer</h4><p>Voice-note in your process. Get back a complete, formatted SOP with control points and verification steps.</p></a>
-        <a href="#" class="use-card reveal"><div class="use-icon">PR</div><h4>Production Report</h4><p>Pulls from your shop floor data. Generates the weekly production report your boss reads on Monday.</p></a>
-        <a href="#" class="use-card reveal"><div class="use-icon">SU</div><h4>Supplier Negotiator</h4><p>Briefs you for a high-stakes call. Counter-offers, BATNAs, and the exact words to say first.</p></a>
-        <a href="#" class="use-card reveal"><div class="use-icon">SC</div><h4>Scrap Tracker</h4><p>Photo in, scrap reason out. Tracks rate by machine, operator, shift — all without a clipboard.</p></a>
+      <div class="roadmap">
+        <div class="road-card next reveal">
+          <span class="road-phase">NEXT · IN DEVELOPMENT</span>
+          <h3>AI-Assisted WIP Reporting</h3>
+          <p>Upload your raw ERP export. Get a cleaned weekly WIP report with aging, status, and exception highlights. On-hold pilot with 3 SEA factories.</p>
+        </div>
+        <div class="road-card reveal">
+          <span class="road-phase">PLANNED</span>
+          <h3>AI NCR / 5-Why Generator</h3>
+          <p>Paste the defect note, get a draft 5-Why root-cause analysis with corrective action ready for QA review.</p>
+        </div>
+        <div class="road-card reveal">
+          <span class="road-phase">PLANNED</span>
+          <h3>AI SOP Writer</h3>
+          <p>Voice-note your process in Bahasa or English. Get back a formatted SOP with control points and verification steps.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ─────────── PRICING ─────────── -->
-  <section class="block pricing-block" id="pricing">
-    <div class="container">
-      <div class="block-head reveal">
-        <span class="kicker">Pricing · Pay per token</span>
-        <h2>Start free. Scale as you ship.</h2>
-        <p>No seat licenses. No per-module fees. Buy tokens, burn tokens. Top up when you need more.</p>
-      </div>
-      <div class="price-grid">
-
-        <div class="price-card reveal">
-          <span class="price-tier">STARTER</span>
-          <div class="price-amt">$9<span class="per">/ 100K tokens</span></div>
-          <p class="price-tag">Build your first ERP module solo.</p>
-          <ul>
-            <li>100,000 tokens / month</li>
-            <li>All API endpoints</li>
-            <li>Cursor + Claude integration</li>
-            <li>Email support (48hr)</li>
-            <li>1 production deploy</li>
-          </ul>
-          <a href="#" class="btn btn-ghost">Start building →</a>
-        </div>
-
-        <div class="price-card featured reveal">
-          <span class="price-tier">BUILDER</span>
-          <div class="price-amt">$49<span class="per">/ 1M tokens</span></div>
-          <p class="price-tag">Ship a full ERP with monthly co-build help.</p>
-          <ul>
-            <li>1,000,000 tokens / month</li>
-            <li>Everything in Starter</li>
-            <li>1× 1-hour co-build call</li>
-            <li>Priority email + WhatsApp</li>
-            <li>5 production deploys</li>
-            <li>Module templates library</li>
-          </ul>
-          <a href="#" class="btn btn-primary">Get API key →</a>
-        </div>
-
-        <div class="price-card reveal">
-          <span class="price-tier">OPERATOR</span>
-          <div class="price-amt">$199<span class="per">/ 5M tokens</span></div>
-          <p class="price-tag">Run your whole shop on ScribeERP.</p>
-          <ul>
-            <li>5,000,000 tokens / month</li>
-            <li>Everything in Builder</li>
-            <li>Monthly co-build session</li>
-            <li>Dedicated WhatsApp line</li>
-            <li>Unlimited production deploys</li>
-            <li>SLA · 99.9% uptime</li>
-            <li>Custom primitives on request</li>
-          </ul>
-          <a href="#" class="btn btn-ghost">Talk to us →</a>
-        </div>
-
-      </div>
+  <!-- CAPTURE -->
+  <section class="capture" id="join">
+    <div class="capture-inner">
+      <span class="kicker" style="color:var(--accent-cyan)">Join the practitioner list</span>
+      <h2>Get the templates. Skip the meetings.</h2>
+      <p>Drop your email. We send the free templates + playbooks, and a short note when the AI versions go live. Nothing else. No sales calls. No spam.</p>
+      <form class="capture-form" onsubmit="event.preventDefault(); document.getElementById('captureDone').style.display='block'; this.style.display='none';">
+        <input type="email" placeholder="your@email.com" required>
+        <button type="submit">Send me the guides →</button>
+      </form>
+      <div id="captureDone" style="display:none;color:var(--accent-cyan);font-family:var(--mono);font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">✓ Check your inbox — link sent</div>
+      <div class="capture-note">Free · Unsubscribe anytime · Your data stays with us</div>
     </div>
   </section>
 
-  <!-- ─────────── CO-BUILD BAND ─────────── -->
-  <section class="cobuild" id="cobuild">
-    <div class="cobuild-inner">
-      <span class="kicker" style="color:#00f6ff">Don't want to code?</span>
-      <h2>Build it with us, live.</h2>
-      <p>Book a 60-minute screen-share session. We'll vibe-code your first ERP module together — quotation, RCA, SOP, your call. You walk away with a working tool deployed to your shop. No coding background needed.</p>
-      <a href="#" class="btn btn-primary btn-lg">Book a co-build session →</a>
-    </div>
-  </section>
-
-  <!-- ─────────── FAQ ─────────── -->
+  <!-- FAQ -->
   <section class="block" id="faq">
     <div class="container">
       <div class="block-head reveal">
         <span class="kicker">FAQ</span>
-        <h2>Questions SME owners ask first.</h2>
+        <h2>Questions practitioners ask.</h2>
       </div>
       <div class="faq-list">
-        <div class="faq-item"><button class="faq-q">Do I need to know how to code? <span class="plus">+</span></button><div class="faq-a"><div>No. The whole point of vibe coding is you describe what you want in plain English (or Bahasa, or Mandarin) and the AI writes the code. If you can write a WhatsApp message, you can ship a ScribeERP module. The Builder and Operator tiers include live co-build sessions if you want a hand the first time.</div></div></div>
-        <div class="faq-item"><button class="faq-q">What is "vibe coding" exactly? <span class="plus">+</span></button><div class="faq-a"><div>It's building software by describing it conversationally to an AI tool like Cursor or Claude, instead of typing code line by line. ScribeERP gives the AI manufacturing-aware primitives so it knows what a quotation, BOM, or scrap rate actually means. You stay in the driver's seat — the AI does the typing.</div></div></div>
-        <div class="faq-item"><button class="faq-q">Can I use my own LLM key (OpenAI/Claude/Gemini)? <span class="plus">+</span></button><div class="faq-a"><div>Yes, on Builder and Operator tiers you can BYO model key. Starter uses ScribeERP's pooled inference. Either way, you only pay for the tokens you actually consume.</div></div></div>
-        <div class="faq-item"><button class="faq-q">What if I get stuck mid-build? <span class="plus">+</span></button><div class="faq-a"><div>Three options. (1) Email support — Builder/Operator get 24-hour priority. (2) WhatsApp the team directly on Operator tier. (3) Book a co-build session and we'll finish it together over a screen share.</div></div></div>
-        <div class="faq-item"><button class="faq-q">Will ScribeERP replace my existing ERP? <span class="plus">+</span></button><div class="faq-a"><div>It can, but most factories start by replacing one painful workflow at a time — usually quotation or RCA. ScribeERP coexists with whatever you have today (SAP, spreadsheets, paper). Migrate at your own pace.</div></div></div>
-        <div class="faq-item"><button class="faq-q">My data — where does it live? Is it safe? <span class="plus">+</span></button><div class="faq-a"><div>Your data stays in Singapore region by default. We do not train on your data. You can export everything as JSON/CSV at any time and delete your account in one click. Operator tier supports private deployment to your own cloud.</div></div></div>
+        <div class="faq-item"><button class="faq-q">Is it really free? What's the catch? <span class="plus">+</span></button><div class="faq-a"><div>Yes, fully free. The templates and playbooks cost nothing to download or use. We believe the best way to build trust in a manufacturing community is to be useful first. The paid tier (later) will be the AI-powered automation — and only if you find the free tools valuable enough to want more.</div></div></div>
+        <div class="faq-item"><button class="faq-q">Who is this for? <span class="plus">+</span></button><div class="faq-a"><div>Practitioners inside SEA manufacturing shops — production planners, QC execs, BD managers, operations supervisors. People who generate the weekly report, handle the NCR, draft the SOP. If you're doing the work and you're tired of redoing the same formats every week, this is for you.</div></div></div>
+        <div class="faq-item"><button class="faq-q">Do I need to know how to code? <span class="plus">+</span></button><div class="faq-a"><div>No. These are Excel, Word, and PDF templates. If you can open an email and save a file, you can use them. The upcoming AI versions are designed the same way — upload a file, get a file back. No APIs, no prompts to learn, no developer tools.</div></div></div>
+        <div class="faq-item"><button class="faq-q">When will the AI processing be available? <span class="plus">+</span></button><div class="faq-a"><div>It's currently on-hold while we make sure it works well enough to hand to real practitioners. Subscribers on the email list get first access when it launches — no announcements, no marketing push, just an email with the link.</div></div></div>
+        <div class="faq-item"><button class="faq-q">Can I use these in my own ERP / SAP / spreadsheet workflow? <span class="plus">+</span></button><div class="faq-a"><div>Yes. These templates sit alongside whatever system you have today. They don't replace your ERP — they clean up the layer between the ERP output and the report your boss or customer actually wants to read.</div></div></div>
+        <div class="faq-item"><button class="faq-q">What do you do with my email? <span class="plus">+</span></button><div class="faq-a"><div>We send you the guides and the occasional note when something new is ready. That's it. No reselling, no third-party lists. Unsubscribe with one click any time.</div></div></div>
       </div>
     </div>
   </section>
 
-  <!-- ─────────── FOOTER ─────────── -->
+  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <span class="bug-logo">SCRIBE<span class="dot" style="color:#00f6ff">.</span></span>
-          <p><strong style="color:var(--paper-pure)">The Industrial Scribe</strong> — ERP infrastructure for SEA factories. ScribeERP is our flagship product. Built in Muar, Johor — by operators, for operators.</p>
+          <span class="bug-logo">TIS<span class="dot" style="background:var(--grad-a);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;">.</span></span>
+          <p><strong style="color:var(--paper-pure)">The Industrial Scribe</strong> — free guides and AI workflows for SEA manufacturing practitioners. Built in Muar, Johor — by operators, for operators.</p>
         </div>
         <div class="footer-col">
-          <h4>Product</h4>
+          <h4>Guides</h4>
           <ul>
+            <li><a href="#guides">Free templates</a></li>
             <li><a href="#how">How it works</a></li>
-            <li><a href="#use-cases">Use cases</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#docs">API docs</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Resources</h4>
           <ul>
             <li><a href="#journal">The Journal</a></li>
-            <li><a href="#cobuild">Book co-build</a></li>
             <li><a href="#faq">FAQ</a></li>
-            <li><a href="#status">Status</a></li>
+            <li><a href="#join">Join the list</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
           <ul>
             <li><a href="mailto:theindustrialscribe@gmail.com">Email</a></li>
-            <li><a href="#">WhatsApp</a></li>
+            <li><a href="#">WhatsApp (soon)</a></li>
             <li><a href="#">LinkedIn</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bar">
-        <span>© 2026 THE INDUSTRIAL SCRIBE · MUAR, JOHOR</span>
-        <span>BUILT FOR OPERATORS · NOT VENDORS</span>
+        <span>© 2026 The Industrial Scribe · Muar, Johor</span>
+        <span>Built for operators · Not vendors</span>
       </div>
     </div>
   </footer>
@@ -1190,44 +1055,6 @@ quote = scribe.quote.<span class="f">create</span>(
     document.getElementById('burgerClose').addEventListener('click', function () { drawer.classList.remove('open'); });
     drawer.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { drawer.classList.remove('open'); }); });
 
-    // Live ticker
-    var tickerItems = [
-      ['SCRIBEERP TOKENS · 24H', '142,891', 'up'],
-      ['ACTIVE BUILDS', '7', 'up'],
-      ['QUOTATIONS GENERATED', '1,204', 'up'],
-      ['AVG QUOTE TIME', '1.8s', 'up'],
-      ['SEA AI ADOPTION', '31%', 'up'],
-      ['CNC UPTIME (NETWORK)', '87%', 'up'],
-      ['API LATENCY · P95', '320ms', 'mid'],
-      ['SCRAP RATE (NETWORK)', '−6.4%', 'up'],
-      ['NEW BUILDERS · 7D', '+18', 'up'],
-      ['FX · USD/MYR', '4.71', 'mid'],
-      ['UPTIME · 30D', '99.97%', 'up']
-    ];
-    function buildTicker() {
-      var build = function () {
-        return tickerItems.map(function (t) {
-          var arrow = t[2] === 'up' ? '▲' : t[2] === 'down' ? '▼' : '·';
-          var cls = t[2] === 'up' ? 'tk-up' : t[2] === 'down' ? 'tk-down' : 'tk-mid';
-          return '<span><em style="font-style:normal;color:#a1a1aa">' + t[0] + '</em> <strong style="font-weight:700">' + t[1] + '</strong> <span class="' + cls + '">' + arrow + '</span></span>';
-        }).join('');
-      };
-      document.getElementById('tickerTrack').innerHTML = build() + build();
-    }
-    buildTicker();
-
-    // Live clock (MYT)
-    function tickClock() {
-      var now = new Date();
-      var utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-      var myt = new Date(utc + 8 * 3600000);
-      var hh = String(myt.getHours()).padStart(2, '0');
-      var mm = String(myt.getMinutes()).padStart(2, '0');
-      var ss = String(myt.getSeconds()).padStart(2, '0');
-      document.getElementById('liveClock').textContent = 'MUAR · ' + hh + ':' + mm + ':' + ss + ' MYT';
-    }
-    tickClock(); setInterval(tickClock, 1000);
-
     // Sticky nav shrink
     var navEl = document.querySelector('nav.main-nav');
     window.addEventListener('scroll', function () {
@@ -1235,111 +1062,28 @@ quote = scribe.quote.<span class="f">create</span>(
       else navEl.classList.remove('shrink');
     }, { passive: true });
 
-    // Code tabs
-    document.querySelectorAll('.code-tabs button').forEach(function (b) {
-      b.addEventListener('click', function () {
-        document.querySelectorAll('.code-tabs button').forEach(function (x) { x.classList.remove('on'); });
-        b.classList.add('on');
-        var tab = b.getAttribute('data-tab');
-        document.getElementById('codeCurl').style.display = tab === 'curl' ? '' : 'none';
-        document.getElementById('codeJs').style.display   = tab === 'js'   ? '' : 'none';
-        document.getElementById('codePy').style.display   = tab === 'py'   ? '' : 'none';
-      });
-    });
-
-    // Live demo (fake but convincing — instant local response)
-    var demoInput = document.getElementById('demoInput');
-    var demoOut   = document.getElementById('demoOut');
-    var demoBtn   = document.getElementById('demoRun');
-    function hashStr(s) { var h = 0; for (var i = 0; i < s.length; i++) { h = ((h << 5) - h + s.charCodeAt(i)) | 0; } return Math.abs(h); }
-    function genQuote(text) {
-      if (!text.trim()) { demoOut.innerHTML = '<span class="label">// Type a job description above and hit Run</span>'; return; }
-      var h = hashStr(text);
-      var qty   = (h % 900) + 100;
-      var unit  = (((h % 1800) / 100) + 4.2).toFixed(2);
-      var setup = ((h % 800) + 200);
-      var lead  = ((h % 18) + 5);
-      var margin = (((h % 250) / 10) + 18).toFixed(1);
-      var conf  = ['high', 'high', 'medium'][h % 3];
-      var tokens = ((h % 1500) + 800);
-      var id = 'qt_' + h.toString(16).slice(0, 8);
-
-      demoOut.innerHTML = '';
-      var lines = [
-        '<span class="label">// POST /v1/quote</span>',
-        '<span class="label">// 200 OK · ' + (Math.floor(Math.random() * 800) + 800) + 'ms</span>',
-        '',
-        '{',
-        '  <span style="color:#60a5fa">"quote_id"</span>: <span style="color:#4ade80">"' + id + '"</span>,',
-        '  <span style="color:#60a5fa">"part_description"</span>: <span style="color:#4ade80">"' + text.replace(/"/g, '\\"').slice(0, 60) + '"</span>,',
-        '  <span style="color:#60a5fa">"qty"</span>: <span style="color:#fbbf24">' + qty + '</span>,',
-        '  <span style="color:#60a5fa">"unit_price_myr"</span>: <span style="color:#fbbf24">' + unit + '</span>,',
-        '  <span style="color:#60a5fa">"setup_myr"</span>: <span style="color:#fbbf24">' + setup + '</span>,',
-        '  <span style="color:#60a5fa">"lead_time_days"</span>: <span style="color:#fbbf24">' + lead + '</span>,',
-        '  <span style="color:#60a5fa">"margin_pct"</span>: <span style="color:#fbbf24">' + margin + '</span>,',
-        '  <span style="color:#60a5fa">"confidence"</span>: <span style="color:#4ade80">"' + conf + '"</span>,',
-        '  <span style="color:#60a5fa">"tokens_used"</span>: <span style="color:#fbbf24">' + tokens + '</span>',
-        '}'
-      ];
-      var i = 0;
-      function step() {
-        if (i >= lines.length) return;
-        demoOut.innerHTML += (i > 0 ? '\n' : '') + lines[i];
-        i++;
-        setTimeout(step, 60);
-      }
-      step();
-    }
-    demoBtn.addEventListener('click', function () { genQuote(demoInput.value); });
-    demoInput.addEventListener('keypress', function (e) { if (e.key === 'Enter') { e.preventDefault(); genQuote(demoInput.value); } });
-    document.querySelectorAll('.demo-hint button').forEach(function (b) {
-      b.addEventListener('click', function () {
-        demoInput.value = b.getAttribute('data-q');
-        genQuote(demoInput.value);
-      });
-    });
-
     // FAQ accordion
     document.querySelectorAll('.faq-q').forEach(function (q) {
       q.addEventListener('click', function () { q.parentElement.classList.toggle('open'); });
     });
 
-    // Scroll reveal + count-up
-    var revealTargets = document.querySelectorAll('.reveal, .stat-cell, .step-card, .use-card, .price-card');
+    // Scroll reveal
+    var revealTargets = document.querySelectorAll('.reveal, .guide-card, .step-card, .road-card');
     revealTargets.forEach(function (el, i) {
       el.classList.add('reveal');
       el.style.transitionDelay = (i % 6) * 60 + 'ms';
     });
-    function countUp(el) {
-      var target = parseInt(el.getAttribute('data-count'), 10);
-      var divide = parseInt(el.getAttribute('data-divide') || '1', 10);
-      var dur = 1600;
-      var start = performance.now();
-      function step(now) {
-        var p = Math.min((now - start) / dur, 1);
-        var eased = 1 - Math.pow(1 - p, 3);
-        var v = Math.floor(target * eased);
-        if (divide > 1) el.textContent = (v / divide).toFixed(1);
-        else el.textContent = v.toLocaleString();
-        if (p < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-    }
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
           if (!e.isIntersecting) return;
           e.target.classList.add('in');
-          e.target.querySelectorAll('[data-count]').forEach(function (n) {
-            if (!n.dataset.done) { n.dataset.done = '1'; countUp(n); }
-          });
           io.unobserve(e.target);
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
       revealTargets.forEach(function (el) { io.observe(el); });
     } else {
       revealTargets.forEach(function (el) { el.classList.add('in'); });
-      document.querySelectorAll('[data-count]').forEach(countUp);
     }
   </script>
 
