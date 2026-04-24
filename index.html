@@ -806,7 +806,7 @@
       </div>
 
       <!-- Template preview visual -->
-      <div class="tpl-stack">
+      <a href="#join" class="tpl-stack" data-guide="Weekly WIP Status Report" style="text-decoration:none;color:inherit;display:block;">
         <div class="tpl-card-2"></div>
         <div class="tpl-card">
           <div class="tpl-head">
@@ -850,10 +850,10 @@
           </div>
           <div class="tpl-foot">
             <span class="meta">XLSX · 32 KB</span>
-            <span class="dl">↓ Download free</span>
+            <span class="dl">↓ Request this template →</span>
           </div>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 
@@ -867,53 +867,53 @@
       </div>
       <div class="guides">
 
-        <div class="guide-card reveal">
+        <a href="#join" class="guide-card reveal" data-guide="Weekly WIP Status Report">
           <span class="guide-status status-free">FREE · READY</span>
           <div class="guide-icon">WIP</div>
           <h3>Weekly WIP Status Report</h3>
           <p>The Excel template that replaces your Sunday-night PowerPoint. Job list, status pills, aging buckets, auto-roll-up.</p>
-          <span class="guide-meta">XLSX + PLAYBOOK <span class="arrow">→</span></span>
-        </div>
+          <span class="guide-meta">REQUEST THIS TEMPLATE <span class="arrow">→</span></span>
+        </a>
 
-        <div class="guide-card reveal">
+        <a href="#join" class="guide-card reveal" data-guide="NCR & 5-Why RCA Drafter">
           <span class="guide-status status-free">FREE · READY</span>
           <div class="guide-icon">RCA</div>
           <h3>NCR &amp; 5-Why RCA Drafter</h3>
           <p>A structured worksheet that walks you through a defect investigation in 10 minutes. Corrective action, audit-ready.</p>
-          <span class="guide-meta">DOCX + PLAYBOOK <span class="arrow">→</span></span>
-        </div>
+          <span class="guide-meta">REQUEST THIS TEMPLATE <span class="arrow">→</span></span>
+        </a>
 
-        <div class="guide-card reveal">
+        <a href="#join" class="guide-card reveal" data-guide="Weekly Production Report">
           <span class="guide-status status-free">FREE · READY</span>
           <div class="guide-icon">PR</div>
           <h3>Weekly Production Report</h3>
           <p>Output vs. plan, scrap rate, downtime, top losers. The exact format your boss actually reads on Monday.</p>
-          <span class="guide-meta">XLSX + PLAYBOOK <span class="arrow">→</span></span>
-        </div>
+          <span class="guide-meta">REQUEST THIS TEMPLATE <span class="arrow">→</span></span>
+        </a>
 
-        <div class="guide-card reveal">
+        <a href="#join" class="guide-card reveal" data-guide="SOP Drafting Playbook">
           <span class="guide-status status-free">FREE · READY</span>
           <div class="guide-icon">SOP</div>
           <h3>SOP Drafting Playbook</h3>
           <p>The three-page guide on writing any manufacturing SOP in 30 minutes — with control points, verification, and handoffs.</p>
-          <span class="guide-meta">PDF PLAYBOOK <span class="arrow">→</span></span>
-        </div>
+          <span class="guide-meta">REQUEST THIS PLAYBOOK <span class="arrow">→</span></span>
+        </a>
 
-        <div class="guide-card wip reveal">
+        <a href="#join" class="guide-card wip reveal" data-guide="AI Processing · WIP Report (waitlist)">
           <span class="guide-status status-wip">IN PROGRESS</span>
           <div class="guide-icon">AI</div>
           <h3>AI Processing · WIP Report</h3>
           <p>Upload your raw job list. Get a cleaned, formatted, emailable WIP report in under a minute. Beta access via the waitlist.</p>
-          <span class="guide-meta">COMING SOON <span class="arrow">→</span></span>
-        </div>
+          <span class="guide-meta">JOIN THE WAITLIST <span class="arrow">→</span></span>
+        </a>
 
-        <div class="guide-card wip reveal">
+        <a href="#join" class="guide-card wip reveal" data-guide="AI Processing · NCR Drafter (waitlist)">
           <span class="guide-status status-wip">IN PROGRESS</span>
           <div class="guide-icon">AI</div>
           <h3>AI Processing · NCR Drafter</h3>
           <p>Paste a defect description. Get a complete 5-Why RCA draft with corrective action, ready for your QA review.</p>
-          <span class="guide-meta">COMING SOON <span class="arrow">→</span></span>
-        </div>
+          <span class="guide-meta">JOIN THE WAITLIST <span class="arrow">→</span></span>
+        </a>
 
       </div>
     </div>
@@ -978,14 +978,17 @@
   <!-- CAPTURE -->
   <section class="capture" id="join">
     <div class="capture-inner">
-      <span class="kicker" style="color:var(--accent-cyan)">Join the practitioner list</span>
-      <h2>Get the templates. Skip the meetings.</h2>
-      <p>Drop your email. We send the free templates + playbooks, and a short note when the AI versions go live. Nothing else. No sales calls. No spam.</p>
-      <form class="capture-form" onsubmit="event.preventDefault(); document.getElementById('captureDone').style.display='block'; this.style.display='none';">
-        <input type="email" placeholder="your@email.com" required>
-        <button type="submit">Send me the guides →</button>
+      <span class="kicker" style="color:var(--accent-cyan)" id="captureKicker">Join the practitioner list</span>
+      <h2 id="captureHeadline">Get the templates. Skip the meetings.</h2>
+      <p id="captureSub">Drop your email. We send the free templates + playbooks, and a short note when the AI versions go live. Nothing else. No sales calls. No spam.</p>
+      <div id="capturePick" style="display:none;background:rgba(0,246,255,0.12);border:1px solid rgba(0,246,255,0.3);color:var(--accent-cyan);font-family:var(--mono);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;padding:10px 18px;border-radius:999px;margin:0 auto 24px;align-items:center;gap:10px;">
+        <span>Requesting:</span> <strong id="capturePickLabel" style="color:var(--paper-pure)"></strong>
+      </div>
+      <form class="capture-form" id="captureForm">
+        <input type="email" id="captureEmail" placeholder="your@email.com" required>
+        <button type="submit">Send it to me →</button>
       </form>
-      <div id="captureDone" style="display:none;color:var(--accent-cyan);font-family:var(--mono);font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">✓ Check your inbox — link sent</div>
+      <div id="captureDone" style="display:none;color:var(--accent-cyan);font-family:var(--mono);font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;margin-top:18px;">✓ Check your inbox — we'll send it shortly</div>
       <div class="capture-note">Free · Unsubscribe anytime · Your data stays with us</div>
     </div>
   </section>
@@ -1065,6 +1068,34 @@
     // FAQ accordion
     document.querySelectorAll('.faq-q').forEach(function (q) {
       q.addEventListener('click', function () { q.parentElement.classList.toggle('open'); });
+    });
+
+    // Guide cards → update capture form with which guide was requested
+    var capturePick      = document.getElementById('capturePick');
+    var capturePickLabel = document.getElementById('capturePickLabel');
+    var captureHeadline  = document.getElementById('captureHeadline');
+    var captureSub       = document.getElementById('captureSub');
+    var captureKicker    = document.getElementById('captureKicker');
+    document.querySelectorAll('[data-guide]').forEach(function (card) {
+      card.addEventListener('click', function () {
+        var name = card.getAttribute('data-guide');
+        capturePickLabel.textContent = name;
+        capturePick.style.display = 'inline-flex';
+        var isWaitlist = /waitlist/i.test(name);
+        captureKicker.textContent = isWaitlist ? 'Join the waitlist' : 'Your template is a click away';
+        captureHeadline.textContent = isWaitlist ? 'We\'ll email you the moment it ships.' : 'Tell us where to send it.';
+        captureSub.textContent = isWaitlist
+          ? 'The AI-powered version is still in pilot. Drop your email and we\'ll send you the beta invite when it\'s ready — no marketing blast in between.'
+          : 'Drop your email and we\'ll send the template + one-page playbook to your inbox. Nothing else. No sales calls. No spam.';
+        setTimeout(function () { document.getElementById('captureEmail').focus({ preventScroll: false }); }, 700);
+      });
+    });
+
+    // Capture form submit
+    document.getElementById('captureForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      this.style.display = 'none';
+      document.getElementById('captureDone').style.display = 'block';
     });
 
     // Scroll reveal
