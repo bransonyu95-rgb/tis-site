@@ -1091,9 +1091,17 @@
       });
     });
 
-    // Capture form submit
+    // Capture form submit — also marks user as TIS member so articles unlock
     document.getElementById('captureForm').addEventListener('submit', function (e) {
       e.preventDefault();
+      var email = document.getElementById('captureEmail').value.trim().toLowerCase();
+      if (email && email.indexOf('@') > 0) {
+        try {
+          localStorage.setItem('tis_member_email', email);
+          localStorage.setItem('tis_member_since', new Date().toISOString());
+        } catch (err) { /* private mode etc — ignore */ }
+      }
+      // POST to your form endpoint here later (Mailchimp, Buttondown, Formspree, etc)
       this.style.display = 'none';
       document.getElementById('captureDone').style.display = 'block';
     });
