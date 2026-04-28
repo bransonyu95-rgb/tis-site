@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill: Weekly WIP Status Report — The Industrial Scribe</title>
+  <meta name="description" content="A copy-paste AI skill that teaches ChatGPT, Claude, or Gemini to produce a Monday-ready Weekly WIP Status Report from raw job data.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="paywall.css">
+  <style>
+    :root {
+      --ink-black: #0a0a0a;
+      --paper:     #fafafa;
+      --paper-pure:#ffffff;
+      --body:      #3f3f46;
+      --gray-cap:  #71717a;
+      --gray-dis:  #a1a1aa;
+      --hairline:  #e4e4e7;
+      --accent:    #18269e;
+      --accent-cyan: #00f6ff;
+      --accent-emer: #0ac186;
+      --accent-purp: #371959;
+      --grad-a:    linear-gradient(135deg, #00f6ff 0%, #18269e 100%);
+      --grad-b:    linear-gradient(135deg, #371959 0%, #0ac186 100%);
+      --code-bg:   #0c0c10;
+      --display:   'Playfair Display', Georgia, serif;
+      --sans:      'Inter', sans-serif;
+      --mono:      'Space Mono', monospace;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink-black);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; transition: color 120ms ease; }
+
+    /* NAV */
+    nav.main-nav {
+      background: rgba(250,250,250,0.88);
+      backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid var(--hairline);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 18px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    @media (min-width: 768px) { .nav-inner { padding: 22px 40px; } }
+    .bug-logo {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 1.5rem;
+      letter-spacing: -0.01em;
+      color: var(--ink-black);
+    }
+    .bug-logo .dot {
+      background: var(--grad-a);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-back {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-cap);
+    }
+    .nav-back:hover { color: var(--accent); }
+
+    /* HERO */
+    .skill-hero {
+      padding: 72px 24px 48px;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .skill-crumb {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .skill-crumb::before {
+      content: 'SKILL';
+      background: var(--grad-a);
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.16em;
+    }
+    .skill-hero h1 {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(36px, 4.6vw, 60px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+    .skill-deck {
+      font-size: 1.14rem;
+      line-height: 1.6;
+      color: var(--body);
+      margin-bottom: 26px;
+      max-width: 720px;
+    }
+    .skill-meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-cap);
+      margin-bottom: 36px;
+    }
+    .skill-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      background: var(--paper-pure);
+      border: 1px solid var(--hairline);
+      border-radius: 999px;
+    }
+    .skill-meta .check { color: var(--accent-emer); font-weight: 700; }
+
+    /* COMPATIBLE LLMs */
+    .compat {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px;
+    }
+    .compat-tag {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: rgba(0,246,255,0.06);
+      border: 1px solid rgba(0,246,255,0.2);
+      color: var(--accent);
+    }
+
+    /* COPY BLOCK */
+    .copy-block {
+      background: var(--code-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px -20px rgba(10,10,30,0.35), 0 0 0 1px rgba(0,246,255,0.12);
+      margin: 0 24px 60px;
+      max-width: 880px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .copy-head {
+      background: #050508;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #1a1a22;
+    }
+    .copy-label {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+    }
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--grad-a);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 9px 16px;
+      border-radius: 8px;
+      border: 0;
+      cursor: pointer;
+      transition: filter 180ms ease, transform 120ms ease;
+      box-shadow: 0 4px 14px -6px rgba(24,38,158,0.5);
+    }
+    .copy-btn:hover { filter: brightness(1.12); }
+    .copy-btn:active { transform: scale(0.97); }
+    .copy-btn.copied {
+      background: var(--accent-emer);
+      box-shadow: 0 4px 14px -6px rgba(10,193,134,0.5);
+    }
+    .copy-body {
+      padding: 24px 28px;
+      font-family: var(--mono);
+      font-size: 0.86rem;
+      line-height: 1.7;
+      color: #e4e4e7;
+      white-space: pre-wrap;
+      max-height: 560px;
+      overflow-y: auto;
+    }
+    .copy-body::selection { background: rgba(0,246,255,0.3); }
+
+    /* HOW TO USE */
+    .howto {
+      max-width: 880px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+    .howto h2 {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(28px, 3.4vw, 40px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+    .howto-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 767px) { .howto-steps { grid-template-columns: 1fr; } }
+    .howto-step {
+      background: var(--paper-pure);
+      border: 1px solid var(--hairline);
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .howto-step .num {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 2.4rem;
+      line-height: 1;
+      background: var(--grad-a);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+    .howto-step h3 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+    .howto-step p {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--body);
+    }
+
+    /* RELATED */
+    .related {
+      max-width: 880px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+    .related h2 {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(28px, 3.4vw, 40px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 767px) { .related-grid { grid-template-columns: 1fr; } }
+    .related-card {
+      background: var(--paper-pure);
+      border: 1px solid var(--hairline);
+      border-radius: 12px;
+      padding: 18px 20px;
+      transition: transform 200ms ease, border-color 200ms ease;
+      display: block;
+    }
+    .related-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent-cyan);
+    }
+    .related-card .cat {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+    .related-card h4 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .related-card p {
+      font-size: 0.84rem;
+      color: var(--gray-cap);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink-black);
+      color: var(--paper);
+      padding: 60px 24px 32px;
+      text-align: center;
+    }
+    footer .bug-logo { color: var(--paper-pure); display: inline-block; margin-bottom: 12px; }
+    footer p {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--gray-dis);
+      text-transform: uppercase;
+    }
+    footer a { color: var(--accent-cyan); }
+
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--accent-emer);
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 10px 30px -10px rgba(10,193,134,0.6);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 200ms ease, transform 200ms ease;
+      z-index: 200;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- For paywall.js to detect this is a gated page -->
+  <div class="article-body" style="display:contents">
+
+  <nav class="main-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="bug-logo">TIS<span class="dot">.</span></a>
+      <a href="index.html#guides" class="nav-back">← All skills</a>
+    </div>
+  </nav>
+
+  <section class="skill-hero">
+    <span class="skill-crumb">Production Planning</span>
+    <h1>Weekly WIP Status Report</h1>
+    <p class="skill-deck">A copy-paste skill that teaches your LLM to read raw job data, apply manufacturing status &amp; aging logic, and produce a clean Monday-ready Work-In-Progress report — the way a 15-year SEA shop-floor planner would write it.</p>
+    <div class="skill-meta">
+      <span><span class="check">✓</span> Free</span>
+      <span><span class="check">✓</span> ~720 tokens</span>
+      <span><span class="check">✓</span> Tested on real shop data</span>
+      <span><span class="check">✓</span> Edit freely</span>
+    </div>
+    <div class="compat">
+      <span class="compat-tag">ChatGPT</span>
+      <span class="compat-tag">Claude</span>
+      <span class="compat-tag">Gemini</span>
+      <span class="compat-tag">Perplexity</span>
+      <span class="compat-tag">Mistral</span>
+      <span class="compat-tag">Any LLM</span>
+    </div>
+  </section>
+
+  <div class="copy-block">
+    <div class="copy-head">
+      <span class="copy-label">▌ Skill · Paste this into your LLM</span>
+      <button class="copy-btn" id="copyBtn">
+        <span id="copyBtnText">Copy skill</span>
+      </button>
+    </div>
+    <div class="copy-body" id="skillBody"># SKILL · Weekly WIP Status Report (SEA Manufacturing)
+
+## Role
+You are a senior production planner with 15+ years of experience in Southeast Asian contract manufacturing — CNC machining, sheet metal fabrication, plastics injection, electronics assembly. You produce weekly Work-In-Progress (WIP) status reports that production managers, BD heads, and customers can read in 60 seconds.
+
+## Task
+Take the user's raw job/work-order data (which they will paste after this prompt) and produce a clean Weekly WIP Status Report.
+
+## Expected user input
+The user will paste one of:
+- A CSV / TSV / Excel paste of their job list
+- A free-form list of jobs (job number, part, qty, due date, status, customer)
+- A screenshot description of an ERP export
+
+Required fields (politely ask once if any are missing): Job#, Part Description, Qty Ordered, Due Date, Current Status, Customer.
+Optional but useful: Material, Process Stage, Operator/Cell, Notes.
+
+## Output format (always produce this exact shape)
+
+### 1. Header line
+"WEEKLY WIP STATUS · Week of {Mon DD, YYYY} · {Total open jobs} jobs"
+
+### 2. Main table (Markdown)
+| Job # | Customer | Part | Qty | Status | Aging | Due | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+
+### 3. Status pill rules (use these exact emoji + label)
+- 🟢 On Track   → status = Running / In-Process AND due_date ≥ today + 3
+- 🟡 Queued     → status = Pending Setup / Awaiting Material
+- 🟠 Hold-QA    → status contains "QA Hold" / "Inspection Hold"
+- 🟠 Hold-Mat   → awaiting raw material or PO
+- 🔴 Late       → due_date < today AND status ≠ Done
+- ✅ Done       → status = Complete / Shipped
+
+### 4. Aging buckets (days since job opened or order date)
+- 0–7d   → no flag
+- 8–14d  → flag for status update
+- 15–30d → flag for management attention
+- 30+    → escalate, must appear in Action Items
+
+### 5. Sort order (top to bottom)
+1. 🔴 Late jobs (oldest aging first)
+2. 🟠 Hold jobs (longest hold first)
+3. 🟡 Queued (oldest first)
+4. 🟢 On Track (by due date ascending)
+5. ✅ Done (last 7 days only)
+
+### 6. Summary block (3–5 bullets, after the table)
+- Total open jobs · % on track · % at risk · % late
+- Top customer at risk + reason
+- Material/QA bottleneck of the week (if any)
+- Resource note (e.g. "CNC Cell 2 underutilised")
+
+### 7. Action items (max 5, after the summary)
+Specific jobs that need intervention this week. Format:
+"→ Job J-XXXX · {action verb} · Owner: {name or role}"
+
+## Tone
+Direct. Numbers first. No hedging. No "synergy" or "leverage". Match the cadence of a Monday morning production huddle in a 200-person SEA contract shop.
+
+## When the data is messy
+- If status is unclear, default to 🟡 Queued and add a note in the Notes column.
+- If due dates are missing, flag in Action Items: "→ Job J-XXXX · Missing due date · Owner: Sales"
+- If user pastes incomplete data, ask ONE focused question — never produce a half-baked report.
+- If user data has more than 50 jobs, group by customer in the table for readability.
+
+## Variations the user may request
+- "Make it for customer X only" → filter the table accordingly
+- "Add machine load %" → infer from job qty + cycle time if provided
+- "Translate to Bahasa / Mandarin" → translate output, keep status pills in English
+
+## Now begin
+Wait for the user to paste their data. Process it. Produce the report.</div>
+  </div>
+
+  <section class="howto">
+    <h2>How to use this skill.</h2>
+    <div class="howto-steps">
+      <div class="howto-step">
+        <div class="num">01</div>
+        <h3>Copy</h3>
+        <p>Click the copy button above. The full skill prompt is now in your clipboard.</p>
+      </div>
+      <div class="howto-step">
+        <div class="num">02</div>
+        <h3>Paste into your LLM</h3>
+        <p>Open ChatGPT, Claude, or Gemini. Start a new chat. Paste the skill as your first message. Hit send.</p>
+      </div>
+      <div class="howto-step">
+        <div class="num">03</div>
+        <h3>Drop your data</h3>
+        <p>Paste your raw job list as the next message. Your LLM produces the WIP report — formatted, clean, and shop-floor-ready.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="related">
+    <h2>Related skills.</h2>
+    <div class="related-grid">
+      <a href="skill-ncr-rca-drafter.html" class="related-card">
+        <span class="cat">Quality</span>
+        <h4>NCR &amp; 5-Why RCA Drafter</h4>
+        <p>Audit-ready defect investigations</p>
+      </a>
+      <a href="skill-weekly-production-report.html" class="related-card">
+        <span class="cat">Production</span>
+        <h4>Weekly Production Report</h4>
+        <p>The narrative your boss reads Monday</p>
+      </a>
+      <a href="skill-sop-drafting.html" class="related-card">
+        <span class="cat">Process</span>
+        <h4>SOP Drafting Skill</h4>
+        <p>Process description → audit-ready SOP</p>
+      </a>
+    </div>
+  </section>
+
+  </div>
+  <!-- /article-body -->
+
+  <footer>
+    <a href="index.html" class="bug-logo">TIS<span class="dot">.</span></a>
+    <p>The Industrial Scribe · Free skills for SEA manufacturing</p>
+    <p style="margin-top:8px"><a href="index.html">← Back to all skills</a></p>
+  </footer>
+
+  <div class="toast" id="toast">✓ Skill copied to clipboard</div>
+
+  <script src="paywall.js"></script>
+  <script>
+    var copyBtn = document.getElementById('copyBtn');
+    var copyBtnText = document.getElementById('copyBtnText');
+    var skillBody = document.getElementById('skillBody');
+    var toast = document.getElementById('toast');
+
+    copyBtn.addEventListener('click', function () {
+      var text = skillBody.textContent;
+      var done = function () {
+        copyBtn.classList.add('copied');
+        copyBtnText.textContent = '✓ Copied';
+        toast.classList.add('show');
+        setTimeout(function () {
+          copyBtn.classList.remove('copied');
+          copyBtnText.textContent = 'Copy skill';
+          toast.classList.remove('show');
+        }, 2200);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(fallback);
+      } else { fallback(); }
+      function fallback() {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+    });
+  </script>
+
+</body>
+</html>
