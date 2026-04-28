@@ -63,8 +63,20 @@
       localStorage.setItem(STORAGE_KEY, email);
       localStorage.setItem(STORAGE_TIME, new Date().toISOString());
 
-      // POST to your form endpoint here later (Mailchimp, Buttondown, Formspree, etc)
-      // fetch('https://your-endpoint', { method:'POST', body: JSON.stringify({email: email, source: location.pathname}) });
+      // POST to FormSubmit (free, no signup — verify once via email link)
+      try {
+        fetch('https://formsubmit.co/ajax/theindustrialscribe@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            email: email,
+            source: location.href,
+            requested: 'Article gate · ' + (document.title || location.pathname),
+            _subject: 'TIS — article unlock: ' + email,
+            _template: 'table'
+          })
+        }).catch(function () {});
+      } catch (err) {}
 
       // Unlock UI
       overlay.classList.add('unlocked');

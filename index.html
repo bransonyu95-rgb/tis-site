@@ -531,6 +531,81 @@
     }
     .step-card p { font-size: 0.96rem; line-height: 1.6; color: var(--body); }
 
+    /* ───────── JOURNAL ───────── */
+    .journal-block { background: var(--paper); }
+    .journal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    @media (max-width: 1023px) { .journal-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 599px)  { .journal-grid { grid-template-columns: 1fr; } }
+    .j-card {
+      display: block;
+      background: var(--paper-pure);
+      border: 1px solid var(--hairline);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    }
+    .j-card:hover {
+      transform: translateY(-4px);
+      border-color: transparent;
+      box-shadow: 0 24px 40px -20px rgba(55,25,89,0.18), 0 0 0 1px rgba(0,246,255,0.25);
+    }
+    .j-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: var(--ink-black);
+      object-fit: cover;
+      display: block;
+      transition: transform 600ms cubic-bezier(.2,.8,.2,1);
+    }
+    .j-card:hover .j-img { transform: scale(1.04); }
+    .j-img-wrap { overflow: hidden; }
+    .j-body { padding: 22px 24px 26px; }
+    .j-cat {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+    .j-card h3 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.32rem;
+      line-height: 1.18;
+      color: var(--ink-black);
+      margin-bottom: 10px;
+      transition: color 160ms ease;
+    }
+    .j-card:hover h3 { color: var(--accent); }
+    .j-card p {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--body);
+      margin-bottom: 14px;
+    }
+    .j-meta {
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-cap);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .j-meta .lock { color: var(--accent-cyan); }
+    .journal-foot {
+      text-align: center;
+      margin-top: 48px;
+    }
+
     /* ───────── ROADMAP ───────── */
     .roadmap-block { background: var(--paper-pure); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
     .roadmap {
@@ -947,6 +1022,83 @@
     </div>
   </section>
 
+  <!-- JOURNAL -->
+  <section class="block journal-block" id="journal">
+    <div class="container">
+      <div class="block-head reveal">
+        <span class="kicker">The Journal · Free with email</span>
+        <h2>Latest from the shop floor.</h2>
+        <p>Field notes on AI, automation, and the work that doesn't get talked about. Free to read — drop your email once and every article unlocks.</p>
+      </div>
+      <div class="journal-grid">
+
+        <a href="article-80-percent-problem.html" class="j-card reveal">
+          <div class="j-img-wrap"><img src="img-factory-floor.jpg" alt="" class="j-img"></div>
+          <div class="j-body">
+            <span class="j-cat">Adoption Report</span>
+            <h3>The 80% Problem: 98% of Manufacturers Are Exploring AI. Only 20% Are Ready.</h3>
+            <p>The execution gap between AI explorers and AI operators is widening — here's what the data actually shows.</p>
+            <div class="j-meta"><span class="lock">●</span> 8 min read · 15 Apr 2026</div>
+          </div>
+        </a>
+
+        <a href="article-agentic-ai-is-here.html" class="j-card reveal">
+          <div class="j-img-wrap"><img src="img-cnc-operator.jpg" alt="" class="j-img"></div>
+          <div class="j-body">
+            <span class="j-cat">Agents</span>
+            <h3>Agentic AI Is Here — And It's Already Running in SEA Plants.</h3>
+            <p>AI that doesn't just answer questions but takes multi-step actions is moving from pilot to production.</p>
+            <div class="j-meta"><span class="lock">●</span> 9 min read · 12 Apr 2026</div>
+          </div>
+        </a>
+
+        <a href="article-asean-data-problem.html" class="j-card reveal">
+          <div class="j-img-wrap"><img src="img-erp-screen.jpg" alt="" class="j-img"></div>
+          <div class="j-body">
+            <span class="j-cat">Data Infrastructure</span>
+            <h3>The ASEAN Data Problem: Why Most SEA Factories Can't Unlock AI Yet.</h3>
+            <p>Fragmented ERP, paper records, and multi-language data are slowing AI adoption across the region.</p>
+            <div class="j-meta"><span class="lock">●</span> 11 min read · 10 Apr 2026</div>
+          </div>
+        </a>
+
+        <a href="article-rca-report.html" class="j-card reveal">
+          <div class="j-img-wrap"><img src="img-ncr-desk.jpg" alt="" class="j-img"></div>
+          <div class="j-body">
+            <span class="j-cat">Quality</span>
+            <h3>How to Write an RCA Report Your Customer Won't Send Back.</h3>
+            <p>The structure auditors look for, the words that move blame off the page, and the AI prompt that drafts it.</p>
+            <div class="j-meta"><span class="lock">●</span> 7 min read · 08 Apr 2026</div>
+          </div>
+        </a>
+
+        <a href="article-sop-writing.html" class="j-card reveal">
+          <div class="j-img-wrap"><img src="img-blueprint-desk.jpg" alt="" class="j-img"></div>
+          <div class="j-body">
+            <span class="j-cat">Toolbox</span>
+            <h3>Write Any Manufacturing SOP in 30 Minutes Using AI.</h3>
+            <p>The exact prompt structure that turns raw process knowledge into a complete, audit-ready SOP.</p>
+            <div class="j-meta"><span class="lock">●</span> 9 min read · 05 Apr 2026</div>
+          </div>
+        </a>
+
+        <a href="article-quotation-case-study.html" class="j-card reveal">
+          <div class="j-img-wrap"><img src="img-aerial-industrial.jpg" alt="" class="j-img"></div>
+          <div class="j-body">
+            <span class="j-cat">Case Study</span>
+            <h3>How One Johor Manufacturer Cut Quotation Time by 70% Using AI.</h3>
+            <p>A contract machining shop eliminated the quoting bottleneck that was costing them new business every quarter.</p>
+            <div class="j-meta"><span class="lock">●</span> 7 min read · 02 Apr 2026</div>
+          </div>
+        </a>
+
+      </div>
+      <div class="journal-foot reveal">
+        <a href="#join" class="btn btn-ghost btn-lg">Read the archive →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ROADMAP -->
   <section class="block roadmap-block" id="roadmap">
     <div class="container">
@@ -1094,16 +1246,33 @@
     // Capture form submit — also marks user as TIS member so articles unlock
     document.getElementById('captureForm').addEventListener('submit', function (e) {
       e.preventDefault();
+      var form = e.target;
       var email = document.getElementById('captureEmail').value.trim().toLowerCase();
-      if (email && email.indexOf('@') > 0) {
-        try {
-          localStorage.setItem('tis_member_email', email);
-          localStorage.setItem('tis_member_since', new Date().toISOString());
-        } catch (err) { /* private mode etc — ignore */ }
-      }
-      // POST to your form endpoint here later (Mailchimp, Buttondown, Formspree, etc)
-      this.style.display = 'none';
+      if (!email || email.indexOf('@') < 0) return;
+
+      // Save locally so user is treated as logged-in across the site
+      try {
+        localStorage.setItem('tis_member_email', email);
+        localStorage.setItem('tis_member_since', new Date().toISOString());
+      } catch (err) { /* private mode — ignore */ }
+
+      // Show success immediately (FormSubmit POST happens in background)
+      form.style.display = 'none';
       document.getElementById('captureDone').style.display = 'block';
+
+      // POST to FormSubmit (free, no signup — verify once via email link)
+      var requested = (document.getElementById('capturePickLabel') && document.getElementById('capturePickLabel').textContent) || 'Homepage signup';
+      fetch('https://formsubmit.co/ajax/theindustrialscribe@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          source: location.href,
+          requested: requested,
+          _subject: 'TIS — new signup: ' + email,
+          _template: 'table'
+        })
+      }).catch(function () { /* offline / blocker — silent */ });
     });
 
     // Scroll reveal
