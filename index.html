@@ -1,1219 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Industrial Scribe — AI Skills for SEA Factory Floors</title>
-  <meta name="description" content="Copy-paste AI skills that teach ChatGPT, Claude, or Gemini how to think like a SEA manufacturing pro. WIP reports, RCA drafts, SOPs — built by operators, free for practitioners.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    /* ───────── TOKENS · TIS Brand Gradients ───────── */
-    :root {
-      --ink-black: #0a0a0a;
-      --ink-page:  #0a0a0a;
-      --paper:     #fafafa;
-      --paper-pure:#ffffff;
-      --body:      #3f3f46;
-      --gray-cap:  #71717a;
-      --gray-dis:  #a1a1aa;
-      --hairline:  #e4e4e7;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Industrial Scribe — AI for Manufacturing Pros. No Code. No Theory.</title>
+<meta name="description" content="Real AI workflows from a real SEA factory office — quotations, reports, SOPs and negotiations done in minutes. Written for planners, QC execs and BD managers, never for programmers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #111111;
+    --blue: #2563eb;
+    --yellow: #FBBF24;
+    --pink: #EC4899;
+    --mint: #10B981;
+    --sky: #38BDF8;
+    --coral: #FB923C;
+    --paper: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Patrick Hand', cursive;
+    font-size: 20px;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  .marker { font-family: 'Permanent Marker', cursive; }
 
-      --grad-a-start: #00f6ff;
-      --grad-a-end:   #18269e;
-      --grad-a:       linear-gradient(135deg, #00f6ff 0%, #18269e 100%);
-      --grad-b-start: #371959;
-      --grad-b-end:   #0ac186;
-      --grad-b:       linear-gradient(135deg, #371959 0%, #0ac186 100%);
-      --accent:       #18269e;
-      --accent-hi:    #0a1563;
-      --accent-cyan:  #00f6ff;
-      --accent-emer:  #0ac186;
-      --accent-purp:  #371959;
+  .wobble {
+    border: 3px solid var(--ink);
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  }
+  .wobble-2 {
+    border: 3px solid var(--ink);
+    border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px;
+  }
 
-      --display: 'Playfair Display', Georgia, serif;
-      --serif:   'Source Serif 4', Georgia, serif;
-      --sans:    'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
-      --mono:    'Space Mono', 'Courier New', monospace;
-    }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-    body {
-      font-family: var(--sans);
-      background: var(--paper);
-      color: var(--ink-page);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-    a { color: inherit; text-decoration: none; transition: color 120ms ease; }
-    img { display: block; max-width: 100%; height: auto; }
-    button { font-family: inherit; cursor: pointer; border: 0; background: transparent; }
-    ul { list-style: none; }
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 20px; flex-wrap: wrap;
+    padding: 20px 0; border-bottom: 3px solid var(--ink);
+  }
+  .logo { font-size: 24px; letter-spacing: 1px; white-space: nowrap; text-decoration: none; color: var(--ink); }
+  .logo span { color: var(--blue); }
+  .nav-links { display: flex; gap: 24px; align-items: center; font-size: 21px; white-space: nowrap; }
+  .nav-links a { color: var(--ink); text-decoration: none; }
+  .nav-links a:hover { color: var(--blue); }
+  .btn {
+    display: inline-block; text-decoration: none; cursor: pointer;
+    padding: 10px 26px; font-family: 'Patrick Hand', cursive; font-size: 21px;
+    color: var(--ink); background: var(--paper);
+    transition: transform .15s ease;
+  }
+  .btn:hover { transform: rotate(-1.5deg) scale(1.04); }
+  .btn-pink { background: var(--pink); color: #fff; }
+  .btn-blue { background: var(--blue); color: #fff; }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    @media (min-width: 768px)  { .container { padding: 0 40px; } }
-    @media (min-width: 1280px) { .container { padding: 0 56px; } }
+  .hero {
+    display: grid; grid-template-columns: 1.15fr .85fr; gap: 30px;
+    align-items: center; padding: 60px 0 40px;
+  }
+  .tag {
+    display: inline-block; font-size: 18px; letter-spacing: 2px;
+    color: var(--blue); border: 2.5px solid var(--blue);
+    padding: 3px 16px; transform: rotate(-2deg); margin-bottom: 22px;
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  }
+  h1 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: clamp(40px, 5.5vw, 62px);
+    line-height: 1.15; font-weight: 400;
+  }
+  .hl-yellow { background: linear-gradient(transparent 55%, var(--yellow) 55%, var(--yellow) 92%, transparent 92%); }
+  .hl-sky { background: linear-gradient(transparent 55%, var(--sky) 55%, var(--sky) 92%, transparent 92%); }
+  .hero p.sub { font-size: 23px; margin: 22px 0 30px; max-width: 480px; }
+  .hero-img { width: 100%; max-width: 430px; display: block; margin: 0 auto; }
+  .hero-buttons { display: flex; gap: 18px; flex-wrap: wrap; }
+  .doodle-arrow { font-size: 34px; color: var(--pink); display: inline-block; transform: rotate(20deg); }
 
-    .kicker {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      display: inline-block;
-      margin-bottom: 14px;
-    }
+  .pain {
+    display: grid; grid-template-columns: .8fr 1.2fr; gap: 36px; align-items: center;
+    margin: 50px 0; padding: 34px;
+    background: #fff;
+  }
+  .pain img { width: 100%; max-width: 330px; display: block; margin: 0 auto; }
+  .pain h2 { font-family: 'Permanent Marker', cursive; font-size: 38px; font-weight: 400; line-height: 1.2; }
+  .pain h2 em { font-style: normal; color: var(--pink); }
+  .pain p { font-size: 22px; margin-top: 14px; }
 
-    /* ───────── UTILITY BAR ───────── */
-    .utility-bar {
-      background: var(--ink-black);
-      color: var(--paper);
-      border-bottom: 1px solid #1f1f23;
-    }
-    .utility-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 24px;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 36px;
-    }
-    @media (min-width: 768px)  { .utility-inner { padding: 0 40px; } }
-    @media (min-width: 1280px) { .utility-inner { padding: 0 56px; } }
-    .utility-bar a, .utility-bar span {
-      font-family: var(--mono);
-      font-size: 0.66rem;
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gray-dis);
-    }
-    .utility-bar a:hover { color: var(--accent-cyan); }
-    .utility-left, .utility-right { display: flex; gap: 18px; align-items: center; }
-    @media (max-width: 599px) { .utility-left span:not(:first-child) { display: none; } }
+  .section-title {
+    font-family: 'Permanent Marker', cursive; font-size: 40px; font-weight: 400;
+    text-align: center; margin: 70px 0 8px;
+  }
+  .section-note { text-align: center; font-size: 21px; margin-bottom: 36px; color: #444; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .card {
+    padding: 26px 22px 30px; text-align: center; background: #fff;
+    transition: transform .15s ease;
+  }
+  .card:hover { transform: rotate(-1deg) translateY(-4px); }
+  .card img { width: 78%; display: block; margin: 0 auto 6px; }
+  .card h3 { font-family: 'Permanent Marker', cursive; font-size: 24px; font-weight: 400; margin-bottom: 8px; }
+  .card p { font-size: 20px; color: #333; }
+  .card .pill {
+    display: inline-block; font-size: 17px; padding: 2px 14px; margin-bottom: 12px;
+    transform: rotate(2deg); color: #fff;
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  }
 
-    /* ───────── NAV ───────── */
-    nav.main-nav {
-      background: rgba(250,250,250,0.88);
-      backdrop-filter: saturate(180%) blur(12px);
-      -webkit-backdrop-filter: saturate(180%) blur(12px);
-      border-bottom: 1px solid var(--hairline);
-      position: sticky; top: 0; z-index: 100;
-      transition: padding 200ms ease, box-shadow 200ms ease;
-    }
-    .nav-inner {
-      max-width: 1200px; margin: 0 auto; padding: 18px 24px;
-      display: flex; align-items: center; justify-content: space-between; gap: 24px;
-      transition: padding 200ms ease;
-    }
-    @media (min-width: 768px)  { .nav-inner { padding: 22px 40px; } }
-    @media (min-width: 1280px) { .nav-inner { padding: 24px 56px; } }
-    nav.main-nav.shrink .nav-inner { padding-top: 12px; padding-bottom: 12px; }
-    nav.main-nav.shrink { box-shadow: 0 1px 0 rgba(0,246,255,0.06), 0 6px 24px -12px rgba(10,10,10,0.18); }
+  .articles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 30px; }
+  .article-card {
+    background: #fff; padding: 0 0 18px; text-decoration: none; color: var(--ink);
+    display: flex; flex-direction: column; transition: transform .15s ease;
+  }
+  .article-card:hover { transform: rotate(.8deg) translateY(-4px); }
+  .article-card .bar { height: 14px; border-bottom: 3px solid var(--ink); border-radius: 200px 12px 0 0 / 20px 12px 0 0; }
+  .article-card h4 { font-size: 22px; line-height: 1.3; padding: 16px 18px 8px; flex: 1; font-weight: 400; }
+  .article-card .read { padding: 0 18px; color: var(--blue); font-size: 20px; }
 
-    .bug-logo {
-      font-family: var(--display);
-      font-weight: 900;
-      font-size: 1.5rem;
-      letter-spacing: -0.01em;
-      color: var(--ink-black);
-      white-space: nowrap;
-      transition: font-size 200ms ease;
-    }
-    nav.main-nav.shrink .bug-logo { font-size: 1.25rem; }
-    .bug-logo .dot {
-      background: var(--grad-a);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent;
-    }
+  .more-list { max-width: 760px; margin: 0 auto 20px; }
+  .more-list a {
+    display: flex; justify-content: space-between; gap: 14px; align-items: baseline;
+    padding: 12px 6px; text-decoration: none; color: var(--ink); font-size: 21px;
+    border-bottom: 2px dashed #bbb;
+  }
+  .more-list a:hover { color: var(--blue); }
+  .more-list .arrow { color: var(--blue); white-space: nowrap; }
 
-    .nav-links { display: flex; gap: 28px; align-items: center; }
-    .nav-links a {
-      font-family: var(--sans);
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--body);
-    }
-    .nav-links a:hover { color: var(--accent); }
+  .insider-band {
+    display: grid; grid-template-columns: .7fr 1.3fr; gap: 30px; align-items: center;
+    margin: 70px 0; padding: 36px; background: #fff;
+  }
+  .insider-band img { width: 100%; max-width: 260px; display: block; margin: 0 auto; }
+  .insider-band h2 { font-family: 'Permanent Marker', cursive; font-size: 36px; font-weight: 400; }
+  .insider-band p { font-size: 22px; margin-top: 12px; }
+  .starburst {
+    position: relative; display: inline-block; margin-left: 10px;
+    font-family: 'Patrick Hand', cursive; font-size: 17px; color: var(--ink);
+    padding: 14px 12px; transform: rotate(8deg);
+    background: var(--yellow);
+    clip-path: polygon(50% 0%, 61% 12%, 76% 6%, 79% 22%, 95% 24%, 88% 38%, 100% 50%, 88% 62%, 95% 76%, 79% 78%, 76% 94%, 61% 88%, 50% 100%, 39% 88%, 24% 94%, 21% 78%, 5% 76%, 12% 62%, 0% 50%, 12% 38%, 5% 24%, 21% 22%, 24% 6%, 39% 12%);
+  }
 
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      font-family: var(--sans);
-      font-size: 0.88rem;
-      font-weight: 600;
-      padding: 10px 18px;
-      border-radius: 8px;
-      border: 1px solid transparent;
-      transition: transform 180ms ease, filter 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
-      gap: 6px;
-      white-space: nowrap;
-    }
-    .btn-primary {
-      background: var(--grad-a);
-      color: var(--paper-pure);
-      box-shadow: 0 4px 14px -6px rgba(24,38,158,0.5), 0 0 0 0 rgba(0,246,255,0);
-    }
-    .btn-primary:hover { filter: brightness(1.12); box-shadow: 0 6px 22px -6px rgba(0,246,255,0.45); }
-    .btn-ghost {
-      background: transparent; color: var(--ink-black);
-      border-color: var(--hairline);
-    }
-    .btn-ghost:hover { border-color: var(--ink-black); }
-    .btn-lg { padding: 14px 26px; font-size: 0.98rem; }
+  .cta { text-align: center; padding: 70px 0 60px; }
+  .cta img { width: 300px; display: block; margin: 0 auto 10px; }
+  .cta .l1 { font-size: 25px; }
+  .cta .l2 { font-family: 'Permanent Marker', cursive; font-size: 42px; color: var(--blue); margin: 10px 0; font-weight: 400; }
+  .cta .l3 { font-size: 23px; }
+  .cta .l4 {
+    font-family: 'Permanent Marker', cursive; font-size: 38px; color: var(--pink);
+    margin-top: 22px; font-weight: 400;
+  }
+  .cta .soon { font-size: 19px; color: #777; margin-top: 10px; }
 
-    .nav-burger {
-      display: none;
-      width: 40px; height: 40px;
-      align-items: center; justify-content: center;
-      font-size: 1.4rem;
-      color: var(--ink-black);
-      border-radius: 6px;
-      border: 1px solid var(--hairline);
-    }
-    @media (max-width: 899px) {
-      .nav-links, .nav-inner > .btn { display: none; }
-      .nav-burger { display: inline-flex; }
-    }
+  footer {
+    border-top: 3px solid var(--ink); padding: 28px 0 40px; text-align: center; font-size: 20px;
+  }
+  footer .handle { color: var(--blue); }
+  footer .quiet { color: #888; font-size: 17px; margin-top: 6px; }
 
-    /* ───────── DRAWER ───────── */
-    .drawer {
-      position: fixed; inset: 0 0 0 auto;
-      width: 84%; max-width: 360px;
-      background: var(--paper-pure);
-      transform: translateX(100%);
-      transition: transform 280ms cubic-bezier(.2,.8,.2,1);
-      z-index: 200;
-      padding: 28px 28px 40px;
-      display: flex; flex-direction: column;
-      box-shadow: -10px 0 40px rgba(0,0,0,0.1);
-    }
-    .drawer.open { transform: translateX(0); }
-    .drawer-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
-    .drawer-close { font-size: 2rem; line-height: 1; }
-    .drawer ul { display: flex; flex-direction: column; gap: 4px; }
-    .drawer ul a {
-      display: block;
-      padding: 14px 0;
-      font-size: 0.98rem;
-      font-weight: 600;
-      border-bottom: 1px solid var(--hairline);
-    }
-    .drawer .btn { margin-top: 28px; align-self: stretch; }
-
-    /* ───────── HERO ───────── */
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 80px 0 100px;
-    }
-    @media (max-width: 767px) { .hero { padding: 56px 0 64px; } }
-    .hero-mesh {
-      position: absolute; inset: 0;
-      pointer-events: none; z-index: 0;
-      filter: blur(70px); opacity: 0.5;
-    }
-    .hero-mesh span {
-      position: absolute;
-      width: 420px; height: 420px;
-      border-radius: 50%;
-      mix-blend-mode: multiply;
-    }
-    .hero-mesh .b1 { background: #00f6ff; top: -140px; left: -100px; animation: d1 18s ease-in-out infinite; }
-    .hero-mesh .b2 { background: #18269e; top: 60px;   right: -120px; animation: d2 22s ease-in-out infinite; }
-    .hero-mesh .b3 { background: #0ac186; bottom: -160px; left: 35%; animation: d3 26s ease-in-out infinite; }
-    .hero-mesh .b4 { background: #371959; top: 40%; right: 15%; width: 300px; height: 300px; animation: d1 24s ease-in-out infinite reverse; }
-    @keyframes d1 { 0%,100% { transform: none; } 50% { transform: translate(80px,60px) scale(1.15); } }
-    @keyframes d2 { 0%,100% { transform: none; } 50% { transform: translate(-90px,80px) scale(1.2); } }
-    @keyframes d3 { 0%,100% { transform: none; } 50% { transform: translate(60px,-70px) scale(1.1); } }
-
-    .hero-grid {
-      position: relative; z-index: 1;
-      display: grid;
-      grid-template-columns: 1.05fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-    @media (max-width: 1023px) { .hero-grid { grid-template-columns: 1fr; gap: 48px; } }
-
-    .hero-pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(0,246,255,0.08);
-      border: 1px solid rgba(0,246,255,0.22);
-      color: var(--accent);
-      padding: 7px 14px;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-    }
-    .hero-pill .dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--accent-cyan);
-      animation: blink 1.4s ease-in-out infinite;
-    }
-    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
-
-    .hero h1 {
-      font-family: var(--display);
-      font-weight: 900;
-      font-size: clamp(40px, 5.6vw, 72px);
-      line-height: 1.02;
-      letter-spacing: -0.025em;
-      color: var(--ink-black);
-      margin-bottom: 22px;
-    }
-    .hero h1 .grad {
-      background: linear-gradient(110deg, #00f6ff 0%, #18269e 40%, #371959 60%, #0ac186 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent;
-    }
-    .hero .deck {
-      font-size: 1.14rem;
-      line-height: 1.6;
-      color: var(--body);
-      max-width: 540px;
-      margin-bottom: 28px;
-    }
-    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
-    .hero-note {
-      font-size: 0.82rem;
-      color: var(--gray-cap);
-      display: flex; align-items: center; gap: 8px;
-    }
-    .hero-note::before {
-      content: '✓';
-      color: var(--accent-emer);
-      font-weight: 700;
-    }
-
-    /* ───────── HERO VISUAL: TEMPLATE PREVIEW ───────── */
-    .tpl-stack { position: relative; perspective: 1200px; }
-    .tpl-card {
-      background: var(--paper-pure);
-      border-radius: 14px;
-      border: 1px solid var(--hairline);
-      box-shadow: 0 30px 60px -20px rgba(10,10,30,0.2), 0 0 0 1px rgba(0,246,255,0.1);
-      overflow: hidden;
-      transform: rotate(-1.5deg);
-      transition: transform 300ms ease;
-    }
-    .tpl-card:hover { transform: rotate(-0.5deg) translateY(-4px); }
-    .tpl-card-2 {
-      position: absolute;
-      top: 32px; left: -28px; right: 28px;
-      background: var(--paper-pure);
-      border-radius: 14px;
-      border: 1px solid var(--hairline);
-      z-index: -1;
-      transform: rotate(3deg);
-      height: 92%;
-      box-shadow: 0 20px 40px -20px rgba(55,25,89,0.2);
-    }
-    .tpl-head {
-      background: var(--ink-black);
-      color: var(--paper);
-      padding: 14px 20px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .tpl-title {
-      font-family: var(--mono);
-      font-size: 0.74rem;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-    }
-    .tpl-ver {
-      font-family: var(--mono);
-      font-size: 0.66rem;
-      color: var(--accent-cyan);
-      background: rgba(0,246,255,0.1);
-      padding: 3px 8px;
-      border-radius: 4px;
-      letter-spacing: 0.1em;
-    }
-    .tpl-body { padding: 18px 20px; }
-    .tpl-row {
-      display: grid;
-      grid-template-columns: 60px 1fr 50px 90px;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--hairline);
-      font-size: 0.78rem;
-      align-items: center;
-    }
-    .tpl-row:last-child { border-bottom: 0; }
-    .tpl-row.head {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gray-cap);
-      border-bottom: 1px solid var(--ink-black);
-      padding-bottom: 8px;
-    }
-    .tpl-row code {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--ink-black);
-    }
-    .tpl-row .part { color: var(--body); }
-    .tpl-pill {
-      display: inline-block;
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      padding: 3px 8px;
-      border-radius: 999px;
-      text-transform: uppercase;
-    }
-    .pill-ok    { background: rgba(10,193,134,0.14); color: #059669; }
-    .pill-wait  { background: rgba(0,246,255,0.14);  color: #0369a1; }
-    .pill-hold  { background: rgba(55,25,89,0.14);   color: #4c1d95; }
-    .pill-late  { background: rgba(239,68,68,0.12);  color: #b91c1c; }
-    .tpl-qty { font-family: var(--mono); font-weight: 700; color: var(--ink-black); text-align: right; font-size: 0.8rem; }
-    .tpl-foot {
-      border-top: 1px solid var(--hairline);
-      padding: 12px 20px;
-      display: flex; align-items: center; justify-content: space-between;
-      background: var(--paper);
-    }
-    .tpl-foot .meta {
-      font-family: var(--mono);
-      font-size: 0.66rem;
-      letter-spacing: 0.1em;
-      color: var(--gray-cap);
-      text-transform: uppercase;
-    }
-    .tpl-foot .dl {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      color: var(--accent);
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    /* ───────── SECTIONS ───────── */
-    section.block { padding: 96px 0; }
-    @media (max-width: 767px) { section.block { padding: 64px 0; } }
-    .block-head { text-align: center; margin-bottom: 56px; max-width: 720px; margin-left: auto; margin-right: auto; }
-    .block-head h2 {
-      font-family: var(--display);
-      font-weight: 900;
-      font-size: clamp(34px, 4.2vw, 56px);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: var(--ink-black);
-      margin-bottom: 16px;
-    }
-    .block-head p {
-      font-size: 1.08rem;
-      line-height: 1.6;
-      color: var(--body);
-    }
-
-    /* ───────── WHAT'S AVAILABLE ───────── */
-    .guides-block {
-      background: var(--paper-pure);
-      border-top: 1px solid var(--hairline);
-      border-bottom: 1px solid var(--hairline);
-    }
-    .guides {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    @media (max-width: 1023px) { .guides { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 599px)  { .guides { grid-template-columns: 1fr; } }
-
-    .guide-card {
-      background: var(--paper);
-      border: 1px solid var(--hairline);
-      border-radius: 14px;
-      padding: 28px;
-      display: flex; flex-direction: column;
-      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
-      position: relative;
-    }
-    .guide-card:hover {
-      transform: translateY(-4px);
-      border-color: transparent;
-      box-shadow: 0 24px 40px -20px rgba(0,246,255,0.2), 0 0 0 1px rgba(0,246,255,0.3);
-    }
-    .guide-status {
-      position: absolute;
-      top: 16px; right: 16px;
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      padding: 4px 10px;
-      border-radius: 999px;
-    }
-    .status-free { background: rgba(10,193,134,0.14); color: #059669; }
-    .status-wip  { background: rgba(55,25,89,0.12); color: #4c1d95; }
-    .guide-icon {
-      width: 44px; height: 44px;
-      background: var(--grad-a);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--paper-pure);
-      font-family: var(--mono);
-      font-weight: 700;
-      font-size: 0.98rem;
-      margin-bottom: 18px;
-      letter-spacing: 0.05em;
-    }
-    .guide-card h3 {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: 1.38rem;
-      line-height: 1.18;
-      color: var(--ink-black);
-      margin-bottom: 10px;
-    }
-    .guide-card p {
-      font-size: 0.92rem;
-      line-height: 1.55;
-      color: var(--body);
-      margin-bottom: 18px;
-      flex: 1;
-    }
-    .guide-meta {
-      font-family: var(--mono);
-      font-size: 0.66rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gray-cap);
-      display: flex; align-items: center; gap: 8px;
-    }
-    .guide-meta .arrow { color: var(--accent); font-weight: 700; }
-    .guide-card.wip .guide-icon { background: var(--grad-b); }
-    .guide-card.wip h3 { color: var(--accent-purp); }
-
-    /* ───────── HOW IT WORKS ───────── */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    @media (max-width: 899px) { .steps { grid-template-columns: 1fr; } }
-    .step-card {
-      padding: 32px 0;
-      position: relative;
-    }
-    .step-num {
-      font-family: var(--display);
-      font-weight: 900;
-      font-size: 4rem;
-      line-height: 1;
-      background: var(--grad-a);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent;
-      margin-bottom: 16px;
-      letter-spacing: -0.03em;
-    }
-    .step-card h3 {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: 1.55rem;
-      line-height: 1.15;
-      color: var(--ink-black);
-      margin-bottom: 12px;
-    }
-    .step-card p { font-size: 0.96rem; line-height: 1.6; color: var(--body); }
-
-    /* ───────── JOURNAL ───────── */
-    .journal-block { background: var(--paper); }
-    .journal-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-    @media (max-width: 1023px) { .journal-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 599px)  { .journal-grid { grid-template-columns: 1fr; } }
-    .j-card {
-      display: block;
-      background: var(--paper-pure);
-      border: 1px solid var(--hairline);
-      border-radius: 14px;
-      overflow: hidden;
-      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
-    }
-    .j-card:hover {
-      transform: translateY(-4px);
-      border-color: transparent;
-      box-shadow: 0 24px 40px -20px rgba(55,25,89,0.18), 0 0 0 1px rgba(0,246,255,0.25);
-    }
-    .j-img {
-      width: 100%;
-      aspect-ratio: 16/10;
-      background: var(--ink-black);
-      object-fit: cover;
-      display: block;
-      transition: transform 600ms cubic-bezier(.2,.8,.2,1);
-    }
-    .j-card:hover .j-img { transform: scale(1.04); }
-    .j-img-wrap { overflow: hidden; }
-    .j-body { padding: 22px 24px 26px; }
-    .j-cat {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 10px;
-      display: inline-block;
-    }
-    .j-card h3 {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: 1.32rem;
-      line-height: 1.18;
-      color: var(--ink-black);
-      margin-bottom: 10px;
-      transition: color 160ms ease;
-    }
-    .j-card:hover h3 { color: var(--accent); }
-    .j-card p {
-      font-size: 0.92rem;
-      line-height: 1.55;
-      color: var(--body);
-      margin-bottom: 14px;
-    }
-    .j-meta {
-      font-family: var(--mono);
-      font-size: 0.66rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gray-cap);
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-    .j-meta .lock { color: var(--accent-cyan); }
-    .journal-foot {
-      text-align: center;
-      margin-top: 48px;
-    }
-
-    /* ───────── ROADMAP ───────── */
-    .roadmap-block { background: var(--paper-pure); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
-    .roadmap {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    @media (max-width: 899px) { .roadmap { grid-template-columns: 1fr; } }
-    .road-card {
-      background: var(--paper);
-      border: 1px dashed var(--hairline);
-      border-radius: 14px;
-      padding: 28px;
-      position: relative;
-    }
-    .road-card.next { border-style: solid; border-color: var(--accent-cyan); background: linear-gradient(180deg, rgba(0,246,255,0.04) 0%, var(--paper) 100%); }
-    .road-phase {
-      font-family: var(--mono);
-      font-size: 0.66rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      color: var(--gray-cap);
-      margin-bottom: 12px;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .road-card.next .road-phase { color: var(--accent); }
-    .road-card.next .road-phase::before {
-      content: ''; width: 8px; height: 8px; border-radius: 50%;
-      background: var(--accent-cyan);
-      animation: blink 1.4s ease-in-out infinite;
-    }
-    .road-card h3 {
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: 1.35rem;
-      color: var(--ink-black);
-      margin-bottom: 10px;
-    }
-    .road-card p { font-size: 0.9rem; line-height: 1.55; color: var(--body); }
-
-    /* ───────── NEWSLETTER CAPTURE ───────── */
-    .capture {
-      background: linear-gradient(135deg, #371959 0%, #1a1a2e 40%, #0a0a0a 65%, #0ac186 100%);
-      color: var(--paper);
-      position: relative;
-      overflow: hidden;
-    }
-    .capture::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(600px circle at 20% 30%, rgba(0,246,255,0.18), transparent 50%),
-        radial-gradient(500px circle at 80% 70%, rgba(10,193,134,0.22), transparent 50%);
-      pointer-events: none;
-    }
-    .capture-inner {
-      position: relative; z-index: 1;
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 96px 24px;
-      text-align: center;
-    }
-    .capture h2 {
-      font-family: var(--display);
-      font-weight: 900;
-      font-size: clamp(36px, 4.6vw, 56px);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: var(--paper-pure);
-      margin-bottom: 16px;
-    }
-    .capture p {
-      font-size: 1.08rem;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.82);
-      max-width: 560px;
-      margin: 0 auto 36px;
-    }
-    .capture-form {
-      display: flex; gap: 10px;
-      max-width: 520px;
-      margin: 0 auto 16px;
-    }
-    .capture-form input {
-      flex: 1;
-      padding: 14px 18px;
-      font-family: var(--sans);
-      font-size: 0.95rem;
-      color: var(--ink-page);
-      background: var(--paper-pure);
-      border: 1px solid transparent;
-      border-radius: 10px;
-      outline: none;
-      transition: box-shadow 180ms ease;
-    }
-    .capture-form input:focus { box-shadow: 0 0 0 4px rgba(0,246,255,0.35); }
-    .capture-form input::placeholder { color: var(--gray-cap); }
-    .capture-form button {
-      padding: 14px 24px;
-      background: var(--grad-a);
-      color: var(--paper-pure);
-      font-weight: 700;
-      font-size: 0.92rem;
-      border-radius: 10px;
-      transition: filter 180ms ease;
-      white-space: nowrap;
-    }
-    .capture-form button:hover { filter: brightness(1.15); }
-    .capture-note {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      color: rgba(255,255,255,0.6);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-    @media (max-width: 599px) { .capture-form { flex-direction: column; } }
-
-    /* ───────── FAQ ───────── */
-    .faq-list { max-width: 800px; margin: 0 auto; }
-    .faq-item { border-bottom: 1px solid var(--hairline); }
-    .faq-q {
-      width: 100%;
-      text-align: left;
-      padding: 24px 0;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--ink-black);
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 16px;
-    }
-    .faq-q .plus {
-      width: 26px; height: 26px;
-      flex-shrink: 0;
-      border: 1px solid var(--hairline);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--accent);
-      transition: transform 240ms ease, background 200ms ease;
-    }
-    .faq-item.open .plus { transform: rotate(45deg); background: rgba(0,246,255,0.1); }
-    .faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 320ms ease;
-      font-size: 0.96rem;
-      line-height: 1.62;
-      color: var(--body);
-    }
-    .faq-item.open .faq-a { max-height: 500px; }
-    .faq-a > div { padding: 0 0 24px; }
-
-    /* ───────── FOOTER ───────── */
-    footer {
-      background: var(--ink-black);
-      color: var(--paper);
-      padding: 80px 0 40px;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 48px;
-    }
-    @media (max-width: 899px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 599px) { .footer-grid { grid-template-columns: 1fr; gap: 32px; } }
-    footer .bug-logo { color: var(--paper-pure); font-size: 1.6rem; margin-bottom: 16px; display: block; }
-    .footer-brand p {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: var(--gray-dis);
-      max-width: 360px;
-    }
-    .footer-col h4 {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--paper-pure);
-      margin-bottom: 18px;
-    }
-    .footer-col ul { display: flex; flex-direction: column; gap: 12px; }
-    .footer-col a { font-size: 0.88rem; color: var(--gray-dis); }
-    .footer-col a:hover { color: var(--accent-cyan); }
-    .footer-bar {
-      border-top: 1px solid #1f1f29;
-      padding-top: 28px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      color: var(--gray-dis);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    /* ───────── REVEAL ───────── */
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 600ms ease, transform 600ms cubic-bezier(.2,.8,.2,1); }
-    .reveal.in { opacity: 1; transform: none; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .hero-mesh span, .road-card.next .road-phase::before, .hero-pill .dot { animation: none !important; }
-      .reveal { opacity: 1; transform: none; }
-      *, *::before, *::after { transition: none !important; }
-    }
-  </style>
+  @media (max-width: 820px) {
+    .hero, .pain, .insider-band { grid-template-columns: 1fr; text-align: center; }
+    .hero p.sub { margin-left: auto; margin-right: auto; }
+    .hero-buttons { justify-content: center; }
+    .cards, .articles { grid-template-columns: 1fr; }
+    nav { flex-direction: column; gap: 12px; padding-bottom: 16px; }
+    .logo { font-size: 22px; }
+    .nav-links { gap: 18px; font-size: 19px; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- UTILITY BAR -->
-  <div class="utility-bar">
-    <div class="utility-inner">
-      <div class="utility-left">
-        <span>MALAYSIA · SEA MANUFACTURING</span>
-        <span>Est. for operators, by operators</span>
-      </div>
-      <div class="utility-right">
-        <a href="mailto:theindustrialscribe@gmail.com">Contact</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- NAV -->
-  <nav class="main-nav">
-    <div class="nav-inner">
-      <a href="#" class="bug-logo">TIS<span class="dot">.</span></a>
-      <ul class="nav-links">
-        <li><a href="#guides">Free Guides</a></li>
-        <li><a href="#how">How it works</a></li>
-        <li><a href="#roadmap">Roadmap</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-      <a href="#join" class="btn btn-primary">Get free guides →</a>
-      <button class="nav-burger" id="burgerOpen" aria-label="Open menu">☰</button>
+<div class="wrap">
+  <nav>
+    <a class="logo marker" href="index.html">THE INDUSTRIAL <span>SCRIBE</span></a>
+    <div class="nav-links">
+      <a href="#articles">Articles</a>
+      <a href="article-playbook.html">Free Playbook</a>
+      <a href="#workflows" class="btn btn-pink wobble">Get the workflows</a>
     </div>
   </nav>
 
-  <!-- DRAWER -->
-  <aside class="drawer" id="drawer">
-    <div class="drawer-head">
-      <span class="bug-logo">TIS<span class="dot">.</span></span>
-      <button class="drawer-close" id="burgerClose" aria-label="Close menu">×</button>
-    </div>
-    <ul>
-      <li><a href="#guides">Free Guides</a></li>
-      <li><a href="#how">How it works</a></li>
-      <li><a href="#roadmap">Roadmap</a></li>
-      <li><a href="#faq">FAQ</a></li>
-    </ul>
-    <a href="#join" class="btn btn-primary">Get free guides →</a>
-  </aside>
-
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-mesh" aria-hidden="true">
-      <span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span>
-    </div>
-    <div class="container hero-grid">
-      <div>
-        <div class="hero-pill"><span class="dot"></span> Free skills for ChatGPT · Claude · Gemini</div>
-        <h1>Teach your AI to think like a <span class="grad">factory pro.</span></h1>
-        <p class="deck">Copy-paste skills, prompts, and shop-floor logic that turn any LLM into a SEA manufacturing assistant. Drop one into ChatGPT, Claude, or Gemini — and watch it draft RCAs, WIP reports, SOPs, and more, the way a 15-year operator would.</p>
-        <div class="hero-ctas">
-          <a href="#guides" class="btn btn-primary btn-lg">Browse free skills →</a>
-          <a href="#how" class="btn btn-ghost btn-lg">How does it work?</a>
-        </div>
-        <div class="hero-note">Use any LLM · Always free to copy · No tools to install</div>
+    <div>
+      <span class="tag">THE MANUFACTURING OFFICE INSIDER</span>
+      <h1>AI for manufacturing pros.<br>
+        <span class="hl-yellow">No code.</span> <span class="hl-sky">No theory.</span></h1>
+      <p class="sub">Real workflows from a real SEA factory office — quotations, reports, SOPs and negotiations, done in minutes with AI. <span class="doodle-arrow">↴</span></p>
+      <div class="hero-buttons">
+        <a href="#articles" class="btn btn-blue wobble">Read the articles</a>
+        <a href="#workflows" class="btn wobble-2">Plug &amp; Play — USD 9.99</a>
       </div>
+    </div>
+    <img class="hero-img" src="assets/insider-waving-hero.png" alt="The Insider waving hello">
+  </section>
 
-      <!-- Template preview visual -->
-      <a href="#join" class="tpl-stack" data-guide="Weekly WIP Status Report" style="text-decoration:none;color:inherit;display:block;">
-        <div class="tpl-card-2"></div>
-        <div class="tpl-card">
-          <div class="tpl-head">
-            <span class="tpl-title">WEEKLY WIP STATUS</span>
-            <span class="tpl-ver">v1 · TEMPLATE</span>
-          </div>
-          <div class="tpl-body">
-            <div class="tpl-row head">
-              <span>JOB</span><span>PART</span><span>QTY</span><span>STATUS</span>
-            </div>
-            <div class="tpl-row">
-              <code>J-0847</code>
-              <span class="part">CNC bracket A-204</span>
-              <span class="tpl-qty">500</span>
-              <span><span class="tpl-pill pill-ok">On track</span></span>
-            </div>
-            <div class="tpl-row">
-              <code>J-0851</code>
-              <span class="part">Steel housing M8</span>
-              <span class="tpl-qty">200</span>
-              <span><span class="tpl-pill pill-wait">Queued</span></span>
-            </div>
-            <div class="tpl-row">
-              <code>J-0852</code>
-              <span class="part">PCB enclosure</span>
-              <span class="tpl-qty">1,000</span>
-              <span><span class="tpl-pill pill-hold">Hold · QA</span></span>
-            </div>
-            <div class="tpl-row">
-              <code>J-0844</code>
-              <span class="part">Aluminium plate</span>
-              <span class="tpl-qty">120</span>
-              <span><span class="tpl-pill pill-late">Late</span></span>
-            </div>
-            <div class="tpl-row">
-              <code>J-0853</code>
-              <span class="part">Gear assembly</span>
-              <span class="tpl-qty">80</span>
-              <span><span class="tpl-pill pill-ok">On track</span></span>
-            </div>
-          </div>
-          <div class="tpl-foot">
-            <span class="meta">XLSX · 32 KB</span>
-            <span class="dl">↓ Request this template →</span>
-          </div>
-        </div>
-      </a>
+  <!-- PAIN STRIP -->
+  <section class="pain wobble">
+    <img src="assets/insider-buried-paperwork.png" alt="The Insider buried in paperwork">
+    <div>
+      <h2>Still fighting reports <em>the 2015 way?</em></h2>
+      <p>Quotations that take 3 days. RCA reports the customer sends back. SOPs nobody has time to write. Every factory office knows this pain — and every week, AI quietly removes another piece of it. I show you exactly how.</p>
     </div>
   </section>
 
-  <!-- WHAT'S AVAILABLE -->
-  <section class="block guides-block" id="guides">
-    <div class="container">
-      <div class="block-head reveal">
-        <span class="kicker">Free · Copy · Paste · Run</span>
-        <h2>Skills your LLM needs to think like a planner.</h2>
-        <p>Every skill is a structured prompt that encodes the logic, format, and shop-floor judgement of one specific manufacturing workflow. Copy it, paste it into your favourite AI, and your LLM produces the artifact your boss/customer/auditor expects. Free — no paywall, no Pro tier tricks.</p>
-      </div>
-      <div class="guides">
-
-        <a href="skill-wip-status-report.html" class="guide-card reveal">
-          <span class="guide-status status-free">FREE · SKILL</span>
-          <div class="guide-icon">WIP</div>
-          <h3>Weekly WIP Status Report</h3>
-          <p>Teaches your LLM to read raw job data, apply status/aging logic, and produce a clean Monday-ready WIP report.</p>
-          <span class="guide-meta">OPEN SKILL <span class="arrow">→</span></span>
-        </a>
-
-        <a href="skill-ncr-rca-drafter.html" class="guide-card reveal">
-          <span class="guide-status status-free">FREE · SKILL</span>
-          <div class="guide-icon">RCA</div>
-          <h3>NCR &amp; 5-Why RCA Drafter</h3>
-          <p>Walks your LLM through a defect investigation: 5 Whys, root cause, containment, corrective action. Audit-ready.</p>
-          <span class="guide-meta">OPEN SKILL <span class="arrow">→</span></span>
-        </a>
-
-        <a href="skill-weekly-production-report.html" class="guide-card reveal">
-          <span class="guide-status status-free">FREE · SKILL</span>
-          <div class="guide-icon">PR</div>
-          <h3>Weekly Production Report</h3>
-          <p>Output vs. plan, scrap, downtime, top losers — the exact narrative format management actually reads on Monday.</p>
-          <span class="guide-meta">OPEN SKILL <span class="arrow">→</span></span>
-        </a>
-
-        <a href="skill-sop-drafting.html" class="guide-card reveal">
-          <span class="guide-status status-free">FREE · SKILL</span>
-          <div class="guide-icon">SOP</div>
-          <h3>SOP Drafting Skill</h3>
-          <p>Turns a process description into a complete manufacturing SOP — with control points, verification, and handoffs.</p>
-          <span class="guide-meta">OPEN SKILL <span class="arrow">→</span></span>
-        </a>
-
-        <a href="#join" class="guide-card wip reveal" data-guide="AI Processing · WIP Report (waitlist)">
-          <span class="guide-status status-wip">IN PROGRESS</span>
-          <div class="guide-icon">AI</div>
-          <h3>Hosted AI · WIP Report</h3>
-          <p>Don't want to copy-paste? The hosted version. Upload raw data, get the report back. Beta access via waitlist.</p>
-          <span class="guide-meta">JOIN THE WAITLIST <span class="arrow">→</span></span>
-        </a>
-
-        <a href="#join" class="guide-card wip reveal" data-guide="AI Processing · NCR Drafter (waitlist)">
-          <span class="guide-status status-wip">IN PROGRESS</span>
-          <div class="guide-icon">AI</div>
-          <h3>Hosted AI · NCR Drafter</h3>
-          <p>Paste defect note → get drafted RCA back, no LLM account needed. Beta access via waitlist.</p>
-          <span class="guide-meta">JOIN THE WAITLIST <span class="arrow">→</span></span>
-        </a>
-
-      </div>
+  <!-- LEARN CARDS -->
+  <h2 class="section-title">What you get here</h2>
+  <p class="section-note">Written for planners, QC execs, purchasers and BD managers — never for programmers.</p>
+  <section class="cards">
+    <div class="card wobble">
+      <span class="pill" style="background: var(--sky);">TRANSLATE</span>
+      <img src="assets/insider-lightbulb.png" alt="The Insider with a lightbulb idea">
+      <h3>AI, minus the jargon</h3>
+      <p>LLMs, tokens, MCP — explained the way a colleague would at the mamak, not a textbook.</p>
+    </div>
+    <div class="card wobble-2">
+      <span class="pill" style="background: var(--mint);">TUTORIAL</span>
+      <img src="assets/insider-cnc-machine.png" alt="The Insider beside a CNC machine">
+      <h3>Real factory workflows</h3>
+      <p>Step-by-step builds from a working CNC manufacturing office — quotations, WIP reports, supplier emails.</p>
+    </div>
+    <div class="card wobble">
+      <span class="pill" style="background: var(--yellow); color: var(--ink);">PAYOFF</span>
+      <img src="assets/insider-calm-laptop-coffee.png" alt="The Insider calm with coffee">
+      <h3>Leave on time</h3>
+      <p>The end goal is not "AI skills". It is going home at 6 with the reports already done.</p>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="block" id="how">
-    <div class="container">
-      <div class="block-head reveal">
-        <span class="kicker">How it works</span>
-        <h2>Three steps. No code. No learning curve.</h2>
-        <p>These are tools for people doing the work — not tools for people who want to be software engineers.</p>
-      </div>
-      <div class="steps">
-        <div class="step-card reveal">
-          <div class="step-num">01</div>
-          <h3>Pick a skill.</h3>
-          <p>Each skill is a structured prompt — written by an operator — that encodes the logic, format, and judgement of one specific manufacturing workflow.</p>
-        </div>
-        <div class="step-card reveal">
-          <div class="step-num">02</div>
-          <h3>Copy &amp; paste.</h3>
-          <p>One click copies the full skill. Paste it as the first message into ChatGPT, Claude, Gemini, or any LLM you already use. No account here, no install.</p>
-        </div>
-        <div class="step-card reveal">
-          <div class="step-num">03</div>
-          <h3>Drop your data.</h3>
-          <p>Paste your raw job list, defect note, or process description after the skill. Your LLM produces the artifact — formatted, clean, and shop-floor-ready.</p>
-        </div>
-      </div>
+  <!-- FEATURED ARTICLES -->
+  <h2 class="section-title" id="articles">Fresh from the office</h2>
+  <p class="section-note">23 articles and counting — all free to read.</p>
+  <section class="articles">
+    <a class="article-card wobble" href="article-quotation-case-study.html">
+      <div class="bar" style="background: var(--pink);"></div>
+      <h4>How One Johor Manufacturer Cut Quotation Time by 70% Using AI</h4>
+      <span class="read">read this →</span>
+    </a>
+    <a class="article-card wobble-2" href="article-sop-writing.html">
+      <div class="bar" style="background: var(--sky);"></div>
+      <h4>How to Write Any Manufacturing SOP in 30 Minutes Using AI</h4>
+      <span class="read">read this →</span>
+    </a>
+    <a class="article-card wobble" href="article-factory-intelligence.html">
+      <div class="bar" style="background: var(--mint);"></div>
+      <h4>How One BD Manager Turned 334,000 Rows of Factory Data Into a Growth Strategy</h4>
+      <span class="read">read this →</span>
+    </a>
+    <a class="article-card wobble-2" href="article-what-is-llm.html">
+      <div class="bar" style="background: var(--yellow);"></div>
+      <h4>What Is an LLM? The Engine Behind Every AI Tool You Use</h4>
+      <span class="read">read this →</span>
+    </a>
+    <a class="article-card wobble" href="article-rca-report.html">
+      <div class="bar" style="background: var(--coral);"></div>
+      <h4>How to Write an RCA Report Your Customer Won't Send Back</h4>
+      <span class="read">read this →</span>
+    </a>
+    <a class="article-card wobble-2" href="article-ai-to-outlook.html">
+      <div class="bar" style="background: var(--pink);"></div>
+      <h4>How I Connected AI to My Company Outlook in 60 Minutes</h4>
+      <span class="read">read this →</span>
+    </a>
+  </section>
+
+  <!-- ALL ARTICLES -->
+  <h2 class="section-title" style="font-size: 30px;">More from the office</h2>
+  <div class="more-list">
+    <a href="article-quotation-framework.html"><span>The 3-Gate Framework: How to Price Manufacturing Jobs Without Leaving Money on the Table</span><span class="arrow">→</span></a>
+    <a href="article-production-report.html"><span>The 12 Numbers Every Production Manager Should Track Every Week</span><span class="arrow">→</span></a>
+    <a href="article-ai-negotiation.html"><span>How I Used AI to Structure a High-Stakes Supplier Negotiation</span><span class="arrow">→</span></a>
+    <a href="article-ai-presentation.html"><span>AI-Powered Business Presentations: Building Professional Slides in Minutes</span><span class="arrow">→</span></a>
+    <a href="article-sop-writing.html"><span>How to Write Any Manufacturing SOP in 30 Minutes Using AI</span><span class="arrow">→</span></a>
+    <a href="article-20-dollar-revolution.html"><span>The $20 Revolution: The Most Lopsided ROI in Manufacturing History</span><span class="arrow">→</span></a>
+    <a href="article-80-percent-problem.html"><span>The 80% Problem: 98% of Manufacturers Are Exploring AI. Only 20% Are Ready.</span><span class="arrow">→</span></a>
+    <a href="article-agentic-ai-is-here.html"><span>Agentic AI Is Here: When AI Stops Answering and Starts Acting</span><span class="arrow">→</span></a>
+    <a href="article-ai-controls-desktop.html"><span>AI Now Controls Your Desktop: Claude Can Click Your Mouse</span><span class="arrow">→</span></a>
+    <a href="article-ai-knowledge-gold-rush.html"><span>The AI Knowledge Gold Rush: How Skills and Courses Are Being Monetised</span><span class="arrow">→</span></a>
+    <a href="article-ai-middle-management.html"><span>AI Is Coming for Middle Management: Two Million Jobs at Risk</span><span class="arrow">→</span></a>
+    <a href="article-ai-regulation-sea.html"><span>AI Regulation Hits Southeast Asia: Vietnam Passes First AI Law</span><span class="arrow">→</span></a>
+    <a href="article-asean-data-problem.html"><span>The ASEAN Data Problem: Why Southeast Asian Factories Can't Use AI</span><span class="arrow">→</span></a>
+    <a href="article-what-are-skills.html"><span>What Are Skills? How to Make AI Remember Your Best Practices</span><span class="arrow">→</span></a>
+    <a href="article-what-are-tokens.html"><span>What Are Tokens? How AI Reads Your Data and What It Costs</span><span class="arrow">→</span></a>
+    <a href="article-what-is-cli.html"><span>What Is a CLI? The Text Interface That Unlocks Advanced AI</span><span class="arrow">→</span></a>
+    <a href="article-what-is-mcp.html"><span>What Is MCP? How AI Connects to Your Outlook, Files, and Business Tools</span><span class="arrow">→</span></a>
+    <a href="article-playbook.html"><span>The AI Manufacturing Playbook — Free for SEA Manufacturers</span><span class="arrow">→</span></a>
+    <a href="skill-wip-status-report.html"><span>Skill: The Weekly WIP Status Report (free copy-paste skill)</span><span class="arrow">→</span></a>
+  </div>
+
+  <!-- INSIDER BAND -->
+  <section class="insider-band wobble-2">
+    <img src="assets/insider-shush.png" alt="The Insider shushing — plug and play workflows">
+    <div>
+      <h2>I don't just show you. I hand you the workflow. <span class="starburst">PLUG &amp;<br>PLAY</span></h2>
+      <p>The articles prove what is possible. The Plug &amp; Play workflows give you the exact prompts, the templates, and the step-by-step to run it in your own office. Pay once. Use forever.</p>
     </div>
   </section>
 
-  <!-- ROADMAP -->
-  <section class="block roadmap-block" id="roadmap">
-    <div class="container">
-      <div class="block-head reveal">
-        <span class="kicker">Roadmap · What we're building next</span>
-        <h2>AI workflows — in progress.</h2>
-        <p>The templates are the foundation. On top of them, we're building AI-powered versions that do the data entry and drafting for you. These are on-hold until we're confident they're worth your time.</p>
-      </div>
-      <div class="roadmap">
-        <div class="road-card next reveal">
-          <span class="road-phase">NEXT · IN DEVELOPMENT</span>
-          <h3>AI-Assisted WIP Reporting</h3>
-          <p>Upload your raw ERP export. Get a cleaned weekly WIP report with aging, status, and exception highlights. On-hold pilot with 3 SEA factories.</p>
-        </div>
-        <div class="road-card reveal">
-          <span class="road-phase">PLANNED</span>
-          <h3>AI NCR / 5-Why Generator</h3>
-          <p>Paste the defect note, get a draft 5-Why root-cause analysis with corrective action ready for QA review.</p>
-        </div>
-        <div class="road-card reveal">
-          <span class="road-phase">PLANNED</span>
-          <h3>AI SOP Writer</h3>
-          <p>Voice-note your process in Bahasa or English. Get back a formatted SOP with control points and verification steps.</p>
-        </div>
-      </div>
-    </div>
+  <!-- CTA — LOCKED TEMPLATE -->
+  <section class="cta" id="workflows">
+    <img src="assets/insider-thumbs-up.png" alt="The Insider thumbs up">
+    <p class="l1">You've seen what AI does in a real factory office.</p>
+    <p class="l2">I teach manufacturing pros to USE AI.</p>
+    <p class="l3">Real prompts. Real workflows. Real factory wins.</p>
+    <p class="l4">Get your first workflow — USD 9.99.</p>
+    <p class="soon">First workflow drops soon: the Quotation Workflow. Follow <a href="https://www.instagram.com/the.industrial.scribe/" style="color: var(--blue);">@the.industrial.scribe</a> to catch the launch.</p>
   </section>
+</div>
 
-  <!-- CAPTURE -->
-  <section class="capture" id="join">
-    <div class="capture-inner">
-      <span class="kicker" style="color:var(--accent-cyan)" id="captureKicker">Join the practitioner list</span>
-      <h2 id="captureHeadline">Get the templates. Skip the meetings.</h2>
-      <p id="captureSub">Drop your email. We send the free templates + playbooks, and a short note when the AI versions go live. Nothing else. No sales calls. No spam.</p>
-      <div id="capturePick" style="display:none;background:rgba(0,246,255,0.12);border:1px solid rgba(0,246,255,0.3);color:var(--accent-cyan);font-family:var(--mono);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;padding:10px 18px;border-radius:999px;margin:0 auto 24px;align-items:center;gap:10px;">
-        <span>Requesting:</span> <strong id="capturePickLabel" style="color:var(--paper-pure)"></strong>
-      </div>
-      <form class="capture-form" id="captureForm">
-        <input type="email" id="captureEmail" placeholder="your@email.com" required>
-        <button type="submit">Send it to me →</button>
-      </form>
-      <div id="captureDone" style="display:none;color:var(--accent-cyan);font-family:var(--mono);font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;margin-top:18px;">✓ Check your inbox — we'll send it shortly</div>
-      <div class="capture-note">Free · Unsubscribe anytime · Your data stays with us</div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="block" id="faq">
-    <div class="container">
-      <div class="block-head reveal">
-        <span class="kicker">FAQ</span>
-        <h2>Questions practitioners ask.</h2>
-      </div>
-      <div class="faq-list">
-        <div class="faq-item"><button class="faq-q">What is a "skill," exactly? <span class="plus">+</span></button><div class="faq-a"><div>A skill is a structured prompt — usually 300-800 words — that you paste into ChatGPT, Claude, Gemini, or any LLM as your first message. It encodes a specific manufacturing workflow: the role, the inputs, the output format, the domain rules, the edge cases. After you paste it, your LLM behaves like a 15-year shop-floor operator for that one task.</div></div></div>
-        <div class="faq-item"><button class="faq-q">Which AI tools do these skills work with? <span class="plus">+</span></button><div class="faq-a"><div>Any modern LLM with a chat interface. We test against ChatGPT (GPT-4o, GPT-5), Claude (Sonnet, Opus), and Gemini (1.5 Pro, 2.0). They also work in Mistral, Perplexity, and most paid AI tools you already use. You don't need an API key — just open your favourite chat and paste.</div></div></div>
-        <div class="faq-item"><button class="faq-q">Is it really free? What's the catch? <span class="plus">+</span></button><div class="faq-a"><div>Yes, fully free. Copy any skill, use it forever, share it with your team. We believe the way to build trust in a manufacturing community is to be useful first. The paid tier (later) will be the hosted version — where you upload a file and we run the skill for you, no copy-paste needed.</div></div></div>
-        <div class="faq-item"><button class="faq-q">Who is this for? <span class="plus">+</span></button><div class="faq-a"><div>Practitioners inside SEA manufacturing shops — production planners, QC execs, BD managers, operations supervisors. People who generate the weekly report, handle the NCR, draft the SOP. If you've already started using ChatGPT or Claude at work but find the answers too generic, these skills give your AI the manufacturing brain it's missing.</div></div></div>
-        <div class="faq-item"><button class="faq-q">Do I need to know how to code? <span class="plus">+</span></button><div class="faq-a"><div>No. If you can copy text and paste text, you can use a skill. There's no installation, no API key, no developer tools. The skill text is plain English (with a structured shape) — practitioners read them, edit them, share them around the WhatsApp group.</div></div></div>
-        <div class="faq-item"><button class="faq-q">Can I edit a skill for my own factory? <span class="plus">+</span></button><div class="faq-a"><div>Yes — encouraged. Once you copy a skill, it's yours. Tweak the rules, change the format, add your factory's specific terminology. We publish skills as starting points; the real value comes when you fork them for your shop. Send us your improvements if you want them shared.</div></div></div>
-        <div class="faq-item"><button class="faq-q">What's the "Hosted AI" version on the cards? <span class="plus">+</span></button><div class="faq-a"><div>For people who don't want to copy-paste — you upload your data, we run the skill on our side, you get the artifact back. It's in development with a small pilot group. The free skills give you the same logic right now; the hosted version just removes the manual step.</div></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <span class="bug-logo">TIS<span class="dot" style="background:var(--grad-a);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;">.</span></span>
-          <p><strong style="color:var(--paper-pure)">The Industrial Scribe</strong> — free guides and AI workflows for SEA manufacturing practitioners. Built in Malaysia — by operators, for operators.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Guides</h4>
-          <ul>
-            <li><a href="#guides">Free templates</a></li>
-            <li><a href="#how">How it works</a></li>
-            <li><a href="#roadmap">Roadmap</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#join">Join the list</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="mailto:theindustrialscribe@gmail.com">Email</a></li>
-            <li><a href="#">WhatsApp (soon)</a></li>
-            <li><a href="#">LinkedIn</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bar">
-        <span>© 2026 The Industrial Scribe · Malaysia</span>
-        <span>Built for operators · Not vendors</span>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Mobile drawer
-    var drawer = document.getElementById('drawer');
-    document.getElementById('burgerOpen').addEventListener('click', function () { drawer.classList.add('open'); });
-    document.getElementById('burgerClose').addEventListener('click', function () { drawer.classList.remove('open'); });
-    drawer.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { drawer.classList.remove('open'); }); });
-
-    // Sticky nav shrink
-    var navEl = document.querySelector('nav.main-nav');
-    window.addEventListener('scroll', function () {
-      if (window.scrollY > 40) navEl.classList.add('shrink');
-      else navEl.classList.remove('shrink');
-    }, { passive: true });
-
-    // FAQ accordion
-    document.querySelectorAll('.faq-q').forEach(function (q) {
-      q.addEventListener('click', function () { q.parentElement.classList.toggle('open'); });
-    });
-
-    // Guide cards → update capture form with which guide was requested
-    var capturePick      = document.getElementById('capturePick');
-    var capturePickLabel = document.getElementById('capturePickLabel');
-    var captureHeadline  = document.getElementById('captureHeadline');
-    var captureSub       = document.getElementById('captureSub');
-    var captureKicker    = document.getElementById('captureKicker');
-    document.querySelectorAll('[data-guide]').forEach(function (card) {
-      card.addEventListener('click', function () {
-        var name = card.getAttribute('data-guide');
-        capturePickLabel.textContent = name;
-        capturePick.style.display = 'inline-flex';
-        var isWaitlist = /waitlist/i.test(name);
-        captureKicker.textContent = isWaitlist ? 'Join the waitlist' : 'Your template is a click away';
-        captureHeadline.textContent = isWaitlist ? 'We\'ll email you the moment it ships.' : 'Tell us where to send it.';
-        captureSub.textContent = isWaitlist
-          ? 'The AI-powered version is still in pilot. Drop your email and we\'ll send you the beta invite when it\'s ready — no marketing blast in between.'
-          : 'Drop your email and we\'ll send the template + one-page playbook to your inbox. Nothing else. No sales calls. No spam.';
-        setTimeout(function () { document.getElementById('captureEmail').focus({ preventScroll: false }); }, 700);
-      });
-    });
-
-    // Capture form submit — also marks user as TIS member so articles unlock
-    document.getElementById('captureForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      var form = e.target;
-      var email = document.getElementById('captureEmail').value.trim().toLowerCase();
-      if (!email || email.indexOf('@') < 0) return;
-
-      // Save locally so user is treated as logged-in across the site
-      try {
-        localStorage.setItem('tis_member_email', email);
-        localStorage.setItem('tis_member_since', new Date().toISOString());
-      } catch (err) { /* private mode — ignore */ }
-
-      // Show success immediately (FormSubmit POST happens in background)
-      form.style.display = 'none';
-      document.getElementById('captureDone').style.display = 'block';
-
-      // POST to FormSubmit (free, no signup — verify once via email link)
-      var requested = (document.getElementById('capturePickLabel') && document.getElementById('capturePickLabel').textContent) || 'Homepage signup';
-      fetch('https://formsubmit.co/ajax/theindustrialscribe@gmail.com', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          email: email,
-          source: location.href,
-          requested: requested,
-          _subject: 'TIS — new signup: ' + email,
-          _template: 'table'
-        })
-      }).catch(function () { /* offline / blocker — silent */ });
-    });
-
-    // Scroll reveal
-    var revealTargets = document.querySelectorAll('.reveal, .guide-card, .step-card, .road-card');
-    revealTargets.forEach(function (el, i) {
-      el.classList.add('reveal');
-      el.style.transitionDelay = (i % 6) * 60 + 'ms';
-    });
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (!e.isIntersecting) return;
-          e.target.classList.add('in');
-          io.unobserve(e.target);
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-      revealTargets.forEach(function (el) { io.observe(el); });
-    } else {
-      revealTargets.forEach(function (el) { el.classList.add('in'); });
-    }
-  </script>
+<footer>
+  <div><span class="handle">@the.industrial.scribe</span> · theindustrialscribe.com</div>
+  <div class="quiet">Written from inside a real SEA manufacturing office.</div>
+</footer>
 
 </body>
 </html>

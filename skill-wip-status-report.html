@@ -6,8 +6,7 @@
   <title>Skill: Weekly WIP Status Report — The Industrial Scribe</title>
   <meta name="description" content="A copy-paste AI skill that teaches ChatGPT, Claude, or Gemini to produce a Monday-ready Weekly WIP Status Report from raw job data.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="paywall.css">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --ink-black: #0a0a0a;
@@ -24,9 +23,9 @@
       --grad-a:    linear-gradient(135deg, #00f6ff 0%, #18269e 100%);
       --grad-b:    linear-gradient(135deg, #371959 0%, #0ac186 100%);
       --code-bg:   #0c0c10;
-      --display:   'Playfair Display', Georgia, serif;
-      --sans:      'Inter', sans-serif;
-      --mono:      'Space Mono', monospace;
+      --display:   'Permanent Marker', Georgia, serif;
+      --sans:      'Plus Jakarta Sans', sans-serif;
+      --mono:      'Patrick Hand', monospace;
     }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -359,18 +358,22 @@
       transform: translateX(-50%) translateY(0);
     }
   </style>
+  <link rel="stylesheet" href="tis-theme.css">
 </head>
 <body>
 
-  <!-- For paywall.js to detect this is a gated page -->
   <div class="article-body" style="display:contents">
 
-  <nav class="main-nav">
-    <div class="nav-inner">
-      <a href="index.html" class="bug-logo">TIS<span class="dot">.</span></a>
-      <a href="index.html#guides" class="nav-back">← All skills</a>
+  <nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">THE INDUSTRIAL <span>SCRIBE</span></a>
+    <div class="nav-links">
+      <a href="index.html#articles">Articles</a>
+      <a href="article-playbook.html">Free Playbook</a>
+      <a href="index.html#workflows" class="nav-cta">Get the workflows</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <section class="skill-hero">
     <span class="skill-crumb">Production Planning</span>
@@ -520,14 +523,11 @@ Wait for the user to paste their data. Process it. Produce the report.</div>
   <!-- /article-body -->
 
   <footer>
-    <a href="index.html" class="bug-logo">TIS<span class="dot">.</span></a>
-    <p>The Industrial Scribe · Free skills for SEA manufacturing</p>
-    <p style="margin-top:8px"><a href="index.html">← Back to all skills</a></p>
-  </footer>
+  <div><span class="handle">@the.industrial.scribe</span> · theindustrialscribe.com</div>
+  <div class="quiet">Written from inside a real SEA manufacturing office.</div>
+</footer>
 
   <div class="toast" id="toast">✓ Skill copied to clipboard</div>
-
-  <script src="paywall.js"></script>
   <script>
     var copyBtn = document.getElementById('copyBtn');
     var copyBtnText = document.getElementById('copyBtnText');
