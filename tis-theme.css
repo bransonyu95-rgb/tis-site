@@ -201,6 +201,7 @@ footer .quiet { color: #888; font-size: 0.9rem; margin-top: 6px; }
 @media (max-width: 900px) {
   .nav-inner { flex-direction: column; gap: 8px; padding: 12px 0; }
   nav { position: static; }
+  .nav-links { white-space: normal; flex-wrap: wrap; justify-content: center; gap: 8px 16px; }
 }
 @media (max-width: 768px) {
   .article-headline { font-size: 1.7rem; }

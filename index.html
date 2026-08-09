@@ -165,7 +165,7 @@
   }
 
   .cta { text-align: center; padding: 70px 0 60px; }
-  .cta img { width: 300px; display: block; margin: 0 auto 10px; }
+  .cta img { width: 300px; max-width: 90%; display: block; margin: 0 auto 10px; }
   .cta .l1 { font-size: 25px; }
   .cta .l2 { font-family: 'Permanent Marker', cursive; font-size: 42px; color: var(--blue); margin: 10px 0; font-weight: 400; }
   .cta .l3 { font-size: 23px; }
@@ -188,7 +188,8 @@
     .cards, .articles { grid-template-columns: 1fr; }
     nav { flex-direction: column; gap: 12px; padding-bottom: 16px; }
     .logo { font-size: 22px; }
-    .nav-links { gap: 18px; font-size: 19px; }
+    .nav-links { gap: 10px 18px; font-size: 19px; white-space: normal; flex-wrap: wrap; justify-content: center; }
+    .logo { font-size: clamp(16px, 6vw, 22px); }
   }
 </style>
 </head>
@@ -257,16 +258,16 @@
       <p>LLMs, tokens, MCP — explained the way a colleague would at the mamak, not a textbook.</p>
     </div>
     <div class="card wobble-2">
-      <span class="pill" style="background: var(--mint);">TUTORIAL</span>
-      <img src="assets/insider-cnc-machine.png" alt="The Insider beside a CNC machine">
-      <h3>Real factory workflows</h3>
-      <p>Step-by-step builds from a working CNC manufacturing office — quotations, WIP reports, supplier emails.</p>
+      <span class="pill" style="background: var(--mint);">DIAGNOSE</span>
+      <img src="assets/insider-pointing-teach.png" alt="The Insider pointing — diagnose your business first">
+      <h3>Know your nature first</h3>
+      <p>High volume? High mix? OEM or tier-1? There is no standard method — the right way depends on what your business really is.</p>
     </div>
     <div class="card wobble">
-      <span class="pill" style="background: var(--yellow); color: var(--ink);">PAYOFF</span>
+      <span class="pill" style="background: var(--yellow); color: var(--ink);">CUSTOMIZE</span>
       <img src="assets/insider-calm-laptop-coffee.png" alt="The Insider calm with coffee">
-      <h3>Leave on time</h3>
-      <p>The end goal is not "AI skills". It is going home at 6 with the reports already done.</p>
+      <h3>Your workflow, not a template</h3>
+      <p>Build the AI workflow that fits YOUR office — then go home at 6 with the reports already done.</p>
     </div>
   </section>
 
@@ -334,8 +335,8 @@
   <section class="insider-band wobble-2">
     <img src="assets/insider-shush.png" alt="The Insider shushing — plug and play workflows">
     <div>
-      <h2>I don't just show you. I hand you the workflow. <span class="starburst">PLUG &amp;<br>PLAY</span></h2>
-      <p>The articles prove what is possible. The Plug &amp; Play workflows give you the exact prompts, the templates, and the step-by-step to run it in your own office. Pay once. Use forever.</p>
+      <h2>I don't sell templates. I teach you to build YOURS. <span class="starburst">PLUG &amp;<br>PLAY</span></h2>
+      <p>Every business is different — so every workflow here starts with a diagnosis of your business nature. Then my exact prompts and method help you build the version that fits YOUR office, not someone else's. Pay once. Use forever.</p>
     </div>
   </section>
 
