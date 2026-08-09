@@ -96,6 +96,24 @@
     font-family: 'Permanent Marker', cursive; font-size: 40px; font-weight: 400;
     text-align: center; margin: 70px 0 8px;
   }
+  .doodle { width: 64px; vertical-align: middle; margin: 0 12px; }
+  .doodle-tilt-l { transform: rotate(-8deg); }
+  .doodle-tilt-r { transform: rotate(8deg); }
+
+  .process { margin: 60px 0 0; text-align: center; }
+  .process-row { display: flex; align-items: flex-start; justify-content: center; gap: 4px; flex-wrap: wrap; margin-top: 10px; }
+  .pstep { width: 150px; }
+  .pstep img { width: 100%; display: block; }
+  .pstep .pname { font-family: 'Patrick Hand', cursive; font-size: 19px; margin-top: -14px; }
+  .parrow { font-family: 'Patrick Hand', cursive; font-size: 40px; color: var(--pink); align-self: center; transform: rotate(-4deg); padding: 0 2px; }
+  .process .pcaption { font-size: 21px; color: #444; margin-top: 18px; }
+  .process .pcaption b { color: var(--blue); }
+  @media (max-width: 820px) {
+    .pstep { width: 96px; }
+    .pstep .pname { font-size: 15px; margin-top: -8px; }
+    .parrow { font-size: 26px; }
+    .doodle { width: 44px; }
+  }
   .section-note { text-align: center; font-size: 21px; margin-bottom: 36px; color: #444; }
   .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
   .card {
@@ -211,8 +229,25 @@
     </div>
   </section>
 
+  <!-- PROCESS STRIP -->
+  <section class="process">
+    <h2 class="section-title" style="margin-top:0;">One part. Five steps. Paperwork everywhere.</h2>
+    <div class="process-row">
+      <div class="pstep"><img src="assets/cnc-drawing.png" alt="Engineering drawing"><div class="pname">Drawing</div></div>
+      <div class="parrow">→</div>
+      <div class="pstep"><img src="assets/cnc-material.png" alt="Raw material bars"><div class="pname">Material</div></div>
+      <div class="parrow">→</div>
+      <div class="pstep"><img src="assets/cnc-machine-solo.png" alt="CNC machine"><div class="pname">Machining</div></div>
+      <div class="parrow">→</div>
+      <div class="pstep"><img src="assets/cnc-caliper.png" alt="Caliper inspection"><div class="pname">Inspection</div></div>
+      <div class="parrow">→</div>
+      <div class="pstep"><img src="assets/cnc-parts-box.png" alt="Parts packed for shipping"><div class="pname">Shipped</div></div>
+    </div>
+    <p class="pcaption">Every arrow above comes with a quotation, a report, or a document. <b>That's where AI comes in.</b></p>
+  </section>
+
   <!-- LEARN CARDS -->
-  <h2 class="section-title">What you get here</h2>
+  <h2 class="section-title"><img src="assets/cnc-gear.png" alt="" class="doodle doodle-tilt-l">What you get here<img src="assets/cnc-tools.png" alt="" class="doodle doodle-tilt-r"></h2>
   <p class="section-note">Written for planners, QC execs, purchasers and BD managers — never for programmers.</p>
   <section class="cards">
     <div class="card wobble">
@@ -236,7 +271,7 @@
   </section>
 
   <!-- FEATURED ARTICLES -->
-  <h2 class="section-title" id="articles">Fresh from the office</h2>
+  <h2 class="section-title" id="articles"><img src="assets/cnc-chuck.png" alt="" class="doodle doodle-tilt-l">Fresh from the office<img src="assets/cnc-micrometer.png" alt="" class="doodle doodle-tilt-r"></h2>
   <p class="section-note">23 articles and counting — all free to read.</p>
   <section class="articles">
     <a class="article-card wobble" href="article-quotation-case-study.html">

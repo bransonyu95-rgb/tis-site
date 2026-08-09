@@ -162,6 +162,16 @@ nav {
   border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
 }
 
+/* ---------- CNC ELEMENT STRIP (article divider) ---------- */
+.cnc-strip {
+  display: flex; justify-content: center; align-items: center;
+  gap: 26px; margin: 3rem 0 0; flex-wrap: wrap;
+}
+.cnc-strip img { width: 84px; }
+.cnc-strip img:nth-child(odd) { transform: rotate(-6deg); }
+.cnc-strip img:nth-child(even) { transform: rotate(5deg); }
+@media (max-width: 768px) { .cnc-strip img { width: 60px; } .cnc-strip { gap: 14px; } }
+
 /* ---------- RELATED ---------- */
 .related-section { border-top: 3px solid var(--ink); }
 .related-section h3 {
