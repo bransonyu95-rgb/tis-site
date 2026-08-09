@@ -4,19 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meet Ah Hock — The Industrial Scribe</title>
-  <meta name="description" content="Ah Hock is not his real name. Every Malaysian factory office has an Ah Hock — the one who knows how things really work. 15+ years in manufacturing. Now teaching AI, the factory way.">
+  <meta name="description" content="Ah Hock is not his real name. 15+ years in Malaysian manufacturing offices. His parts climb the semiconductor and aerospace supply chains. Now he teaches AI, the factory way.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; color: #111827; line-height: 1.7; }
-    .article-wrap { max-width: 780px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
-    .article-body p { margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.75; }
-    .about-hero { text-align: center; margin-bottom: 1rem; }
-    .about-hero img { width: 300px; max-width: 80%; }
-    .two-face { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; margin: 2rem 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; color: #111827; line-height: 1.6; }
+    .article-wrap { max-width: 720px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
+    .article-body p { margin-bottom: 1rem; font-size: 1.05rem; }
+    .about-hero { text-align: center; }
+    .about-hero img { width: 250px; max-width: 70%; }
+    .big-line { font-family: 'Patrick Hand', cursive; font-size: 1.45rem; text-align: center; line-height: 1.4; margin: 1rem 0 1.6rem; }
+    .big-line b { color: #2563eb; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 1.6rem 0; text-align: center; }
+    .stat { border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; padding: 16px 10px; }
+    .stat .n { font-family: 'Permanent Marker', cursive; font-size: 1.7rem; color: #2563eb; line-height: 1.1; }
+    .stat .l { font-family: 'Patrick Hand', cursive; font-size: 1rem; color: #444; margin-top: 4px; }
+    .chain { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 1.4rem 0; }
+    .chain-box { border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; padding: 18px 18px 16px; }
+    .chain-box.semi { border-left: 10px solid #38BDF8; }
+    .chain-box.aero { border-left: 10px solid #EC4899; }
+    .chain-box h4 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 1.15rem; margin-bottom: 6px; }
+    .chain-box p { font-size: 1rem; margin: 0; }
+    .before-after { border: 3px solid #111; border-radius: 15px 225px 15px 255px/255px 15px 225px 15px; border-left: 10px solid #10B981; padding: 18px 20px; margin: 1.4rem 0; }
+    .before-after .row { display: flex; justify-content: space-between; gap: 10px; padding: 9px 0; border-bottom: 2px dashed #ccc; font-family: 'Patrick Hand', cursive; font-size: 1.15rem; align-items: center; }
+    .before-after .row:last-child { border-bottom: none; }
+    .before-after .old { color: #999; text-decoration: line-through; }
+    .before-after .new { color: #10B981; white-space: nowrap; font-family: 'Permanent Marker', cursive; }
+    .two-face { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; margin: 1.4rem 0; }
     .two-face img { width: 100%; }
-    @media (max-width: 640px) { .two-face { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .two-face, .chain { grid-template-columns: 1fr; } .stats { grid-template-columns: 1fr; } }
   </style>
   <link rel="stylesheet" href="tis-theme.css">
 </head>
@@ -37,7 +54,6 @@
 <div class="article-wrap">
   <div class="article-category">Who writes this</div>
   <h1 class="article-headline">Just call me Ah Hock.</h1>
-  <div class="article-meta">The Industrial Scribe · The Manufacturing Office Insider</div>
 
   <div class="about-hero">
     <img src="assets/insider-waving-hero.png" alt="Ah Hock waving hello">
@@ -45,48 +61,47 @@
 
   <div class="article-body">
 
-    <p>Not my real name. But if you've worked in a Malaysian factory, you already know me.</p>
+    <p class="big-line">Not my real name. But every Malaysian factory office has an Ah Hock — <b>the one who knows how things really work.</b><br>I've been that guy for 15+ years.</p>
 
-    <p>Every factory office has an Ah Hock. The one who knows which customer will call before they call. The one who can quote a part from a drawing while everyone else is still opening the file. The one the new guy gets sent to when nobody else can answer the question.</p>
-
-    <p>I've spent <strong>15+ years inside manufacturing offices in Malaysia</strong> — quotations, production meetings, customer complaints, supplier negotiations, audits, and the 9:47 PM WhatsApp from the boss that starts with "quick one…"</p>
-
-    <p>I'm still in the industry today. Full-time. That's exactly why there's no face and no company name on this site.</p>
-
-    <h2>The office I write from</h2>
-
-    <p>By day, I do business development for a precision CNC manufacturing operation in Malaysia — the kind of shop where a quotation involves real drawings, real tolerances, and a customer who will audit you before they trust you.</p>
-
-    <p>And the parts that cross my desk don't go into cheap toys. They climb the world's most demanding supply chains:</p>
-
-    <div class="data-point-box">
-      <h4>Semiconductor</h4>
-      <p style="margin-bottom:0;">The parts quoted in my office feed the supply chains of the equipment giants — the world of <strong>ASML, Lam Research, Applied Materials</strong> — the companies whose machines make every chip in your phone. Tolerances in microns. Full material traceability. RFQs that want an answer in 24 hours.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">15+ yrs</div><div class="l">in factory offices</div></div>
+      <div class="stat"><div class="n">Every day</div><div class="l">quotes · reports · audits</div></div>
+      <div class="stat"><div class="n">Still inside</div><div class="l">full-time, today</div></div>
     </div>
 
-    <div class="data-point-box">
-      <h4>Aerospace</h4>
-      <p style="margin-bottom:0;">Our customers supply <strong>Airbus and Boeing directly</strong>. When your part is one tier away from an aircraft, "roughly correct" is not a thing that exists. Every number on every document has to survive an auditor.</p>
+    <h2>Where my parts go</h2>
+
+    <div class="chain">
+      <div class="chain-box semi">
+        <h4>🔬 Semiconductor</h4>
+        <p>My office quotes parts that feed the supply chains of <strong>ASML, Lam Research, Applied Materials</strong> — the machines that make every chip in your phone.</p>
+      </div>
+      <div class="chain-box aero">
+        <h4>✈️ Aerospace</h4>
+        <p>Our customers supply <strong>Airbus and Boeing directly</strong>. One tier away from an aircraft, "roughly correct" does not exist.</p>
+      </div>
     </div>
 
-    <p>I'm telling you this for one reason: <strong>so you know where these workflows have to survive.</strong> Every prompt and every template on this site gets used in an environment where a wrong number costs real money and a late quote loses six-figure orders. If it works at this tier, it will work in your office.</p>
+    <p class="big-line">If a workflow survives there,<br><b>it will survive your office.</b></p>
 
-    <h2>Then AI showed up</h2>
+    <h2>What AI changed for me</h2>
 
-    <p>Two years ago I started using AI on my actual work. Not courses. Not theory. Real quotations, real RCA reports, real SOPs — the documents that eat your evenings.</p>
+    <div class="before-after">
+      <div class="row"><span>Complex quotation: <span class="old">1 full day</span></span><span class="new">under 1 hour</span></div>
+      <div class="row"><span>RCA report: <span class="old">sent back twice</span></span><span class="new">accepted first time</span></div>
+      <div class="row"><span>SOP: <span class="old">3 months on to-do list</span></span><span class="new">done in 30 min</span></div>
+    </div>
 
-    <p>The quotation that took most of a working day? Under an hour. The RCA report the customer used to send back? Accepted first submission. The SOP that sat on the to-do list for three months? Done in thirty minutes on a Tuesday.</p>
-
-    <p>Nobody in manufacturing taught me this. All the AI advice out there is written by tech people, for tech people. So I became the translator.</p>
+    <p>Nobody in manufacturing taught me this. The AI advice out there is written by tech people, for tech people. So I became the translator.</p>
 
     <div class="checklist-box">
       <h4>The Ah Hock rules</h4>
       <ul>
-        <li>I only publish what I've run on real factory work myself</li>
-        <li>Real numbers, real time savings — no invented statistics</li>
-        <li>No customer names, ever — confidentiality is non-negotiable</li>
-        <li>No jargon. If it doesn't make sense at the mamak, it gets rewritten</li>
-        <li>Written for planners, QC execs, purchasers and BD managers — never for programmers</li>
+        <li>Only publish what I've run on real work</li>
+        <li>Real numbers — nothing invented</li>
+        <li>No customer names, ever</li>
+        <li>No jargon — mamak-table English only</li>
+        <li>For office staff, never for programmers</li>
       </ul>
     </div>
 
@@ -97,12 +112,10 @@
       <img src="assets/insider-scribe-notebook.png" alt="Ah Hock writing in his notebook">
     </div>
 
-    <p>Because I still work in the industry, and because who I am doesn't matter — <strong>what works does</strong>. The little guy in the blue polo is me, and he's also you: the person buried in reports at 6 PM who suspects there's a better way.</p>
-
-    <p>There is. I write it down here, one workflow at a time.</p>
+    <p class="big-line">I still work in the industry. Who I am doesn't matter — <b>what works does.</b><br>The guy in the blue polo is me. He's also you.</p>
 
     <div class="inline-sub">
-      <p><strong>Start with the free stuff.</strong> Read the articles, grab the Free Playbook. When you're ready, the Plug &amp; Play workflows hand you my exact prompts and templates. Pay once, use forever.</p>
+      <p><strong>Start free.</strong> Read the articles. When you're ready, the workflows hand you my exact prompts and templates.</p>
       <a href="index.html#workflows">Get your first workflow — USD 9.99</a>
     </div>
 
