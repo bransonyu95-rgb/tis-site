@@ -82,6 +82,15 @@
   .hero-buttons { display: flex; gap: 18px; flex-wrap: wrap; }
   .doodle-arrow { font-size: 34px; color: var(--pink); display: inline-block; transform: rotate(20deg); }
 
+  .chain2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 10px 0 0; }
+  .chain-box2 { padding: 22px 24px 18px; background: #fff; }
+  .chain-box2.semi { border-left: 10px solid var(--sky); }
+  .chain-box2.aero { border-left: 10px solid var(--pink); }
+  .chain-box2 h4 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 23px; margin-bottom: 6px; }
+  .chain-box2 p { font-size: 20px; }
+  .chain-line { text-align: center; font-size: 24px; margin: 22px 0 10px; }
+  .chain-line strong { color: var(--blue); }
+
   .pain {
     display: grid; grid-template-columns: .8fr 1.2fr; gap: 36px; align-items: center;
     margin: 50px 0; padding: 34px;
@@ -182,7 +191,8 @@
   footer .quiet { color: #888; font-size: 17px; margin-top: 6px; }
 
   @media (max-width: 820px) {
-    .hero, .pain, .insider-band { grid-template-columns: 1fr; text-align: center; }
+    .hero, .pain, .insider-band, .chain2 { grid-template-columns: 1fr; text-align: center; }
+    .chain-box2.semi, .chain-box2.aero { border-left-width: 3px; }
     .hero p.sub { margin-left: auto; margin-right: auto; }
     .hero-buttons { justify-content: center; }
     .cards, .articles { grid-template-columns: 1fr; }
@@ -202,31 +212,43 @@
       <a href="#articles">Articles</a>
       <a href="article-playbook.html">Free Playbook</a>
       <a href="about.html">Meet Ah Hock</a>
-      <a href="#workflows" class="btn btn-pink wobble">Get the workflows</a>
+      <a href="#workflows" class="btn btn-pink wobble">Get the PDFs</a>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO — AH HOCK FIRST -->
   <section class="hero">
     <div>
       <span class="tag">THE MANUFACTURING OFFICE INSIDER</span>
-      <h1>AI for manufacturing pros.<br>
-        <span class="hl-yellow">No code.</span> <span class="hl-sky">No theory.</span></h1>
-      <p class="sub">Real workflows from a real SEA factory office — quotations, reports, SOPs and negotiations, done in minutes with AI. <span class="doodle-arrow">↴</span></p>
+      <h1>Just call me <span class="hl-yellow">Ah Hock.</span></h1>
+      <p class="sub">15+ years inside Malaysian manufacturing offices. My customers solve supply-chain problems for the biggest names in tech and aerospace — and <strong>I solve supply-chain problems for my customers.</strong> Now I teach the office side of manufacturing how to use AI. <span class="doodle-arrow">↴</span></p>
       <div class="hero-buttons">
-        <a href="#articles" class="btn btn-blue wobble">Read the articles</a>
-        <a href="#workflows" class="btn wobble-2">Plug &amp; Play — USD 9.99</a>
+        <a href="about.html" class="btn btn-blue wobble">My story</a>
+        <a href="#articles" class="btn wobble-2">Read the insights</a>
       </div>
     </div>
-    <img class="hero-img" src="assets/insider-waving-hero.png" alt="The Insider waving hello">
+    <img class="hero-img" src="assets/insider-waving-hero.png" alt="Ah Hock waving hello">
   </section>
+
+  <!-- SUPPLY CHAIN TIER -->
+  <section class="chain2">
+    <div class="chain-box2 semi wobble">
+      <h4>🔬 Semiconductor</h4>
+      <p>My customers provide supply-chain solutions to <strong>ASML, Lam Research, Applied Materials</strong> — the machines that make every chip in your phone. I keep <em>their</em> supply chain running.</p>
+    </div>
+    <div class="chain-box2 aero wobble-2">
+      <h4>✈️ Aerospace</h4>
+      <p>Our customers supply <strong>Airbus and Boeing directly</strong>. One tier from an aircraft, "roughly correct" does not exist.</p>
+    </div>
+  </section>
+  <p class="chain-line">If my insight survives at that tier, <strong>it will survive your office.</strong></p>
 
   <!-- PAIN STRIP -->
   <section class="pain wobble">
     <img src="assets/insider-buried-paperwork.png" alt="The Insider buried in paperwork">
     <div>
       <h2>Still fighting reports <em>the 2015 way?</em></h2>
-      <p>Quotations that take 3 days. RCA reports the customer sends back. SOPs nobody has time to write. Every factory office knows this pain — and every week, AI quietly removes another piece of it. I show you exactly how.</p>
+      <p>RCA reports the customer sends back. SOPs nobody has time to write. Production reports that eat your evening. Every factory office knows this pain — and every week, AI quietly removes another piece of it. I show you exactly how.</p>
     </div>
   </section>
 
@@ -248,7 +270,7 @@
   </section>
 
   <!-- LEARN CARDS -->
-  <h2 class="section-title"><img src="assets/cnc-gear.png" alt="" class="doodle doodle-tilt-l">What you get here<img src="assets/cnc-tools.png" alt="" class="doodle doodle-tilt-r"></h2>
+  <h2 class="section-title"><img src="assets/cnc-gear.png" alt="" class="doodle doodle-tilt-l">AI for manufacturing pros. No code. No theory.<img src="assets/cnc-tools.png" alt="" class="doodle doodle-tilt-r"></h2>
   <p class="section-note">Written for planners, QC execs, purchasers and BD managers — never for programmers.</p>
   <section class="cards">
     <div class="card wobble">
@@ -333,21 +355,21 @@
 
   <!-- INSIDER BAND -->
   <section class="insider-band wobble-2">
-    <img src="assets/insider-shush.png" alt="The Insider shushing — plug and play workflows">
+    <img src="assets/insider-shush.png" alt="Ah Hock shushing — insider PDFs">
     <div>
-      <h2>I don't sell templates. I teach you to build YOURS. <span class="starburst">PLUG &amp;<br>PLAY</span></h2>
-      <p>Every business is different — so every workflow here starts with a diagnosis of your business nature. Then my exact prompts and method help you build the version that fits YOUR office, not someone else's. Pay once. Use forever.</p>
+      <h2>The articles are free. The Insight PDFs go deeper. <span class="starburst">INSIDER<br>PDF</span></h2>
+      <p>My insight, my prompts, and the method to customize them to your business nature — high volume, high mix, OEM, tier-1. No standard templates, no theory. Pay once. Use forever.</p>
     </div>
   </section>
 
   <!-- CTA — LOCKED TEMPLATE -->
   <section class="cta" id="workflows">
     <img src="assets/insider-thumbs-up.png" alt="The Insider thumbs up">
-    <p class="l1">You've seen what AI does in a real factory office.</p>
+    <p class="l1">You've seen where my insight comes from.</p>
     <p class="l2">I teach manufacturing pros to USE AI.</p>
-    <p class="l3">Real prompts. Real workflows. Real factory wins.</p>
-    <p class="l4">Get your first workflow — USD 9.99.</p>
-    <p class="soon">First workflow drops soon: the Quotation Workflow. Follow <a href="https://www.instagram.com/the.industrial.scribe/" style="color: var(--blue);">@the.industrial.scribe</a> to catch the launch.</p>
+    <p class="l3">Real insight. Real prompts. Real factory wins.</p>
+    <p class="l4">Get the Insight PDFs — USD 9.99.</p>
+    <p class="soon">First Insight PDF drops soon. Follow <a href="https://www.instagram.com/the.industrial.scribe/" style="color: var(--blue);">@the.industrial.scribe</a> to catch the launch.</p>
   </section>
 </div>
 
