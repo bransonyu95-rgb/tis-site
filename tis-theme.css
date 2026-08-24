@@ -162,6 +162,47 @@ nav {
   border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
 }
 
+/* ---------- MINDSET BOX (the thinking behind the workflow) ---------- */
+.mindset-box {
+  border: 3px solid var(--ink) !important;
+  border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px !important;
+  border-left: 10px solid var(--sky) !important;
+  background: #fff !important;
+  padding: 1.3rem 1.5rem; margin: 2.5rem 0 0;
+}
+.mindset-box .mb-tag {
+  font-family: 'Patrick Hand', cursive; font-size: 0.95rem; letter-spacing: 0.12em;
+  color: var(--blue); text-transform: uppercase; display: block; margin-bottom: 4px;
+}
+.mindset-box h4 {
+  font-family: 'Permanent Marker', cursive; font-weight: 400;
+  font-size: 1.25rem; margin-bottom: 0.5rem;
+}
+.mindset-box p { font-size: 0.98rem; line-height: 1.7; margin-bottom: 0.6rem; }
+.mindset-box p:last-child { margin-bottom: 0; }
+
+/* ---------- VIZ COMPARE (before/after time bars) ---------- */
+.viz-compare {
+  border: 3px solid var(--ink);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  padding: 1.3rem 1.5rem 1.1rem; margin: 1.5rem 0;
+}
+.viz-compare .viz-title {
+  font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 1.25rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(transparent 60%, var(--yellow) 60%, var(--yellow) 95%, transparent 95%);
+  display: inline-block; padding: 0 4px;
+}
+.viz-row { margin-bottom: 14px; }
+.viz-row .viz-label { font-family: 'Patrick Hand', cursive; font-size: 1.05rem; margin-bottom: 3px; }
+.viz-track { display: flex; flex-direction: column; gap: 4px; }
+.viz-bar { height: 18px; border: 2px solid var(--ink); border-radius: 100px 8px 90px 8px / 8px 90px 8px 100px;
+  display: flex; align-items: center; padding: 0 8px; font-family: 'Patrick Hand', cursive; font-size: 0.85rem;
+  white-space: nowrap; box-sizing: content-box; min-width: fit-content; }
+.viz-bar.old { background: #e8e8e8; color: #777; }
+.viz-bar.new { background: var(--mint); color: #fff; }
+.viz-note { font-family: 'Patrick Hand', cursive; color: #555; font-size: 0.95rem; margin-top: 8px; }
+
 /* ---------- CNC ELEMENT STRIP (article divider) ---------- */
 .cnc-strip {
   display: flex; justify-content: center; align-items: center;
