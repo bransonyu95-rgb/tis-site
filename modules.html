@@ -300,6 +300,55 @@ function tisFlip(){
   document.getElementById('flipbtn').style.display = 'none';
 }
 </script>
+<script>
+/* behavioral triggers — hesitation detection */
+(function(){
+  var acted = false;
+  document.querySelectorAll('.cta-btn').forEach(function(b){
+    b.addEventListener('click', function(){ acted = true; });
+  });
+  function nudge(id, headTxt, bodyHtml) {
+    if (document.getElementById(id) || acted) return;
+    var t = document.createElement('div');
+    t.id = id;
+    t.style.cssText = 'position:fixed;right:18px;bottom:18px;z-index:998;max-width:320px;background:#fff;border:3px solid #111;border-left:10px solid #38BDF8;border-radius:255px 15px 225px 15px/15px 225px 15px 255px;padding:14px 16px;font-family:Patrick Hand,cursive;font-size:1.05rem;line-height:1.4;box-shadow:4px 6px 0 rgba(17,17,17,.12);display:flex;gap:10px;align-items:center;';
+    t.innerHTML = '<img src="assets/insider-lightbulb.png" style="width:60px;flex-shrink:0;" alt="">' +
+      '<div><div style="font-family:Permanent Marker,cursive;font-size:1rem;">' + headTxt + '</div>' + bodyHtml + '</div>' +
+      '<button onclick="this.parentNode.remove()" style="position:absolute;top:2px;right:10px;background:none;border:none;font-family:Patrick Hand,cursive;font-size:1.1rem;color:#999;cursor:pointer;">✕</button>';
+    document.body.appendChild(t);
+    setTimeout(function(){ if (t.parentNode) t.remove(); }, 15000);
+  }
+  /* 1. dwell trigger: 75s on sales page without clicking any CTA */
+  var dwellDone = false;
+  try { dwellDone = sessionStorage.getItem('tis-dwell') === '1'; } catch(e){}
+  if (!dwellDone) setTimeout(function(){
+    if (acted) return;
+    try { sessionStorage.setItem('tis-dwell','1'); } catch(e){}
+    nudge('tis-dwell-nudge', 'Still deciding?',
+      '<div>Fair. The first step costs nothing: <a href="free-sample.html" style="color:#2563eb;">try the free sample →</a></div>');
+  }, 75000);
+  /* 2. exit intent (desktop): mouse leaves toward tab bar */
+  var exitDone = false;
+  try { exitDone = sessionStorage.getItem('tis-exit') === '1'; } catch(e){}
+  document.addEventListener('mouseout', function(e){
+    if (exitDone || acted || e.clientY > 8 || e.relatedTarget) return;
+    exitDone = true;
+    try { sessionStorage.setItem('tis-exit','1'); } catch(e){}
+    nudge('tis-exit-nudge', 'Before you go —',
+      '<div>60 seconds: find out what business you actually run. <a href="#tis-quiz" style="color:#2563eb;" onclick="document.getElementById(\'tis-exit-nudge\').remove()">Take the quiz →</a></div>');
+  });
+  /* 3. return visitor: 2nd+ visit without buying */
+  try {
+    var v = parseInt(localStorage.getItem('tis-mod-visits') || '0', 10) + 1;
+    localStorage.setItem('tis-mod-visits', String(v));
+    if (v >= 2) setTimeout(function(){
+      if (acted) return;
+      nudge('tis-return-nudge', 'Welcome back.',
+        '<div>Second look means something. Start free: <a href="free-sample.html" style="color:#2563eb;">the sample →</a> — or just <a href="#buy" style="color:#2563eb;">get Module 01</a>. Two kopi.</div>');
+    }, 12000);
+  } catch(e){}
+})();
+</script>
 <script src="tis-dopamine.js" defer></script>
 </body>
 </html>
