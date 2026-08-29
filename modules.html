@@ -107,7 +107,7 @@
       <p class="rletter" id="rletter"></p>
       <p id="rdesc" style="font-family:'Patrick Hand',cursive; font-size:1.15rem;"></p>
       <p style="font-size:1rem; color:#555;">That's the free part. What your nature means for <strong>how you should price, what your reports must prove, where your negotiation leverage is, and where AI helps you first</strong> — that's Module 01. An interactive module you'll come back to, plus your personal context line for every AI prompt you ever write.</p>
-      <a class="cta-btn blue" href="#buy">Get Module 01 — USD 9.99</a>
+      <button class="cta-btn blue" onclick="tisXsell('m01')">Get Module 01 — USD 9.99</button>
       <button class="cta-btn" style="background:#fff; color:#111;" onclick="tisQuizReset()">↻ Retake</button>
     </div>
   </div>
@@ -136,6 +136,8 @@
     <li><strong>The pre-ship checklist</strong> — ending with the corridor test</li>
   </ul>
 
+  <p style="text-align:center;"><button class="cta-btn" onclick="tisXsell('m02')">Get the Flagship — USD 19.99</button></p>
+
   <h2>Start here — Module 01: Know Your Business Nature</h2>
   <p><span class="price">USD 9.99</span> · interactive web module + PDF copy · the diagnostic every other Module builds on</p>
   <ul class="curr">
@@ -147,10 +149,11 @@
     <li>The one-page cheat sheet for beside your monitor</li>
   </ul>
 
+  <p style="text-align:center;"><button class="cta-btn blue" onclick="tisXsell('m01')">Get Module 01 — USD 9.99</button></p>
+
   <h2 id="buy">Get them</h2>
   <div class="wob accent-pink" style="text-align:center;">
     <p style="margin-bottom:4px;"><span class="marker" style="font-size:1.4rem;">Module 01</span> — <span class="price">USD 9.99</span> &nbsp;·&nbsp; <span class="marker" style="font-size:1.4rem;">Module 02</span> — <span class="price">USD 19.99</span></p>
-    <p style="margin-bottom:6px;"><span class="marker" style="font-size:1.5rem;">🎁 Both — USD 24.99</span> <span style="color:#777;">(<s>29.98</s> — save 4.99)</span></p>
     <p class="soon">Checkout opening — follow <a href="https://www.instagram.com/the.industrial.scribe/" style="color:#2563eb;">@the.industrial.scribe</a> to catch the launch</p>
     <p style="font-size:1rem; margin:8px 0 0;">🛡️ <strong>14-day guarantee:</strong> doesn't work in your office? Reply to your receipt. Full refund, keep the file.</p>
   </div>
@@ -204,6 +207,42 @@
   <div class="quiet">Written from inside a real Malaysian manufacturing office.</div>
 </footer>
 
+<div id="xsell-overlay" style="display:none; position:fixed; inset:0; background:rgba(17,17,17,.5); z-index:1000; align-items:center; justify-content:center; padding:18px;">
+  <div style="max-width:430px; background:#fff; border:3px solid #111; border-radius:255px 15px 225px 15px/15px 225px 15px 255px; border-left:10px solid #EC4899; padding:1.5rem 1.6rem; position:relative;">
+    <button onclick="tisXclose()" style="position:absolute; top:8px; right:14px; background:none; border:none; font-family:'Patrick Hand',cursive; font-size:1.2rem; color:#999; cursor:pointer;">✕</button>
+    <img id="xsell-img" src="assets/insider-shush.png" alt="" style="width:90px; display:block; margin:0 auto 8px;">
+    <p id="xsell-head" class="marker" style="font-size:1.35rem; text-align:center; margin-bottom:8px;"></p>
+    <p id="xsell-body" style="font-family:'Patrick Hand',cursive; font-size:1.1rem; text-align:center; margin-bottom:14px;"></p>
+    <div style="text-align:center;">
+      <a class="cta-btn" id="xsell-both" href="#buy" onclick="tisXclose()" style="display:block; margin:6px auto;">🎁 Both — USD 24.99 <span style="font-size:.95rem;">(save 4.99)</span></a>
+      <a class="cta-btn blue" id="xsell-one" href="#buy" onclick="tisXclose()" style="display:block; margin:6px auto; background:#fff; color:#111;"></a>
+    </div>
+  </div>
+</div>
+
+<script>
+var XS = {
+  m01: { img: "assets/insider-scribe-notebook.png",
+         head: "One more thing before you go —",
+         body: "You're about to understand your business properly. But when you present what you find... how do those meetings usually go? The Flagship fixes that. Together, both Modules are USD 24.99.",
+         one: "Just Module 01 — USD 9.99" },
+  m02: { img: "assets/insider-pointing-teach.png",
+         head: "Quick question first —",
+         body: "You're about to fix your presentations. But do you know what YOUR business nature demands you prove in them? Module 01 is the diagnostic everything builds on. Take both for USD 24.99.",
+         one: "Just Module 02 — USD 19.99" }
+};
+function tisXsell(which) {
+  var d = XS[which];
+  document.getElementById('xsell-img').src = d.img;
+  document.getElementById('xsell-head').textContent = d.head;
+  document.getElementById('xsell-body').textContent = d.body;
+  document.getElementById('xsell-one').textContent = d.one;
+  var o = document.getElementById('xsell-overlay');
+  o.style.display = 'flex';
+}
+function tisXclose() { document.getElementById('xsell-overlay').style.display = 'none'; }
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') tisXclose(); });
+</script>
 <script>
 (function(){
   var QS = [
