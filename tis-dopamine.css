@@ -1,0 +1,63 @@
+/* TIS dopamine layer — progress, reveals, tactile feedback, completion reward */
+
+/* reading progress bar */
+#tis-progress {
+  position: fixed; top: 0; left: 0; height: 6px; width: 0%;
+  background: #EC4899; z-index: 999;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 0 rgba(0,0,0,.15);
+  transition: width .1s linear;
+}
+
+/* scroll reveal */
+.tis-reveal { opacity: 0; transform: translateY(16px) rotate(-.3deg); transition: opacity .5s ease, transform .5s ease; }
+.tis-reveal.tis-in { opacity: 1; transform: translateY(0) rotate(0); }
+
+/* tactile press on interactive elements */
+.btn:active, .nav-cta:active, .inline-sub a:active, .dl-btn:active, .article-card:active, .card:active {
+  transform: scale(.96) rotate(-1deg) !important;
+  transition: transform .08s ease !important;
+}
+
+/* viz bars grow-in */
+.viz-bar.tis-grow { transition: width .9s cubic-bezier(.25,.9,.3,1.15); }
+
+/* hero gentle bob (homepage) */
+@keyframes tis-bob { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-8px) rotate(1deg); } }
+.hero-img { animation: tis-bob 3.5s ease-in-out infinite; }
+
+/* completion toast */
+#tis-finish {
+  position: fixed; right: 18px; bottom: 18px; z-index: 998;
+  max-width: 320px; background: #fff;
+  border: 3px solid #111; border-left: 10px solid #10B981;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  padding: 14px 16px 14px 14px;
+  font-family: 'Patrick Hand', cursive; font-size: 1.05rem; line-height: 1.4;
+  box-shadow: 4px 6px 0 rgba(17,17,17,.12);
+  display: flex; gap: 10px; align-items: center;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .4s ease, transform .4s cubic-bezier(.34,1.56,.64,1);
+}
+#tis-finish.tis-show { opacity: 1; transform: translateY(0); }
+#tis-finish img { width: 64px; flex-shrink: 0; }
+#tis-finish .tf-head { font-family: 'Permanent Marker', cursive; font-size: 1rem; }
+#tis-finish .tf-count { color: #888; font-size: .9rem; }
+#tis-finish a { color: #2563eb; text-decoration: none; }
+#tis-finish a:hover { text-decoration: underline; }
+#tis-finish .tf-close {
+  position: absolute; top: 2px; right: 10px; cursor: pointer;
+  color: #999; font-size: 1.1rem; background: none; border: none;
+  font-family: 'Patrick Hand', cursive;
+}
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .tis-reveal { opacity: 1; transform: none; transition: none; }
+  .hero-img { animation: none; }
+  .viz-bar.tis-grow { transition: none; }
+  #tis-finish { transition: none; }
+}
+@media (max-width: 640px) {
+  #tis-finish { right: 10px; left: 10px; max-width: none; }
+}
