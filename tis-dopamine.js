@@ -90,11 +90,15 @@
           shown = true;
           var t = document.createElement('div');
           t.id = 'tis-finish';
+          var sell = Math.random() < 0.35;
+          var lastLine = sell
+            ? '<div>Go deeper: <a href="index.html#workflows">the Modules — from USD 9.99 →</a></div>'
+            : (pick ? '<div>Next: <a href="' + pick[0] + '">' + pick[1] + ' →</a></div>' : '');
           t.innerHTML =
             '<img src="assets/insider-thumbs-up.png" alt="">' +
             '<div><div class="tf-head">You finished. Most readers don\'t.</div>' +
             (count > 1 ? '<div class="tf-count">That\'s article #' + count + ' for you.</div>' : '') +
-            (pick ? '<div>Next: <a href="' + pick[0] + '">' + pick[1] + ' →</a></div>' : '') +
+            lastLine +
             '</div><button class="tf-close" aria-label="close">✕</button>';
           document.body.appendChild(t);
           requestAnimationFrame(function () { t.classList.add('tis-show'); });
