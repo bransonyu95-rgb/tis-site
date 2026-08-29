@@ -96,11 +96,11 @@
 
   <div class="article-body">
 
-    <p>Every BD manager in manufacturing lives in their inbox. Customer PO acknowledgements, delivery status requests, NCR escalations, price negotiation threads, supplier confirmations — the email volume is constant and the cost of a slow response is real. Missing a customer's delivery enquiry by four hours can mean a complaint. Missing a procurement team's price validity question can mean losing the order to the competitor who replied first.</p>
+    <p>Every BD manager in manufacturing lives in their inbox. Customer PO acknowledgements, delivery status requests, NCR escalations, price negotiation threads, supplier confirmations. The email volume is constant, and the cost of a slow response is real. Missing a customer's delivery enquiry by four hours can mean a complaint. Missing a procurement team's price validity question can mean losing the order to the competitor who replied first.</p>
 
-    <p>The standard workflow is to check email manually, draft responses from scratch, and switch between Outlook and whatever tool you're using to pull information. It works. It's also slow, and it breaks down at volume. This case study documents a different approach: connecting Claude directly to a company Microsoft Outlook account using MCP — the Model Context Protocol — so that the AI can read emails, search specific threads, and draft or send replies from the terminal, without ever opening a browser tab.</p>
+    <p>The standard workflow is to check email manually, draft responses from scratch, and switch between Outlook and whatever tool you're using to pull information. It works. It's also slow, and it breaks down at volume. This case study documents a different approach: connecting Claude directly to a company Microsoft Outlook account using MCP (the Model Context Protocol). The AI reads emails, searches specific threads, and drafts or sends replies from the terminal. No browser tab needed.</p>
 
-    <p>The setup took sixty minutes. The mistakes made along the way, and the specific fixes for each of them, are documented here so that anyone replicating this on a company Outlook account doesn't have to rediscover them.</p>
+    <p>The setup took sixty minutes. Here are the mistakes made along the way, and the fix for each one, so anyone replicating this on a company Outlook account doesn't have to rediscover them.</p>
 
     <div class="inline-sub">
       <p><strong>Want this working in your own office?</strong> There is no standard method — the TIS Modules first diagnose your business nature, then hand you my exact prompts to customize for YOUR office. Pay once, use forever.</p>
@@ -109,31 +109,31 @@
 
     <h2>What MCP Is and Why It Matters Here</h2>
 
-    <p>MCP stands for Model Context Protocol. It's the mechanism that lets an AI tool like Claude connect to external systems — email, calendars, files, databases — and interact with them in real time rather than just responding to text you paste into a chat window. Without MCP, you copy an email into Claude, get a reply drafted, and paste it back into Outlook. With MCP, Claude reads the email directly, drafts the response, and sends it — all from a single instruction.</p>
+    <p>MCP stands for Model Context Protocol. It's the mechanism that lets an AI tool like Claude connect to external systems (email, calendars, files, databases) and interact with them in real time, rather than just responding to text you paste into a chat window. Without MCP, you copy an email into Claude, get a reply drafted, and paste it back into Outlook. With MCP, Claude reads the email directly, drafts the response, and sends it, all from a single instruction.</p>
 
-    <p>For a BD manager handling thirty to fifty emails a day across multiple customer accounts, the difference is significant. The manual copy-paste workflow adds two to three minutes per email. At forty emails a day, that's over an hour of mechanical work that produces no thinking, no decision-making, and no relationship value. The MCP workflow compresses that to a fraction of the time and lets the BD manager focus on the emails that require judgement rather than the ones that just require a response.</p>
+    <p>For a BD manager handling thirty to fifty emails a day across multiple customer accounts, this adds up fast. The manual copy-paste workflow adds two to three minutes per email. At forty emails a day, that's over an hour of mechanical work that adds nothing to the relationship. The MCP workflow compresses that to a fraction of the time and lets the BD manager focus on the emails that need judgement, rather than the ones that just need a response.</p>
 
-    <p>The connection method used in this case study was the Microsoft Graph API — the official interface Microsoft provides for third-party applications to interact with Outlook, Teams, OneDrive, and other Microsoft 365 services. It requires an Azure app registration, which sounds more intimidating than it is. The actual registration process takes about fifteen minutes if you follow the steps below without guessing.</p>
+    <p>This case study uses the Microsoft Graph API, the official interface Microsoft provides for third-party apps to interact with Outlook, Teams, OneDrive, and other Microsoft 365 services. It needs an Azure app registration, which sounds scarier than it is. The actual registration takes about fifteen minutes if you follow the steps below without guessing.</p>
 
     <h2>Step 1 — Register an Azure Application</h2>
 
-    <p>Open the Azure portal at portal.azure.com and navigate to Azure Active Directory, then App Registrations, then New Registration. Name the application something recognisable — "Claude Outlook Connector" works. Set the account type to "Accounts in this organisational directory only" if you're working with a corporate Outlook account on a company tenant. If you're using a personal Microsoft account, choose the multi-tenant option instead.</p>
+    <p>Open the Azure portal at portal.azure.com and navigate to Azure Active Directory, then App Registrations, then New Registration. Name the application something recognisable: "Claude Outlook Connector" works. Set the account type to "Accounts in this organisational directory only" if you're working with a corporate Outlook account on a company tenant. If you're using a personal Microsoft account, choose the multi-tenant option instead.</p>
 
-    <p>For the redirect URI, enter <code>http://localhost</code>. This is used during the OAuth authentication flow and won't be a real web address — it's just where the authentication token gets redirected during the initial setup.</p>
+    <p>For the redirect URI, enter <code>http://localhost</code>. This is used during the OAuth authentication flow and isn't a real web address. It's just where the authentication token gets redirected during the initial setup.</p>
 
-    <p>Once the app is registered, note the Application (client) ID and the Directory (tenant) ID from the overview page. You'll need both in the configuration step. Then navigate to Certificates &amp; Secrets, create a new client secret, set the expiry to your preference, and copy the secret value immediately — it won't be shown again after you leave the page. This is the first gotcha most people hit: they navigate away before copying the secret, then have to regenerate it and start the configuration over.</p>
+    <p>Once the app is registered, note the Application (client) ID and the Directory (tenant) ID from the overview page. You'll need both in the configuration step. Then navigate to Certificates &amp; Secrets, create a new client secret, set the expiry to your preference, and copy the secret value immediately. It won't be shown again after you leave the page. This is the first gotcha most people hit: they navigate away before copying the secret, then have to regenerate it and start the configuration over.</p>
 
     <h2>Step 2 — Configure API Permissions</h2>
 
-    <p>Navigate to API Permissions in the app registration and add the following Microsoft Graph permissions: <code>Mail.Read</code>, <code>Mail.Send</code>, <code>Mail.ReadWrite</code>, and <code>User.Read</code>. Set these as Delegated permissions, not Application permissions — delegated means the access operates on behalf of a signed-in user, which is the correct model for this use case.</p>
+    <p>Navigate to API Permissions in the app registration and add the following Microsoft Graph permissions: <code>Mail.Read</code>, <code>Mail.Send</code>, <code>Mail.ReadWrite</code>, and <code>User.Read</code>. Set these as Delegated permissions, not Application permissions. Delegated means the access operates on behalf of a signed-in user, which is the correct model here.</p>
 
-    <p>If your company Outlook account is on a corporate tenant with admin-controlled permissions, you will need an administrator to grant consent for the application. This is the second gotcha. If the company's IT policy requires admin approval for new app registrations, the self-service setup path won't work without either getting IT to whitelist the app or registering it on a personal Microsoft account instead.</p>
+    <p>If your company Outlook account is on a corporate tenant with admin-controlled permissions, you'll need an administrator to grant consent for the application. This is the second gotcha. If the company's IT policy requires admin approval for new app registrations, the self-service setup path won't work without either getting IT to whitelist the app or registering it on a personal Microsoft account instead.</p>
 
-    <p>For most SEA manufacturing companies, the IT environment is either a managed Microsoft 365 tenant where admin consent is required, or a lighter setup where users have more latitude. If you're unsure which applies to your company, the permission configuration page will tell you — it will show a warning if admin consent is required and not yet granted.</p>
+    <p>For most SEA manufacturing companies, the IT environment is either a managed Microsoft 365 tenant where admin consent is required, or a lighter setup where users have more latitude. If you're unsure which applies to your company, check the permission configuration page. It shows a warning if admin consent is required and not yet granted.</p>
 
     <h2>Step 3 — Install and Configure the MCP Server</h2>
 
-    <p>The MCP server for Microsoft Graph is an open-source package. Install it via npm with <code>npm install -g @modelcontextprotocol/server-microsoft-graph</code>. Once installed, create a configuration file — typically called <code>mcp-config.json</code> — in your home directory or a project folder. The file structure looks like this:</p>
+    <p>The MCP server for Microsoft Graph is an open-source package. Install it via npm with <code>npm install -g @modelcontextprotocol/server-microsoft-graph</code>. Once installed, create a configuration file (typically called <code>mcp-config.json</code>) in your home directory or a project folder. The file structure looks like this:</p>
 
     <div class="prompt-label">MCP Configuration File</div>
     <div class="prompt-block">{
@@ -150,11 +150,11 @@
   }
 }</div>
 
-    <p>Replace the placeholder values with your actual client ID, client secret, and tenant ID from the Azure registration. Save the file, then point Claude's MCP configuration to this file path. The exact method depends on whether you're running Claude Desktop or the Claude CLI — in both cases, there is a settings interface where you specify the path to your MCP config.</p>
+    <p>Replace the placeholder values with your actual client ID, client secret, and tenant ID from the Azure registration. Save the file, then point Claude's MCP configuration to this file path. The exact method depends on whether you're running Claude Desktop or the Claude CLI. Either way, there's a settings interface where you specify the path to your MCP config.</p>
 
     <h2>Step 4 — Authenticate and Test</h2>
 
-    <p>The first time you run Claude with the Outlook MCP server active, it will prompt for authentication. Open the URL it provides in a browser, sign in with your Microsoft account, and grant the permissions the app requests. You'll be redirected to <code>localhost</code> — the page won't load, but the URL bar will contain an authorisation code. Copy that code and paste it back into the terminal when prompted.</p>
+    <p>The first time you run Claude with the Outlook MCP server active, it will prompt for authentication. Open the URL it provides in a browser, sign in with your Microsoft account, and grant the permissions the app requests. You'll be redirected to <code>localhost</code>. The page won't load, but the URL bar will contain an authorisation code. Copy that code and paste it back into the terminal when prompted.</p>
 
     <p>This is the third gotcha: the redirect URL needs to be copied exactly, including everything after the <code>code=</code> parameter. Some people copy only the short code and miss the trailing state parameter, which causes the authentication to fail silently. Copy the entire URL from <code>localhost</code> onwards.</p>
 
@@ -164,25 +164,25 @@
 
     <p>The practical applications for a manufacturing BD manager are immediate. Search a specific customer's email thread: <em>"Find all emails from procurement@customer.com in the last thirty days and summarise the open action items."</em> Draft a reply to a delivery enquiry: <em>"Read the latest email from [customer name] about the March shipment and draft a reply confirming dispatch with our standard OTD format."</em> Send a follow-up: <em>"Send a follow-up to the proposal email I sent on Tuesday, asking if they need any clarification on the unit price breakdown."</em></p>
 
-    <p>The key discipline is the same as with any AI tool: be specific about what you want. Vague instructions produce vague outputs. Specific instructions — with the customer name, the date range, the email subject, the desired tone — produce responses you can send with minimal editing.</p>
+    <p>The discipline is the same as with any AI tool: be specific about what you want. Vague instructions produce vague outputs. Specific instructions (the customer name, the date range, the email subject, the desired tone) produce responses you can send with minimal editing.</p>
 
     <p>One important boundary: review AI-drafted emails before sending, especially for anything with commercial implications. The AI will write a professional reply, but it doesn't know the relationship nuances that you carry from twelve months of account management. A reply that is technically correct but misses the tone of a sensitive negotiation thread can do more damage than a slow response. Use AI to draft; use your judgement to approve.</p>
 
     <h2>The Gotchas, Summarised</h2>
 
-    <p>For anyone replicating this setup, the four issues most likely to add time are: copying the client secret before navigating away from the secrets page; corporate IT admin consent requirements blocking self-registration; copying the full redirect URL during authentication rather than just the code value; and mismatched permission types — delegated versus application — which causes silent failures that are hard to diagnose without knowing what to look for.</p>
+    <p>For anyone replicating this setup, the four issues most likely to add time are: copying the client secret before navigating away from the secrets page; corporate IT admin consent requirements blocking self-registration; copying the full redirect URL during authentication rather than just the code value; and mismatched permission types, delegated versus application, which causes silent failures that are hard to diagnose without knowing what to look for.</p>
 
     <p>With those four addressed upfront, the setup runs cleanly. Sixty minutes is a realistic estimate for someone who hasn't done Azure app registrations before. For anyone who has, it's closer to twenty minutes. Either way, the productivity return starts on the same day.</p>
 
     <div class="checklist-box">
       <h4>Outlook MCP Setup Checklist</h4>
       <ul>
-        <li>Azure app registration complete — note client ID and tenant ID</li>
+        <li>Azure app registration complete: note client ID and tenant ID</li>
         <li>Client secret created and copied immediately before navigating away</li>
         <li>API permissions set: Mail.Read, Mail.Send, Mail.ReadWrite, User.Read (Delegated)</li>
         <li>Admin consent granted if required by company tenant</li>
         <li>MCP config file created with correct credentials</li>
-        <li>Authentication flow completed — full redirect URL copied during auth</li>
+        <li>Authentication flow completed: full redirect URL copied during auth</li>
         <li>Test query run successfully: email list returned from inbox</li>
       </ul>
     </div>

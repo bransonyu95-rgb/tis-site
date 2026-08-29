@@ -103,20 +103,20 @@
 
   <div class="article-body">
 
-    <p>You already know what happened. You were there. You pulled the parts, reviewed the CMM data, traced the batch back through ERP, and sat in the debrief. Now you have to write the RCA report — and it takes four hours you don't have.</p>
+    <p>You already know what happened. You were there. You pulled the parts, reviewed the CMM data, traced the batch back through ERP, and sat in the debrief. Now you have to write the RCA report, and it takes four hours you don't have.</p>
 
     <p>Worse, the customer sends it back. "Not detailed enough." "Root cause is unclear." "Where's the containment evidence?" You revise it twice. You lose a full day. And somewhere in there, you're supposed to be running the rest of your quality system.</p>
 
-    <p>The problem isn't your knowledge. It's the translation — turning investigation notes into a structured document that satisfies an automotive, semiconductor, or O&G customer's specific format. That translation gap is where the hours go. This guide closes that gap using AI. You bring the context. AI does the heavy lifting on structure, language, and formatting.</p>
+    <p>The problem isn't your knowledge. It's the translation: turning investigation notes into a structured document that satisfies an automotive, semiconductor, or O&G customer's specific format. That translation gap is where the hours go. This guide closes that gap using AI. You bring the context. AI does the heavy lifting on structure, language, and formatting.</p>
 
     <div class="inline-sub">
       <p><strong>Want this working in your own office?</strong> There is no standard method — the TIS Modules first diagnose your business nature, then hand you my exact prompts to customize for YOUR office. Pay once, use forever.</p>
       <a href="index.html#workflows">Get a Module — USD 9.99</a>
     </div>
 
-    <p>After working through this guide, you will be able to cut your average RCA report time from 3–4 hours to under 90 minutes, achieve higher first-submission acceptance rates, and build a repeatable system that works for the next NCR, and the one after that.</p>
+    <p>After working through this guide, you'll cut your average RCA report time from 3–4 hours to under 90 minutes. You'll get higher first-submission acceptance rates. And you'll have a repeatable system that works for the next NCR, and the one after that.</p>
 
-    <p>Before you start, have these ready: your raw investigation notes (bullet points, WhatsApp messages, photos, CMM printouts — whatever you captured during the investigation), the customer's required format (8D or DMAIC), access to an AI tool (ChatGPT GPT-4 or above, Claude, or Gemini), and the original NCR or complaint document with customer complaint number, date, part number, quantity, and stated defect.</p>
+    <p>Before you start, have these ready: your raw investigation notes (bullet points, WhatsApp messages, photos, CMM printouts, whatever you captured during the investigation), the customer's required format (8D or DMAIC), access to an AI tool (ChatGPT GPT-4 or above, Claude, or Gemini), and the original NCR or complaint document with customer complaint number, date, part number, quantity, and stated defect.</p>
 
     <h2>Step 1 — Capture Your Investigation Notes in the Right Format</h2>
 
@@ -157,7 +157,7 @@ CONTAINMENT ALREADY DONE:
     <p>Use when the defect has a clear, single failure chain. Good for process escapes, operator errors, or equipment failures with one root cause thread. Example: a surface finish rejection traced back to contaminated coolant → coolant not changed per schedule → no PM checklist in place → 5-Why is clean and complete. Avoid when multiple machines, multiple operators, or multiple contributing factors are involved.</p>
 
     <h3>8D Report (Eight Disciplines)</h3>
-    <p>Use when the customer explicitly requires it — common in automotive, semiconductor, and electronics. Also use when the problem recurred after a previous CAPA. The D4/D5 distinction is critical: root cause is not the same as corrective action. "Operator error" is never a root cause. "No defined work instruction for tool changeover" is.</p>
+    <p>Use when the customer explicitly requires it: common in automotive, semiconductor, and electronics. Also use when the problem recurred after a previous CAPA. The D4/D5 distinction matters: root cause is not the same as corrective action. "Operator error" is never a root cause. "No defined work instruction for tool changeover" is.</p>
 
     <table>
       <thead>
@@ -176,7 +176,7 @@ CONTAINMENT ALREADY DONE:
     </table>
 
     <h3>Fishbone (Ishikawa) Diagram</h3>
-    <p>Use when the root cause is genuinely unclear and you need to explore multiple categories. Good for first-occurrence defects on new processes or after a major changeover. Categories: Man, Machine, Method, Material, Measurement, Environment (the 6Ms). In practice: most QC executives use Fishbone in their internal investigation, then present 5-Why or 8D to the customer. The customer doesn't need to see your whole discovery process — just the confirmed root cause and what you're doing about it.</p>
+    <p>Use when the root cause is genuinely unclear and you need to explore multiple categories. Good for first-occurrence defects on new processes or after a major changeover. Categories: Man, Machine, Method, Material, Measurement, Environment (the 6Ms). In practice: most QC executives use Fishbone in their internal investigation, then present 5-Why or 8D to the customer. The customer doesn't need to see your whole discovery process, just the confirmed root cause and what you're doing about it.</p>
 
     <h2>Step 3 — Build the AI Prompt</h2>
 
@@ -210,7 +210,7 @@ Write the complete report. Include all sections. Use placeholder [DATE] and [NAM
     <p>AI will get most of it right. It will also get some things wrong. Here's what to watch for.</p>
 
     <h3>What AI Gets Right</h3>
-    <p>Report structure and section completeness. Formal, customer-facing language. Logical flow from problem to root cause to action. Completeness of 8D sections — it won't skip D7 or D8.</p>
+    <p>Report structure and section completeness. Formal, customer-facing language. Logical flow from problem to root cause to action. Completeness of 8D sections: it won't skip D7 or D8.</p>
 
     <h3>What AI Gets Wrong</h3>
     <p><strong>The root cause is too shallow.</strong> AI will often land on "operator did not follow procedure." That's a symptom. Push deeper: why wasn't the procedure followed? Was there no work instruction? Was training not conducted?</p>
@@ -227,7 +227,7 @@ Write the complete report. Include all sections. Use placeholder [DATE] and [NAM
       <h4>5-Minute Validation Checklist — Run This Before Sending</h4>
       <ul>
         <li>Root cause is systemic (process gap, not person failure)</li>
-        <li>Containment evidence is specific — quantity, date, method, result</li>
+        <li>Containment evidence is specific: quantity, date, method, result</li>
         <li>Corrective actions have owners and dates</li>
         <li>D7 / preventive action references PFMEA or SOP revision</li>
         <li>No placeholder text remaining ([DATE], [NAME], etc.)</li>
@@ -252,9 +252,9 @@ Write the complete report. Include all sections. Use placeholder [DATE] and [NAM
 
     <p><strong>Treating AI output as the final report.</strong> It isn't. It's a first draft. Validate every specific claim against your actual data.</p>
 
-    <p><strong>Writing the root cause as a person failure.</strong> "Operator failed to check" is not a root cause. The real root cause is the system that allowed that failure — missing work instruction, no second-check requirement, no poka-yoke.</p>
+    <p><strong>Writing the root cause as a person failure.</strong> "Operator failed to check" is not a root cause. The real root cause is the system that allowed that failure: missing work instruction, no second-check requirement, no poka-yoke.</p>
 
-    <p><strong>Skipping the PFMEA update.</strong> Customers who see a corrective action without a corresponding PFMEA update know you're not serious. If your PFMEA doesn't exist or is outdated — that itself is a finding.</p>
+    <p><strong>Skipping the PFMEA update.</strong> Customers who see a corrective action without a corresponding PFMEA update know you're not serious. If your PFMEA doesn't exist or is outdated, that itself is a finding.</p>
 
     <p><strong>Sending before validating placeholders.</strong> One placeholder in a submitted RCA looks careless. Check every line.</p>
 
