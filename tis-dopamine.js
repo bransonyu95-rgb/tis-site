@@ -92,7 +92,7 @@
           t.id = 'tis-finish';
           var sell = Math.random() < 0.35;
           var lastLine = sell
-            ? '<div>Go deeper: <a href="index.html#workflows">the Modules — from USD 9.99 →</a></div>'
+            ? '<div>Go deeper: <a href="modules.html">the Modules — from USD 9.99 →</a></div>'
             : (pick ? '<div>Next: <a href="' + pick[0] + '">' + pick[1] + ' →</a></div>' : '');
           t.innerHTML =
             '<img src="assets/insider-thumbs-up.png" alt="">' +

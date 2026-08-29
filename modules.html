@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The TIS Modules — Frameworks + AI for Manufacturing Pros</title>
+  <meta name="description" content="One skill per module: the framework, Ah Hock's exact AI prompts, and how to fit it to your business nature. Built from real daily work at the top of the supply chain.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; color: #111827; line-height: 1.7; }
+    .wrap { max-width: 780px; margin: 0 auto; padding: 2rem 5% 4rem; }
+    .marker { font-family: 'Permanent Marker', cursive; font-weight: 400; }
+    h1 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 2.4rem; line-height: 1.2; }
+    h2 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 1.6rem; margin: 3rem 0 .8rem;
+         background: linear-gradient(transparent 60%, #FBBF24 60%, #FBBF24 95%, transparent 95%); display: inline-block; padding: 0 4px; }
+    h3 { font-family: 'Patrick Hand', cursive; font-size: 1.3rem; margin: 1.4rem 0 .5rem; }
+    p { margin-bottom: 1.1rem; font-size: 1.05rem; }
+    .hero { text-align: center; padding: 2.5rem 0 1rem; }
+    .hero img { width: 240px; max-width: 65%; }
+    .sub { font-family: 'Patrick Hand', cursive; font-size: 1.35rem; color: #444; margin-top: 10px; }
+    .wob { border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; padding: 1.2rem 1.4rem; margin: 1.3rem 0; }
+    .wob2 { border: 3px solid #111; border-radius: 15px 225px 15px 255px/255px 15px 225px 15px; padding: 1.2rem 1.4rem; margin: 1.3rem 0; }
+    .accent-pink { border-left: 10px solid #EC4899; }
+    .accent-sky { border-left: 10px solid #38BDF8; }
+    .accent-mint { border-left: 10px solid #10B981; }
+    .accent-yellow { border-left: 10px solid #FBBF24; }
+    .price { font-family: 'Permanent Marker', cursive; font-size: 1.6rem; color: #EC4899; }
+    .cta-btn { display: inline-block; font-family: 'Patrick Hand', cursive; font-size: 1.25rem;
+      background: #EC4899; color: #fff; text-decoration: none; padding: 12px 30px; margin: 8px 6px;
+      border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+      transition: transform .15s ease; cursor: pointer; }
+    .cta-btn:hover { transform: rotate(-1.5deg) scale(1.04); }
+    .cta-btn.blue { background: #2563eb; }
+    .soon { font-family: 'Patrick Hand', cursive; color: #777; font-size: 1rem; }
+    ul.curr { margin: 0 0 1.2rem 1.3rem; }
+    ul.curr li { margin-bottom: .5rem; }
+    /* quiz */
+    .quiz { border: 3px dashed #2563eb; border-radius: 18px; padding: 1.4rem 1.5rem; margin: 1.4rem 0; }
+    .quiz .q { font-family: 'Patrick Hand', cursive; font-size: 1.2rem; margin-bottom: .8rem; }
+    .quiz .opts { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: .4rem; }
+    .quiz button.opt { font-family: 'Patrick Hand', cursive; font-size: 1.05rem; padding: 8px 16px;
+      border: 2.5px solid #111; background: #fff; cursor: pointer;
+      border-radius: 200px 12px 180px 12px/12px 180px 12px 200px; transition: all .12s ease; }
+    .quiz button.opt:hover { background: #FBBF24; transform: rotate(-1deg); }
+    .quiz .prog { font-family: 'Patrick Hand', cursive; color: #999; font-size: .95rem; margin-bottom: 10px; }
+    .quiz .result { display: none; }
+    .quiz .result .rletter { font-family: 'Permanent Marker', cursive; font-size: 2rem; color: #2563eb; }
+    /* before/after toggle */
+    .flip { text-align: center; }
+    .flip .slide-title { font-size: 1.25rem; padding: 18px 20px; border: 3px solid #111;
+      border-radius: 15px 225px 15px 255px/255px 15px 225px 15px; margin: 10px auto; max-width: 520px;
+      font-family: 'Plus Jakarta Sans', sans-serif; }
+    .flip .bad-title { color: #888; }
+    .flip .good-title { display: none; font-family: 'Patrick Hand', cursive; font-size: 1.35rem; border-left: 10px solid #10B981; }
+    .persona { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .persona .p { border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; padding: 14px 16px; }
+    .persona h4 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 1.05rem; margin-bottom: 6px; }
+    .persona p { font-size: .95rem; margin: 0; }
+    .shelf-item { display: flex; gap: 14px; align-items: baseline; padding: 10px 4px; border-bottom: 2px dashed #ccc; font-size: 1.05rem; }
+    .shelf-item .num { font-family: 'Permanent Marker', cursive; color: #2563eb; min-width: 34px; }
+    .shelf-item .tag2 { font-family: 'Patrick Hand', cursive; font-size: .9rem; color: #fff; background: #10B981;
+      padding: 1px 10px; border-radius: 100px; white-space: nowrap; }
+    .shelf-item .tag2.soon2 { background: #bbb; }
+    details { margin-bottom: .8rem; border-bottom: 2px dashed #ccc; padding-bottom: .8rem; }
+    summary { font-family: 'Patrick Hand', cursive; font-size: 1.15rem; cursor: pointer; }
+    details p { margin: .6rem 0 0; }
+    @media (max-width: 640px) { .persona { grid-template-columns: 1fr; } h1 { font-size: 1.9rem; } }
+  </style>
+  <link rel="stylesheet" href="tis-theme.css">
+  <link rel="stylesheet" href="tis-dopamine.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">THE INDUSTRIAL <span>SCRIBE</span></a>
+    <div class="nav-links">
+      <a href="index.html#articles">Articles</a>
+      <a href="article-playbook.html">Free Playbook</a>
+      <a href="about.html">Meet Ah Hock</a>
+      <a href="modules.html" class="nav-cta">Get the Modules</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="hero">
+    <img src="assets/insider-thumbs-up.png" alt="Ah Hock thumbs up">
+    <h1>One skill per Module.<br>Done properly.</h1>
+    <p class="sub">The framework, my exact AI prompts, and how to fit it to YOUR business.<br>Built from my real daily work at the top of the supply chain.</p>
+  </div>
+
+  <div class="wob accent-yellow">
+    <p style="margin:0;"><strong>The problem with every course you've seen:</strong> it teaches a standard method. There is no standard method. The right way to price, report, and present depends on what your business is. So every TIS Module starts with a diagnosis, then hands you the prompts to customize. No code. No theory. No 40-hour video course.</p>
+  </div>
+
+  <h2>Try it right now — free</h2>
+  <p>This is the opening move of Module 01. Six quick questions. Click your answers:</p>
+
+  <div class="quiz" id="tis-quiz">
+    <div class="prog" id="qprog">Question 1 of 6</div>
+    <div id="qbody"></div>
+    <div class="result" id="qresult">
+      <p class="rletter" id="rletter"></p>
+      <p id="rdesc" style="font-family:'Patrick Hand',cursive; font-size:1.15rem;"></p>
+      <p style="font-size:1rem; color:#555;">That's the free part. What your nature means for <strong>how you should price, what your reports must prove, where your negotiation leverage is, and where AI helps you first</strong> — that's Module 01. Seven pages. Ten minutes.</p>
+      <a class="cta-btn blue" href="#buy">Get Module 01 — USD 9.99</a>
+      <button class="cta-btn" style="background:#fff; color:#111;" onclick="tisQuizReset()">↻ Retake</button>
+    </div>
+  </div>
+
+  <h2 id="m02">The flagship — Module 02: Present Like the Insider</h2>
+  <p><span class="price">USD 19.99</span> · 7-page PDF · pay once, use forever</p>
+
+  <p>Nobody in a factory gets paid for making charts. You get paid for making decisions happen. This is the complete method for turning factory data into presentations that customers and bosses act on — the skill that made the BD guy.</p>
+
+  <div class="flip wob2 accent-mint">
+    <p style="font-family:'Patrick Hand',cursive; font-size:1.1rem; margin-bottom:4px;">A taste — the So-What Method on one slide title:</p>
+    <div class="slide-title bad-title" id="flipbad">"Delivery Performance Q3"</div>
+    <div class="slide-title good-title" id="flipgood">"On-time delivery recovered to 96% after the layout change"</div>
+    <button class="cta-btn blue" id="flipbtn" onclick="tisFlip()" style="font-size:1.05rem; padding:8px 20px;">Apply the So-What Method →</button>
+    <p class="soon" id="flipnote" style="display:none; margin-top:6px;">Same data. The title now does half the presenting. The full method is Part 1 of the Module.</p>
+  </div>
+
+  <h3>Inside the flagship:</h3>
+  <ul class="curr">
+    <li><strong>The So-What Method</strong> — three questions before any slide; the takeaway becomes the title</li>
+    <li><strong>The chart-choice map, factory edition</strong> — defects → sorted bars, causes → Pareto, one big number → no chart at all</li>
+    <li><strong>The 60-second declutter pass</strong> — one accent colour, kill the noise, round the numbers</li>
+    <li><strong>Four AI prompts</strong> — Data→Story, the Management Update (Situation → Change → So What → Ask), the Customer-Facing Deck, and the Chart Doctor</li>
+    <li><strong>A worked before/after</strong> — the ignored 14-column table vs. the Pareto that got approved in the meeting</li>
+    <li><strong>Present by business nature</strong> — what YOUR reports must prove (links to Module 01)</li>
+    <li><strong>The pre-ship checklist</strong> — ending with the corridor test</li>
+  </ul>
+
+  <h2>Start here — Module 01: Know Your Business Nature</h2>
+  <p><span class="price">USD 9.99</span> · 7-page PDF · the diagnostic every other Module builds on</p>
+  <ul class="curr">
+    <li>The full AI interview prompt (you tried the short version above)</li>
+    <li>The three natures + the captive overlay — how money is really made in each</li>
+    <li>What your nature means for pricing, reports, and negotiation leverage</li>
+    <li>The classic mistake of each nature, the 60-second "tells" table, and where your AI effort should go first</li>
+    <li>Your personal <strong>context line</strong> — paste it into every AI prompt you ever run; everything gets smarter</li>
+    <li>The one-page cheat sheet for beside your monitor</li>
+  </ul>
+
+  <h2 id="buy">Get them</h2>
+  <div class="wob accent-pink" style="text-align:center;">
+    <p style="margin-bottom:4px;"><span class="marker" style="font-size:1.4rem;">Module 01</span> — <span class="price">USD 9.99</span> &nbsp;·&nbsp; <span class="marker" style="font-size:1.4rem;">Module 02</span> — <span class="price">USD 19.99</span></p>
+    <p style="margin-bottom:6px;"><span class="marker" style="font-size:1.5rem;">🎁 Both — USD 24.99</span> <span style="color:#777;">(<s>29.98</s> — save 4.99)</span></p>
+    <p class="soon">Checkout opening — follow <a href="https://www.instagram.com/the.industrial.scribe/" style="color:#2563eb;">@the.industrial.scribe</a> to catch the launch</p>
+    <p style="font-size:1rem; margin:8px 0 0;">🛡️ <strong>14-day guarantee:</strong> doesn't work in your office? Reply to your receipt. Full refund, keep the file.</p>
+  </div>
+  <p style="text-align:center; color:#555; font-size:1rem;">The math: documentation eats 8–12 hours of your month. One Module costs less than one of those hours.</p>
+
+  <h2>Who these are for</h2>
+  <div class="persona">
+    <div class="p accent-sky">
+      <h4>Planners & production</h4>
+      <p>Reports that get read, plans that survive Monday, and the 12 numbers that matter.</p>
+    </div>
+    <div class="p accent-mint">
+      <h4>QC & compliance</h4>
+      <p>RCA framing that finds causes instead of culprits, and evidence that survives auditors.</p>
+    </div>
+    <div class="p accent-pink">
+      <h4>BD & purchasing</h4>
+      <p>Price by your nature, present to win approvals, negotiate with receipts.</p>
+    </div>
+  </div>
+
+  <h2>The shelf — built from my actual daily work</h2>
+  <p>Every Module comes from an AI system I run in a real manufacturing office. The shelf grows as my toolbox does:</p>
+  <div style="margin-bottom:1.4rem;">
+    <div class="shelf-item"><span class="num">01</span><span style="flex:1;">Know Your Business Nature</span><span class="tag2">READY</span></div>
+    <div class="shelf-item"><span class="num">02</span><span style="flex:1;">Present Like the Insider — the flagship</span><span class="tag2">READY</span></div>
+    <div class="shelf-item"><span class="num">03</span><span style="flex:1;">The Supplier Intelligence Machine — map any supplier landscape in a weekend</span><span class="tag2 soon2">IN THE WORKSHOP</span></div>
+    <div class="shelf-item"><span class="num">04</span><span style="flex:1;">The ERP Memory Method — teach AI your 20-year-old system in one afternoon</span><span class="tag2 soon2">IN THE WORKSHOP</span></div>
+    <div class="shelf-item"><span class="num">05</span><span style="flex:1;">The Live WIP Board — factory visibility without the RM 220k system</span><span class="tag2 soon2">IN THE WORKSHOP</span></div>
+    <div class="shelf-item"><span class="num">06</span><span style="flex:1;">The Crisis Playbook — the 90-minute war room, phone only</span><span class="tag2 soon2">IN THE WORKSHOP</span></div>
+  </div>
+  <p class="soon">Own Modules 01 + 02 and you'll recognise the pattern in every one that follows: diagnose, framework, prompts, customize.</p>
+
+  <h2>Questions people actually ask</h2>
+  <details><summary>Is this a video course?</summary><p>No. Each Module is a short PDF — 7 pages, ten minutes to read, a lifetime to use. The value is the framework and the exact prompts, not hours of talking head.</p></details>
+  <details><summary>What AI do I need?</summary><p>ChatGPT, Claude, or Gemini — free tier works. If you can use WhatsApp, you can use these prompts.</p></details>
+  <details><summary>What if it doesn't work for my office?</summary><p>Reply to your receipt within 14 days. Full refund, and you keep the file. No forms, no questions.</p></details>
+  <details><summary>Who is Ah Hock?</summary><p>Not his real name — he still works in the industry, full-time, at a tier where his customers supply the semiconductor and aerospace giants. Not an engineer. The BD guy who does technical work anyway, with frameworks and AI. <a href="about.html" style="color:#2563eb;">The full story.</a></p></details>
+  <details><summary>Why so cheap?</summary><p>Because the audience is factory office people in Southeast Asia, and two kopi is a price you can try without asking anyone's permission. The honest trade: pay once, tell a colleague if it works.</p></details>
+
+  <div class="wob2 accent-sky" style="text-align:center;">
+    <p style="margin-bottom:6px;"><strong>Not ready to buy?</strong> Take the free sample and read the articles. Everything free stays free.</p>
+    <a class="cta-btn blue" href="free-sample.html">Free sample →</a>
+    <a class="cta-btn" style="background:#fff; color:#111;" href="index.html#articles">The articles →</a>
+  </div>
+
+</div>
+
+<footer>
+  <div><span class="handle">@the.industrial.scribe</span> · theindustrialscribe.com</div>
+  <div class="quiet">Written from inside a real Malaysian manufacturing office.</div>
+</footer>
+
+<script>
+(function(){
+  var QS = [
+    ["What do you mostly make or supply?", [["Standard parts, big volumes","A"],["Custom jobs, always different","B"],["Precision parts for demanding sectors","C"]]],
+    ["How do orders arrive?", [["Annual agreements / standing orders","A"],["A new enquiry race every time","B"],["Rolling POs from qualified programs","C"]]],
+    ["Who's your typical customer?", [["Traders or many mid-size buyers","A"],["A mix — whoever has the job","B"],["OEMs or tier-1s who audited us","C"]]],
+    ["How many nearby shops can do your typical job?", [["Plenty","A"],["A few","B"],["Almost nobody","C"]]],
+    ["What does a new customer need before buying?", [["Just a PO","A"],["Sample approval","B"],["Full audit + certifications","C"]]],
+    ["How much of your revenue comes from your top 2 customers?", [["Under half","X"],["More than half","D"],["Almost all of it","D"]]]
+  ];
+  var DESC = {
+    A: ["Nature A — Commodity Volume", "The market sets your price. You win on efficiency, speed, and being the supplier nobody ever has to chase."],
+    B: ["Nature B — High-Mix Custom", "Speed sets your price. The first credible answer wins the job — your real product is certainty, fast."],
+    C: ["Nature C — Qualified Precision", "Your qualification is the moat. Customers pay premium for risk elimination — and switching away from you is expensive."]
+  };
+  var i = 0, score = {A:0,B:0,C:0}, captive = false;
+  var body = document.getElementById('qbody'), prog = document.getElementById('qprog');
+  function render() {
+    if (i >= QS.length) { return finish(); }
+    prog.textContent = "Question " + (i+1) + " of 6";
+    var q = QS[i];
+    var html = '<div class="q">' + q[0] + '</div><div class="opts">';
+    q[1].forEach(function(o, idx){ html += '<button class="opt" data-v="' + o[1] + '">' + o[0] + '</button>'; });
+    html += '</div>';
+    body.innerHTML = html;
+    body.querySelectorAll('.opt').forEach(function(b){
+      b.addEventListener('click', function(){
+        var v = b.getAttribute('data-v');
+        if (v === 'D') captive = true;
+        else if (v !== 'X') score[v]++;
+        i++; render();
+      });
+    });
+  }
+  function finish() {
+    var best = 'B';
+    if (score.A >= score.B && score.A >= score.C) best = 'A';
+    if (score.C >= score.A && score.C >= score.B) best = 'C';
+    if (score.B > score.A && score.B >= score.C) best = 'B';
+    body.innerHTML = ''; prog.style.display = 'none';
+    var r = document.getElementById('qresult');
+    document.getElementById('rletter').textContent = DESC[best][0] + (captive ? " + Captive overlay" : "");
+    document.getElementById('rdesc').textContent = DESC[best][1] + (captive ? " And with most revenue in 1–2 customers, you carry captive risk on top — stability plus squeeze." : "");
+    r.style.display = 'block';
+  }
+  window.tisQuizReset = function(){ i = 0; score = {A:0,B:0,C:0}; captive = false;
+    document.getElementById('qresult').style.display = 'none'; prog.style.display = 'block'; render(); };
+  render();
+})();
+function tisFlip(){
+  document.getElementById('flipbad').style.textDecoration = 'line-through';
+  document.getElementById('flipbad').style.opacity = '.45';
+  document.getElementById('flipgood').style.display = 'block';
+  document.getElementById('flipnote').style.display = 'block';
+  document.getElementById('flipbtn').style.display = 'none';
+}
+</script>
+<script src="tis-dopamine.js" defer></script>
+</body>
+</html>
