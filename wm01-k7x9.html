@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 01 — Know Your Business Nature — The Industrial Scribe</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; color: #111827; line-height: 1.7; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 2rem 5% 4rem; }
+    .marker { font-family: 'Permanent Marker', cursive; font-weight: 400; }
+    h1 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 2.1rem; line-height: 1.2; }
+    h2 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 1.45rem; margin: 2.6rem 0 .7rem;
+         background: linear-gradient(transparent 60%, #FBBF24 60%, #FBBF24 95%, transparent 95%); display: inline-block; padding: 0 4px; }
+    h3 { font-family: 'Patrick Hand', cursive; font-size: 1.25rem; margin: 1.3rem 0 .5rem; }
+    p { margin-bottom: 1rem; font-size: 1.03rem; }
+    ul, ol { margin: 0 0 1.1rem 1.35rem; } li { margin-bottom: .4rem; }
+    .wob { border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; padding: 1.2rem 1.4rem; margin: 1.2rem 0; }
+    .a-sky { border-left: 10px solid #38BDF8; } .a-pink { border-left: 10px solid #EC4899; }
+    .a-mint { border-left: 10px solid #10B981; } .a-yellow { border-left: 10px solid #FBBF24; }
+    .prompt { position: relative; background: #111; color: #a7f3d0; border: 3px dashed #555; border-radius: 14px;
+              padding: 1.1rem 1.3rem; margin: 1rem 0; font-family: ui-monospace, Menlo, monospace;
+              font-size: .82rem; white-space: pre-wrap; word-break: break-word; }
+    .copybtn { position: sticky; float: right; top: 8px; font-family: 'Patrick Hand', cursive; font-size: .95rem;
+               background: #2563eb; color: #fff; border: 2px solid #fff; border-radius: 10px;
+               padding: 4px 14px; cursor: pointer; }
+    .copybtn:active { transform: scale(.94); }
+    /* quiz */
+    .quiz { border: 3px dashed #2563eb; border-radius: 18px; padding: 1.3rem 1.4rem; margin: 1.2rem 0; }
+    .quiz .q { font-family: 'Patrick Hand', cursive; font-size: 1.2rem; margin-bottom: .7rem; }
+    .quiz .opts { display: flex; flex-wrap: wrap; gap: 10px; }
+    .quiz button.opt { font-family: 'Patrick Hand', cursive; font-size: 1.02rem; padding: 8px 16px;
+      border: 2.5px solid #111; background: #fff; cursor: pointer;
+      border-radius: 200px 12px 180px 12px/12px 180px 12px 200px; transition: all .12s ease; }
+    .quiz button.opt:hover { background: #FBBF24; transform: rotate(-1deg); }
+    .quiz .prog { font-family: 'Patrick Hand', cursive; color: #999; font-size: .95rem; margin-bottom: 8px; }
+    #profile { display: none; }
+    .profcard { border: 3px solid #111; border-radius: 15px 225px 15px 255px/255px 15px 225px 15px;
+                border-left: 10px solid #2563eb; padding: 1.3rem 1.5rem; margin: 1.2rem 0; }
+    .profcard h3 { font-family: 'Permanent Marker', cursive; font-size: 1.5rem; color: #2563eb; margin-top: 0; }
+    .profrow { display: flex; gap: 10px; padding: 8px 0; border-bottom: 2px dashed #ddd; font-size: 1rem; }
+    .profrow .k { font-family: 'Patrick Hand', cursive; min-width: 130px; color: #555; }
+    .ctx { background: #f0f7ff; border: 2.5px solid #2563eb; border-radius: 12px; padding: 12px 14px;
+           font-family: ui-monospace, Menlo, monospace; font-size: .85rem; margin: 10px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .9rem; border: 3px solid #111; }
+    th { background: #2563eb; color: #fff; font-family: 'Patrick Hand', cursive; padding: .45rem .6rem; text-align: left; }
+    td { padding: .45rem .6rem; border-bottom: 2px solid #ddd; vertical-align: top; }
+    details.nat { border: 3px solid #111; border-radius: 15px 225px 15px 255px/255px 15px 225px 15px;
+                  padding: .9rem 1.2rem; margin: .8rem 0; }
+    details.nat summary { font-family: 'Permanent Marker', cursive; font-size: 1.15rem; cursor: pointer; }
+    .dl-btn { display: inline-block; font-family: 'Patrick Hand', cursive; font-size: 1.15rem;
+      background: #2563eb; color: #fff; text-decoration: none; padding: 11px 26px; margin: 8px 6px;
+      border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; }
+    .hero { text-align: center; padding: 1.5rem 0 .5rem; }
+    .hero img { width: 190px; max-width: 55%; }
+    .toc { font-family: 'Patrick Hand', cursive; font-size: 1.05rem; }
+    .toc a { color: #2563eb; text-decoration: none; }
+  </style>
+  <link rel="stylesheet" href="tis-theme.css">
+  <link rel="stylesheet" href="tis-dopamine.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">THE INDUSTRIAL <span>SCRIBE</span></a>
+    <div class="nav-links">
+      <a href="index.html#articles">Articles</a>
+      <a href="modules.html" class="nav-cta">The Modules</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="hero">
+    <img src="assets/insider-pointing-teach.png" alt="Ah Hock pointing">
+    <p class="marker" style="color:#EC4899; letter-spacing:2px;">TIS MODULE 01 · YOUR COPY</p>
+    <h1>Know Your Business Nature</h1>
+    <p style="font-family:'Patrick Hand',cursive; font-size:1.15rem; color:#555;">Bookmark this page — it's yours, forever. Come back anytime.</p>
+  </div>
+
+  <div class="wob a-yellow toc">
+    <strong>In this module:</strong>
+    <a href="#idea">The idea</a> ·
+    <a href="#diag">🎯 The Diagnostic (interactive)</a> ·
+    <a href="#natures">The three natures + overlay</a> ·
+    <a href="#tells">The tells</a> ·
+    <a href="#ai">Where AI goes first</a> ·
+    <a href="#cheat">Cheat sheet</a> ·
+    <a href="#pdf">Offline PDF</a>
+  </div>
+
+  <h2 id="idea">The idea</h2>
+  <p><strong>There is no standard method in manufacturing.</strong> The right way to price a job, structure a report, or negotiate depends on the nature of your business. Most people skip this diagnosis and copy whatever template they found first. That is why templates fail.</p>
+  <p>Your business nature is not what you <em>make</em> — it is <strong>how the market lets you make money</strong>. Two shops with identical machines can be opposite businesses. Every bad commercial decision I have seen up close is a <strong>nature mismatch</strong>: acting like the business you wish you were, instead of the one you are.</p>
+
+  <h2 id="diag">🎯 The Diagnostic</h2>
+  <p>Answer honestly. Six questions, then your full profile — including the context line you'll paste into every AI prompt from now on.</p>
+
+  <div class="quiz" id="tis-quiz">
+    <div class="prog" id="qprog">Question 1 of 6</div>
+    <div id="qbody"></div>
+  </div>
+
+  <div id="profile">
+    <div class="profcard">
+      <h3 id="pTitle"></h3>
+      <p id="pSummary" style="font-family:'Patrick Hand',cursive; font-size:1.1rem;"></p>
+      <div class="profrow"><span class="k">Price how</span><span id="pPrice"></span></div>
+      <div class="profrow"><span class="k">Reports must prove</span><span id="pProve"></span></div>
+      <div class="profrow"><span class="k">Leverage</span><span id="pLev"></span></div>
+      <div class="profrow"><span class="k">AI effort first</span><span id="pAI"></span></div>
+      <div class="profrow"><span class="k">Warning signs</span><span id="pWarn"></span></div>
+      <div class="profrow"><span class="k">Classic mistake</span><span id="pMist"></span></div>
+      <div class="profrow" style="border-bottom:none;"><span class="k">Growth path</span><span id="pGrow"></span></div>
+      <div id="pCaptive" style="display:none; margin-top:10px; padding:10px 14px; border:2.5px dashed #EC4899; border-radius:12px; font-size:.98rem;">
+        <strong>⚠️ Captive overlay:</strong> with most revenue in 1–2 customers you carry captive risk on top of your nature. Serve them excellently, <em>measure</em> your value contribution in RM every quarter (negotiate with receipts), and treat building customer #3 as insurance you pay monthly.
+      </div>
+      <h3 style="margin-top:1.2rem;">Your context line — paste this at the top of every AI prompt:</h3>
+      <div class="ctx" id="pCtx"></div>
+      <button class="copybtn" style="position:static; float:none;" onclick="tisCopy(document.getElementById('pCtx').textContent, this)">📋 Copy my context line</button>
+      <button class="copybtn" style="position:static; float:none; background:#fff; color:#111; border-color:#111;" onclick="tisQuizReset()">↻ Retake</button>
+    </div>
+  </div>
+
+  <h3>Prefer the deep interview? Run it in your AI:</h3>
+  <p>The click-quiz above gives the fast answer. For the full experience — where the AI interviews you, challenges your answers, and writes a personalised profile — copy this into ChatGPT, Claude, or Gemini:</p>
+  <div class="prompt"><button class="copybtn" onclick="tisCopy(this.parentNode.textContent.replace('📋 Copy prompt',''), this)">📋 Copy prompt</button>You are a manufacturing strategist who has seen hundreds of Asian manufacturers. Before I use any template or workflow, interview me to identify the NATURE of my business — because the right way to work depends on it. Ask me these questions ONE AT A TIME, wait for my answer, then move on:
+
+1. What do you make or supply, and for which sectors? (semiconductor / aerospace / automotive / oil &amp; gas / medical / general industrial / consumer)
+2. What is your volume pattern? (one-off custom jobs / repeat batches / high-volume production runs)
+3. Who is your typical customer? (end OEM directly / a tier-1 supplier / a trader or middleman)
+4. How do orders arrive? (competitive enquiry each time / rolling POs / annual agreements)
+5. How many other companies in your region can realistically do your typical job? (many / a few / almost nobody)
+6. What does it take for a new customer to start buying from you? (just a PO / sample approval / full audit + certifications + first-article inspection)
+
+THEN tell me my BUSINESS NATURE PROFILE:
+
+First, which BASE NATURE I am (or a mix):
+A. COMMODITY VOLUME — many competitors, the market sets the price. Money is made on utilisation and efficiency. Customers buy the absence of problems.
+B. HIGH-MIX CUSTOM — custom work, enquiry-driven. Money is made on response speed and problem-solving. Customers buy a solved problem, fast.
+C. QUALIFIED PRECISION — hard-to-enter sectors. Money is made on the qualification moat and switching cost. Customers buy risk elimination.
+
+Second, whether the CAPTIVE OVERLAY (D) applies: if 1–2 customers make most of my revenue, I carry captive risk ON TOP of my base nature — stability plus squeeze.
+
+FINISH with:
+1. My base nature (+ captive overlay yes/no) and why, in 2–3 sentences
+2. What my nature means for: how I should price, what my reports must prove, and what my real negotiation leverage is
+3. My warning signs — the 2–3 signals that my nature is working against me right now
+4. The classic mistake businesses of my nature make
+5. Where my AI effort should go FIRST (volume paperwork / response speed / audit evidence / value-proof reporting)
+6. One sentence I should paste at the top of every future AI prompt so the AI always knows my context (my "context line")</div>
+
+  <h2 id="natures">The three natures + one overlay, in full</h2>
+
+  <details class="nat" style="border-left:10px solid #FBBF24;">
+    <summary>Nature A — Commodity Volume: the market sets your price</summary>
+    <ul style="margin-top:.7rem;">
+      <li><strong>How money is really made:</strong> utilisation. Machines running = money; machines waiting = losses. Margin comes from efficiency, never from price.</li>
+      <li><strong>What customers actually buy:</strong> the absence of problems. Nobody remembers a good delivery; everyone remembers a late one.</li>
+      <li><strong>Warning signs:</strong> you win only when you are cheapest; the annual cost-down eats your whole productivity gain.</li>
+      <li><strong>Classic mistake:</strong> buying volume with below-floor pricing that never recovers.</li>
+      <li><strong>Growth path:</strong> scale up — or climb toward B or C with the profits. Standing still means shrinking margins forever.</li>
+    </ul>
+  </details>
+  <details class="nat" style="border-left:10px solid #38BDF8;">
+    <summary>Nature B — High-Mix Custom: speed sets your price</summary>
+    <ul style="margin-top:.7rem;">
+      <li><strong>How money is really made:</strong> response time. The first credible answer to an enquiry wins much of the time, almost regardless of price. Your real product is certainty, delivered fast.</li>
+      <li><strong>What customers actually buy:</strong> a solved problem. They arrive with a drawing and a deadline.</li>
+      <li><strong>Warning signs:</strong> enquiries pile up unanswered; one senior estimator is the bottleneck; you lose jobs you never got to answer.</li>
+      <li><strong>Classic mistake:</strong> pricing custom work like commodity work — charging for hours instead of capability.</li>
+      <li><strong>Growth path:</strong> systematise the knowledge in your senior people's heads (this is where AI is almost unfair), then qualify into C-sectors.</li>
+    </ul>
+  </details>
+  <details class="nat" style="border-left:10px solid #10B981;">
+    <summary>Nature C — Qualified Precision: the moat sets your price</summary>
+    <ul style="margin-top:.7rem;">
+      <li><strong>How money is really made:</strong> the qualification, not the parts. Your customer spent 6–18 months auditing you; replacing you costs the same again. That switching cost IS your margin.</li>
+      <li><strong>What customers actually buy:</strong> risk elimination. They pay premium so nothing ever surprises them.</li>
+      <li><strong>Warning signs:</strong> you price against unqualified competitors (they cannot even bid); you treat audit prep as a burden instead of as the product.</li>
+      <li><strong>Classic mistake:</strong> giving away the premium your qualification earns.</li>
+      <li><strong>Growth path:</strong> more qualifications, deeper into the same customers' programs, longer agreements. Being impossible to remove beats being big.</li>
+    </ul>
+  </details>
+  <details class="nat" style="border-left:10px solid #EC4899;">
+    <summary>The Overlay — Captive / Tier-Dependent: the relationship sets your price</summary>
+    <div style="margin-top:.7rem;">
+      <p>Not a fourth box — a <strong>condition on top of A, B, or C</strong>. A captive commodity shop and a captive precision shop face completely different risks. Captivity changes your risk, not your craft.</p>
+      <ul>
+        <li><strong>How money is really made:</strong> embeddedness — their process assumes you exist.</li>
+        <li><strong>Warning signs:</strong> you cannot name your #3 customer; price cuts arrive as announcements, not negotiations.</li>
+        <li><strong>The rule:</strong> serve the big customer excellently, <em>measure</em> your value contribution in RM every quarter, and treat building customer #3 as insurance you pay for monthly.</li>
+      </ul>
+    </div>
+  </details>
+
+  <h2 id="tells">The tells — spot a nature in 60 seconds</h2>
+  <table>
+    <tr><th>Look at</th><th>A says</th><th>B says</th><th>C says</th></tr>
+    <tr><td><strong>The inbox</strong></td><td>POs and delivery chasers</td><td>Drawings and "can you do this?"</td><td>Audit schedules and ECN notices</td></tr>
+    <tr><td><strong>Customers argue about</strong></td><td>Price per piece</td><td>Lead time</td><td>Documentation</td></tr>
+    <tr><td><strong>Who wins deals</strong></td><td>Cheapest reliable</td><td>Fastest credible</td><td>Already-qualified</td></tr>
+  </table>
+
+  <h2 id="ai">Where your AI effort should go — by nature</h2>
+  <p>The master key. The same AI budget should be spent completely differently depending on your nature:</p>
+  <table>
+    <tr><th>Nature</th><th>Automate first</th><th>The win</th></tr>
+    <tr><td><strong>A — Commodity Volume</strong></td><td>Volume paperwork: delivery notes, order confirmations, weekly reports</td><td>Hours back, every week</td></tr>
+    <tr><td><strong>B — High-Mix Custom</strong></td><td>Response: enquiry triage, feasibility summaries, proposal assembly</td><td>Speed to first credible answer</td></tr>
+    <tr><td><strong>C — Qualified Precision</strong></td><td>Evidence: traceability reports, audit packs, CAPA documentation</td><td>Flawless control records</td></tr>
+    <tr><td><strong>+ Captive overlay</strong></td><td>Value proof: quarterly contribution reports, in RM</td><td>Negotiating power</td></tr>
+  </table>
+  <p>Same tools. Four playbooks. Every TIS Module after this one reads differently depending on your profile — which is exactly why this module comes first.</p>
+
+  <h2 id="cheat">The cheat sheet</h2>
+  <table>
+    <tr><th></th><th>A — Commodity</th><th>B — High-Mix</th><th>C — Qualified</th></tr>
+    <tr><td><strong>Price how</strong></td><td>Market sets it; protect the floor</td><td>Capability, not hours</td><td>Moat premium; never match the unqualified</td></tr>
+    <tr><td><strong>Prove what</strong></td><td>Consistency</td><td>Capability + speed</td><td>Control</td></tr>
+    <tr><td><strong>Leverage what</strong></td><td>Dependability</td><td>First credible answer</td><td>Switching cost</td></tr>
+    <tr><td><strong>AI first</strong></td><td>Volume paperwork</td><td>Enquiry response</td><td>Audit evidence</td></tr>
+    <tr><td><strong>Classic mistake</strong></td><td>Buying volume below floor</td><td>Charging hours</td><td>Giving away the premium</td></tr>
+  </table>
+
+  <h2 id="pdf">Your offline copy</h2>
+  <p>Same content, printable, for the plane or the meeting room with no WiFi:</p>
+  <a class="dl-btn" href="downloads/TIS-Module-01-Know-Your-Business-Nature.pdf">⬇ Download PDF copy</a>
+
+  <div class="wob a-mint" style="text-align:center;">
+    <p style="margin-bottom:6px;"><strong>Next on the shelf:</strong> Module 02 — Present Like the Insider. What your reports must prove is decided by your nature; <em>how to present it</em> is the flagship.</p>
+    <a class="dl-btn" style="background:#EC4899;" href="modules.html#m02">See Module 02 →</a>
+  </div>
+
+  <p style="text-align:center; font-family:'Patrick Hand',cursive; color:#888;">🛡️ 14-day guarantee · Bought once, yours forever · Please don't share this link publicly — two-kopi side project.</p>
+
+</div>
+
+<footer>
+  <div><span class="handle">@the.industrial.scribe</span> · theindustrialscribe.com</div>
+  <div class="quiet">Written from inside a real Malaysian manufacturing office.</div>
+</footer>
+
+<script>
+function tisCopy(text, btn) {
+  navigator.clipboard.writeText(text.trim()).then(function(){
+    var old = btn.textContent; btn.textContent = "✓ Copied!";
+    setTimeout(function(){ btn.textContent = old; }, 1600);
+  });
+}
+(function(){
+  var QS = [
+    ["What do you mostly make or supply?", [["Standard parts, big volumes","A"],["Custom jobs, always different","B"],["Precision parts for demanding sectors","C"]]],
+    ["How do orders arrive?", [["Annual agreements / standing orders","A"],["A new enquiry race every time","B"],["Rolling POs from qualified programs","C"]]],
+    ["Who's your typical customer?", [["Traders or many mid-size buyers","A"],["A mix — whoever has the job","B"],["OEMs or tier-1s who audited us","C"]]],
+    ["How many nearby shops can do your typical job?", [["Plenty","A"],["A few","B"],["Almost nobody","C"]]],
+    ["What does a new customer need before buying?", [["Just a PO","A"],["Sample approval","B"],["Full audit + certifications","C"]]],
+    ["How much of your revenue comes from your top 2 customers?", [["Under half","X"],["More than half","D"],["Almost all of it","D"]]]
+  ];
+  var P = {
+    A: { t:"Nature A — Commodity Volume", s:"The market sets your price. You win on efficiency, speed, and being the supplier nobody ever has to chase.",
+         price:"The market sets it — know your cost floor and never go below it, even for volume.",
+         prove:"Consistency: OTD trend, rejection rate, response time.",
+         lev:"Dependability, not uniqueness.",
+         ai:"Volume paperwork — delivery notes, confirmations, weekly reports. Win = hours back every week.",
+         warn:"You win only when cheapest; annual cost-downs eat your whole productivity gain.",
+         mist:"Buying volume with below-floor pricing that never recovers.",
+         grow:"Scale up, or climb toward B/C with the profits. Standing still = shrinking margins forever.",
+         ctx:"I run a commodity-volume manufacturing business: many competitors, market-set prices, money made on utilisation and reliability. Optimise my documents and plans for efficiency, consistency, and speed." },
+    B: { t:"Nature B — High-Mix Custom", s:"Speed sets your price. The first credible answer wins the job — your real product is certainty, fast.",
+         price:"Charge for capability and certainty, never for hours.",
+         prove:"Capability breadth: problem → solution → turnaround days.",
+         lev:"Speed and problem-solving — the first credible answer.",
+         ai:"Response speed — enquiry triage, feasibility summaries, proposal assembly. Win = first credible answer.",
+         warn:"Enquiries pile up unanswered; one senior person is the bottleneck for everything.",
+         mist:"Pricing custom work like commodity work — charging hours instead of capability.",
+         grow:"Systematise your seniors' knowledge with AI, then qualify into C-sectors.",
+         ctx:"I run a high-mix custom manufacturing business: enquiry-driven, every job different, speed of credible response wins. Optimise my documents for fast, confident, capability-selling answers." },
+    C: { t:"Nature C — Qualified Precision", s:"Your qualification is the moat. Customers pay premium for risk elimination — switching away from you is expensive.",
+         price:"Moat premium — recover qualification costs; never price against the unqualified.",
+         prove:"Control: traceability, audit-readiness, capability data.",
+         lev:"Switching cost — replacing you takes 6–18 months of audits.",
+         ai:"Audit evidence — traceability reports, audit packs, CAPA documentation. Win = flawless control records.",
+         warn:"You price against shops that can't even bid; audit prep treated as burden, not product.",
+         mist:"Giving away the premium your qualification earns.",
+         grow:"More qualifications, deeper into the same programs, longer agreements. Impossible-to-remove beats big.",
+         ctx:"I run a qualified-precision manufacturing business serving audited, demanding sectors: my moat is qualification and control. Optimise my documents for traceability, evidence, and audit-grade professionalism." }
+  };
+  var i = 0, score = {A:0,B:0,C:0}, captive = false;
+  var body = document.getElementById('qbody'), prog = document.getElementById('qprog');
+  function render() {
+    if (i >= QS.length) return finish();
+    prog.textContent = "Question " + (i+1) + " of 6";
+    var q = QS[i], html = '<div class="q">' + q[0] + '</div><div class="opts">';
+    q[1].forEach(function(o){ html += '<button class="opt" data-v="' + o[1] + '">' + o[0] + '</button>'; });
+    body.innerHTML = html + '</div>';
+    body.querySelectorAll('.opt').forEach(function(b){
+      b.addEventListener('click', function(){
+        var v = b.getAttribute('data-v');
+        if (v === 'D') captive = true; else if (v !== 'X') score[v]++;
+        i++; render();
+      });
+    });
+  }
+  function finish() {
+    var best = 'B';
+    if (score.A >= score.B && score.A >= score.C) best = 'A';
+    if (score.C >= score.A && score.C >= score.B) best = 'C';
+    if (score.B > score.A && score.B >= score.C) best = 'B';
+    var d = P[best];
+    body.innerHTML = ''; prog.style.display = 'none';
+    document.getElementById('pTitle').textContent = d.t + (captive ? " + Captive overlay" : "");
+    document.getElementById('pSummary').textContent = d.s;
+    document.getElementById('pPrice').textContent = d.price;
+    document.getElementById('pProve').textContent = d.prove;
+    document.getElementById('pLev').textContent = d.lev;
+    document.getElementById('pAI').textContent = captive ? d.ai + " Then: quarterly value-proof reports in RM." : d.ai;
+    document.getElementById('pWarn').textContent = d.warn;
+    document.getElementById('pMist').textContent = d.mist;
+    document.getElementById('pGrow').textContent = d.grow;
+    document.getElementById('pCaptive').style.display = captive ? 'block' : 'none';
+    document.getElementById('pCtx').textContent = d.ctx + (captive ? " Note: 1–2 customers dominate my revenue — help me document my value contribution." : "");
+    document.getElementById('profile').style.display = 'block';
+    try { localStorage.setItem('tis-m01-profile', best + (captive ? '+D' : '')); } catch(e){}
+    document.getElementById('profile').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  window.tisQuizReset = function(){ i=0; score={A:0,B:0,C:0}; captive=false;
+    document.getElementById('profile').style.display='none'; prog.style.display='block'; render();
+    document.getElementById('tis-quiz').scrollIntoView({behavior:'smooth'}); };
+  render();
+})();
+</script>
+<script src="tis-dopamine.js" defer></script>
+</body>
+</html>

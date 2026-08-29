@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 02 — Present Like the Insider — The Industrial Scribe</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; color: #111827; line-height: 1.7; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 2rem 5% 4rem; }
+    .marker { font-family: 'Permanent Marker', cursive; font-weight: 400; }
+    h1 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 2.1rem; line-height: 1.2; }
+    h2 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 1.45rem; margin: 2.6rem 0 .7rem;
+         background: linear-gradient(transparent 60%, #FBBF24 60%, #FBBF24 95%, transparent 95%); display: inline-block; padding: 0 4px; }
+    h3 { font-family: 'Patrick Hand', cursive; font-size: 1.25rem; margin: 1.3rem 0 .5rem; }
+    p { margin-bottom: 1rem; font-size: 1.03rem; }
+    ul, ol { margin: 0 0 1.1rem 1.35rem; } li { margin-bottom: .4rem; }
+    .wob { border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; padding: 1.2rem 1.4rem; margin: 1.2rem 0; }
+    .a-sky { border-left: 10px solid #38BDF8; } .a-pink { border-left: 10px solid #EC4899; }
+    .a-mint { border-left: 10px solid #10B981; } .a-yellow { border-left: 10px solid #FBBF24; }
+    .prompt { position: relative; background: #111; color: #a7f3d0; border: 3px dashed #555; border-radius: 14px;
+              padding: 1.1rem 1.3rem; margin: 1rem 0; font-family: ui-monospace, Menlo, monospace;
+              font-size: .82rem; white-space: pre-wrap; word-break: break-word; }
+    .copybtn { position: sticky; float: right; top: 8px; font-family: 'Patrick Hand', cursive; font-size: .95rem;
+               background: #2563eb; color: #fff; border: 2px solid #fff; border-radius: 10px;
+               padding: 4px 14px; cursor: pointer; }
+    .copybtn:active { transform: scale(.94); }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .9rem; border: 3px solid #111; }
+    th { background: #2563eb; color: #fff; font-family: 'Patrick Hand', cursive; padding: .45rem .6rem; text-align: left; }
+    td { padding: .45rem .6rem; border-bottom: 2px solid #ddd; vertical-align: top; }
+    .flipbox { text-align: center; }
+    .slide-title { font-size: 1.15rem; padding: 16px 18px; border: 3px solid #111;
+      border-radius: 15px 225px 15px 255px/255px 15px 225px 15px; margin: 10px auto; max-width: 540px; }
+    .bad-t { color: #888; }
+    .good-t { display: none; font-family: 'Patrick Hand', cursive; font-size: 1.25rem; border-left: 10px solid #10B981; }
+    .flipbtn2 { font-family: 'Patrick Hand', cursive; font-size: 1.05rem; background: #2563eb; color: #fff;
+      border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+      padding: 8px 20px; cursor: pointer; margin: 4px; }
+    /* checklist */
+    .check { border: 3px dashed #10B981; border-radius: 18px; padding: 1.2rem 1.4rem; margin: 1.2rem 0; }
+    .check .item { display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; border-bottom: 2px dashed #e5e5e5; cursor: pointer; }
+    .check .item:last-child { border-bottom: none; }
+    .check .cb { min-width: 26px; height: 26px; border: 2.5px solid #111; border-radius: 8px 3px 7px 3px;
+                 display: flex; align-items: center; justify-content: center; font-size: 1rem; margin-top: 2px; }
+    .check .item.done .cb { background: #10B981; color: #fff; border-color: #10B981; }
+    .check .item.done span.txt { text-decoration: line-through; color: #999; }
+    .check .cprog { font-family: 'Permanent Marker', cursive; font-size: 1.2rem; color: #10B981; margin-bottom: 8px; }
+    .before-after { border: 3px solid #111; border-radius: 15px 225px 15px 255px/255px 15px 225px 15px;
+                    border-left: 10px solid #10B981; padding: 1.1rem 1.3rem; margin: 1.1rem 0; }
+    .dl-btn { display: inline-block; font-family: 'Patrick Hand', cursive; font-size: 1.15rem;
+      background: #2563eb; color: #fff; text-decoration: none; padding: 11px 26px; margin: 8px 6px;
+      border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; }
+    .hero { text-align: center; padding: 1.5rem 0 .5rem; }
+    .hero img { width: 190px; max-width: 55%; }
+    .toc { font-family: 'Patrick Hand', cursive; font-size: 1.05rem; }
+    .toc a { color: #2563eb; text-decoration: none; }
+  </style>
+  <link rel="stylesheet" href="tis-theme.css">
+  <link rel="stylesheet" href="tis-dopamine.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">THE INDUSTRIAL <span>SCRIBE</span></a>
+    <div class="nav-links">
+      <a href="index.html#articles">Articles</a>
+      <a href="modules.html" class="nav-cta">The Modules</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="hero">
+    <img src="assets/insider-scribe-notebook.png" alt="Ah Hock with his notebook">
+    <p class="marker" style="color:#EC4899; letter-spacing:2px;">TIS MODULE 02 · FLAGSHIP · YOUR COPY</p>
+    <h1>Present Like the Insider</h1>
+    <p style="font-family:'Patrick Hand',cursive; font-size:1.15rem; color:#555;">Bookmark this page — it's yours, forever. Come back before every big meeting.</p>
+  </div>
+
+  <div class="wob a-yellow toc">
+    <strong>In this module:</strong>
+    <a href="#sowhat">The So-What Method</a> ·
+    <a href="#charts">Chart-choice map</a> ·
+    <a href="#declutter">The declutter pass</a> ·
+    <a href="#prompts">🤖 The four prompts</a> ·
+    <a href="#example">Worked example</a> ·
+    <a href="#nature">By business nature</a> ·
+    <a href="#checklist">✅ Pre-ship checklist</a> ·
+    <a href="#pdf">Offline PDF</a>
+  </div>
+
+  <div class="wob a-sky">
+    <p style="margin:0;"><strong>The core idea:</strong> nobody in a factory gets paid for making charts. You get paid for making decisions happen. The difference between a report that gets ignored and one that gets approved is almost never the data — it is whether you knew what the data was supposed to make the audience DO.</p>
+  </div>
+
+  <h2 id="sowhat">Part 1 — The So-What Method</h2>
+  <p>Before any chart, any slide, any AI prompt — answer three questions in one sentence each:</p>
+  <ol>
+    <li><strong>WHO is in the room, and what do they already believe?</strong> (Boss thinks delivery is fine · customer suspects quality is slipping · auditor wants proof of control)</li>
+    <li><strong>WHAT is the one thing the data proves?</strong> One thing. Three things = three slides.</li>
+    <li><strong>SO WHAT must happen next?</strong> The decision, the approval, the order — the action this presentation exists to trigger.</li>
+  </ol>
+  <p>Then the rule that changes everything: <strong>the answer to question 2 becomes your slide title.</strong> Try it:</p>
+
+  <div class="flipbox wob2" style="border:3px solid #111; border-radius:15px 225px 15px 255px/255px 15px 225px 15px; padding:1.2rem; margin:1.2rem 0;">
+    <div id="flips"></div>
+    <button class="flipbtn2" id="flipNext" onclick="tisNextFlip()">Apply the So-What Method →</button>
+  </div>
+
+  <h2 id="charts">Part 2 — The chart-choice map (factory edition)</h2>
+  <table>
+    <tr><th>Your message is about…</th><th>Use</th><th>Factory example</th></tr>
+    <tr><td>Comparing a few things</td><td>Bar chart (axis starts at zero)</td><td>Defects by machine · output by line</td></tr>
+    <tr><td>Change over time</td><td>Line chart</td><td>OTD trend · scrap rate by month</td></tr>
+    <tr><td>The vital few causes</td><td>Pareto (sorted bars + cumulative line)</td><td>NCR causes — the factory classic</td></tr>
+    <tr><td>Parts of a whole</td><td>Stacked bar (avoid pie beyond 3 slices)</td><td>Downtime split by reason</td></tr>
+    <tr><td>Before vs after</td><td>Paired bars: old grey, new colour</td><td>Cycle time before/after improvement</td></tr>
+    <tr><td>One big number</td><td>Just the number, huge</td><td>"RM 42,000 saved" needs no chart</td></tr>
+  </table>
+  <p><strong>The default nobody teaches:</strong> when in doubt, a sorted bar chart with a takeaway title beats everything fancy. Fancy impresses designers; sorted bars win approvals.</p>
+
+  <h2 id="declutter">Part 3 — The declutter pass (60 seconds per chart)</h2>
+  <ul>
+    <li>Delete: 3D effects, background shading, heavy gridlines, borders, the legend if you can label lines directly</li>
+    <li>One accent colour for the thing that matters; everything else grey. Your audience's eye goes where the colour is — use that on purpose</li>
+    <li>Round the numbers: 96%, not 96.37%. Precision the audience can't act on is noise</li>
+    <li>The squint test: blur your eyes. If the main point doesn't survive, the chart isn't done</li>
+  </ul>
+
+  <h2 id="prompts">Part 4 — The four AI prompts</h2>
+  <p>Click copy, paste into ChatGPT / Claude / Gemini, fill the brackets. If you own Module 01, paste your <strong>context line</strong> on top — every output gets sharper.</p>
+
+  <h3>Prompt 1 — Data → Story (run this first, every time)</h3>
+  <div class="prompt"><button class="copybtn" onclick="tisCopy(this.parentNode.textContent.replace('📋 Copy',''), this)">📋 Copy</button>You are a manufacturing presentation coach. I will paste raw data and tell you who the audience is and what I need them to decide. Your job is NOT to summarise the data — it is to find the one message that drives the decision.
+
+AUDIENCE: [e.g. my GM, monthly ops meeting / customer quality manager, complaint review]
+DECISION I NEED: [e.g. approve overtime budget / accept our corrective action and keep the business]
+DATA: [paste your table here]
+
+GIVE ME:
+1. The ONE key message, written as a slide title that states the takeaway (max 12 words)
+2. The best chart for that message and why (bar / line / Pareto / stacked / big number)
+3. What to leave OUT of this presentation and why
+4. The one number the audience will challenge — and the backup answer I should prepare
+5. A 3-sentence speaker note: what I say when this slide is on screen
+
+RULES: No jargon. If the data does not actually support a clear message, say so — do not invent one.</div>
+
+  <h3>Prompt 2 — The Management Update (Situation → Change → So What → Ask)</h3>
+  <div class="prompt"><button class="copybtn" onclick="tisCopy(this.parentNode.textContent.replace('📋 Copy',''), this)">📋 Copy</button>Build me a management update presentation from my notes. Audience: [boss / management meeting]. Use exactly this structure, one slide each:
+
+1. SITUATION — where we stand, one takeaway title + max 3 numbers
+2. WHAT CHANGED — what moved since last update, good and bad, no hiding
+3. SO WHAT — what it means for cost, delivery, or customers, in money or days where possible
+4. THE ASK — the decision or support I need, stated as one sentence with a deadline
+
+MY NOTES: [brain-dump here — messy is fine]
+
+For each slide give me: the takeaway title, the content (bullets or a chart suggestion from my data), and a 2-sentence speaker note. Keep every slide answerable in 60 seconds — this is a factory meeting, not a conference.</div>
+
+  <h3>Prompt 3 — The Customer-Facing Deck</h3>
+  <div class="prompt"><button class="copybtn" onclick="tisCopy(this.parentNode.textContent.replace('📋 Copy',''), this)">📋 Copy</button>Build a customer-facing presentation. Formal, confident, professional Asian B2B English — no flowery language, no apologising beyond one sincere line if this is a complaint response.
+
+TYPE: [business review / corrective action presentation / capability introduction]
+CUSTOMER CONTEXT: [who they are, what they care about, what happened]
+MY MATERIAL: [paste data, findings, actions taken]
+
+STRUCTURE it as: (1) purpose in one line, (2) the facts with takeaway titles, (3) actions and evidence, (4) commitment and next steps with dates.
+RULES: Every claim needs a number or a date. Never blame individuals — processes fail, people don't. Never promise what I did not tell you we can do. End with what we need FROM the customer, if anything.</div>
+
+  <h3>Prompt 4 — The Chart Doctor (before anything ships)</h3>
+  <div class="prompt"><button class="copybtn" onclick="tisCopy(this.parentNode.textContent.replace('📋 Copy',''), this)">📋 Copy</button>You are a ruthless chart reviewer. I will describe or screenshot a chart I made. Critique it in this order:
+1. TITLE — does it state the takeaway, or just name the topic?
+2. MESSAGE — can you tell in 5 seconds what I want the audience to conclude? If not, why?
+3. CHART TYPE — is there a simpler chart that says it better?
+4. CLUTTER — list everything I should delete
+5. THE FIX — describe the corrected chart in one paragraph
+
+Be direct. If the chart should be a sentence instead ("just say the number"), tell me.
+MY CHART: [describe or paste]</div>
+
+  <h2 id="example">Part 5 — Worked example (before / after)</h2>
+  <div class="before-after">
+    <p><strong>Before:</strong> "Monthly Quality Report" — a 14-column defect table, reasons listed alphabetically, three pie charts, title "Quality Data September". Boss reaction: "okay, noted." Nothing happens.</p>
+    <p style="margin-bottom:0;"><strong>After the method:</strong> One Pareto chart, sorted. Title: <span style="color:#10B981; font-weight:700;">"Two causes make 71% of our defects — both on Machine 7."</span> One ask: "Approve 4 hours downtime for Machine 7 alignment this Saturday." Approved in the meeting. <em>(Illustrative example — anonymised.)</em></p>
+  </div>
+
+  <h2 id="nature">Part 6 — Present by your business nature</h2>
+  <table>
+    <tr><th>Nature</th><th>Your presentations must prove</th><th>Lead with</th></tr>
+    <tr><td>A — Commodity Volume</td><td>Consistency and reliability</td><td>Trend lines: OTD, rejection rate, response time</td></tr>
+    <tr><td>B — High-Mix Custom</td><td>Capability and speed</td><td>Case examples: problem → solution → turnaround days</td></tr>
+    <tr><td>C — Qualified Precision</td><td>Control and traceability</td><td>Process data, audit trails, capability indices</td></tr>
+    <tr><td>+ Captive overlay</td><td>Your value contribution</td><td>Cost-saved and problems-solved, in RM, per quarter</td></tr>
+  </table>
+  <p>Don't know your nature? That's <a href="modules.html" style="color:#2563eb;">Module 01</a>.</p>
+
+  <h2 id="checklist">Part 7 — The pre-ship checklist</h2>
+  <p>Run it before every deck. Your ticks save in this browser — it resets when you close the deal, not the tab.</p>
+  <div class="check" id="preship">
+    <div class="cprog" id="cprog">0 / 10 checked</div>
+  </div>
+  <p style="text-align:center;"><button class="flipbtn2" style="background:#fff; color:#111;" onclick="tisCheckReset()">↻ Reset for next deck</button></p>
+
+  <h2 id="pdf">Your offline copy</h2>
+  <a class="dl-btn" href="downloads/TIS-Module-02-Present-Like-The-Insider.pdf">⬇ Download PDF copy</a>
+
+  <div class="wob a-mint" style="text-align:center;">
+    <p style="margin-bottom:6px;"><strong>Sharper with Module 01:</strong> your business nature decides what your presentations must prove. Diagnose first, present second.</p>
+    <a class="dl-btn" style="background:#EC4899;" href="modules.html">See Module 01 →</a>
+  </div>
+
+  <p style="text-align:center; font-family:'Patrick Hand',cursive; color:#888;">🛡️ 14-day guarantee · Bought once, yours forever · Please don't share this link publicly — two-kopi side project.</p>
+
+</div>
+
+<footer>
+  <div><span class="handle">@the.industrial.scribe</span> · theindustrialscribe.com</div>
+  <div class="quiet">Written from inside a real Malaysian manufacturing office.</div>
+</footer>
+
+<script>
+function tisCopy(text, btn) {
+  navigator.clipboard.writeText(text.trim()).then(function(){
+    var old = btn.textContent; btn.textContent = "✓ Copied!";
+    setTimeout(function(){ btn.textContent = old; }, 1600);
+  });
+}
+/* So-What flips — 3 examples */
+(function(){
+  var EX = [
+    ['"Delivery Performance Q3"', '"On-time delivery recovered to 96% after the layout change"'],
+    ['"Defect Analysis September"', '"Two causes make 71% of our defects — both on Machine 7"'],
+    ['"Capacity Update"', '"We can take the new order — if the second shift starts Monday"']
+  ];
+  var idx = 0, container = document.getElementById('flips');
+  window.tisNextFlip = function(){
+    var e = EX[idx % EX.length]; idx++;
+    container.innerHTML =
+      '<div class="slide-title bad-t" style="text-decoration:line-through; opacity:.45;">' + e[0] + '</div>' +
+      '<div class="slide-title good-t" style="display:block;">' + e[1] + '</div>';
+    document.getElementById('flipNext').textContent = "Another one →";
+  };
+  container.innerHTML = '<div class="slide-title bad-t">' + EX[0][0] + '</div>';
+})();
+/* pre-ship checklist with localStorage */
+(function(){
+  var ITEMS = [
+    "Every slide title states a takeaway, not a topic",
+    "One message per slide — ruthlessly",
+    "The ask is written on an actual slide, with a date",
+    "Bar charts start at zero; numbers rounded to what's actionable",
+    "One accent colour, rest grey — colour only where the point is",
+    "The busiest person in the room could repeat your main message after 5 seconds",
+    "You know which number will be challenged — backup ready",
+    "Source and date on every chart",
+    "Everything the audience cannot act on: deleted",
+    "The corridor test: deck dies, you have 60 seconds — you can still make the ask"
+  ];
+  var box = document.getElementById('preship'), prog = document.getElementById('cprog');
+  var state = [];
+  try { state = JSON.parse(localStorage.getItem('tis-m02-check') || '[]'); } catch(e){}
+  ITEMS.forEach(function(txt, n){
+    var d = document.createElement('div');
+    d.className = 'item' + (state[n] ? ' done' : '');
+    d.innerHTML = '<div class="cb">' + (state[n] ? '✓' : '') + '</div><span class="txt">' + txt + '</span>';
+    d.addEventListener('click', function(){
+      state[n] = !state[n];
+      d.classList.toggle('done', state[n]);
+      d.querySelector('.cb').textContent = state[n] ? '✓' : '';
+      try { localStorage.setItem('tis-m02-check', JSON.stringify(state)); } catch(e){}
+      update();
+    });
+    box.appendChild(d);
+  });
+  function update(){
+    var c = state.filter(Boolean).length;
+    prog.textContent = c + " / 10 checked" + (c === 10 ? " — ship it. 🚀" : "");
+  }
+  window.tisCheckReset = function(){
+    state = [];
+    try { localStorage.removeItem('tis-m02-check'); } catch(e){}
+    box.querySelectorAll('.item').forEach(function(d){ d.classList.remove('done'); d.querySelector('.cb').textContent=''; });
+    update();
+  };
+  update();
+})();
+</script>
+<script src="tis-dopamine.js" defer></script>
+</body>
+</html>
