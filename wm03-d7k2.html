@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 03 — The Defensible Number — The Industrial Scribe</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; color: #111827; line-height: 1.7; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 2rem 5% 4rem; }
+    .marker { font-family: 'Permanent Marker', cursive; font-weight: 400; }
+    h1 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 2.1rem; line-height: 1.2; }
+    h2 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 1.45rem; margin: 2.6rem 0 .7rem;
+         background: linear-gradient(transparent 60%, #FBBF24 60%, #FBBF24 95%, transparent 95%); display: inline-block; padding: 0 4px; }
+    h3 { font-family: 'Patrick Hand', cursive; font-size: 1.25rem; margin: 1.3rem 0 .5rem; }
+    p { margin-bottom: 1rem; font-size: 1.03rem; }
+    ul, ol { margin: 0 0 1.1rem 1.35rem; } li { margin-bottom: .4rem; }
+    .wob { border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; padding: 1.2rem 1.4rem; margin: 1.2rem 0; }
+    .a-sky { border-left: 10px solid #38BDF8; } .a-pink { border-left: 10px solid #EC4899; }
+    .a-mint { border-left: 10px solid #10B981; } .a-yellow { border-left: 10px solid #FBBF24; }
+    .prompt { position: relative; background: #111; color: #a7f3d0; border: 3px dashed #555; border-radius: 14px;
+              padding: 1.1rem 1.3rem; margin: 1rem 0; font-family: ui-monospace, Menlo, monospace;
+              font-size: .82rem; white-space: pre-wrap; word-break: break-word; }
+    .copybtn { position: sticky; float: right; top: 8px; font-family: 'Patrick Hand', cursive; font-size: .95rem;
+               background: #2563eb; color: #fff; border: 2px solid #fff; border-radius: 10px;
+               padding: 4px 14px; cursor: pointer; }
+    .copybtn:active { transform: scale(.94); }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .9rem; border: 3px solid #111; }
+    th { background: #2563eb; color: #fff; font-family: 'Patrick Hand', cursive; padding: .45rem .6rem; text-align: left; }
+    td { padding: .45rem .6rem; border-bottom: 2px solid #ddd; vertical-align: top; }
+    .bigline { font-family: 'Patrick Hand', cursive; font-size: 1.3rem; text-align: center; line-height: 1.4; margin: 1.5rem 0; }
+    .bigline b { color: #2563eb; }
+    /* defense sheet builder */
+    .builder { border: 3px dashed #10B981; border-radius: 18px; padding: 1.3rem 1.4rem; margin: 1.2rem 0; }
+    .builder label { font-family: 'Patrick Hand', cursive; font-size: 1.1rem; display: block; margin: 12px 0 4px; }
+    .builder textarea { width: 100%; min-height: 64px; border: 2.5px solid #111; border-radius: 10px;
+                        padding: 8px 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: .95rem; }
+    .bbtn { font-family: 'Patrick Hand', cursive; font-size: 1.1rem; background: #10B981; color: #fff;
+            border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            padding: 10px 24px; cursor: pointer; margin: 10px 6px 0 0; }
+    .bbtn.ghost { background: #fff; color: #111; }
+    .dl-btn { display: inline-block; font-family: 'Patrick Hand', cursive; font-size: 1.15rem;
+      background: #2563eb; color: #fff; text-decoration: none; padding: 11px 26px; margin: 8px 6px;
+      border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; }
+    .hero { text-align: center; padding: 1.5rem 0 .5rem; }
+    .hero img { width: 190px; max-width: 55%; }
+    .toc { font-family: 'Patrick Hand', cursive; font-size: 1.05rem; }
+    .toc a { color: #2563eb; text-decoration: none; }
+  </style>
+  <link rel="stylesheet" href="tis-theme.css">
+  <link rel="stylesheet" href="tis-dopamine.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">THE INDUSTRIAL <span>SCRIBE</span></a>
+    <div class="nav-links">
+      <a href="index.html#articles">Articles</a>
+      <a href="modules.html" class="nav-cta">The Modules</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="hero">
+    <img src="assets/insider-calm-laptop-coffee.png" alt="Ah Hock calm at his desk">
+    <p class="marker" style="color:#EC4899; letter-spacing:2px;">TIS MODULE 03 · YOUR COPY</p>
+    <h1>The Defensible Number</h1>
+    <p style="font-family:'Patrick Hand',cursive; font-size:1.15rem; color:#555;">Bookmark this page — it's yours, forever. Open it every time a number has to face the boss.</p>
+  </div>
+
+  <div class="wob a-yellow toc">
+    <strong>In this module:</strong>
+    <a href="#idea">The idea</a> ·
+    <a href="#nobid">The 4 no-bid checks</a> ·
+    <a href="#sheet">The Defense Sheet</a> ·
+    <a href="#builder">🛠️ Sheet Builder (interactive)</a> ·
+    <a href="#prompts">🤖 The four prompts</a> ·
+    <a href="#example">Worked example</a> ·
+    <a href="#pdf">Offline PDF</a>
+  </div>
+
+  <h2 id="idea">The idea</h2>
+  <p><strong>A number without reasoning is an opinion.</strong> Bosses re-check opinions — every cent, every time, sometimes redoing your whole costing at 9 PM. Bosses <em>approve</em> reasoning.</p>
+  <p>The defensible number is three things stapled together: <strong>the number, the basis, and the boundaries.</strong> Where every figure came from. What was assumed. How far it can move before it breaks. Put those on one page and the boss's job changes from "check everything" to "approve the method."</p>
+  <p class="bigline">You're not selling the boss a price.<br><b>You're selling the boss certainty that the price is safe.</b></p>
+
+  <h2 id="nobid">Before you cost anything: the 4 no-bid checks</h2>
+  <p>The fastest way to lose the boss's trust is spending two days costing a job the company should never touch. Two minutes on every enquiry — and when a check fails, "I recommend we decline, here's why" is itself a defensible number.</p>
+  <ol>
+    <li><strong>Can we actually make it?</strong> Process, tolerance, certification — or would we subcontract the hard part?</li>
+    <li><strong>Does it fit our nature?</strong> (Module 01) One-off custom in a volume shop, or volume work in a job shop, usually ends badly</li>
+    <li><strong>Do we honestly have the capacity window</strong> they need?</li>
+    <li><strong>Any clause that bites?</strong> Open-ended quality terms, "or equivalent" materials, penalties, impossible dates</li>
+  </ol>
+
+  <h2 id="sheet">The Defense Sheet — one page, five blocks</h2>
+  <table>
+    <tr><th>Block</th><th>What it shows</th><th>The boss question it kills</th></tr>
+    <tr><td><strong>1. The enquiry, verified</strong></td><td>What the customer actually asked — quantities, specs, dates — plus ambiguities you already clarified</td><td>"Did you read the whole RFQ properly?"</td></tr>
+    <tr><td><strong>2. The cost basis</strong></td><td>Which rates and assumptions were used, and where each came from</td><td>"Where did this figure come from?"</td></tr>
+    <tr><td><strong>3. The market basis</strong></td><td>What this customer paid before · our last 3 outcomes · any known target</td><td>"Are we too high? Too low?"</td></tr>
+    <tr><td><strong>4. The options</strong></td><td>Price per quantity tier, floor marked</td><td>"And if the volume changes?"</td></tr>
+    <tr><td><strong>5. Risks + recommendation</strong></td><td>What could bite, what you propose, one sentence</td><td>"So what do you want me to do?"</td></tr>
+  </table>
+  <div class="wob a-mint">
+    <p style="margin-bottom:0;"><strong>Why this works on a real boss:</strong> he doesn't re-check every cent for fun — he's the one who answers for a bad number, and your Excel gives him nothing to hold onto. The Defense Sheet gives him handles. After three or four of these, he stops checking your arithmetic and starts asking your opinion. That's the promotion path hiding inside one page.</p>
+  </div>
+
+  <h2 id="builder">🛠️ Your Defense Sheet — build it here</h2>
+  <p>Fill the five blocks (short lines, not essays). Your draft saves in this browser. One click copies the whole formatted sheet — paste it into an email, a document, or print it.</p>
+  <div class="builder" id="dsb">
+    <label>1 · The enquiry, verified</label>
+    <textarea id="ds1" placeholder="Customer, parts, quantities (all tiers), dates. Ambiguities clarified: ..."></textarea>
+    <label>2 · The cost basis</label>
+    <textarea id="ds2" placeholder="Material RM__/pc (price list Aug, scrap 7%). Machining __min × RM__/hr. Overhead RM__/pc. Assumptions: ..."></textarea>
+    <label>3 · The market basis</label>
+    <textarea id="ds3" placeholder="Last year they paid RM__ for similar. Last 3 quotes: won/lost/feedback. Known target: ..."></textarea>
+    <label>4 · The options</label>
+    <textarea id="ds4" placeholder="500 pcs @ RM__ · 1,000 @ RM__ · 2,000 @ RM__. Floor: RM__ (do not cross)."></textarea>
+    <label>5 · Risks + my recommendation</label>
+    <textarea id="ds5" placeholder="Risk: ... Recommendation: quote RM__ at 500 pcs with tiers as above."></textarea>
+    <div>
+      <button class="bbtn" onclick="dsCopy(this)">📋 Copy my Defense Sheet</button>
+      <button class="bbtn ghost" onclick="dsClear()">↻ Clear for next enquiry</button>
+    </div>
+  </div>
+
+  <h2 id="prompts">The four prompts</h2>
+  <p>Copy, paste into ChatGPT / Claude / Gemini, fill the brackets. Module 01 owners: put your <strong>context line</strong> on top of every one.</p>
+
+  <h3>Prompt 1 — The Enquiry Reader</h3>
+  <div class="prompt"><button class="copybtn" onclick="tisCopy(this.parentNode.textContent.replace('📋 Copy',''), this)">📋 Copy</button>You are a careful estimator's assistant in a manufacturing office. I will paste a customer enquiry. Extract what I need before anyone starts costing:
+
+ENQUIRY: [paste email/RFQ text]
+
+GIVE ME:
+1. Line items: parts, quantities (every tier mentioned), dates
+2. Materials, tolerances, treatments, certifications demanded
+3. ⚠️ AMBIGUITIES — every vague line I should clarify BEFORE costing (missing revision, unspecified finish, contradictions). Write the clarification questions for me, polite and short, ready to send.
+4. RED FLAGS — clauses that bite later: open-ended quality terms, "or equivalent" materials, penalties, dates that don't fit normal lead times
+
+RULES: Extract only what is written. Never assume a spec that isn't there. The clarification email is the most important output — asking sharp questions early makes my office look thorough, not slow.</div>
+
+  <h3>Prompt 2 — The Cost Basis Builder</h3>
+  <div class="prompt"><button class="copybtn" onclick="tisCopy(this.parentNode.textContent.replace('📋 Copy',''), this)">📋 Copy</button>You are helping me build the cost basis for a manufacturing proposal. I give you the inputs; you calculate transparently and list every assumption so my boss can see the reasoning.
+
+INPUTS: [part description / process steps or cycle time if known / material grade + my price per kg / our machine rate per hour / overhead rate / target margin %]
+
+GIVE ME:
+1. Material cost per piece — blank size, weight, scrap factor (state which % and why), all math shown
+2. Processing cost per piece — time × rate, with your reasoning; give RANGES where uncertain and mark anything that needs a human estimate from the floor
+3. The floor price at my margin, per quantity tier: [tiers]
+4. ASSUMPTIONS LIST — every assumption made, one line each, so nothing is hidden inside a cell
+
+RULES: This is a DRAFT basis for my judgment, not an answer. Where you are unsure, say so loudly — an honest range beats a confident guess. Never invent a rate I did not give you.</div>
+
+  <h3>Prompt 3 — The Defense Builder (the heart of this module)</h3>
+  <div class="prompt"><button class="copybtn" onclick="tisCopy(this.parentNode.textContent.replace('📋 Copy',''), this)">📋 Copy</button>You are my preparation partner before I take a number to my boss. Build my one-page Defense Sheet, then interrogate it like the boss will.
+
+MY MATERIAL: [paste Prompt 1 output, Prompt 2 output, and what I know about this customer: past prices, last 3 quote outcomes, any target price, payment behaviour]
+MY RECOMMENDED PRICE: [price per tier]
+
+STEP 1 — Assemble the Defense Sheet, five blocks:
+1. The enquiry, verified (with clarifications already resolved)
+2. The cost basis (rates, assumptions, sources — one line each)
+3. The market basis (what they paid, our history, their target)
+4. The options (price per quantity tier, floor marked)
+5. Risks + my one-sentence recommendation
+
+STEP 2 — Now be my boss. Ask me the THREE hardest questions he will ask about this number — and draft my answers from the sheet. Typical bosses ask: "Why not cheaper to win it?" / "What did they pay last time?" / "What if they double the quantity?" — but choose the three sharpest for THIS case.
+
+STEP 3 — Tell me the weakest point in my sheet — the one thing I should fix or find out before the meeting, not during it.</div>
+
+  <h3>Prompt 4 — The Pushback Partner</h3>
+  <div class="prompt"><button class="copybtn" onclick="tisCopy(this.parentNode.textContent.replace('📋 Copy',''), this)">📋 Copy</button>The customer has pushed back on our proposal. Help me respond without giving away the floor, and without promising anything that is my boss's call.
+
+SITUATION: [what the customer said — "too expensive" / "competitor is 15% lower" / "we need it at X" / "can you do 2,000 instead"]
+MY SHEET: [paste the Defense Sheet from Prompt 3]
+
+GIVE ME:
+1. What their pushback most likely means (price test? real budget limit? volume genuine?) — and what to ask to find out
+2. TWO response drafts, professional Asian B2B tone: one that holds price and sells value, one that trades something FOR something (volume, lead time, payment terms — never a naked discount)
+3. THE ESCALATION LINE: exactly where my authority should end here and what to bring to my boss — with the one-line summary I'd give him
+
+RULES: Never offer a price below the floor on my sheet. Never apologise for the price. Escalating with a clear recommendation is strength, not weakness.</div>
+
+  <h2 id="example">Worked example: Tuesday, 4:50 PM</h2>
+  <div class="wob a-mint">
+    <p><strong>The old way:</strong> enquiry arrives Monday. You cost it for two days between other work. Boss looks at your Excel Thursday, questions three cells, changes your margin, asks what they paid last year — you don't know — and redoes half of it Friday night. Quote goes out late. Everyone slightly annoyed, mostly at you.</p>
+    <p style="margin-bottom:0;"><strong>With this module:</strong> Monday morning, Prompt 1 reads the enquiry and drafts two clarification questions — customer answers by noon, and your office looked sharp doing it. Prompt 2 builds the cost basis; you correct one cycle time with a quick walk to the floor. Prompt 3 assembles the Defense Sheet and grills you with the three questions the boss will ask — you fix the weak point it found. Tuesday 4:50 PM you put ONE PAGE on the boss's desk. He reads it, asks one question — the answer is in Block 4 — and signs.</p>
+  </div>
+
+  <h2 id="pdf">Your offline copy</h2>
+  <a class="dl-btn" href="downloads/TIS-Module-03-The-Defensible-Number.pdf">⬇ Download PDF copy</a>
+
+  <div class="wob a-sky" style="text-align:center;">
+    <p style="margin-bottom:6px;"><strong>The set:</strong> Module 01 tells you what your business nature demands. Module 03 builds the number. Module 02 presents it. Same method, three rooms.</p>
+    <a class="dl-btn" style="background:#EC4899;" href="modules.html">See the other Modules →</a>
+  </div>
+
+  <p style="text-align:center; font-family:'Patrick Hand',cursive; color:#888;">🛡️ 14-day guarantee · Bought once, yours forever · Please don't share this link publicly — two-kopi side project.</p>
+
+</div>
+
+<footer>
+  <div><span class="handle">@the.industrial.scribe</span> · theindustrialscribe.com</div>
+  <div class="quiet">Written from inside a real Malaysian manufacturing office.</div>
+</footer>
+
+<script>
+function tisCopy(text, btn) {
+  navigator.clipboard.writeText(text.trim()).then(function(){
+    var old = btn.textContent; btn.textContent = "✓ Copied!";
+    setTimeout(function(){ btn.textContent = old; }, 1600);
+  });
+}
+(function(){
+  var ids = ['ds1','ds2','ds3','ds4','ds5'];
+  ids.forEach(function(id){
+    var el = document.getElementById(id);
+    try { el.value = localStorage.getItem('tis-'+id) || ''; } catch(e){}
+    el.addEventListener('input', function(){ try { localStorage.setItem('tis-'+id, el.value); } catch(e){} });
+  });
+  window.dsCopy = function(btn){
+    var labels = ['1 · THE ENQUIRY, VERIFIED','2 · THE COST BASIS','3 · THE MARKET BASIS','4 · THE OPTIONS','5 · RISKS + RECOMMENDATION'];
+    var out = 'DEFENSE SHEET — ' + new Date().toLocaleDateString() + '\n' + '='.repeat(40) + '\n\n';
+    ids.forEach(function(id, i){
+      out += labels[i] + '\n' + (document.getElementById(id).value.trim() || '—') + '\n\n';
+    });
+    out += '— prepared with the TIS method · theindustrialscribe.com';
+    tisCopy(out, btn);
+  };
+  window.dsClear = function(){
+    ids.forEach(function(id){ document.getElementById(id).value=''; try { localStorage.removeItem('tis-'+id); } catch(e){} });
+  };
+})();
+</script>
+<script src="tis-dopamine.js" defer></script>
+</body>
+</html>
