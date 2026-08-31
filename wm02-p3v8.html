@@ -95,6 +95,7 @@
     <strong>In this module:</strong>
     <a href="#sowhat">The So-What Method</a> ·
     <a href="#charts">Chart-choice map</a> ·
+    <a href="#chartdb">📊 The Chart Database (15 entries)</a> ·
     <a href="#declutter">The declutter pass</a> ·
     <a href="#prompts">🤖 The four prompts</a> ·
     <a href="#example">Worked example</a> ·
@@ -132,6 +133,80 @@
     <tr><td>One big number</td><td>Just the number, huge</td><td>"RM 42,000 saved" needs no chart</td></tr>
   </table>
   <p><strong>The default nobody teaches:</strong> when in doubt, a sorted bar chart with a takeaway title beats everything fancy. Fancy impresses designers; sorted bars win approvals.</p>
+
+
+  <h2 id="chartdb">Part 2B — The Chart Database (factory edition)</h2>
+  <p>Fifteen chart situations, judged the TIS way: the message decides the chart. Start with the picker.</p>
+
+  <div style="border:3px dashed #2563eb; border-radius:18px; padding:1.2rem 1.4rem; margin:1.2rem 0;">
+    <p style="font-family:'Patrick Hand',cursive; font-size:1.15rem; margin-bottom:8px;">🎯 What is your message about?</p>
+    <div id="cdb-picker" style="display:flex; flex-wrap:wrap; gap:10px;"></div>
+    <div id="cdb-result" style="display:none; margin-top:14px; border:3px solid #111; border-left:10px solid #10B981; border-radius:14px; padding:12px 16px;">
+      <p style="font-family:'Permanent Marker',cursive; font-size:1.15rem; margin:0 0 4px;" id="cdb-r-chart"></p>
+      <p style="margin:0 0 4px;" id="cdb-r-why"></p>
+      <p style="font-family:'Patrick Hand',cursive; color:#c02675; margin:0;" id="cdb-r-warn"></p>
+    </div>
+  </div>
+
+  <div id="cdb-grid"></div>
+
+  <div class="wob a-pink">
+    <p style="margin-bottom:6px;"><strong>The never-list (memorise this — it saves careers):</strong></p>
+    <ul style="margin-bottom:0;">
+      <li><strong>Pie with more than 3 slices</strong> — nobody can compare angles; use a sorted bar</li>
+      <li><strong>3D anything</strong> — decoration that distorts the values it decorates</li>
+      <li><strong>Dual-axis charts</strong> — two scales in one frame lets the chart tell two different lies</li>
+      <li><strong>A trend from 2 points</strong> — that's a line, not a trend; wait for the third month</li>
+      <li><strong>Rainbow palettes</strong> — one accent colour on the message, grey for everything else</li>
+    </ul>
+  </div>
+
+  <script>
+  (function(){
+    var DB = [
+      ["Comparing a few things","Sorted bar chart","Defects by machine, output by line, downtime by reason","Sort big-to-small; axis starts at zero","Mistake: alphabetical order — sorting IS the analysis","M120,90 L120,40 L145,40 L145,90 M155,90 L155,55 L180,55 L180,90 M190,90 L190,70 L215,70 L215,90"],
+      ["Change over time","Line chart","OTD trend, scrap rate by month, backlog level","Label the line directly, not in a legend","Mistake: more than 4 lines — that is spaghetti, not analysis","M110,80 L140,60 L170,70 L200,35 L225,45"],
+      ["The vital few causes","Pareto chart","NCR causes, downtime reasons, complaint categories — the factory classic","Sorted bars + cumulative line; talk about the first 2-3 bars only","Mistake: presenting all 14 causes with equal airtime","M115,90 L115,30 L135,30 L135,90 M140,90 L140,50 L160,50 L160,90 M165,90 L165,68 L185,68 L185,90 M190,90 L190,80 L210,80 L210,90 M115,28 L225,20"],
+      ["One big number","Just the number, huge","RM saved, days early, zero defects this quarter","No chart — 96pt font and one caption line","Mistake: burying the year's best number inside a table"],
+      ["Before vs after","Paired bars, old grey / new colour","Cycle time after improvement, rejects after the fix","The gap between the bars IS the message — label it","Mistake: showing only 'after' — no baseline, no credit","M120,90 L120,35 L145,35 L145,90 M160,90 L160,65 L185,65 L185,90"],
+      ["Parts of a whole","Stacked bar (or 100% stacked)","Downtime split by reason across months, capacity by customer","3-4 segments max; order segments consistently","Mistake: the pie chart with 9 slices"],
+      ["Target vs actual","Bar with a target line","Output vs plan, OTD vs the 95% commitment","The target line turns data into a verdict","Mistake: showing actuals with no reference — nobody knows if it's good","M115,90 L115,50 L140,50 L140,90 M150,90 L150,40 L175,40 L175,90 M105,45 L225,45"],
+      ["Relationship between two things","Scatter plot","Cycle time vs batch size, price vs order quantity","Each dot = one job/order; add nothing else","Mistake: forcing a trendline through a cloud that has no trend"],
+      ["How values spread","Histogram","Measurement distribution, delivery-day spread","The shape is the message: centred? skewed? two peaks?","Mistake: showing the average of a two-peaked process — the average is a lie there"],
+      ["Is the process stable?","Run chart (with limits if you have them)","Daily output, defect rate over weeks","Plot time order; react to patterns, not single points","Mistake: celebrating or panicking over one point of noise"],
+      ["Where cost/change comes from","Waterfall chart","Cost build-up per piece, why margin moved vs last quarter","Start value, steps up/down, end value","Mistake: using it when a simple bar answers faster","M110,90 L110,60 L130,60 L130,90 M132,60 L132,45 L152,45 L152,60 M154,45 L154,55 L174,55 L174,45 M176,55 L176,30 L196,30 L196,55"],
+      ["Pattern across two dimensions","Heatmap","Defects by machine x shift, orders by customer x month","Single-colour scale, light to dark; label the extremes","Mistake: red-green scales (colour-blind bosses exist)"],
+      ["Exact values for lookup","A table","Price tiers, spec limits, delivery schedule","Right-align numbers, bold the row that matters","Mistake: a chart where people need exact numbers — tables beat charts for lookup"],
+      ["Progress toward a goal","Progress bar / thermometer","Project completion, savings vs annual target","One bar, the target at the end, current position marked","Mistake: percent-complete without the absolute number next to it"],
+      ["Ranking changed over time","Slope chart (two columns, lines between)","Supplier ranking last year vs this year, customer share shift","Two dates only, lines connect each item's positions","Mistake: animating 12 months of ranking — two snapshots tell the story"]
+    ];
+    var picker = document.getElementById('cdb-picker'), grid = document.getElementById('cdb-grid');
+    DB.forEach(function(d, i){
+      var b = document.createElement('button');
+      b.textContent = d[0];
+      b.style.cssText = "font-family:'Patrick Hand',cursive; font-size:1rem; padding:7px 14px; border:2.5px solid #111; background:#fff; cursor:pointer; border-radius:200px 12px 180px 12px/12px 180px 12px 200px;";
+      b.onmouseover = function(){ b.style.background = '#FBBF24'; };
+      b.onmouseout = function(){ b.style.background = '#fff'; };
+      b.onclick = function(){
+        document.getElementById('cdb-result').style.display = 'block';
+        document.getElementById('cdb-r-chart').textContent = '→ ' + d[1];
+        document.getElementById('cdb-r-why').textContent = 'Factory use: ' + d[2] + '. Rule: ' + d[3] + '.';
+        document.getElementById('cdb-r-warn').textContent = d[4];
+      };
+      picker.appendChild(b);
+      var card = document.createElement('div');
+      card.style.cssText = "border:3px solid #111; border-radius:15px 225px 15px 255px/255px 15px 225px 15px; padding:12px 16px; margin:10px 0;";
+      var svg = d[5] ? '<svg viewBox="100 15 135 85" style="width:110px; float:right; margin-left:10px;"><path d="' + d[5] + '" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/></svg>' : '';
+      card.innerHTML = svg +
+        '<p style="font-family:\'Permanent Marker\',cursive; margin:0 0 2px; font-size:1.05rem;">' + d[1] + ' <span style="font-family:\'Patrick Hand\',cursive; color:#2563eb; font-size:.95rem;">— ' + d[0].toLowerCase() + '</span></p>' +
+        '<p style="margin:0 0 2px; font-size:.95rem;"><strong>Factory use:</strong> ' + d[2] + '</p>' +
+        '<p style="margin:0 0 2px; font-size:.95rem;"><strong>Rule:</strong> ' + d[3] + '</p>' +
+        '<p style="margin:0; font-size:.92rem; color:#c02675; font-family:\'Patrick Hand\',cursive;">' + d[4] + '</p>' +
+        '<div style="clear:both;"></div>';
+      grid.appendChild(card);
+    });
+  })();
+  </script>
 
   <h2 id="declutter">Part 3 — The declutter pass (60 seconds per chart)</h2>
   <ul>
