@@ -113,16 +113,13 @@
 
     <p>Every AI model has a context window — the total text it can hold in one conversation, including your input and its replies.</p>
 
-    <table>
-      <thead>
-        <tr><th>Model</th><th>Context Window</th><th>Roughly Equivalent To</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>GPT-4o</td><td>128,000 tokens</td><td>~200 pages of text</td></tr>
-        <tr><td>Claude Sonnet</td><td>200,000 tokens</td><td>~300 pages of text</td></tr>
-        <tr><td>Claude with extended context</td><td>1,000,000 tokens</td><td>~1,500 pages of text</td></tr>
-      </tbody>
-    </table>
+    <div class="viz-compare">
+      <div class="viz-title">Context windows, drawn to scale</div>
+      <div class="viz-row"><div class="viz-label">GPT-4o</div><div class="viz-track"><div class="viz-bar old" style="width:13%;">128,000 tokens &middot; ~200 pages</div></div></div>
+      <div class="viz-row"><div class="viz-label">Claude Sonnet</div><div class="viz-track"><div class="viz-bar old" style="width:20%;">200,000 tokens &middot; ~300 pages</div></div></div>
+      <div class="viz-row"><div class="viz-label">Claude with extended context</div><div class="viz-track"><div class="viz-bar new" style="width:96%;">1,000,000 tokens &middot; ~1,500 pages</div></div></div>
+      <div class="viz-note">The last bar is why a year of WIP data fits in one conversation.</div>
+    </div>
 
     <p>When a BD manager uploads 334,000 rows of WIP data into Claude, the large context window holds it all at once. A smaller window would force the AI to process it in chunks, losing the ability to cross-reference the full dataset.</p>
 

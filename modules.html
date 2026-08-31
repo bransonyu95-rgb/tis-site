@@ -67,6 +67,23 @@
     summary { font-family: 'Patrick Hand', cursive; font-size: 1.15rem; cursor: pointer; }
     details p { margin: .6rem 0 0; }
     @media (max-width: 640px) { .persona { grid-template-columns: 1fr; } h1 { font-size: 1.9rem; } }
+    .accent-blue { border-left: 10px solid #2563eb; }
+    .clinic { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .clinic-box { border: 2.5px dashed #bbb; border-radius: 14px; padding: 12px 14px; }
+    .clinic-svg { width: 100%; height: auto; display: block; }
+    .clinic-tag { font-family: 'Patrick Hand', cursive; font-size: 1.05rem; margin: 0 0 6px; }
+    .clinic-tag.bad { color: #c02675; } .clinic-tag.good { color: #10B981; }
+    .clinic-title-bad { font-family: monospace; font-size: 0.8rem; color: #888; margin: 0 0 6px; }
+    .clinic-title-good { font-family: 'Permanent Marker', cursive; font-size: 0.98rem; margin: 0 0 6px; line-height: 1.35; }
+    .clinic-verdict { font-family: 'Patrick Hand', cursive; font-size: 0.98rem; margin: 8px 0 0; color: #555; }
+    .clinic-verdict.good { color: #067a5b; }
+    .chart-teaser-card { border: 3px solid #111; border-radius: 15px 225px 15px 255px/255px 15px 225px 15px; padding: 12px 16px; margin: 10px 0; }
+    .chart-teaser-card h5 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 1.05rem; margin: 0 0 2px; }
+    .chart-teaser-card h5 span { font-family: 'Patrick Hand', cursive; color: #2563eb; font-size: 0.95rem; }
+    .chart-teaser-card p { margin: 0 0 2px; font-size: 0.95rem; }
+    .chart-teaser-card .warn { color: #c02675; font-family: 'Patrick Hand', cursive; font-size: 0.92rem; }
+    .chart-teaser-card svg { width: 100px; float: right; margin-left: 10px; }
+    @media (max-width: 640px) { .clinic { grid-template-columns: 1fr; } }
   </style>
   <link rel="stylesheet" href="tis-theme.css">
   <link rel="stylesheet" href="tis-dopamine.css">
@@ -146,6 +163,53 @@
     <p class="soon" id="flipnote" style="display:none; margin-top:6px;">Same data. The title now does half the presenting. The full method is Part 1 of the Module.</p>
   </div>
 
+  <div class="wob2 accent-blue" style="margin-top:1.4rem;">
+    <p style="font-family:'Patrick Hand',cursive; font-size:1.1rem; margin-bottom:10px;">Proof, not promises — the same six months of delivery data, twice:</p>
+    <div class="clinic">
+      <div class="clinic-box">
+        <p class="clinic-tag bad">❌ The chart most offices send</p>
+        <p class="clinic-title-bad">Delivery Performance Q3 (OTD%, monthly basis)</p>
+        <svg viewBox="0 0 300 170" class="clinic-svg" role="img" aria-label="Cluttered chart: seven same-colour bars, heavy gridlines, decimal labels, legend">
+          <g stroke="#d7d7d7" stroke-width="1">
+            <line x1="30" y1="20" x2="290" y2="20"/><line x1="30" y1="45" x2="290" y2="45"/><line x1="30" y1="70" x2="290" y2="70"/><line x1="30" y1="95" x2="290" y2="95"/><line x1="30" y1="120" x2="290" y2="120"/>
+          </g>
+          <line x1="30" y1="145" x2="290" y2="145" stroke="#999" stroke-width="2"/>
+          <line x1="30" y1="10" x2="30" y2="145" stroke="#999" stroke-width="2"/>
+          <g fill="#93b8f0">
+            <rect x="42" y="58" width="26" height="87"/><rect x="82" y="48" width="26" height="97"/><rect x="122" y="63" width="26" height="82"/><rect x="162" y="43" width="26" height="102"/><rect x="202" y="33" width="26" height="112"/><rect x="242" y="24" width="26" height="121"/>
+          </g>
+          <g font-size="8.5" fill="#666" font-family="monospace">
+            <text x="41" y="54">89.13</text><text x="81" y="44">91.27</text><text x="121" y="59">88.46</text><text x="161" y="39">92.08</text><text x="201" y="29">93.91</text><text x="241" y="20">96.02</text>
+          </g>
+          <g font-size="9" fill="#888">
+            <text x="47" y="157">Mar</text><text x="87" y="157">Apr</text><text x="127" y="157">May</text><text x="167" y="157">Jun</text><text x="207" y="157">Jul</text><text x="247" y="157">Aug</text>
+          </g>
+          <rect x="203" y="5" width="9" height="9" fill="#93b8f0"/><text x="216" y="13" font-size="8.5" fill="#888">OTD % (actual)</text>
+        </svg>
+        <p class="clinic-verdict bad">Boss reads it, says "okay, noted." Nothing happens.</p>
+      </div>
+      <div class="clinic-box">
+        <p class="clinic-tag good">✅ The Insider version — same data</p>
+        <p class="clinic-title-good">On-time delivery recovered to 96% after the layout change</p>
+        <svg viewBox="0 0 300 170" class="clinic-svg" role="img" aria-label="Clean chart: grey bars, one mint bar at 96 percent, dashed target line at 95 percent">
+          <g fill="#e8e8e8" stroke="#111" stroke-width="2">
+            <rect x="42" y="58" width="26" height="87" rx="3"/><rect x="82" y="48" width="26" height="97" rx="3"/><rect x="122" y="63" width="26" height="82" rx="3"/><rect x="162" y="43" width="26" height="102" rx="3"/><rect x="202" y="33" width="26" height="112" rx="3"/>
+          </g>
+          <rect x="242" y="24" width="26" height="121" rx="3" fill="#10B981" stroke="#111" stroke-width="2.5"/>
+          <line x1="32" y1="29" x2="290" y2="29" stroke="#EC4899" stroke-width="2.5" stroke-dasharray="7 5"/>
+          <text x="34" y="24" font-size="10" fill="#EC4899" font-family="cursive">target 95%</text>
+          <text x="244" y="16" font-size="14" font-weight="bold" fill="#10B981">96%</text>
+          <line x1="30" y1="145" x2="290" y2="145" stroke="#111" stroke-width="2.5"/>
+          <g font-size="9" fill="#555">
+            <text x="47" y="157">Mar</text><text x="87" y="157">Apr</text><text x="127" y="157">May</text><text x="167" y="157">Jun</text><text x="207" y="157">Jul</text><text x="247" y="157">Aug</text>
+          </g>
+        </svg>
+        <p class="clinic-verdict good">Boss reads the title, sees the green bar cross the line, asks "what was the layout change?" — a decision conversation.</p>
+      </div>
+    </div>
+    <p class="soon" style="margin-top:8px;">Every move that turned chart 1 into chart 2 — the title rule, the one-accent rule, the target line, the declutter pass — is the method inside Module 02.</p>
+  </div>
+
   <h3>Inside the flagship:</h3>
   <ul class="curr">
     <li><strong>The So-What Method</strong> — three questions before any slide; the takeaway becomes the title</li>
@@ -156,6 +220,37 @@
     <li><strong>Present by business nature</strong> — what YOUR reports must prove (links to Module 01)</li>
     <li><strong>The pre-ship checklist</strong> — ending with the corridor test</li>
   </ul>
+
+  <p style="font-family:'Patrick Hand',cursive; font-size:1.15rem; margin-top:1.6rem;">Free sample — 3 of the 15 entries from the Factory Chart Database, exactly as they appear inside:</p>
+
+  <div class="chart-teaser-card">
+    <svg viewBox="100 15 135 85"><path d="M120,90 L120,40 L145,40 L145,90 M155,90 L155,55 L180,55 L180,90 M190,90 L190,70 L215,70 L215,90" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/></svg>
+    <h5>Sorted bar chart <span>— comparing a few things</span></h5>
+    <p><strong>Factory use:</strong> Defects by machine, output by line, downtime by reason</p>
+    <p><strong>Rule:</strong> Sort big-to-small; axis starts at zero</p>
+    <p class="warn">Mistake: alphabetical order — sorting IS the analysis</p>
+    <div style="clear:both;"></div>
+  </div>
+
+  <div class="chart-teaser-card">
+    <svg viewBox="100 15 135 85"><path d="M115,90 L115,30 L135,30 L135,90 M140,90 L140,50 L160,50 L160,90 M165,90 L165,68 L185,68 L185,90 M190,90 L190,80 L210,80 L210,90 M115,28 L225,20" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/></svg>
+    <h5>Pareto chart <span>— the vital few causes</span></h5>
+    <p><strong>Factory use:</strong> NCR causes, downtime reasons, complaint categories — the factory classic</p>
+    <p><strong>Rule:</strong> Sorted bars + cumulative line; talk about the first 2-3 bars only</p>
+    <p class="warn">Mistake: presenting all 14 causes with equal airtime</p>
+    <div style="clear:both;"></div>
+  </div>
+
+  <div class="chart-teaser-card">
+    <svg viewBox="100 15 135 85"><path d="M115,90 L115,50 L140,50 L140,90 M150,90 L150,40 L175,40 L175,90 M105,45 L225,45" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/></svg>
+    <h5>Bar with a target line <span>— target vs actual</span></h5>
+    <p><strong>Factory use:</strong> Output vs plan, OTD vs the 95% commitment</p>
+    <p><strong>Rule:</strong> The target line turns data into a verdict</p>
+    <p class="warn">Mistake: showing actuals with no reference — nobody knows if it's good</p>
+    <div style="clear:both;"></div>
+  </div>
+
+  <p style="font-family:'Patrick Hand',cursive; font-size:1.1rem;">That's 3 of 15. The other 12 — plus the click-your-message picker, the never-list, and the four AI prompts — live inside the Module.</p>
 
   <p style="text-align:center;"><button class="cta-btn" onclick="tisXsell('m02')">Get the Flagship — USD 19.99</button></p>
 
