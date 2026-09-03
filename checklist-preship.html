@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>The Pre-Ship Checklist — free from Module 02</title>
+  <meta name="description" content="The 10-point checklist Ah Hock runs before any deck goes to a boss or customer. Free, from Module 02. Your ticks save in your browser.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; color: #111827; line-height: 1.6; }
+    .article-wrap { max-width: 720px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
+    .article-body p { margin-bottom: 1rem; font-size: 1.05rem; }
+    .hero { text-align: center; } .hero img { width: 200px; max-width: 60%; }
+    .check { border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; padding: 1rem 1.2rem; margin: 1.2rem 0; }
+    .cprog { font-family: 'Permanent Marker', cursive; color: #2563eb; font-size: 1.2rem; margin-bottom: 10px; }
+    .item { display: flex; gap: 12px; align-items: flex-start; padding: 9px 4px; border-bottom: 2px dashed #ddd; cursor: pointer; }
+    .item:last-child { border-bottom: none; }
+    .cb { min-width: 26px; height: 26px; border: 2.5px solid #111; border-radius: 8px 3px 7px 3px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #10B981; margin-top: 2px; }
+    .item.done .cb { background: #d1fae5; }
+    .item.done .txt { text-decoration: line-through; color: #888; }
+    .txt { font-size: 1.02rem; }
+    .btn2 { display: inline-block; font-family: 'Patrick Hand', cursive; font-size: 1.15rem; padding: 8px 20px; border: 2.5px solid #111; background: #fff; cursor: pointer; border-radius: 200px 12px 180px 12px/12px 180px 12px 200px; }
+  </style>
+  <link rel="stylesheet" href="tis-theme.css">
+  <link rel="stylesheet" href="tis-dopamine.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">THE INDUSTRIAL <span>SCRIBE</span></a>
+    <div class="nav-links">
+      <a href="index.html#articles">Articles</a>
+      <a href="article-playbook.html">Free Playbook</a>
+      <a href="about.html">Meet Ah Hock</a>
+      <a href="open.html">Open your module</a>
+      <a href="modules.html" class="nav-cta">Get the Modules</a>
+    </div>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <div class="article-category">Free · straight out of Module 02</div>
+  <h1 class="article-headline">The Pre-Ship Checklist</h1>
+  <div class="hero"><img src="assets/insider-thumbs-up.png" alt="Ah Hock thumbs up"></div>
+
+  <div class="article-body">
+    <p style="font-family:'Patrick Hand',cursive; font-size:1.3rem; text-align:center;">Ten ticks before any deck goes to a boss or a customer. Bookmark this page — your ticks save in this browser.</p>
+
+    <div class="check">
+      <div class="cprog" id="cprog">0 / 10 checked</div>
+      <div id="preship"></div>
+    </div>
+    <p style="text-align:center;"><button class="btn2" onclick="tisCheckReset()">↻ Reset for the next deck</button></p>
+
+    <p>This is Part 7 of Module 02, unchanged. If your deck passes all ten, it will survive the room. If it fails #1 or #10, nothing else on the list can save it — those two are the method.</p>
+
+    <div class="inline-sub">
+      <p><strong>Where the other six parts live:</strong> the So-What Method, the 15-chart Factory Database with a picker, the declutter pass, four AI prompts, and the worked before/after — that's Module 02, USD 19.99 once.</p>
+      <a href="modules.html#m02">See Module 02 →</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div><span class="handle">@the.industrial.scribe</span> · theindustrialscribe.com</div>
+  <div class="quiet">Written from inside a real Malaysian manufacturing office.</div>
+</footer>
+
+<script>
+(function(){
+  var ITEMS = [
+    "Every slide title states a takeaway, not a topic",
+    "One message per slide — ruthlessly",
+    "The ask is written on an actual slide, with a date",
+    "Bar charts start at zero; numbers rounded to what's actionable",
+    "One accent colour, rest grey — colour only where the point is",
+    "The busiest person in the room could repeat your main message after 5 seconds",
+    "You know which number will be challenged — backup ready",
+    "Source and date on every chart",
+    "Everything the audience cannot act on: deleted",
+    "The corridor test: deck dies, you have 60 seconds — you can still make the ask"
+  ];
+  var box = document.getElementById('preship'), prog = document.getElementById('cprog');
+  var state = [];
+  try { state = JSON.parse(localStorage.getItem('tis-free-check') || '[]'); } catch(e){}
+  function save(){ try { localStorage.setItem('tis-free-check', JSON.stringify(state)); } catch(e){} }
+  function count(){ var c = state.filter(Boolean).length; prog.textContent = c + ' / 10 checked' + (c === 10 ? ' — ship it.' : ''); }
+  ITEMS.forEach(function(txt, n){
+    var d = document.createElement('div');
+    d.className = 'item' + (state[n] ? ' done' : '');
+    d.innerHTML = '<div class="cb">' + (state[n] ? '✓' : '') + '</div><span class="txt">' + txt + '</span>';
+    d.onclick = function(){
+      state[n] = !state[n];
+      d.classList.toggle('done', !!state[n]);
+      d.querySelector('.cb').textContent = state[n] ? '✓' : '';
+      save(); count();
+    };
+    box.appendChild(d);
+  });
+  count();
+  window.tisCheckReset = function(){
+    state = []; save();
+    box.querySelectorAll('.item').forEach(function(d){ d.classList.remove('done'); d.querySelector('.cb').textContent = ''; });
+    count();
+  };
+})();
+</script>
+<script src="tis-dopamine.js" defer></script>
+</body>
+</html>

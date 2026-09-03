@@ -84,6 +84,25 @@
     .chart-teaser-card .warn { color: #c02675; font-family: 'Patrick Hand', cursive; font-size: 0.92rem; }
     .chart-teaser-card svg { width: 100px; float: right; margin-left: 10px; }
     @media (max-width: 640px) { .clinic { grid-template-columns: 1fr; } }
+    .buybox { display: grid; grid-template-columns: 1.15fr 1fr; gap: 22px; align-items: center; margin: 0.6rem 0 1rem; }
+    .laptop-screen { border: 4px solid #111; border-bottom: none; border-radius: 12px 12px 0 0; overflow: hidden; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.12); }
+    .laptop-screen img { display: block; width: 100%; height: auto; }
+    .laptop-base { height: 14px; background: #111; border-radius: 0 0 14px 14px; margin: 0 -10px; }
+    .laptop-cap { font-family: 'Patrick Hand', cursive; color: #666; font-size: 0.95rem; text-align: center; margin: 6px 0 0; }
+    .buy-kicker { font-family: 'Patrick Hand', cursive; color: #EC4899; font-size: 1.1rem; margin: 0; letter-spacing: .5px; }
+    .buy-name { font-family: 'Permanent Marker', cursive; font-size: 1.5rem; line-height: 1.2; margin: 2px 0 6px; }
+    .buy-price { font-family: 'Permanent Marker', cursive; font-size: 2.1rem; color: #EC4899; margin: 0; }
+    .buy-price span { font-family: 'Patrick Hand', cursive; font-size: 1.1rem; color: #555; }
+    .ticks { list-style: none; padding: 0; margin: 0 0 8px; }
+    .ticks li { font-family: 'Patrick Hand', cursive; font-size: 1.05rem; margin: 3px 0; }
+    .faqs { margin: 0.4rem 0 1.4rem; }
+    .faqs details { border: 2.5px solid #111; border-radius: 200px 12px 180px 12px/12px 180px 12px 200px; padding: 8px 16px; margin: 7px 0; background: #fff; }
+    .faqs summary { font-family: 'Patrick Hand', cursive; font-size: 1.15rem; cursor: pointer; }
+    .faqs p { margin: 8px 0 4px; font-size: 0.98rem; }
+    .whyme { display: grid; grid-template-columns: 150px 1fr; gap: 18px; align-items: start; border: 3px solid #111; border-left: 10px solid #2563eb; border-radius: 15px 225px 15px 255px/255px 15px 225px 15px; padding: 1.2rem 1.4rem; margin: 1.3rem 0; }
+    .whyme img { width: 100%; }
+    .whyme p { margin: 0 0 10px; font-size: 1rem; }
+    @media (max-width: 640px) { .buybox { grid-template-columns: 1fr; } .whyme { grid-template-columns: 1fr; } .whyme img { width: 120px; margin: 0 auto; } }
   </style>
   <link rel="stylesheet" href="tis-theme.css">
   <link rel="stylesheet" href="tis-dopamine.css">
@@ -106,6 +125,7 @@
       <a href="index.html#articles">Articles</a>
       <a href="article-playbook.html">Free Playbook</a>
       <a href="about.html">Meet Ah Hock</a>
+      <a href="open.html">Open your module</a>
       <a href="modules.html" class="nav-cta">Get the Modules</a>
     </div>
   </div>
@@ -117,6 +137,34 @@
     <img src="assets/insider-thumbs-up.png" alt="Ah Hock thumbs up">
     <h1>One skill per Module.<br>Done properly.</h1>
     <p class="sub">The framework, my exact AI prompts, and how to fit it to YOUR business.<br>Built from my real daily work at the top of the supply chain.</p>
+  </div>
+
+  <div class="buybox">
+    <div class="laptop">
+      <div class="laptop-screen"><img src="assets/module-02-screen.png" alt="Module 02 — the actual web module page, open on a laptop"></div>
+      <div class="laptop-base"></div>
+      <p class="laptop-cap">↑ the real thing — Module 02, open on a laptop</p>
+    </div>
+    <div class="buycol">
+      <p class="buy-kicker">The flagship</p>
+      <p class="buy-name">Module 02 — Present Like the Insider</p>
+      <p class="buy-price">USD 19.99 <span>once</span></p>
+      <button class="cta-btn" onclick="tisXsell('m02')" style="width:100%; margin:6px 0 10px;">Get Module 02 →</button>
+      <ul class="ticks">
+        <li>✅ Pay once, keep it forever — no subscription</li>
+        <li>✅ Nothing to install — a private web page + PDF copy</li>
+        <li>🛡️ 14-day guarantee — doesn't work in your office? Full refund, keep the file</li>
+      </ul>
+      <p class="soon">Or start smaller: <a href="#m01" style="color:#2563eb;">Module 01 — USD 9.99</a> · <a href="#m03" style="color:#2563eb;">Module 03 — USD 9.99</a></p>
+    </div>
+  </div>
+
+  <div class="faqs">
+    <details><summary>Is this a course?</summary><p>No. It's a one-page interactive module you keep coming back to — one method, a 15-chart database with a picker, four copy-paste AI prompts, a worked example, and a checklist that remembers your ticks. Read it in 25 minutes. Use it before every deck.</p></details>
+    <details><summary>Do I just get a PDF?</summary><p>No. You get a private web page that works on your phone and your office laptop, with the interactive parts. The PDF is the offline bonus copy.</p></details>
+    <details><summary>Do I need any software?</summary><p>No. A browser, and whichever AI you already use — ChatGPT, Claude or Gemini. The free tiers work fine with the prompts.</p></details>
+    <details><summary>How do I get in after paying?</summary><p>Your receipt email carries your access link. Bookmark it — that's your module, forever. Lost it? Reply to the receipt and I resend it. Checkout is opening shortly; the launch list at the bottom of this page gets first access.</p></details>
+    <details><summary>How fast will I see a result?</summary><p>Tomorrow. The So-What title rule takes 60 seconds to apply to your next report and changes how it lands the same day. The rest compounds from there.</p></details>
   </div>
 
   <div class="wob accent-yellow">
@@ -275,11 +323,22 @@
   <h2 id="buy">Get them</h2>
   <div class="wob accent-pink" style="text-align:center;">
     <p style="margin-bottom:4px;"><span class="marker" style="font-size:1.4rem;">Module 01</span> — <span class="price">USD 9.99</span> &nbsp;·&nbsp; <span class="marker" style="font-size:1.4rem;">Module 02</span> — <span class="price">USD 19.99</span> &nbsp;·&nbsp; <span class="marker" style="font-size:1.4rem;">Module 03</span> — <span class="price">USD 9.99</span></p>
-    <p class="soon">Checkout opening — follow <a href="https://www.instagram.com/the.industrial.scribe/" style="color:#2563eb;">@the.industrial.scribe</a> to catch the launch</p>
+    <p class="soon" style="margin-bottom:6px;">Checkout opens shortly. Join the launch list — first access when it opens, and the free 10-point Pre-Ship Checklist (straight out of Module 02) in your first email:</p>
+    <div class="ml-embedded" data-form="dOrix4"></div>
     <p style="font-size:1rem; margin:8px 0 0;">🛡️ <strong>14-day guarantee:</strong> doesn't work in your office? Reply to your receipt. Full refund, keep the file.</p>
   </div>
   <p style="text-align:center; color:#555; font-size:1rem;">The math: documentation eats 8–12 hours of your month. One Module costs less than one of those hours. Companies pay RM 1,500 and up per head for a half-day presentation workshop — this is USD 19.99, and it doesn't expire at 5pm.</p>
   <p style="text-align:center; font-family:'Patrick Hand',cursive; font-size:1.25rem;">Every meeting has two people: the one who compiled the data, and the one who presented it.<br><strong style="color:#2563eb;">The Modules make you the second one.</strong></p>
+
+  <h2>Why I built this</h2>
+  <div class="whyme">
+    <img src="assets/insider-scribe-notebook.png" alt="Ah Hock writing in his notebook">
+    <div>
+      <p>Just call me Ah Hock. Not my real name — I still work full-time inside a Malaysian manufacturing office, and I'm not an engineer. I'm the BD guy who presents, plans, and does technical work anyway, with frameworks and AI.</p>
+      <p>My customers provide supply-chain solutions to <strong>A*ML, L*M R***, A**lied M**erials</strong>, and to Airbus and Boeing. I provide supply-chain solutions to my customers. At that tier, a report that gets "okay, noted" is a report that failed — I learned every method in these Modules by failing first, then fixing it on real work.</p>
+      <p style="margin-bottom:0;">Nothing here is theory. If it's in a Module, I ran it in a real meeting, with a real boss, and it worked. <a href="about.html" style="color:#2563eb;">The longer story →</a></p>
+    </div>
+  </div>
 
   <h2>Who these are for</h2>
   <div class="persona">
