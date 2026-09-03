@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>What Are Tokens? How AI Reads Your Data and What It Costs — The Industrial Scribe</title>
+  <title>Your AI Read Half Your File — and Didn't Tell You — The Industrial Scribe</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -88,50 +88,49 @@
 
 <div class="article-wrap">
   <div class="article-category">AI Fundamentals</div>
-  <h1 class="article-headline">What Are Tokens? How AI Reads Your Data and What It Costs</h1>
+  <h1 class="article-headline">Your AI Read Half Your File — and Didn't Tell You</h1>
   <div class="article-meta">The Industrial Scribe | AI Fundamentals &nbsp;·&nbsp; 2 min read &nbsp;·&nbsp; March 2026</div>
 
   <img src="assets/insider-lightbulb.png" alt="The Insider" class="article-hero">
 
   <div class="article-body">
 
-    <p>You uploaded a 50,000-row Excel file to your AI tool. It processed 30,000 rows and then stopped. Or it summarised your 20-page report but missed the last 5 pages. Or your monthly AI bill is higher than expected and you don't know why.</p>
+<p>You upload the WIP export — 50,000 rows — and ask for a customer summary. The answer comes back fast, confident, tidy. One problem: the AI stopped reading at row 30,000, and it didn't make a fuss about it.</p>
 
-    <p>The answer to all three problems is the same word: tokens.</p>
+    <p>So the summary looks complete, the boss gets a number built on 60% of the data, and nobody lied. The machine simply has a meter, and nobody told you about the meter.</p>
 
-    <p>Understanding tokens isn't optional if you use AI for real work. It directly affects your output quality and your costs.</p>
+    <p>The meter is called <strong>tokens</strong>.</p>
 
+    <h2>What a token is</h2>
 
-    <h2>What is a Token?</h2>
+    <p>A token is the unit of text an AI reads and writes — roughly three-quarters of a word. A 10-page report is about 4,000–5,000 tokens. Think of it like the XYZ envelope on a CNC machine: a part that fits gets machined properly. A part that doesn't fit gets cut short, or needs multiple setups.</p>
 
-    <p>A token is the unit of text an LLM reads and writes — roughly 3/4 of a word in English. So 100 words is about 130–140 tokens, and a 10-page report is roughly 4,000–5,000 tokens. Think of tokens as the AI's work envelope, like the XYZ range on a CNC machine: a part that fits gets machined perfectly, one that exceeds it gets rejected or needs multiple setups. If your data exceeds the token limit, the AI truncates it or you split the work into sessions.</p>
-
-    <h2>Why Tokens Matter</h2>
-
-    <p>Every AI model has a context window — the total text it can hold in one conversation, including your input and its replies.</p>
+    <p>Every AI model has a context window — the total text one conversation can hold, your uploads and its replies together.</p>
 
     <div class="viz-compare">
       <div class="viz-title">Context windows, drawn to scale</div>
       <div class="viz-row"><div class="viz-label">GPT-4o</div><div class="viz-track"><div class="viz-bar old" style="width:13%;">128,000 tokens &middot; ~200 pages</div></div></div>
       <div class="viz-row"><div class="viz-label">Claude Sonnet</div><div class="viz-track"><div class="viz-bar old" style="width:20%;">200,000 tokens &middot; ~300 pages</div></div></div>
       <div class="viz-row"><div class="viz-label">Claude with extended context</div><div class="viz-track"><div class="viz-bar new" style="width:96%;">1,000,000 tokens &middot; ~1,500 pages</div></div></div>
-      <div class="viz-note">The last bar is why a year of WIP data fits in one conversation.</div>
+      <div class="viz-note">Bars drawn to scale — the gap is the point.</div>
     </div>
 
-    <p>When a BD manager uploads 334,000 rows of WIP data into Claude, the large context window holds it all at once. A smaller window would force the AI to process it in chunks, losing the ability to cross-reference the full dataset.</p>
+    <p>That last bar is why I could drop 334,000 rows of WIP data into one conversation and have the AI cross-reference all of it. In a smaller window, the same job becomes chunks — and chunks can't see each other.</p>
 
-    <p>If you use AI through an API or a tool like Claude Code, you pay per token — input and output priced separately, so a big upload or a long report costs more than a short question. Long conversations also cost quality: older tokens get pushed out of the window, so experienced users start a fresh conversation for big new tasks.</p>
+    <h2>What it costs you</h2>
+
+    <p>Two currencies. Money: on pay-per-token tools, a fat upload costs more than a short question, because input and output are billed separately. And quality: in a long conversation, the oldest tokens fall out of the window first. That's why a two-hour-old chat starts "forgetting" what you said at the beginning. It didn't get stupid. It ran out of envelope.</p>
 
     <ul>
       <li>One page of text ≈ 500 tokens</li>
       <li>A 10,000-row spreadsheet ≈ 500,000–800,000 tokens</li>
-      <li>Break large files into logical chunks — by customer, by year — if you hit limits</li>
-      <li>Start big new analysis in a fresh conversation, not a 2-hour-old thread</li>
+      <li>Hitting the limit? Split by customer or by year — logical chunks, not random ones</li>
+      <li>Big new analysis = fresh conversation. Every time.</li>
     </ul>
 
-    <h2>The Bottom Line</h2>
+    <h2>Ah Hock's rule</h2>
 
-    <p>Tokens are how AI measures text — what you send and what you get back. More tokens means more room to work with, but also more cost. On a $20/month plan, most manufacturing tasks won't hit the limit. Uploading massive datasets is where it starts to matter.</p>
+    <p>Know roughly what your file weighs before you feed the machine. On a $20/month plan, normal office work never hits the meter — massive exports do, and the AI won't always warn you. So check the row count in its answer against the row count in your file. Ten seconds, and you'll never present a 60% summary as a whole one.</p>
 
   </div>
 
@@ -154,14 +153,14 @@
         <div class="related-img">[ Article Image ]</div>
         <div class="related-content">
           <div class="related-cat">AI Fundamentals</div>
-          <div class="related-title">What Is an LLM? The Engine Behind Every AI Tool You Use</div>
+          <div class="related-title">The AI Read Every Textbook. It Never Touched a Machine.</div>
         </div>
       </a>
       <a href="article-what-are-skills.html" class="related-card">
         <div class="related-img">[ Article Image ]</div>
         <div class="related-content">
           <div class="related-cat">AI Fundamentals</div>
-          <div class="related-title">What Are Skills? How to Make AI Remember Your Best Practices</div>
+          <div class="related-title">Stop Re-Introducing Yourself to Your AI Every Morning</div>
         </div>
       </a>
       <a href="article-asean-data-problem.html" class="related-card">
