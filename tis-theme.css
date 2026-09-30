@@ -16,7 +16,7 @@
   --coral: #FB923C;
 }
 
-html, body { overflow-x: hidden; }
+html, body { overflow-x: clip; }
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   color: var(--ink);
