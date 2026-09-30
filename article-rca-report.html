@@ -114,16 +114,16 @@
 
   <div class="article-body">
 
-    <p>You already know what happened. You pulled the parts, reviewed the CMM data, traced the batch through ERP, sat in the debrief. Now you have to write the RCA report — and it takes four hours you don't have.</p>
+    <p>You already know what happened. You pulled the parts, reviewed the CMM data, traced the batch through ERP, sat in the debrief. Now you have to write the RCA report, and it takes four hours you don't have.</p>
 
-    <p>Worse, the customer sends it back: "root cause unclear," "containment evidence missing." You revise it twice and lose a full day. The problem isn't your knowledge — it's translating investigation notes into the structured format your customer expects. AI closes that gap: you bring the context, it handles structure, language, and formatting.</p>
+    <p>Worse, the customer sends it back: "root cause unclear," "containment evidence missing." You revise it twice and lose a full day. What slows you down is translating investigation notes into the structured format your customer expects. AI helps with that: you bring the context, it handles structure, language, and formatting.</p>
 
 
-    <p>Work through this guide and your average RCA time drops from 3–4 hours to under 90 minutes, with higher first-submission acceptance rates — a repeatable system for the next NCR, and the one after that.</p>
+    <p>Work through this guide and your average RCA time drops from 3 to 4 hours to under 90 minutes, with higher first-submission acceptance rates. You can reuse the same system for the next NCR and the one after that.</p>
 
-    <h2>Step 1 — Capture Your Investigation Notes</h2>
+    <h2>Step 1: Capture your investigation notes</h2>
 
-    <p>AI can't work with a wall of unstructured text. Use this bullet format instead — 15 minutes here saves two hours of prompt re-running.</p>
+    <p>AI can't work with a wall of unstructured text. Use this bullet format instead. Fifteen minutes here saves two hours of re-running prompts.</p>
 
     <div class="prompt-label">Investigation Notes Format</div>
     <div class="prompt-block">DEFECT:
@@ -150,15 +150,15 @@ CONTAINMENT ALREADY DONE:
 - [Action 1 — e.g. "100% inspection of remaining stock at customer, 23 pcs passed"]
 - [Action 2 — e.g. "Hold on next scheduled shipment pending root cause closure"]</div>
 
-    <h2>Step 2 — Choose the Right Framework</h2>
+    <h2>Step 2: Choose the right framework</h2>
 
     <p>Three formats cover almost every case in SEA contract manufacturing.</p>
 
     <h3>5-Why Analysis</h3>
-    <p>Use for a single, clear failure chain — one process escape, one root cause thread.</p>
+    <p>Use it for a single, clear failure chain: one process escape, one root cause thread.</p>
 
     <h3>8D Report (Eight Disciplines)</h3>
-    <p>Use when the customer requires it, or the defect recurred after a previous CAPA. Root cause (D4) is never "operator error" — it's the systemic gap that allowed it.</p>
+    <p>Use when the customer requires it, or the defect recurred after a previous CAPA. Root cause (D4) is never "operator error". It is the systemic gap that allowed the error.</p>
 
     <table>
       <thead>
@@ -179,11 +179,11 @@ CONTAINMENT ALREADY DONE:
     <h3>Fishbone (Ishikawa) Diagram</h3>
     <p>Use when the root cause is genuinely unclear. Most QC executives use it internally, then present 5-Why or 8D to the customer.</p>
 
-    <h2>Step 3 — Build the AI Prompt</h2>
+    <h2>Step 3: Build the AI prompt</h2>
 
     <p>Copy this prompt, fill in your structured notes from Step 1, and paste it into your AI tool.</p>
 
-    <div class="prompt-label">AI Prompt — Copy This</div>
+    <div class="prompt-label">AI Prompt: Copy This</div>
     <div class="prompt-block">You are a Quality Assurance specialist with 15 years of experience in contract manufacturing. You write RCA reports for customers in the semiconductor, automotive, and oil &amp; gas sectors. Your reports are clear, technically credible, and accepted on first submission.
 
 I need you to write a complete [8D / 5-Why / Fishbone summary] Root Cause Analysis report based on the investigation notes below.
@@ -204,14 +204,14 @@ CUSTOMER REQUIREMENT:
 OUTPUT:
 Write the complete report. Include all sections. Use placeholder [DATE] and [NAME] where specific information is needed. Flag any section where you need more information from me.</div>
 
-    <p>If D4 (root cause) sounds like a symptom, push back: <em>"Push one level deeper — what systemic gap allowed this to happen?"</em></p>
+    <p>If D4 (root cause) sounds like a symptom, push back: <em>"Push one level deeper. What systemic gap allowed this to happen?"</em></p>
 
-    <h2>Step 4 — Review Before You Send</h2>
+    <h2>Step 4: Review before you send</h2>
 
     <p>AI gets structure and formal language right. It also gets some things wrong: root causes land too shallow ("operator didn't follow procedure" is a symptom, not a cause), corrective actions come out vague ("retrain operators" needs an owner and a date), and dates or lot numbers stay generic. Never send a report with an unfilled placeholder.</p>
 
     <div class="checklist-box">
-      <h4>5-Minute Validation Checklist — Run This Before Sending</h4>
+      <h4>5-Minute Validation Checklist: Run This Before Sending</h4>
       <ul>
         <li>Root cause is systemic, not a person failure</li>
         <li>Containment evidence is specific: quantity, date, method, result</li>
@@ -222,7 +222,7 @@ Write the complete report. Include all sections. Use placeholder [DATE] and [NAM
       </ul>
     </div>
 
-    <p>After two or three reports this way, RCA time drops to 60–90 minutes and customers stop sending reports back. The AI doesn't know your process better than you do — it just translates your knowledge into a structured document faster than you can type it.</p>
+    <p>After two or three reports this way, RCA time drops to 60 to 90 minutes and customers stop sending reports back. The AI doesn't know your process better than you do. It translates your knowledge into a structured document faster than you can type it.</p>
 
     <a href="index.html#workflows" class="download-btn">→ Download the full template and checklist for USD 9.99</a>
 
@@ -240,8 +240,8 @@ Write the complete report. Include all sections. Use placeholder [DATE] and [NAM
   <div class="mindset-box">
       <span class="mb-tag">The thinking behind it</span>
       <h4>Watch the problem. Don't wear it.</h4>
-      <p>Psychologist Ethan Kross found that analyzing a problem from a distanced, fly-on-the-wall perspective produces insight — while the identical analysis done from the inside re-triggers the stress. Same question, different camera angle, opposite result. His colleague Igor Grossmann also showed people reason more wisely about other people's problems than their own — and a simple change of perspective removes the gap.</p>
-      <p>A good RCA prompt builds that distance mechanically: it forces “the process failed at step X” framing instead of “who screwed up.” That is not just politeness — it is the vantage point where root causes actually become visible.</p>
+      <p>Psychologist Ethan Kross found that analyzing a problem from a distanced, fly-on-the-wall perspective produces insight, while the identical analysis done from the inside re-triggers the stress. Same question, different camera angle, opposite result. His colleague Igor Grossmann also showed people reason more wisely about other people's problems than their own, and a simple change of perspective removes the gap.</p>
+      <p>A good RCA prompt builds that distance mechanically: it forces “the process failed at step X” framing instead of “who screwed up.” It also gives you the vantage point where root causes become visible.</p>
     </div>
 
     <div class="cnc-strip"><img src="assets/cnc-drawing.png" alt=""><img src="assets/cnc-machine-solo.png" alt=""><img src="assets/cnc-micrometer.png" alt=""><img src="assets/cnc-gear.png" alt=""></div>

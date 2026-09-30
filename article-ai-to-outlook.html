@@ -107,26 +107,26 @@
 
   <div class="article-body">
 
-    <p>Every BD manager in manufacturing lives in their inbox. Customer PO acknowledgements, delivery status requests, price negotiation threads. Missing a customer's delivery enquiry by four hours can mean a complaint. Missing a price validity question can mean losing the order to a faster competitor.</p>
+    <p>Every BD manager in manufacturing lives in their inbox, full of customer PO acknowledgements, delivery status requests, and price negotiation threads. Missing a customer's delivery enquiry by four hours can mean a complaint, and missing a price validity question can mean losing the order to a faster competitor.</p>
 
-    <p>This case study documents connecting Claude directly to a company Microsoft Outlook account using MCP (Model Context Protocol) — the mechanism that lets AI act on external systems directly, instead of you copying text back and forth. The AI reads emails, drafts replies, and sends them from the terminal. Setup took sixty minutes.</p>
+    <p>This case study documents connecting Claude directly to a company Microsoft Outlook account using MCP (Model Context Protocol). MCP lets AI act on external systems directly, so you don't copy text back and forth. The AI reads emails, drafts replies, and sends them from the terminal. Setup took sixty minutes.</p>
 
     <div class="inline-sub">
       <p><strong>Want this working in your own office?</strong> There is no standard method — the TIS Modules first diagnose your business nature, then hand you my exact prompts to customize for YOUR office. Pay once, use forever.</p>
       <a href="modules.html">Get a Module — USD 9.99</a>
     </div>
 
-    <h2>Setting It Up</h2>
+    <h2>Setting it up</h2>
 
-    <h3>Step 1 — Register an Azure App</h3>
+    <h3>Step 1: Register an Azure app</h3>
 
-    <p>Go to portal.azure.com, open Azure Active Directory, then App Registrations, then New Registration. Name it, set the redirect URI to <code>http://localhost</code>, then note the Client ID and Tenant ID. Create a client secret under Certificates &amp; Secrets and copy it immediately — it won't be shown again.</p>
+    <p>Go to portal.azure.com, open Azure Active Directory, then App Registrations, then New Registration. Name it, set the redirect URI to <code>http://localhost</code>, then note the Client ID and Tenant ID. Create a client secret under Certificates &amp; Secrets and copy it immediately, because it won't be shown again.</p>
 
-    <h3>Step 2 — Set Permissions</h3>
+    <h3>Step 2: Set permissions</h3>
 
     <p>Add these Microsoft Graph permissions as Delegated: <code>Mail.Read</code>, <code>Mail.Send</code>, <code>Mail.ReadWrite</code>, <code>User.Read</code>. On a corporate tenant, an admin may need to approve the app before it works.</p>
 
-    <h3>Step 3 — Configure the MCP Server</h3>
+    <h3>Step 3: Configure the MCP server</h3>
 
     <p>Install the Microsoft Graph MCP server, then create a config file with your credentials:</p>
 
@@ -147,15 +147,15 @@
 
     <p>Point Claude's MCP settings to this file, and you're connected.</p>
 
-    <h3>Step 4 — Authenticate</h3>
+    <h3>Step 4: Authenticate</h3>
 
     <p>The first run opens a browser sign-in. Copy the entire redirect URL after <code>localhost</code>, not just the short code, and paste it back into the terminal. Test with: <em>"List my five most recent emails."</em> If it returns real inbox data, it's working.</p>
 
-    <h2>What You Can Do Once Connected</h2>
+    <h2>What you can do once connected</h2>
 
-    <p>Ask it to summarise a customer's email thread, draft a reply confirming a shipment, or send a follow-up on a quote. Be specific: the customer name, date range, and tone you want. And always review AI-drafted emails before sending anything with commercial implications; the AI doesn't know the relationship nuance you've built over months.</p>
+    <p>Ask it to summarise a customer's email thread, draft a reply confirming a shipment, or send a follow-up on a quote. Be specific: the customer name, date range, and tone you want. Always review AI-drafted emails before sending anything with commercial implications; the AI doesn't know the relationship nuance you've built over months.</p>
 
-    <h2>The Gotchas</h2>
+    <h2>The gotchas</h2>
 
     <p>Four things eat time: forgetting to copy the client secret before leaving the page, corporate IT blocking self-registration, copying only the short code instead of the full redirect URL, and mixing up Delegated versus Application permissions. Fix these upfront and the setup runs in about twenty minutes.</p>
 
