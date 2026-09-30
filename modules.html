@@ -170,7 +170,7 @@
     <details><summary>Is this a course?</summary><p>No. It's a one-page interactive module you keep coming back to — one method, a 15-chart database with a picker, four copy-paste AI prompts, a worked example, and a checklist that remembers your ticks. Read it in 25 minutes. Use it before every deck.</p></details>
     <details><summary>Do I just get a PDF?</summary><p>No. You get a private web page that works on your phone and your office laptop, with the interactive parts. The PDF is the offline bonus copy.</p></details>
     <details><summary>Do I need any software?</summary><p>No. A browser, and whichever AI you already use — ChatGPT, Claude or Gemini. The free tiers work fine with the prompts.</p></details>
-    <details><summary>How do I get in after paying?</summary><p>Your receipt email carries your access link. Bookmark it — that's your module, forever. Lost it? Reply to the receipt and I resend it. Checkout is opening shortly; the launch list at the bottom of this page gets first access.</p></details>
+    <details><summary>How do I get in after paying?</summary><p>Your receipt email carries your access link. Bookmark it — that's your module, forever. Lost it? Reply to the receipt and I resend it. Checkout is by card through Stripe, and takes under a minute.</p></details>
     <details><summary>How fast will I see a result?</summary><p>Tomorrow. The So-What title rule takes 60 seconds to apply to your next report and changes how it lands the same day. The rest compounds from there.</p></details>
   </div>
 
@@ -330,8 +330,12 @@
   <h2 id="buy">Get them</h2>
   <div class="wob accent-pink" style="text-align:center;">
     <p style="margin-bottom:4px;"><span class="marker" style="font-size:1.4rem;">The Diagnostic</span> — <span class="price">USD 9.99</span> &nbsp;·&nbsp; <span class="marker" style="font-size:1.4rem;">The Flagship</span> — <span class="price">USD 19.99</span> &nbsp;·&nbsp; <span class="marker" style="font-size:1.4rem;">The Defensible Number</span> — <span class="price">USD 9.99</span></p>
-    <p class="soon" style="margin-bottom:6px;">Checkout opens shortly. Join the launch list — first access when it opens, and the free 10-point Pre-Ship Checklist (straight out of the Flagship) in your first email:</p>
-    <div class="ml-embedded" data-form="dOrix4"></div>
+    <p style="margin:10px 0 4px;">
+      <button class="cta-btn blue" onclick="tisXsell('m01')">Get the Diagnostic · USD 9.99</button>
+      <button class="cta-btn" onclick="tisXsell('m02')">Get the Flagship · USD 19.99</button>
+      <button class="cta-btn blue" onclick="tisXsell('m03')">Get The Defensible Number · USD 9.99</button>
+    </p>
+    <p class="soon" style="margin-bottom:6px;">Card checkout by Stripe. Your receipt email carries the access link — that page is yours forever.</p>
     <p style="font-size:1rem; margin:8px 0 0;">🛡️ <strong>14-day guarantee:</strong> doesn't work in your office? Reply to your receipt. Full refund, keep the file.</p>
   </div>
   <p style="text-align:center; color:#555; font-size:1rem;">The math: documentation eats 8–12 hours of your month. One Module costs less than one of those hours. Companies pay RM 1,500 and up per head for a half-day presentation workshop — this is USD 19.99, and it doesn't expire at 5pm.</p>
@@ -418,8 +422,8 @@
     <p id="xsell-head" class="marker" style="font-size:1.35rem; text-align:center; margin-bottom:8px;"></p>
     <p id="xsell-body" style="font-family:'Patrick Hand',cursive; font-size:1.1rem; text-align:center; margin-bottom:14px;"></p>
     <div style="text-align:center;">
-      <a class="cta-btn" id="xsell-both" href="#buy" onclick="tisXclose()" style="display:block; margin:6px auto;">🎁 The Flagship + The Diagnostic — USD 20 &nbsp;<s style="opacity:.6; font-size:1rem;">USD 29.98</s> <span style="font-size:.95rem;">(save 9.98)</span></a>
-      <a class="cta-btn blue" id="xsell-one" href="#buy" onclick="tisXclose()" style="display:block; margin:6px auto; background:#fff; color:#111;"></a>
+      <a class="cta-btn" id="xsell-both" href="https://buy.stripe.com/3cI14p6a78rn6W1dpu0kE01" style="display:block; margin:6px auto;">🎁 The Flagship + The Diagnostic — USD 20 &nbsp;<s style="opacity:.6; font-size:1rem;">USD 29.98</s> <span style="font-size:.95rem;">(save 9.98)</span></a>
+      <a class="cta-btn blue" id="xsell-one" href="#" style="display:block; margin:6px auto; background:#fff; color:#111;"></a>
     </div>
   </div>
 </div>
@@ -429,15 +433,18 @@ var XS = {
   m01: { img: "assets/insider-scribe-notebook.png",
          head: "One more thing before you go —",
          body: "You're about to understand your business properly. But when you present what you find... how do those meetings usually go? The Flagship fixes that. Together, both Modules are USD 20 instead of 29.98.",
-         one: "Just the Diagnostic — USD 9.99" },
+         one: "Just the Diagnostic — USD 9.99",
+         link: "https://buy.stripe.com/fZufZj8ifazvbch1GM0kE03" },
   m03: { img: "assets/insider-calm-laptop-coffee.png",
          head: "One thing first —",
          body: "The Defense Sheet works best when you know what your business nature demands you prove. Know Your Business Nature is the diagnostic it builds on, and the Flagship presents the number you defend. Any two, or all three, and the method compounds.",
-         one: "Just The Defensible Number — USD 9.99" },
+         one: "Just The Defensible Number — USD 9.99",
+         link: "https://buy.stripe.com/28E9AVgOL4b78052KQ0kE02" },
   m02: { img: "assets/insider-pointing-teach.png",
          head: "Quick question first —",
          body: "You're about to fix your presentations. But do you know what YOUR business nature demands you prove in them? Know Your Business Nature is the diagnostic everything builds on. Take both for USD 20 instead of 29.98.",
-         one: "Just the Flagship — USD 19.99" }
+         one: "Just the Flagship — USD 19.99",
+         link: "https://buy.stripe.com/14A3cxcyv5fbgwBdpu0kE04" }
 };
 function tisXsell(which) {
   var d = XS[which];
@@ -445,6 +452,7 @@ function tisXsell(which) {
   document.getElementById('xsell-head').textContent = d.head;
   document.getElementById('xsell-body').textContent = d.body;
   document.getElementById('xsell-one').textContent = d.one;
+  document.getElementById('xsell-one').href = d.link;
   var o = document.getElementById('xsell-overlay');
   o.style.display = 'flex';
 }
