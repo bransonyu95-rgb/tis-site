@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Which Insider Are You? — The Industrial Scribe</title>
+  <meta name="description" content="Nine questions about how you really work in a factory office. Get your Insider type and a report on your superpower, your blind spot, and your first AI move.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; color: #111827; line-height: 1.6; }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 2rem 5% 4rem; }
+    .hero { text-align: center; padding: 1.5rem 0 0.5rem; }
+    .hero img { width: 190px; max-width: 55%; }
+    h1 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: clamp(1.8rem, 6vw, 2.4rem); line-height: 1.2; text-align: center; }
+    .sub { font-family: 'Patrick Hand', cursive; font-size: 1.25rem; color: #555; text-align: center; margin: 8px 0 4px; }
+    .quiz { border: 3px dashed #2563eb; border-radius: 18px; padding: 1.4rem 1.5rem; margin: 1.6rem 0; }
+    .prog { font-family: 'Patrick Hand', cursive; color: #999; font-size: 0.98rem; margin-bottom: 10px; }
+    .q { font-family: 'Patrick Hand', cursive; font-size: 1.3rem; margin-bottom: 14px; }
+    .opt { display: block; width: 100%; text-align: left; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.02rem; padding: 12px 16px; margin: 10px 0;
+      border: 2.5px solid #111; background: #fff; cursor: pointer; color: #111827;
+      border-radius: 200px 12px 180px 12px/12px 180px 12px 200px; transition: all .12s ease; }
+    .opt:hover { background: #FBBF24; transform: rotate(-0.5deg); }
+    .start-note { font-family: 'Patrick Hand', cursive; color: #777; text-align: center; font-size: 1rem; }
+    /* report */
+    #report { display: none; }
+    .type-card { border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; padding: 1.5rem 1.6rem; margin: 1.4rem 0; }
+    .type-kicker { font-family: 'Patrick Hand', cursive; font-size: 1.15rem; color: #555; }
+    .type-name { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 2.1rem; line-height: 1.15; margin: 2px 0 4px; }
+    .type-line { font-family: 'Patrick Hand', cursive; font-size: 1.25rem; margin-bottom: 4px; }
+    .rep-sec { border: 3px solid #111; border-radius: 15px 225px 15px 255px/255px 15px 225px 15px; padding: 1.1rem 1.3rem; margin: 14px 0; }
+    .rep-sec h3 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 1.1rem; margin-bottom: 4px; }
+    .rep-sec p { font-size: 1rem; margin: 0; }
+    .b-mint { border-left: 10px solid #10B981; } .b-pink { border-left: 10px solid #EC4899; }
+    .b-blue { border-left: 10px solid #2563eb; } .b-yellow { border-left: 10px solid #FBBF24; }
+    .b-sky { border-left: 10px solid #38BDF8; } .b-coral { border-left: 10px solid #FB923C; }
+    .cta-btn { display: inline-block; font-family: 'Patrick Hand', cursive; font-size: 1.2rem;
+      background: #EC4899; color: #fff; text-decoration: none; padding: 11px 26px; margin: 8px 6px 0 0;
+      border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; cursor: pointer; }
+    .cta-btn.white { background: #fff; color: #111; }
+    .honest { font-family: 'Patrick Hand', cursive; color: #888; font-size: 0.98rem; text-align: center; margin-top: 18px; }
+    .retake { text-align: center; margin-top: 10px; }
+  </style>
+  <link rel="stylesheet" href="tis-theme.css">
+  <link rel="stylesheet" href="tis-dopamine.css">
+  <!-- MailerLite Universal -->
+  <script>
+  (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+  .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+  n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+  (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+  ml('account', '2607218');
+  </script>
+  <!-- End MailerLite Universal -->
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">THE INDUSTRIAL <span>SCRIBE</span></a>
+    <div class="nav-links">
+      <a href="index.html#articles">Articles</a>
+      <a href="article-playbook.html">Free Playbook</a>
+      <a href="about.html">Meet Ah Hock</a>
+      <a href="open.html">Open your module</a>
+      <a href="modules.html" class="nav-cta">Get the Modules</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="hero"><img src="assets/insider-lightbulb.png" alt="The Insider with an idea"></div>
+  <h1>Which Insider are you?</h1>
+  <p class="sub">Nine questions about how you really work when the factory is on fire and the boss is waiting. Three minutes. No email needed to see your result.</p>
+
+  <div class="quiz" id="quizbox">
+    <div class="prog" id="prog">Question 1 of 9</div>
+    <div class="q" id="qtext"></div>
+    <div id="opts"></div>
+  </div>
+
+  <div id="report">
+    <div class="type-card" id="typecard">
+      <div class="type-kicker">Your Insider type:</div>
+      <div class="type-name" id="tname"></div>
+      <div class="type-line" id="tline"></div>
+    </div>
+    <div class="rep-sec b-mint"><h3>Your superpower</h3><p id="tpower"></p></div>
+    <div class="rep-sec b-pink"><h3>Your blind spot (honest one)</h3><p id="tblind"></p></div>
+    <div class="rep-sec b-sky"><h3>What your boss probably misreads about you</h3><p id="tboss"></p></div>
+    <div class="rep-sec b-yellow"><h3>Your first AI move</h3><p id="tai"></p></div>
+    <div class="rep-sec b-blue"><h3>Where you grow fastest</h3><p id="tgrow"></p>
+      <a class="cta-btn" id="tcta" href="modules.html">See it →</a>
+      <button class="cta-btn white" onclick="copyResult()" id="copybtn">📋 Copy my result</button>
+    </div>
+
+    <div class="tis-mlbox" style="border:3px solid #111; border-radius:255px 15px 225px 15px/15px 225px 15px 255px; border-left:10px solid #2563eb; padding:1.2rem 1.4rem; margin:1.6rem 0; background:#fff;">
+      <p style="font-family:'Permanent Marker',cursive; font-size:1.2rem; margin:0 0 4px;">Want the weekly move for your type?</p>
+      <p style="font-family:'Patrick Hand',cursive; font-size:1.05rem; margin:0 0 10px; color:#444;">One real factory-office AI move per week from Ah Hock's desk, plus the free 10-point Pre-Ship Checklist in your first email. No spam, unsubscribe anytime.</p>
+      <div class="ml-embedded" data-form="dOrix4"></div>
+    </div>
+
+    <div class="retake"><button class="cta-btn white" onclick="location.reload()">↻ Retake</button></div>
+    <p class="honest">This is a 3-minute mirror for your work habits, written by a BD guy, not a psychologist. Use it to see yourself clearer. Don't put it in anyone's HR file.</p>
+  </div>
+</div>
+
+<footer>
+  <div><span class="handle">@the.industrial.scribe</span> · theindustrialscribe.com</div>
+  <div class="quiet">Written from inside a real Malaysian manufacturing office.</div>
+</footer>
+
+<script>
+(function(){
+  /* 3 axes: R react / P plan · N numbers / E people · S ship / F perfect */
+  var QS = [
+    ["Monday, 8.02am. Your day usually starts with:", [["The WhatsApp messages that already decided my morning","R"],["The list I wrote before I went home on Friday","P"]]],
+    ["A machine goes down and a shipment slips. Your first honest feeling:", [["Okay. This is my moment.","R"],["Annoyed. This was preventable two weeks ago.","P"]]],
+    ["Your typical week is closer to:", [["Catching whatever flies in","R"],["Working a plan and defending it from interruptions","P"]]],
+    ["You need the boss to approve something. You bring:", [["The table and the trend line","N"],["The right story at the right moment","E"]]],
+    ["A supplier promises a recovery date. You:", [["Check their past delivery numbers before believing anything","N"],["Call the person and listen for whether it's real","E"]]],
+    ["In a heated meeting, you trust:", [["Whoever has the data","N"],["Whoever has earned your trust","E"]]],
+    ["Report due 6pm. It's 5.40 and it's 90% there. You:", [["Send it. Done is done.","S"],["Ask for 30 more minutes","F"]]],
+    ["You spot a typo in the report you sent yesterday:", [["Aiya. Nobody died.","S"],["It bothers you the whole morning","F"]]],
+    ["\"Good enough\" is:", [["A skill","S"],["An excuse","F"]]]
+  ];
+
+  var TYPES = {
+    RNS: { name: "The Firefighter", accent: "#FB923C", line: "Fast, data-armed, ships while the smoke is still in the room.",
+      power: "When everything breaks at once, you get calmer. You find the number that matters, make the call, and move. Half the office secretly relies on you for this.",
+      blind: "Your saves are invisible. You fix ten fires, report none of them properly, and the quiet planner who documents everything gets the credit at year end.",
+      boss: "That you're \"always busy but never strategic.\" Wrong. You're strategic at 200km/h. The problem is nothing you do reaches the boss in a form that shows it.",
+      ai: "After the next fire, give the AI your messy WhatsApp timeline and ask for a half-page incident summary with one chart. Send it unasked. Do this three times and watch your reputation change.",
+      grow: "Present Like the Insider, the Flagship. Your work is already impressive. It just never gets presented. The So-What method turns your saves into slides in minutes, not evenings.",
+      cta: ["modules.html#m02", "The Flagship · USD 19.99"] },
+    RNF: { name: "The Inspector", accent: "#2563eb", line: "Reacts fast, but releases nothing until it has been checked twice.",
+      power: "Mistakes stop at your desk. Customers trust whatever carries your name on it, and auditors leave your area disappointed they found nothing.",
+      blind: "Speed. While you re-check row 400, the decision got made at row 10 without you. Being right too late scores the same as being wrong.",
+      boss: "That you're slow. You're actually protecting the company from expensive mistakes. But if the boss only sees the lateness and never the catches, the story writes itself the wrong way.",
+      ai: "Let the AI do the first 80% check: paste the data and ask it to flag anomalies, then spend your talent on the 20% it flags. Your checking gets faster without getting looser.",
+      grow: "The Defensible Number. It's your natural instinct, turned into a one-page method: the number, the basis, the boundaries. Approval in minutes, because the checking is visible.",
+      cta: ["modules.html#m03", "The Defensible Number · USD 9.99"] },
+    RES: { name: "The Fixer", accent: "#10B981", line: "Knows exactly who to call, and the job somehow gets done.",
+      power: "Your network IS the system. When the official process fails, your three phone calls succeed. People do things for you they wouldn't do for the SOP.",
+      blind: "None of it is written down. If you resign tomorrow, the company loses half its real process. Which also means: your value is invisible on paper, exactly where promotions are decided.",
+      boss: "That things \"just work out\" in your area. They don't just work out. You work them out. Start converting your saves into two-line emails: situation, what I did, result.",
+      ai: "After each rescue, tell the AI the story in your own messy words and ask it for a clean three-line summary for the boss. Thirty seconds. That's your paper trail starting.",
+      grow: "Present Like the Insider, the Flagship. Not to change how you work. To make what you already do visible to the people who decide your salary.",
+      cta: ["modules.html#m02", "The Flagship · USD 19.99"] },
+    REF: { name: "The Diplomat", accent: "#EC4899", line: "Carries the bad news carefully, and keeps the relationship alive.",
+      power: "You can tell a customer the shipment is late and somehow end the call with the relationship stronger. That is rare. Companies underrate it until the day they lose it.",
+      blind: "You delay the hardest messages while you polish them. Sometimes the kind thing and the fast thing are the same thing, and waiting costs more than the bad news itself.",
+      boss: "That you're \"soft.\" You're not. You're playing the long game of trust. But pair your diplomacy with one defensible number per message, so nobody mistakes care for weakness.",
+      ai: "Before sending any difficult email, ask the AI: \"what is this customer's three most likely angry replies, and my answer to each?\" Walk in prepared, send it sooner.",
+      grow: "Read \"The Email I Never Sent\" first. It's free, and it's about you. Then the Flagship, so your careful messages also carry undeniable structure.",
+      cta: ["article-email-never-sent.html", "Read the story (free)"] },
+    PNS: { name: "The Planner", accent: "#38BDF8", line: "The plan exists, the plan is numbered, and the plan ships on time.",
+      power: "You see three weeks ahead while everyone else sees Friday. Your schedules survive contact with reality more often than anyone admits.",
+      blind: "You plan with the template you were given, and templates lie: a plan built for high-volume logic breaks silently in a high-mix shop. When your plan fails, it's usually the assumptions, never the arithmetic.",
+      boss: "That planning is easy because yours looks effortless. Make the invisible visible: show the plan B you quietly built when plan A was threatened.",
+      ai: "Give the AI your plan and ask it to attack it: \"find the three weakest assumptions.\" Five minutes, and you walk into Monday already knowing where it bends.",
+      grow: "Know Your Business Nature. Your plans are only as correct as the rulebook they assume. Twenty minutes to check you've been planning for the business you're actually in.",
+      cta: ["modules.html#m01", "The Diagnostic · USD 9.99"] },
+    PNF: { name: "The Auditor", accent: "#111827", line: "Systems, standards, and documents that survive any inspection.",
+      power: "Your documentation is the company's memory. ISO visits don't scare your department. When there's a dispute, your records end the argument.",
+      blind: "Perfection has a price tag nobody shows you: the SOP that took three weeks to polish protected nothing during those three weeks. Version 1 beats version none.",
+      boss: "That you're bureaucratic. You're actually building the asset every factory wishes it had when a customer complains. But learn to ship the 80% draft with \"v1, improving\" stamped on it.",
+      ai: "Draft any SOP or report with AI first, then apply your real skill: verifying it. You become twice as fast with zero drop in your standard. That combination is rare and valuable.",
+      grow: "The Defensible Number: your love of basis and boundaries, applied to the numbers your boss questions. It will feel like it was written for you. It almost was.",
+      cta: ["modules.html#m03", "The Defensible Number · USD 9.99"] },
+    PES: { name: "The Captain", accent: "#2563eb", line: "Plans through people, and the team actually follows.",
+      power: "You turn a plan into motion because people move for you. The schedule says Friday; your team makes it Friday. That bridge between paper and floor is the hardest job in the building.",
+      blind: "You carry the plan in your head and your people's trust in your pocket, so you under-document both. The day you're on leave, everything stalls, and management calls that a system failure. It's actually proof nobody wrote down what you do.",
+      boss: "That your team \"runs itself.\" Hand the boss a one-page weekly: plan, actual, next week's risk. Ten minutes with AI. Suddenly your leadership has a paper trail.",
+      ai: "Dictate your week to the AI in five messy minutes every Friday and let it build that one-pager. You keep leading; the machine keeps the record.",
+      grow: "Present Like the Insider, the Flagship. Your floor results deserve boardroom form. One method, reused every week.",
+      cta: ["modules.html#m02", "The Flagship · USD 19.99"] },
+    PEF: { name: "The Mentor", accent: "#10B981", line: "Builds people and process patiently, and the place is better for it.",
+      power: "You leave things better than you found them: the new planner you trained, the process you quietly fixed, the crisis that didn't happen because of something you did in March.",
+      blind: "Prevention is invisible. The fire that never started gets no award. If you don't occasionally show the before-and-after, your best work reads as \"nothing happened.\"",
+      boss: "That you're \"support, not core.\" Fight that with numbers: time saved, errors prevented, people trained and still performing. You have the receipts. Collect them.",
+      ai: "Keep a five-minute Friday log with AI: \"this week I prevented / improved / taught.\" By appraisal season you'll have the only document of its kind in the building.",
+      grow: "Know Your Business Nature, then teach it onward. Your instinct to develop others becomes sharper when the whole team knows which rulebook the business runs on.",
+      cta: ["modules.html#m01", "The Diagnostic · USD 9.99"] }
+  };
+
+  var i = 0, score = { R:0,P:0,N:0,E:0,S:0,F:0 };
+  var qt = document.getElementById('qtext'), opts = document.getElementById('opts'), prog = document.getElementById('prog');
+
+  function show() {
+    prog.textContent = 'Question ' + (i+1) + ' of 9';
+    qt.textContent = QS[i][0];
+    opts.innerHTML = '';
+    QS[i][1].forEach(function(o){
+      var b = document.createElement('button');
+      b.className = 'opt'; b.textContent = o[0];
+      b.onclick = function(){ score[o[1]]++; i++; if (i < QS.length) show(); else done(); };
+      opts.appendChild(b);
+    });
+  }
+
+  function done() {
+    var code = (score.R >= score.P ? 'R':'P') + (score.N >= score.E ? 'N':'E') + (score.S >= score.F ? 'S':'F');
+    var t = TYPES[code];
+    document.getElementById('quizbox').style.display = 'none';
+    document.getElementById('tname').textContent = t.name;
+    document.getElementById('tname').style.color = t.accent;
+    document.getElementById('typecard').style.borderLeft = '10px solid ' + t.accent;
+    document.getElementById('tline').textContent = t.line;
+    document.getElementById('tpower').textContent = t.power;
+    document.getElementById('tblind').textContent = t.blind;
+    document.getElementById('tboss').textContent = t.boss;
+    document.getElementById('tai').textContent = t.ai;
+    document.getElementById('tgrow').textContent = t.grow;
+    var cta = document.getElementById('tcta');
+    cta.href = t.cta[0]; cta.textContent = t.cta[1] + ' →';
+    window.__tisType = t;
+    document.getElementById('report').style.display = 'block';
+    window.scrollTo(0, 0);
+  }
+
+  window.copyResult = function(){
+    var t = window.__tisType; if (!t) return;
+    var txt = "I took the Insider test at The Industrial Scribe. My type: " + t.name + " — " + t.line +
+      "\nSuperpower: " + t.power + "\nBlind spot: " + t.blind +
+      "\nFind yours: https://theindustrialscribe.com/insider-test.html";
+    var btn = document.getElementById('copybtn');
+    navigator.clipboard.writeText(txt).then(function(){
+      btn.textContent = "✓ Copied — paste it anywhere"; setTimeout(function(){ btn.textContent = "📋 Copy my result"; }, 2000);
+    }).catch(function(){ btn.textContent = "Select & copy manually"; });
+  };
+
+  show();
+})();
+</script>
+<script src="tis-dopamine.js" defer></script>
+</body>
+</html>
