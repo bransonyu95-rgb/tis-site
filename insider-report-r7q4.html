@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Your Insider Report — The Industrial Scribe</title>
+<meta name="description" content="Your full Insider type report: character, strengths, career traps, next moves in a manufacturing office, and your AI leverage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Plus Jakarta Sans',sans-serif; background:#fff; color:#111827; line-height:1.6; }
+  .wrap { max-width:720px; margin:0 auto; padding:2rem 5% 4rem; }
+  .kicker { font-family:'Patrick Hand',cursive; font-size:1.15rem; color:#555; text-align:center; }
+  h1 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:clamp(2rem,7vw,2.8rem); text-align:center; line-height:1.15; margin:2px 0 4px; }
+  .tline { font-family:'Patrick Hand',cursive; font-size:1.3rem; color:#444; text-align:center; margin-bottom:18px; }
+  h2 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.3rem; margin:26px 0 8px;
+       background:linear-gradient(transparent 60%, #FBBF24 60%, #FBBF24 95%, transparent 95%); display:inline-block; padding:0 4px; }
+  p { margin-bottom:0.9rem; font-size:1.02rem; }
+  ul { margin:0 0 0.9rem 20px; } li { margin:4px 0; font-size:1rem; }
+  .box { border:3px solid #111; border-radius:255px 15px 225px 15px/15px 225px 15px 255px; padding:1.1rem 1.3rem; margin:12px 0; }
+  .b-mint{border-left:10px solid #10B981;} .b-pink{border-left:10px solid #EC4899;}
+  .b-blue{border-left:10px solid #2563eb;} .b-sky{border-left:10px solid #38BDF8;}
+  .rec { border:3px solid #111; border-left:10px solid #EC4899; border-radius:15px 225px 15px 255px/255px 15px 225px 15px; padding:1.3rem 1.5rem; margin:22px 0 8px; }
+  .rec h3 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.25rem; margin-bottom:6px; }
+  .cta-btn { display:inline-block; font-family:'Patrick Hand',cursive; font-size:1.2rem; background:#EC4899; color:#fff; text-decoration:none;
+    padding:11px 26px; margin:8px 8px 0 0; border:3px solid #111; border-radius:255px 15px 225px 15px/15px 225px 15px 255px; }
+  .cta-btn.blue { background:#2563eb; }
+  .honest { font-family:'Patrick Hand',cursive; color:#888; font-size:0.98rem; text-align:center; margin-top:20px; }
+  .pick { text-align:center; font-family:'Patrick Hand',cursive; font-size:1.1rem; }
+  .pick a { display:inline-block; margin:6px; color:#2563eb; }
+</style>
+<link rel="stylesheet" href="tis-theme.css">
+<link rel="stylesheet" href="tis-dopamine.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">THE INDUSTRIAL <span>SCRIBE</span></a>
+    <div class="nav-links">
+      <a href="index.html#articles">Articles</a>
+      <a href="insider-test.html">The Insider Test</a>
+      <a href="about.html">Meet Ah Hock</a>
+      <a href="modules.html" class="nav-cta">Get the Modules</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <p class="kicker">Your full Insider report · keep this page, it's yours</p>
+  <div id="rep"></div>
+  <p class="honest">Written by a BD guy from fifteen-plus years inside manufacturing offices, not by a psychologist. A mirror and a map, not a diagnosis.</p>
+</div>
+
+<footer>
+  <div><span class="handle">@the.industrial.scribe</span> · theindustrialscribe.com</div>
+  <div class="quiet">Written from inside a real Malaysian manufacturing office.</div>
+</footer>
+
+<script>
+const R = {
+firefighter: {
+  name:"The Firefighter", accent:"#FB923C",
+  line:"Fast, data-armed, ships while the smoke is still in the room.",
+  character:[
+    "You run toward the problem. When the machine stops, the shipment slips, or the customer calls angry, something in you goes quiet and quick while everyone else gets loud and slow. You think in minutes, decide with whatever data is in reach, and you would rather make a good call now than a perfect call on Thursday.",
+    "The cost of that wiring: planning bores you, documentation feels like punishment, and the days with no fire can leave you strangely restless. You are the person a factory cannot run without, and the person its paperwork was not designed for."
+  ],
+  strengths:[
+    "Calm goes UP when pressure goes up, which is rare and visible to everyone",
+    "You find the one number that matters in a messy situation",
+    "You decide without complete information, and you are right more often than you get credit for",
+    "People bring you problems first, which means you hear the truth earlier than your boss does"
+  ],
+  watchouts:[
+    "The firefighter's trap: your saves are invisible. Ten fires fixed and unrecorded count for less at appraisal than one tidy report from the quiet planner",
+    "Companies quietly let their best firefighters stay firefighters forever, because promoting you means losing the extinguisher",
+    "Reaction becomes identity: if you only feel useful during a crisis, you will stop preventing them"
+  ],
+  career:[
+    "Convert every save into a half-page: situation, action, result. Three lines, sent unasked. This single habit changes how management prices you",
+    "Pick ONE recurring fire this quarter and kill its root cause, then document that you did. Prevention plus proof is the promotion combination",
+    "Volunteer for the customer-facing crisis calls: your calm reads as seniority to outsiders",
+    "Learn the planner's language (OTD, capacity, lead time buffers) so your firefighting stories land as business results"
+  ],
+  ai:[
+    "After each fire: paste your messy WhatsApp timeline into free ChatGPT or Claude and ask for a half-page incident summary with one chart. Send it the same day",
+    "Before the morning meeting: 'summarise these 3 problems, worst first, one line each'",
+    "Keep a running 'saves file': one AI-cleaned paragraph per incident. By December you own the strongest appraisal document in the building"
+  ],
+  rec:{
+    head:"Built for the Firefighter: Present Like the Insider",
+    body:"Your work is already impressive. It just never gets PRESENTED, and presentation is the only part of your job the boss actually sees. The Flagship turns your saves into slides in minutes: the So-What title rule, the chart that fits each message, and the pre-ship checklist for when you have five minutes, not an evening. Pay once, USD 19.99, use it after every fire for the rest of your career.",
+    ctas:[["modules.html#m02","Get the Flagship · USD 19.99"],["modules.html#m01","Add the Diagnostic · both for USD 20"]]
+  }
+},
+inspector: {
+  name:"The Inspector", accent:"#2563eb",
+  line:"Reacts fast, but releases nothing until it has been checked twice.",
+  character:[
+    "You catch things. The transposed digits, the spec that quietly changed, the assumption everyone nodded past. Mistakes feel almost physical to you, and letting one through under your name is not something you do. Customers and auditors trust your work because it has earned it.",
+    "The same wiring makes speed expensive for you. While you verify row 400, the meeting decided everything at row 10. You are rarely wrong, and often late, and the office only remembers one of those two facts."
+  ],
+  strengths:[
+    "Errors stop at your desk; your name on a document means something",
+    "You read the fine print everyone else skims, so you see risks early",
+    "Auditors and difficult customers calm down when you are in the room",
+    "Your records end arguments"
+  ],
+  watchouts:[
+    "Being right too late scores the same as being wrong, in careers as in quotes",
+    "The checking instinct can become a bottleneck reputation: 'send it to them and lose a day'",
+    "Perfection on low-stakes work steals hours from the checks that actually protect the company"
+  ],
+  career:[
+    "Rank your checks: customer-facing and safety-critical get the full treatment, internal drafts ship at 90%. Say the policy out loud so people see judgment, not slowness",
+    "Make your catches visible: a monthly two-liner to the boss, 'caught X, would have cost Y'. You have receipts nobody else has",
+    "Aim at roles where checking is the job title: quality, compliance, incoming inspection, document control. There your instinct is a salary, not a tax",
+    "Learn to present a verdict, not a trail: lead with 'approved' or 'rejected and why', keep the 40 rows of evidence as backup"
+  ],
+  ai:[
+    "Let AI do the first 80% pass: paste the data, ask it to flag anomalies and inconsistencies, then spend your talent on what it flags",
+    "Before releasing anything: 'challenge this document like a hostile customer, list what they would attack'",
+    "Turn your checking rules into a saved prompt so the AI applies your standard to every draft automatically"
+  ],
+  rec:{
+    head:"Built for the Inspector: Present Like the Insider",
+    body:"Your catches protect the company, and almost nobody sees them. The Flagship is the method for making careful work land: the title that states the verdict, the one chart that carries the evidence, the checklist that lets you release with confidence instead of another re-read. USD 19.99 once, and your precision finally gets witnesses.",
+    ctas:[["modules.html#m02","Get the Flagship · USD 19.99"],["modules.html#m01","Add the Diagnostic · both for USD 20"]]
+  }
+},
+fixer: {
+  name:"The Fixer", accent:"#10B981",
+  line:"Knows exactly who to call, and the job somehow gets done.",
+  character:[
+    "Your real org chart is in your phone. When the official process stalls, you make three calls and the material moves, the slot opens, the signature appears. People do things for you they would never do for an email from the system, because you have spent years building credit you never wrote down.",
+    "That is also the problem. Nothing you do leaves a trace, so on paper your area just 'runs smoothly'. The day you resign, the company will discover half its real process walked out with you, and discover it too late to pay you for it."
+  ],
+  strengths:[
+    "A trust network that functions faster than the ERP",
+    "You read people the way the Inspector reads documents",
+    "You get honest answers because you give them",
+    "Suppliers and other departments pick up YOUR calls first"
+  ],
+  watchouts:[
+    "Invisible value: relationships do not appear in appraisal forms unless you translate them into results",
+    "Being indispensable where you are is the classic reason promotions go to someone else",
+    "Favours-based systems collapse when you are on leave, and management reads the collapse as 'no system', not 'he was the system'"
+  ],
+  career:[
+    "After every rescue, two lines to your boss: what was stuck, what you did, what it saved. Your network stays private; its results should not",
+    "Write down the top five 'who to call for what' routes you use. It feels like giving away your value; it actually reads as leadership",
+    "BD, purchasing, and supplier management are your natural promotions: jobs where the network IS the job description",
+    "Collect numbers: days saved, shipments rescued. Fixers who count become managers; fixers who don't stay fixers"
+  ],
+  ai:[
+    "After each rescue, tell the AI the story in messy words and ask for a clean three-line summary. Thirty seconds, and your paper trail finally exists",
+    "Before a difficult call: 'give me three ways to ask this supplier for a favour without burning credit'",
+    "Keep an AI-maintained log of commitments people made to you; follow-up is where favours leak"
+  ],
+  rec:{
+    head:"Built for the Fixer: Present Like the Insider",
+    body:"You do not need to work differently. You need what you already do to become VISIBLE to the people who set your salary. The Flagship is exactly that machine: your rescues, turned into half-page updates and one-chart slides the boss actually reads. USD 19.99 once. Your network got you this far; the record of it gets you promoted.",
+    ctas:[["modules.html#m02","Get the Flagship · USD 19.99"],["modules.html#m01","Add the Diagnostic · both for USD 20"]]
+  }
+},
+diplomat: {
+  name:"The Diplomat", accent:"#EC4899",
+  line:"Carries the bad news carefully, and keeps the relationship alive.",
+  character:[
+    "You can tell a customer the shipment is late and end the call with the relationship stronger. You feel the room before you speak, you choose the moment, you choose the words. In an industry that runs on long relationships and short tempers, that is a rarer skill than any software.",
+    "Your cost is delay. The harder the message, the longer you polish it, and some news gets more expensive by the hour. You already know which email you are putting off right now."
+  ],
+  strengths:[
+    "Bad news delivered by you costs the company less",
+    "You hear what customers mean, not just what they say",
+    "Conflicts come to you to be settled",
+    "People tell you things early, which makes you better informed than your position suggests"
+  ],
+  watchouts:[
+    "Polishing as procrastination: sometimes kind and fast are the same thing, and waiting is the cruelty",
+    "Softness misread: bosses can mistake care for weakness unless your messages also carry hard numbers",
+    "Absorbing everyone's tension has a personal bill; pay attention to it"
+  ],
+  career:[
+    "Set a personal rule: bad news goes out within 24 hours, WITH the recovery plan. The plan is what makes speed safe",
+    "Pair every careful message with one defensible number; diplomacy plus data is the complete package",
+    "Customer-facing roles are yours: account management, BD, customer quality. Aim there deliberately",
+    "Read 'The Email I Never Sent' on this site. It was written for you, by someone who paid the waiting tax for years"
+  ],
+  ai:[
+    "Before any difficult email: 'list this customer's three most likely angry replies and my answer to each'. Walk in prepared, send sooner",
+    "Draft the hard message with AI in five minutes, then spend your talent on the last 10% of tone",
+    "After tense calls: 'summarise what was agreed, neutrally' — your version becomes the record"
+  ],
+  rec:{
+    head:"Built for the Diplomat: the Flagship, plus a free story first",
+    body:"First read The Email I Never Sent — free, three minutes, and it is your exact pattern: fear, delay, and the recovery-plan rule that fixes both. Then the Flagship gives your careful messages their missing half: structure and numbers a boss cannot wave away. USD 19.99 once.",
+    ctas:[["article-email-never-sent.html","Read the story (free)"],["modules.html#m02","Get the Flagship · USD 19.99"]]
+  }
+},
+planner: {
+  name:"The Planner", accent:"#38BDF8",
+  line:"The plan exists, the plan is numbered, and the plan ships on time.",
+  character:[
+    "You see three weeks ahead while the office sees Friday. Schedules, buffers, dependencies: you hold the invisible structure that lets everyone else improvise safely. When your plan works, nothing happens, and nothing happening is the hardest result to get credit for.",
+    "Your risk is silent assumptions. A plan built on the wrong picture of the business fails politely and late, and everyone blames the plan instead of the picture."
+  ],
+  strengths:[
+    "You convert chaos into sequence",
+    "Your buffers have saved more shipments than anyone knows",
+    "You think in consequences: touch one date and you already see the other five move",
+    "Management trusts your numbers because they reconcile"
+  ],
+  watchouts:[
+    "Invisible success: prevented disasters leave no evidence. You must create the evidence",
+    "Template risk: a plan built for high-volume logic breaks quietly in a high-mix shop, and vice versa",
+    "Guarding the plan can read as inflexibility; sell your changes as versions, not surrenders"
+  ],
+  career:[
+    "Show plan B: when plan A survives, briefly show the threat it survived. That is how 'nothing happened' becomes visible skill",
+    "Check your assumptions against what the business actually is: what wins jobs, what loses them, where the margin lives. Planning the wrong game perfectly is the career killer",
+    "Supply chain and operations management are your ladder; the rung is making your invisible work legible upward",
+    "Once a quarter, present the plan as a story: here is the constraint, here is the trade, here is the ask"
+  ],
+  ai:[
+    "Give the AI your plan and one order: 'attack it, find the three weakest assumptions'. Five minutes, Monday-proof",
+    "Automate the weekly plan-vs-actual summary: paste both, get the variance story in plain words",
+    "Before capacity talks: 'turn these numbers into the one chart that shows the constraint'"
+  ],
+  rec:{
+    head:"Built for the Planner: Know Your Business Nature",
+    body:"Your plans are only as correct as the rulebook they assume, and most planners inherited their rulebook from a template written for a different kind of factory. The Diagnostic takes twenty minutes: it tells you which of the three business natures your company actually runs, and what that means for what your plans and reports must prove. USD 9.99, the cheapest insurance a planner can buy. Add the Flagship and both cost USD 20.",
+    ctas:[["modules.html#m01","Get the Diagnostic · USD 9.99"],["modules.html#m02","Both for USD 20"]]
+  }
+},
+auditor: {
+  name:"The Auditor", accent:"#111827",
+  line:"Systems, standards, and documents that survive any inspection.",
+  character:[
+    "You build the company's memory. SOPs that are actually followed, records that end disputes, files an auditor can open without you in the room. Where others see paperwork, you see the difference between a factory and a collection of habits.",
+    "Your tax is perfection's price tag: the procedure polished for three weeks protected nobody during those three weeks. And 'thorough' can calcify into 'slow' in the office's mouth if you let others tell your story."
+  ],
+  strengths:[
+    "Your documentation survives hostile reading: auditors, lawyers, angry customers",
+    "You standardise what others only repeat, which is how factories actually scale",
+    "Disputes end when your records arrive",
+    "You think in systems while others think in incidents"
+  ],
+  watchouts:[
+    "Version 1 beats version none: shipping the 80% draft marked 'v1, improving' is a skill, not a sin",
+    "Bureaucrat reputation: if people only meet your rules and never your reasons, they route around you",
+    "Systems work is promotion-invisible until you attach numbers to it"
+  ],
+  career:[
+    "Count what your systems prevent: audit findings avoided, disputes won by records, onboarding weeks saved. Those numbers are your case",
+    "Teach one system per quarter to another department; the person whose systems spread becomes the systems MANAGER",
+    "Quality, compliance, and documentation lead roles are your track; ISO cycles are your stage",
+    "Practice the executive version: one page, verdict first, evidence behind it"
+  ],
+  ai:[
+    "Draft every SOP and report with AI first, then apply your real skill, verification. Twice the speed, zero drop in standard",
+    "Paste any messy process description and ask for it in proper procedure structure; you polish, not type",
+    "Before audits: 'act as the auditor, list the ten questions you would ask about this process'"
+  ],
+  rec:{
+    head:"Built for the Auditor: Know Your Business Nature",
+    body:"You standardise everything; standardise the foundation first. The Diagnostic tells you which business nature your factory actually runs, so your systems and documents prove the things that matter for THIS business instead of a textbook one. Twenty minutes, USD 9.99, and it upgrades every SOP you write after it. Add the Flagship for the one-page executive versions, both for USD 20.",
+    ctas:[["modules.html#m01","Get the Diagnostic · USD 9.99"],["modules.html#m02","Both for USD 20"]]
+  }
+},
+captain: {
+  name:"The Captain", accent:"#2563eb",
+  line:"Plans through people, and the team actually follows.",
+  character:[
+    "You are the bridge between the paper and the floor. The schedule says Friday; your people make it Friday, and they do it because it is you asking. You carry the plan in your head and the team's trust in your pocket, and most days that is enough.",
+    "Its weakness shows when you are not there. Things stall, and management calls it a system failure, when it is actually proof that nobody wrote down what you do. Undocumented leadership reads as luck."
+  ],
+  strengths:[
+    "You turn plans into motion, the hardest conversion in the building",
+    "People tell you the real status, not the reported one",
+    "You absorb pressure from above without passing panic below",
+    "Your word moves things the system cannot"
+  ],
+  watchouts:[
+    "Head-and-pocket management: everything undocumented makes you unpromotable in the worst way, too load-bearing to move",
+    "Your team's results can get read as 'runs itself' unless you narrate your hand in them",
+    "Shielding your people from every pressure teaches management you need no resources"
+  ],
+  career:[
+    "A one-page weekly, every Friday: plan, actual, next week's risk, one ask. Ten minutes, and your leadership grows a paper trail",
+    "Build a stand-in: one person who can run a normal week. Succession proof is promotion proof",
+    "Production and operations management is your track; the jump needs the weekly one-pager habit most",
+    "Present your team's wins with their names on them; it reads as leadership, not modesty"
+  ],
+  ai:[
+    "Friday, five messy minutes: dictate the week to the AI, get the one-pager. You lead, the machine files",
+    "Before manpower or resource asks: 'turn this into the chart that shows the constraint and the cost of ignoring it'",
+    "Turn your verbal briefings into checklists with one AI pass; your stand-in builds itself"
+  ],
+  rec:{
+    head:"Built for the Captain: Present Like the Insider",
+    body:"Your floor results deserve boardroom form. The Flagship is one method you reuse every week: the So-What title, the one chart that carries the point, the ask with a date on its own slide. The Friday one-pager that gets Captains promoted falls straight out of it. USD 19.99 once; add the Diagnostic and both are USD 20.",
+    ctas:[["modules.html#m02","Get the Flagship · USD 19.99"],["modules.html#m01","Both for USD 20"]]
+  }
+},
+mentor: {
+  name:"The Mentor", accent:"#10B981",
+  line:"Builds people and process patiently, and the place is better for it.",
+  character:[
+    "You leave things better than you found them: the new planner you trained, the process you quietly fixed, the crisis that never happened because of something you did in March. You take the long view in a building that mostly sees this week's shipment.",
+    "Prevention is invisible, and so, too often, are you. The fire that never started wins no award, and 'support function' is what companies call their Mentors right before underpaying them."
+  ],
+  strengths:[
+    "People you train stay trained; your explanations stick",
+    "You fix causes while others fix symptoms",
+    "Institutional memory lives in you: you know why things are the way they are",
+    "Calm, durable, trusted: the person new staff are sent to"
+  ],
+  watchouts:[
+    "Invisible prevention: your best work looks like 'nothing happened' unless you show the before and after",
+    "Giving credit away is generous; giving ALL of it away is career malpractice",
+    "The helper identity can keep you from asking for the title you already do the work of"
+  ],
+  career:[
+    "Keep receipts: time saved, errors prevented, people trained and still performing. A five-minute Friday log makes you the only person in the building with this document",
+    "Name your before-and-afters: 'rework was X, we changed Y, it is now Z'. Three of those per year is a promotion case",
+    "Training lead, continuous improvement, and section head roles are your natural track",
+    "Teach the thing only you know to two people this quarter, publicly; spreading knowledge is leadership evidence"
+  ],
+  ai:[
+    "Friday log with AI: 'this week I prevented / improved / taught', one paragraph. By appraisal season it is unanswerable",
+    "Turn your explanations into one-page guides with an AI pass; your teaching starts to scale",
+    "Before proposing improvements: 'build the before-and-after comparison that makes this change obvious'"
+  ],
+  rec:{
+    head:"Built for the Mentor: Know Your Business Nature",
+    body:"You develop people; develop them on the right foundation. The Diagnostic gives you the rulebook of YOUR business, the thing every lesson you teach should stand on, and your personal context line makes every AI tool you touch smarter. Twenty minutes, USD 9.99. Add the Flagship so your before-and-afters finally land upstairs, both for USD 20.",
+    ctas:[["modules.html#m01","Get the Diagnostic · USD 9.99"],["modules.html#m02","Both for USD 20"]]
+  }
+}
+};
+
+(function(){
+  let key = (location.hash||'').replace('#','').toLowerCase();
+  if (!R[key]) { try { key = localStorage.getItem('tis-insider-type') || ''; } catch(e){} }
+  const rep = document.getElementById('rep');
+  if (!R[key]) {
+    rep.innerHTML = '<div class="pick"><p>Which Insider are you? Pick your type, or take the 3-minute test first.</p>' +
+      Object.keys(R).map(k=>'<a href="#'+k+'" onclick="location.reload()">'+R[k].name+'</a>').join(' · ') +
+      '<p style="margin-top:12px;"><a class="cta-btn blue" href="insider-test.html">Take the test →</a></p></div>';
+    return;
+  }
+  const t = R[key];
+  document.title = t.name + " — your Insider report";
+  rep.innerHTML =
+    '<h1 style="color:'+t.accent+'">'+t.name+'</h1>' +
+    '<p class="tline">'+t.line+'</p>' +
+    '<h2>Who you are at work</h2>' + t.character.map(p=>'<p>'+p+'</p>').join('') +
+    '<div class="box b-mint"><h2 style="background:none;margin-top:0;">Your strengths</h2><ul>' + t.strengths.map(s=>'<li>'+s+'</li>').join('') + '</ul></div>' +
+    '<div class="box b-pink"><h2 style="background:none;margin-top:0;">Career traps for your type</h2><ul>' + t.watchouts.map(s=>'<li>'+s+'</li>').join('') + '</ul></div>' +
+    '<div class="box b-sky"><h2 style="background:none;margin-top:0;">Your next career moves</h2><ul>' + t.career.map(s=>'<li>'+s+'</li>').join('') + '</ul></div>' +
+    '<div class="box b-blue"><h2 style="background:none;margin-top:0;">Your AI leverage (works on free accounts)</h2><ul>' + t.ai.map(s=>'<li>'+s+'</li>').join('') + '</ul></div>' +
+    '<div class="rec"><h3>'+t.rec.head+'</h3><p>'+t.rec.body+'</p>' +
+    t.rec.ctas.map(c=>'<a class="cta-btn'+(c[1].includes('9.99')&&!c[1].includes('19.99')?' blue':'')+'" href="'+c[0]+'">'+c[1]+'</a>').join('') +
+    '<p style="font-size:.95rem;color:#555;margin-top:10px;">And the TIS Skill Pack (these methods installed into your own AI) is in preparation. You joined the list to get this report, so you will hear first.</p></div>';
+})();
+</script>
+<script src="tis-dopamine.js" defer></script>
+</body>
+</html>
