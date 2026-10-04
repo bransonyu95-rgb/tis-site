@@ -68,7 +68,7 @@
     details p { margin: .6rem 0 0; }
     @media (max-width: 640px) { .persona { grid-template-columns: 1fr; } h1 { font-size: 1.9rem; } }
     .accent-blue { border-left: 10px solid #2563eb; }
-    #m01, #m02, #m03 { scroll-margin-top: 14px; }
+    #m01, #m02 { scroll-margin-top: 14px; }
     .clinic { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .clinic-box { border: 2.5px dashed #bbb; border-radius: 14px; padding: 12px 14px; }
     .clinic-svg { width: 100%; height: auto; display: block; }
@@ -156,7 +156,7 @@
         <li>✅ Nothing to install — a private web page + PDF copy</li>
         <li>🛡️ 14-day guarantee — doesn't work in your office? Full refund, keep the file</li>
       </ul>
-      <p class="soon">Or start smaller: <a href="#m01" style="color:#2563eb;">the Diagnostic (USD 9.99)</a> · <a href="#m03" style="color:#2563eb;">The Defensible Number (USD 9.99)</a></p>
+      <p class="soon">Or start smaller: <a href="#m01" style="color:#2563eb;">the Diagnostic (USD 9.99)</a></p>
     </div>
   </div>
 
@@ -323,18 +323,13 @@
 
   <p style="text-align:center;"><button class="cta-btn blue" onclick="tisXsell('m01')">Get the Diagnostic · USD 9.99</button></p>
 
-  <h2 id="m03">New: The number your boss approves first time</h2>
-  <p><span class="price">USD 9.99</span> · "The Defensible Number" · interactive web module + PDF copy · for anyone who puts a number in front of a boss or customer: quotes, costings, budgets<br><span class="soon">Inside: 4 no-bid checks · the one-page Defense Sheet · 4 prompts (including the one that role-plays your boss's three hardest questions) · the pushback escalation line</span></p>
-  <p>A number without reasoning is an opinion — and bosses re-check opinions. This module builds the number, the basis, and the boundaries on one page, so approval takes minutes and customer pushback has an answer ready. <em>You're not selling the boss a price. You're selling certainty that the price is safe.</em></p>
-  <p style="text-align:center;"><button class="cta-btn blue" onclick="tisXsell('m03')">Get The Defensible Number · USD 9.99</button></p>
 
   <h2 id="buy">Get them</h2>
   <div class="wob accent-pink" style="text-align:center;">
-    <p style="margin-bottom:4px;"><span class="marker" style="font-size:1.4rem;">The Diagnostic</span> — <span class="price">USD 9.99</span> &nbsp;·&nbsp; <span class="marker" style="font-size:1.4rem;">The Flagship</span> — <span class="price">USD 19.99</span> &nbsp;·&nbsp; <span class="marker" style="font-size:1.4rem;">The Defensible Number</span> — <span class="price">USD 9.99</span></p>
+    <p style="margin-bottom:4px;"><span class="marker" style="font-size:1.4rem;">The Diagnostic</span> — <span class="price">USD 9.99</span> &nbsp;·&nbsp; <span class="marker" style="font-size:1.4rem;">The Flagship</span> — <span class="price">USD 19.99</span></p>
     <p style="margin:10px 0 4px;">
       <button class="cta-btn blue" onclick="tisXsell('m01')">Get the Diagnostic · USD 9.99</button>
       <button class="cta-btn" onclick="tisXsell('m02')">Get the Flagship · USD 19.99</button>
-      <button class="cta-btn blue" onclick="tisXsell('m03')">Get The Defensible Number · USD 9.99</button>
     </p>
     <p class="soon" style="margin-bottom:6px;">Card checkout by Stripe. Your receipt email carries the access link — that page is yours forever.</p>
     <p style="font-size:1rem; margin:8px 0 0;">🛡️ <strong>14-day guarantee:</strong> doesn't work in your office? Reply to your receipt. Full refund, keep the file.</p>
@@ -375,7 +370,6 @@
   <div style="margin-bottom:1.4rem;">
     <div class="shelf-item"><span class="num">01</span><span style="flex:1;">Know Your Business Nature</span><span class="tag2">READY</span></div>
     <div class="shelf-item"><span class="num">02</span><span style="flex:1;">Present Like the Insider — the flagship</span><span class="tag2">READY</span></div>
-    <div class="shelf-item"><span class="num">03</span><span style="flex:1;">The Defensible Number — the price your boss approves first time</span><span class="tag2">READY</span></div>
     <div class="shelf-item"><span class="num">04</span><span style="flex:1;">Reports That Reach the Boss — the five numbers, and the prompts that build them</span><span class="tag2 soon2">IN THE WORKSHOP</span></div>
     <div class="shelf-item"><span class="num">05</span><span style="flex:1;">The Supplier Intelligence Machine — map any supplier landscape in a weekend</span><span class="tag2 soon2">IN THE WORKSHOP</span></div>
     <div class="shelf-item"><span class="num">06</span><span style="flex:1;">The ERP Memory Method — teach AI your 20-year-old system in one afternoon</span><span class="tag2 soon2">IN THE WORKSHOP</span></div>
@@ -436,11 +430,6 @@ var XS = {
          body: "You're about to understand your business properly. But when you present what you find... how do those meetings usually go? The Flagship fixes that. Together, both Modules are USD 20 instead of 29.98.",
          one: "Just the Diagnostic — USD 9.99",
          link: "https://buy.stripe.com/fZufZj8ifazvbch1GM0kE03" },
-  m03: { img: "assets/insider-calm-laptop-coffee.png",
-         head: "One thing first —",
-         body: "The Defense Sheet works best when you know what your business nature demands you prove. Know Your Business Nature is the diagnostic it builds on, and the Flagship presents the number you defend. Any two, or all three, and the method compounds.",
-         one: "Just The Defensible Number — USD 9.99",
-         link: "https://buy.stripe.com/28E9AVgOL4b78052KQ0kE02" },
   m02: { img: "assets/insider-pointing-teach.png",
          head: "Quick question first —",
          body: "You're about to fix your presentations. But do you know what YOUR business nature demands you prove in them? Know Your Business Nature is the diagnostic everything builds on. Take both for USD 20 instead of 29.98.",

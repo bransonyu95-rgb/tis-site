@@ -1,0 +1,38 @@
+# The Industrial Scribe
+
+> Frameworks and AI prompts for office staff in Southeast Asian manufacturing: planners, QC executives, purchasing and business-development coordinators. Written by Ah Hock, a pen name, from inside a real Malaysian manufacturing office. For office staff, never for programmers.
+
+Ah Hock publishes only what he has run on real work, uses real numbers, and never names a customer. There is no single standard method in manufacturing: each piece starts by diagnosing the nature of the business, then customises the workflow.
+
+## Start here
+- [Home](https://theindustrialscribe.com/): Home: who Ah Hock is and the full list of articles
+- [About Ah Hock](https://theindustrialscribe.com/about.html): Who writes this and the rules he writes by
+- [The Pre-Ship Checklist (free)](https://theindustrialscribe.com/free-checklist.html): Free 10-point checklist to run before any deck goes to a boss or a customer
+- [Business-nature quiz (free)](https://theindustrialscribe.com/free-sample.html): Free 6-question quiz that diagnoses your business nature
+- [The Modules](https://theindustrialscribe.com/modules.html): The paid Modules: frameworks, prompts and worked examples
+
+## Articles
+- [The $20 Revolution: $5,000 Consultant Work on a $20 Subscription](https://theindustrialscribe.com/article-20-dollar-revolution.html)
+- [Everyone Is 'Exploring' AI. Almost Nobody Is Ready. That's Your Opening.](https://theindustrialscribe.com/article-80-percent-problem.html)
+- [The Next AI Doesn't Wait for Your Question](https://theindustrialscribe.com/article-agentic-ai-is-here.html)
+- [AI Now Controls Your Desktop: Claude Can Click Your Mouse](https://theindustrialscribe.com/article-ai-controls-desktop.html)
+- [The AI Knowledge Gold Rush: Everyone Sells AI Skills Except Manufacturing](https://theindustrialscribe.com/article-ai-knowledge-gold-rush.html)
+- [AI Is Coming for Middle Management: Two Million Jobs at Risk](https://theindustrialscribe.com/article-ai-middle-management.html)
+- [How I Used AI to Structure a High-Stakes Supplier Negotiation](https://theindustrialscribe.com/article-ai-negotiation.html)
+- [Build Professional Slides in Minutes with AI](https://theindustrialscribe.com/article-ai-presentation.html)
+- [AI Regulation Hits Southeast Asia: Vietnam Passes First AI Law](https://theindustrialscribe.com/article-ai-regulation-sea.html)
+- [How I Connected AI to My Company Outlook in 60 Minutes](https://theindustrialscribe.com/article-ai-to-outlook.html)
+- [The ASEAN Data Problem: Why Southeast Asian Factories Can't Use AI](https://theindustrialscribe.com/article-asean-data-problem.html)
+- [The Email I Never Sent](https://theindustrialscribe.com/article-email-never-sent.html): For years I knew the bad news and said nothing. The customer found out from the calendar. What finally changed was naming the fear.
+- [How One BD Manager Turned 334,000 Rows of Factory Data Into a Growth Strategy](https://theindustrialscribe.com/article-factory-intelligence.html)
+- [You Don't Need to Be From the Field. The Chess Research Proves It.](https://theindustrialscribe.com/article-not-from-the-field.html): Chess masters lost almost all of their advantage when the pieces were scattered at random. What that means for non-engineers doing technical work with frameworks and AI.
+- [Why 95% of SEA Manufacturers Are Still on Spreadsheets, and What It Costs Them](https://theindustrialscribe.com/article-playbook.html)
+- [The 12 Numbers Every Production Manager Should Track Every Week](https://theindustrialscribe.com/article-production-report.html)
+- [How to Write an RCA Report Your Customer Won't Send Back](https://theindustrialscribe.com/article-rca-report.html)
+- [How to Write Any Manufacturing SOP in 30 Minutes Using AI](https://theindustrialscribe.com/article-sop-writing.html)
+- [Stop Re-Introducing Yourself to Your AI Every Morning](https://theindustrialscribe.com/article-what-are-skills.html)
+- [Your AI Read Half Your File and Didn't Tell You](https://theindustrialscribe.com/article-what-are-tokens.html)
+- [The AI Read Every Textbook. It Never Touched a Machine.](https://theindustrialscribe.com/article-what-is-llm.html)
+
+## Free tools
+- [Weekly WIP Status Report](https://theindustrialscribe.com/skill-wip-status-report.html): A copy-paste AI skill that teaches ChatGPT, Claude, or Gemini to produce a Monday-ready Weekly WIP Status Report from raw job data.
