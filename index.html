@@ -3,22 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Industrial Scribe — AI for Manufacturing Pros. No Code. No Theory.</title>
-  <meta name="description" content="Frameworks + AI for manufacturing office people, written from inside a real Malaysian factory office. The workshop is being rebuilt — join the letters to hear when it reopens.">
+  <title>The Industrial Scribe — Build Your AI Back-Office</title>
+  <meta name="description" content="A non-technical BD manager runs his factory office work, and his whole side business, on an AI back-office. The system is now a USD 19 kit. The articles are the proof.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; color: #111827; line-height: 1.6; }
-    .wrap { max-width: 720px; margin: 0 auto; padding: 2rem 5% 4rem; text-align: center; }
-    .hero img { width: 230px; max-width: 60%; margin-top: 1.5rem; }
-    h1 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: clamp(1.9rem, 6.5vw, 2.7rem); line-height: 1.2; margin: 14px 0 6px; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 1.6rem 5% 4rem; }
+    .hero { text-align: center; padding: 1.6rem 0 0.4rem; }
+    .hero img { width: 220px; max-width: 58%; }
+    h1 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: clamp(1.9rem, 6vw, 2.8rem); line-height: 1.2; text-align: center; }
     h1 span { color: #2563eb; }
-    .sub { font-family: 'Patrick Hand', cursive; font-size: 1.3rem; color: #555; }
-    .closed { border: 3px dashed #FB923C; border-radius: 18px; padding: 1.3rem 1.5rem; margin: 1.8rem 0 1.2rem; text-align: left; }
-    .closed h2 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 1.3rem; margin-bottom: 6px; }
-    .closed p { font-size: 1.02rem; margin-bottom: 8px; }
-    .about-line { font-family: 'Patrick Hand', cursive; font-size: 1.15rem; margin: 1.2rem 0; }
+    .sub { font-family: 'Patrick Hand', cursive; font-size: 1.3rem; color: #495057; text-align: center; margin: 8px 0 0; }
+    h2 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 1.5rem; margin: 2.8rem 0 .8rem;
+         background: linear-gradient(transparent 60%, #FBBF24 60%, #FBBF24 95%, transparent 95%); display: inline-block; padding: 0 4px; }
+    .kitbox { border: 3px solid #111; border-left: 10px solid #EC4899; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; padding: 1.3rem 1.5rem; margin: 1.6rem 0; }
+    .kitbox h3 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 1.35rem; margin-bottom: 4px; }
+    .kitbox p { font-size: 1.02rem; margin-bottom: 8px; }
+    .cta-btn { display: inline-block; font-family: 'Patrick Hand', cursive; font-size: 1.25rem; background: #EC4899; color: #fff;
+      text-decoration: none; padding: 11px 28px; border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; }
+    .who { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 1rem 0; }
+    @media (max-width: 620px){ .who { grid-template-columns: 1fr; } }
+    .who .w { border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; padding: 13px 16px; }
+    .who h4 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 1.08rem; margin-bottom: 4px; }
+    .who p { font-size: .95rem; margin: 0; }
+    .alist { list-style: none; }
+    .alist li { border-bottom: 2px dashed #d6d6d2; }
+    .alist a { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; padding: 11px 4px; text-decoration: none; color: #111827; }
+    .alist a:hover { background: #fafaf4; }
+    .alist .t { font-size: 1.02rem; } .alist .arrow { color: #2563eb; font-family: 'Patrick Hand', cursive; white-space: nowrap; }
+    .groupnote { font-family: 'Patrick Hand', cursive; color: #777; font-size: 1.02rem; margin-bottom: 4px; }
+    .about-line { font-family: 'Patrick Hand', cursive; font-size: 1.15rem; text-align: center; margin-top: 2rem; }
     .about-line a { color: #2563eb; }
   </style>
   <link rel="stylesheet" href="tis-theme.css">
@@ -39,25 +55,65 @@
   <div class="nav-inner">
     <a href="index.html" class="logo">THE INDUSTRIAL <span>SCRIBE</span></a>
     <div class="nav-links">
+      <a href="#articles">The proof</a>
       <a href="about.html">Meet Ah Hock</a>
+      <a href="backoffice.html" class="nav-cta">Get the Kit</a>
     </div>
   </div>
 </nav>
 
 <div class="wrap">
-  <div class="hero"><img src="assets/insider-scribe-notebook.png" alt="The Insider, back at the drawing board"></div>
-  <h1>THE INDUSTRIAL <span>SCRIBE</span></h1>
-  <p class="sub">Frameworks + AI for manufacturing office people.<br>Written from inside a real Malaysian factory office.</p>
+  <div class="hero"><img src="assets/insider-calm-laptop-coffee.png" alt="The Insider, calm, while his agents work"></div>
+  <h1>My office work drafts itself at night.<br><span>I just approve in the morning.</span></h1>
+  <p class="sub">I'm a BD manager in a Malaysian factory, not an engineer. I built an AI back-office that scouts my market, drafts my documents and keeps my scorecard — and packaged the whole thing into a kit you can run by lunchtime.</p>
 
-  <div class="closed">
-    <h2>🔧 The workshop is being rebuilt.</h2>
-    <p>I took everything off the shelves on purpose. The articles and modules are getting torn down and rebuilt properly, the way a factory does it: stop the line, fix the root cause, restart better.</p>
-    <p style="margin:0;">If you want to be there when the doors reopen (and get the free 10-point Pre-Ship Checklist meanwhile), leave your email below. That's the whole site for now.</p>
+  <div class="kitbox">
+    <h3>Build Your AI Back-Office — USD 19 founding</h3>
+    <p>Download. Type one command. It interviews you in plain English, reads one of your real working files, and builds the document you redo every week — in your first sitting. Yours forever, client use allowed, 14-day guarantee.</p>
+    <a class="cta-btn" href="backoffice.html">See the kit →</a>
   </div>
 
-  <div class="tis-mlbox" style="border:3px solid #111; border-radius:255px 15px 225px 15px/15px 225px 15px 255px; border-left:10px solid #2563eb; padding:1.2rem 1.4rem; margin:1.2rem 0; background:#fff; text-align:left;">
+  <div class="who">
+    <div class="w" style="border-left:10px solid #2563eb;">
+      <h4>Building for your own office?</h4>
+      <p>Planner, QA, BD, purchasing, boss. Start with the article closest to your Monday, then take the kit.</p>
+    </div>
+    <div class="w" style="border-left:10px solid #EC4899;">
+      <h4>Want to sell this skill?</h4>
+      <p>The kit ships with client mode, a license that welcomes consultants, honest price ranges, and the paperwork templates.</p>
+    </div>
+  </div>
+
+  <h2 id="articles">The proof — read how it actually runs</h2>
+  <p class="groupnote">Everything below happened on real work. Real numbers, no invented stories.</p>
+
+  <p class="groupnote" style="margin-top:14px;"><strong>What an AI back-office does, measured:</strong></p>
+  <ul class="alist">
+    <li><a href="article-factory-intelligence.html"><span class="t">How One BD Manager Turned 334,000 Rows of Factory Data Into a Growth Strategy</span><span class="arrow">→</span></a></li>
+    <li><a href="article-ai-to-outlook.html"><span class="t">How I Connected AI to My Company Outlook in 60 Minutes</span><span class="arrow">→</span></a></li>
+    <li><a href="article-sop-writing.html"><span class="t">How to Write Any Manufacturing SOP in 30 Minutes Using AI</span><span class="arrow">→</span></a></li>
+    <li><a href="article-production-report.html"><span class="t">The 12 Numbers Every Production Manager Should Track Every Week</span><span class="arrow">→</span></a></li>
+    <li><a href="article-rca-report.html"><span class="t">How to Write an RCA Report Your Customer Won't Send Back</span><span class="arrow">→</span></a></li>
+  </ul>
+
+  <p class="groupnote" style="margin-top:14px;"><strong>Why this wave is worth catching:</strong></p>
+  <ul class="alist">
+    <li><a href="article-20-dollar-revolution.html"><span class="t">The $20 Revolution: $5,000 Consultant Work on a $20 Subscription</span><span class="arrow">→</span></a></li>
+    <li><a href="article-ai-middle-management.html"><span class="t">AI Is Coming for Middle Management: Two Million Jobs at Risk</span><span class="arrow">→</span></a></li>
+    <li><a href="article-agentic-ai-is-here.html"><span class="t">The Next AI Doesn't Wait for Your Question</span><span class="arrow">→</span></a></li>
+    <li><a href="article-what-are-skills.html"><span class="t">Stop Re-Introducing Yourself to Your AI Every Morning</span><span class="arrow">→</span></a></li>
+  </ul>
+
+  <p class="groupnote" style="margin-top:14px;"><strong>For the ones who'll sell this skill:</strong></p>
+  <ul class="alist">
+    <li><a href="article-ai-knowledge-gold-rush.html"><span class="t">The AI Knowledge Gold Rush: Everyone Sells AI Skills Except Manufacturing</span><span class="arrow">→</span></a></li>
+    <li><a href="article-not-from-the-field.html"><span class="t">You Don't Need to Be From the Field. The Chess Research Proves It.</span><span class="arrow">→</span></a></li>
+    <li><a href="article-email-never-sent.html"><span class="t">The Email I Never Sent</span><span class="arrow">→</span></a></li>
+  </ul>
+
+  <div class="tis-mlbox" style="border:3px solid #111; border-radius:255px 15px 225px 15px/15px 225px 15px 255px; border-left:10px solid #2563eb; padding:1.2rem 1.4rem; margin:2.2rem 0; background:#fff;">
     <p style="font-family:'Permanent Marker',cursive; font-size:1.25rem; margin:0 0 4px;">The Insider Letters</p>
-    <p style="font-family:'Patrick Hand',cursive; font-size:1.05rem; margin:0 0 10px; color:#444;">One real factory-office AI move per week, from Ah Hock's desk. Sign up and your first email brings the free <strong>10-point Pre-Ship Checklist</strong>. First to know when the workshop reopens. No spam, unsubscribe anytime.</p>
+    <p style="font-family:'Patrick Hand',cursive; font-size:1.05rem; margin:0 0 10px; color:#444;">One real back-office move per week, from Ah Hock's desk. Sign up and your first email brings the free <strong>10-point Pre-Ship Checklist</strong>, and founding-price access to the kit. No spam, unsubscribe anytime.</p>
     <div class="ml-embedded" data-form="dOrix4"></div>
   </div>
 
