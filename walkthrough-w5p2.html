@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Your first sitting, simulated — The Industrial Scribe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Plus Jakarta Sans',sans-serif; background:#fff; color:#111827; line-height:1.6; }
+    .wrap { max-width:720px; margin:0 auto; padding:2rem 5% 4rem; }
+    h1 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:clamp(1.6rem,5.5vw,2.2rem); text-align:center; }
+    .sub { font-family:'Patrick Hand',cursive; font-size:1.2rem; color:#555; text-align:center; margin:4px 0 18px; }
+    .prog { display:flex; gap:6px; justify-content:center; margin:0 0 14px; }
+    .prog span { width:26px; height:8px; border-radius:100px; background:#e5e7eb; border:1.5px solid #111; }
+    .prog span.on { background:#EC4899; }
+    .chatbox { border:3px solid #111; border-radius:18px; padding:16px 14px; min-height:300px; background:#fafaf8;
+      border-left:10px solid #2563eb; }
+    .who { font-family:'Patrick Hand',cursive; font-size:.85rem; color:#777; margin:10px 4px 2px; }
+    .b { max-width:88%; padding:10px 14px; border:2.5px solid #111; font-size:.95rem; }
+    .agent { background:#fff; border-radius:4px 16px 16px 16px; }
+    .me { background:#fdf2f8; border-color:#EC4899; border-radius:16px 4px 16px 16px; margin-left:auto; text-align:right; font-family:'Patrick Hand',cursive; font-size:1.05rem; }
+    .me .who { text-align:right; }
+    .mewrap { display:flex; flex-direction:column; align-items:flex-end; }
+    .sys { font-family:'Patrick Hand',cursive; color:#10B981; font-size:.95rem; text-align:center; margin:10px 0 2px; }
+    .doc { background:#fff; border:2.5px dashed #10B981; border-radius:12px; padding:10px 14px; font-family:Menlo,monospace; font-size:.78rem; white-space:pre-wrap; margin-top:6px; text-align:left; }
+    .note { border:3px solid #111; border-left:10px solid #FBBF24; border-radius:14px; padding:10px 16px; margin:14px 0;
+      font-family:'Patrick Hand',cursive; font-size:1.08rem; color:#444; background:#fffbeb; }
+    .btnrow { text-align:center; margin:18px 0 6px; }
+    .go { font-family:'Patrick Hand',cursive; font-size:1.25rem; background:#EC4899; color:#fff; cursor:pointer;
+      padding:11px 30px; border:3px solid #111; border-radius:255px 15px 225px 15px/15px 225px 15px 255px; }
+    .go:hover { background:#d63384; }
+    .restart { background:#fff; color:#555; font-size:1rem; margin-left:10px; }
+    .tag { font-size:.68rem; background:#FBBF24; color:#111; border-radius:6px; padding:0 6px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; vertical-align:middle; }
+    .end { border:3px solid #111; border-left:10px solid #10B981; border-radius:16px; padding:16px 20px; margin:16px 0; }
+    .end h3 { font-family:'Permanent Marker',cursive; font-weight:400; }
+    .end li { margin:6px 0 6px 18px; }
+    a.back { font-family:'Patrick Hand',cursive; color:#2563eb; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Your first sitting, simulated</h1>
+  <p class="sub">Five minutes, nothing to install. This is what the kit's Day-Zero agent does with an <span class="tag">EXAMPLE</span> buyer — Mei Ling, a production planner. Your sitting will use <em>your</em> answers and <em>your</em> file.</p>
+  <div class="prog" id="prog"></div>
+  <div class="chatbox" id="chat"></div>
+  <div class="note" id="note" style="display:none;"></div>
+  <div class="btnrow">
+    <button class="go" id="go" onclick="next()">Start the walkthrough →</button>
+    <button class="go restart" id="restart" style="display:none;" onclick="location.reload()">↻ Restart</button>
+  </div>
+  <p style="text-align:center;"><a class="back" href="dl-kit-b7k4.html">← back to your download page</a></p>
+</div>
+
+<script>
+const S = [
+  { btn:'Type: start day zero', note:'Step 1 — you open the unzipped folder in Claude Code and type the magic words. Nothing to configure.', m:[
+    ['me','start day zero'],
+    ['agent','Welcome in. I\'m going to set this back-office up around <b>your</b> real work — five quick questions, one at a time, then one real file. First: <b>what does your business do, in your own words?</b> One line is fine.']]},
+  { btn:'Answer the questions', note:'Step 2 — one question at a time, never a form. Plain English is enough; there are no wrong answers.', m:[
+    ['me','We print packaging boxes for food brands. <span class="tag">EXAMPLE</span>'],
+    ['agent','Got it. <b>And your role there?</b>'],
+    ['me','Production planner. I plan the week and chase materials. <span class="tag">EXAMPLE</span>'],
+    ['agent','<b>Which document do you redo every week</b> — the one that eats your evening?'],
+    ['me','The weekly output report every Monday. Takes me about 90 minutes. <span class="tag">EXAMPLE</span>']]},
+  { btn:'Last two questions', note:'Step 3 — it learns who judges your work and your red lines, so drafts come out safe to send.', m:[
+    ['agent','<b>Who reads that report</b> — name and what they care about most?'],
+    ['me','Mr. Tan, the ops manager. He only cares about output vs plan and why lines stopped. <span class="tag">EXAMPLE</span>'],
+    ['agent','Last one: <b>anything I should never do or say?</b> Names to hide, topics to avoid, a pet peeve?'],
+    ['me','Never name our customers in internal docs. And Mr. Tan hates long emails. <span class="tag">EXAMPLE</span>']]},
+  { btn:'Drop one real file', note:'Step 4 — THE moment. Not a toy example: your actual messy export, dragged into the data/exports folder.', m:[
+    ['sys','You drag <b>weekly-output.xlsx</b> <span class="tag">EXAMPLE</span> into data/exports/'],
+    ['agent','Reading it… I can see 6 production lines, daily output quantities, planned vs actual, and a downtime column with reasons. Dates run Monday to Saturday last week. That\'s everything I need — building your report now, exactly the way Mr. Tan likes it: short.']]},
+  { btn:'See what it remembers', note:'Step 5 — the profile is SAVED in the folder. This is what a chatbot upload never keeps: you will never explain yourself to this AI again.', m:[
+    ['agent','Before the report — saved to memory, permanently:<div class="doc">1. Business: printed food packaging  <span class="tag">EXAMPLE</span>\n2. You: production planner, plans + chases materials\n3. Weekly task: Monday output report (was 90 min)\n4. Judge: Mr. Tan — output vs plan, downtime, SHORT\n5. Red lines: no customer names internally</div>From now on, every draft already knows all five.']]},
+  { btn:'The first document', note:'Step 6 — printed in the chat first, so you see value before any file-saving. Notice: his boss\'s name, his numbers, and the honest [CHECK] where the data didn\'t say.', m:[
+    ['agent','Here is Monday\'s report, from your actual file:<div class="doc"><b>WEEKLY OUTPUT REPORT — Mon 13 Oct</b>  <span class="tag">EXAMPLE</span>\nTo: Mr. Tan\n\nOutput vs plan: 94% (31,200 / 33,100 pcs)\nShort mainly on Line 3: down 6.5 hrs Tue–Wed,\n"die-cut blade change" per downtime log.\nLines 1,2,4–6: on plan or above.\n\nAction taken: [CHECK: your call — the file shows\nthe downtime reason but not the fix. One line\nfrom you completes this.]\n\nNext week risk: Line 3 blade stock not visible\nin this file. [CHECK: confirm spare blade qty]</div>Also saved as .md and .csv in your queue folder — nothing sends until you say so.']]},
+  { btn:'Approve + send', note:'Step 7 — you fix one line, paste to Outlook, done. 90 minutes became roughly 8. That is the whole product, working.', m:[
+    ['me','Change "action taken" to: blade changed Wed night, spare ordered. Then it\'s good.'],
+    ['agent','Updated and saved. Paste it from the queue folder whenever ready — you send, I never do. Your next step, based on what you told me: that materials-chasing email you write every Thursday. Say <b>"writer"</b> on Thursday and it\'s drafted when you arrive. Welcome to your back-office.']]},
+];
+const chat = document.getElementById('chat'), note = document.getElementById('note'),
+      go = document.getElementById('go'), prog = document.getElementById('prog');
+let i = -1;
+S.forEach(() => { const d = document.createElement('span'); prog.appendChild(d); });
+function bubble(w, html) {
+  if (w === 'sys') { const d = document.createElement('div'); d.className = 'sys'; d.innerHTML = '⬇ ' + html; chat.appendChild(d); return; }
+  const who = document.createElement('div'); who.className = 'who' + (w === 'me' ? ' r' : '');
+  who.textContent = w === 'me' ? 'You' : 'The Day-Zero agent';
+  const b = document.createElement('div'); b.className = 'b ' + (w === 'me' ? 'me' : 'agent'); b.innerHTML = html;
+  if (w === 'me') { const wrap = document.createElement('div'); wrap.className = 'mewrap'; who.style.textAlign = 'right'; wrap.appendChild(who); wrap.appendChild(b); chat.appendChild(wrap); }
+  else { chat.appendChild(who); chat.appendChild(b); }
+}
+function next() {
+  i++;
+  if (i >= S.length) { finish(); return; }
+  if (i === 0) chat.innerHTML = '';
+  const s = S[i];
+  let d = 0;
+  s.m.forEach(([w, h]) => { setTimeout(() => { bubble(w, h); chat.scrollTop = chat.scrollHeight; }, d); d += 550; });
+  note.style.display = 'block'; note.innerHTML = s.note;
+  [...prog.children].forEach((el, j) => el.className = j <= i ? 'on' : '');
+  go.textContent = (i + 1 < S.length) ? S[i + 1].btn + ' →' : 'Finish — what happens next →';
+  go.disabled = true; setTimeout(() => go.disabled = false, d);
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
+function finish() {
+  note.style.display = 'none'; go.style.display = 'none';
+  document.getElementById('restart').style.display = 'inline-block';
+  const e = document.createElement('div'); e.className = 'end';
+  e.innerHTML = '<h3>That was the simulation. Now do it for real:</h3><ul>' +
+    '<li>Open your unzipped kit folder in Claude Code and type <b>start day zero</b> — with <b>your</b> answers and <b>your</b> file. 20–30 minutes.</li>' +
+    '<li>Every week after: drop the week\'s file, say what you need, approve. SOPs follow the ISO 9001 convention; complaints get the full 8D treatment.</li>' +
+    '<li>Serving clients? Say <b>client mode</b> — and read guides/for-consultants.md.</li>' +
+    '<li>Stuck anywhere: reply to your purchase receipt. A human (me) answers, usually within a day. More tutorials land on your download page as they\'re made — free.</li></ul>';
+  chat.after(e);
+}
+</script>
+</body>
+</html>
