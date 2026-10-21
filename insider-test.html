@@ -107,6 +107,18 @@
       <p style="font-family:'Patrick Hand',cursive; font-size:1.08rem; margin:0 0 10px; color:#444;">The deep version for <strong id="gatetype">your type</strong>: who you are at work, your career traps, your next moves in a manufacturing office, and your personal AI direction: where AI helps your type most, built from your Part 2 answers. Drop your email and it unlocks right here. You'll also get one real AI move per week, plus the free Pre-Ship Checklist. No spam, unsubscribe anytime.</p>
       <div class="ml-embedded" data-form="dOrix4"></div>
     </div>
+    <div id="paybox" style="display:none; border:3px solid #111; border-radius:255px 15px 225px 15px/15px 225px 15px 255px; border-left:10px solid #EC4899; padding:1.3rem 1.5rem; margin:1.6rem 0; background:#fff;">
+      <p style="font-family:'Permanent Marker',cursive; font-size:1.3rem; margin:0 0 6px;">That's the teaser. Your full career report is US$0.99.</p>
+      <p style="margin:0 0 8px;">You've done the hard part: 30 answers in. Your report as <strong id="paytype">your type</strong> covers:</p>
+      <ul style="margin:0 0 12px 20px;">
+        <li>Who you are at work, in two honest paragraphs</li>
+        <li>Your strengths, and the career traps your type falls into</li>
+        <li>Your next career moves in a factory office</li>
+        <li>Your AI direction, built from your Part 2 answers: a brief already half filled in, your first prompt, and where AI takes your career</li>
+      </ul>
+      <p style="text-align:center; margin:0;"><a class="cta-btn" id="paylink" href="#">Unlock my report · US$0.99 →</a></p>
+      <p style="font-family:'Patrick Hand',cursive; color:#777; font-size:.98rem; text-align:center; margin:8px 0 0;">One-off card payment by Stripe. You land on your report the moment payment clears. Open it in this same browser so your answers come with you.</p>
+    </div>
     <div id="unlocked" style="display:none; text-align:center; border:3px solid #111; border-left:10px solid #10B981; border-radius:255px 15px 225px 15px/15px 225px 15px 255px; padding:1.3rem;">
       <p style="font-family:'Permanent Marker',cursive; font-size:1.3rem; margin:0 0 6px;">Unlocked. 🎉</p>
       <a class="cta-btn" id="reportlink" href="insider-report-r7q4.html">Open my full report →</a>
@@ -162,6 +174,8 @@
     ["tech", "Beyond Excel and email, how comfortable are you with new software?", [["Excel and email is my limit","low"],["I'll try a new app if someone shows me","mid"],["I install and set up tools myself","high"]]]
   ];
   var TOTAL = P1.length + P2.length;
+  /* Paste the US$0.99 Stripe link here to switch the report from email-unlock to paid (redirect: insider-report-p9x3.html). */
+  var PAY_LINK = '';
   var TYPES = {
     RNS: { name: "The Firefighter", accent: "#FB923C", line: "Fast, data-armed, ships while the smoke is still in the room.",
       power: "When everything breaks at once, you get calmer. You find the number that matters, make the call, and move. Half the office secretly relies on you for this.",
@@ -258,7 +272,12 @@
     window.__tisType = t;
     document.getElementById('report').style.display = 'block';
     window.scrollTo(0, 0);
-    armGate();
+    if (PAY_LINK) {
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('paytype').textContent = t.name;
+      document.getElementById('paylink').href = PAY_LINK;
+      document.getElementById('paybox').style.display = 'block';
+    } else { armGate(); }
   }
 
   /* unlock the full report when the MailerLite form succeeds (or right after a submit attempt) */
