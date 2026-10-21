@@ -43,8 +43,9 @@
       border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; }
     .buy-btn:hover { background: #d63384; }
     .skill-pointer { display: flex; justify-content: center; align-items: flex-start; gap: 2px; margin: 14px 0 -6px; }
-    .skill-pointer-label { font-family: 'Patrick Hand', cursive; font-size: 1.2rem; line-height: 1.25; text-align: right; transform: rotate(-3deg); margin-top: 2px;
-      background: linear-gradient(transparent 55%, #bae6fd 55%, #bae6fd 92%, transparent 92%); padding: 0 4px; }
+    .skill-pointer-label { font-family: 'Patrick Hand', cursive; font-size: 1.2rem; line-height: 1.25; text-align: right; transform: rotate(-3deg); margin-top: 6px; }
+    .skill-pointer-label span { background: linear-gradient(transparent 50%, #bae6fd 50%, #bae6fd 92%, transparent 92%); padding: 0 4px;
+      -webkit-box-decoration-break: clone; box-decoration-break: clone; }
     .skill-pointer svg { flex: none; animation: skillnudge 1.8s ease-in-out infinite; }
     @keyframes skillnudge { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
     @media (prefers-reduced-motion: reduce) { .skill-pointer svg { animation: none; } }
@@ -167,8 +168,8 @@
   <p style="font-family:'Patrick Hand',cursive; font-size:1.1rem; color:#555; text-align:center;">Notice whose lane the hard work is in. You appear three times: start it, drop a file, approve. That's the whole job.</p>
 
   <div class="skill-pointer" aria-hidden="true">
-    <span class="skill-pointer-label">This diagram is a skill<br>you can buy · USD 1.99</span>
-    <svg viewBox="0 0 90 80" width="78" height="70"><path d="M8 10 C 55 0, 82 30, 48 70" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"/><path d="M50 56 L48 70 L61 65" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="skill-pointer-label"><span>This diagram is a skill<br>you can buy · USD 1.99</span></span>
+    <svg viewBox="0 0 90 80" width="96" height="86"><path d="M8 10 C 55 0, 82 30, 48 70" fill="none" stroke="#111" stroke-width="3.5" stroke-linecap="round"/><path d="M50 56 L48 70 L61 65" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 
   <div class="wob b-sky" style="text-align:center; margin-top:0;">
