@@ -40,14 +40,20 @@
     a.back { font-family:'Patrick Hand',cursive; color:#2563eb; }
     .why { border:3px solid #111; border-left:10px solid #FBBF24; border-radius:255px 15px 225px 15px/15px 225px 15px 255px; padding:1.2rem 1.4rem 1rem; margin:0 0 20px; }
     .why h2 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.45rem; text-align:center; margin-bottom:10px; }
-    .why-cols { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-    .why-col { border:2.5px solid #111; border-radius:14px; padding:10px 14px; }
-    .why-col.old { background:#f4f4f2; } .why-col.new { background:#ecfdf5; border-color:#10B981; }
-    .why-col h3 { font-family:'Patrick Hand',cursive; font-size:1.15rem; margin-bottom:4px; }
-    .why-col ul { list-style:none; } .why-col li { font-size:.93rem; margin:6px 0; padding-left:22px; position:relative; }
-    .why-col li::before { position:absolute; left:0; font-weight:700; }
-    .why-col.old li::before { content:'✗'; color:#999; } .why-col.new li::before { content:'✓'; color:#10B981; }
-    .why-bottom { font-family:'Patrick Hand',cursive; font-size:1.12rem; text-align:center; margin:12px 0 0; color:#333; }
+    .why-kicker { font-family:'Patrick Hand',cursive; font-size:1.05rem; color:#777; text-align:center; }
+    .why p { font-size:.98rem; margin:0 0 10px; }
+    .why-cols { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:6px 0 12px; }
+    .why-card { border:2.5px solid #111; border-radius:14px; padding:9px 13px; background:#fff; }
+    .why-card b { font-family:'Patrick Hand',cursive; font-size:1.12rem; font-weight:400; display:block; }
+    .why-card .n { display:inline-block; width:22px; height:22px; border-radius:50%; background:#2563eb; color:#fff; text-align:center; font-size:.8rem; line-height:22px; margin-right:6px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; }
+    .why-card span { font-size:.88rem; color:#555; display:block; }
+    .why-card i { font-size:.84rem; color:#777; display:block; margin-top:3px; }
+    .why-bottom { font-family:'Patrick Hand',cursive; font-size:1.12rem; text-align:center; margin:4px 0 0; color:#333; }
+    .buyrow { text-align:center; margin:22px 0 4px; }
+    .buy { display:inline-block; font-family:'Patrick Hand',cursive; font-size:1.25rem; background:#EC4899; color:#fff; text-decoration:none;
+      padding:11px 30px; border:3px solid #111; border-radius:255px 15px 225px 15px/15px 225px 15px 255px; }
+    .buy:hover { background:#d63384; }
+    .smallnote { font-family:'Patrick Hand',cursive; color:#777; font-size:.98rem; text-align:center; margin:6px 0 0; }
     @media (max-width:620px) { .why-cols { grid-template-columns:1fr; } }
   </style>
   <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -58,26 +64,19 @@
   <h1>Your first sitting, simulated</h1>
   <p class="sub">Five minutes, nothing to install. This is what the kit's Day-Zero agent does with an <span class="tag">EXAMPLE</span> buyer — Mei Ling, a production planner. Your sitting will use <em>your</em> answers and <em>your</em> file.</p>
   <div class="why">
-    <h2>Why not just ask ChatGPT?</h2>
+    <p class="why-kicker">Before the demo: a 1-minute lesson</p>
+    <h2>AI only knows what you tell it</h2>
+    <p>Most people open ChatGPT, type a question, and get an answer written for nobody in particular. The AI is clever, but it has never met your boss. It doesn't know who will read the answer, so it guesses.</p>
+    <p>To get drafts you can actually send, AI needs four things about your work:</p>
     <div class="why-cols">
-      <div class="why-col old">
-        <h3>A plain AI chat</h3>
-        <ul>
-          <li>Starts from zero every time. You explain your job, your boss and your format. Again.</li>
-          <li>It has no idea your boss hates long emails, or which customer is already angry.</li>
-          <li>The answer sounds like a robot wrote it, so you rewrite half of it yourself.</li>
-        </ul>
-      </div>
-      <div class="why-col new">
-        <h3>With the kit</h3>
-        <ul>
-          <li>You explain yourself once. The kit saves it in your folder for good.</li>
-          <li>Every draft is written for the person who reads it: your boss, your customer, your supplier.</li>
-          <li>Your red lines are written down, so it never names a customer, and nothing goes out until you send it.</li>
-        </ul>
-      </div>
+      <div class="why-card"><b><span class="n">1</span>Who you are</b><span>Your job, your company, the work you redo every week.</span><i>Mei Ling: production planner, food-packaging printer.</i></div>
+      <div class="why-card"><b><span class="n">2</span>Who reads your work</b><span>Your boss, your customer, your supplier, and what each one cares about.</span><i>Mr. Tan, ops manager: output vs plan.</i></div>
+      <div class="why-card"><b><span class="n">3</span>How they like it</b><span>Short or detailed, numbers first, the format they expect.</span><i>Short. He hates long emails.</i></div>
+      <div class="why-card"><b><span class="n">4</span>Your red lines</b><span>Names to hide, things never to promise, what must never go out.</span><i>Never name customers in internal documents.</i></div>
     </div>
-    <p class="why-bottom">What you buy is a folder of plain-text instruction files. They teach Claude how to answer the people you write to every week. Watch it learn Mei Ling's job below.</p>
+    <p>Write these four things down once, in a plain text file (an .md file), and the AI reads them before every answer. Now it thinks about your reader for you. You stop re-explaining, stop rewriting, and your brain gets a break.</p>
+    <p>This is the most basic way to use AI at work. It's also the foundation everything else stands on.</p>
+    <p class="why-bottom">The kit gives you these files ready-made, plus an agent that interviews you and fills them in. Watch it do that for Mei Ling below. Its five questions are the four things above.</p>
   </div>
   <div class="prog" id="prog"></div>
   <div class="chatbox" id="chat"></div>
@@ -86,7 +85,9 @@
     <button class="go" id="go" onclick="next()">Start the walkthrough →</button>
     <button class="go restart" id="restart" style="display:none;" onclick="location.reload()">↻ Restart</button>
   </div>
-  <p style="text-align:center;"><a class="back" href="dl-kit-b7k4.html">← back to your download page</a></p>
+  <div class="buyrow"><a class="buy" href="backoffice.html">Get the kit · USD 18.99 →</a></div>
+  <p class="smallnote">Runs on Claude Pro (USD 20/month). 14-day refund, keep the files.</p>
+  <p class="smallnote">Already bought it? <a class="back" href="dl-kit-b7k4.html">← back to your download page</a></p>
 </div>
 
 <script>
@@ -145,7 +146,7 @@ function finish() {
   note.style.display = 'none'; go.style.display = 'none';
   document.getElementById('restart').style.display = 'inline-block';
   const e = document.createElement('div'); e.className = 'end';
-  e.innerHTML = '<h3>That was the simulation. Now do it for real:</h3><ul>' +
+  e.innerHTML = '<h3>That was the simulation. Want it for real?</h3><p>Don\'t own the kit yet? <a href="backoffice.html" style="color:#2563eb;">Get it here, USD 18.99 →</a></p><p><b>Already bought it?</b> Here\'s your next step:</p><ul>' +
     '<li>Open your unzipped kit folder in Claude Code and type <b>start day zero</b> — with <b>your</b> answers and <b>your</b> file. 20–30 minutes.</li>' +
     '<li>Every week after: drop the week\'s file, say what you need, approve. SOPs follow the ISO 9001 convention; complaints get the full 8D treatment.</li>' +
     '<li>Serving clients? Say <b>client mode</b> — and read guides/for-consultants.md.</li>' +
