@@ -38,6 +38,17 @@
     .end h3 { font-family:'Permanent Marker',cursive; font-weight:400; }
     .end li { margin:6px 0 6px 18px; }
     a.back { font-family:'Patrick Hand',cursive; color:#2563eb; }
+    .why { border:3px solid #111; border-left:10px solid #FBBF24; border-radius:255px 15px 225px 15px/15px 225px 15px 255px; padding:1.2rem 1.4rem 1rem; margin:0 0 20px; }
+    .why h2 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.45rem; text-align:center; margin-bottom:10px; }
+    .why-cols { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .why-col { border:2.5px solid #111; border-radius:14px; padding:10px 14px; }
+    .why-col.old { background:#f4f4f2; } .why-col.new { background:#ecfdf5; border-color:#10B981; }
+    .why-col h3 { font-family:'Patrick Hand',cursive; font-size:1.15rem; margin-bottom:4px; }
+    .why-col ul { list-style:none; } .why-col li { font-size:.93rem; margin:6px 0; padding-left:22px; position:relative; }
+    .why-col li::before { position:absolute; left:0; font-weight:700; }
+    .why-col.old li::before { content:'✗'; color:#999; } .why-col.new li::before { content:'✓'; color:#10B981; }
+    .why-bottom { font-family:'Patrick Hand',cursive; font-size:1.12rem; text-align:center; margin:12px 0 0; color:#333; }
+    @media (max-width:620px) { .why-cols { grid-template-columns:1fr; } }
   </style>
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -46,6 +57,28 @@
 <div class="wrap">
   <h1>Your first sitting, simulated</h1>
   <p class="sub">Five minutes, nothing to install. This is what the kit's Day-Zero agent does with an <span class="tag">EXAMPLE</span> buyer — Mei Ling, a production planner. Your sitting will use <em>your</em> answers and <em>your</em> file.</p>
+  <div class="why">
+    <h2>Why not just ask ChatGPT?</h2>
+    <div class="why-cols">
+      <div class="why-col old">
+        <h3>A plain AI chat</h3>
+        <ul>
+          <li>Starts from zero every time. You explain your job, your boss and your format. Again.</li>
+          <li>It has no idea your boss hates long emails, or which customer is already angry.</li>
+          <li>The answer sounds like a robot wrote it, so you rewrite half of it yourself.</li>
+        </ul>
+      </div>
+      <div class="why-col new">
+        <h3>With the kit</h3>
+        <ul>
+          <li>You explain yourself once. The kit saves it in your folder for good.</li>
+          <li>Every draft is written for the person who reads it: your boss, your customer, your supplier.</li>
+          <li>Your red lines are written down, so it never names a customer, and nothing goes out until you send it.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="why-bottom">What you buy is a folder of plain-text instruction files. They teach Claude how to answer the people you write to every week. Watch it learn Mei Ling's job below.</p>
+  </div>
   <div class="prog" id="prog"></div>
   <div class="chatbox" id="chat"></div>
   <div class="note" id="note" style="display:none;"></div>
