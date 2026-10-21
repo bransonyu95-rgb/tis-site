@@ -133,9 +133,9 @@
       '<div class="qp-card" role="dialog" aria-modal="true" aria-labelledby="qp-h">' +
         '<button class="qp-x" aria-label="close">✕</button>' +
         '<img src="assets/insider-lightbulb.png" alt="">' +
-        '<div class="qp-kicker">3 minutes · 9 questions · free</div>' +
+        '<div class="qp-kicker">7 minutes · 30 questions · free to take</div>' +
         '<div class="qp-h" id="qp-h">Which Insider are you?</div>' +
-        '<p>Firefighter, Planner, Fixer, Diplomat and four more. Answer 9 questions about how you work when the factory is on fire, and see your superpower, the career trap your type falls into, and your next move up.</p>' +
+        '<p>Firefighter, Planner, Fixer, Diplomat and four more. 30 questions about how you work and how you use AI. See your superpower, the career trap your type falls into, and the direction to take AI in your own job.</p>' +
         '<a class="qp-go" href="insider-test.html">Take the test →</a>' +
         '<button class="qp-later">Maybe later</button>' +
       '</div>';

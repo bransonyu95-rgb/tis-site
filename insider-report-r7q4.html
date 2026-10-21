@@ -30,6 +30,14 @@
   .honest { font-family:'Patrick Hand',cursive; color:#888; font-size:0.98rem; text-align:center; margin-top:20px; }
   .pick { text-align:center; font-family:'Patrick Hand',cursive; font-size:1.1rem; }
   .pick a { display:inline-block; margin:6px; color:#2563eb; }
+  .dir { border:3px solid #111; border-left:10px solid #FBBF24; border-radius:15px 225px 15px 255px/255px 15px 225px 15px; padding:1.3rem 1.5rem; margin:26px 0 8px; }
+  .dir h2 { margin-top:0; }
+  .dir h3 { font-family:'Patrick Hand',cursive; font-weight:400; font-size:1.22rem; margin:16px 0 4px; color:#2563eb; }
+  .brief { background:#fafaf8; border:2.5px dashed #10B981; border-radius:12px; padding:12px 14px; font-family:Menlo,Consolas,monospace; font-size:.8rem; white-space:pre-wrap; margin:6px 0; }
+  .copyb { font-family:'Patrick Hand',cursive; font-size:1.05rem; background:#fff; border:2.5px solid #111; border-radius:200px 12px 180px 12px/12px 180px 12px 200px; padding:6px 18px; cursor:pointer; }
+  .prompt { border-left:4px solid #38BDF8; padding:6px 12px; background:#f0f9ff; font-size:.95rem; margin:6px 0; }
+  .soft { font-family:'Patrick Hand',cursive; font-size:1.08rem; color:#444; margin-top:16px; }
+  .soft a { color:#2563eb; }
 </style>
 <link rel="stylesheet" href="tis-theme.css">
 <link rel="stylesheet" href="tis-dopamine.css">
@@ -90,12 +98,7 @@ firefighter: {
     "After each fire: paste your messy WhatsApp timeline into free ChatGPT or Claude and ask for a half-page incident summary with one chart. Send it the same day",
     "Before the morning meeting: 'summarise these 3 problems, worst first, one line each'",
     "Keep a running 'saves file': one AI-cleaned paragraph per incident. By December you own the strongest appraisal document in the building"
-  ],
-  rec:{
-    head:"Built for the Firefighter: the 8D reply, drafted while the smoke clears",
-    body:"Every fire ends the same way. The customer wants a written answer, and writing it is the part you hate. The kit's 8D writer takes your messy timeline and drafts the full D0 to D8 reply, in the discipline automotive and electronics customers expect. You fix the facts and send it the same day. Your saves finally leave a record.",
-    ctas:[["backoffice.html", "See the kit · USD 18.99"], ["walkthrough-w5p2.html", "▶ Try the 5-minute preview"]]
-  }
+  ]
 },
 inspector: {
   name:"The Inspector", accent:"#2563eb",
@@ -125,12 +128,7 @@ inspector: {
     "Let AI do the first 80% pass: paste the data, ask it to flag anomalies and inconsistencies, then spend your talent on what it flags",
     "Before releasing anything: 'challenge this document like a hostile customer, list what they would attack'",
     "Turn your checking rules into a saved prompt so the AI applies your standard to every draft automatically"
-  ],
-  rec:{
-    head:"Built for the Inspector: the 8D reply your customer won't send back",
-    body:"You already find the real root cause. The slow part is writing it up in a shape the customer accepts. The kit's 8D writer drafts the full D0 to D8 report with both chains: why it happened, and why nobody caught it. Then you do what you do best. You check it.",
-    ctas:[["backoffice.html", "See the kit · USD 18.99"], ["walkthrough-w5p2.html", "▶ Try the 5-minute preview"]]
-  }
+  ]
 },
 fixer: {
   name:"The Fixer", accent:"#10B981",
@@ -160,12 +158,7 @@ fixer: {
     "After each rescue, tell the AI the story in messy words and ask for a clean three-line summary. Thirty seconds, and your paper trail finally exists",
     "Before a difficult call: 'give me three ways to ask this supplier for a favour without burning credit'",
     "Keep an AI-maintained log of commitments people made to you; follow-up is where favours leak"
-  ],
-  rec:{
-    head:"Built for the Fixer: the hard emails, in your voice",
-    body:"Your rescues happen on the phone, so nothing gets written down. The kit drafts the emails that follow the call: the supplier chase, the favour asked politely, the two-line update to your boss. It learns how you write in the first sitting, and nothing sends without you.",
-    ctas:[["backoffice.html", "See the kit · USD 18.99"], ["walkthrough-w5p2.html", "▶ Try the 5-minute preview"]]
-  }
+  ]
 },
 diplomat: {
   name:"The Diplomat", accent:"#EC4899",
@@ -195,12 +188,7 @@ diplomat: {
     "Before any difficult email: 'list this customer's three most likely angry replies and my answer to each'. Walk in prepared, send sooner",
     "Draft the hard message with AI in five minutes, then spend your talent on the last 10% of tone",
     "After tense calls: 'summarise what was agreed, neutrally' — your version becomes the record"
-  ],
-  rec:{
-    head:"Built for the Diplomat: a free story first, then the hard emails",
-    body:"Start with The Email I Never Sent. It's free, it takes three minutes, and it's your exact pattern. Then let the kit draft the bad-news email for you: the late shipment, the price increase, the reply to an angry customer. It writes in your voice, you spend your talent on the last 10% of tone, and the email goes out today.",
-    ctas:[["article-email-never-sent.html", "Read the story (free)"], ["backoffice.html", "See the kit · USD 18.99"]]
-  }
+  ]
 },
 planner: {
   name:"The Planner", accent:"#38BDF8",
@@ -230,12 +218,7 @@ planner: {
     "Give the AI your plan and one order: 'attack it, find the three weakest assumptions'. Five minutes, Monday-proof",
     "Automate the weekly plan-vs-actual summary: paste both, get the variance story in plain words",
     "Before capacity talks: 'turn these numbers into the one chart that shows the constraint'"
-  ],
-  rec:{
-    head:"Built for the Planner: your weekly report, built from your real export",
-    body:"The plan-versus-actual report eats your Friday. In the kit's first sitting, you drop in your real Monday export and it builds the report you redo every week, with your boss's name on it, ready to paste into Outlook. Next week, you run it again on the new export.",
-    ctas:[["backoffice.html", "See the kit · USD 18.99"], ["walkthrough-w5p2.html", "▶ Try the 5-minute preview"]]
-  }
+  ]
 },
 auditor: {
   name:"The Auditor", accent:"#111827",
@@ -265,12 +248,7 @@ auditor: {
     "Draft every SOP and report with AI first, then apply your real skill, verification. Twice the speed, zero drop in standard",
     "Paste any messy process description and ask for it in proper procedure structure; you polish, not type",
     "Before audits: 'act as the auditor, list the ten questions you would ask about this process'"
-  ],
-  rec:{
-    head:"Built for the Auditor: SOPs in the ISO 9001 convention",
-    body:"Version 1 beats version none, and the kit makes version 1 fast. Its SOP writer drafts in the ISO 9001 convention: document-control header, numbered steps, records. If your company has its own format, your format wins. You keep the job you're best at, which is checking every line before it's released.",
-    ctas:[["backoffice.html", "See the kit · USD 18.99"], ["walkthrough-w5p2.html", "▶ Try the 5-minute preview"]]
-  }
+  ]
 },
 captain: {
   name:"The Captain", accent:"#2563eb",
@@ -300,12 +278,7 @@ captain: {
     "Friday, five messy minutes: dictate the week to the AI, get the one-pager. You lead, the machine files",
     "Before manpower or resource asks: 'turn this into the chart that shows the constraint and the cost of ignoring it'",
     "Turn your verbal briefings into checklists with one AI pass; your stand-in builds itself"
-  ],
-  rec:{
-    head:"Built for the Captain: the Friday one-pager, drafted for you",
-    body:"Plan, actual, next week's risk, one ask. That page is what gets Captains noticed, and it's the kind of document the kit builds in your first sitting. Drop in your real export, answer five plain questions, and it drafts the weekly report with your boss's name on it. You keep leading. The kit keeps the record.",
-    ctas:[["backoffice.html", "See the kit · USD 18.99"], ["walkthrough-w5p2.html", "▶ Try the 5-minute preview"]]
-  }
+  ]
 },
 mentor: {
   name:"The Mentor", accent:"#10B981",
@@ -335,13 +308,77 @@ mentor: {
     "Friday log with AI: 'this week I prevented / improved / taught', one paragraph. By appraisal season it is unanswerable",
     "Turn your explanations into one-page guides with an AI pass; your teaching starts to scale",
     "Before proposing improvements: 'build the before-and-after comparison that makes this change obvious'"
-  ],
-  rec:{
-    head:"Built for the Mentor: turn what you teach into SOPs",
-    body:"Everything you explain out loud disappears when you go on leave. Tell the kit's SOP writer how the job is done, in your own messy words, and it drafts a proper procedure in the ISO 9001 convention: numbered steps, records, a header auditors accept. The next new hire can follow it without you in the room.",
-    ctas:[["backoffice.html", "See the kit · USD 18.99"], ["walkthrough-w5p2.html", "▶ Try the 5-minute preview"]]
-  }
+  ]
 }
+};
+
+const STYLE = {
+  firefighter:["Fast drafts, the one number that matters first, no long intros.","Remind me to write down every save: situation, action, result."],
+  inspector:["Verdict first, evidence behind it. Mark anything you're unsure of with [CHECK].","Tell me when I'm re-checking low-stakes work."],
+  fixer:["Plain, warm and short. Write the way I talk on the phone.","Turn my phone rescues into a two-line note for my boss."],
+  diplomat:["Calm and respectful, with one hard number in every difficult message.","Push me to send bad news within 24 hours, with a recovery plan."],
+  planner:["Numbered and structured. Plan vs actual, then the risk.","Attack my assumptions before I commit to a plan."],
+  auditor:["Proper structure: header, numbered steps, records.","Let me ship version 1, marked 'v1, improving'."],
+  captain:["One page: plan, actual, risk, one ask.","Remind me to write down what my team did, with their names."],
+  mentor:["Clear and step by step, easy for a new person to follow.","Collect my before-and-afters for appraisal season."]
+};
+const WORK = {
+  reports:["reports and numbers","Here's this week's export. Using my brief, write the weekly report for my reader: what changed vs plan, why, and one risk for next week."],
+  emails:["emails and follow-ups","Using my brief, draft a reply to the email below. Keep my tone. Flag anything I should confirm before I send it."],
+  docs:["procedures and forms","Using my brief, turn my messy notes below into a numbered procedure with a header, steps and the records to keep."],
+  problems:["complaints and problem-solving","Using my brief, turn this complaint timeline into a clear problem statement, the likely root causes, and the questions I still need answered."],
+  slides:["presentations to the boss","Using my brief, turn these numbers into 3 slides: a title that states the point, one chart idea per slide, and my ask."]
+};
+const READER = {
+  boss:["my boss","wants the bottom line first, then what I need from them"],
+  customers:["customers","want to know what happened, what we're doing about it, and by when"],
+  suppliers:["suppliers","need clear dates, quantities, and what happens if they miss"],
+  team:["my own team","need simple steps and who does what"]
+};
+const LEVEL = {
+  never:"Start with one chat and one file. Before you ask AI anything, paste the brief below at the top of a new chat in free ChatGPT or Claude. That one habit fixes most of the 'AI is useless' moments people complain about.",
+  tried:"Start with one chat and one file. Before you ask AI anything, paste the brief below at the top of a new chat in free ChatGPT or Claude. That one habit fixes most of the 'AI is useless' moments people complain about.",
+  weekly:"You already use AI. Your jump now is to stop re-explaining yourself. Save the brief below and paste it at the start of every chat, or put it in ChatGPT's custom instructions or a Claude Project so it's always there.",
+  daily:"You're past the basics. Your next level is instruction files the AI reads by itself: one brief for you, plus one file per kind of document you make, so every task starts from your standard instead of from zero."
+};
+const STUCK = {
+  generic:"Generic answers come from missing context. The brief fixes exactly that: it tells the AI who is reading and how they like it.",
+  whatask:"Start from a task, not a question. Use the starter prompt below. Change the details, keep the shape.",
+  data:"Never paste customer names, prices or drawings you're not allowed to share. Swap them for 'Customer A' and 'Part X'. The AI still does most of the work. Check your company's AI rules first.",
+  slow:"Ask for the outline first, then the words. Fixing an outline takes one minute. Fixing a whole page takes twenty.",
+  untried:"Pick the one document you redo every week and use AI on that only, for three weeks. One task done often teaches you faster than ten experiments."
+};
+const GOAL = {
+  calm:"Your direction: hand AI the repeat work. Every weekly document it drafts for you is an evening back. Start with the job you picked: {work}.",
+  promoted:"Your direction: use AI to make your work visible. People get promoted on what reaches the boss in good shape. A {type} who sends a clean summary every week stands out fast.",
+  switch:"Your direction: use AI to learn a new field's language. With a good brief, AI closes the knowledge gap quickly. Read <a href=\"article-not-from-the-field.html\">You Don't Need to Be From the Field</a> next.",
+  side:"Your direction: setting up AI for other people's work is a skill small businesses pay for. Everything in this section is what you'd do for a client's office, starting with their brief."
+};
+function aiDirection(key, t){
+  let a = null; try { a = JSON.parse(localStorage.getItem('tis-insider-ai') || 'null'); } catch(e){}
+  const real = !!(a && a.work);
+  a = Object.assign({ailevel:'tried', work:'reports', reader:'boss', stuck:'generic', goal:'promoted', tech:'mid'}, a || {});
+  const w = WORK[a.work] || WORK.reports, r = READER[a.reader] || READER.boss, s = STYLE[key];
+  const brief = "# My AI brief (paste this before you ask anything)\n" +
+    "Who I am: [your job title] in a factory office. Most of my week goes to " + w[0] + ".\n" +
+    "How I like my drafts: " + s[0] + "\n" +
+    "Who reads my work: mostly " + r[0] + ", who " + r[1] + ".\n" +
+    "Watch me for: " + s[1] + "\n" +
+    "Red lines: [names to hide, things never to promise]";
+  window.__brief = brief;
+  return '<div class="dir"><h2>Your AI direction</h2>' +
+    (real ? '<p>Built from your type and your Part 2 answers.</p>' : '<p>Based on typical answers. <a href="insider-test.html" style="color:#2563eb;">Take the test</a> to make this section yours.</p>') +
+    '<h3>1. Your starting point</h3><p>' + LEVEL[a.ailevel] + (a.tech === 'low' ? ' No new software needed for this step.' : '') + '</p>' +
+    '<h3>2. Your brief, already half filled in</h3><p>AI only knows what you tell it. This is the short file that tells it who you are, who reads your work, and how they like it. Fill in the two brackets and keep it somewhere you can copy from.</p>' +
+    '<div class="brief" id="brief"></div><button class="copyb" onclick="copyBrief()" id="copyb">📋 Copy my brief</button>' +
+    '<h3>3. Your first prompt to try</h3><div class="prompt">' + w[1] + '</div>' +
+    '<h3>4. Past what\'s stopping you</h3><p>' + STUCK[a.stuck] + '</p>' +
+    '<h3>5. Where this takes your career</h3><p>' + GOAL[a.goal].replace('{work}', w[0]).replace('{type}', t.name.replace('The ','')) + '</p>' +
+    '<p class="soft">Writing a brief like this for every document you make is the slow part. If you\'d rather have an agent interview you and write the files for you, that\'s what the kit does. <a href="walkthrough-w5p2.html">See a 5-minute demo →</a></p></div>';
+}
+window.copyBrief = function(){
+  const b = document.getElementById('copyb');
+  navigator.clipboard.writeText(window.__brief).then(()=>{ b.textContent = '✓ Copied'; setTimeout(()=>b.textContent='📋 Copy my brief', 2000); }).catch(()=>{ b.textContent = 'Select the text and copy'; });
 };
 
 (function(){
@@ -349,7 +386,7 @@ mentor: {
   if (!R[key]) { try { key = localStorage.getItem('tis-insider-type') || ''; } catch(e){} }
   const rep = document.getElementById('rep');
   if (!R[key]) {
-    rep.innerHTML = '<div class="pick"><p>Which Insider are you? Pick your type, or take the 3-minute test first.</p>' +
+    rep.innerHTML = '<div class="pick"><p>Which Insider are you? Pick your type, or take the 7-minute test first.</p>' +
       Object.keys(R).map(k=>'<a href="#'+k+'" onclick="location.reload()">'+R[k].name+'</a>').join(' · ') +
       '<p style="margin-top:12px;"><a class="cta-btn blue" href="insider-test.html">Take the test →</a></p></div>';
     return;
@@ -364,9 +401,8 @@ mentor: {
     '<div class="box b-pink"><h2 style="background:none;margin-top:0;">Career traps for your type</h2><ul>' + t.watchouts.map(s=>'<li>'+s+'</li>').join('') + '</ul></div>' +
     '<div class="box b-sky"><h2 style="background:none;margin-top:0;">Your next career moves</h2><ul>' + t.career.map(s=>'<li>'+s+'</li>').join('') + '</ul></div>' +
     '<div class="box b-blue"><h2 style="background:none;margin-top:0;">Your AI leverage (works on free accounts)</h2><ul>' + t.ai.map(s=>'<li>'+s+'</li>').join('') + '</ul></div>' +
-    '<div class="rec"><h3>'+t.rec.head+'</h3><p>'+t.rec.body+'</p>' +
-    t.rec.ctas.map(c=>'<a class="cta-btn'+(c[0]==='backoffice.html'?'':' blue')+'" href="'+c[0]+'">'+c[1]+'</a>').join('') +
-    '<p style="font-size:.95rem;color:#555;margin-top:10px;">One kit for every type. Your type just tells you which document to start with. Build Your AI Back-Office is USD 18.99 once, with a 14-day refund (keep the files), and it runs on Claude Pro at USD 20/month.</p></div>';
+    aiDirection(key, t);
+  document.getElementById('brief').textContent = window.__brief;
 })();
 </script>
 <script src="tis-dopamine.js" defer></script>
