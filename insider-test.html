@@ -38,6 +38,13 @@
     .mg-h { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 1.7rem; line-height: 1.2; margin: 10px 0 4px; }
     .mg-p { font-size: 1.05rem; margin: 0 0 8px; }
     .mg-list { list-style: none; margin: 0 0 12px; } .mg-list li { margin: 6px 0; font-size: .98rem; } .mg-list b { display: inline-block; width: 28px; }
+    #midgate .ml-form-embedContent { display: none !important; }
+    #midgate .ml-form-embedWrapper { background: transparent !important; box-shadow: none !important; max-width: 100% !important; width: 100% !important; }
+    #midgate .ml-form-embedBody { padding: 0 !important; }
+    #midgate .ml-form-embedWrapper .ml-form-fieldRow input { border: 2.5px solid #111 !important; border-radius: 12px !important; font-size: 1.05rem !important; padding: 12px 14px !important; height: auto !important; }
+    #midgate .ml-form-embedSubmit button { background: #EC4899 !important; border: 3px solid #111 !important; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px !important;
+      font-family: 'Patrick Hand', cursive !important; font-size: 1.3rem !important; height: auto !important; padding: 10px 16px !important; color: #fff !important; }
+    #midgate .ml-form-successContent h4 { font-family: 'Permanent Marker', cursive !important; font-weight: 400 !important; }
     .mg-fallback { font-family: 'Patrick Hand', cursive; color: #777; text-align: center; margin-top: 10px; }
     .res-kicker { font-family: 'Patrick Hand', cursive; font-size: 1.3rem; text-align: center; color: #555; margin-top: 1rem; }
     .next { text-align: center; border: 3px solid #111; border-left: 12px solid #EC4899; border-radius: 15px 225px 15px 255px/255px 15px 225px 15px; padding: 1.5rem 1.6rem; margin: 1.8rem 0 1rem; background: #fdf2f8; box-shadow: 6px 6px 0 #111; }
@@ -257,6 +264,11 @@
     var g = document.getElementById('midgate'); g.style.display = 'block';
     window.scrollTo(0, g.getBoundingClientRect().top + window.scrollY - 90);
     if (gateArmed) return; gateArmed = true;
+    var tries = 0, brand = setInterval(function(){
+      var b = g.querySelector('.ml-form-embedSubmit button.primary'), inp = g.querySelector('input[type="email"]');
+      if (b) { b.textContent = 'Unlock Part 2 →'; if (inp) inp.placeholder = 'Your email'; clearInterval(brand); }
+      if (++tries > 40) clearInterval(brand);
+    }, 250);
     var mo = new MutationObserver(function(){
       var s = g.querySelector('.ml-form-successBody');
       if (s && getComputedStyle(s).display !== 'none') { mo.disconnect(); setTimeout(emailOk, 900); }
