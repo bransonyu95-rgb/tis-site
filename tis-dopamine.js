@@ -111,3 +111,42 @@
     iof.observe(related);
   }
 })();
+
+/* TIS insider-test pop-up: after 10s on listed pages, once per visitor */
+(function () {
+  var path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  var skip = ['backoffice.html', 'insider-test.html', 'insider-report-r7q4.html'];
+  if (skip.indexOf(path) !== -1 || /^(dl-|wm\d)/.test(path)) return;
+  if (document.querySelector('meta[name="robots"][content*="noindex"]')) return;
+  try {
+    if (localStorage.getItem('tis-insider-type')) return;
+    var seen = +localStorage.getItem('tis-quizpop-seen') || 0;
+    if (Date.now() - seen < 7 * 864e5) return;
+  } catch (e) {}
+
+  setTimeout(function () {
+    if (document.getElementById('tis-quizpop')) return;
+    try { localStorage.setItem('tis-quizpop-seen', String(Date.now())); } catch (e) {}
+    var wrap = document.createElement('div');
+    wrap.id = 'tis-quizpop';
+    wrap.innerHTML =
+      '<div class="qp-card" role="dialog" aria-modal="true" aria-labelledby="qp-h">' +
+        '<button class="qp-x" aria-label="close">✕</button>' +
+        '<img src="assets/insider-lightbulb.png" alt="">' +
+        '<div class="qp-kicker">3 minutes · 9 questions · free</div>' +
+        '<div class="qp-h" id="qp-h">Which Insider are you?</div>' +
+        '<p>Firefighter, Planner, Fixer, Diplomat and four more. Answer 9 questions about how you work when the factory is on fire, and see your superpower, the career trap your type falls into, and your next move up.</p>' +
+        '<a class="qp-go" href="insider-test.html">Take the test →</a>' +
+        '<button class="qp-later">Maybe later</button>' +
+      '</div>';
+    document.body.appendChild(wrap);
+    requestAnimationFrame(function () { wrap.classList.add('qp-show'); });
+    var close = function () { wrap.classList.remove('qp-show'); document.removeEventListener('keydown', onKey); setTimeout(function () { wrap.remove(); }, 300); };
+    var onKey = function (e) { if (e.key === 'Escape') close(); };
+    document.addEventListener('keydown', onKey);
+    wrap.querySelector('.qp-x').addEventListener('click', close);
+    wrap.querySelector('.qp-later').addEventListener('click', close);
+    wrap.addEventListener('click', function (e) { if (e.target === wrap) close(); });
+    wrap.querySelector('.qp-go').focus();
+  }, 10000);
+})();
