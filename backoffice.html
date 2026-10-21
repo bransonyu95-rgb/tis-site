@@ -42,6 +42,12 @@
       text-decoration: none; padding: 13px 36px; margin: 12px 0 2px; border: 3px solid #111;
       border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; }
     .buy-btn:hover { background: #d63384; }
+    .skill-pointer { display: flex; justify-content: center; align-items: flex-start; gap: 2px; margin: 14px 0 -6px; }
+    .skill-pointer-label { font-family: 'Patrick Hand', cursive; font-size: 1.2rem; line-height: 1.25; text-align: right; transform: rotate(-3deg); margin-top: 2px;
+      background: linear-gradient(transparent 55%, #bae6fd 55%, #bae6fd 92%, transparent 92%); padding: 0 4px; }
+    .skill-pointer svg { flex: none; animation: skillnudge 1.8s ease-in-out infinite; }
+    @keyframes skillnudge { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+    @media (prefers-reduced-motion: reduce) { .skill-pointer svg { animation: none; } }
   </style>
   <link rel="stylesheet" href="tis-theme.css">
   <link rel="stylesheet" href="tis-dopamine.css">
@@ -160,7 +166,12 @@
   </div>
   <p style="font-family:'Patrick Hand',cursive; font-size:1.1rem; color:#555; text-align:center;">Notice whose lane the hard work is in. You appear three times: start it, drop a file, approve. That's the whole job.</p>
 
-  <div class="wob b-sky" style="text-align:center;">
+  <div class="skill-pointer" aria-hidden="true">
+    <span class="skill-pointer-label">This diagram is a skill<br>you can buy · USD 1.99</span>
+    <svg viewBox="0 0 90 80" width="78" height="70"><path d="M8 10 C 55 0, 82 30, 48 70" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"/><path d="M50 56 L48 70 L61 65" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+
+  <div class="wob b-sky" style="text-align:center; margin-top:0;">
     <p style="margin:0 0 6px;"><strong>This diagram? My agent drew it</strong> — with a skill I built called Workflow Swimlanes. Point it at any automation you run with Claude Code and it draws the same view: what your AI is <em>supposed</em> to do, and what it <em>actually</em> did, rebuilt from the logs on your own computer.</p>
     <a href="https://buy.stripe.com/aFadRb1TRePL5RX5X20kE06" style="display:inline-block; font-family:'Patrick Hand',cursive; font-size:1.15rem; background:#38BDF8; color:#fff; text-decoration:none; padding:8px 24px; margin:4px 0 2px; border:3px solid #111; border-radius:255px 15px 225px 15px/15px 225px 15px 255px;">Get the skill — USD 1.99 →</a>
     <p style="font-family:'Patrick Hand',cursive; font-size:.95rem; color:#666; margin:6px 0 0;">Separate little tool, yours forever, 14-day guarantee. The kit below does not need it.</p>
