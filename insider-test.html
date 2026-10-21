@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex">
   <title>Which Insider Are You? — The Industrial Scribe</title>
   <meta name="description" content="Nine questions about how you really work in a factory office. Get your Insider type and a report on your superpower, your blind spot, and your first AI move.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,11 +60,9 @@
   <div class="nav-inner">
     <a href="index.html" class="logo">THE INDUSTRIAL <span>SCRIBE</span></a>
     <div class="nav-links">
-      <a href="index.html#articles">Articles</a>
-      <a href="article-playbook.html">Free Playbook</a>
+      <a href="index.html#articles">The proof</a>
       <a href="about.html">Meet Ah Hock</a>
-      <a href="open.html">Open your module</a>
-      <a href="modules.html" class="nav-cta">Get the Modules</a>
+      <a href="backoffice.html" class="nav-cta">Get the Kit</a>
     </div>
   </div>
 </nav>
@@ -92,7 +89,7 @@
 
     <div class="tis-mlbox" id="gate" style="border:3px solid #111; border-radius:255px 15px 225px 15px/15px 225px 15px 255px; border-left:10px solid #EC4899; padding:1.2rem 1.4rem; margin:1.6rem 0; background:#fff;">
       <p style="font-family:'Permanent Marker',cursive; font-size:1.25rem; margin:0 0 4px;">That's the teaser. Your FULL report is free.</p>
-      <p style="font-family:'Patrick Hand',cursive; font-size:1.08rem; margin:0 0 10px; color:#444;">The deep version for <strong id="gatetype">your type</strong>: who you are at work, your career traps, your next moves in a manufacturing office, and your AI leverage. Drop your email and it unlocks right here. You'll also get one real AI move per week, plus the free Pre-Ship Checklist. No spam, unsubscribe anytime.</p>
+      <p style="font-family:'Patrick Hand',cursive; font-size:1.08rem; margin:0 0 10px; color:#444;">The deep version for <strong id="gatetype">your type</strong>: who you are at work, your career traps, your next moves in a manufacturing office, your AI leverage, and the one document to hand off to AI first. Drop your email and it unlocks right here. You'll also get one real AI move per week, plus the free Pre-Ship Checklist. No spam, unsubscribe anytime.</p>
       <div class="ml-embedded" data-form="dOrix4"></div>
     </div>
     <div id="unlocked" style="display:none; text-align:center; border:3px solid #111; border-left:10px solid #10B981; border-radius:255px 15px 225px 15px/15px 225px 15px 255px; padding:1.3rem;">
@@ -131,58 +128,42 @@
       power: "When everything breaks at once, you get calmer. You find the number that matters, make the call, and move. Half the office secretly relies on you for this.",
       blind: "Your saves are invisible. You fix ten fires, report none of them properly, and the quiet planner who documents everything gets the credit at year end.",
       boss: "That you're \"always busy but never strategic.\" Wrong. You're strategic at 200km/h. The problem is nothing you do reaches the boss in a form that shows it.",
-      ai: "After the next fire, give the AI your messy WhatsApp timeline and ask for a half-page incident summary with one chart. Send it unasked. Do this three times and watch your reputation change.",
-      grow: "Present Like the Insider, the Flagship. Your work is already impressive. It just never gets presented. The So-What method turns your saves into slides in minutes, not evenings.",
-      cta: ["modules.html#m02", "The Flagship · USD 19.99"] },
+      ai: "After the next fire, give the AI your messy WhatsApp timeline and ask for a half-page incident summary with one chart. Send it unasked. Do this three times and watch your reputation change." },
     RNF: { name: "The Inspector", accent: "#2563eb", line: "Reacts fast, but releases nothing until it has been checked twice.",
       power: "Mistakes stop at your desk. Customers trust whatever carries your name on it, and auditors leave your area disappointed they found nothing.",
       blind: "Speed. While you re-check row 400, the decision got made at row 10 without you. Being right too late scores the same as being wrong.",
       boss: "That you're slow. You're actually protecting the company from expensive mistakes. But if the boss only sees the lateness and never the catches, the story writes itself the wrong way.",
-      ai: "Let the AI do the first 80% check: paste the data and ask it to flag anomalies, then spend your talent on the 20% it flags. Your checking gets faster without getting looser.",
-      grow: "Present Like the Insider, the Flagship. Your catches deserve to be seen: the method that turns careful checking into reports a boss approves in one pass.",
-      cta: ["modules.html#m02", "The Flagship · USD 19.99"] },
+      ai: "Let the AI do the first 80% check: paste the data and ask it to flag anomalies, then spend your talent on the 20% it flags. Your checking gets faster without getting looser." },
     RES: { name: "The Fixer", accent: "#10B981", line: "Knows exactly who to call, and the job somehow gets done.",
       power: "Your network IS the system. When the official process fails, your three phone calls succeed. People do things for you they wouldn't do for the SOP.",
       blind: "None of it is written down. If you resign tomorrow, the company loses half its real process. Which also means: your value is invisible on paper, exactly where promotions are decided.",
       boss: "That things \"just work out\" in your area. They don't just work out. You work them out. Start converting your saves into two-line emails: situation, what I did, result.",
-      ai: "After each rescue, tell the AI the story in your own messy words and ask it for a clean three-line summary for the boss. Thirty seconds. That's your paper trail starting.",
-      grow: "Present Like the Insider, the Flagship. Not to change how you work. To make what you already do visible to the people who decide your salary.",
-      cta: ["modules.html#m02", "The Flagship · USD 19.99"] },
+      ai: "After each rescue, tell the AI the story in your own messy words and ask it for a clean three-line summary for the boss. Thirty seconds. That's your paper trail starting." },
     REF: { name: "The Diplomat", accent: "#EC4899", line: "Carries the bad news carefully, and keeps the relationship alive.",
       power: "You can tell a customer the shipment is late and somehow end the call with the relationship stronger. That is rare. Companies underrate it until the day they lose it.",
       blind: "You delay the hardest messages while you polish them. Sometimes the kind thing and the fast thing are the same thing, and waiting costs more than the bad news itself.",
       boss: "That you're \"soft.\" You're not. You're playing the long game of trust. But pair your diplomacy with one defensible number per message, so nobody mistakes care for weakness.",
-      ai: "Before sending any difficult email, ask the AI: \"what is this customer's three most likely angry replies, and my answer to each?\" Walk in prepared, send it sooner.",
-      grow: "Read \"The Email I Never Sent\" first. It's free, and it's about you. Then the Flagship, so your careful messages also carry undeniable structure.",
-      cta: ["article-email-never-sent.html", "Read the story (free)"] },
+      ai: "Before sending any difficult email, ask the AI: \"what is this customer's three most likely angry replies, and my answer to each?\" Walk in prepared, send it sooner." },
     PNS: { name: "The Planner", accent: "#38BDF8", line: "The plan exists, the plan is numbered, and the plan ships on time.",
       power: "You see three weeks ahead while everyone else sees Friday. Your schedules survive contact with reality more often than anyone admits.",
       blind: "You plan with the template you were given, and templates lie: a plan built for high-volume logic breaks silently in a high-mix shop. When your plan fails, it's usually the assumptions, never the arithmetic.",
       boss: "That planning is easy because yours looks effortless. Make the invisible visible: show the plan B you quietly built when plan A was threatened.",
-      ai: "Give the AI your plan and ask it to attack it: \"find the three weakest assumptions.\" Five minutes, and you walk into Monday already knowing where it bends.",
-      grow: "Know Your Business Nature. Your plans are only as correct as the rulebook they assume. Twenty minutes to check you've been planning for the business you're actually in.",
-      cta: ["modules.html#m01", "The Diagnostic · USD 9.99"] },
+      ai: "Give the AI your plan and ask it to attack it: \"find the three weakest assumptions.\" Five minutes, and you walk into Monday already knowing where it bends." },
     PNF: { name: "The Auditor", accent: "#111827", line: "Systems, standards, and documents that survive any inspection.",
       power: "Your documentation is the company's memory. ISO visits don't scare your department. When there's a dispute, your records end the argument.",
       blind: "Perfection has a price tag nobody shows you: the SOP that took three weeks to polish protected nothing during those three weeks. Version 1 beats version none.",
       boss: "That you're bureaucratic. You're actually building the asset every factory wishes it had when a customer complains. But learn to ship the 80% draft with \"v1, improving\" stamped on it.",
-      ai: "Draft any SOP or report with AI first, then apply your real skill: verifying it. You become twice as fast with zero drop in your standard. That combination is rare and valuable.",
-      grow: "Know Your Business Nature. Your systems protect the company best when they fit the rulebook your business actually plays by. Twenty minutes to confirm the foundation.",
-      cta: ["modules.html#m01", "The Diagnostic · USD 9.99"] },
+      ai: "Draft any SOP or report with AI first, then apply your real skill: verifying it. You become twice as fast with zero drop in your standard. That combination is rare and valuable." },
     PES: { name: "The Captain", accent: "#2563eb", line: "Plans through people, and the team actually follows.",
       power: "You turn a plan into motion because people move for you. The schedule says Friday; your team makes it Friday. That bridge between paper and floor is the hardest job in the building.",
       blind: "You carry the plan in your head and your people's trust in your pocket, so you under-document both. The day you're on leave, everything stalls, and management calls that a system failure. It's actually proof nobody wrote down what you do.",
       boss: "That your team \"runs itself.\" Hand the boss a one-page weekly: plan, actual, next week's risk. Ten minutes with AI. Suddenly your leadership has a paper trail.",
-      ai: "Dictate your week to the AI in five messy minutes every Friday and let it build that one-pager. You keep leading; the machine keeps the record.",
-      grow: "Present Like the Insider, the Flagship. Your floor results deserve boardroom form. One method, reused every week.",
-      cta: ["modules.html#m02", "The Flagship · USD 19.99"] },
+      ai: "Dictate your week to the AI in five messy minutes every Friday and let it build that one-pager. You keep leading; the machine keeps the record." },
     PEF: { name: "The Mentor", accent: "#10B981", line: "Builds people and process patiently, and the place is better for it.",
       power: "You leave things better than you found them: the new planner you trained, the process you quietly fixed, the crisis that didn't happen because of something you did in March.",
       blind: "Prevention is invisible. The fire that never started gets no award. If you don't occasionally show the before-and-after, your best work reads as \"nothing happened.\"",
       boss: "That you're \"support, not core.\" Fight that with numbers: time saved, errors prevented, people trained and still performing. You have the receipts. Collect them.",
-      ai: "Keep a five-minute Friday log with AI: \"this week I prevented / improved / taught.\" By appraisal season you'll have the only document of its kind in the building.",
-      grow: "Know Your Business Nature, then teach it onward. Your instinct to develop others becomes sharper when the whole team knows which rulebook the business runs on.",
-      cta: ["modules.html#m01", "The Diagnostic · USD 9.99"] }
+      ai: "Keep a five-minute Friday log with AI: \"this week I prevented / improved / taught.\" By appraisal season you'll have the only document of its kind in the building." }
   };
 
   var i = 0, score = { R:0,P:0,N:0,E:0,S:0,F:0 };
