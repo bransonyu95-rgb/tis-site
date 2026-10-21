@@ -61,7 +61,7 @@
   if (related && articleWrap && 'IntersectionObserver' in window) {
     var NEXT = [
       ['article-not-from-the-field.html', 'the TIS manifesto'],
-      ['article-factory-intelligence.html', 'the 334,000-row story'],
+      ['article-factory-intelligence.html', 'the 300,000-row story'],
       ['article-ai-negotiation.html', 'the negotiation that took one afternoon'],
       ['article-sop-writing.html', 'the 30-minute SOP method'],
       ['article-rca-report.html', 'the RCA your customer accepts first time'],

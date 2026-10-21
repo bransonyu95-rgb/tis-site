@@ -24,7 +24,7 @@ Ah Hock publishes only what he has run on real work, uses real numbers, and neve
 - [How I Connected AI to My Company Outlook in 60 Minutes](https://theindustrialscribe.com/article-ai-to-outlook.html)
 - [The ASEAN Data Problem: Why Southeast Asian Factories Can't Use AI](https://theindustrialscribe.com/article-asean-data-problem.html)
 - [The Email I Never Sent](https://theindustrialscribe.com/article-email-never-sent.html): For years I knew the bad news and said nothing. The customer found out from the calendar. What finally changed was naming the fear.
-- [How One BD Manager Turned 334,000 Rows of Factory Data Into a Growth Strategy](https://theindustrialscribe.com/article-factory-intelligence.html)
+- [How One Factory Office Worker Turned Over 300,000 Rows of Factory Data Into a Growth Strategy](https://theindustrialscribe.com/article-factory-intelligence.html)
 - [You Don't Need to Be From the Field. The Chess Research Proves It.](https://theindustrialscribe.com/article-not-from-the-field.html): Chess masters lost almost all of their advantage when the pieces were scattered at random. What that means for non-engineers doing technical work with frameworks and AI.
 - [Why 95% of SEA Manufacturers Are Still on Spreadsheets, and What It Costs Them](https://theindustrialscribe.com/article-playbook.html)
 - [The 12 Numbers Every Production Manager Should Track Every Week](https://theindustrialscribe.com/article-production-report.html)
