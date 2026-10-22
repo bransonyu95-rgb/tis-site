@@ -85,7 +85,7 @@
     <button class="go" id="go" onclick="next()">Start the walkthrough →</button>
     <button class="go restart" id="restart" style="display:none;" onclick="location.reload()">↻ Restart</button>
   </div>
-  <div class="buyrow"><a class="buy" href="backoffice.html">Get the kit · USD 18.99 →</a></div>
+  <div class="buyrow"><a class="buy" href="backoffice.html">Get the kit · USD 3.99 →</a></div>
   <p class="smallnote">Runs on Claude Pro (USD 20/month). 14-day refund, keep the files.</p>
   <p class="smallnote">Already bought it? <a class="back" href="dl-kit-b7k4.html">← back to your download page</a></p>
 </div>
@@ -146,7 +146,7 @@ function finish() {
   note.style.display = 'none'; go.style.display = 'none';
   document.getElementById('restart').style.display = 'inline-block';
   const e = document.createElement('div'); e.className = 'end';
-  e.innerHTML = '<h3>That was the simulation. Want it for real?</h3><p>Don\'t own the kit yet? <a href="backoffice.html" style="color:#2563eb;">Get it here, USD 18.99 →</a></p><p><b>Already bought it?</b> Here\'s your next step:</p><ul>' +
+  e.innerHTML = '<h3>That was the simulation. Want it for real?</h3><p>Don\'t own the kit yet? <a href="backoffice.html" style="color:#2563eb;">Get it here, USD 3.99 →</a></p><p><b>Already bought it?</b> Here\'s your next step:</p><ul>' +
     '<li>Open your unzipped kit folder in Claude Code and type <b>start day zero</b> — with <b>your</b> answers and <b>your</b> file. 20–30 minutes.</li>' +
     '<li>Every week after: drop the week\'s file, say what you need, approve. SOPs follow the ISO 9001 convention; complaints get the full 8D treatment.</li>' +
     '<li>Serving clients? Say <b>client mode</b> — and read guides/for-consultants.md.</li>' +
