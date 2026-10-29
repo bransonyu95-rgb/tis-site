@@ -323,3 +323,13 @@ nav.art-toc { display: none; border: 0; padding: 0; background: transparent; z-i
   .art-toc li a, .art-toc .toc-kit, .copy-prompt { transition: none; }
 }
 .prompt-label { text-transform: none !important; letter-spacing: 0 !important; font-family: 'Patrick Hand', cursive !important; font-size: 1.3rem !important; color: var(--blue) !important; }
+.short-answer { background: #ecfdf5; border: 3px solid var(--ink); border-left: 12px solid var(--mint); border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  padding: 1.4rem 1.6rem 1.2rem; margin: 0 0 2.4rem; }
+.short-answer h2 { margin-top: 0 !important; background: none !important; padding: 0 !important; }
+.short-answer p { margin-bottom: .8rem; }
+.short-answer ol { margin: 0 0 .4rem 1.4rem; } .short-answer li { margin: 4px 0; font-size: 1.05rem; }
+.short-answer .table-wrap { overflow-x: auto; margin-top: .6rem; }
+.short-answer table { width: 100%; border-collapse: collapse; background: #fff; font-size: .95rem; }
+.short-answer th { background: var(--ink); color: #fff; text-align: left; padding: 8px 10px; font-family: 'Patrick Hand', cursive; font-size: 1.1rem; font-weight: 400; }
+.short-answer td { padding: 8px 10px; border-bottom: 2px solid #e5e7eb; vertical-align: top; }
+.short-answer td:first-child { white-space: nowrap; color: #374151; }
