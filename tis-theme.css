@@ -322,3 +322,4 @@ nav.art-toc { display: none; border: 0; padding: 0; background: transparent; z-i
 @media (prefers-reduced-motion: reduce) {
   .art-toc li a, .art-toc .toc-kit, .copy-prompt { transition: none; }
 }
+.prompt-label { text-transform: none !important; letter-spacing: 0 !important; font-family: 'Patrick Hand', cursive !important; font-size: 1.3rem !important; color: var(--blue) !important; }
