@@ -273,11 +273,11 @@ footer .quiet { color: #555; font-size: 0.9rem; margin-top: 6px; }
 .article-body h2 { display: inline-block; margin-top: 2.6rem; }
 
 /* side rail: built by tis-dopamine.js on wide screens */
-.art-toc { display: none; }
+nav.art-toc { display: none; border: 0; padding: 0; background: transparent; z-index: 1; min-height: 0; }
 @media (min-width: 1180px) {
   .article-wrap.has-toc { max-width: 1100px !important; display: grid; grid-template-columns: 230px minmax(0, 740px); justify-content: center; column-gap: 64px; }
   .article-wrap.has-toc > * { grid-column: 2; min-width: 0; }
-  .article-wrap.has-toc > .art-toc { display: block; grid-column: 1; grid-row: 1 / span 40; position: sticky; top: 96px; align-self: start; }
+  .article-wrap.has-toc > nav.art-toc { display: block; grid-column: 1; grid-row: 1 / span 40; position: sticky; top: 96px; align-self: start; }
 }
 .art-toc .toc-h { font-family: 'Permanent Marker', cursive; font-size: 1.2rem; margin: 0 0 10px; }
 .art-toc ul { list-style: none; margin: 0 0 22px; padding: 0; }
