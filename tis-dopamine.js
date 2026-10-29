@@ -150,3 +150,18 @@
     wrap.querySelector('.qp-go').focus();
   }, 10000);
 })();
+
+/* MailerLite forms inside .tis-mlbox: friendlier button label and placeholder once the form renders */
+(function () {
+  var boxes = document.querySelectorAll('.tis-mlbox');
+  if (!boxes.length) return;
+  var tries = 0, t = setInterval(function () {
+    var left = 0;
+    boxes.forEach(function (b) {
+      var btn = b.querySelector('.ml-form-embedSubmit button.primary'), inp = b.querySelector('input[type="email"]');
+      if (btn && !btn.dataset.tis) { btn.textContent = 'Send me the checklist →'; btn.dataset.tis = '1'; if (inp) inp.placeholder = 'Your email'; }
+      if (!btn) left++;
+    });
+    if (!left || ++tries > 40) clearInterval(t);
+  }, 250);
+})();

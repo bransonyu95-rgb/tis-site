@@ -87,3 +87,15 @@
 @media (prefers-reduced-motion: reduce) {
   #tis-quizpop, #tis-quizpop .qp-card { transition: none; }
 }
+
+/* MailerLite forms inside .tis-mlbox: brand look sitewide (:is(#x) lifts specificity over MailerLite's id-scoped rules) */
+:is(.tis-mlbox, #tis-ml-x) .ml-form-embedContent { display: none !important; }
+:is(.tis-mlbox, #tis-ml-x) .ml-form-embedWrapper { background: transparent !important; box-shadow: none !important; max-width: 100% !important; width: 100% !important; }
+:is(.tis-mlbox, #tis-ml-x) .ml-form-embedBody { padding: 0 !important; }
+:is(.tis-mlbox, #tis-ml-x) .ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
+  border: 2.5px solid #111 !important; border-radius: 12px !important; font-size: 1.05rem !important; padding: 12px 14px !important; height: auto !important; color: #111 !important; }
+:is(.tis-mlbox, #tis-ml-x) .ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.primary {
+  background-color: #EC4899 !important; border: 3px solid #111 !important; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px !important;
+  font-family: 'Patrick Hand', cursive !important; font-size: 1.25rem !important; height: auto !important; padding: 10px 16px !important; color: #fff !important; }
+:is(.tis-mlbox, #tis-ml-x) .ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.primary:hover { background-color: #d63384 !important; }
+:is(.tis-mlbox, #tis-ml-x) .ml-form-successContent h4 { font-family: 'Permanent Marker', cursive !important; font-weight: 400 !important; }
