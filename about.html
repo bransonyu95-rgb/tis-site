@@ -2,38 +2,117 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script>document.documentElement.classList.add('js')</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meet Ah Hock — The Industrial Scribe</title>
-  <meta name="description" content="Ah Hock is not his real name. Not an engineer either — an office worker who presents, plans and does technical work with frameworks and AI. He teaches you the same.">
+  <meta name="description" content="Ah Hock is not his real name. Not an engineer either: an office worker who presents, plans and does technical work with frameworks and AI. He teaches you the same.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; color: #111827; line-height: 1.6; }
-    .article-wrap { max-width: 720px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
-    .article-body p { margin-bottom: 1rem; font-size: 1.05rem; }
-    .about-hero { text-align: center; }
-    .about-hero img { width: 250px; max-width: 70%; }
-    .big-line { font-family: 'Patrick Hand', cursive; font-size: 1.45rem; text-align: center; line-height: 1.4; margin: 1rem 0 1.6rem; }
-    .big-line b { color: #2563eb; }
-    .stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 1.6rem 0; text-align: center; }
-    .stat { border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; padding: 16px 10px; }
-    .stat .n { font-family: 'Permanent Marker', cursive; font-size: 1.7rem; color: #2563eb; line-height: 1.1; }
-    .stat .l { font-family: 'Patrick Hand', cursive; font-size: 1rem; color: #444; margin-top: 4px; }
-    .chain { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 1.4rem 0; }
-    .chain-box { border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; padding: 18px 18px 16px; }
-    .chain-box.semi { border-left: 10px solid #38BDF8; }
-    .chain-box.aero { border-left: 10px solid #EC4899; }
-    .chain-box h4 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 1.15rem; margin-bottom: 6px; }
-    .chain-box p { font-size: 1rem; margin: 0; }
-    .before-after { border: 3px solid #111; border-radius: 15px 225px 15px 255px/255px 15px 225px 15px; border-left: 10px solid #10B981; padding: 18px 20px; margin: 1.4rem 0; }
-    .before-after .row { display: flex; justify-content: space-between; gap: 10px; padding: 9px 0; border-bottom: 2px dashed #ccc; font-family: 'Patrick Hand', cursive; font-size: 1.15rem; align-items: center; }
-    .before-after .row:last-child { border-bottom: none; }
-    .before-after .old { color: #999; text-decoration: line-through; }
-    .before-after .new { color: #10B981; white-space: nowrap; font-family: 'Permanent Marker', cursive; }
-    .two-face { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; margin: 1.4rem 0; }
-    .two-face img { width: 100%; }
-    @media (max-width: 640px) { .two-face, .chain { grid-template-columns: 1fr; } .stats { grid-template-columns: 1fr; } }
+    :root { --ink:#111; --blue:#2563eb; --pink:#EC4899; --mint:#10B981; --yellow:#FBBF24; --sky:#38BDF8; --coral:#FB923C;
+      --wob:255px 15px 225px 15px/15px 225px 15px 255px; --wob2:15px 225px 15px 255px/255px 15px 225px 15px; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Plus Jakarta Sans',sans-serif; background:#fff; color:var(--ink); line-height:1.6; font-size:17px; }
+    .sec { padding:0 5%; } .in { max-width:1100px; margin:0 auto; } .gap { padding-top:120px; }
+    h1 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:clamp(2.4rem,4.8vw,4.4rem); line-height:1.05; letter-spacing:-.01em; }
+    h2 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:clamp(1.9rem,3vw,2.6rem); line-height:1.1; margin:0 0 16px;
+         background:linear-gradient(transparent 62%, var(--yellow) 62%, var(--yellow) 94%, transparent 94%); display:inline-block; padding:0 6px; }
+    p { margin-bottom:1rem; max-width:64ch; }
+    .lead { font-size:1.2rem; line-height:1.55; }
+    .hand { font-family:'Patrick Hand',cursive; font-size:1.3rem; line-height:1.4; }
+    a { color:var(--blue); }
+    .btn { display:inline-block; font-family:'Patrick Hand',cursive; font-size:1.5rem; line-height:1.2; background:var(--pink); color:#fff; text-decoration:none;
+      padding:12px 32px; border:3px solid var(--ink); border-radius:var(--wob); transition:transform .15s ease, background .15s ease; cursor:pointer; }
+    .btn:hover { background:#d63384; transform:rotate(-1.5deg) scale(1.03); } .btn:active { transform:scale(.97); }
+    .btn:focus-visible, .flip:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
+    .sticker { background:#fff; border:3px solid var(--ink); border-radius:var(--wob); padding:4px; height:auto; display:block; }
+
+    /* hero + the badge */
+    .hero { display:grid; grid-template-columns:1.25fr 1fr; gap:56px; align-items:center; padding-top:48px; }
+    .hero .lead { margin:22px 0 26px; }
+    .act { display:flex; flex-wrap:wrap; align-items:center; gap:14px 22px; }
+    .act .alt { font-family:'Patrick Hand',cursive; font-size:1.25rem; color:var(--ink); }
+    .holder { position:relative; background:var(--blue); border:3px solid var(--ink); border-radius:var(--wob2); padding:70px 34px 30px; }
+    .strap { position:absolute; left:50%; top:-3px; width:46px; height:70px; transform:translateX(-50%); background:var(--pink); border:3px solid var(--ink); border-top:0; }
+    .clip { position:absolute; left:50%; top:58px; width:64px; height:22px; transform:translateX(-50%); background:#d4d4d4; border:3px solid var(--ink); border-radius:6px; z-index:3; }
+    .badge-wrap { perspective:1400px; max-width:340px; margin:0 auto; }
+    .badge { position:relative; transform-style:preserve-3d; transition:transform .7s cubic-bezier(.3,1.3,.5,1); }
+    .face { background:#fff; border:3px solid var(--ink); border-radius:18px; padding:22px 22px 18px; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
+    .face .co { display:flex; justify-content:space-between; align-items:center; font-weight:700; font-size:.94rem; margin-bottom:12px; }
+    .redact { display:inline-block; width:120px; height:16px; background:var(--ink); vertical-align:middle; }
+    .face img { width:150px; height:auto; display:block; margin:0 auto 12px; border:3px solid var(--ink); border-radius:12px; }
+    .face dl { display:grid; grid-template-columns:auto 1fr; gap:4px 12px; font-size:.94rem; }
+    .face dt { font-weight:700; } .face dd { margin:0; }
+    .face .stripe { margin:14px -22px -18px; height:22px; background:var(--yellow); border-top:3px solid var(--ink); border-radius:0 0 15px 15px; }
+    .back { position:absolute; inset:0; transform:rotateY(180deg); display:flex; flex-direction:column; justify-content:center; background:#e0f2fe; }
+    .js .badge .back, .js .badge.flipped .front { visibility:hidden; transition:visibility 0s linear .35s; }
+    .js .badge.flipped .back, .js .badge .front { visibility:visible; transition:visibility 0s linear .35s; }
+    .back h3 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.6rem; margin-bottom:12px; }
+    .back ul { list-style:none; } .back li { padding:7px 0 7px 26px; position:relative; }
+    .back li::before { content:''; position:absolute; left:2px; top:1em; width:12px; height:7px; border-left:3px solid var(--mint); border-bottom:3px solid var(--mint); transform:rotate(-45deg); }
+    .badge.flipped { transform:rotateY(180deg); }
+    .flip { display:block; margin:18px auto 0; background:#fff; border:3px solid var(--ink); border-radius:var(--wob); font-family:'Patrick Hand',cursive; font-size:1.3rem; padding:8px 24px; cursor:pointer; transition:transform .15s ease; }
+    .flip:hover { transform:rotate(-2deg) scale(1.04); }
+    html:not(.js) .back { position:relative; transform:none; margin-top:14px; }
+    html:not(.js) .flip { display:none; }
+
+    /* where my work goes */
+    .split { display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:center; }
+    .split img { width:100%; max-width:320px; justify-self:center; }
+    .tiers { display:grid; gap:18px; margin-top:6px; }
+    .tier { border:3px solid var(--ink); border-radius:var(--wob); padding:18px 22px; }
+    .tier h3 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.35rem; margin-bottom:4px; }
+    .tier p { margin:0; }
+    .state { font-family:'Patrick Hand',cursive; font-size:1.6rem; line-height:1.3; margin-top:34px; max-width:none; }
+    .state b { color:var(--blue); font-weight:400; }
+
+    /* shift log */
+    .log { display:grid; grid-template-columns:1fr 1.15fr; gap:48px; align-items:start; }
+    .slipbed { background:var(--mint); border:3px solid var(--ink); border-radius:var(--wob2); padding:34px 30px; }
+    .slip { background:#fff; padding:24px 24px 36px; transform:rotate(-1deg);
+      clip-path:polygon(0 0,100% 0,100% 100%,95.83% calc(100% - 12px),91.67% 100%,87.5% calc(100% - 12px),83.33% 100%,79.17% calc(100% - 12px),75% 100%,70.83% calc(100% - 12px),66.67% 100%,62.5% calc(100% - 12px),58.33% 100%,54.17% calc(100% - 12px),50% 100%,45.83% calc(100% - 12px),41.67% 100%,37.5% calc(100% - 12px),33.33% 100%,29.17% calc(100% - 12px),25% 100%,20.83% calc(100% - 12px),16.67% 100%,12.5% calc(100% - 12px),8.33% 100%,4.17% calc(100% - 12px),0 100%); }
+    .slip .t { font-weight:700; margin-bottom:12px; }
+    .slip .item { padding:12px 0; border-bottom:3px dotted #c9c9c4; }
+    .slip .item:last-child { border-bottom:0; }
+    .slip b { display:block; }
+    .slip .was { text-decoration:line-through; text-decoration-thickness:2px; color:#555; }
+    .slip .now { background:linear-gradient(transparent 55%, #a7f3d0 55%); }
+
+    /* the message, on a yellow field */
+    .field { background:var(--yellow); margin-top:140px; padding-top:100px; padding-bottom:100px; }
+    .field .in { display:grid; grid-template-columns:1.5fr 1fr; gap:48px; align-items:center; }
+    .field h2 { background:none; padding:0; font-size:clamp(2.1rem,3.6vw,3.2rem); }
+    .field .sticker { width:100%; max-width:280px; justify-self:center; transform:rotate(3deg); }
+
+    /* why the cartoon */
+    .two { display:grid; grid-template-columns:1fr 1fr 1.2fr; gap:28px; align-items:center; }
+    .two img { width:100%; }
+    .two .sticker:first-child { transform:rotate(-3deg); } .two .sticker:nth-child(2) { transform:rotate(2deg); }
+
+    .letters { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; background:#e0f2fe; border:3px solid var(--ink); border-radius:var(--wob); padding:34px 36px; }
+    .letters p { margin:0 0 8px; }
+    .letters h2 { background:none; padding:0; }
+    .next { font-family:'Patrick Hand',cursive; font-size:1.3rem; text-align:center; margin:48px auto 0; }
+
+    .js [data-rv] { opacity:0; transform:translateY(24px); transition:opacity .55s ease, transform .55s ease; transition-delay:var(--d,0ms); }
+    .js [data-rv].shown { opacity:1; transform:none; }
+    .badge-wrap.sway { animation:sway 5s ease-in-out infinite; transform-origin:50% -60px; }
+    @keyframes sway { 0%,100% { transform:rotate(-1.5deg); } 50% { transform:rotate(1.5deg); } }
+    @media (prefers-reduced-motion: reduce) {
+      .js [data-rv] { opacity:1; transform:none; transition:none; }
+      .badge, .btn, .flip { transition:none; } .badge-wrap.sway { animation:none; }
+    }
+    @media (max-width: 860px) {
+      .gap { padding-top:88px; }
+      .hero, .split, .log, .field .in, .two, .letters { grid-template-columns:1fr; }
+      .hero { gap:40px; padding-top:28px; }
+      .holder { padding:66px 18px 24px; }
+      .split img { max-width:200px; } .field .sticker { max-width:200px; }
+      .two img { max-width:220px; justify-self:center; }
+      .field { margin-top:100px; padding-top:72px; padding-bottom:72px; }
+      .letters { padding:26px 22px; gap:16px; }
+      .state { font-size:1.35rem; }
+    }
   </style>
   <link rel="stylesheet" href="tis-theme.css">
   <link rel="stylesheet" href="tis-dopamine.css">
@@ -62,88 +141,135 @@
   </div>
 </nav>
 
-<div class="article-wrap">
-  <div class="article-category">Who writes this</div>
-  <h1 class="article-headline">Just call me Ah Hock.</h1>
-
-  <div class="about-hero">
-    <img src="assets/insider-waving-hero.png" alt="Ah Hock waving hello">
-  </div>
-
-  <div class="article-body">
-
-    <p class="big-line">Not my real name. And here's the honest part: <b>I'm not an engineer.</b><br>I'm the office worker who presents well, plans well, and does technical work anyway — with frameworks and AI.</p>
-
-    <div class="stats">
-      <div class="stat"><div class="n">Office worker by title</div><div class="l">technical output anyway</div></div>
-      <div class="stat"><div class="n">My tools</div><div class="l">frameworks + AI</div></div>
-      <div class="stat"><div class="n">Still inside</div><div class="l">full-time, today</div></div>
+<main>
+<section class="sec"><div class="in hero">
+  <div>
+    <h1 data-rv>Just call me Ah Hock.</h1>
+    <p class="lead" data-rv style="--d:80ms">Not my real name. Every Malaysian factory office has an Ah Hock. And here's the honest part: <strong>I'm not an engineer.</strong> I'm the office worker who presents well, plans well, and does technical work anyway, with frameworks and AI.</p>
+    <div class="act" data-rv style="--d:160ms">
+      <a class="btn" href="backoffice.html">See what I built →</a>
+      <a class="alt" href="insider-test.html">Which Insider are you? →</a>
     </div>
+  </div>
+  <div class="holder" data-rv style="--d:120ms">
+    <span class="strap" aria-hidden="true"></span><span class="clip" aria-hidden="true"></span>
+    <div class="badge-wrap sway">
+      <div class="badge" id="badge">
+        <div class="face front" id="front">
+          <div class="co"><span>STAFF PASS</span><span class="redact" role="img" aria-label="Employer name blacked out"></span></div>
+          <img src="assets/insider-waving-hero.png" alt="Ah Hock waving, the cartoon where the photo should be" width="150" height="150">
+          <dl>
+            <dt>Name</dt><dd>Ah Hock (not my real name)</dd>
+            <dt>Dept</dt><dd>Factory office</dd>
+            <dt>Job</dt><dd>Office worker. Technical output anyway.</dd>
+            <dt>Tools</dt><dd>Frameworks + AI</dd>
+            <dt>Status</dt><dd>Still inside, full-time, today</dd>
+          </dl>
+          <div class="stripe"></div>
+        </div>
+        <div class="face back" id="back">
+          <h3>The Ah Hock rules</h3>
+          <ul>
+            <li>Only publish what I've run on real work</li>
+            <li>Real numbers, nothing invented</li>
+            <li>No customer names, ever</li>
+            <li>No jargon, mamak-table English only</li>
+            <li>For office staff, never for programmers</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <button class="flip" id="flip" aria-pressed="false" aria-controls="badge">Flip the badge ↻</button>
+  </div>
+</div></section>
 
-    <h2>Where my parts go</h2>
-
-    <div class="chain">
-      <div class="chain-box semi">
-        <h4>🔬 High-tech equipment</h4>
+<section class="sec gap"><div class="in split">
+  <div>
+    <h2 data-rv>Where my work goes</h2>
+    <div class="tiers">
+      <div class="tier" data-rv style="border-left:12px solid var(--sky); --d:60ms;">
+        <h3>High-tech equipment</h3>
         <p>I work on the supply side of <strong>high-tech equipment</strong>: precision parts and modules for machines where "roughly correct" does not exist. At that tier, a wrong number in a report costs real money.</p>
       </div>
-      <div class="chain-box aero">
-        <h4>🏭 And beyond</h4>
-        <p>The same precision work supports production lines in <strong>other regulated industries</strong> — places where the numbers have to be right the first time.</p>
+      <div class="tier" data-rv style="border-left:12px solid var(--pink); --d:120ms;">
+        <h3>And beyond</h3>
+        <p>The same precision work supports production lines in <strong>other regulated industries</strong>, places where the numbers have to be right the first time.</p>
       </div>
     </div>
-
-    <p class="big-line">If my insight survives at that tier,<br><b>it will survive your office.</b></p>
-
-    <h2>What AI changed for me</h2>
-
-    <div class="before-after">
-      <div class="row"><span>Weekly production report: <span class="old">hours collecting the numbers</span></span><span class="new">Automated Flow — refresh every 30 minutes</span></div>
-      <div class="row"><span>SOP: <span class="old">3 months on the to-do list</span></span><span class="new">describe it once — clicks away</span></div>
-      <div class="row"><span>Presentations: <span class="old">built slide by slide</span></span><span class="new">I do the strategy, AI does the organizing</span></div>
-    </div>
-
-    <p>Nobody taught me this. I'm not from the technical side — I present to customers, I plan, I do content and strategy. But with a framework and AI, I produce work from fields I never studied. That's the entire message of this site:</p>
-
-    <p class="big-line"><b>You don't need to be from the field.</b><br>You need a framework, and the nerve to use it.</p>
-
-    <p class="big-line">And here's the real secret: <b>there is no standard method.</b><br>High volume, high mix, OEM, tier-1 — the right way to price, report and negotiate depends on <b>what YOUR business is.</b> That's what I teach: diagnose first, then customize.</p>
-
-    <div class="checklist-box">
-      <h4>The Ah Hock rules</h4>
-      <ul>
-        <li>Only publish what I've run on real work</li>
-        <li>Real numbers — nothing invented</li>
-        <li>No customer names, ever</li>
-        <li>No jargon — mamak-table English only</li>
-        <li>For office staff, never for programmers</li>
-      </ul>
-    </div>
-
-    <h2>Why the cartoon?</h2>
-
-    <div class="two-face">
-      <img src="assets/insider-shush.png" alt="Ah Hock shushing">
-      <img src="assets/insider-scribe-notebook.png" alt="Ah Hock writing in his notebook">
-    </div>
-
-    <p class="big-line">I still work in the industry. Who I am doesn't matter — <b>what works does.</b><br>The guy in the blue polo is me. He's also you.</p>
-
-    <div class="tis-mlbox" style="border:3px solid #111; border-radius:255px 15px 225px 15px/15px 225px 15px 255px; border-left:10px solid #2563eb; padding:1.2rem 1.4rem; margin:2.2rem 0; background:#fff;">
-  <p style="font-family:'Permanent Marker',cursive; font-size:1.25rem; margin:0 0 4px;">The Insider Letters</p>
-  <p style="font-family:'Patrick Hand',cursive; font-size:1.05rem; margin:0 0 10px; color:#444;">One real factory-office AI move per week, from Ah Hock's desk. Sign up and your first email brings the free <strong>10-point Pre-Ship Checklist</strong> — straight out of the Flagship. First to know when new Modules drop. No spam, unsubscribe anytime.</p>
-  <div class="ml-embedded" data-form="dOrix4"></div>
-</div>
-
-
+    <p class="state" data-rv>If my insight survives at that tier, <b>it will survive your office.</b></p>
   </div>
-</div>
+  <img class="sticker" data-rv style="--d:120ms; transform:rotate(3deg);" src="assets/cnc-machine-solo.png" alt="A hand-drawn precision machine" width="320" height="320" loading="lazy">
+</div></section>
+
+<section class="sec gap"><div class="in log">
+  <div>
+    <h2 data-rv>What AI changed for me</h2>
+    <p data-rv style="--d:70ms">Nobody taught me this. I'm not from the technical side. I present, I plan, I do content and strategy. But with a framework and AI, I produce work from fields I never studied.</p>
+    <p data-rv style="--d:110ms">That's the entire message of this site.</p>
+  </div>
+  <div class="slipbed" data-rv style="--d:140ms">
+    <div class="slip">
+      <div class="t">My week, before and after</div>
+      <div class="item"><b>Weekly production report</b><span class="was">hours collecting the numbers</span><br><span class="now">an automated flow that refreshes every 30 minutes</span></div>
+      <div class="item"><b>SOPs</b><span class="was">three months on the to-do list</span><br><span class="now">described once, then a few clicks away</span></div>
+      <div class="item"><b>Presentations</b><span class="was">built slide by slide</span><br><span class="now">I do the strategy, AI does the organising</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec field"><div class="in">
+  <div>
+    <h2 data-rv>You don't need to be from the field.</h2>
+    <p class="hand" data-rv style="--d:70ms">You need a framework, and the nerve to use it.</p>
+    <p data-rv style="--d:120ms">And here's the real secret: <strong>there is no standard method.</strong> High volume, high mix, OEM, tier-1: the right way to report, plan and negotiate depends on what <em>your</em> business is. That's what I teach. Diagnose first, then customise.</p>
+  </div>
+  <img class="sticker" data-rv style="--d:120ms" src="assets/insider-mind-blown.png" alt="Ah Hock, mind blown" width="280" height="280" loading="lazy">
+</div></section>
+
+<section class="sec gap"><div class="in">
+  <h2 data-rv>Why the cartoon?</h2>
+  <div class="two">
+    <img class="sticker" data-rv src="assets/insider-shush.png" alt="Ah Hock with a finger to his lips" width="260" height="260" loading="lazy">
+    <img class="sticker" data-rv style="--d:80ms" src="assets/insider-scribe-notebook.png" alt="Ah Hock writing in his notebook" width="260" height="260" loading="lazy">
+    <p class="hand" data-rv style="--d:140ms; margin:0;">I still work in the industry. Who I am doesn't matter; <strong>what works does.</strong> The guy in the blue polo is me. He's also you.</p>
+  </div>
+</div></section>
+
+<section class="sec gap"><div class="in">
+  <div class="letters tis-mlbox" data-rv>
+    <div>
+      <h2>The Insider Letters</h2>
+      <p>One real factory-office AI move per week, from Ah Hock's desk. Sign up and your first email brings the free <strong>10-point Pre-Ship Checklist</strong>. No spam, unsubscribe anytime.</p>
+    </div>
+    <div class="ml-embedded" data-form="dOrix4"></div>
+  </div>
+  <p class="next">Want the system itself? <a href="backoffice.html">See the kit I built →</a></p>
+</div></section>
+</main>
 
 <footer>
   <div><span class="handle">@the.industrial.scribe</span> · theindustrialscribe.com</div>
   <div class="quiet">Written from inside a real Malaysian manufacturing office.</div>
 </footer>
 
+<script>
+(function(){
+  var badge = document.getElementById('badge'), flip = document.getElementById('flip'),
+      front = document.getElementById('front'), back = document.getElementById('back');
+  back.setAttribute('aria-hidden', 'true');
+  flip.addEventListener('click', function(){
+    var on = !badge.classList.contains('flipped');
+    badge.classList.toggle('flipped', on);
+    flip.setAttribute('aria-pressed', on);
+    front.setAttribute('aria-hidden', on); back.setAttribute('aria-hidden', !on);
+    flip.textContent = on ? 'Flip it back ↻' : 'Flip the badge ↻';
+  });
+  var els = document.querySelectorAll('[data-rv]');
+  if (!('IntersectionObserver' in window)) { els.forEach(function(e){ e.classList.add('shown'); }); return; }
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('shown'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
 <script src="tis-dopamine.js" defer></script>
 </body>
 </html>
