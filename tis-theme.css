@@ -248,3 +248,77 @@ footer .quiet { color: #555; font-size: 0.9rem; margin-top: 6px; }
   .article-headline { font-size: 1.7rem; }
   .article-hero { height: 240px; }
 }
+
+/* ---------- ARTICLE TEMPLATE v2 (Oct 2026): cover band, side rail, livelier blocks ---------- */
+.art-head { --tone: var(--yellow); --tone-ink: var(--ink); background: var(--tone); color: var(--tone-ink);
+  border-bottom: 3px solid var(--ink); padding: 64px 5% 0; margin-bottom: 120px; }
+.art-head[data-tone="sky"] { --tone: var(--sky); }
+.art-head[data-tone="mint"] { --tone: var(--mint); }
+.art-head[data-tone="pink"] { --tone: var(--pink); }
+.art-head[data-tone="coral"] { --tone: var(--coral); }
+.art-head[data-tone="blue"] { --tone: var(--blue); --tone-ink: #fff; }
+.art-head-in { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 280px; column-gap: 48px; }
+.art-head .article-headline { grid-column: 1 / -1; margin: 0; color: var(--tone-ink); font-family: 'Permanent Marker', cursive; font-weight: 400;
+  font-size: clamp(2.1rem, 4.5vw, 4.1rem); line-height: 1.05; letter-spacing: -.01em; max-width: none; }
+.art-head .article-meta { grid-column: 1; align-self: end; border: 0; color: var(--tone-ink); font-family: 'Patrick Hand', cursive; font-size: 1.25rem; padding: 26px 0 36px; margin: 0; }
+.art-head .art-cat { font-weight: 700; }
+.art-head .article-hero { grid-column: 2; grid-row: 2; width: 100%; height: auto; object-fit: contain; margin: 0 0 -96px; background: #fff;
+  border: 3px solid var(--ink); border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; padding: 4px; transform: rotate(3deg); position: relative; z-index: 2; }
+
+.article-wrap { padding-top: 0 !important; }
+.article-body h2 { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: clamp(1.6rem, 2.4vw, 2.1rem); line-height: 1.15;
+  background: linear-gradient(transparent 62%, var(--yellow) 62%, var(--yellow) 94%, transparent 94%); display: inline; padding: 0 6px;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone; scroll-margin-top: 90px; }
+.article-body h2::after { content: ''; display: block; margin-bottom: 14px; }
+.article-body h2 { display: inline-block; margin-top: 2.6rem; }
+
+/* side rail: built by tis-dopamine.js on wide screens */
+.art-toc { display: none; }
+@media (min-width: 1180px) {
+  .article-wrap.has-toc { max-width: 1100px !important; display: grid; grid-template-columns: 230px minmax(0, 740px); justify-content: center; column-gap: 64px; }
+  .article-wrap.has-toc > * { grid-column: 2; min-width: 0; }
+  .article-wrap.has-toc > .art-toc { display: block; grid-column: 1; grid-row: 1 / span 40; position: sticky; top: 96px; align-self: start; }
+}
+.art-toc .toc-h { font-family: 'Permanent Marker', cursive; font-size: 1.2rem; margin: 0 0 10px; }
+.art-toc ul { list-style: none; margin: 0 0 22px; padding: 0; }
+.art-toc li a { display: block; font-family: 'Patrick Hand', cursive; font-size: 1.15rem; line-height: 1.3; color: var(--ink); text-decoration: none;
+  padding: 7px 10px; border-left: 4px solid #d6d6d2; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+.art-toc li a:hover { transform: translateX(3px); }
+.art-toc li a.on { border-left-color: var(--pink); background: #fdf2f8; }
+.art-toc .toc-kit { display: block; text-decoration: none; color: var(--ink); background: var(--yellow); border: 3px solid var(--ink);
+  border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px; padding: 14px 16px; transform: rotate(-2deg); transition: transform .2s ease; }
+.art-toc .toc-kit:hover { transform: rotate(0) scale(1.03); }
+.art-toc .toc-kit b { font-family: 'Permanent Marker', cursive; font-weight: 400; font-size: 1.1rem; display: block; line-height: 1.2; }
+.art-toc .toc-kit span { font-family: 'Patrick Hand', cursive; font-size: 1.15rem; }
+
+/* blocks */
+.data-point-box:nth-of-type(4n+1) { border-left-color: var(--coral) !important; }
+.data-point-box:nth-of-type(4n+2) { border-left-color: var(--sky) !important; transform: rotate(.4deg); }
+.data-point-box:nth-of-type(4n+3) { border-left-color: var(--mint) !important; }
+.data-point-box:nth-of-type(4n+4) { border-left-color: var(--pink) !important; transform: rotate(-.4deg); }
+.data-point-num { text-transform: none !important; letter-spacing: 0 !important; font-family: 'Patrick Hand', cursive !important; font-size: 1.1rem !important; color: var(--blue) !important; }
+.related-cat, .stat-label, .viz-note { font-size: max(13px, .85rem); }
+.prompt-block { background: #f0f9ff !important; color: var(--ink) !important; border: 3px solid var(--ink) !important;
+  border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px !important; font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: .97rem !important; line-height: 1.6 !important; white-space: pre-wrap; position: relative; }
+.prompt-label { font-size: 1.2rem; margin-top: 1.6rem; }
+.copy-prompt { display: inline-block; margin: 8px 0 18px; font-family: 'Patrick Hand', cursive; font-size: 1.2rem; background: var(--sky); color: var(--ink);
+  border: 3px solid var(--ink); border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; padding: 6px 20px; cursor: pointer; transition: transform .15s ease; }
+.copy-prompt:hover { transform: rotate(-1.5deg) scale(1.04); }
+.copy-prompt:focus-visible, .art-toc a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.inline-sub { background: #fdf2f8 !important; border: 3px solid var(--ink) !important; border-left: 12px solid var(--pink) !important;
+  border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px !important; padding: 1.5rem 1.6rem !important; }
+.inline-sub a { font-size: 1.4rem !important; padding: 10px 26px !important; margin-top: 4px; }
+.cnc-strip img { background: #fff; }
+@media (min-width: 861px) { .cnc-strip img { width: 120px; } }
+
+@media (max-width: 860px) {
+  .art-head { padding-top: 40px; margin-bottom: 90px; }
+  .art-head-in { grid-template-columns: 1fr 150px; column-gap: 16px; }
+  .art-head .article-hero { margin-bottom: -60px; }
+  .art-head .article-meta { padding: 18px 0 28px; font-size: 1.1rem; }
+  .art-head .article-headline { font-size: 1.95rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .art-toc li a, .art-toc .toc-kit, .copy-prompt { transition: none; }
+}

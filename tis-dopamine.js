@@ -166,3 +166,45 @@
     if (!left || ++tries > 40) clearInterval(t);
   }, 250);
 })();
+
+/* Articles: "On this page" rail (sections + scroll spy + kit ticket) and copy buttons on prompts */
+(function () {
+  var wrap = document.querySelector('.art-head') && document.querySelector('.article-wrap');
+  if (!wrap) return;
+  var hs = [].slice.call(wrap.querySelectorAll('.article-body h2'));
+  if (hs.length) {
+    var nav = document.createElement('nav');
+    nav.className = 'art-toc'; nav.setAttribute('aria-label', 'On this page');
+    var html = '<p class="toc-h">On this page</p><ul>';
+    hs.forEach(function (h, k) {
+      if (!h.id) h.id = 'part-' + (k + 1);
+      html += '<li><a href="#' + h.id + '">' + h.textContent.replace(/</g, '&lt;') + '</a></li>';
+    });
+    html += '</ul><a class="toc-kit" href="backoffice.html"><b>Build Your AI Back-Office</b><span>USD 3.99 · see the kit →</span></a>';
+    nav.innerHTML = html;
+    wrap.insertBefore(nav, wrap.firstChild);
+    wrap.classList.add('has-toc');
+    var links = nav.querySelectorAll('ul a');
+    if ('IntersectionObserver' in window) {
+      var spy = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var k = hs.indexOf(e.target);
+          links.forEach(function (l, j) { l.classList.toggle('on', j === k); });
+        });
+      }, { rootMargin: '-10% 0px -70% 0px' });
+      hs.forEach(function (h) { spy.observe(h); });
+    }
+  }
+  document.querySelectorAll('.prompt-block').forEach(function (p) {
+    var b = document.createElement('button');
+    b.className = 'copy-prompt'; b.type = 'button'; b.textContent = 'Copy prompt';
+    b.addEventListener('click', function () {
+      navigator.clipboard.writeText(p.innerText.trim()).then(function () {
+        b.textContent = 'Copied. Paste it into Claude or ChatGPT';
+        setTimeout(function () { b.textContent = 'Copy prompt'; }, 2200);
+      }).catch(function () { b.textContent = 'Select the text and copy'; });
+    });
+    p.parentNode.insertBefore(b, p.nextSibling);
+  });
+})();
