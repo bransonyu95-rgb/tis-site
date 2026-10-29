@@ -237,7 +237,7 @@ footer {
   font-family: 'Patrick Hand', cursive; font-size: 1.05rem;
 }
 footer .handle { color: var(--blue); }
-footer .quiet { color: #888; font-size: 0.9rem; margin-top: 6px; }
+footer .quiet { color: #555; font-size: 0.9rem; margin-top: 6px; }
 
 @media (max-width: 900px) {
   .nav-inner { flex-direction: column; gap: 8px; padding: 12px 0; }

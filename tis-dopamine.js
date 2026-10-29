@@ -99,7 +99,7 @@
             '<div><div class="tf-head">You finished. Most readers don\'t.</div>' +
             (count > 1 ? '<div class="tf-count">That\'s article #' + count + ' for you.</div>' : '') +
             lastLine +
-            '</div><button class="tf-close" aria-label="close">✕</button>';
+            '</div><button class="tf-close" aria-label="close">×</button>';
           document.body.appendChild(t);
           requestAnimationFrame(function () { t.classList.add('tis-show'); });
           t.querySelector('.tf-close').addEventListener('click', function () { t.remove(); });
@@ -118,6 +118,7 @@
   var skip = ['backoffice.html', 'insider-test.html', 'insider-report-r7q4.html'];
   if (skip.indexOf(path) !== -1 || /^(dl-|wm\d)/.test(path)) return;
   if (document.querySelector('meta[name="robots"][content*="noindex"]')) return;
+  if (/[?&]nopop\b/.test(location.search)) return;
   try {
     if (localStorage.getItem('tis-insider-type')) return;
     var seen = +localStorage.getItem('tis-quizpop-seen') || 0;
@@ -131,7 +132,7 @@
     wrap.id = 'tis-quizpop';
     wrap.innerHTML =
       '<div class="qp-card" role="dialog" aria-modal="true" aria-labelledby="qp-h">' +
-        '<button class="qp-x" aria-label="close">✕</button>' +
+        '<button class="qp-x" aria-label="close">×</button>' +
         '<img src="assets/insider-lightbulb.png" alt="">' +
         '<div class="qp-kicker">7 minutes · 30 questions · free to take</div>' +
         '<div class="qp-h" id="qp-h">Which Insider are you?</div>' +
