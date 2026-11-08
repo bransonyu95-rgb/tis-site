@@ -157,7 +157,8 @@
     .redact { display:inline-block; width:90px; height:12px; background:var(--ink); }
     .pass dl { display:grid; grid-template-columns:auto 1fr; gap:2px 10px; font-size:.9rem; margin:0; } .pass dt { font-weight:700; } .pass dd { margin:0; }
     .pass-link { display:inline-block; margin-top:6px; font-family:'Patrick Hand',cursive; font-size:1.1rem; color:var(--blue); }
-    .close .pass p { color:var(--ink); }
+    .close a.pass, .close a.pass dt, .close a.pass dd, .close a.pass .pass-top span { color:var(--ink); }
+    .close a.pass .pass-link { color:var(--blue); }
     .card { position:relative; background:#fff; color:var(--ink); text-align:center; padding:44px 40px 88px; transform:rotate(2deg); margin-bottom:-40px; border:3px solid var(--ink); border-radius:var(--wob2); }
     .card h3 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:clamp(1.9rem,3vw,2.6rem); margin-bottom:8px; }
     .card p { margin:0 auto 18px; color:var(--ink); }
