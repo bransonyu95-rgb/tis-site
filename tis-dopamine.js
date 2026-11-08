@@ -95,7 +95,7 @@
             ? '<div>Go deeper: <a href="modules.html">the Modules — from USD 9.99 →</a></div>'
             : (pick ? '<div>Next: <a href="' + pick[0] + '">' + pick[1] + ' →</a></div>' : '');
           t.innerHTML =
-            '<img src="assets/insider-thumbs-up.png" alt="">' +
+            '<img src="assets/ahhock-3d-smile.jpg" alt="">' +
             '<div><div class="tf-head">You finished. Most readers don\'t.</div>' +
             (count > 1 ? '<div class="tf-count">That\'s article #' + count + ' for you.</div>' : '') +
             lastLine +
@@ -133,7 +133,7 @@
     wrap.innerHTML =
       '<div class="qp-card" role="dialog" aria-modal="true" aria-labelledby="qp-h">' +
         '<button class="qp-x" aria-label="close">×</button>' +
-        '<img src="assets/insider-lightbulb.png" alt="">' +
+        '<img src="assets/ahhock-3d-shocked.jpg" alt="">' +
         '<div class="qp-kicker">7 minutes · 30 questions · free to take</div>' +
         '<div class="qp-h" id="qp-h">Which Insider are you?</div>' +
         '<p>Firefighter, Planner, Fixer, Diplomat and four more. 30 questions about how you work and how you use AI. See your superpower, the career trap your type falls into, and the direction to take AI in your own job.</p>' +

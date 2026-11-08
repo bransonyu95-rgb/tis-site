@@ -70,7 +70,7 @@
   border: 3px solid #111; border-left: 12px solid #FBBF24; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   box-shadow: 8px 8px 0 #111; transform: translateY(18px) rotate(-1deg); transition: transform .3s cubic-bezier(.2,1.4,.4,1); }
 #tis-quizpop.qp-show .qp-card { transform: translateY(0) rotate(-1deg); }
-#tis-quizpop img { width: 92px; margin: 0 auto 4px; display: block; }
+#tis-quizpop img { width: 92px; margin: 0 auto 8px; display: block; border: 3px solid #111; border-radius: 14px; padding: 3px; background: #fff; }
 #tis-quizpop .qp-kicker { font-family: 'Patrick Hand', cursive; font-size: 1.05rem; color: #555; }
 #tis-quizpop .qp-h { font-family: 'Permanent Marker', cursive; font-size: 1.9rem; line-height: 1.15; margin: 2px 0 8px;
   background: linear-gradient(transparent 58%, #FBBF24 58%, #FBBF24 92%, transparent 92%); display: inline-block; padding: 0 6px; }
