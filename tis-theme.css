@@ -209,7 +209,7 @@ nav {
   display: flex; justify-content: center; align-items: center;
   gap: 26px; margin: 3rem 0 0; flex-wrap: wrap;
 }
-.cnc-strip img { width: 84px; }
+.cnc-strip img { width: 84px; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border: 3px solid var(--ink); border-radius: 14px; background: #fff; }
 .cnc-strip img:nth-child(odd) { transform: rotate(-6deg); }
 .cnc-strip img:nth-child(even) { transform: rotate(5deg); }
 @media (max-width: 768px) { .cnc-strip img { width: 60px; } .cnc-strip { gap: 14px; } }
@@ -310,7 +310,6 @@ nav.art-toc { display: none; border: 0; padding: 0; background: transparent; z-i
 .inline-sub { background: #fdf2f8 !important; border: 3px solid var(--ink) !important; border-left: 12px solid var(--pink) !important;
   border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px !important; padding: 1.5rem 1.6rem !important; }
 .inline-sub a { font-size: 1.4rem !important; padding: 10px 26px !important; margin-top: 4px; }
-.cnc-strip img { background: #fff; }
 @media (min-width: 861px) { .cnc-strip img { width: 120px; } }
 
 @media (max-width: 860px) {
@@ -337,3 +336,5 @@ nav.art-toc { display: none; border: 0; padding: 0; background: transparent; z-i
 
 /* the 3D Ah Hock stills are square; never let an HTML height attribute stretch them */
 img[src*="ahhock-3d"] { height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+
+img[src*="obj-3d"] { height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
