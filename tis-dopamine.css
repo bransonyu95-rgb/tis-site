@@ -75,7 +75,7 @@
 #tis-quizpop .qp-h { font-family: 'Permanent Marker', cursive; font-size: 1.9rem; line-height: 1.15; margin: 2px 0 8px;
   background: linear-gradient(transparent 58%, #FBBF24 58%, #FBBF24 92%, transparent 92%); display: inline-block; padding: 0 6px; }
 #tis-quizpop p { font-size: .98rem; line-height: 1.5; color: #111827; margin: 0 0 14px; }
-#tis-quizpop .qp-go { display: inline-block; font-family: 'Patrick Hand', cursive; font-size: 1.35rem; background: #EC4899; color: #fff; text-decoration: none;
+#tis-quizpop .qp-go { display: inline-block; font-family: 'Patrick Hand', cursive; font-size: 1.35rem; background: #EC4899; color: #111; text-decoration: none;
   padding: 11px 32px; border: 3px solid #111; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; }
 #tis-quizpop .qp-go:hover { background: #d63384; }
 #tis-quizpop .qp-later { display: block; margin: 10px auto 0; background: none; border: 0; font-family: 'Patrick Hand', cursive; font-size: 1rem; color: #777; cursor: pointer; text-decoration: underline; }
@@ -96,6 +96,6 @@
   border: 2.5px solid #111 !important; border-radius: 12px !important; font-size: 1.05rem !important; padding: 12px 14px !important; height: auto !important; color: #111 !important; }
 :is(.tis-mlbox, #tis-ml-x) .ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.primary {
   background-color: #EC4899 !important; border: 3px solid #111 !important; border-radius: 255px 15px 225px 15px/15px 225px 15px 255px !important;
-  font-family: 'Patrick Hand', cursive !important; font-size: 1.25rem !important; height: auto !important; padding: 10px 16px !important; color: #fff !important; }
-:is(.tis-mlbox, #tis-ml-x) .ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.primary:hover { background-color: #d63384 !important; }
+  font-family: 'Patrick Hand', cursive !important; font-size: 1.25rem !important; height: auto !important; padding: 10px 16px !important; color: #111 !important; }
+:is(.tis-mlbox, #tis-ml-x) .ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.primary:hover { background-color: #f472b6 !important; }
 :is(.tis-mlbox, #tis-ml-x) .ml-form-successContent h4 { font-family: 'Permanent Marker', cursive !important; font-weight: 400 !important; }

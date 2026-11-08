@@ -30,9 +30,9 @@
     .lead { font-size:1.2rem; line-height:1.55; }
     .hand { font-family:'Patrick Hand',cursive; font-size:1.3rem; line-height:1.4; }
     a { color:var(--blue); }
-    .btn { display:inline-block; font-family:'Patrick Hand',cursive; font-size:1.5rem; line-height:1.2; background:var(--pink); color:#fff; text-decoration:none;
-      padding:12px 32px; border:3px solid var(--ink); border-radius:var(--wob); transition:transform .15s ease, background .15s ease; cursor:pointer; }
-    .btn:hover { background:#d63384; transform:rotate(-1.5deg) scale(1.03); } .btn:active { transform:scale(.97); }
+    .btn { display:inline-block; font-family:'Patrick Hand',cursive; font-size:1.5rem; line-height:1.2; background:var(--pink); color:var(--ink); text-decoration:none;
+      padding:12px 32px; border:3px solid var(--ink); border-radius:var(--wob); transition:background .15s ease, transform .1s ease; cursor:pointer; }
+    .btn:hover { background:#f472b6; } .btn:active { transform:scale(.97); }
     .btn:focus-visible, .flip:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
     .sticker { background:#fff; border:3px solid var(--ink); border-radius:var(--wob); padding:4px; height:auto; display:block; }
 
@@ -61,7 +61,7 @@
     .back li::before { content:''; position:absolute; left:2px; top:1em; width:12px; height:7px; border-left:3px solid var(--mint); border-bottom:3px solid var(--mint); transform:rotate(-45deg); }
     .badge.flipped { transform:rotateY(180deg); }
     .flip { display:block; margin:18px auto 0; background:#fff; border:3px solid var(--ink); border-radius:var(--wob); font-family:'Patrick Hand',cursive; font-size:1.3rem; padding:8px 24px; cursor:pointer; transition:transform .15s ease; }
-    .flip:hover { transform:rotate(-2deg) scale(1.04); }
+    .flip:hover { background:#fef9c3; }
     html:not(.js) .back { position:relative; transform:none; margin-top:14px; }
     html:not(.js) .flip { display:none; }
 
