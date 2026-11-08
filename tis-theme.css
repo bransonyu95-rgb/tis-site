@@ -334,3 +334,6 @@ nav.art-toc { display: none; border: 0; padding: 0; background: transparent; z-i
 .short-answer th { background: var(--ink); color: #fff; text-align: left; padding: 8px 10px; font-family: 'Patrick Hand', cursive; font-size: 1.1rem; font-weight: 400; }
 .short-answer td { padding: 8px 10px; border-bottom: 2px solid #e5e7eb; vertical-align: top; }
 .short-answer td:first-child { white-space: nowrap; color: #374151; }
+
+/* the 3D Ah Hock stills are square; never let an HTML height attribute stretch them */
+img[src*="ahhock-3d"] { height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
