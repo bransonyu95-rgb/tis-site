@@ -38,12 +38,13 @@
     .btn:focus-visible, .row:focus-visible, summary:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
 
     /* hero: the report on paper */
-    .hero { display:grid; grid-template-columns:1.2fr 1fr; gap:56px; align-items:center; padding-top:56px; }
+    .hero { display:grid; grid-template-columns:1fr 1.05fr; gap:56px; align-items:center; padding-top:48px; }
     .hero .lead { margin:24px 0 28px; }
     .act { display:flex; flex-wrap:wrap; align-items:center; gap:16px 24px; }
     .act .pre { font-family:'Patrick Hand',cursive; font-size:1.25rem; color:var(--ink); }
     .fine { font-size:.94rem; margin:16px 0 0; }
-    .desk { position:relative; background:var(--yellow); border:3px solid var(--ink); border-radius:var(--wob2); padding:32px 32px 128px; }
+    .desk { position:relative; background:var(--yellow); border:3px solid var(--ink); border-radius:var(--wob2); padding:36px 36px 140px; }
+    .desk .sheet { box-shadow:0 24px 40px -20px rgba(17,17,17,.45); }
     .sheet { background:#fff; color:var(--ink); clip-path:polygon(0 0, 100% 0, 100% 100%, 95.83% calc(100% - 12px), 91.67% 100%, 87.5% calc(100% - 12px), 83.33% 100%, 79.17% calc(100% - 12px), 75% 100%, 70.83% calc(100% - 12px), 66.67% 100%, 62.5% calc(100% - 12px), 58.33% 100%, 54.17% calc(100% - 12px), 50% 100%, 45.83% calc(100% - 12px), 41.67% 100%, 37.5% calc(100% - 12px), 33.33% 100%, 29.17% calc(100% - 12px), 25% 100%, 20.83% calc(100% - 12px), 16.67% 100%, 12.5% calc(100% - 12px), 8.33% 100%, 4.17% calc(100% - 12px), 0 100%); padding:20px 24px 32px; font-size:.94rem; line-height:1.5; }
     .desk .sheet { transform:rotate(-2deg); }
     .sheet .hd { display:flex; justify-content:space-between; gap:10px; align-items:baseline; font-weight:700; margin-bottom:8px; }
@@ -51,7 +52,9 @@
     .sheet .ln { white-space:pre-line; }
     .chk { background:#fde68a; padding:0 3px; }
     .sticker { position:absolute; height:auto; background:#fff; border:3px solid var(--ink); border-radius:var(--wob); padding:4px; }
-    .desk .sticker { width:150px; left:-24px; bottom:-34px; transform:rotate(-5deg); }
+    .desk .sticker { width:168px; left:-28px; bottom:-40px; transform:rotate(-5deg); }
+    .desk .sticker.photo { width:188px; padding:0; overflow:hidden; border-radius:18px; box-shadow:0 18px 30px -16px rgba(17,17,17,.5); }
+    .hero-3d .desk .sticker.drawn, body:not(.hero-3d) .desk .sticker.photo { display:none; }
     .desk .note { position:absolute; right:24px; bottom:20px; font-family:'Patrick Hand',cursive; font-size:1.25rem; transform:rotate(-2deg); max-width:230px; text-align:right; }
 
     /* what lands in your hands: index with preview */
@@ -72,6 +75,8 @@
     .backstage { margin-top:36px; }
 
     /* first 30 minutes */
+    .band { background:#e0f2fe; border-top:3px solid var(--ink); border-bottom:3px solid var(--ink); margin-top:120px; padding-top:96px; padding-bottom:96px; }
+    .band + .gap { padding-top:120px; }
     .lane { overflow-x:auto; border:3px solid var(--ink); border-radius:16px; padding:8px 8px; margin:16px 0; background:#fff; }
     .cap { text-align:center; margin:0 auto; }
     .skill-pointer { display:flex; justify-content:center; align-items:flex-start; gap:2px; margin:16px 0 -8px; }
@@ -79,10 +84,27 @@
     .skill-pointer-label span { background:linear-gradient(transparent 50%, #bae6fd 50%, #bae6fd 92%, transparent 92%); padding:0 4px; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
     .skill-pointer svg { flex:none; animation:skillnudge 1.8s ease-in-out infinite; }
     @keyframes skillnudge { 0%,100% { transform:translateY(0); } 50% { transform:translateY(5px); } }
-    .skillbox { text-align:center; background:#e0f2fe; border:3px solid var(--ink); border-left:12px solid var(--sky); border-radius:var(--wob); padding:24px 28px; max-width:820px; margin:0 auto; }
+    .skillbox { text-align:center; background:#fff; border:3px solid var(--ink); border-left:12px solid var(--sky); border-radius:var(--wob); padding:24px 28px; max-width:820px; margin:0 auto; }
     .skillbox p { margin:0 auto 10px; }
     .btn.sky { background:var(--sky); font-size:1.25rem; padding:8px 24px; } .btn.sky:hover { background:#7dd3fc; }
     .preview-link { text-align:center; margin:24px auto 0; }
+
+    /* demo chat */
+    .demo { border:3px solid var(--ink); border-left:12px solid var(--blue); border-radius:18px; background:#fafaf8; padding:20px 20px 16px; max-width:820px; }
+    .dprog { display:flex; gap:6px; margin:0 0 12px; } .dprog span { width:28px; height:8px; border-radius:100px; background:#e5e7eb; border:1.5px solid var(--ink); }
+    .dprog span.on { background:var(--pink); }
+    .dchat { min-height:120px; display:flex; flex-direction:column; gap:6px; }
+    .dwho { font-family:'Patrick Hand',cursive; font-size:.94rem; color:#555; margin:6px 4px 0; }
+    .db { max-width:88%; padding:10px 14px; border:2.5px solid var(--ink); font-size:.97rem; line-height:1.45; background:#fff; border-radius:4px 16px 16px 16px; }
+    .db.me { background:#fdf2f8; border-color:var(--pink); border-radius:16px 4px 16px 16px; align-self:flex-end; font-family:'Patrick Hand',cursive; font-size:1.1rem; }
+    .dwho.r { text-align:right; }
+    .dsys { font-family:'Patrick Hand',cursive; color:#047857; font-size:1rem; text-align:center; margin:8px 0 2px; }
+    .ddoc { background:#fff; border:2.5px dashed var(--mint); border-radius:12px; padding:10px 14px; font-size:.9rem; white-space:pre-wrap; margin-top:6px; }
+    .dctl { display:flex; flex-wrap:wrap; align-items:center; gap:12px 20px; margin-top:16px; }
+    .dctl .btn { font-size:1.25rem; padding:10px 24px; }
+    .dfull { font-family:'Patrick Hand',cursive; font-size:1.25rem; color:var(--blue); }
+    .dend { border:3px solid var(--ink); border-left:12px solid var(--mint); border-radius:14px; background:#fff; padding:14px 18px; margin-top:8px; }
+    .dend p { margin:0 0 10px; }
 
     /* the moment */
     .split { display:grid; grid-template-columns:1.4fr 1fr; gap:48px; align-items:center; }
@@ -128,6 +150,14 @@
     .close h2 { background:none; color:#fff; padding:0; }
     .close p { color:#fff; } .close a { color:#fff; }
     .close .story { padding-bottom:80px; }
+    .pass { display:grid; grid-template-columns:96px 1fr; gap:16px; align-items:center; background:#fff; color:var(--ink); text-decoration:none; border:3px solid var(--ink); border-radius:16px; padding:14px 16px; margin:4px 0 20px; max-width:460px; transition:background .15s ease; }
+    .pass:hover { background:#fef9c3; }
+    .pass img { width:96px; height:96px; border:3px solid var(--ink); border-radius:12px; background:#fff; }
+    .pass-top { display:flex; justify-content:space-between; align-items:center; font-weight:700; font-size:.85rem; margin-bottom:6px; }
+    .redact { display:inline-block; width:90px; height:12px; background:var(--ink); }
+    .pass dl { display:grid; grid-template-columns:auto 1fr; gap:2px 10px; font-size:.9rem; margin:0; } .pass dt { font-weight:700; } .pass dd { margin:0; }
+    .pass-link { display:inline-block; margin-top:6px; font-family:'Patrick Hand',cursive; font-size:1.1rem; color:var(--blue); }
+    .close .pass p { color:var(--ink); }
     .card { position:relative; background:#fff; color:var(--ink); text-align:center; padding:44px 40px 88px; transform:rotate(2deg); margin-bottom:-40px; border:3px solid var(--ink); border-radius:var(--wob2); }
     .card h3 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:clamp(1.9rem,3vw,2.6rem); margin-bottom:8px; }
     .card p { margin:0 auto 18px; color:var(--ink); }
@@ -149,7 +179,7 @@
       .gap { padding-top:88px; }
       .hero, .docs, .split, .who, .close .in { grid-template-columns:1fr; }
       .hero { gap:40px; padding-top:28px; }
-      .desk { padding:24px 18px 112px; } .desk .sticker { width:116px; left:-6px; bottom:-26px; }
+      .desk { padding:24px 18px 120px; } .desk .sticker { width:124px; left:-6px; bottom:-28px; } .desk .sticker.photo { width:136px; }
       .swipe { display:block !important; }
       .frame { min-height:0; padding:22px 18px 28px; }
       .ticket { grid-template-columns:1fr; }
@@ -160,6 +190,8 @@
       .split img { max-width:200px; }
       .close { padding-top:72px; margin-top:100px; }
       .close .story { padding-bottom:20px; }
+      .pass { grid-template-columns:72px 1fr; } .pass img { width:72px; height:72px; }
+      .band { margin-top:88px; padding-top:72px; padding-bottom:72px; } .band + .gap { padding-top:88px; }
       .card { transform:rotate(1deg); padding:40px 24px 80px; }
       .card .sticker { width:96px; top:-112px; right:12px; }
     }
@@ -178,7 +210,7 @@
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 </head>
-<body>
+<body class="hero-3d">
 
 <nav>
   <div class="nav-inner">
@@ -212,7 +244,8 @@ Lines 1, 2, 4–6: on plan or above.
 
 Action taken: <span class="chk">[CHECK: one line from you]</span>
 Next week risk: Line 3 blade stock not visible in this file. <span class="chk">[CHECK: spare blade qty]</span></div></div>
-    <img class="sticker" src="assets/insider-calm-laptop-coffee.png" alt="Ah Hock with a coffee while the report drafts itself" width="340" height="340">
+    <img class="sticker drawn" src="assets/insider-calm-laptop-coffee.png" alt="Ah Hock with a coffee while the report drafts itself" width="340" height="340">
+    <img class="sticker photo" src="assets/ahhock-3d.jpg" alt="Ah Hock, as he appears in the videos" width="540" height="560">
     <p class="note">You fix two lines and send it.</p>
   </div>
 </div></section>
@@ -271,7 +304,20 @@ Next week risk: Line 3 blade stock not visible in this file. <span class="chk">[
   <p class="backstage" data-rv><strong>Behind the documents, the team that drafts them:</strong> Day-Zero interviews you once. That's the 30-minute setup that makes every later draft sound like you and know your boss, while the Scout watches what your market asks and the Analyst keeps an honest scorecard. And the rule that makes it safe: <strong>agents draft, you decide.</strong> Nothing sends, posts, or publishes itself. Ever.</p>
 </div></section>
 
-<section class="sec gap"><div class="in">
+<section class="sec gap" id="demo"><div class="in">
+  <h2 data-rv>Watch the first sitting, in five clicks</h2>
+  <p class="lead" data-rv style="--d:70ms">This is the kit's Day-Zero agent with an <span class="tag">EXAMPLE</span> buyer, Mei Ling, a production planner. Your sitting uses your answers and your file.</p>
+  <div class="demo" data-rv style="--d:140ms">
+    <div class="dprog" id="dprog" aria-hidden="true"></div>
+    <div class="dchat" id="dchat" aria-live="polite"></div>
+    <div class="dctl">
+      <button class="btn" id="dgo" type="button">Type: start day zero →</button>
+      <a class="dfull" href="walkthrough-w5p2.html">Full 5-minute version, with the lesson →</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec band"><div class="in">
   <h2 data-rv>Your first 30 minutes, lane by lane</h2>
   <p data-rv style="--d:70ms">Three lanes: you, your agent, the folder's memory. Read left to right. This is literally what happens in your first sitting.</p>
   <div class="lane" data-rv style="--d:140ms">
@@ -340,7 +386,6 @@ Next week risk: Line 3 blade stock not visible in this file. <span class="chk">[
     <a class="btn sky" href="https://buy.stripe.com/aFadRb1TRePL5RX5X20kE06">Get the skill · USD 1.99 →</a>
     <p class="fine" style="margin:10px auto 0;">Separate little tool, yours forever. The kit does not need it.</p>
   </div>
-  <p class="hand preview-link">Prefer to see it move? <a href="walkthrough-w5p2.html">Click through the first sitting: a 5-minute interactive preview →</a></p>
 </div></section>
 
 <section class="sec gap"><div class="in">
@@ -412,7 +457,15 @@ Next week risk: Line 3 blade stock not visible in this file. <span class="chk">[
 <section class="sec close"><div class="in">
   <div class="story">
     <h2 data-rv>Why trust a cartoon?</h2>
-    <p data-rv style="--d:70ms">Because the cartoon runs the real thing. I'm Ah Hock. I work in a factory office inside a Malaysian factory, and I'm not an engineer. The system in this kit is the generalized version of the one that runs my own side business: agents that scout my market nightly in the cloud, draft my documents, keep my scorecard, and leave me decisions while I sleep. I didn't study computer science. I studied my own Mondays. <a href="about.html">The longer story →</a></p>
+    <a class="pass" href="about.html" data-rv style="--d:60ms">
+      <img src="assets/insider-waving-hero.png" alt="Ah Hock waving" width="120" height="120" loading="lazy">
+      <div>
+        <div class="pass-top"><span>STAFF PASS</span><span class="redact" role="img" aria-label="Employer name blacked out"></span></div>
+        <dl><dt>Name</dt><dd>Ah Hock (not my real name)</dd><dt>Job</dt><dd>Factory office worker, not an engineer</dd><dt>Status</dt><dd>Still inside, full-time, today</dd></dl>
+        <span class="pass-link">Meet Ah Hock →</span>
+      </div>
+    </a>
+    <p data-rv style="--d:120ms">Because the cartoon runs the real thing. I'm Ah Hock. I work in a factory office inside a Malaysian factory, and I'm not an engineer. The system in this kit is the generalized version of the one that runs my own side business: agents that scout my market nightly in the cloud, draft my documents, keep my scorecard, and leave me decisions while I sleep. I didn't study computer science. I studied my own Mondays. <a href="about.html">The longer story →</a></p>
   </div>
   <div class="card" data-rv style="--d:120ms">
     <img class="sticker" src="assets/insider-thumbs-up.png" alt="Ah Hock giving a thumbs up" width="240" height="240" loading="lazy">
@@ -444,6 +497,39 @@ Next week risk: Line 3 blade stock not visible in this file. <span class="chk">[
       if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); pick(tabs[(k-1+tabs.length) % tabs.length], true); }
     });
   });
+  var D = [
+    { btn:'Answer the questions →', m:[['me','start day zero'],['ai','Welcome in. Five quick questions, one at a time, then one real file. First: <b>what does your business do?</b>']]},
+    { btn:'Last two questions →', m:[['me','We print packaging boxes for food brands. <span class="tag">EXAMPLE</span>'],['ai','<b>And your role?</b>'],['me','Production planner. <span class="tag">EXAMPLE</span>'],['ai','<b>Which document do you redo every week?</b>'],['me','The weekly output report. About ninety minutes every Monday. <span class="tag">EXAMPLE</span>']]},
+    { btn:'Drop one real file →', m:[['ai','<b>Who reads it, and what do they care about?</b>'],['me','Mr. Tan, ops manager. Output vs plan only. Hates long emails. <span class="tag">EXAMPLE</span>'],['ai','Saved to memory: your business, your role, your weekly task, your reader, your red lines. Now <b>drop one real file</b> into data/exports.']]},
+    { btn:'See the first document →', m:[['sys','You drag <b>weekly-output.xlsx</b> <span class="tag">EXAMPLE</span> into data/exports/'],['ai','Reading it. Six lines, planned vs actual, a downtime column with reasons. Building your report now, short, the way Mr. Tan likes it.']]},
+    { btn:'Approve and send →', m:[['ai','Here is Monday\'s report, from your file:<div class="ddoc"><b>WEEKLY OUTPUT REPORT · Mon 13 Oct</b>  <span class="tag">EXAMPLE</span>\nTo: Mr. Tan\n\nOutput vs plan: 94% (31,200 / 33,100 pcs)\nShort on Line 3: down 6.5 hrs Tue–Wed, blade change.\nAction taken: [CHECK: one line from you]</div>Saved in your queue folder. Nothing sends until you say so.']]},
+    { btn:'', m:[['me','Action taken: blade changed Wed night, spare ordered. Good.'],['ai','Updated. Paste it from the queue folder when ready. You send, I never do. Welcome to your back-office.']]}
+  ];
+  var dchat = document.getElementById('dchat'), dgo = document.getElementById('dgo'), dprog = document.getElementById('dprog'), di = -1;
+  if (dchat) {
+    D.forEach(function(){ var s = document.createElement('span'); dprog.appendChild(s); });
+    var bubble = function(w, h){
+      if (w === 'sys') { var s = document.createElement('div'); s.className = 'dsys'; s.innerHTML = '⬇ ' + h; dchat.appendChild(s); return; }
+      var who = document.createElement('div'); who.className = 'dwho' + (w === 'me' ? ' r' : ''); who.textContent = w === 'me' ? 'You' : 'The Day-Zero agent';
+      var b = document.createElement('div'); b.className = 'db ' + (w === 'me' ? 'me' : 'ai'); b.innerHTML = h;
+      dchat.appendChild(who); dchat.appendChild(b);
+    };
+    dgo.addEventListener('click', function(){
+      di++; if (di >= D.length) return;
+      if (di === 0) dchat.innerHTML = '';
+      var d = 0; D[di].m.forEach(function(m){ setTimeout(function(){ bubble(m[0], m[1]); }, d); d += 450; });
+      [].forEach.call(dprog.children, function(el, j){ el.className = j <= di ? 'on' : ''; });
+      if (di + 1 < D.length) { dgo.textContent = D[di].btn; dgo.disabled = true; setTimeout(function(){ dgo.disabled = false; }, d); }
+      else {
+        setTimeout(function(){
+          var e = document.createElement('div'); e.className = 'dend';
+          e.innerHTML = '<p><strong>That was the whole first sitting.</strong> For real it takes 20 to 30 minutes, with your answers and your file. Then every week: drop the file, say what you need, approve.</p>' +
+            '<a class="btn" href="https://buy.stripe.com/eVqdRbaqnfTP4NTadi0kE05">Get the kit · USD 3.99 →</a> <a class="dfull" href="walkthrough-w5p2.html" style="margin-left:12px;">Full version with the lesson →</a>';
+          dchat.appendChild(e); dgo.style.display = 'none';
+        }, d);
+      }
+    });
+  }
   var els = document.querySelectorAll('[data-rv]');
   if (!('IntersectionObserver' in window)) { els.forEach(function(e){ e.classList.add('shown'); }); return; }
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('shown'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
