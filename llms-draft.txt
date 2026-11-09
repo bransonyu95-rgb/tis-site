@@ -1,0 +1,30 @@
+# The Industrial Scribe
+
+> Frameworks and AI prompts for office staff in Southeast Asian manufacturing: planners, QC executives, purchasing and business-development coordinators. Written by Ah Hock, a pen name, from inside a real Malaysian manufacturing office. For office staff, never for programmers.
+
+Ah Hock publishes only what he has run on real work, uses real numbers, and never names a customer. There is no single standard method in manufacturing: each piece starts by diagnosing the nature of the business, then customises the workflow.
+
+## Start here
+- [Build Your AI Back-Office (the kit)](https://theindustrialscribe.com/backoffice.html): A downloadable AI back-office for factory office staff, USD 3.99 one-off. In the first sitting it interviews you, reads one of your real working files, and drafts the document you redo every week (weekly report, SOPs in the ISO 9001 convention, hard emails and customer replies). Runs on Claude Pro (USD 20/month). The same page sells the Workflow Swimlanes skill, USD 1.99.
+- Real case studies (PDF, USD 1.99 each, on the shelf): "Building the Case Desk: Your Reply Is Ready Before You Open the Mail" (28 pages, how promises stopped getting lost in email threads, real numbers from one user over seven weeks) and "Building So-What Reports: Every Number Says What to Do Next" (23 pages, decks and dashboards built on 856,850 real operations; time saved and decisions changed were never tracked). Both in the format of Anthropic's "Building Effective AI Agents" guide, anonymised.
+- [Home: the shelf](https://theindustrialscribe.com/): What TIS is and the three bundles: The Kit (USD 3.99), The Kit + Tools (USD 9.99, kit + Workflow Swimlanes + The Waste Hunt), The Full Desk (USD 19.99, everything + Present Like the Insider). Plus the full list of articles
+- [About Ah Hock](https://theindustrialscribe.com/about.html): Who writes this and the rules he writes by
+- [The Insider Test (free)](https://theindustrialscribe.com/insider-test.html): 30-question test on how you work in a factory office and how you use AI; gives your type and an AI direction for your job
+- [The Pre-Ship Checklist (free)](https://theindustrialscribe.com/free-checklist.html): Free 10-point checklist to run before any deck goes to a boss or a customer
+
+## Articles
+- [The $20 Revolution: $5,000 Consultant Work on a $20 Subscription](https://theindustrialscribe.com/article-20-dollar-revolution.html)
+- [The Next AI Doesn't Wait for Your Question](https://theindustrialscribe.com/article-agentic-ai-is-here.html)
+- [The AI Knowledge Gold Rush: Everyone Sells AI Skills Except Manufacturing](https://theindustrialscribe.com/article-ai-knowledge-gold-rush.html)
+- [AI Is Coming for Middle Management: Two Million Jobs at Risk](https://theindustrialscribe.com/article-ai-middle-management.html)
+- [How I Connected AI to My Company Outlook in 60 Minutes](https://theindustrialscribe.com/article-ai-to-outlook.html)
+- [The Email I Never Sent](https://theindustrialscribe.com/article-email-never-sent.html): For years I knew the bad news and said nothing. The customer found out from the calendar. What finally changed was naming the fear.
+- [How One Factory Office Worker Turned Over 300,000 Rows of Factory Data Into a Growth Strategy](https://theindustrialscribe.com/article-factory-intelligence.html)
+- [You Don't Need to Be From the Field. The Chess Research Proves It.](https://theindustrialscribe.com/article-not-from-the-field.html): Chess masters lost almost all of their advantage when the pieces were scattered at random. What that means for non-engineers doing technical work with frameworks and AI.
+- [The 12 Numbers Every Production Manager Should Track Every Week](https://theindustrialscribe.com/article-production-report.html)
+- [How to Write an RCA Report Your Customer Won't Send Back](https://theindustrialscribe.com/article-rca-report.html)
+- [How to Write Any Manufacturing SOP in 30 Minutes Using AI](https://theindustrialscribe.com/article-sop-writing.html)
+- [Stop Re-Introducing Yourself to Your AI Every Morning](https://theindustrialscribe.com/article-what-are-skills.html)
+
+## Free tools
+- [Weekly WIP Status Report](https://theindustrialscribe.com/skill-wip-status-report.html): A copy-paste AI skill that teaches ChatGPT, Claude, or Gemini to produce a Monday-ready Weekly WIP Status Report from raw job data.
