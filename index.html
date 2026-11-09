@@ -5,16 +5,16 @@
   <script>document.documentElement.classList.add('js')</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Industrial Scribe — Build Your AI Back-Office</title>
-  <meta name="description" content="A non-technical factory office worker runs his day job, and his whole side business, on an AI back-office. The system is now a USD 3.99 kit. The articles are the proof.">
+  <meta name="description" content="TIS: AI back-office kits for factory office staff. Three bundles, one price each, pay once. The kit drafts your weekly report, SOPs, 8D replies and hard emails from your real files. You decide, it drafts.">
   <link rel="canonical" href="https://theindustrialscribe.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Industrial Scribe">
   <meta property="og:title" content="The Industrial Scribe: Build Your AI Back-Office">
-  <meta property="og:description" content="A non-technical factory office worker runs his day job, and his whole side business, on an AI back-office. The system is now a USD 3.99 kit. The articles are the proof.">
+  <meta property="og:description" content="AI back-office kits for factory office staff. Three bundles, pay once. The kit drafts your weekly report, SOPs, 8D replies and hard emails from your real files.">
   <meta property="og:url" content="https://theindustrialscribe.com/">
   <meta property="og:image" content="https://theindustrialscribe.com/assets/ahhock-3d-desk.jpg">
   <meta name="twitter:card" content="summary">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "The Industrial Scribe", "url": "https://theindustrialscribe.com/", "logo": "https://theindustrialscribe.com/assets/apple-touch-icon.png", "sameAs": ["https://www.instagram.com/the.industrial.scribe/"], "@id": "https://theindustrialscribe.com/#org"}, {"@type": "WebSite", "name": "The Industrial Scribe", "url": "https://theindustrialscribe.com/", "publisher": {"@id": "https://theindustrialscribe.com/#org"}, "description": "A non-technical factory office worker runs his day job, and his whole side business, on an AI back-office. The system is now a USD 3.99 kit. The articles are the proof."}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://theindustrialscribe.com/#org", "name": "The Industrial Scribe", "url": "https://theindustrialscribe.com/", "logo": "https://theindustrialscribe.com/assets/apple-touch-icon.png", "sameAs": ["https://www.instagram.com/the.industrial.scribe/"]}, {"@type": "WebSite", "name": "The Industrial Scribe", "url": "https://theindustrialscribe.com/", "publisher": {"@id": "https://theindustrialscribe.com/#org"}}, {"@type": "ItemList", "name": "TIS bundles", "itemListElement": [{"@type": "ListItem", "position": 1, "item": {"@type": "Product", "name": "The Kit (Build Your AI Back-Office)", "url": "https://theindustrialscribe.com/backoffice.html", "offers": {"@type": "Offer", "price": "3.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}}}, {"@type": "ListItem", "position": 2, "item": {"@type": "Product", "name": "The Kit + Tools", "url": "https://theindustrialscribe.com/#shelf", "offers": {"@type": "Offer", "price": "9.99", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder"}}}, {"@type": "ListItem", "position": 3, "item": {"@type": "Product", "name": "The Full Desk", "url": "https://theindustrialscribe.com/#shelf", "offers": {"@type": "Offer", "price": "19.99", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder"}}}]}]}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -23,11 +23,11 @@
     * { margin:0; padding:0; box-sizing:border-box; }
     body { font-family:'Plus Jakarta Sans',sans-serif; background:#fff; color:var(--ink); line-height:1.6; font-size:17px; }
     .sec { padding:0 5%; } .in { max-width:1100px; margin:0 auto; } .gap { padding-top:120px; }
-    h1 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:clamp(2.4rem,4.6vw,4.2rem); line-height:1.05; letter-spacing:-.01em; }
-    h2 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:clamp(1.9rem,3vw,2.6rem); line-height:1.1; margin:0 0 14px;
+    h1 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:clamp(2.6rem,5.4vw,4.8rem); line-height:1.02; letter-spacing:-.01em; }
+    h2 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:clamp(1.9rem,3.2vw,2.8rem); line-height:1.1; margin:0 0 14px;
          background:linear-gradient(transparent 62%, var(--yellow) 62%, var(--yellow) 94%, transparent 94%); display:inline-block; padding:0 6px; }
-    h3 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.35rem; line-height:1.2; margin-bottom:8px; }
-    p { margin-bottom:1rem; max-width:64ch; }
+    h3 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.5rem; line-height:1.2; }
+    p { margin-bottom:1rem; max-width:62ch; }
     .lead { font-size:1.2rem; line-height:1.55; }
     .fine { font-size:.94rem; }
     a { color:var(--blue); }
@@ -35,66 +35,78 @@
       padding:12px 32px; border:3px solid var(--ink); border-radius:var(--wob); transition:background .15s ease, transform .1s ease; }
     .btn:hover { background:#f472b6; } .btn:active { transform:scale(.97); }
     .btn.ink { background:var(--ink); color:#fff; } .btn.ink:hover { background:#333; }
+    .btn.ghost { background:#fff; } .btn.ghost:hover { background:#fef9c3; }
     .btn:focus-visible, .alist a:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
-    .sticker { background:#fff; border:3px solid var(--ink); border-radius:var(--wob); padding:4px; height:auto; display:block; }
 
-    /* hero */
-    .hero { display:grid; grid-template-columns:1.3fr 1fr; gap:56px; align-items:center; padding-top:56px; }
+    /* the stage: pinned Ah Hock on the left, story + shelf on the right */
+    .stage { display:grid; grid-template-columns:minmax(0,440px) minmax(0,1fr); gap:56px; align-items:start; }
+    .pin { position:sticky; top:84px; height:calc(100vh - 110px); display:flex; align-items:center; }
+    .frame { width:100%; aspect-ratio:1/1; border:3px solid var(--ink); border-radius:var(--wob); overflow:hidden; background:var(--yellow); box-shadow:10px 10px 0 var(--ink); position:relative; }
+    .frame canvas { width:100%; height:100%; display:block; }
+    .frame .tag { position:absolute; left:14px; bottom:12px; font-family:'Patrick Hand',cursive; font-size:1.05rem; background:#fff; border:2.5px solid var(--ink); border-radius:100px; padding:2px 12px; }
+    .story { padding:48px 0 10vh; }
+    .hero { min-height:calc(100vh - 160px); display:flex; flex-direction:column; justify-content:center; }
     .hero .lead { margin:22px 0 26px; }
-    .act { display:flex; flex-wrap:wrap; align-items:center; gap:14px 22px; }
+    .act { display:flex; flex-wrap:wrap; align-items:center; gap:16px 24px; }
     .act .alt { font-family:'Patrick Hand',cursive; font-size:1.25rem; color:var(--ink); }
-    .stage { position:relative; background:var(--yellow); border:3px solid var(--ink); border-radius:var(--wob2); padding:34px 30px 120px; }
-    .stage .sticker { width:100%; max-width:380px; margin:0 auto; transform:rotate(-2deg); }
-    .pin { position:absolute; right:-18px; bottom:-26px; width:min(300px, 80%); background:var(--pink); color:var(--ink); border:3px solid var(--ink); border-radius:var(--wob2);
-      padding:18px 20px; transform:rotate(3deg); text-decoration:none; transition:transform .2s ease; }
-    .pin:hover { background:#f472b6; }
-    .pin b { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.3rem; display:block; line-height:1.15; color:var(--ink); }
-    .pin span { font-family:'Patrick Hand',cursive; font-size:1.25rem; color:var(--ink); }
+    .hero .fine { margin-top:18px; color:#444; }
 
-    /* two ways in */
-    .ways { display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:stretch; }
-    .ways .stack { display:flex; flex-direction:column; gap:22px; }
-    .way { border:3px solid var(--ink); border-radius:var(--wob); padding:22px 24px; flex:1; }
-    .way p { margin:0; }
-    .test { position:relative; background:var(--yellow); border:3px solid var(--ink); border-radius:var(--wob2); padding:28px 28px 30px; }
-    .test .sticker { width:120px; float:right; margin:0 0 10px 16px; transform:rotate(4deg); }
-    .test h3 { font-size:1.7rem; }
+    /* the shelf */
+    .shelf { padding:40px 0 20px; scroll-margin-top:90px; }
+    .shelf h2 { margin-bottom:6px; }
+    .shelf > p { margin-bottom:22px; }
+    .box { position:relative; border:3px solid var(--ink); border-radius:var(--wob2); background:#fff; padding:22px 24px 22px 28px; margin:0 0 22px; display:grid; grid-template-columns:1fr auto; gap:8px 24px; align-items:start; }
+    .box.b1 { border-left:12px solid var(--pink); } .box.b2 { border-left:12px solid var(--sky); } .box.b3 { border-left:12px solid var(--mint); background:#ecfdf5; }
+    .box .no { position:absolute; top:-14px; left:22px; font-family:'Permanent Marker',cursive; font-size:.95rem; background:var(--ink); color:#fff; border-radius:8px; padding:2px 10px; }
+    .box h3 { margin:6px 0 4px; }
+    .box ul { list-style:none; margin:4px 0 0; }
+    .box li { padding-left:24px; position:relative; margin:4px 0; font-size:.98rem; }
+    .box li::before { content:''; position:absolute; left:2px; top:.5em; width:11px; height:6px; border-left:3px solid var(--mint); border-bottom:3px solid var(--mint); transform:rotate(-45deg); }
+    .box .price { grid-column:2; grid-row:1 / span 2; text-align:center; align-self:center; min-width:150px; }
+    .box .price b { display:block; font-family:'Permanent Marker',cursive; font-weight:400; font-size:2rem; line-height:1; }
+    .box .price small { display:block; font-family:'Patrick Hand',cursive; font-size:1.05rem; color:#555; margin:2px 0 10px; }
+    .box .price .btn { font-size:1.2rem; padding:9px 18px; display:block; }
+    .box .price .more { display:block; font-family:'Patrick Hand',cursive; font-size:1.05rem; margin-top:8px; }
+    .box .soon { font-family:'Patrick Hand',cursive; font-size:1rem; color:#555; margin-top:8px; }
+    .shelf .fine { margin-top:6px; color:#444; }
 
-    /* proof */
-    .group { display:grid; grid-template-columns:1fr 240px; gap:48px; align-items:center; margin-top:44px; }
-    .group:nth-of-type(even) { grid-template-columns:240px 1fr; }
-    .group:nth-of-type(even) .pic { order:-1; }
+    /* steps */
+    .step { min-height:62vh; display:flex; flex-direction:column; justify-content:center; }
+    .step h2 { align-self:flex-start; }
+
+    /* below the stage */
+    .group { display:grid; grid-template-columns:1fr 220px; gap:48px; align-items:center; margin-top:40px; }
+    .group:nth-of-type(even) { grid-template-columns:220px 1fr; } .group:nth-of-type(even) .pic { order:-1; }
     .group .pic { width:100%; border:3px solid var(--ink); border-radius:18px; background:#fff; padding:4px; }
-    .alist { list-style:none; }
-    .alist li { border-bottom:3px dotted #c9c9c4; }
+    .alist { list-style:none; } .alist li { border-bottom:3px dotted #c9c9c4; }
     .alist a { display:flex; justify-content:space-between; gap:16px; align-items:baseline; padding:12px 6px; text-decoration:none; color:var(--ink); transition:background .15s ease, padding .15s ease; }
     .alist a:hover { background:#fef9c3; padding-left:12px; }
     .alist .t { font-size:1.05rem; } .alist .arrow { color:var(--blue); font-family:'Patrick Hand',cursive; font-size:1.3rem; white-space:nowrap; }
-
-    /* letters */
-    .letters { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; background:#e0f2fe; border:3px solid var(--ink); border-radius:var(--wob); padding:34px 36px; }
+    .letters { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; background:#e0f2fe; border:3px solid var(--ink); border-radius:var(--wob); padding:34px 36px; scroll-margin-top:90px; }
     .letters p { margin:0 0 8px; }
     .about-line { font-family:'Patrick Hand',cursive; font-size:1.3rem; text-align:center; margin:56px auto 0; }
 
     .js [data-rv] { opacity:0; transform:translateY(24px); transition:opacity .55s ease, transform .55s ease; transition-delay:var(--d,0ms); }
     .js [data-rv].shown { opacity:1; transform:none; }
-    .stage .sticker.float { animation:float 6s ease-in-out infinite; }
-    @keyframes float { 0%,100% { transform:rotate(-2deg) translateY(0); } 50% { transform:rotate(-1deg) translateY(-8px); } }
     @media (prefers-reduced-motion: reduce) {
       .js [data-rv] { opacity:1; transform:none; transition:none; }
-      .stage .sticker.float { animation:none; } .btn, .pin, .alist a { transition:none; }
+      .frame canvas { display:none; } .frame { background:url(assets/ahhock-3d.jpg) center/cover; }
+      .btn, .alist a { transition:none; }
     }
     @media (max-width: 860px) {
       .gap { padding-top:88px; }
-      .hero, .ways, .letters { grid-template-columns:1fr; }
-      .hero { gap:36px; padding-top:28px; }
-      .stage { padding:24px 18px 110px; } .stage .sticker { max-width:260px; }
-      .pin { right:-6px; }
-      h1 { font-size:2.15rem; }
-      .test .sticker { width:84px; } .test h3 { font-size:1.45rem; }
+      .stage { grid-template-columns:1fr; gap:0; }
+      .pin { position:sticky; top:0; height:auto; padding:10px 0 6px; background:#fff; z-index:2; justify-content:center; }
+      .frame { width:min(100%, 220px); margin:0 auto; box-shadow:6px 6px 0 var(--ink); }
+      .story { padding:14px 0 6vh; }
+      .hero { min-height:0; padding:10px 0 20px; }
+      .box { grid-template-columns:1fr; padding:22px 18px 18px 22px; }
+      .box .price { grid-column:1; grid-row:auto; text-align:left; display:grid; grid-template-columns:auto 1fr; gap:4px 16px; align-items:center; }
+      .box .price b { font-size:1.7rem; } .box .price small { margin:0; } .box .price .btn { grid-column:1 / -1; }
+      .step { min-height:46vh; }
       .group, .group:nth-of-type(even) { grid-template-columns:1fr; gap:18px; }
       .group .pic, .group:nth-of-type(even) .pic { order:-1; width:150px; }
-      .letters { padding:26px 22px; gap:16px; }
+      .letters { grid-template-columns:1fr; padding:26px 22px; gap:16px; }
     }
   </style>
   <link rel="stylesheet" href="tis-theme.css">
@@ -117,6 +129,7 @@
   <div class="nav-inner">
     <a href="index.html" class="logo">THE INDUSTRIAL <span>SCRIBE</span></a>
     <div class="nav-links">
+      <a href="#shelf">The shelf</a>
       <a href="#articles">The proof</a>
       <a href="about.html">Meet Ah Hock</a>
       <a href="backoffice.html" class="nav-cta">Get the Kit</a>
@@ -125,47 +138,73 @@
 </nav>
 
 <main>
-<section class="sec"><div class="in hero">
-  <div>
-    <h1 data-rv>Office work, drafted overnight.</h1>
-    <p class="lead" data-rv style="--d:80ms">I work in a factory office in Malaysia, and I'm not an engineer. I built an AI back-office that scouts my market, drafts my documents and keeps my scorecard. I approve in the morning. Then I packaged the whole thing into a kit you can run by lunchtime.</p>
-    <div class="act" data-rv style="--d:160ms">
-      <a class="btn" href="backoffice.html">See the kit · USD 3.99 →</a>
-      <a class="alt" href="insider-test.html">Or take the Insider Test →</a>
+<section class="sec"><div class="in stage" id="stage">
+  <div class="pin"><div class="frame"><canvas id="c" width="480" height="480" aria-label="Ah Hock, reacting as you scroll"></canvas><span class="tag" id="tag">scroll ↓</span></div></div>
+  <div class="story">
+    <div class="hero">
+      <h1 data-rv>This is TIS.</h1>
+      <p class="lead" data-rv style="--d:80ms">AI back-office kits for factory office staff. Download one, drop in a real file, and it drafts the document you redo every week. You decide. It drafts.</p>
+      <div class="act" data-rv style="--d:160ms">
+        <a class="btn" href="#shelf">See the three bundles ↓</a>
+        <a class="alt" href="insider-test.html">Not sure? Take the Insider Test →</a>
+      </div>
+      <p class="fine" data-rv style="--d:220ms">Pay once, keep it. Everything runs on your own computer through your own Claude Pro (USD 20/month), so there are no credits and nothing to subscribe to here.</p>
     </div>
-  </div>
-  <div class="stage" data-rv style="--d:120ms">
-    <img class="sticker float" src="assets/ahhock-3d-desk.jpg" alt="Ah Hock with a coffee while his AI back-office drafts the work" width="540" height="540">
-    <a class="pin" href="backoffice.html"><b>Build Your AI Back-Office</b>Interviews you, reads one real file, builds the document you redo every week. <span>USD 3.99 founding →</span></a>
-  </div>
-</div></section>
 
-<section class="sec gap"><div class="in">
-  <h2 data-rv>Two ways in</h2>
-  <div class="ways">
-    <div class="stack">
-      <div class="way" data-rv style="border-left:12px solid var(--blue);">
-        <h3>Building for your own office?</h3>
-        <p>Planner, QA, purchasing, admin, boss. Start with the article closest to your Monday, then take the kit.</p>
+    <div class="shelf" id="shelf">
+      <h2 data-rv>Pick a bundle.</h2>
+      <p data-rv style="--d:60ms">Each box says what lands in your hands and what it costs. Nothing else to study.</p>
+
+      <div class="box b1" data-rv style="--d:100ms">
+        <span class="no">No. 01</span>
+        <div>
+          <h3>The Kit</h3>
+          <ul>
+            <li>Your weekly report, built from your real export in the first sitting</li>
+            <li>SOPs in the ISO 9001 convention, 8D complaint replies, the hard emails</li>
+            <li>Day-Zero interview, client mode, consultant guide, plain-English license</li>
+          </ul>
+        </div>
+        <div class="price"><b>USD 3.99</b><small>once · founding price</small><a class="btn" href="https://buy.stripe.com/eVqdRbaqnfTP4NTadi0kE05">Get the Kit →</a><a class="more" href="backoffice.html">Full details and demo →</a></div>
       </div>
-      <div class="way" data-rv style="border-left:12px solid var(--pink); --d:80ms;">
-        <h3>Want to sell this skill?</h3>
-        <p>The kit ships with client mode, a license that welcomes consultants, honest price ranges, and the paperwork templates.</p>
+
+      <div class="box b2" data-rv style="--d:160ms">
+        <span class="no">No. 02</span>
+        <div>
+          <h3>The Kit + Tools</h3>
+          <ul>
+            <li>Everything in The Kit</li>
+            <li>Workflow Swimlanes: draws what your AI was supposed to do and what it actually did</li>
+            <li>Know Your Business Nature: the 20-minute diagnostic that tells you which rulebook your factory runs on</li>
+          </ul>
+        </div>
+        <div class="price"><b>USD 9.99</b><small>once</small><a class="btn ink" href="#letters" data-soon="02">Opens this week · notify me →</a><span class="soon">Leave your email below and you'll know the hour it opens.</span></div>
       </div>
+
+      <div class="box b3" data-rv style="--d:220ms">
+        <span class="no">No. 03</span>
+        <div>
+          <h3>The Full Desk</h3>
+          <ul>
+            <li>Everything in The Kit + Tools</li>
+            <li>Present Like the Insider: the boss-presentation method, chart database, prompts and pre-ship checklist</li>
+            <li>Every tutorial as it lands, free</li>
+          </ul>
+        </div>
+        <div class="price"><b>USD 19.99</b><small>once</small><a class="btn ink" href="#letters" data-soon="03">Opens this week · notify me →</a><span class="soon">Leave your email below and you'll know the hour it opens.</span></div>
+      </div>
+      <p class="fine">All three run on Claude Pro (USD 20/month), which you need separately. No refund guarantee: read the kit page and click through the 5-minute preview before you buy.</p>
     </div>
-    <div class="test" data-rv style="--d:140ms">
-      <img class="sticker" src="assets/ahhock-3d-point.jpg" alt="Ah Hock with an idea" width="540" height="540" loading="lazy">
-      <h3>Not sure where to start?</h3>
-      <p>Take the Insider Test: 30 questions, about 7 minutes, on how you work when the factory is on fire and how you use AI today. You get your type, your career traps, and a report on the direction to take AI in your own job.</p>
-      <a class="btn ink" href="insider-test.html">Which Insider are you? →</a>
-    </div>
+
+    <section class="step"><h2 data-rv>Drop one real file.</h2><p class="lead" data-rv style="--d:70ms">Fifteen minutes into your first sitting, the kit asks for one real working file. Your messy Monday export. It reads it and drafts the report you redo every week, with your boss's name on it.</p></section>
+    <section class="step"><h2 data-rv>Approve. Send.</h2><p class="lead" data-rv style="--d:70ms">You fix two lines and paste it into Outlook. Nothing sends, posts or publishes itself. Agents draft, you decide.</p></section>
+    <section class="step"><h2 data-rv>Your evening is yours.</h2><p class="lead" data-rv style="--d:70ms">Next week: drop the new file, say what you need, approve. The same for the SOP, the 8D reply, the email you've been putting off.</p><p data-rv style="--d:120ms"><a class="btn" href="#shelf">Back to the shelf ↑</a></p></section>
   </div>
 </div></section>
 
 <section class="sec gap" id="articles"><div class="in">
   <h2 data-rv>The proof: read how it actually runs</h2>
   <p data-rv style="--d:70ms">Everything below happened on real work. Real numbers, no invented stories.</p>
-
   <div class="group" data-rv>
     <div><h3>What an AI back-office does, measured</h3>
   <ul class="alist">
@@ -199,14 +238,14 @@
 </div></section>
 
 <section class="sec gap"><div class="in">
-  <div class="letters tis-mlbox" data-rv>
+  <div class="letters tis-mlbox" id="letters" data-rv>
     <div>
       <h2 style="background:none; padding:0;">The Insider Letters</h2>
-      <p>One real back-office move per week, from Ah Hock's desk. Sign up and your first email brings the free <strong>10-point Pre-Ship Checklist</strong>, and founding-price access to the kit. No spam, unsubscribe anytime.</p>
+      <p>One real back-office move per week, from Ah Hock's desk. Sign up and your first email brings the free <strong>10-point Pre-Ship Checklist</strong>, and you'll be the first to know when bundles 02 and 03 open. No spam, unsubscribe anytime.</p>
     </div>
     <div class="ml-embedded" data-form="dOrix4"></div>
   </div>
-  <p class="about-line">Who writes this? <a href="about.html">Just call me Ah Hock →</a></p>
+  <p class="about-line">Who makes this? <a href="about.html">Just call me Ah Hock →</a></p>
 </div></section>
 </main>
 
@@ -217,6 +256,18 @@
 
 <script>
 (function(){
+  /* pinned Ah Hock: 72 real frames scrubbed by how far the stage has scrolled */
+  var N = 72, imgs = [], cur = -1;
+  var c = document.getElementById('c'), ctx = c.getContext('2d'), tag = document.getElementById('tag'), stage = document.getElementById('stage');
+  function draw(i){ if (i === cur || !imgs[i] || !imgs[i].complete || !imgs[i].naturalWidth) return; cur = i; ctx.drawImage(imgs[i], 0, 0, 480, 480); }
+  for (var k = 0; k < N; k++) { (function(k){ var im = new Image(); im.src = 'assets/seq/ah-' + String(k).padStart(3,'0') + '.jpg'; im.onload = function(){ if (k === 0 && cur < 0) draw(0); }; imgs[k] = im; })(k); }
+  function onScroll(){
+    var r = stage.getBoundingClientRect(); var total = r.height - window.innerHeight; if (total <= 0) return;
+    var p = Math.min(1, Math.max(0, -r.top / total)); draw(Math.round(p * (N - 1)));
+    tag.textContent = p < 0.02 ? 'scroll ↓' : (p > 0.97 ? 'that\'s the whole job' : (p < 0.45 ? 'the shelf' : 'the first sitting'));
+  }
+  window.addEventListener('scroll', onScroll, { passive: true }); window.addEventListener('resize', onScroll); onScroll();
+
   var els = document.querySelectorAll('[data-rv]');
   var showAll = function(){ els.forEach(function(e){ e.classList.add('shown'); }); };
   if (!('IntersectionObserver' in window)) { showAll(); return; }
