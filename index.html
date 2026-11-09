@@ -36,7 +36,7 @@
     .btn:hover { background:#f472b6; } .btn:active { transform:scale(.97); }
     .btn.ink { background:var(--ink); color:#fff; } .btn.ink:hover { background:#333; }
     .btn.ghost { background:#fff; } .btn.ghost:hover { background:#fef9c3; }
-    .btn:focus-visible, .alist a:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
+    .btn:focus-visible, .case > a:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
 
     /* the stage: pinned Ah Hock on the left, story + shelf on the right */
     .stage { display:grid; grid-template-columns:minmax(0,440px) minmax(0,1fr); gap:56px; align-items:start; }
@@ -74,14 +74,17 @@
     .step { min-height:62vh; display:flex; flex-direction:column; justify-content:center; }
     .step h2 { align-self:flex-start; }
 
-    /* below the stage */
-    .group { display:grid; grid-template-columns:1fr 220px; gap:48px; align-items:center; margin-top:40px; }
-    .group:nth-of-type(even) { grid-template-columns:220px 1fr; } .group:nth-of-type(even) .pic { order:-1; }
-    .group .pic { width:100%; border:3px solid var(--ink); border-radius:18px; background:#fff; padding:4px; }
-    .alist { list-style:none; } .alist li { border-bottom:3px dotted #c9c9c4; }
-    .alist a { display:flex; justify-content:space-between; gap:16px; align-items:baseline; padding:12px 6px; text-decoration:none; color:var(--ink); transition:background .15s ease, padding .15s ease; }
-    .alist a:hover { background:#fef9c3; padding-left:12px; }
-    .alist .t { font-size:1.05rem; } .alist .arrow { color:var(--blue); font-family:'Patrick Hand',cursive; font-size:1.3rem; white-space:nowrap; }
+    /* real cases */
+    .cases { display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-top:28px; }
+    .case { border:3px solid var(--ink); border-radius:18px; background:#fff; padding:14px 18px 20px; display:flex; flex-direction:column; }
+    .case img { width:100%; border:3px solid var(--ink); border-radius:14px; margin-bottom:14px; }
+    .case .lab { font-family:'Permanent Marker',cursive; font-size:.9rem; background:var(--yellow); border-radius:6px; padding:1px 8px; align-self:flex-start; }
+    .case h3 { margin:8px 0 6px; font-size:1.35rem; }
+    .case p { font-size:.98rem; margin-bottom:10px; }
+    .case .delta { font-family:'Patrick Hand',cursive; font-size:1.25rem; margin:auto 0 10px; }
+    .case .delta span:first-child { text-decoration:line-through; color:#777; } .case .delta span:last-child { color:var(--mint); font-weight:700; }
+    .case > a { font-family:'Patrick Hand',cursive; font-size:1.15rem; text-decoration:none; }
+    .case > a:hover { text-decoration:underline; }
     .letters { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; background:#e0f2fe; border:3px solid var(--ink); border-radius:var(--wob); padding:34px 36px; scroll-margin-top:90px; }
     .letters p { margin:0 0 8px; }
     .about-line { font-family:'Patrick Hand',cursive; font-size:1.3rem; text-align:center; margin:56px auto 0; }
@@ -91,7 +94,7 @@
     @media (prefers-reduced-motion: reduce) {
       .js [data-rv] { opacity:1; transform:none; transition:none; }
       .frame canvas { display:none; } .frame { background:url(assets/ahhock-3d.jpg) center/cover; }
-      .btn, .alist a { transition:none; }
+      .btn { transition:none; }
     }
     @media (max-width: 1100px) {
       .stage { grid-template-columns:minmax(0,320px) minmax(0,1fr); gap:36px; }
@@ -107,8 +110,8 @@
       .story { padding:14px 0 6vh; }
       .hero { min-height:0; padding:10px 0 20px; }
       .step { min-height:46vh; }
-      .group, .group:nth-of-type(even) { grid-template-columns:1fr; gap:18px; }
-      .group .pic, .group:nth-of-type(even) .pic { order:-1; width:150px; }
+      .cases { grid-template-columns:1fr; gap:18px; }
+      .case img { width:min(100%,240px); }
       .letters { grid-template-columns:1fr; padding:26px 22px; gap:16px; }
     }
   </style>
@@ -133,7 +136,7 @@
     <a href="index.html" class="logo">THE INDUSTRIAL <span>SCRIBE</span></a>
     <div class="nav-links">
       <a href="#shelf">The shelf</a>
-      <a href="#articles">The proof</a>
+      <a href="#cases">Real cases</a>
       <a href="about.html">Meet Ah Hock</a>
       <a href="backoffice.html" class="nav-cta">Get the Kit</a>
     </div>
@@ -205,38 +208,34 @@
   </div>
 </div></section>
 
-<section class="sec gap" id="articles"><div class="in">
-  <h2 data-rv>The proof: read how it actually runs</h2>
-  <p data-rv style="--d:70ms">Everything below happened on real work. Real numbers, no invented stories.</p>
-  <div class="group" data-rv>
-    <div><h3>What an AI back-office does, measured</h3>
-  <ul class="alist">
-    <li><a href="article-factory-intelligence.html"><span class="t">How One Factory Office Worker Turned Over 300,000 Rows of Factory Data Into a Growth Strategy</span><span class="arrow">→</span></a></li>
-    <li><a href="article-ai-to-outlook.html"><span class="t">How I Connected AI to My Company Outlook in 60 Minutes</span><span class="arrow">→</span></a></li>
-    <li><a href="article-sop-writing.html"><span class="t">How to Write Any Manufacturing SOP in 30 Minutes Using AI</span><span class="arrow">→</span></a></li>
-    <li><a href="article-production-report.html"><span class="t">The 12 Numbers Every Production Manager Should Track Every Week</span><span class="arrow">→</span></a></li>
-    <li><a href="article-rca-report.html"><span class="t">How to Write an RCA Report Your Customer Won't Send Back</span><span class="arrow">→</span></a></li>
-  </ul></div>
-    <img class="pic" src="assets/obj-3d-micrometer.jpg" alt="A hand-drawn micrometer" width="240" height="240" loading="lazy">
-  </div>
-  <div class="group" data-rv>
-    <div><h3>Why this wave is worth catching</h3>
-  <ul class="alist">
-    <li><a href="article-20-dollar-revolution.html"><span class="t">The $20 Revolution: $5,000 Consultant Work on a $20 Subscription</span><span class="arrow">→</span></a></li>
-    <li><a href="article-ai-middle-management.html"><span class="t">AI Is Coming for Middle Management: Two Million Jobs at Risk</span><span class="arrow">→</span></a></li>
-    <li><a href="article-agentic-ai-is-here.html"><span class="t">The Next AI Doesn't Wait for Your Question</span><span class="arrow">→</span></a></li>
-    <li><a href="article-what-are-skills.html"><span class="t">Stop Re-Introducing Yourself to Your AI Every Morning</span><span class="arrow">→</span></a></li>
-  </ul></div>
-    <img class="pic" src="assets/ahhock-3d-shocked.jpg" alt="Ah Hock, mind blown" width="540" height="540" loading="lazy">
-  </div>
-  <div class="group" data-rv>
-    <div><h3>For the ones who'll sell this skill</h3>
-  <ul class="alist">
-    <li><a href="article-ai-knowledge-gold-rush.html"><span class="t">The AI Knowledge Gold Rush: Everyone Sells AI Skills Except Manufacturing</span><span class="arrow">→</span></a></li>
-    <li><a href="article-not-from-the-field.html"><span class="t">You Don't Need to Be From the Field. The Chess Research Proves It.</span><span class="arrow">→</span></a></li>
-    <li><a href="article-email-never-sent.html"><span class="t">The Email I Never Sent</span><span class="arrow">→</span></a></li>
-  </ul></div>
-    <img class="pic" src="assets/obj-3d-parts-box.jpg" alt="A hand-drawn box of finished parts" width="240" height="240" loading="lazy">
+<section class="sec gap" id="cases"><div class="in">
+  <h2 data-rv>Real case scenarios</h2>
+  <p data-rv style="--d:70ms">Three things that happened on real work, each ending in a real document. Real numbers, no invented stories.</p>
+  <div class="cases">
+    <article class="case" data-rv>
+      <img src="assets/obj-3d-doc-rows.jpg" alt="A stack of spreadsheet printouts next to one clean PDF report" width="600" height="600" loading="lazy">
+      <span class="lab">Real case 01</span>
+      <h3>300,000 rows became one page</h3>
+      <p>An office worker, an ERP export with over 300,000 rows, no data team and no BI software. One AI session later: a growth strategy report the boss could read in a meeting.</p>
+      <p class="delta"><span>300,000 rows</span> → <span>1 report</span></p>
+      <a href="article-factory-intelligence.html">Read the full case →</a>
+    </article>
+    <article class="case" data-rv style="--d:80ms">
+      <img src="assets/obj-3d-doc-sop.jpg" alt="A stapled PDF procedure with numbered steps and a clipboard" width="600" height="600" loading="lazy">
+      <span class="lab">Real case 02</span>
+      <h3>The SOP that took 25 minutes</h3>
+      <p>A 12-minute brain dump of how the job is really done, one prompt, and a full draft in the ISO 9001 convention. Half a day of writing, gone.</p>
+      <p class="delta"><span>Half a day</span> → <span>25 minutes</span></p>
+      <a href="article-sop-writing.html">Read the full case →</a>
+    </article>
+    <article class="case" data-rv style="--d:160ms">
+      <img src="assets/obj-3d-doc-8d.jpg" alt="A PDF report with a stamp, beside a returned envelope" width="600" height="600" loading="lazy">
+      <span class="lab">Real case 03</span>
+      <h3>The 8D reply that didn't come back</h3>
+      <p>Investigation notes captured, the framework chosen, the draft reviewed before sending. The customer accepted it first time instead of returning it with questions.</p>
+      <p class="delta"><span>3 to 4 hours</span> → <span>under 90 minutes</span></p>
+      <a href="article-rca-report.html">Read the full case →</a>
+    </article>
   </div>
 </div></section>
 
