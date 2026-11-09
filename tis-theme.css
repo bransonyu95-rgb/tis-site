@@ -239,6 +239,9 @@ footer {
 }
 footer .handle { color: var(--blue); }
 footer .quiet { color: #555; font-size: 0.9rem; margin-top: 6px; }
+footer .flinks { margin-top: 12px; }
+footer .flinks a { color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--yellow); }
+footer .flinks a:hover { color: var(--blue); }
 
 @media (max-width: 900px) {
   .nav-inner { flex-direction: column; gap: 8px; padding: 12px 0; }
