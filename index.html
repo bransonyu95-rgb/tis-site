@@ -39,12 +39,12 @@
     .btn:focus-visible, .case > a:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
 
     /* the stage: pinned Ah Hock on the left, story + shelf on the right */
-    .stage { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,420px); gap:32px; align-items:start; }
+    .stage { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,400px); gap:32px; align-items:start; }
     .story { grid-column:1; grid-row:1; } .pin { grid-column:2; grid-row:1; }
     .pin { position:sticky; top:84px; height:calc(100vh - 110px); display:flex; align-items:center; }
     .fig { position:relative; width:100%; }
-    .frame { width:100%; aspect-ratio:1/1; overflow:hidden; background:var(--yellow); border-radius:50%; border:3px solid var(--ink); }
-    .frame canvas { width:100%; height:100%; display:block; }
+    .frame { width:100%; aspect-ratio:3/4; overflow:hidden; background:var(--yellow); border-radius:var(--wob); border:3px solid var(--ink); }
+    .frame canvas { width:100%; height:100%; display:block; object-fit:cover; }
     .fig .tag { position:absolute; left:50%; bottom:5%; transform:translateX(-50%); white-space:nowrap; font-family:'Patrick Hand',cursive; font-size:1.05rem; background:#fff; border:2.5px solid var(--ink); border-radius:100px; padding:2px 12px; }
     .story { padding:48px 0 10vh; }
     .hero { min-height:calc(100vh - 160px); display:flex; flex-direction:column; justify-content:center; }
@@ -177,7 +177,7 @@
       .stage { grid-template-columns:1fr; gap:0; }
       .story { grid-column:1; grid-row:2; } .pin { grid-column:1; grid-row:1; }
       .pin { position:sticky; top:0; height:auto; padding:6px 0 0; background:#fff; z-index:2; justify-content:center; }
-      .fig { width:min(100%, 240px); margin:0 auto; } .fig .tag { font-size:.95rem; }
+      .fig { width:min(100%, 210px); margin:0 auto; } .fig .tag { font-size:.95rem; }
       .story { padding:14px 0 6vh; }
       .hero { min-height:0; padding:10px 0 20px; }
       .step { min-height:46vh; }
@@ -221,7 +221,7 @@
 
 <main>
 <section class="sec"><div class="in stage" id="stage">
-  <div class="pin"><div class="fig"><div class="frame"><canvas id="c" width="480" height="480" aria-label="Ah Hock, reacting as you scroll"></canvas></div><span class="tag" id="tag">scroll ↓</span></div></div>
+  <div class="pin"><div class="fig"><div class="frame"><canvas id="c" width="480" height="640" aria-label="Ah Hock, reacting as you scroll"></canvas></div><span class="tag" id="tag">scroll ↓</span></div></div>
   <div class="story">
     <div class="hero">
       <p class="eyebrow" data-rv>The Industrial Scribe · AI tools for factory office staff · built in a real factory office</p>
@@ -450,7 +450,7 @@
   /* pinned Ah Hock: 72 real frames scrubbed by how far the stage has scrolled */
   var N = 72, imgs = [], cur = -1;
   var c = document.getElementById('c'), ctx = c.getContext('2d'), tag = document.getElementById('tag'), stage = document.getElementById('stage');
-  function draw(i){ if (i === cur || !imgs[i] || !imgs[i].complete || !imgs[i].naturalWidth) return; cur = i; ctx.drawImage(imgs[i], 0, 0, 480, 480); }
+  function draw(i){ if (i === cur || !imgs[i] || !imgs[i].complete || !imgs[i].naturalWidth) return; cur = i; ctx.drawImage(imgs[i], 0, 0, 480, 640); }
   for (var k = 0; k < N; k++) { (function(k){ var im = new Image(); im.src = 'assets/seq/ah-' + String(k).padStart(3,'0') + '.jpg'; im.onload = function(){ if (k === 0 && cur < 0) draw(0); }; imgs[k] = im; })(k); }
   function onScroll(){
     var r = stage.getBoundingClientRect(); var total = r.height - window.innerHeight; if (total <= 0) return;
