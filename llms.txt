@@ -16,7 +16,5 @@ Ah Hock publishes only what he has run on real work, uses real numbers, and neve
 - [The Insider Test (free)](https://theindustrialscribe.com/insider-test.html): 30-question test on how you work in a factory office and how you use AI; gives your type and an AI direction for your job
 - [The Pre-Ship Checklist (free)](https://theindustrialscribe.com/free-checklist.html): Free 10-point checklist to run before any deck goes to a boss or a customer
 
-## Articles
-
 ## Free tools
 - [Weekly WIP Status Report](https://theindustrialscribe.com/skill-wip-status-report.html): A copy-paste AI skill that teaches ChatGPT, Claude, or Gemini to produce a Monday-ready Weekly WIP Status Report from raw job data.
