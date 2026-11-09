@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <script>document.documentElement.classList.add('js')</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Industrial Scribe — Build Your AI Back-Office</title>
+  <title>The Industrial Scribe — AI back-office kits for factory office staff</title>
   <meta name="description" content="TIS: AI back-office kits for factory office staff. Three bundles, one price each, pay once. The kit drafts your weekly report, SOPs, 8D replies and hard emails from your real files. You decide, it drafts.">
   <link rel="canonical" href="https://theindustrialscribe.com/">
   <meta property="og:type" content="website">
@@ -93,6 +93,12 @@
       .frame canvas { display:none; } .frame { background:url(assets/ahhock-3d.jpg) center/cover; }
       .btn, .alist a { transition:none; }
     }
+    @media (max-width: 1100px) {
+      .stage { grid-template-columns:minmax(0,320px) minmax(0,1fr); gap:36px; }
+      .box { grid-template-columns:1fr; padding:22px 18px 18px 22px; }
+      .box .price { grid-column:1; grid-row:auto; text-align:left; display:grid; grid-template-columns:auto 1fr; gap:4px 16px; align-items:center; min-width:0; }
+      .box .price b { font-size:1.7rem; } .box .price small { margin:0; } .box .price .btn { grid-column:1 / -1; justify-self:start; } .box .price .more, .box .soon { grid-column:1 / -1; }
+    }
     @media (max-width: 860px) {
       .gap { padding-top:88px; }
       .stage { grid-template-columns:1fr; gap:0; }
@@ -100,9 +106,6 @@
       .frame { width:min(100%, 220px); margin:0 auto; box-shadow:6px 6px 0 var(--ink); }
       .story { padding:14px 0 6vh; }
       .hero { min-height:0; padding:10px 0 20px; }
-      .box { grid-template-columns:1fr; padding:22px 18px 18px 22px; }
-      .box .price { grid-column:1; grid-row:auto; text-align:left; display:grid; grid-template-columns:auto 1fr; gap:4px 16px; align-items:center; }
-      .box .price b { font-size:1.7rem; } .box .price small { margin:0; } .box .price .btn { grid-column:1 / -1; }
       .step { min-height:46vh; }
       .group, .group:nth-of-type(even) { grid-template-columns:1fr; gap:18px; }
       .group .pic, .group:nth-of-type(even) .pic { order:-1; width:150px; }
