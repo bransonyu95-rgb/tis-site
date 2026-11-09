@@ -60,7 +60,7 @@
   var c = document.getElementById('c'), ctx = c.getContext('2d'), tag = document.getElementById('tag');
   var stage = document.querySelector('.stage');
   function draw(i){ if (i === cur || !imgs[i] || !imgs[i].complete) return; cur = i; ctx.drawImage(imgs[i], 0, 0, 480, 480); }
-  for (var k = 0; k < N; k++) { (function(k){ var im = new Image(); im.src = 'assets/seq/ah-' + String(k).padStart(2,'0') + '.jpg'; im.onload = function(){ loaded++; if (k === 0) draw(0); }; imgs[k] = im; })(k); }
+  for (var k = 0; k < N; k++) { (function(k){ var im = new Image(); im.src = 'assets/seq/ah-' + String(k).padStart(3,'0') + '.jpg'; im.onload = function(){ loaded++; if (k === 0) draw(0); }; imgs[k] = im; })(k); }
   function onScroll(){
     var r = stage.getBoundingClientRect(); var total = r.height - window.innerHeight; var p = Math.min(1, Math.max(0, -r.top / total));
     var i = Math.round(p * (N - 1)); draw(i);
