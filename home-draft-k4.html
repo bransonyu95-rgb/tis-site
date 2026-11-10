@@ -473,7 +473,7 @@
     try { renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true }); } catch (e) { no3d(); return; }
     renderer.outputEncoding = THREE.sRGBEncoding; renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     var scene = new THREE.Scene(), cam = new THREE.PerspectiveCamera(28, 3/4, 0.1, 50);
-    cam.position.set(0, 0.98, 4.7); cam.lookAt(0, 0.86, 0);
+    cam.position.set(0, 0.96, 4.05); cam.lookAt(0, 0.84, 0);
     scene.add(new THREE.HemisphereLight(0xffffff, 0xcfc6b8, 0.95));
     var key = new THREE.DirectionalLight(0xfff3e2, 0.85); key.position.set(-2.4, 3.2, 3.2); scene.add(key);
     var rim = new THREE.DirectionalLight(0xffffff, 0.4); rim.position.set(2.2, 2.4, -3); scene.add(rim);
