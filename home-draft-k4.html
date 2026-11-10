@@ -53,7 +53,7 @@
     .story { padding:48px 0 10vh; }
     .hero { min-height:calc(100vh - 160px); display:flex; flex-direction:column; justify-content:center; }
     .eyebrow { font-family:'Patrick Hand',cursive; font-size:1.12rem; color:var(--blue); margin:0 0 14px; }
-    .hero h1 { font-size:clamp(2.4rem,4.8vw,4.1rem); line-height:1.02; } .hero h1 em { font-style:normal; color:var(--blue); }
+    .hero h1 { font-size:clamp(2.05rem,4.8vw,4.1rem); line-height:1.02; } .hero h1 em { font-style:normal; color:var(--blue); }
     .hero .lead { margin:24px 0 30px; max-width:52ch; }
     .btn .px { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:1.1rem; border-left:2px solid rgba(0,0,0,.3); margin-left:14px; padding-left:14px; }
     .cue { font-family:'Patrick Hand',cursive; font-size:1.15rem; color:#444; display:inline-flex; align-items:center; gap:10px; }
@@ -511,6 +511,7 @@
       }
       function check(){ var r = wrap.getBoundingClientRect(); var vis = r.bottom > 0 && r.top < window.innerHeight && !document.hidden;
         if (vis && !running) { running = true; requestAnimationFrame(frame); } else if (!vis) running = false; }
+      hero.rotation.y = cur.ry; renderer.render(scene, cam);   /* first picture straight away, before any animation frame */
       window.addEventListener('scroll', check, { passive: true }); document.addEventListener('visibilitychange', check); check();
       window.__ahhock = { cur: cur, hero: hero, head: head, armR: armR };
     }, undefined, function(){ no3d(); });
