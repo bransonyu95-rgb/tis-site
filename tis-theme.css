@@ -49,6 +49,13 @@ nav {
   color: var(--ink); text-decoration: none; white-space: nowrap; font-weight: 400;
 }
 .logo span { color: var(--blue); }
+/* logo lockup: the face people remember, a plain name, what it is */
+.logo.logo2 { display: flex; align-items: center; gap: 11px; font-family: 'Plus Jakarta Sans', sans-serif; text-decoration: none; }
+.logo2 img { width: 44px; height: 44px; border-radius: 50%; border: 2.5px solid var(--ink); background: #FBBF24; display: block; flex: none; }
+.logo2 .lt { display: flex; flex-direction: column; line-height: 1.05; text-align: left; color: var(--ink); }
+.logo2 b { font-weight: 700; font-size: 1.16rem; letter-spacing: -.015em; white-space: nowrap; }
+.logo2 i { font-style: normal; color: var(--blue); }
+.logo2 small { font-family: 'Patrick Hand', cursive; font-size: .86rem; color: #555; margin-top: 3px; white-space: nowrap; }
 .nav-links { display: flex; gap: 20px; align-items: center; white-space: nowrap; }
 .nav-links a {
   font-family: 'Patrick Hand', cursive; font-size: 1.05rem;
