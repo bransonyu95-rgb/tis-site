@@ -16,5 +16,8 @@ Ah Hock publishes only what he has run on real work, uses real numbers, and neve
 - [The Insider Test (free)](https://theindustrialscribe.com/insider-test.html): 30-question test on how you work in a factory office and how you use AI; gives your type and an AI direction for your job
 - [The Pre-Ship Checklist (free)](https://theindustrialscribe.com/free-checklist.html): Free 10-point checklist to run before any deck goes to a boss or a customer
 
+## Answers
+- [How to sell AI automation services to small factories](https://theindustrialscribe.com/sell-ai-automation-to-small-factories.html): The buyer's side, from an office worker in a factory in the semiconductor industry. Sell one finished document, not "AI"; run a fixed-price two-week pilot on one hated weekly task and measure before and after; get written permission before any factory file leaves; a human approves every draft. Includes a service ladder, RM price ranges labelled as opinion, the objections a factory raises, and what never to promise.
+
 ## Free tools
 - [Weekly WIP Status Report](https://theindustrialscribe.com/skill-wip-status-report.html): A copy-paste AI skill that teaches ChatGPT, Claude, or Gemini to produce a Monday-ready Weekly WIP Status Report from raw job data.
