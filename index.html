@@ -42,13 +42,14 @@
     .stage { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,400px); gap:32px; align-items:start; }
     .story { grid-column:1; grid-row:1; } .pin { grid-column:2; grid-row:1; }
     .pin { position:sticky; top:84px; height:calc(100vh - 110px); display:flex; align-items:center; }
-    .fig { position:relative; width:100%; }
-    .frame3d { width:100%; aspect-ratio:3/4; position:relative; }
+    .fig { position:relative; width:100%; display:flex; flex-direction:column; align-items:center; }
+    .frame3d { height:min(calc(100vh - 352px), 520px); min-height:230px; margin-top:-14px; aspect-ratio:3/4; max-width:100%; position:relative; flex:none; }
     .frame3d::after { content:''; position:absolute; left:22%; right:22%; bottom:3.5%; height:5%; border-radius:50%; background:radial-gradient(closest-side, rgba(17,17,17,.22), rgba(17,17,17,0)); z-index:0; }
     .frame3d canvas { position:relative; z-index:1; width:100%; height:100%; display:block; }
     .frame3d .fallback { display:none; position:relative; z-index:1; width:100%; height:100%; object-fit:contain; }
     .no3d .frame3d canvas { display:none; } .no3d .frame3d .fallback { display:block; }
-    .fig .tag { position:absolute; z-index:2; left:50%; bottom:-2%; transform:translateX(-50%); white-space:nowrap; font-family:'Patrick Hand',cursive; font-size:1.05rem; background:#fff; border:2.5px solid var(--ink); border-radius:100px; padding:2px 12px; }
+    .fig .tag { white-space:nowrap; font-family:'Patrick Hand',cursive; font-size:1.05rem; background:#fff; border:2.5px solid var(--ink); border-radius:100px; padding:2px 12px; }
+    .fig .under { display:flex; flex-direction:column; align-items:center; gap:9px; margin-top:-12px; position:relative; z-index:2; }
     .story { padding:48px 0 10vh; }
     .hero { min-height:calc(100vh - 160px); display:flex; flex-direction:column; justify-content:center; }
     .eyebrow { font-family:'Patrick Hand',cursive; font-size:1.12rem; color:var(--blue); margin:0 0 14px; }
@@ -212,15 +213,29 @@
     #rain i { position:absolute; top:-30px; width:var(--s,14px); height:var(--s,14px); background:var(--c); animation:rain var(--t,2.2s) linear 1 forwards; }
     @keyframes rain { 0% { transform:translate(0,0) rotate(0); opacity:1; } 85% { opacity:1; } 100% { transform:translate(var(--dx,0), 108vh) rotate(var(--r,540deg)); opacity:0; } }
     /* Ah Hock talks, and counts what you have explored */
-    .fig .say { position:absolute; z-index:3; left:-6%; top:3%; max-width:46%; font-family:'Patrick Hand',cursive; font-size:1.18rem; line-height:1.2; background:#fff; border:3px solid var(--ink); border-radius:18px 18px 4px 18px; padding:8px 13px; box-shadow:4px 4px 0 var(--ink); opacity:0; transform:scale(.5) rotate(-6deg); transform-origin:100% 100%; transition:opacity .15s ease, transform .28s cubic-bezier(.2,.9,.3,1.8); pointer-events:none; }
-    .fig .say.on { opacity:1; transform:scale(1) rotate(-3deg); }
-    .fig .meter { position:absolute; z-index:2; left:50%; bottom:-9.5%; transform:translateX(-50%); display:flex; gap:7px; align-items:center; }
+    .fig .sayslot { width:100%; height:186px; display:flex; align-items:flex-end; justify-content:center; padding-bottom:16px; flex:none; }
+    .fig .say { position:relative; z-index:3; margin:0; max-width:none; width:100%; font-family:'Plus Jakarta Sans',sans-serif; font-size:.95rem; line-height:1.42; background:#fff; border:3px solid var(--ink); border-radius:18px; padding:11px 15px 12px; box-shadow:5px 5px 0 var(--ink);
+      opacity:0; transform:scale(.6) rotate(-2deg); transform-origin:50% 100%; transition:opacity .15s ease, transform .28s cubic-bezier(.2,.9,.3,1.7); pointer-events:none; }
+    .fig .say b { display:block; font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.12rem; line-height:1.2; margin-bottom:4px; color:var(--ink); }
+    .fig .say::before, .fig .say::after { content:''; position:absolute; left:50%; transform:translateX(-50%); border-style:solid; border-color:transparent; border-bottom-width:0; }
+    .fig .say::before { bottom:-17px; border-width:17px 13px 0; border-top-color:var(--ink); }
+    .fig .say::after { bottom:-11px; border-width:13px 10px 0; border-top-color:#fff; }
+    .fig .say.on { opacity:1; transform:scale(1) rotate(0); }
+    .fig .meter { display:flex; gap:7px; align-items:center; }
     .fig .meter i { width:15px; height:15px; border-radius:50%; border:2.5px solid var(--ink); background:#fff; transition:background-color .2s ease; }
     .fig .meter i.on { background:var(--c, var(--pink)); animation:pop .4s cubic-bezier(.2,.9,.3,2.4) 1; }
     .fig .meter.full i { animation:beat .6s ease-in-out 4; }
     @media (max-width: 860px) {
-      .pin { padding-bottom:30px !important; } .fig .meter i { width:12px; height:12px; }
-      .fig .say { left:-34%; top:6%; max-width:52%; font-size:1rem; padding:6px 10px; }
+      .fig .meter i { width:12px; height:12px; }
+      .fig { display:grid; grid-template-columns:118px minmax(0,1fr); column-gap:14px; align-items:center; width:100%; margin:0; }
+      .frame3d { grid-column:1; grid-row:1; height:158px; min-height:0; margin-top:0; }
+      .fig .sayslot { grid-column:2; grid-row:1; height:auto; min-height:158px; align-items:center; padding:0; }
+      .fig .say { font-size:.84rem; line-height:1.36; padding:9px 11px 10px; box-shadow:4px 4px 0 var(--ink); transform-origin:0 50%; }
+      .fig .say b { font-size:.98rem; }
+      .fig .say::before, .fig .say::after { left:auto; bottom:auto; top:50%; transform:translateY(-50%); border-color:transparent; }
+      .fig .say::before { left:-16px; border-width:11px 16px 11px 0; border-right-color:var(--ink); }
+      .fig .say::after { left:-10px; border-width:8px 12px 8px 0; border-right-color:#fff; }
+      .fig .under { grid-column:1 / -1; grid-row:2; flex-direction:row; justify-content:center; gap:12px; margin-top:2px; padding-bottom:6px; }
       .box .pow { font-size:1.05rem; right:6px; top:-34px; padding:7px 12px 6px; } .box.sel .no::after { content:''; } .pin { z-index:6 !important; } .box.sel .brk.tl, .box.sel .brk.bl { left:-15px; } .box.sel .brk.tr, .box.sel .brk.br { right:-15px; }
       .js .shelf .box.live.sel { transform:translate(-3px,-6px) scale(1.012) rotate(-.3deg); box-shadow:9px 9px 0 var(--ink); animation-name:chosenS; }
       .box .ring { inset:-9px; border-width:6px; }
@@ -254,7 +269,7 @@
       .stage { grid-template-columns:1fr; gap:0; }
       .story { grid-column:1; grid-row:2; } .pin { grid-column:1; grid-row:1; }
       .pin { position:sticky; top:0; height:auto; padding:6px 0 0; background:#fff; z-index:2; justify-content:center; }
-      .fig { width:min(100%, 210px); margin:0 auto; } .fig .tag { font-size:.95rem; }
+      .fig .tag { font-size:.92rem; }
       .story { padding:14px 0 6vh; }
       .hero { min-height:0; padding:10px 0 20px; }
       .step { min-height:46vh; }
@@ -298,7 +313,7 @@
 
 <main>
 <section class="sec"><div class="in stage" id="stage">
-  <div class="pin"><div class="fig"><div class="frame3d"><canvas id="c3d" aria-label="Ah Hock, a 3D figure that reacts as you scroll"></canvas><img class="fallback" src="assets/ah-hock-full.png" alt="Ah Hock, standing" width="600" height="800"></div><span class="tag" id="tag">scroll ↓</span><span class="say" id="say" aria-hidden="true"></span><span class="meter" id="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span></div></div>
+  <div class="pin"><div class="fig"><div class="sayslot"><p class="say" id="say" aria-hidden="true"></p></div><div class="frame3d"><canvas id="c3d" aria-label="Ah Hock, a 3D figure that reacts as you scroll"></canvas><img class="fallback" src="assets/ah-hock-full.png" alt="Ah Hock, standing" width="600" height="800"></div><div class="under"><span class="tag" id="tag">scroll ↓</span><span class="meter" id="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span></div></div></div>
   <div class="story">
     <div class="hero">
       <p class="eyebrow" data-rv>The Industrial Scribe · AI tools for factory office staff · built in a real factory office</p>
@@ -533,8 +548,20 @@
   var tag = document.getElementById('tag'), stage = document.getElementById('stage');
   var P = 0;
   function progress(){ var r = stage.getBoundingClientRect(); var total = r.height - window.innerHeight; if (total <= 0) return 0; return Math.min(1, Math.max(0, -r.top / total)); }
+  var sayEl = document.getElementById('say'), sayKey = '';
+  function setSay(key, pain, fix){
+    if (!sayEl || key === sayKey) return; sayKey = key; sayEl.textContent = '';
+    var b = document.createElement('b'); b.textContent = pain; sayEl.appendChild(b); sayEl.appendChild(document.createTextNode(fix));
+    sayEl.classList.remove('on'); void sayEl.offsetWidth; sayEl.classList.add('on');
+  }
   function onScroll(){
     P = progress();
+    if (!window.__pick) {
+      if (P < 0.1) setSay('hi', "Hi, I'm Ah Hock.", "I work in a factory office too. Scroll down and I'll show you the tools I built for it.");
+      else if (P < 0.62) setSay('tools', 'Which problem is yours?', "Stop on a box. I'll tell you what hurts, and how that tool fixes it.");
+      else if (P < 0.94) setSay('how', 'Every tool works the same way.', 'You bring real work. It asks, then drafts. You check it.');
+      else setSay('end', 'Nothing sends itself.', 'Anything that commits the company stays your click. That is the rule in every tool here.');
+    }
     tag.textContent = window.__pick || (P < 0.02 ? 'scroll ↓' : (P > 0.97 ? 'you decide' : (P < 0.62 ? 'the tools' : 'how it works')));
   }
   window.addEventListener('scroll', onScroll, { passive: true }); window.addEventListener('resize', onScroll); onScroll();
@@ -599,9 +626,16 @@
     var boxes = [].slice.call(shelf.querySelectorAll('.box')), cur = null, hover = null, live = false, ticking = false, seen = 0, done = false;
     var COLORS = ['#FBBF24', '#EC4899', '#38BDF8', '#10B981', '#FB923C', '#2563eb'], SHAPES = ['star', 'dot', 'bar'];
     var SHOUT = ['GET THE YES!', 'INBOX, HANDLED!', 'START HERE!', 'SEE WHAT RAN!', 'THE FULL STORY!', 'REAL NUMBERS!'];
-    var SAY = ['Good pick. Get the yes.', 'No more lost promises.', 'Not sure? Start here.', 'See what your AI really did.', 'The email desk, in full.', 'The numbers behind it.'];
+    var SAY = [
+      ["Two days on the slides. Then: 'okay, noted.'", "The idea was fine. The ask wasn't built for the person who decides. This builds it for them: the payback maths, the six questions they will ask, and a safe first step."],
+      ["Fifteen emails deep, and they're chasing again.", "Paste the whole chain. It finds what was promised and what is overdue, checks your own rules, then drafts the reply in your voice. You press Send."],
+      ["The task eats your hours. Which part?", "Most people automate the mess as it is. This walks one weekly task step by step, marks the waste, says what to cut first, then what to automate."],
+      ["Your automation ran. Did it do what you planned?", "This draws the plan next to what really ran, from the logs on your own computer, with the failures in red. The first look usually finds a surprise."],
+      ["Promises die when the thread goes quiet.", "This is how I stopped that at my own desk: every email filed into a case, the reply drafted before I open it. 28 pages, real counts from seven weeks."],
+      ["The numbers were right. Nobody acted.", "This is how one office rebuilt its reports so every number says what to do next. 23 pages, built on 856,850 real operations, with the eight rules it taught."]
+    ];
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var say = document.getElementById('say'), meter = document.getElementById('meter'), dots = meter ? meter.querySelectorAll('i') : [];
+    var meter = document.getElementById('meter'), dots = meter ? meter.querySelectorAll('i') : [];
     function el(cls){ var s = document.createElement('span'); s.className = cls; s.setAttribute('aria-hidden', 'true'); return s; }
     boxes.forEach(function(b, i){
       b.appendChild(el('ring')); ['tl','tr','bl','br'].forEach(function(c){ b.appendChild(el('brk ' + c)); });
@@ -637,13 +671,13 @@
     function pick(b){
       goLive(); if (cur === b) return;
       if (cur) cur.classList.remove('sel'); cur = b;
-      if (!b) { window.__pick = ''; if (say) say.classList.remove('on'); onScroll(); return; }
+      if (!b) { window.__pick = ''; onScroll(); return; }
       b.classList.add('sel'); window.__pick = label(b); onScroll();
-      if (say) { say.textContent = SAY[b.__i] || 'Nice.'; say.classList.remove('on'); void say.offsetWidth; say.classList.add('on'); }
+      var s = SAY[b.__i]; if (s) setSay('box' + b.__i, s[0], s[1]);
       var first = !b.__seen;
       if (first) { b.__seen = true; seen++; var d = dots[b.__i]; if (d) { d.style.setProperty('--c', getComputedStyle(b).getPropertyValue('--acc') || '#EC4899'); d.classList.add('on'); } }
       confetti(b, first ? 34 : 18); cheer(900, 1, first ? 1 : 0);
-      if (seen === boxes.length && !done) { done = true; setTimeout(function(){ if (meter) meter.classList.add('full'); if (say) { say.textContent = 'You saw all six. Pick one!'; say.classList.add('on'); }
+      if (seen === boxes.length && !done) { done = true; setTimeout(function(){ if (meter) meter.classList.add('full');
         window.__pick = 'All six explored'; onScroll(); rain(); cheer(2200, 3, 2); }, 650); }
     }
     function byScroll(){
