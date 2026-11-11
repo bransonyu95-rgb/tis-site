@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <script>document.documentElement.classList.add('js')</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Industrial Scribe — factory office work, the insider's way</title>
-  <meta name="description" content="AI tools for factory office staff: proposals your boss says yes to, customer email threads answered, weekly waste found and cut. AI drafts, you decide.">
+  <title>Agentic AI in Manufacturing | The Industrial Scribe</title>
+  <meta name="description" content="Agentic AI in manufacturing: how Ah Hock makes your workday smarter. Proposals approved, email threads answered, waste found. AI drafts, you decide.">
   <link rel="canonical" href="https://theindustrialscribe.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Industrial Scribe">
-  <meta property="og:title" content="The Industrial Scribe: Build Your AI Back-Office">
-  <meta property="og:description" content="AI tools for factory office staff: proposals your boss says yes to, customer email threads answered, weekly waste found and cut. AI drafts, you decide.">
+  <meta property="og:title" content="Agentic AI in Manufacturing: How Ah Hock Makes Your Workday Smarter">
+  <meta property="og:description" content="Agentic AI in manufacturing: how Ah Hock makes your workday smarter. Proposals approved, email threads answered, waste found. AI drafts, you decide.">
   <meta property="og:url" content="https://theindustrialscribe.com/">
   <meta property="og:image" content="https://theindustrialscribe.com/assets/ahhock-3d-desk.jpg">
   <meta name="twitter:card" content="summary">
@@ -54,7 +54,7 @@
     .story { padding:48px 0 10vh; }
     .hero { min-height:calc(100vh - 160px); display:flex; flex-direction:column; justify-content:center; }
     .eyebrow { font-family:'Patrick Hand',cursive; font-size:1.12rem; color:var(--blue); margin:0 0 14px; }
-    .hero h1 { font-size:clamp(2.05rem,4.8vw,4.1rem); line-height:1.02; } .hero h1 em { font-style:normal; color:var(--blue); }
+    .hero h1 { font-size:clamp(1.85rem,4.1vw,3.5rem); line-height:1.05; } .hero h1 em { font-style:normal; color:var(--blue); }
     .hero .lead { margin:24px 0 30px; max-width:52ch; }
     .btn .px { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:1.1rem; border-left:2px solid rgba(0,0,0,.3); margin-left:14px; padding-left:14px; }
     .cue { font-family:'Patrick Hand',cursive; font-size:1.15rem; color:#444; display:inline-flex; align-items:center; gap:10px; }
@@ -304,7 +304,7 @@
 
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="logo logo2"><img src="assets/ah-hock-mark.jpg" alt="" width="44" height="44"><span class="lt"><b>The Industrial <i>Scribe</i></b><small>AI tools for factory office staff</small></span></a>
+    <a href="index.html" class="logo logo2"><img src="assets/ah-hock-mark.jpg" alt="" width="44" height="44"><span class="lt"><b>The Industrial <i>Scribe</i></b><small>Agentic AI in manufacturing</small></span></a>
     <div class="nav-links">
       <a href="index.html#shelf">The tools</a>
       <a href="index.html#how">How it works</a>
@@ -321,9 +321,9 @@
   <div class="pin"><div class="fig"><div class="sayslot"><p class="say" id="say" aria-hidden="true"></p></div><div class="frame3d"><canvas id="c3d" aria-label="Ah Hock, a 3D figure that reacts as you scroll"></canvas><img class="fallback" src="assets/ah-hock-full.png" alt="Ah Hock, standing" width="600" height="800"></div><div class="under"><span class="tag" id="tag">scroll ↓</span><span class="meter" id="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span></div></div></div>
   <div class="story">
     <div class="hero">
-      <p class="eyebrow">The Industrial Scribe · AI tools for factory office staff · built in a real factory office</p>
-      <h1>Factory office work,<br><em>the insider's way.</em></h1>
-      <p class="lead">Proposals your boss says yes to. Customer email threads answered. The weekly task that eats your hours, found and cut. Every tool here was built in a real factory office: AI drafts, you decide.</p>
+      <p class="eyebrow">The Industrial Scribe · built by an insider, inside a real factory</p>
+      <h1>Agentic AI in manufacturing:<br><em>how Ah Hock makes your workday smarter.</em></h1>
+      <p class="lead">Agentic AI is AI that does the work with you, step by step. It asks, digs and drafts. You always press the button.</p>
       <div class="act">
         <a class="btn" href="#shelf">See the tools <span class="px">pay once, from USD 0.99</span></a>
         <span class="cue"><svg viewBox="0 0 18 28" aria-hidden="true"><rect x="1.5" y="1.5" width="15" height="25" rx="7.5" fill="none" stroke="#111" stroke-width="2.5"/><circle class="dot" cx="9" cy="9" r="2" fill="#111"/></svg>Scroll, Ah Hock shows you around</span>
@@ -565,7 +565,7 @@
   function onScroll(){
     P = progress();
     if (!window.__pick) {
-      if (P < 0.1) setSay('hi', "Hi, I'm Ah Hock.", "I work in a factory office, just like you. Scroll down. I'll show you what I made.");
+      if (P < 0.1) setSay('hi', "Hi, I'm Ah Hock.", "I work inside a factory, just like you. Scroll down. I'll show you what I made.");
       else if (P < 0.62) setSay('tools', 'Which one is your headache?', "Stop at a box. I'll tell you the problem, and how this one fixes it.");
       else if (P < 0.94) setSay('how', 'They all work the same way.', 'You give it your real work. It asks you a few things. It writes a first try. You check it.');
       else setSay('end', 'It never sends anything by itself.', 'You always press the button. Not the AI.');
