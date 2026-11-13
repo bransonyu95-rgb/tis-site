@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Spot the Waste: the lean 8 wastes game | The Industrial Scribe</title>
+  <meta name="description" content="A free game from Ah Hock. Eight wastes hide in one factory workday. Tap them, collect all eight stamps, and see which one hides from you.">
+  <meta property="og:title" content="Spot the Waste: can you catch all eight?">
+  <meta property="og:description" content="A free game from Ah Hock. Eight wastes hide in one factory workday. Tap them, collect all eight stamps, and see which one hides from you.">
+  <meta property="og:image" content="https://theindustrialscribe.com/assets/ahhock-3d-point.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tis-theme.css?v=k5">
+  <style>
+    :root { --ink:#111; --blue:#2563eb; --pink:#EC4899; --mint:#10B981; --yellow:#FBBF24; --coral:#FB923C; --red:#dc2626;
+      --wob:255px 15px 225px 15px/15px 225px 15px 255px; --wob2:15px 225px 15px 255px/255px 15px 225px 15px; }
+    body { font-family:'Plus Jakarta Sans',sans-serif; color:var(--ink); background:#fff; line-height:1.55; font-size:17px; overflow-x:hidden; }
+    .gm { max-width:940px; margin:0 auto; padding:30px 16px 30px; }
+    .gm h1 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:clamp(2.3rem,6vw,4rem); line-height:1; margin:4px 0 12px; }
+    .gm h1 em { font-style:normal; color:var(--blue); display:block; font-size:.56em; line-height:1.15; margin-top:8px; }
+    .gm h2 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:clamp(1.45rem,3.4vw,2rem); line-height:1.1; margin:0 0 10px; }
+    .eyebrow { font-family:'Patrick Hand',cursive; font-size:1.1rem; color:var(--blue); }
+    .lead { font-size:1.15rem; max-width:60ch; margin-bottom:12px; }
+    .screen { display:none; } .screen.on { display:block; animation:pop .35s cubic-bezier(.2,.9,.3,1.4) 1; }
+    @keyframes pop { from { opacity:0; transform:translateY(14px) scale(.98); } to { opacity:1; transform:none; } }
+
+    .btn { display:inline-block; cursor:pointer; font-family:'Patrick Hand',cursive; font-size:1.5rem; line-height:1.2; background:var(--pink); color:var(--ink); text-decoration:none; padding:12px 30px; border:3px solid var(--ink); border-radius:var(--wob); box-shadow:6px 6px 0 var(--ink); transition:transform .15s cubic-bezier(.2,.9,.3,1.6), box-shadow .15s ease; }
+    .btn:hover { transform:translate(-3px,-3px) rotate(-1deg); box-shadow:10px 10px 0 var(--ink); }
+    .btn:active { transform:translate(3px,3px); box-shadow:2px 2px 0 var(--ink); }
+    .btn.two { background:#fff; font-size:1.25rem; padding:9px 22px; box-shadow:4px 4px 0 var(--ink); }
+    .btn .px { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:1.02rem; border-left:2px solid rgba(0,0,0,.3); margin-left:12px; padding-left:12px; }
+    .row { display:flex; flex-wrap:wrap; align-items:center; gap:14px 18px; margin:18px 0 8px; }
+    .fine { font-size:.94rem; color:#444; max-width:66ch; }
+
+    /* intro */
+    .hello { display:grid; grid-template-columns:150px minmax(0,1fr); gap:20px; align-items:center; margin:8px 0 6px; }
+    .hello img { width:150px; height:150px; border-radius:50%; border:4px solid var(--ink); display:block; box-shadow:6px 6px 0 var(--ink); }
+    .rules { list-style:none; margin:14px 0 4px; display:grid; gap:8px; }
+    .rules li { font-family:'Patrick Hand',cursive; font-size:1.25rem; line-height:1.25; padding-left:38px; position:relative; }
+    .rules li b { position:absolute; left:0; top:-2px; width:28px; height:28px; border:2.5px solid var(--ink); border-radius:50%; background:var(--yellow); font-family:'Permanent Marker',cursive; font-weight:400; font-size:1rem; text-align:center; line-height:24px; }
+    .back { display:none; border:3px solid var(--ink); border-left:12px solid var(--mint); border-radius:var(--wob2); padding:12px 18px; margin:0 0 18px; font-family:'Patrick Hand',cursive; font-size:1.25rem; background:#ecfdf5; }
+    .back.on { display:block; }
+
+    /* stamp card */
+    .card8 { border:3px solid var(--ink); border-radius:18px; padding:16px 16px 14px; margin:26px 0 8px; background:#fffbeb; box-shadow:6px 6px 0 var(--ink); }
+    .card8 .ttl { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:6px 14px; margin-bottom:10px; }
+    .card8 .ttl b { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.3rem; }
+    .card8 .ttl span { font-family:'Patrick Hand',cursive; font-size:1.1rem; color:#444; }
+    .stamps { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+    .stp { border:2.5px dashed #a8a29e; border-radius:14px; padding:9px 6px 8px; text-align:center; background:#fff; min-height:74px; display:flex; flex-direction:column; justify-content:center; }
+    .stp b { font-family:'Patrick Hand',cursive; font-weight:400; font-size:1.08rem; line-height:1.1; color:#78716c; }
+    .stp small { font-size:.72rem; color:#a8a29e; line-height:1.2; margin-top:3px; }
+    .stp.got { border:3px solid var(--ink); border-style:solid; background:var(--c,#fff); transform:rotate(-2deg); }
+    .stp.got:nth-child(even) { transform:rotate(2deg); }
+    .stp.got b { color:#111; } .stp.got small { color:#111; }
+    .stp.new { animation:slam .5s cubic-bezier(.2,.9,.3,1.6) 1; }
+    @keyframes slam { 0% { transform:scale(2.2) rotate(-14deg); opacity:0; } 60% { transform:scale(.92) rotate(-2deg); opacity:1; } 100% { transform:scale(1) rotate(-2deg); } }
+
+    /* scene tiles */
+    .tiles { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin:14px 0 4px; }
+    .tile { cursor:pointer; text-align:left; font:inherit; color:inherit; border:3px solid var(--ink); border-radius:14px; background:#fff; padding:10px 10px 9px; box-shadow:4px 4px 0 var(--ink); transition:transform .15s cubic-bezier(.2,.9,.3,1.6), box-shadow .15s ease; }
+    .tile:hover { transform:translate(-2px,-3px) rotate(-1deg); box-shadow:7px 8px 0 var(--ink); }
+    .tile i { font-style:normal; font-family:'Patrick Hand',cursive; font-size:.98rem; color:var(--blue); display:block; }
+    .tile b { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.02rem; line-height:1.1; display:block; margin:2px 0 4px; }
+    .tile .st { font-size:1.05rem; letter-spacing:1px; color:#d6d3d1; } .tile .st u { text-decoration:none; color:#f59e0b; }
+    .tile.lock { cursor:default; background:#f5f5f4; border-style:dashed; box-shadow:none; color:#57534e; }
+    .tile.lock:hover { transform:none; box-shadow:none; }
+    .tile.lock .st { font-family:'Patrick Hand',cursive; font-size:.95rem; letter-spacing:0; color:#57534e; }
+
+    /* play */
+    .hud { position:sticky; top:0; z-index:20; background:#fff; border-bottom:3px solid var(--ink); margin:0 -16px 16px; padding:10px 16px 10px; }
+    .hud .l1 { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:6px 14px; font-family:'Patrick Hand',cursive; font-size:1.12rem; }
+    .hud .l1 b { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.12rem; }
+    .hud .dots i { display:inline-block; width:14px; height:14px; border:2.5px solid var(--ink); border-radius:50%; margin-right:4px; vertical-align:-1px; background:#fff; transition:background .2s, transform .3s cubic-bezier(.2,.9,.3,2); }
+    .hud .dots i.f { background:var(--pink); transform:scale(1.25); }
+    .hud .hearts { color:var(--red); letter-spacing:2px; font-size:1.2rem; } .hud .hearts s { text-decoration:none; color:#d6d3d1; }
+    .hud .mini { cursor:pointer; font-family:'Patrick Hand',cursive; font-size:1.02rem; background:#fff; border:2.5px solid var(--ink); border-radius:100px; padding:1px 12px; color:var(--ink); }
+    .hud .mini:hover { background:var(--yellow); }
+    .host { display:grid; grid-template-columns:64px minmax(0,1fr); gap:12px; align-items:center; margin-top:8px; }
+    .host img { width:64px; height:64px; border-radius:50%; border:3px solid var(--ink); display:block; }
+    .host.bump img { animation:bump .35s cubic-bezier(.2,.9,.3,2) 1; }
+    @keyframes bump { 0% { transform:scale(.8) rotate(-8deg); } 100% { transform:none; } }
+    .say { position:relative; background:#fff; border:3px solid var(--ink); border-radius:16px; padding:8px 13px 9px; font-size:.95rem; line-height:1.38; box-shadow:4px 4px 0 var(--ink); min-height:58px; }
+    .say b { display:block; font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.08rem; line-height:1.15; margin-bottom:2px; }
+    .say.good { background:#ecfdf5; } .say.bad { background:#fef2f2; }
+
+    .board { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; padding:6px 4px 10px; }
+    .it { cursor:pointer; position:relative; text-align:left; font:inherit; color:var(--ink); border:3px solid var(--ink); border-radius:var(--wob2); background:#fff; padding:12px 14px 14px; min-height:112px; box-shadow:5px 5px 0 var(--ink); transition:transform .15s cubic-bezier(.2,.9,.3,1.6), box-shadow .15s ease, opacity .2s; display:flex; flex-direction:column; gap:5px; overflow:hidden; }
+    .it:nth-child(3n+1) { transform:rotate(-1.2deg); } .it:nth-child(3n+2) { transform:rotate(.8deg); border-radius:var(--wob); } .it:nth-child(3n) { transform:rotate(-.4deg); }
+    .it:hover { transform:translate(-2px,-4px) rotate(0); box-shadow:8px 9px 0 var(--ink); }
+    .it:focus-visible { outline:4px solid var(--blue); outline-offset:3px; }
+    .it .tp { font-family:'Patrick Hand',cursive; font-size:.98rem; color:#57534e; line-height:1.1; }
+    .it .tx { font-size:1rem; line-height:1.34; font-weight:600; }
+    .it.note { background:#fef08a; } .it.mail { border-top-width:12px; border-top-color:var(--blue); }
+    .it.scr { background:#1f2937; color:#fff; } .it.scr .tp { color:#93c5fd; } .it.scr .tx { font-family:ui-monospace,Menlo,monospace; font-weight:400; font-size:.92rem; }
+    .it.paper { background:repeating-linear-gradient(#fffdf5,#fffdf5 25px,#e7e5e4 26px); }
+    .it.chat { background:#d1fae5; border-radius:22px 22px 22px 4px !important; }
+    .it.floor { background:#e0f2fe; } .it.wall { background:#fff; border-style:dashed; }
+    .it[disabled] { cursor:default; }
+    .it.hit { box-shadow:none; transform:rotate(0) scale(.98) !important; }
+    .it.hit > .tp, .it.hit > .tx { opacity:.38; }
+    .it .stampx { position:absolute; left:50%; top:46%; transform:translate(-50%,-50%) rotate(-9deg); border:4px solid var(--red); color:var(--red); background:rgba(255,255,255,.9); font-family:'Permanent Marker',cursive; font-size:1.18rem; line-height:1.05; padding:5px 12px 4px; border-radius:10px; text-align:center; white-space:nowrap; animation:slam2 .45s cubic-bezier(.2,.9,.3,1.6) 1; }
+    .it .stampx small { display:block; font-family:'Patrick Hand',cursive; font-size:.85rem; color:#7f1d1d; }
+    .it.rev .stampx { border-style:dashed; color:#78716c; border-color:#78716c; } .it.rev .stampx small { color:#57534e; }
+    @keyframes slam2 { 0% { transform:translate(-50%,-50%) scale(2.6) rotate(-24deg); opacity:0; } 60% { transform:translate(-50%,-50%) scale(.9) rotate(-7deg); opacity:1; } 100% { transform:translate(-50%,-50%) scale(1) rotate(-9deg); } }
+    .it.ok { box-shadow:none; opacity:.55; transform:none !important; }
+    .it.ok::after { content:'real work'; position:absolute; right:8px; bottom:6px; font-family:'Patrick Hand',cursive; font-size:.95rem; color:#047857; background:#ecfdf5; border:2px solid #047857; border-radius:100px; padding:0 9px; }
+    .it.no { animation:shake .4s linear 1; }
+    @keyframes shake { 20% { transform:translateX(-9px) rotate(-2deg); } 40% { transform:translateX(8px) rotate(2deg); } 60% { transform:translateX(-6px); } 80% { transform:translateX(5px); } }
+    .plus { position:fixed; z-index:60; pointer-events:none; font-family:'Permanent Marker',cursive; font-size:1.7rem; color:var(--pink); text-shadow:2px 2px 0 var(--ink); animation:rise .9s ease-out 1 forwards; }
+    @keyframes rise { from { opacity:1; transform:translateY(0) scale(.7); } 30% { transform:translateY(-22px) scale(1.25); } to { opacity:0; transform:translateY(-80px) scale(1); } }
+    .cf { position:fixed; top:-14px; z-index:70; width:11px; height:16px; pointer-events:none; animation:fall linear 1 forwards; }
+    @keyframes fall { to { transform:translateY(105vh) rotate(720deg); opacity:.9; } }
+
+    /* scene end + final */
+    .panel { border:3px solid var(--ink); border-radius:18px; background:#fff; padding:22px 22px 20px; box-shadow:8px 8px 0 var(--ink); margin:6px 0 22px; }
+    .stars { font-size:3.2rem; line-height:1; letter-spacing:6px; margin:2px 0 6px; color:#d6d3d1; }
+    .stars u { text-decoration:none; color:#f59e0b; display:inline-block; animation:slam .5s cubic-bezier(.2,.9,.3,1.6) 1 backwards; }
+    .stars u:nth-child(2) { animation-delay:.18s; } .stars u:nth-child(3) { animation-delay:.36s; }
+    .pts { font-family:'Patrick Hand',cursive; font-size:1.3rem; margin-bottom:10px; }
+    .recap { list-style:none; margin:12px 0 4px; display:grid; gap:9px; }
+    .recap li { border-left:8px solid var(--c,#111); padding:2px 0 2px 12px; font-size:.98rem; line-height:1.4; }
+    .recap li b { font-family:'Patrick Hand',cursive; font-weight:400; font-size:1.2rem; display:block; line-height:1.15; }
+    .recap li.miss { opacity:.7; }
+    .rank { font-family:'Permanent Marker',cursive; font-size:clamp(2rem,6vw,3.2rem); line-height:1; color:var(--blue); margin:4px 0 8px; }
+    .duo { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:16px 0 4px; }
+    .duo div { border:3px solid var(--ink); border-radius:var(--wob2); padding:12px 16px; }
+    .duo .a { border-left:12px solid var(--mint); } .duo .b { border-left:12px solid var(--coral); }
+    .duo small { font-family:'Patrick Hand',cursive; font-size:1.05rem; color:#444; display:block; }
+    .duo b { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.35rem; line-height:1.15; display:block; margin:2px 0 4px; }
+    .duo p { font-size:.95rem; line-height:1.4; }
+    .typebox { border:3px solid var(--ink); border-left:12px solid var(--blue); border-radius:var(--wob); padding:16px 20px; margin:20px 0; background:#eff6ff; }
+    .typebox h3, .nextbox h3, .toolbox h3 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.3rem; line-height:1.15; margin-bottom:6px; }
+    .typebox p, .nextbox p, .toolbox p { font-size:1rem; margin-bottom:8px; max-width:64ch; }
+    .nextbox { border:3px dashed var(--ink); border-radius:18px; padding:16px 20px; margin:20px 0; background:#fafaf9; }
+    .toolbox { border:3px solid var(--ink); border-radius:18px; padding:18px 22px; margin:20px 0; background:#fff; box-shadow:8px 8px 0 var(--ink); }
+    .copied { font-family:'Patrick Hand',cursive; font-size:1.1rem; color:#047857; }
+
+    @media (max-width:760px) {
+      .hello { grid-template-columns:96px minmax(0,1fr); gap:14px; } .hello img { width:96px; height:96px; }
+      .stamps { grid-template-columns:repeat(2,1fr); } .tiles { grid-template-columns:repeat(2,1fr); }
+      .board { grid-template-columns:repeat(2,1fr); gap:12px; padding:4px 0 10px; }
+      .it { padding:10px 11px 12px; min-height:118px; box-shadow:4px 4px 0 var(--ink); } .it .tx { font-size:.93rem; } .it.scr .tx { font-size:.84rem; } .it .tp { font-size:.9rem; }
+      .it .stampx { font-size:1rem; padding:4px 8px 3px; }
+      .host { grid-template-columns:52px minmax(0,1fr); gap:9px; } .host img { width:52px; height:52px; }
+      .say { font-size:.86rem; padding:7px 10px 8px; } .say b { font-size:.98rem; }
+      .hud .l1 { font-size:1rem; } .hud .l1 b { font-size:1rem; }
+      .duo { grid-template-columns:1fr; } .panel { padding:18px 16px 16px; box-shadow:5px 5px 0 var(--ink); } .stars { font-size:2.6rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { .screen.on, .stp.new, .it .stampx, .it.no, .stars u, .host.bump img { animation:none; } .cf, .plus { display:none; } .btn, .it, .tile { transition:none; } }
+  </style>
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=3d2">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo logo2"><img src="assets/ah-hock-mark.jpg" alt="" width="44" height="44"><span class="lt"><b>The Industrial <i>Scribe</i></b><small>Agentic AI in manufacturing</small></span></a>
+    <div class="nav-links">
+      <a href="index.html#shelf">The tools</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#cases">Case studies</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="about.html">Meet Ah Hock</a>
+      <a href="index.html#shelf" class="nav-cta">See the tools</a>
+    </div>
+  </div>
+</nav>
+<main class="gm">
+
+  <!-- ============ intro ============ -->
+  <section class="screen on" id="s-intro">
+    <p class="eyebrow">The Industrial Scribe · a free game</p>
+    <h1>Spot the waste.<em>Eight wastes hide in my workday. Can you catch them all?</em></h1>
+    <p class="back" id="back"></p>
+    <div class="hello">
+      <img src="assets/ahhock-3d-point.jpg" alt="Ah Hock pointing" width="150" height="150">
+      <div>
+        <p class="lead">Hi, I'm Ah Hock. Every factory has the same eight wastes. Lean factories hunt them every day. Most of us walk right past them.</p>
+        <ol class="rules">
+          <li><b>1</b>I show you one moment of my day.</li>
+          <li><b>2</b>Tap what is waste. Leave the real work alone.</li>
+          <li><b>3</b>Three wrong taps and the scene is over.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn" id="go" type="button">Start the hunt →</button>
+      <span class="fine">Free. No sign-up. About 2 minutes a scene.</span>
+    </div>
+
+    <div class="card8">
+      <div class="ttl"><b>Your stamp card</b><span id="cardnote">Catch each waste once to stamp it.</span></div>
+      <div class="stamps" id="stamps"></div>
+    </div>
+
+    <h2 style="margin-top:30px">The scenes</h2>
+    <div class="tiles" id="tiles"></div>
+    <p class="fine" style="margin-top:14px">A game, not a time study. The fixes are a place to start, in small words. Your stamps are saved only on this phone or computer.</p>
+  </section>
+
+  <!-- ============ play ============ -->
+  <section class="screen" id="s-play">
+    <div class="hud" id="hud">
+      <div class="l1">
+        <b id="scname"></b>
+        <span class="dots" id="dots" aria-hidden="true"></span>
+        <span class="hearts" id="hearts" aria-label="guesses left"></span>
+        <span id="clock">0:00</span>
+        <span><button class="mini" id="hint" type="button">Hint</button> <button class="mini" id="snd" type="button" aria-pressed="true">Sound on</button></span>
+      </div>
+      <div class="host" id="host">
+        <img id="face" src="assets/ahhock-3d-point.jpg" alt="" width="64" height="64">
+        <p class="say" id="say" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="board" id="board"></div>
+  </section>
+
+  <!-- ============ scene end ============ -->
+  <section class="screen" id="s-end">
+    <div class="panel">
+      <p class="eyebrow" id="endname"></p>
+      <h2 id="endhead"></h2>
+      <div class="stars" id="endstars" aria-hidden="true"></div>
+      <p class="pts" id="endpts"></p>
+      <ul class="recap" id="recap"></ul>
+      <div class="row">
+        <button class="btn" id="next" type="button">Next scene →</button>
+        <button class="btn two" id="again" type="button">Play this scene again</button>
+      </div>
+    </div>
+    <div class="card8">
+      <div class="ttl"><b>Your stamp card</b><span id="cardnote2"></span></div>
+      <div class="stamps" id="stamps2"></div>
+    </div>
+  </section>
+
+  <!-- ============ final ============ -->
+  <section class="screen" id="s-final">
+    <div class="panel">
+      <p class="eyebrow">Your hunt is done</p>
+      <div class="rank" id="rank"></div>
+      <p class="pts" id="sum"></p>
+      <div class="duo">
+        <div class="a"><small>Your sharpest eye</small><b id="sharp"></b><p id="sharpp"></p></div>
+        <div class="b"><small>The one that hid from you</small><b id="hid"></b><p id="hidp"></p></div>
+      </div>
+      <div class="row">
+        <button class="btn two" id="copy" type="button">Copy my result</button>
+        <button class="btn two" id="home" type="button">Back to the scenes</button>
+        <span class="copied" id="copied" aria-live="polite"></span>
+      </div>
+    </div>
+
+    <div class="typebox" id="typebox"></div>
+
+    <div class="card8">
+      <div class="ttl"><b>Your stamp card</b><span id="cardnote3"></span></div>
+      <div class="stamps" id="stamps3"></div>
+    </div>
+
+    <div class="nextbox" id="nextbox"></div>
+
+    <div class="toolbox">
+      <h3>That was my day. Now hunt yours.</h3>
+      <p>The Waste Hunt walks through one task you redo every week, step by step. It tags each step with the lean 8 wastes, runs a 5S check on the files behind it, and tells you what to cut before you automate anything.</p>
+      <div class="row" style="margin-top:10px">
+        <a class="btn" href="waste-hunt.html">See The Waste Hunt <span class="px">USD 3.99 once</span></a>
+      </div>
+      <p class="fine">It works on paperwork tasks: reports, data entry, chasing, approvals. It is not a shop-floor time study.</p>
+    </div>
+  </section>
+</main>
+<footer>
+  <div><span class="handle">@the.industrial.scribe</span> · theindustrialscribe.com</div>
+  <div class="quiet">Written from inside a real Malaysian manufacturing office.</div>
+  <div class="flinks"><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="refunds.html">Refunds</a> · <a href="https://www.instagram.com/the.industrial.scribe/">Instagram</a> · <a href="mailto:theindustrialscribe@gmail.com">Email</a></div>
+  <div class="quiet">© 2026 The Industrial Scribe. Independent; not affiliated with or endorsed by Anthropic. Claude is a trademark of Anthropic, PBC.</div>
+</footer>
+
+<script>
+(function(){
+  /* ---------- the eight wastes ---------- */
+  var W = {
+    W: { n:'Waiting',         p:'Stuck waiting',           c:'#7dd3fc', clue:'Look for work that is finished but sitting still.' },
+    T: { n:'Transport',       p:'Passing around',          c:'#fdba74', clue:'Look for something that travels a lot and changes nothing.' },
+    I: { n:'Inventory',       p:'Pile-up',                 c:'#fde047', clue:'Look for a pile.' },
+    M: { n:'Motion',          p:'Hunting and searching',   c:'#f9a8d4', clue:'Look for someone searching or walking.' },
+    X: { n:'Over-processing', p:'Too fancy',               c:'#c4b5fd', clue:'Look for more effort than the job needs.' },
+    O: { n:'Overproduction',  p:'Making what nobody uses', c:'#6ee7b7', clue:'Look for something made that nobody asked for.' },
+    D: { n:'Defects',         p:'Do it again',             c:'#fca5a5', clue:'Look for a job done twice.' },
+    S: { n:'Unused talent',   p:'Wasted talent',           c:'#93c5fd', clue:'Look for a skilled person on a simple job.' }
+  };
+  var ORDER = ['W','T','I','M','X','O','D','S'];
+
+  /* ---------- the scenes: [look, label, text, waste code or '', what Ah Hock says] ---------- */
+  var SCENES = [
+    { id:1, time:'8:05 am', name:'My desk', open:'',
+      intro:"Morning. My desk looks busy. Busy is not the same as useful. Tap what is waste.",
+      items:[
+        ['note','Sticky note','Call the customer back about drawing Rev C.','',"That one is real work. The customer is waiting for that call."],
+        ['paper','Paper tray','3 quotes. Waiting for the boss to sign. Day 3.','W',"The quotes are done, but they just sit. Fix: agree which quotes need a signature at all."],
+        ['scr','On my screen','Weekly report · 14 pages · opened by 1 person','O',"Fourteen pages for one reader. Fix: ask who reads it, then cut it to the one page they use."],
+        ['scr','My folder','Report_final_v2_FINAL(3).xlsx ... which one is the latest?','M',"Ten minutes gone before the work starts. Fix: 5S for files. One folder, one name rule."],
+        ['mail','Inbox','412 unread emails','I',"Each unread email is a small job standing in line. Fix: clear it once, then sort it every day."],
+        ['wall','Next desk','Our best planner types numbers from the system into Excel. By hand. Every morning.','S',"A sharp planner doing copy and paste. Fix: let the export or the AI do the typing. The planner checks."],
+        ['note','On the desk','One kopi O. Still hot.','',"That is fuel, not waste. Leave my kopi alone."],
+        ['paper','Calendar','10:00 Customer visit. Drawings printed and ready.','',"Real work. This is what the customer pays for."],
+        ['note','Checklist','Check the drawing revision before quoting.','',"Real work. One minute here stops a wrong quote later."]
+      ] },
+    { id:2, time:'10:40 am', name:'One customer order', open:'',
+      intro:"One order came in by email. Watch where it goes. Tap the waste.",
+      items:[
+        ['mail','Email','FW: FW: FW: PO 4471. Sales to Planning to Production, then back to Sales.','T',"Four hand-offs, and nobody added a thing. Fix: send it once, to the person who acts."],
+        ['mail','Email','"Sorry, wrong revision in our quote. Sending it again."','D',"A mistake means the job is done twice. Fix: check before you send, not after."],
+        ['paper','Approval form','5 signatures needed. Order value: RM 200.','X',"More checking than the order is worth. Fix: small orders, one signature."],
+        ['chat','Supplier chat','"Will reply soon." Sent on Tuesday.','W',"The order cannot move until they answer. Fix: ask with a date, and chase on that date."],
+        ['scr','On my screen','Scrolling 3 months of emails to find what we promised.','M',"Digging takes longer than the reply. Fix: one running note per customer of what was promised."],
+        ['mail','Email','Confirm the delivery date with the customer.','',"Real work. The customer needs that date."],
+        ['paper','To do','Attach the right drawing to the order.','',"Real work. The right drawing makes the right part."],
+        ['scr','System','Key the order into the system. Once.','',"Real work. Once is the right number of times."],
+        ['chat','Customer chat','"Thank you, received."','',"That is the good part. Keep it."]
+      ] },
+    { id:3, time:'3:15 pm', name:'The shop floor', open:'',
+      intro:"Waste is easier to see out here. All eight are hiding. Find every one.",
+      items:[
+        ['floor','By the door','A pallet of 500 brackets. Nobody has ordered them yet.','O',"Made early, just in case. Now it eats space and money. Fix: make to the order, not to the mood."],
+        ['floor','Between two machines','Half-done parts, stacked high.','I',"The first machine runs faster than the second can take. Fix: match the pace, small batches."],
+        ['floor','Machine 4','The operator walks to the far cabinet for a tool. Again.','M',"That walk happens fifty times a day. Fix: 5S. Tools at the machine, each with its own spot."],
+        ['floor','Trolley','Parts go to Building B for one small step, then come back.','T',"Moving a part does not make it better. Fix: bring the small step to where the parts are."],
+        ['floor','Red bin','40 parts, wrong size. Redo them.','D',"Forty parts made twice. Fix: check the first piece, so the mistake stops at one."],
+        ['floor','Machine 2','Stopped. Waiting for material.','W',"The machine and the operator both stand still. Fix: material ready before the job starts."],
+        ['floor','Finishing bench','Polishing the inside face. The drawing does not ask for it.','X',"Nice work that nobody pays for. Fix: do what the drawing says, and stop there."],
+        ['floor','Packing table','A skilled machinist counts screws into bags.','S',"Good hands on the wrong job. Fix: put skill where skill is needed."],
+        ['floor','Machine 1','Cutting the part the customer ordered.','',"Real work. This is the only step the customer pays for."],
+        ['floor','Inspection table','Checking the first piece against the drawing.','',"Real work. It stops a whole bad batch."],
+        ['floor','End of the row','Sweeping the chips at the end of the day.','',"That is 5S. A clean machine shows you a problem early."],
+        ['wall','On the wall','Safety glasses on before you enter.','',"Never waste. Glasses stay on."]
+      ] },
+    { id:4, time:'2:00 pm', name:'The Monday meeting', open:'2026-11-23',
+      intro:"The meeting room. Everyone is here. Is everyone needed? Tap the waste.",
+      items:[
+        ['wall','The room','12 people at the table. 3 need to be here.','S',"Nine good people, sitting. Fix: invite who decides and who does. Send the rest a short note."],
+        ['scr','Projector','Slide 27 of 40.','X',"Forty slides for one decision. Fix: one page. What happened, what we want, what it costs."],
+        ['chat','Someone says','"Let us wait for next week\'s numbers before we decide."','W',"The decision sits for a week. Fix: decide with what you have, and say what would change it."],
+        ['paper','Action list','31 open items. The oldest is from March.','I',"A pile of promises. Fix: close or cross out the old ones, then keep the list short."],
+        ['mail','After the meeting','Minutes sent to 20 people. Read by 2.','O',"Writing for people who will not read it. Fix: send only the actions, to the owners."],
+        ['wall','Whiteboard','Decide today: do we send it Friday or Monday?','',"Real work. A decision is what a meeting is for."],
+        ['paper','Action list','One owner and one date beside every action.','',"Real work. A name and a date make it happen."],
+        ['note','First item','Customer complaint: what happened, and what we do now.','',"Real work. The customer is waiting on this one."],
+        ['note','On the table','One plate of curry puffs.','',"Not waste. Never waste."]
+      ] },
+    { id:5, time:'5:40 pm', name:'The store room', open:'2026-11-30',
+      intro:"Last stop before home: the store room. Tap the waste.",
+      items:[
+        ['floor','Back rack','Bar stock bought at a good price. Enough for two years.','I',"Cheap to buy, costly to keep. Fix: buy for the orders you have."],
+        ['floor','Aisle 3','Looking for a part number. The labels face the wall.','M',"Hunting again. Fix: 5S. Labels face out, one place for each part."],
+        ['floor','Forklift','Moving the same pallet for the third time today.','T',"Three moves and the pallet is no better. Fix: give it one home, near where it is used."],
+        ['paper','Issue slip','Wrong material given out. The job starts again tomorrow.','D',"One wrong slip, one lost day. Fix: check the material against the job order at the counter."],
+        ['scr','Stock count','Count by hand. Type it in. Then check the typing.','X',"Three steps for one number. Fix: count once, straight into the system."],
+        ['floor','Front rack','Old stock in front, new stock behind.','',"Real work. First in, first out."],
+        ['floor','Every bin','A clear label on each one.','',"Real work, and good 5S. You find it in seconds."],
+        ['paper','Counter','Material given out against the job order.','',"Real work. The right material goes to the right job."]
+      ] }
+  ];
+
+  /* ---------- Insider types, for the link to the type test (for fun, not science) ---------- */
+  var TYPES = {
+    firefighter:{ n:'The Firefighter', good:'W', hide:'D', why:"You decide fast, so work does not sit. Fast fixes can come back, so watch for jobs done twice." },
+    inspector:  { n:'The Inspector',   good:'D', hide:'W', why:"Mistakes stop at your desk. While you check, other work can sit and wait." },
+    fixer:      { n:'The Fixer',       good:'T', hide:'M', why:"You go straight to the right person. A lot lives in your head, so others have to hunt for it." },
+    diplomat:   { n:'The Diplomat',    good:'D', hide:'I', why:"You say it right the first time. The hard messages can pile up while you polish them." },
+    planner:    { n:'The Planner',     good:'I', hide:'O', why:"You keep work flowing, so piles do not grow. Watch for plans and reports nobody uses." },
+    auditor:    { n:'The Auditor',     good:'M', hide:'X', why:"With you, everything has a place. Watch for work that is more polished than it needs to be." },
+    captain:    { n:'The Captain',     good:'S', hide:'W', why:"You put the right person on the right job. When you are away, work can sit and wait for you." },
+    mentor:     { n:'The Mentor',      good:'D', hide:'X', why:"You stop mistakes before they start. Watch for a process that is more careful than the job needs." }
+  };
+
+  /* ---------- storage ---------- */
+  var KEY = 'tis-waste', mem = { st:{}, best:{}, plays:0 };
+  try { var raw = JSON.parse(localStorage.getItem(KEY) || 'null'); if (raw && raw.st) mem = raw; } catch(e){}
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(mem)); } catch(e){} }
+  var myType = ''; try { myType = localStorage.getItem('tis-insider-type') || ''; } catch(e){}
+
+  var $ = function(id){ return document.getElementById(id); };
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var preview = /[?&]all=1/.test(location.search);
+  function today(){ var d = new Date(); return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+  function isOpen(s){ return preview || !s.open || today() >= s.open; }
+  function niceDate(iso){ var p = iso.split('-'), d = new Date(+p[0], +p[1] - 1, +p[2]); return ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()] + ' ' + d.getDate() + ' ' + ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]; }
+  function el(tag, cls, txt){ var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  function show(id){ ['s-intro','s-play','s-end','s-final'].forEach(function(s){ $(s).classList.toggle('on', s === id); }); window.scrollTo(0, 0); }
+
+  /* ---------- sound (small beeps, made in the browser) ---------- */
+  var sound = true, ac = null;
+  function tone(f, t, d, type, v){ if (!sound) return; try { ac = ac || new (window.AudioContext || window.webkitAudioContext)(); var o = ac.createOscillator(), g = ac.createGain(); o.type = type || 'triangle'; o.frequency.value = f; g.gain.setValueAtTime(v || .16, ac.currentTime + t); g.gain.exponentialRampToValueAtTime(.001, ac.currentTime + t + d); o.connect(g); g.connect(ac.destination); o.start(ac.currentTime + t); o.stop(ac.currentTime + t + d + .02); } catch(e){} }
+  var sfx = { hit:function(n){ tone(520 + n * 70, 0, .12); tone(780 + n * 70, .09, .2); }, miss:function(){ tone(150, 0, .28, 'sawtooth', .13); }, win:function(){ [523,659,784,1047].forEach(function(f, i){ tone(f, i * .12, .26); }); }, lose:function(){ [330,262,196].forEach(function(f, i){ tone(f, i * .16, .3, 'sawtooth', .1); }); }, stamp:function(){ tone(90, 0, .16, 'square', .2); } };
+  $('snd').addEventListener('click', function(){ sound = !sound; this.textContent = sound ? 'Sound on' : 'Sound off'; this.setAttribute('aria-pressed', sound ? 'true' : 'false'); if (sound) tone(660, 0, .1); });
+
+  /* ---------- effects ---------- */
+  function confetti(n){ if (reduced) return; var cols = ['#EC4899','#2563eb','#10B981','#FBBF24','#FB923C','#111']; for (var i = 0; i < n; i++) { var c = el('i', 'cf'); c.style.left = (Math.random() * 100) + 'vw'; c.style.background = cols[i % cols.length]; c.style.animationDuration = (1.4 + Math.random() * 1.6) + 's'; c.style.animationDelay = (Math.random() * .4) + 's'; c.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)'; document.body.appendChild(c); (function(c){ setTimeout(function(){ c.remove(); }, 3600); })(c); } }
+  function plus(node, txt){ if (reduced) return; var r = node.getBoundingClientRect(), p = el('span', 'plus', txt); p.style.left = (r.left + r.width / 2 - 30) + 'px'; p.style.top = (r.top + 6) + 'px'; document.body.appendChild(p); setTimeout(function(){ p.remove(); }, 950); }
+  function speak(head, body, mood, face){ var s = $('say'); s.textContent = ''; s.appendChild(el('b', '', head)); s.appendChild(document.createTextNode(body)); s.className = 'say' + (mood ? ' ' + mood : ''); if (face) $('face').src = 'assets/ahhock-3d-' + face + '.jpg'; var h = $('host'); h.classList.remove('bump'); void h.offsetWidth; h.classList.add('bump'); }
+
+  /* ---------- stamp card ---------- */
+  function drawCard(boxId, noteId, fresh){
+    var box = $(boxId); box.textContent = ''; var got = 0;
+    ORDER.forEach(function(k){ var d = el('div', 'stp' + (mem.st[k] ? ' got' : '') + (fresh && fresh[k] ? ' new' : '')); d.style.setProperty('--c', W[k].c); d.appendChild(el('b', '', mem.st[k] ? W[k].p : '?')); d.appendChild(el('small', '', mem.st[k] ? 'lean name: ' + W[k].n : 'not caught yet')); box.appendChild(d); if (mem.st[k]) got++; });
+    if (noteId) $(noteId).textContent = got === 8 ? 'All 8 caught. Full card!' : got + ' of 8 caught.';
+    return got;
+  }
+
+  /* ---------- scene tiles ---------- */
+  function drawTiles(){
+    var box = $('tiles'); box.textContent = '';
+    SCENES.forEach(function(s, i){
+      var open = isOpen(s), b = el(open ? 'button' : 'div', 'tile' + (open ? '' : ' lock')); if (open) b.type = 'button';
+      b.appendChild(el('i', '', 'Scene ' + s.id + ' · ' + s.time)); b.appendChild(el('b', '', s.name));
+      var st = el('span', 'st');
+      if (open) { var n = mem.best[s.id] || 0; for (var k = 0; k < 3; k++) st.appendChild(el(k < n ? 'u' : 'span', '', '★')); b.addEventListener('click', function(){ startRun(i); }); }
+      else st.textContent = 'Opens ' + niceDate(s.open);
+      b.appendChild(st); box.appendChild(b);
+    });
+  }
+
+  /* ---------- one run through the open scenes ---------- */
+  var run, cur, tick;
+  function startRun(from){ run = { idx:from, scenes:[], kind:{}, pts:0 }; mem.plays = (mem.plays || 0) + 1; save(); playScene(); }
+  function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function drawHud(){
+    var d = $('dots'); d.textContent = ''; for (var i = 0; i < cur.total; i++) d.appendChild(el('i', i < cur.found ? 'f' : ''));
+    var h = $('hearts'); h.textContent = ''; for (var k = 0; k < 3; k++) h.appendChild(el(k < cur.hearts ? 'span' : 's', '', '♥')); h.setAttribute('aria-label', cur.hearts + ' wrong taps left');
+  }
+  function playScene(){
+    var s = SCENES[run.idx];
+    cur = { s:s, found:0, total:s.items.filter(function(x){ return x[3]; }).length, hearts:3, miss:0, hint:false, combo:0, pts:0, t0:Date.now(), last:Date.now(), got:[], lost:[], fresh:{}, over:false };
+    $('scname').textContent = 'Scene ' + s.id + ' · ' + s.time + ' · ' + s.name;
+    var board = $('board'); board.textContent = '';
+    shuffle(s.items).forEach(function(it){
+      var b = el('button', 'it ' + it[0]); b.type = 'button'; b.appendChild(el('span', 'tp', it[1])); b.appendChild(el('span', 'tx', it[2]));
+      b.addEventListener('click', function(){ tap(b, it); }); b.__it = it; board.appendChild(b);
+    });
+    drawHud(); $('clock').textContent = '0:00';
+    clearInterval(tick); tick = setInterval(function(){ var t = Math.floor((Date.now() - cur.t0) / 1000); $('clock').textContent = Math.floor(t / 60) + ':' + ('0' + (t % 60)).slice(-2); }, 500);
+    show('s-play'); stickHud();
+    speak(s.time + '. ' + s.name + '.', s.intro, '', 'point');
+  }
+  function stamp(b, code, revealed){ var x = el('span', 'stampx', revealed ? 'MISSED' : 'WASTE!'); x.appendChild(el('small', '', W[code].p)); b.appendChild(x); }
+  function tap(b, it){
+    if (cur.over || b.disabled) return;
+    var code = it[3], now = Date.now();
+    if (code) {
+      b.disabled = true; b.classList.add('hit'); stamp(b, code, false);
+      cur.found++; cur.combo++; var gain = 100 + (cur.combo - 1) * 50; cur.pts += gain;
+      var dt = (now - cur.last) / 1000; cur.last = now;
+      (run.kind[code] = run.kind[code] || { t:[], lost:0 }).t.push(dt);
+      cur.got.push(it); if (!mem.st[code]) { mem.st[code] = 1; cur.fresh[code] = 1; save(); }
+      sfx.stamp(); sfx.hit(cur.combo); plus(b, '+' + gain + (cur.combo > 1 ? '  x' + cur.combo : ''));
+      speak(W[code].p + '! (' + W[code].n + ')', it[4], 'good', 'smile');
+      drawHud(); if (cur.found === cur.total) { cur.over = true; setTimeout(endScene, 1500); }
+    } else {
+      b.disabled = true; b.classList.add('no'); setTimeout(function(){ b.classList.remove('no'); b.classList.add('ok'); }, 420);
+      cur.hearts--; cur.miss++; cur.combo = 0; sfx.miss();
+      speak('Not that one.', it[4], 'bad', 'shocked'); drawHud();
+      if (cur.hearts <= 0) { cur.over = true; setTimeout(function(){
+        Array.prototype.forEach.call($('board').children, function(n){ var c = n.__it[3]; if (c && !n.disabled) { n.disabled = true; n.classList.add('hit', 'rev'); stamp(n, c, true); cur.lost.push(n.__it); (run.kind[c] = run.kind[c] || { t:[], lost:0 }).lost++; } });
+        sfx.lose(); speak('Three wrong taps.', 'Here is what was still hiding. Look, then try the scene again.', 'bad', 'shrug'); setTimeout(endScene, 2600); }, 700); }
+    }
+  }
+  $('hint').addEventListener('click', function(){
+    if (!cur || cur.over) return; var left = [];
+    Array.prototype.forEach.call($('board').children, function(n){ if (n.__it[3] && !n.disabled) left.push(n.__it[3]); });
+    if (!left.length) return; cur.hint = true; var c = left[Math.floor(Math.random() * left.length)];
+    speak('A hint.', W[c].clue + ' A hint costs you the third star.', '', 'point');
+  });
+
+  function endScene(){
+    clearInterval(tick); cur.over = true;
+    var s = cur.s, lost = cur.lost.length > 0, secs = Math.round((Date.now() - cur.t0) / 1000);
+    var stars = lost ? 0 : (cur.miss === 0 && !cur.hint) ? 3 : (cur.miss <= 1 ? 2 : 1);
+    var bonus = lost ? 0 : Math.max(0, 300 - secs * 3); cur.pts += bonus; run.pts += cur.pts;
+    run.scenes.push({ id:s.id, stars:stars, found:cur.found, total:cur.total });
+    if (stars > (mem.best[s.id] || 0)) mem.best[s.id] = stars; save();
+    $('endname').textContent = 'Scene ' + s.id + ' · ' + s.time + ' · ' + s.name;
+    $('endhead').textContent = lost ? 'So close. ' + cur.found + ' of ' + cur.total + ' caught.' : stars === 3 ? 'Clean sweep! All ' + cur.total + ' caught.' : 'All ' + cur.total + ' caught.';
+    var st = $('endstars'); st.textContent = ''; for (var k = 0; k < 3; k++) st.appendChild(el(k < stars ? 'u' : 'span', '', '★'));
+    $('endpts').textContent = cur.pts + ' points · ' + Math.floor(secs / 60) + ':' + ('0' + (secs % 60)).slice(-2) + (bonus ? ' · speed bonus +' + bonus : '') + (cur.hint ? ' · hint used' : '') + (cur.miss ? ' · ' + cur.miss + ' wrong tap' + (cur.miss > 1 ? 's' : '') : '');
+    var rc = $('recap'); rc.textContent = '';
+    cur.got.concat(cur.lost).forEach(function(it, i){ var li = el('li', i >= cur.got.length ? 'miss' : ''); li.style.setProperty('--c', W[it[3]].c); li.appendChild(el('b', '', (i >= cur.got.length ? 'Missed: ' : '') + W[it[3]].p + ' · ' + it[2])); li.appendChild(document.createTextNode(it[4])); rc.appendChild(li); });
+    var nextIdx = -1; for (var i = run.idx + 1; i < SCENES.length; i++) if (isOpen(SCENES[i])) { nextIdx = i; break; }
+    $('next').textContent = lost ? (nextIdx >= 0 ? 'Skip to the next scene →' : 'See my result →') : (nextIdx >= 0 ? 'Next scene →' : 'See my result →');
+    $('next').onclick = function(){ if (nextIdx >= 0) { run.idx = nextIdx; playScene(); } else finalScreen(); };
+    $('again').onclick = function(){ run.scenes.pop(); run.pts -= cur.pts; playScene(); };
+    $('again').style.display = stars === 3 ? 'none' : '';
+    drawCard('stamps2', 'cardnote2', cur.fresh);
+    show('s-end'); if (!lost) { sfx.win(); confetti(stars * 22); }
+  }
+
+  /* ---------- the result ---------- */
+  var resultText = '';
+  function finalScreen(){
+    var stars = 0, found = 0, total = 0; run.scenes.forEach(function(s){ stars += s.stars; found += s.found; total += s.total; });
+    var ratio = stars / (run.scenes.length * 3);
+    var rank = ratio >= .9 ? 'Lean Sensei' : ratio >= .6 ? 'Waste Hunter' : ratio >= .3 ? 'Sharp Eye' : 'Apprentice Hunter';
+    $('rank').textContent = rank;
+    $('sum').textContent = found + ' of ' + total + ' wastes caught · ' + stars + ' of ' + (run.scenes.length * 3) + ' stars · ' + run.pts + ' points';
+    var best = '', worst = '', bv = 1e9, wv = -1;
+    ORDER.forEach(function(k){ var r = run.kind[k]; if (!r) return; var avg = r.t.length ? r.t.reduce(function(a, b){ return a + b; }, 0) / r.t.length : 999; if (r.t.length && avg < bv) { bv = avg; best = k; } var bad = r.lost * 1000 + avg; if (bad > wv) { wv = bad; worst = k; } });
+    if (worst === best) worst = '';
+    $('sharp').textContent = best ? W[best].p : 'Still warming up'; $('sharpp').textContent = best ? 'Lean name: ' + W[best].n + '. You caught it fastest today.' : 'Play one more scene and this fills in.';
+    $('hid').textContent = worst ? W[worst].p : 'Nothing hid today'; $('hidp').textContent = worst ? 'Lean name: ' + W[worst].n + '. ' + (run.kind[worst].lost ? 'It got past you today. ' : 'It took you the longest. ') + W[worst].clue : 'Every waste you met, you caught fast.';
+    resultText = 'I caught ' + found + ' of ' + total + ' wastes in Ah Hock\'s day. Rank: ' + rank + '.' + (best ? ' Sharpest eye: ' + W[best].p + '.' : '') + (worst ? ' The one that hid from me: ' + W[worst].p + '.' : '') + ' Try it: https://theindustrialscribe.com/spot-the-waste.html';
+
+    var tb = $('typebox'); tb.textContent = ''; var t = TYPES[myType];
+    if (t) {
+      tb.appendChild(el('h3', '', 'You are ' + t.n + '. Here is what that says.'));
+      tb.appendChild(el('p', '', 'Built to catch: ' + W[t.good].p + '. Likely to hide from you: ' + W[t.hide].p + '. ' + t.why));
+      tb.appendChild(el('p', '', worst ? (worst === t.hide ? 'Today the game agreed with your type. Now you know where to look on Monday.' : 'Today the game said ' + W[worst].p + ' instead. Two places to look on Monday.') : 'Today nothing hid from you. Look for ' + W[t.hide].p + ' at your own desk on Monday.'));
+      tb.appendChild(el('p', 'fine', 'A guess from your Insider type. For fun, not science.'));
+    } else {
+      tb.appendChild(el('h3', '', 'Which waste hides from people like you?'));
+      tb.appendChild(el('p', '', 'How you work decides what you walk past. Take the Insider Test, come back, and this box will tell you which waste your type catches and which one hides from it.'));
+      var a = el('a', 'btn two', 'Which Insider are you? →'); a.href = 'insider-test.html'; tb.appendChild(a);
+      tb.appendChild(el('p', 'fine', 'Free. About 7 minutes. It asks for your email partway through.'));
+    }
+
+    var got = drawCard('stamps3', 'cardnote3', null);
+    var nb = $('nextbox'); nb.textContent = ''; var locked = SCENES.filter(function(s){ return !isOpen(s); });
+    if (locked.length) { nb.appendChild(el('h3', '', 'Scene ' + locked[0].id + ' opens ' + niceDate(locked[0].open) + ': ' + locked[0].name + '.')); nb.appendChild(el('p', '', (got < 8 ? 'You have ' + got + ' of 8 stamps. ' : 'Your card is full. ') + 'Your stamps and stars stay saved on this phone or computer, so you can carry on from here.')); }
+    else { nb.appendChild(el('h3', '', 'You have played every scene so far.')); nb.appendChild(el('p', '', got < 8 ? 'You have ' + got + ' of 8 stamps. Go back and catch the rest.' : 'Your card is full. Try for three stars on every scene.')); }
+    show('s-final'); sfx.win(); confetti(60);
+  }
+  $('copy').addEventListener('click', function(){
+    var done = function(){ $('copied').textContent = 'Copied. Paste it to a colleague.'; };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(resultText).then(done, function(){ $('copied').textContent = resultText; });
+    else $('copied').textContent = resultText;
+  });
+  $('home').addEventListener('click', home);
+
+  /* ---------- start ---------- */
+  function stickHud(){ var nav = document.querySelector('nav'), pos = nav ? getComputedStyle(nav).position : ''; $('hud').style.top = (pos === 'sticky' || pos === 'fixed') ? nav.offsetHeight + 'px' : '0px'; }
+  function home(){
+    var got = drawCard('stamps', 'cardnote', null); drawTiles();
+    var starSum = 0; for (var k in mem.best) starSum += mem.best[k];
+    var b = $('back');
+    if (mem.plays > 0) { var t = TYPES[myType]; b.textContent = 'Welcome back' + (t ? ', ' + t.n.replace('The ', '') : '') + '! ' + got + ' of 8 stamps and ' + starSum + ' stars so far.' + (got < 8 ? ' ' + (8 - got) + ' still hiding.' : ''); b.classList.add('on'); $('go').textContent = 'Hunt again →'; }
+    show('s-intro');
+  }
+  $('go').addEventListener('click', function(){ var first = 0; for (var i = 0; i < SCENES.length; i++) if (isOpen(SCENES[i]) && (mem.best[SCENES[i].id] || 0) < 3) { first = i; break; } startRun(first); });
+  window.addEventListener('resize', stickHud);
+  ['smile','shocked','shrug'].forEach(function(f){ var i = new Image(); i.src = 'assets/ahhock-3d-' + f + '.jpg'; });
+  home();
+})();
+</script>
+</body>
+</html>
