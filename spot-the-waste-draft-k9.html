@@ -147,7 +147,8 @@
       .host { grid-template-columns:52px minmax(0,1fr); gap:9px; } .host img { width:52px; height:52px; }
       .say { font-size:.86rem; padding:7px 10px 8px; } .say b { font-size:.98rem; }
       .hud { padding:7px 16px 8px; margin-bottom:12px; }
-      .hud .l1 { font-size:.95rem; gap:2px 8px; } .hud .l1 b { font-size:.92rem; flex:1 0 100%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+      .hud .l1 { font-size:.95rem; display:grid; grid-template-columns:minmax(0,1fr) auto auto; grid-template-areas:'nm nm bt' 'dt ht ck'; gap:3px 12px; align-items:center; }
+      .hud .l1 b { grid-area:nm; font-size:.95rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; } .hud .l1 .btns { grid-area:bt; } .hud .dots { grid-area:dt; } .hud .hearts { grid-area:ht; } #clock { grid-area:ck; text-align:right; }
       .hud .dots i { width:11px; height:11px; margin-right:3px; border-width:2px; } .hud .hearts { font-size:1.05rem; letter-spacing:1px; }
       .hud .mini { font-size:.92rem; padding:0 9px; } .host { margin-top:6px; } .say { min-height:52px; }
       .hello { align-items:start; }
@@ -212,7 +213,7 @@
         <span class="dots" id="dots" aria-hidden="true"></span>
         <span class="hearts" id="hearts" aria-label="guesses left"></span>
         <span id="clock">0:00</span>
-        <span><button class="mini" id="hint" type="button">Hint</button> <button class="mini" id="snd" type="button" aria-label="Sound" aria-pressed="true">♪ on</button></span>
+        <span class="btns"><button class="mini" id="hint" type="button">Hint</button> <button class="mini" id="snd" type="button" aria-label="Sound" aria-pressed="true">♪ on</button></span>
       </div>
       <div class="host" id="host">
         <img id="face" src="assets/ahhock-3d-point.jpg" alt="" width="64" height="64">
@@ -440,7 +441,7 @@
   function playScene(){
     var s = SCENES[run.idx];
     cur = { s:s, found:0, total:s.items.filter(function(x){ return x[3]; }).length, hearts:3, miss:0, hint:false, combo:0, pts:0, t0:Date.now(), last:Date.now(), got:[], lost:[], fresh:{}, over:false };
-    $('scname').textContent = 'Scene ' + s.id + ' · ' + s.time + ' · ' + s.name;
+    $('scname').textContent = s.time + ' · ' + s.name;
     var board = $('board'); board.textContent = '';
     shuffle(s.items).forEach(function(it){
       var b = el('button', 'it ' + it[0]); b.type = 'button'; b.appendChild(el('span', 'tp', it[1])); b.appendChild(el('span', 'tx', it[2]));
