@@ -146,7 +146,11 @@
       .it .stampx { font-size:1rem; padding:4px 8px 3px; }
       .host { grid-template-columns:52px minmax(0,1fr); gap:9px; } .host img { width:52px; height:52px; }
       .say { font-size:.86rem; padding:7px 10px 8px; } .say b { font-size:.98rem; }
-      .hud .l1 { font-size:1rem; } .hud .l1 b { font-size:1rem; }
+      .hud { padding:7px 16px 8px; margin-bottom:12px; }
+      .hud .l1 { font-size:.95rem; gap:2px 8px; } .hud .l1 b { font-size:.92rem; flex:1 0 100%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+      .hud .dots i { width:11px; height:11px; margin-right:3px; border-width:2px; } .hud .hearts { font-size:1.05rem; letter-spacing:1px; }
+      .hud .mini { font-size:.92rem; padding:0 9px; } .host { margin-top:6px; } .say { min-height:52px; }
+      .hello { align-items:start; }
       .duo { grid-template-columns:1fr; } .panel { padding:18px 16px 16px; box-shadow:5px 5px 0 var(--ink); } .stars { font-size:2.6rem; }
     }
     @media (prefers-reduced-motion: reduce) { .screen.on, .stp.new, .it .stampx, .it.no, .stars u, .host.bump img { animation:none; } .cf, .plus { display:none; } .btn, .it, .tile { transition:none; } }
@@ -208,7 +212,7 @@
         <span class="dots" id="dots" aria-hidden="true"></span>
         <span class="hearts" id="hearts" aria-label="guesses left"></span>
         <span id="clock">0:00</span>
-        <span><button class="mini" id="hint" type="button">Hint</button> <button class="mini" id="snd" type="button" aria-pressed="true">Sound on</button></span>
+        <span><button class="mini" id="hint" type="button">Hint</button> <button class="mini" id="snd" type="button" aria-label="Sound" aria-pressed="true">♪ on</button></span>
       </div>
       <div class="host" id="host">
         <img id="face" src="assets/ahhock-3d-point.jpg" alt="" width="64" height="64">
@@ -397,7 +401,7 @@
   var sound = true, ac = null;
   function tone(f, t, d, type, v){ if (!sound) return; try { ac = ac || new (window.AudioContext || window.webkitAudioContext)(); var o = ac.createOscillator(), g = ac.createGain(); o.type = type || 'triangle'; o.frequency.value = f; g.gain.setValueAtTime(v || .16, ac.currentTime + t); g.gain.exponentialRampToValueAtTime(.001, ac.currentTime + t + d); o.connect(g); g.connect(ac.destination); o.start(ac.currentTime + t); o.stop(ac.currentTime + t + d + .02); } catch(e){} }
   var sfx = { hit:function(n){ tone(520 + n * 70, 0, .12); tone(780 + n * 70, .09, .2); }, miss:function(){ tone(150, 0, .28, 'sawtooth', .13); }, win:function(){ [523,659,784,1047].forEach(function(f, i){ tone(f, i * .12, .26); }); }, lose:function(){ [330,262,196].forEach(function(f, i){ tone(f, i * .16, .3, 'sawtooth', .1); }); }, stamp:function(){ tone(90, 0, .16, 'square', .2); } };
-  $('snd').addEventListener('click', function(){ sound = !sound; this.textContent = sound ? 'Sound on' : 'Sound off'; this.setAttribute('aria-pressed', sound ? 'true' : 'false'); if (sound) tone(660, 0, .1); });
+  $('snd').addEventListener('click', function(){ sound = !sound; this.textContent = sound ? '♪ on' : '♪ off'; this.setAttribute('aria-pressed', sound ? 'true' : 'false'); if (sound) tone(660, 0, .1); });
 
   /* ---------- effects ---------- */
   function confetti(n){ if (reduced) return; var cols = ['#EC4899','#2563eb','#10B981','#FBBF24','#FB923C','#111']; for (var i = 0; i < n; i++) { var c = el('i', 'cf'); c.style.left = (Math.random() * 100) + 'vw'; c.style.background = cols[i % cols.length]; c.style.animationDuration = (1.4 + Math.random() * 1.6) + 's'; c.style.animationDelay = (Math.random() * .4) + 's'; c.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)'; document.body.appendChild(c); (function(c){ setTimeout(function(){ c.remove(); }, 3600); })(c); } }
