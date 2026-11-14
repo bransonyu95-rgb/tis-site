@@ -85,7 +85,7 @@
     .be { font-size:.95em; line-height:1.35; }
     .slide { background:#fff; border:2.5px solid var(--ink); border-radius:.6em; padding:.8em 1.1em .6em; box-shadow:.3em .3em 0 rgba(0,0,0,.16); }
     .slide h4 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:1.18em; line-height:1.2; margin:0 0 .9em; }
-    .br { display:grid; grid-template-columns:6.6em minmax(0,1fr); gap:.6em; align-items:center; margin:.5em 0; font-size:.88em; }
+    .br { display:grid; grid-template-columns:7.6em minmax(0,1fr); gap:.6em; align-items:center; margin:.5em 0; font-size:.88em; }
     .bx { position:relative; height:1.9em; display:flex; align-items:center; }
     .seg { display:block; flex:none; height:100%; width:0; background:#9A9A9A; border-right:2px solid #fff; transition:width .85s cubic-bezier(.2,.8,.2,1); } .seg.acc { background:#C2410C; }
     .br.in .seg { width:var(--w); }
@@ -101,7 +101,7 @@
     .endrow .btn { font-size:1.35em; padding:.35em 1em; box-shadow:4px 4px 0 var(--ink); }
     .again { cursor:pointer; font-family:'Patrick Hand',cursive; font-size:1.15em; background:#fff; color:var(--ink); border:2.5px solid var(--ink); border-radius:100px; padding:.15em .9em; }
     .endfine { font-size:.82em; color:#555; }
-    .cap { margin:0 !important; max-width:none !important; flex:none; background:#111; color:#fff; font-family:'Patrick Hand',cursive; line-height:1.22; padding:.4em .9em .45em; min-height:3.3em; display:flex; align-items:center; justify-content:center; text-align:center; }
+    .cap { margin:0 !important; max-width:none !important; flex:none; background:#111; color:#fff; font-family:'Patrick Hand',cursive; line-height:1.22; padding:.35em .9em .4em; min-height:2.7em; display:flex; align-items:center; justify-content:center; text-align:center; }
     .cap { font-size:clamp(15px, 2.5cqw, 21px); }
     .bigplay { position:absolute; inset:0; border:0; background:rgba(255,255,255,.6); display:none; place-items:center; cursor:pointer; }
     .stage.idle .bigplay { display:grid; }
@@ -134,7 +134,9 @@
       .scene { padding:.7em .8em; gap:.5em; }
       .row { grid-template-columns:1fr auto; gap:.2em .6em; } .row > :nth-child(3) { grid-column:1 / -1; } .row.h { display:none; }
       .facts { grid-template-columns:1fr; gap:.35em; } .thumbs { grid-template-columns:repeat(2,1fr); }
-      .br { grid-template-columns:5.6em minmax(0,1fr); gap:.4em; }
+      .br { grid-template-columns:4.6em minmax(0,1fr); gap:.4em; line-height:1.15; }
+      .chips { gap:7px; } .chips button { width:38px; height:38px; padding:0; border-radius:50%; font-size:1.1rem; } .chips button span { display:none; }
+      .cap { min-height:3.2em; }
       .sbar em { display:none; } .b { max-width:88%; } .ans { max-width:96%; }
     }
     @media (prefers-reduced-motion: reduce) { .s, .seg, .q, .q summary::after, .bigplay span { transition:none; } .q .qa { animation:none; } }
@@ -366,7 +368,7 @@
     if (e.hasAttribute('data-count')) { o.count = +e.getAttribute('data-count'); o.d = +e.getAttribute('data-d'); o.val = -1; o.isCount = true; }
     return o; }); });
   var chips = $('chips'), chipEls = [];
-  CH.forEach(function(c, k){ if (c.end) return; var b = document.createElement('button'); b.type = 'button'; b.textContent = (k + 1) + ' · ' + c.n; b.addEventListener('click', function(){ T = starts[k] + .001; ended = false; userPaused = false; render(); if (!playing) play(); }); chips.appendChild(b); chipEls.push(b); });
+  CH.forEach(function(c, k){ if (c.end) return; var b = document.createElement('button'); b.type = 'button'; b.textContent = k + 1; var sp = document.createElement('span'); sp.textContent = ' · ' + c.n; b.appendChild(sp); b.setAttribute('aria-label', 'Part ' + (k + 1) + ': ' + c.n); b.addEventListener('click', function(){ T = starts[k] + .001; ended = false; userPaused = false; render(); if (!playing) play(); }); chips.appendChild(b); chipEls.push(b); });
 
   var T = 0, playing = false, last = 0, cur = -1, userPaused = false, ended = false;
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
