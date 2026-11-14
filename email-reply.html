@@ -49,6 +49,109 @@
     .fine { font-size:.94rem; color:#444; }
     @media (max-width:760px) { .two { grid-template-columns:1fr; } .pricebox { box-shadow:5px 5px 0 var(--ink); } }
       .agentline { font-family:'Patrick Hand',cursive; font-size:1.25rem; line-height:1.3; background:#fff; border:3px solid #111; border-left:12px solid #2563eb; border-radius:15px 225px 15px 255px/255px 15px 225px 15px; padding:10px 18px; margin:0 0 22px; box-shadow:5px 5px 0 #111; }
+    /* ---- the demo player, in the look of a chat with Claude ---- */
+    .demo { margin:22px 0 26px; }
+    .dhead { display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 14px; margin-bottom:10px; }
+    .dhead b { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.55rem; }
+    .dhead span { font-family:'Patrick Hand',cursive; font-size:1.08rem; color:#444; }
+    .cwin { --cbg:#faf9f5; --ctx:#1f1e1d; --cmut:#73726c; --cline:#e3e0d6; --cuser:#efede6; --clay:#c96442;
+      position:relative; container-type:inline-size; border:1px solid #d6d3c8; border-radius:14px; background:var(--cbg); color:var(--ctx); box-shadow:0 14px 34px rgba(31,30,29,.13), 0 2px 6px rgba(31,30,29,.06); overflow:hidden; aspect-ratio:16/9.8; display:flex; flex-direction:column; cursor:pointer; font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif; }
+    .cbar, .cview, .cinput { font-size:clamp(13px, 1.9cqw, 16px); }
+    .cbar { flex:none; display:flex; align-items:center; gap:.6em; padding:.55em 1em; border-bottom:1px solid var(--cline); background:#f5f3ec; }
+    .cdot { width:.7em; height:.7em; border-radius:50%; background:var(--clay); flex:none; }
+    .cbar b { font-weight:600; font-size:.95em; white-space:nowrap; } .cskill { font-family:ui-monospace,Menlo,monospace; font-size:.8em; color:var(--cmut); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; min-width:0; }
+    .cbar em { margin-left:auto; font-style:normal; font-size:.82em; color:var(--cmut); white-space:nowrap; }
+    .cview { position:relative; flex:1; min-height:0; overflow:hidden; }
+    .ccol { position:absolute; left:0; right:0; top:0; padding:1.1em 1.5em 1.2em; display:flex; flex-direction:column; gap:.75em; transition:transform .45s cubic-bezier(.3,.8,.3,1); }
+    .ccol p { margin:0; max-width:none; }
+    .s { opacity:0; transform:translateY(.5em); transition:opacity .3s ease, transform .3s ease; } .s.in { opacity:1; transform:none; }
+    .u { align-self:flex-end; max-width:78%; background:var(--cuser); border-radius:1.1em; padding:.55em .95em; line-height:1.45; display:flex; flex-direction:column; gap:.15em; }
+    .a { align-self:flex-start; max-width:92%; font-family:ui-serif,Georgia,'Iowan Old Style','Times New Roman',serif; font-size:1.08em; line-height:1.5; }
+    .a.big { font-size:1.5em; line-height:1.25; } .a.big em { font-style:normal; font-weight:700; color:#C2410C; display:inline-block; min-width:4.3em; }
+    .tool { align-self:flex-start; display:flex; align-items:center; gap:.55em; font-family:ui-monospace,Menlo,monospace; font-size:.84em; color:var(--cmut); }
+    .tool i { width:.55em; height:.55em; border-radius:50%; background:#3f8f5b; flex:none; }
+    .code { align-self:stretch; font-family:ui-monospace,Menlo,monospace; font-size:.86em; line-height:1.55; background:#fff; border:1px solid var(--cline); border-radius:.6em; padding:.6em .9em; display:flex; flex-direction:column; } .code b { font-weight:700; }
+    .tbl { align-self:stretch; border:1px solid var(--cline); border-radius:.6em; background:#fff; overflow:hidden; font-size:.95em; }
+    .tr { display:grid; grid-template-columns:1.15fr .85fr 1.8fr; gap:.8em; padding:.5em .9em; line-height:1.35; border-top:1px solid var(--cline); }
+    .tr.th { border-top:0; background:#f5f3ec; color:var(--cmut); font-size:.88em; } .tr b { font-weight:600; }
+    .chk { font-family:ui-monospace,Menlo,monospace; color:#C2410C; font-weight:700; }
+    .slide { align-self:stretch; background:#fff; border:1px solid var(--cline); border-radius:.6em; padding:.9em 1.1em .7em; }
+    .slide h4 { font-family:system-ui,-apple-system,sans-serif; font-weight:700; font-size:1.12em; line-height:1.25; margin:0 0 .9em; }
+    .br { display:grid; grid-template-columns:7.6em minmax(0,1fr); gap:.6em; align-items:center; margin:.5em 0; font-size:.88em; }
+    .bx { position:relative; height:1.9em; display:flex; align-items:center; }
+    .seg { display:block; flex:none; height:100%; width:0; background:#9A9A9A; border-right:2px solid #fff; transition:width .85s cubic-bezier(.2,.8,.2,1); } .seg.acc { background:#C2410C; }
+    .br.in .seg { width:calc(var(--w) * var(--k, 1)); }
+    .bx u { text-decoration:none; font-weight:700; margin-left:.45em; white-space:nowrap; }
+    .mark { position:absolute; left:calc(43.3% * var(--k, 1)); top:-.75em; height:5.2em; border-left:2px dashed #C2410C; } .mark b { position:absolute; left:.3em; top:-.35em; color:#C2410C; font-size:.95em; background:#fff; padding:0 .15em; line-height:1; }
+    .src { font-size:.74em; color:var(--cmut); line-height:1.35; margin-top:.7em !important; }
+    .pages { align-self:stretch; display:grid; grid-template-columns:repeat(4,1fr); gap:.5em; } .pages span { border:1px solid var(--cline); border-radius:.5em; background:#fff; padding:.35em .6em; font-size:.86em; line-height:1.2; } .pages span:first-child { border-color:var(--clay); color:#8a3d22; }
+    .ck { align-self:stretch; display:flex; flex-direction:column; gap:.3em; } .ck p { display:grid; grid-template-columns:1.4em minmax(0,1fr); gap:.5em; align-items:baseline; line-height:1.4; font-size:.98em; }
+    .ck i { font-style:normal; font-weight:700; color:#2f7a4b; } .ck .x i { color:#C2410C; }
+    .quote { align-self:stretch; border-left:3px solid #1f1e1d; padding:.1em 0 .1em .9em; font-family:ui-serif,Georgia,serif; font-size:1.12em; line-height:1.5; } .quote.ok { border-left-color:#3f8f5b; font-size:1.04em; }
+    .endfull { position:absolute; inset:0; z-index:3; background:var(--cbg); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:clamp(12px, 2.6cqw, 26px); padding:6cqw 7cqw; cursor:default; opacity:0; visibility:hidden; transform:scale(.94); transition:opacity .45s ease, transform .55s cubic-bezier(.2,.9,.3,1.25), visibility 0s .45s; }
+    .endfull.in { opacity:1; visibility:visible; transform:none; transition:opacity .45s ease, transform .55s cubic-bezier(.2,.9,.3,1.25); }
+    .endbig { margin:0 !important; max-width:none !important; font-family:ui-serif,Georgia,'Iowan Old Style','Times New Roman',serif; font-size:clamp(25px, 4.5cqw, 40px); line-height:1.2; color:var(--ctx); }
+    .endbig b { display:block; font-weight:700; font-size:1.28em; line-height:1.1; margin-bottom:.3em; }
+    .endfull .endbtn { font-size:clamp(1.5rem, 4.4cqw, 2.3rem); padding:.42em 1.2em; box-shadow:7px 7px 0 var(--ink); }
+    .endfull.in .endbtn { animation:nudge 2.4s ease-in-out 1.1s infinite; }
+    @keyframes nudge { 0%, 78%, 100% { transform:none; } 84% { transform:translate(-3px,-3px) rotate(-1.5deg); } 92% { transform:translate(2px,2px) rotate(1deg); } }
+    .endfine { margin:0 !important; max-width:none !important; font-size:clamp(12px, 1.7cqw, 15px); color:var(--cmut); }
+    .endmore { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:.5em 1.4em; font-size:clamp(13px, 1.9cqw, 16px); }
+    .endmore a { color:var(--ctx); font-weight:600; text-decoration:underline; text-underline-offset:3px; }
+    .again { cursor:pointer; font:inherit; background:#fff; color:var(--ctx); border:1px solid #cfcbbf; border-radius:100px; padding:.3em 1em; }
+    .cinput { flex:none; margin:0 1em .9em; display:flex; align-items:center; gap:.7em; background:#fff; border:1px solid #d6d3c8; border-radius:1em; padding:.6em .6em .6em 1em; box-shadow:0 2px 8px rgba(31,30,29,.06); min-height:2.9em; }
+    #typed { flex:1; min-width:0; line-height:1.35; } #typed.ph { color:#a3a199; }
+    #typed.live::after { content:''; display:inline-block; width:2px; height:1.05em; background:var(--ctx); margin-left:1px; vertical-align:-.15em; animation:blink .9s steps(1) infinite; }
+    @keyframes blink { 50% { opacity:0; } }
+    .send { flex:none; font-style:normal; width:1.9em; height:1.9em; border-radius:.6em; background:#e3ded2; color:#fff; display:grid; place-items:center; font-weight:700; transition:background .2s; } .cinput.has .send { background:var(--clay); }
+    .bigplay { position:absolute; inset:0; border:0; background:rgba(250,249,245,.72); display:none; place-items:center; cursor:pointer; }
+    .cwin.idle .bigplay { display:grid; }
+    .bigplay span { width:76px; height:76px; border-radius:50%; background:#c96442; color:#fff; display:grid; place-items:center; font-size:1.7rem; padding-left:6px; box-shadow:0 8px 22px rgba(201,100,66,.4); transition:transform .15s ease; }
+    .bigplay:hover span { transform:scale(1.08); }
+    .ccap { margin:14px 2px 0 !important; max-width:none !important; min-height:1.6em; font-family:ui-serif,Georgia,serif; font-size:1.12rem; line-height:1.4; color:#1f1e1d; }
+    .ctrl { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:12px; align-items:center; margin-top:10px; }
+    .pp { cursor:pointer; width:38px; height:38px; border-radius:50%; border:1px solid #cfcbbf; background:#fff; color:#1f1e1d; font-size:.85rem; line-height:1; display:grid; place-items:center; }
+    .pp:hover { background:#f5f3ec; }
+    .track { position:relative; height:6px; border-radius:100px; background:#e3e0d6; cursor:pointer; overflow:hidden; } #fill { position:absolute; left:0; top:0; bottom:0; width:0; background:#c96442; }
+    .tm { font-family:ui-monospace,Menlo,monospace; font-size:.82rem; color:#73726c; white-space:nowrap; }
+    .chips { display:flex; flex-wrap:wrap; gap:7px; margin-top:12px; }
+    .chips button { cursor:pointer; font-family:system-ui,-apple-system,sans-serif; font-size:.86rem; line-height:1.3; color:#3d3c38; background:#fff; border:1px solid #d6d3c8; border-radius:100px; padding:4px 12px; }
+    .chips button.on { background:#1f1e1d; color:#fff; border-color:#1f1e1d; } .chips button:hover:not(.on) { background:#f5f3ec; }
+    .cwin:focus-visible, .pp:focus-visible, .chips button:focus-visible, .again:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
+    @media (max-width:760px) {
+      .cwin { aspect-ratio:4/5.9; border-radius:12px; }
+      .ccol { padding:.9em .9em 1em; gap:.65em; } .u { max-width:88%; }
+      .tr { grid-template-columns:1fr auto; gap:.15em .6em; } .tr > :nth-child(3) { grid-column:1 / -1; color:#3d3c38; } .tr.th { display:none; }
+      .pages { grid-template-columns:repeat(2,1fr); }
+      .br { grid-template-columns:4.6em minmax(0,1fr); gap:.4em; line-height:1.15; --k:.72; }
+      .cskill { display:none; } .cinput { margin:0 .7em .7em; }
+      .chips button { width:36px; height:36px; padding:0; border-radius:50%; font-size:.95rem; } .chips button span { display:none; }
+    }
+    @media (prefers-reduced-motion: reduce) { .s, .seg, .ccol, .bigplay span, .endfull, .endfull.in { transition:none; } .endfull.in .endbtn { animation:none; } #typed.live::after { animation:none; } }
+    .u.paste { max-width:88%; gap:.25em; } .u.paste b { font-weight:600; } .u.paste small { color:var(--cmut); font-size:.84em; }
+    .u.paste .qt { border-left:3px solid #cfcbbf; padding-left:.7em; margin-top:.25em; font-size:.94em; line-height:1.45; color:#3d3c38; }
+    .tbl.p3 .tr { grid-template-columns:1.25fr 1.3fr 1.15fr; }
+    .late { color:#C2410C; font-weight:700; } .due { font-weight:600; }
+    .ck.dot i { color:var(--cmut); }
+    .mail { align-self:stretch; background:#fff; border:1px solid var(--cline); border-radius:.6em; padding:.8em 1.1em .9em; display:flex; flex-direction:column; gap:.55em; line-height:1.5; }
+    .mail small { font-family:ui-monospace,Menlo,monospace; font-size:.74em; color:var(--cmut); letter-spacing:.04em; }
+    .mail .sub { font-weight:600; border-bottom:1px solid var(--cline); padding-bottom:.5em; }
+    .mail .chk { font-size:.92em; }
+    @media (max-width:760px) { .tbl.p3 .tr { grid-template-columns:1fr auto; } }
+    /* ---- the detail, folded ---- */
+    .morelab { font-family:'Permanent Marker',cursive; font-size:1.35rem; margin:36px 0 12px !important; }
+    .q { border:3px solid var(--ink); border-left-width:12px; border-radius:var(--wob2); background:#fff; margin:0 0 14px; transition:transform .18s cubic-bezier(.2,.9,.3,1.6), box-shadow .18s ease; }
+    .q0 { border-left-color:var(--pink); } .q1 { border-left-color:#38BDF8; } .q2 { border-left-color:var(--mint); } .q3 { border-left-color:var(--coral); } .q4 { border-left-color:var(--yellow); }
+    .q:hover, .q[open] { transform:translate(-3px,-3px); box-shadow:7px 7px 0 var(--ink); }
+    .q summary { list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:14px; padding:13px 18px; }
+    .q summary::-webkit-details-marker { display:none; }
+    .q summary::after { content:'+'; flex:none; width:34px; height:34px; border:3px solid var(--ink); border-radius:50%; background:var(--yellow); font-family:'Permanent Marker',cursive; font-size:1.3rem; line-height:28px; text-align:center; transition:transform .25s cubic-bezier(.2,.9,.3,1.8); }
+    .q[open] summary::after { content:'\2013'; transform:rotate(180deg); background:var(--pink); }
+    .sp .q summary h2 { display:block; background:none; padding:0; margin:0; font-size:clamp(1.15rem,2.4vw,1.4rem); line-height:1.2; }
+    .q .qa { padding:2px 20px 10px; animation:qopen .3s cubic-bezier(.2,.9,.3,1.4) 1; }
+    @keyframes qopen { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:none; } }
+    .q summary:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
+    @media (prefers-reduced-motion: reduce) { .q, .q summary::after { transition:none; } .q .qa { animation:none; } }
   </style>
   <link rel="icon" type="image/png" href="assets/favicon.png?v=3d2">
 </head>
@@ -70,14 +173,102 @@
   <p class="eyebrow">The Industrial Scribe · solutions</p>
   <h1>Agentic AI:<br><em>Email Desk.</em></h1>
   <p class="lead">It reads the thread, remembers every customer, drafts the reply and tracks what you still owe. You press send.</p>
+  <section class="demo" id="demo" aria-label="Demo of the agent at work">
+    <div class="dhead"><b>Watch it work</b><span>One minute. Invented people and numbers, shortened from real test runs of the tool.</span></div>
+    <div class="cwin idle" id="stage">
+      <div class="cbar"><span class="cdot"></span><b>Claude Code</b><span class="cskill">email-desk</span><em id="chname"></em></div>
+      <div class="cview" id="view">
+        <div class="ccol" id="col">
+
+          <div class="u paste s" data-t=".4">
+            <b>RE: RE: RE: Bent pins LOT 2409-B</b>
+            <small>5 emails pasted · newest on top</small>
+            <span class="qt">"This is the third time I am asking. Where is the 8D for the bent pins? Please confirm by tomorrow or I will need to escalate to your management." Wei Jie, 28 Oct</span>
+          </div>
+          <p class="u s" data-t="6.8">8D: our QA engineer sends Mon 2 Nov. 600 pcs ship today. Credit note needs finance, don't agree.</p>
+          <p class="tool s" data-t="7.7"><i></i>Reading 5 emails</p>
+          <p class="tool s" data-t="8.7"><i></i>Using CUSTOMER-A's profile (last updated 2 Oct)</p>
+
+          <p class="a s" data-t="10.9">Here is where things stand.</p>
+          <div class="tbl p3 s" data-t="11.3">
+            <div class="tr th"><span>What</span><span>Promised</span><span>Status</span></div>
+            <div class="tr s" data-t="11.6"><b>8D report</b><span>by Fri 23 Oct</span><span class="late">OVERDUE, 7 days late</span></div>
+            <div class="tr s" data-t="12.8"><b>600 replacement pcs</b><span>with the 30 Oct shipment</span><span class="due">Due today</span></div>
+            <div class="tr s" data-t="14"><b>RM 1,850 credit note</b><span>nobody has answered</span><span class="due">Open</span></div>
+          </div>
+          <p class="a s" data-t="15.4">He asks now: where is the 8D? Confirm by tomorrow, or he goes to your management.</p>
+          <p class="a s" data-t="16.9">Mood: frustrated. "This is the third time I am asking."</p>
+
+          <p class="tool s" data-t="19.9"><i></i>From this customer's history</p>
+          <div class="ck dot s" data-t="20.2">
+            <p class="s" data-t="20.4"><i>•</i>Second bent-pin complaint since August (LOT 2312).</p>
+            <p class="s" data-t="21.6"><i>•</i>Their QA manager rejects an 8D without an IS / IS-NOT table.</p>
+            <p class="s" data-t="22.8"><i>•</i>Wei Jie wants it short, numbers first.</p>
+            <p class="s" data-t="24"><i>•</i>Still open from before: the revised quotation, due 15 Oct.</p>
+          </div>
+
+          <p class="tool s" data-t="26.9"><i></i>Checking against your rules</p>
+          <p class="a s" data-t="27.4">Your rule: never agree to money without finance approval.</p>
+          <p class="a s" data-t="28.9">He asks for a RM 1,850 credit note. I will not agree to it in this reply.</p>
+          <p class="a s" data-t="30.6"><b>Position:</b> give firm dates for the 8D and the 600 pcs. The credit note waits for finance.</p>
+
+          <p class="a s" data-t="33.9">Tone: your style, short and numbers-first for Wei Jie. Calm and firm, because he has chased three times.</p>
+          <div class="mail s" data-t="35.2">
+            <small>EMAIL-READY</small>
+            <p class="sub s" data-t="35.4">Subject: RE: Bent pins LOT 2409-B</p>
+            <p class="s" data-t="36.2">Hi Wei Jie,</p>
+            <p class="s" data-t="36.9">I am sorry the 8D is late. You will receive it from our QA engineer on Monday 2 Nov. The 600 replacement pcs ship today, 30 Oct.</p>
+            <p class="s" data-t="38.6">Credit note: our finance team is reviewing your RM 1,850 request. I will confirm our position by <span class="chk">[CHECK: date finance will confirm]</span>.</p>
+            <p class="s" data-t="40.4">You can hold me to Monday 2 Nov for the 8D.</p>
+            <p class="s" data-t="41.3">Best regards, Kumar</p>
+          </div>
+
+          <p class="tool s" data-t="44.4"><i></i>Checking every fact against the thread</p>
+          <div class="ck s" data-t="44.7">
+            <p class="s" data-t="44.9"><i>✓</i>8D on Monday 2 Nov: from you</p>
+            <p class="s" data-t="45.7"><i>✓</i>600 pcs ship 30 Oct: in the thread</p>
+            <p class="s" data-t="46.5"><i>✓</i>RM 1,850: in the thread, and not agreed</p>
+            <p class="s x" data-t="47.6"><i>✗</i>Do not send yet. One [CHECK] is open: the date finance will confirm.</p>
+          </div>
+          <p class="a s" data-t="49.2">Update CUSTOMER-A's profile? I would add: 8D promised Mon 2 Nov, and credit note waiting on finance.</p>
+          <p class="u s" data-t="50.9">Yes.</p>
+          <p class="tool s" data-t="51.6"><i></i>Saved. Both are now on your list of what you owe.</p>
+        </div>
+      </div>
+      <div class="cinput"><span id="typed" class="ph">Reply to Claude…</span><i class="send">↑</i></div>
+      <div class="endfull" id="endfull">
+        <p class="endbig"><b>You paste the thread.</b>It reads it, remembers the customer, and drafts your reply. You press Send.</p>
+        <a class="btn endbtn" href="https://buy.stripe.com/dRm28t41ZgXTa8dbhm0kE0g" data-buy="reply">Get it <span class="px">USD 9.99 once</span></a>
+        <p class="endfine">In a free AI chat it is a step-by-step guide: you paste your style and the thread each time.</p>
+        <div class="endmore"><a href="index.html#shelf">See all the solutions →</a><button class="again" id="again" type="button">Watch again</button></div>
+      </div>
+      <button class="bigplay" id="bigplay" type="button" aria-label="Play the demo"><span>▶</span></button>
+    </div>
+    <p class="ccap" id="cap"></p>
+    <div class="ctrl">
+      <button class="pp" id="pp" type="button" aria-label="Play">▶</button>
+      <div class="track" id="track"><i id="fill"></i></div>
+      <span class="tm" id="tm">0:00</span>
+    </div>
+    <div class="chips" id="chips"></div>
+  </section>
   <p class="agentline">Works as a full AI agent in Claude Code. Works as a step-by-step AI guide in any free chat.</p>
-  <p class="lead"><strong>No more digging through old emails.</strong> Every time a customer asks something, you have to go back through the old emails to see what was said. This does that for you, so your time goes to real work.</p>
-  <p class="lead">A customer chases you for the third time. The thread is 15 emails deep, with forwards, quoted replies and three people copied. You need to know what was promised, what is overdue and what they are actually asking, and you need to answer well, fast.</p>
   <div class="buy">
     <a class="btn" href="https://buy.stripe.com/dRm28t41ZgXTa8dbhm0kE0g" data-buy="reply">Get it <span class="px">USD 9.99 once</span></a>
     <span class="alt">Paste box for any AI chat, or a Claude Code skill. Drafts only; you press Send.</span>
   </div>
-  <h2>What you get, every time</h2>
+  <p class="lead"><strong>No more digging through old emails.</strong> Every time a customer asks something, you have to go back through the old emails to see what was said. This does that for you, so your time goes to real work.</p>
+
+  <p class="morelab">Want the detail? Open any part.</p>
+  <details class="q q0">
+    <summary><h2>The moment this is for</h2></summary>
+    <div class="qa">
+  <p>A customer chases you for the third time. The thread is 15 emails deep, with forwards, quoted replies and three people copied. You need to know what was promised, what is overdue and what they are actually asking, and you need to answer well, fast.</p>
+    </div>
+  </details>
+  <details class="q q1">
+    <summary><h2>What you get, every time</h2></summary>
+    <div class="qa">
   <ol>
     <li><b>The catch-up.</b> Who's who, what happened and when, every promise with its status (kept, open, overdue), what the customer is asking now, what is still open, and their mood. It also flags "agreed by silence": things you never answered that the customer may now treat as agreed.</li>
     <li><b>The rules check.</b> Any conflict with your goals or a past decision ("this goes against your decision of 12 Oct: no free air freight for this customer"), and any mismatch inside the thread, in at most three lines. It never settles the conflict on its own. You choose.</li>
@@ -86,11 +277,19 @@
     <li><b>The fact check.</b> Every date, number and promise in the draft is checked against the thread. A date nobody confirmed never goes out as a promise.</li>
     <li><b>A conversation, not a one-shot.</b> Say "firmer", "shorter", "in Malay", or paste back your own edit: it changes only what you ask and tells you what changed. Ask "what do I owe?" and it lists every open promise across all your customers, oldest first.</li>
   </ol>
-  <h2>It learns how you write, and who you write to</h2>
+    </div>
+  </details>
+  <details class="q q2">
+    <summary><h2>It learns how you write, and who you write to</h2></summary>
+    <div class="qa">
   <p><strong>Your style, once, in five minutes.</strong> With your permission it reads a few emails you already sent: how you greet, sign off, say no, give bad news, chase. It shows you "this is how you write", asks if it got you right, then asks how you want to sound from now on. Only a short style summary is kept; no email text, names or prices.</p>
   <p><strong>A card per customer.</strong> The people and how each likes to be written to, what the customer is pushing for right now, their sensitivities, past cases, open promises. Before drafting it reads that card, so the reply fits the exact person, and it spots repeats. Cards grow as you work, and only you approve what is saved.</p>
   <p><strong>Your rules, optional.</strong> Your goals in order, how you decide, decisions already taken. One rule is always on: it never shows a customer your internal cost, margin, rates or supplier names.</p>
-  <h2>Why we call it an agent</h2>
+    </div>
+  </details>
+  <details class="q q3">
+    <summary><h2>Why we call it an agent</h2></summary>
+    <div class="qa">
   <p>In Claude Code it does not just write. It runs your email desk:</p>
   <ul>
     <li><b>It learns how you write</b> from your sent emails, with your OK, and keeps a short style file.</li>
@@ -100,12 +299,20 @@
     <li><b>It keeps a list of everything you owe</b> across all customers, oldest first.</li>
   </ul>
   <p>It never sends, schedules or auto-replies. Sending is always your click. In a free AI chat it is a step-by-step guide: you paste your style block and the thread each time.</p>
-  <h2>Two ways to run it</h2>
+    </div>
+  </details>
+  <details class="q q4">
+    <summary><h2>Two ways to run it</h2></summary>
+    <div class="qa">
   <div class="two">
     <div class="way a"><h3>A · No install, any AI chat</h3><p>Open <code>paste-prompt.md</code>. Run the style builder once with 5 to 10 of your sent emails and keep the MY STYLE block it gives you. Each time, paste your copy plus the thread into ChatGPT, Claude or Gemini. Free plans work.</p></div>
     <div class="way b"><h3>B · Claude Code skill</h3><p>For people who already use Claude Code (needs Claude Pro, USD 20/month). Move the <code>email-desk</code> folder to your skills folder, paste a thread and say "help me reply to this". On first use it asks permission and learns your style from emails you paste, drop into <code>my-emails/</code>, or from your Sent folder if your Claude already has an email connection. It never asks for your password.</p></div>
   </div>
-  <h2>What's inside the download</h2>
+    </div>
+  </details>
+  <details class="q q0">
+    <summary><h2>What's inside the download</h2></summary>
+    <div class="qa">
   <ul>
     <li><code>paste-prompt.md</code>: the no-install version.</li>
     <li><code>SKILL.md</code>, <code>my-style.md</code>, <code>my-rules.md</code>: the Claude Code skill, your style summary, your goals and decisions.</li>
@@ -115,6 +322,9 @@
     <li><code>CREDITS.md</code>: where the starting idea came from, and its open-source licence.</li>
   </ul>
   <p>The thinking behind it, with real counts from the office where it was built, is the case study <a href="index.html#studies">How I Stopped Losing Promises in Email Threads</a>, also sold here.</p>
+    </div>
+  </details>
+
   <div class="honest">
     <h3>The honest limits</h3>
     <ul>
@@ -136,5 +346,64 @@
   <div class="flinks"><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="refunds.html">Refunds</a> · <a href="https://www.instagram.com/the.industrial.scribe/">Instagram</a> · <a href="mailto:theindustrialscribe@gmail.com">Email</a></div>
   <div class="quiet">© 2026 The Industrial Scribe. Independent; not affiliated with or endorsed by Anthropic. Claude is a trademark of Anthropic, PBC.</div>
 </footer>
+<script>
+(function(){
+  var CH = [{"n": "You paste the thread", "d": 10.5, "c": [[0, "No more digging. You paste the whole thread."], [2.8, "You say what you want to tell them, in rough words."], [7.5, "It reads every email, so you do not have to."]]}, {"n": "It catches you up", "d": 9, "c": [[0, "Who promised what, and what is late."], [4.9, "What the customer wants right now, and how he feels."]]}, {"n": "It remembers the customer", "d": 7, "c": [[0, "It remembers this customer from last time."], [4.3, "Even a promise from an older thread."]]}, {"n": "It checks your rules", "d": 7, "c": [[0, "It checks what he asks against your own rules."], [4, "Then it picks one position, and tells you why."]]}, {"n": "It drafts the reply, your way", "d": 10.5, "c": [[0, "Then it writes the reply in your voice."], [3.4, "Every promise has a date."], [5.2, "What it does not know, it marks CHECK. It never guesses."]]}, {"n": "It checks the facts. You press Send", "d": 9.5, "c": [[0, "It checks every fact against the thread."], [4.9, "It keeps the list of what you still owe."]]}, {"n": "Your turn", "d": 4, "end": true, "c": [[0, "It never sends. You press Send."]]}];
+  var TYPE = [[2.8, 6.6, "8D: our QA engineer sends Mon 2 Nov. 600 pcs ship today. Credit note needs finance, don't agree."], [50.3, 50.8, "Yes."]];
+  var $ = function(id){ return document.getElementById(id); };
+  var stage = $('stage'); if (!stage) return;
+  var starts = [], TOTAL = 0; CH.forEach(function(c){ starts.push(TOTAL); TOTAL += c.d; });
+  var view = $('view'), col = $('col'), typed = $('typed'), inputBar = typed.parentNode;
+  var steps = [].slice.call(col.querySelectorAll('[data-t]')).map(function(e){
+    var o = { e:e, t:+e.getAttribute('data-t'), on:false };
+    if (e.hasAttribute('data-count')) { o.count = +e.getAttribute('data-count'); o.d = +e.getAttribute('data-d'); o.val = -1; o.isCount = true; }
+    return o; });
+  var chips = $('chips'), chipEls = [];
+  CH.forEach(function(c, k){ if (c.end) return; var b = document.createElement('button'); b.type = 'button'; b.textContent = k + 1; var sp = document.createElement('span'); sp.textContent = ' · ' + c.n; b.appendChild(sp); b.setAttribute('aria-label', 'Part ' + (k + 1) + ': ' + c.n); b.addEventListener('click', function(){ T = starts[k] + .001; ended = false; userPaused = false; render(); if (!playing) play(); }); chips.appendChild(b); chipEls.push(b); });
+
+  var endEl = $('endfull'), END_T = starts[starts.length - 1] + .2, finOn = false;
+  var T = 0, playing = false, last = 0, cur = -1, userPaused = false, ended = false, lastTyped = null, lastOff = -1;
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function fmt(s){ s = Math.floor(s); return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2); }
+  function render(){
+    var i = CH.length - 1; for (var k = 0; k < CH.length; k++) { if (T < starts[k] + CH[k].d) { i = k; break; } }
+    var lt = T - starts[i];
+    if (i !== cur) { $('chname').textContent = (CH[i].end ? '' : 'Part ' + (i + 1) + ' of 6'); chipEls.forEach(function(b, k){ b.classList.toggle('on', k === i); }); cur = i; }
+    var c = ''; CH[i].c.forEach(function(x){ if (lt >= x[0]) c = (CH[i].end ? '' : (i + 1) + '. ') + x[1]; }); if ($('cap').textContent !== c) $('cap').textContent = c;
+    var changed = false;
+    steps.forEach(function(o){
+      var on = T >= o.t;
+      if (!o.isCount && on !== o.on) { o.e.classList.toggle('in', on); o.on = on; changed = true; }
+      if (o.isCount) { var f = on ? Math.min(1, (T - o.t) / o.d) : 0, val = Math.round(o.count * f); if (val !== o.val) { o.e.textContent = 'RM ' + val.toLocaleString('en-US'); o.val = val; } }
+    });
+    var fin = T >= END_T; if (fin !== finOn) { endEl.classList.toggle('in', fin); finOn = fin; }
+    /* the text box */
+    var txt = null; TYPE.forEach(function(x){ if (T >= x[0] && T < x[1] + .08) txt = x[2].slice(0, Math.ceil(Math.min(1, (T - x[0]) / (x[1] - x[0])) * x[2].length)); });
+    if (txt !== lastTyped) { lastTyped = txt; typed.textContent = txt == null ? 'Reply to Claude…' : txt; typed.className = txt == null ? 'ph' : 'live'; inputBar.classList.toggle('has', txt != null); }
+    /* keep the newest line in view, like a real chat */
+    if (changed || lastOff < 0) {
+      var cr = col.getBoundingClientRect(), bottom = 0;
+      steps.forEach(function(o){ if (o.on) { var r = o.e.getBoundingClientRect(); bottom = Math.max(bottom, r.bottom - cr.top); } });
+      var off = Math.max(0, Math.round(bottom + 14 - view.clientHeight));
+      if (off !== lastOff) { col.style.transform = 'translateY(' + (-off) + 'px)'; lastOff = off; }
+    }
+    $('fill').style.width = (T / TOTAL * 100) + '%'; $('tm').textContent = fmt(T) + ' / ' + fmt(TOTAL);
+  }
+  function ui(){ var pp = $('pp'); pp.textContent = playing ? '❚❚' : (ended ? '↻' : '▶'); pp.setAttribute('aria-label', playing ? 'Pause' : (ended ? 'Watch again' : 'Play')); stage.classList.toggle('idle', !playing && T < .01); }
+  function frame(now){ if (!playing) return; var dt = Math.min(.1, (now - last) / 1000); last = now; T += dt; if (T >= TOTAL) { T = TOTAL - .001; playing = false; ended = true; ui(); } render(); if (playing) requestAnimationFrame(frame); }
+  function play(){ if (ended) { T = 0; ended = false; } playing = true; last = performance.now(); ui(); render(); requestAnimationFrame(frame); }
+  function pause(){ playing = false; ui(); }
+  function toggle(){ if (playing) { userPaused = true; pause(); } else { userPaused = false; play(); } }
+  stage.addEventListener('click', function(e){ if (e.target.closest('a, .again, .endfull')) return; toggle(); });
+  $('pp').addEventListener('click', toggle);
+  $('again').addEventListener('click', function(){ T = 0; ended = false; userPaused = false; play(); });
+  $('track').addEventListener('click', function(e){ var r = this.getBoundingClientRect(); T = Math.max(0, Math.min(TOTAL - .001, (e.clientX - r.left) / r.width * TOTAL)); ended = false; render(); ui(); });
+  document.addEventListener('visibilitychange', function(){ if (document.hidden && playing) pause(); });
+  window.addEventListener('resize', function(){ lastOff = -1; render(); });
+  if ('IntersectionObserver' in window && !reduced) new IntersectionObserver(function(es){ var v = es[0].isIntersecting; if (v && !playing && !userPaused && !ended) play(); else if (!v && playing) pause(); }, { threshold:.55 }).observe(stage);
+  window.__demo = { seek:function(t){ T = t; ended = false; render(); ui(); }, total:TOTAL, starts:starts };
+  render(); ui();
+})();
+</script>
 </body>
 </html>
