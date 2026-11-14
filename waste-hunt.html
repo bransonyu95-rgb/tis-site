@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Waste Hunt: find office waste, then automate | TIS</title>
-  <meta name="description" content="The lean way to find the waste in your office work: the 8 wastes, a 5S check, what to cut first, then how to automate what is left. USD 3.99 once.">
+  <title>Agentic AI: The Lean Machine, lean for your own factory | TIS</title>
+  <meta name="description" content="Lean, the way it is really done inside a factory. Walk the shop floor, engineering, one order or the office. It maps the 8 wastes, scores 5S, finds the real cause and writes your one-page Lean Plan.">
   <link rel="canonical" href="https://theindustrialscribe.com/waste-hunt.html">
-  <meta property="og:title" content="The Waste Hunt: the lean way to find the waste, then automate what is left">
-  <meta property="og:description" content="The lean way to find the waste in your office work: the 8 wastes, a 5S check, what to cut first, then how to automate what is left. USD 3.99 once.">
+  <meta property="og:title" content="Agentic AI: The Lean Machine. Find the waste, fix the real cause, keep it lean.">
+  <meta property="og:description" content="Lean, the way it is really done inside a factory. Walk the shop floor, engineering, one order or the office. It maps the 8 wastes, scores 5S, finds the real cause and writes your one-page Lean Plan.">
   <meta property="og:image" content="https://theindustrialscribe.com/assets/ahhock-3d-desk.jpg">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Product", "name": "The Waste Hunt", "url": "https://theindustrialscribe.com/waste-hunt.html", "description": "Built on the lean methods factories already trust: the 8 wastes to find where the hours go in a task you redo every week, a 5S check of the files and reports behind it, what to cut first, then how to automate what is left. Paste box for any AI chat, or a Claude Code skill.", "brand": {"@type": "Brand", "name": "The Industrial Scribe"}, "offers": {"@type": "Offer", "price": "3.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://theindustrialscribe.com/waste-hunt.html"}}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Product", "name": "Agentic AI: The Lean Machine", "url": "https://theindustrialscribe.com/waste-hunt.html", "description": "Lean, the way it is really done inside a factory. It walks one part of your work with you (shop floor, engineering, one order from enquiry to payment, or the office), maps the 8 wastes with hours from your own numbers, scores 5S out of 25, asks why until it reaches the real cause, says what to cut before you automate, and writes a one-page Lean Plan. Works as a full AI agent in Claude Code and as a step-by-step AI guide in any free chat.", "brand": {"@type": "Brand", "name": "The Industrial Scribe"}, "offers": {"@type": "Offer", "price": "9.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://theindustrialscribe.com/waste-hunt.html"}}]}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -42,6 +42,7 @@
     .honest li { font-size:.98rem; }
     .shot { margin:18px 0 6px; } .shot img { width:100%; height:auto; border:3px solid var(--ink); border-radius:14px; display:block; }
     .shot figcaption { font-family:'Patrick Hand',cursive; font-size:1rem; color:#555; margin-top:6px; }
+      .agentline { font-family:'Patrick Hand',cursive; font-size:1.25rem; line-height:1.3; background:#fff; border:3px solid #111; border-left:12px solid #2563eb; border-radius:15px 225px 15px 255px/255px 15px 225px 15px; padding:10px 18px; margin:0 0 22px; box-shadow:5px 5px 0 #111; }
     code { background:#f4f4f2; border:1px solid #e3e3e0; border-radius:5px; padding:0 6px; font-size:.92em; }
     .pricebox { border:3px solid var(--ink); border-radius:18px; padding:22px 26px; margin:44px 0 10px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; background:#fff; box-shadow:8px 8px 0 var(--ink); }
     .pricebox b { font-family:'Permanent Marker',cursive; font-weight:400; font-size:2.2rem; line-height:1; display:block; }
@@ -127,14 +128,20 @@
       .chips button { width:36px; height:36px; padding:0; border-radius:50%; font-size:.95rem; } .chips button span { display:none; }
     }
     @media (prefers-reduced-motion: reduce) { .s, .seg, .ccol, .bigplay span, .endfull, .endfull.in { transition:none; } .endfull.in .endbtn { animation:none; } #typed.live::after { animation:none; } }
-    .tbl.p2 .tr { grid-template-columns:1fr 1.7fr; } .tbl.p2 .tr:first-child { border-top:0; }
     .tbl.p3 .tr { grid-template-columns:1.9fr .8fr 1.4fr; }
     .tbl.s5 .tr { grid-template-columns:1.05fr .3fr 2.6fr; } .tbl.s5 .tr:first-child { border-top:0; } .tbl.s5 .tr > :nth-child(2) { font-weight:700; }
+    .tbl.pl .tr { grid-template-columns:6.4em minmax(0,1fr); } .tbl.pl .tr.ttl { grid-template-columns:1fr; border-top:0; background:#f5f3ec; color:var(--cmut); font-size:.88em; font-family:ui-monospace,Menlo,monospace; }
     .late { color:#C2410C; font-weight:600; }
     .a.big em.fix { min-width:0; }
-    .ck.dot i { color:var(--cmut); } .ck.dot b { font-weight:600; }
-    .ck.num i { color:var(--ctx); font-family:ui-monospace,Menlo,monospace; }
-    @media (max-width:760px) { .tbl.p2 .tr { grid-template-columns:1fr; } .tbl.p3 .tr { grid-template-columns:1fr auto; } .tbl.s5 .tr { grid-template-columns:1fr auto; } }
+    .ck.dot i { color:var(--cmut); }
+    .att { align-self:flex-start; font-family:ui-monospace,Menlo,monospace; font-size:.82em; color:var(--cmut); background:#fff; border:1px solid #d6d3c8; border-radius:.5em; padding:.15em .6em; margin-bottom:.2em; }
+    .att::before { content:''; display:inline-block; width:.8em; height:.62em; border:1.5px solid var(--cmut); border-radius:.15em; margin-right:.45em; vertical-align:-.02em; }
+    .whyl { align-self:stretch; display:flex; flex-direction:column; gap:.35em; }
+    .whyl p { display:grid; grid-template-columns:3.1em minmax(0,1fr); gap:.5em; align-items:baseline; background:#fff; border:1px solid var(--cline); border-radius:.6em; padding:.42em .85em; line-height:1.35; font-size:.98em; }
+    .whyl p:nth-child(2) { margin-left:1.2em; } .whyl p:nth-child(3) { margin-left:2.4em; } .whyl p:nth-child(4) { margin-left:3.6em; border-color:#C2410C; }
+    .whyl i { font-style:normal; font-weight:700; font-family:ui-monospace,Menlo,monospace; font-size:.86em; color:#C2410C; }
+    @media (max-width:760px) { .tbl.p3 .tr { grid-template-columns:1fr auto; } .tbl.s5 .tr { grid-template-columns:1fr auto; } .tbl.pl .tr { grid-template-columns:1fr; gap:.05em; } .tbl.pl .tr b { font-size:.88em; color:var(--cmut); }
+      .whyl p:nth-child(2) { margin-left:.5em; } .whyl p:nth-child(3) { margin-left:1em; } .whyl p:nth-child(4) { margin-left:1.5em; } }
     /* ---- the detail, folded ---- */
     .morelab { font-family:'Permanent Marker',cursive; font-size:1.35rem; margin:36px 0 12px !important; }
     .q { border:3px solid var(--ink); border-left-width:12px; border-radius:var(--wob2); background:#fff; margin:0 0 14px; transition:transform .18s cubic-bezier(.2,.9,.3,1.6), box-shadow .18s ease; }
@@ -168,75 +175,86 @@
 </nav>
 <main class="sp">
   <p class="eyebrow">The Industrial Scribe · solutions</p>
-  <h1>The Waste Hunt.<br><em>The lean way to find the waste, then automate what's left.</em></h1>
-  <p class="lead"><strong>Built on the lean methods factories already trust:</strong> the 8 wastes to find where the hours go, 5S to clear and organise the work behind the task, and standard work to keep it lean. Then it walks you through automating what is left.</p>
+  <h1>Agentic AI:<br><em>The Lean Machine.</em></h1>
+  <p class="lead">Walk any part of your work. It finds the waste, cleans it up, fixes the real cause, and keeps it that way.</p>
   <section class="demo" id="demo" aria-label="Demo of the agent at work">
-    <div class="dhead"><b>Watch it work</b><span>One minute. An invented person and company, shortened from the tool's own worked example.</span></div>
+    <div class="dhead"><b>Watch it work</b><span>One minute. An invented factory and numbers, shortened from the tool's own worked example.</span></div>
     <div class="cwin idle" id="stage">
-      <div class="cbar"><span class="cdot"></span><b>Claude Code</b><span class="cskill">waste-hunt</span><em id="chname"></em></div>
+      <div class="cbar"><span class="cdot"></span><b>Claude Code</b><span class="cskill">lean-machine</span><em id="chname"></em></div>
       <div class="cview" id="view">
         <div class="ccol" id="col">
 
-          <p class="u s" data-t="2.5">My weekly supplier follow-up. It eats my week.</p>
-          <p class="a s" data-t="3.2">Is there a written SOP for it?</p>
-          <p class="u s" data-t="5.5">Yes, from 2019.</p>
-          <p class="a s" data-t="6.3">Good. Now tell me what really happens, step by step. I will keep asking.</p>
+          <p class="u s" data-t="2.6">lean machine. The changeover on machine 3 takes forever.</p>
+          <p class="a s" data-t="3.3">Shop floor. Let us go and see. From the last good part of the old job to the first good part of the new one, how long?</p>
+          <p class="u s" data-t="6.7">95 minutes. About 12 times a month.</p>
+          <p class="a s" data-t="7.4">Walk me through those 95 minutes, one step at a time. I will keep asking.</p>
 
-          <p class="tool s" data-t="9.9"><i></i>Comparing the SOP with what she really does</p>
-          <div class="tbl p2 s" data-t="10.2">
-            <div class="tr s" data-t="10.4"><b>In the SOP, but nobody does it</b><span>Updating the promised date in the ERP</span></div>
-            <div class="tr s" data-t="12"><b>Done, but not in the SOP</b><span>Reformatting the export · searching the inbox · phoning non-repliers · typing dates into a private tracker · answering planners on WhatsApp · a Friday summary for the GM</span></div>
-          </div>
-          <p class="a s" data-t="14.4">Six real steps are not in the SOP. Those are where the hours hide.</p>
-
-          <p class="tool s" data-t="18.4"><i></i>Adding up the hours with a script</p>
-          <div class="tbl p3 s" data-t="18.7">
+          <p class="tool s" data-t="10.3"><i></i>Adding up the hours with a script</p>
+          <div class="tbl p3 s" data-t="10.6">
             <div class="tr th"><span>Step</span><span>Hours a month</span><span>Waste</span></div>
-            <div class="tr s" data-t="18.9"><b>Email 25 suppliers, one by one</b><span>5.4 h</span><span>Value, done slowly</span></div>
-            <div class="tr s" data-t="19.9"><b>Search the inbox for replies</b><span>5.4 h</span><span class="late">Searching</span></div>
-            <div class="tr s" data-t="20.9"><b>Reformat the export, same every week</b><span>1.4 h</span><span class="late">Extra processing</span></div>
-            <div class="tr s" data-t="21.9"><b>Type dates into a private tracker</b><span>1.4 h</span><span class="late">Extra processing</span></div>
-            <div class="tr s" data-t="22.9"><b>Answer planners on WhatsApp</b><span>2.2 h</span><span class="late">Moving things around</span></div>
-            <div class="tr s" data-t="23.9"><b>Friday summary for the GM</b><span>2.2 h</span><span class="late">Making what nobody uses</span></div>
+            <div class="tr s" data-t="10.9"><b>Walk to the tool crib, 3 trips</b><span>3.0 h</span><span class="late">Walking</span></div>
+            <div class="tr s" data-t="11.8"><b>Search the rack for the fixture</b><span>2.0 h</span><span class="late">Searching</span></div>
+            <div class="tr s" data-t="12.7"><b>Ask which revision, load it from USB</b><span>4.0 h</span><span class="late">Waiting</span></div>
+            <div class="tr s" data-t="13.6"><b>Set the work offsets</b><span>3.0 h</span><span>Real work</span></div>
+            <div class="tr s" data-t="14.5"><b>First-article check: 20 min waiting for QC, 5 min checking</b><span>5.0 h</span><span class="late">Waiting, then real work</span></div>
+            <div class="tr s" data-t="15.4"><b>Adjust and run again</b><span>2.0 h</span><span class="late">Do it again</span></div>
           </div>
-          <p class="tool s" data-t="24.6"><i></i>8 steps in all. The export and the phone calls stay as they are.</p>
-          <p class="a big s" data-t="25.3">The task takes about <em data-t="25.3" data-count="21.7" data-d="1" data-dec="1" data-pre="" data-suf=" hours">21.7 hours</em> a month.</p>
-          <p class="a s" data-t="27.2">That is what the steps take today. It is not a promised saving.</p>
+          <p class="a big s" data-t="16.8">The changeover takes <em data-t="16.8" data-count="19" data-d="1" data-dec="0" data-pre="" data-suf=" hours">19 hours</em> a month.</p>
+          <p class="a s" data-t="18.9">About RM 2,280 of machine time, at your RM 120 an hour. An estimate from your answers.</p>
 
-          <p class="tool s" data-t="29.9"><i></i>5S check on the files behind the task</p>
-          <div class="tbl s5 s" data-t="30.1">
-            <div class="tr s" data-t="30.3"><b>Sort</b><span>2</span><span>The export keeps 14 columns. She uses 5.</span></div>
-            <div class="tr s" data-t="31.2"><b>Set in order</b><span>1</span><span>The dates live in three places.</span></div>
-            <div class="tr s" data-t="32.1"><b>Shine</b><span>2</span><span>Supplier replies come with no PO number.</span></div>
-            <div class="tr s" data-t="33"><b>Standardize</b><span>1</span><span>The SOP is from 2019.</span></div>
-            <div class="tr s" data-t="33.9"><b>Sustain</b><span>1</span><span>Nobody owns the tracker.</span></div>
+          <p class="u s" data-t="23.3"><span class="att">bench-machine-3.jpg</span>Here is a photo of the bench.</p>
+          <p class="tool s" data-t="24"><i></i>Scoring 5S from the photo</p>
+          <div class="tbl s5 s" data-t="24.3">
+            <div class="tr s" data-t="24.5"><b>Sort</b><span>1</span><span>12 loose tools. A torque wrench with a broken handle.</span></div>
+            <div class="tr s" data-t="25.3"><b>Set in order</b><span>1</span><span>No labels. No shadow board.</span></div>
+            <div class="tr s" data-t="26.1"><b>Shine</b><span>2</span><span>Chips under the vice.</span></div>
+            <div class="tr s" data-t="26.9"><b>Standardize</b><span>0</span><span>No written changeover standard.</span></div>
+            <div class="tr s" data-t="27.7"><b>Sustain</b><span class="chk">?</span><span><span class="chk">CHECK</span> A photo cannot show who owns this bench. You tell me.</span></div>
           </div>
-          <p class="a big s" data-t="35">5S score: <em class="fix">7 out of 25</em>.</p>
+          <p class="a big s" data-t="28.7">5S so far: <em class="fix">4 out of 20</em>.</p>
 
-          <p class="a s" data-t="37.4">Cut first. Automating a wasteful step just makes the waste faster.</p>
-          <div class="ck dot s" data-t="38.2">
-            <p class="s" data-t="38.4"><i>•</i><span><b>Eliminate:</b> stop the Friday GM summary for two weeks. See who asks.</span></p>
-            <p class="s" data-t="39.6"><i>•</i><span><b>Rearrange:</b> planners read one shared tracker, not WhatsApp.</span></p>
-            <p class="s" data-t="40.8"><i>•</i><span><b>Combine:</b> type each date once, in one place.</span></p>
-            <p class="s" data-t="42"><i>•</i><span><b>Simplify:</b> one saved export layout, one fixed chaser email.</span></p>
+          <p class="a s" data-t="31.1">The biggest waste is waiting: 8 hours a month. So I ask why.</p>
+          <div class="whyl s" data-t="32.2">
+            <p class="s" data-t="32.2"><i>Why?</i><span>QC takes 20 minutes to come.</span></p>
+            <p class="s" data-t="33.4"><i>Why?</i><span>Nobody tells QC in advance.</span></p>
+            <p class="s" data-t="34.6"><i>Why?</i><span>There is no "first article ready" signal.</span></p>
+            <p class="s" data-t="35.8"><i>Why?</i><span>The changeover was never written down as a standard.</span></p>
           </div>
+          <p class="a big s" data-t="37.1">Real cause: <em class="fix">no standard, so no signal.</em></p>
+          <p class="a s" data-t="38.5">Nobody is blamed. A missing signal can be fixed.</p>
 
-          <p class="a s" data-t="46.4">Now the top three to automate:</p>
-          <div class="ck num s" data-t="46.8">
-            <p class="s" data-t="47"><i>1</i>Reading supplier replies into the tracker. 6.9 hours a month today.</p>
-            <p class="s" data-t="48.2"><i>2</i>Drafting the chaser emails. She checks them and clicks Send.</p>
-            <p class="s" data-t="49.4"><i>3</i>The export layout, as a template.</p>
+          <p class="a s" data-t="40.1">Cut first. No tool needed yet.</p>
+          <div class="ck dot s" data-t="40.8">
+            <p class="s" data-t="41"><i>•</i><span>Stage the tools for the next job at the machine while the old job still runs.</span></p>
+            <p class="s" data-t="42.1"><i>•</i><span>A labelled slot for each fixture.</span></p>
+            <p class="s" data-t="43.2"><i>•</i><span>The approved revision goes on the job sheet. Engineering confirms it.</span></p>
+            <p class="s" data-t="44.3"><i>•</i><span>A "first article ready" card on the machine, so QC comes on time.</span></p>
           </div>
-          <p class="a s" data-t="50.8">The phone calls stay human.</p>
-          <p class="tool s" data-t="52"><i></i>Writing the build guide for number 1</p>
-          <p class="a s" data-t="53">Test it on one week of real replies. Time it before and after.</p>
+          <p class="a s" data-t="45.6">The first-article check itself stays. Only the waiting before it is cut.</p>
+          <p class="tool s" data-t="47"><i></i>Writing the one-page changeover standard</p>
+          <p class="a s" data-t="48">Then one thing to automate: a prompt that drafts the kit list from the job sheet.</p>
+
+          <p class="tool s" data-t="50.3"><i></i>Writing your one-page Lean Plan</p>
+          <div class="tbl pl s" data-t="50.6">
+            <div class="tr ttl"><span>Lean Plan · changeover on machine 3</span></div>
+            <div class="tr s" data-t="50.8"><b>Problem</b><span>95 minutes, 12 times a month: 19 hours, about RM 2,280.</span></div>
+            <div class="tr s" data-t="51.7"><b>Waste</b><span>Waiting 8 h · walking and searching 5 h · running again 2 h.</span></div>
+            <div class="tr s" data-t="52.6"><b>Real cause</b><span>No standard, so no signal to QC.</span></div>
+            <div class="tr s" data-t="53.5"><b>What if</b><span>Cut only the QC wait: 75 minutes a changeover, 4 hours back a month. Not a promise.</span></div>
+            <div class="tr s" data-t="54.4"><b>Actions</b><span>Cut first. Then the standard. Then automate.</span></div>
+            <div class="tr s" data-t="55.3"><b>Check</b><span>Time every changeover for two weeks. Score the 5S again in a month.</span></div>
+          </div>
+          <p class="a s" data-t="56.7">Owners and dates are yours to set. I marked them CHECK. Shall I save this to your factory memory?</p>
+          <p class="u s" data-t="58.2">Yes.</p>
+          <p class="tool s" data-t="58.9"><i></i>Saved to your factory memory</p>
+          <p class="a s" data-t="59.6">Next time, I start from what worked on machine 3.</p>
         </div>
       </div>
       <div class="cinput"><span id="typed" class="ph">Reply to Claude…</span><i class="send">↑</i></div>
       <div class="endfull" id="endfull">
-        <p class="endbig"><b>Pick one weekly task.</b>It finds the waste the lean way, tells you what to cut, then what to automate.</p>
-        <a class="btn endbtn" href="https://buy.stripe.com/7sYdRb0PN22Zdkpety0kE0b" data-buy="wastehunt">Get it <span class="px">USD 3.99 once</span></a>
-        <p class="endfine">In a free AI chat it interviews you the same way. In Claude Code it also reads your files and keeps a log.</p>
+        <p class="endbig"><b>Walk one part of your work.</b>It finds the waste, fixes the real cause, and keeps it lean.</p>
+        <a class="btn endbtn" href="https://buy.stripe.com/7sYbJ3563373a8d2KQ0kE0j" data-buy="wastehunt">Get it <span class="px">USD 9.99 once</span></a>
+        <p class="endfine">In a free AI chat it walks you through the same steps. In Claude Code it also reads your files and photos, and remembers your factory.</p>
         <div class="endmore"><a href="index.html#shelf">See all the solutions →</a><button class="again" id="again" type="button">Watch again</button></div>
       </div>
       <button class="bigplay" id="bigplay" type="button" aria-label="Play the demo"><span>▶</span></button>
@@ -249,64 +267,101 @@
     </div>
     <div class="chips" id="chips"></div>
   </section>
+  <p class="agentline">Works as a full AI agent in Claude Code. Works as a step-by-step AI guide in any free chat.</p>
   <div class="buy">
-    <a class="btn" href="https://buy.stripe.com/7sYdRb0PN22Zdkpety0kE0b" data-buy="wastehunt">Get it <span class="px">USD 3.99 once</span></a>
-    <span class="alt">About 30 minutes with one real task in front of you.</span>
+    <a class="btn" href="https://buy.stripe.com/7sYbJ3563373a8d2KQ0kE0j" data-buy="wastehunt">Get it <span class="px">USD 9.99 once</span></a>
+    <span class="alt">About 30 to 45 minutes with one real piece of work in front of you.</span>
   </div>
-  <p><strong>The hard rule:</strong> anything that leaves or commits the company (sending, approving, ordering, pricing, signing) stays a human click. AI drafts, a person decides. Anything that connects to company systems needs IT's OK first.</p>
+  <p class="lead"><strong>Lean, the way it is really done inside a factory.</strong> Lean is not a poster on the wall. It is walking to the machine, timing the changeover, asking "why?" five times, and writing the new way down so it does not slide back.</p>
+  <p><strong>The hard rule:</strong> anything that leaves or commits the company (sending, approving, ordering, pricing, signing) stays your click. Changes near safety need your safety officer's OK. Cutting an inspection or traceability step needs your quality owner's OK.</p>
 
   <p class="morelab">Want the detail? Open any part.</p>
   <details class="q q0">
     <summary><h2>The moment this is for</h2></summary>
     <div class="qa">
-  <p>You know your weekly report, your PO keying or your supplier chasing eats hours. You have heard "use AI". But which part, and how? Most people automate the task exactly as it is, waste included, and get a faster mess.</p>
+  <p>Something eats your hours every week. A changeover that takes forever. A drawing change that sits for days. An order that takes two weeks to ship but only two hours to make. A report you rebuild by hand. You have heard "use AI". But if you automate it as it is, you just get a faster mess.</p>
     </div>
   </details>
   <details class="q q1">
-    <summary><h2>What it does, in order</h2></summary>
+    <summary><h2>Use it anywhere in the factory</h2></summary>
     <div class="qa">
-  <ol>
-    <li><b>Your factory first.</b> A short read of your business nature: commodity volume, high-mix custom, qualified precision, plus "captive" if one or two customers are most of your revenue. This says where waste costs your kind of factory most.</li>
-    <li><b>One real task, step by step.</b> It asks for your written SOP, or notes that there is none, then keeps asking until it knows what really happens: who, which system, what is copied from where to where, how many minutes, how often, who waits, what gets redone. It digs for the hidden steps: searching, chasing, retyping, reformatting, waiting for a signature.</li>
-    <li><b>The waste map.</b> Every step tagged with the office version of the lean 8 wastes (waiting, moving things around, pile-up, searching, extra processing, making what nobody uses, mistakes and rework, wasted talent), with hours per month from your own numbers.</li>
-    <li><b>The 5S check.</b> The files, folders, reports and spreadsheets behind the task, scored on Sort, Set in order, Shine, Standardize and Sustain, out of 25, with one clear action for each S.</li>
-    <li><b>Cut before you automate.</b> Eliminate, combine, rearrange or simplify first. Some hunts save hours with no tool at all.</li>
-    <li><b>What to automate, and how far.</b> Each remaining step gets a level, from "fix the template" to "an AI skill that runs on your files". The top three are ranked by hours, ease and risk.</li>
-    <li><b>A build guide for number one.</b> What to prepare, the exact prompt or build steps, a test on one real case, before-and-after timing, the updated SOP, and a short regular check so it stays lean.</li>
-  </ol>
+  <ul>
+    <li><b>Shop floor.</b> A machine, a cell or a store: changeover time, walking trips, parts waiting, setup scrap.</li>
+    <li><b>Engineering.</b> Drawings, programs and changes: which version is live, how long a change waits, who keeps getting asked.</li>
+    <li><b>Process flow.</b> One real order from enquiry to payment: work time against waiting time, and every hand-over.</li>
+    <li><b>Office.</b> Reports, data entry and chasing: what is copied, retyped and redone.</li>
+  </ul>
     </div>
   </details>
   <details class="q q2">
-    <summary><h2>5S, for office work</h2></summary>
+    <summary><h2>What it does, in order</h2></summary>
     <div class="qa">
-  <p>On the shop floor, 5S keeps a workstation clear. The Hunt applies the same five to the workspace behind your task: the files, folders, reports, spreadsheets and inbox.</p>
-  <ul>
-    <li><b>Sort.</b> What does nobody need? Old file versions, report columns nobody reads, whole reports nobody opens, extra people on copy, "just in case" steps.</li>
-    <li><b>Set in order.</b> One place for everything. Could a colleague covering for you find the current file in 30 seconds: one folder, one naming rule, the latest version obvious?</li>
-    <li><b>Shine.</b> Is the source clean? Duplicates, wrong or missing entries, broken formulas and links, unread pile-ups. Are problems spotted while working, or found later?</li>
-    <li><b>Standardize.</b> Is the agreed way written down, as an SOP, a template, a checklist or a naming rule, so anyone does it the same?</li>
-    <li><b>Sustain.</b> Is there an owner, and a short regular check that stops it sliding back?</li>
-  </ul>
-  <p>Each S gets a score from your own answers and files, a finding and one action. Sort and Set in order feed the cut list. Standardize and Sustain feed the updated SOP. Re-score it a month later to see if it held.</p>
+  <ol>
+    <li><b>Your factory first.</b> A short read of your business nature, so it knows where waste costs your kind of factory most.</li>
+    <li><b>Go and see.</b> It asks what really happens, one step at a time, until every step has a time and a reason. It checks your SOP against what people actually do.</li>
+    <li><b>The waste map.</b> Every step tagged with the lean 8 wastes, with hours per month from your own numbers. For an order, it shows the plain truth: "about 2 hours of real work in 9 days".</li>
+    <li><b>The 5S check, scored out of 25.</b> For a bench, a rack or a folder: Sort, Set in order, Shine, Standardize, Sustain. Send a photo and it scores what it can see.</li>
+    <li><b>The real cause.</b> The 5 Whys on the biggest waste, until it reaches something you can change.</li>
+    <li><b>Cut before you automate.</b> Remove, combine, reorder, simplify. Many hunts save hours with no tool at all.</li>
+    <li><b>The new standard.</b> A one-page standard and a simple visual check, so it stays lean.</li>
+    <li><b>Automate only what is left.</b> Each step gets a level, from "fix the template" to "an AI skill that runs on your files".</li>
+    <li><b>Your one-page Lean Plan.</b> The problem, the waste, the cause, what already worked in your own factory, the target, who does what by when, and the date you check again.</li>
+  </ol>
     </div>
   </details>
   <details class="q q3">
-    <summary><h2>Two ways to run it</h2></summary>
+    <summary><h2>It learns your factory</h2></summary>
     <div class="qa">
-  <div class="two">
-    <div class="way a"><h3>A · No install, any AI chat</h3><p>Open <code>paste-prompt.md</code>, copy the box into a new chat in ChatGPT, Claude or Gemini, free plans included, and answer one question at a time. About 30 minutes.</p></div>
-    <div class="way b"><h3>B · Claude Code skill</h3><p>For people who already use Claude Code (needs Claude Pro, USD 20/month). Move the folder to your skills folder, drop your SOP, a sample report or an export into <code>sop-in/</code>, and say <code>waste hunt</code>. It reads your files, does the sums with a script, saves every hunt, and keeps a log of hours found and hours actually saved. If you want, it then builds number one with you and tests it on your real file.</p></div>
-  </div>
+  <p>Every hunt teaches it more about your own floor. It keeps a <b>factory memory</b>: your numbers, the causes that keep coming back, the fixes you tried, and whether they really worked, measured before and after.</p>
+  <p>So your next Lean Plan starts with "From your own factory": what already worked on your machine 3, ready to copy to machine 5. Proven fixes from your own floor come before any textbook idea. When the same cause shows up hunt after hunt, it tells you plainly: that is a factory-wide problem now.</p>
+  <p>Already have old records? Drop in your 5S audits, downtime logs, scrap logs or improvement sheets, and it learns from day one.</p>
+  <p>It is not secret AI training. It is plain files on your own computer that you can open, edit or delete, and nothing is sent anywhere. It writes roles, not names ("the QC inspector", "Customer A"), and saves nothing without your OK. In a free chat, it hands you a <b>factory memory card</b> at the end to paste in next time.</p>
     </div>
   </details>
   <details class="q q4">
+    <summary><h2>Lessons from inside a real factory</h2></summary>
+    <div class="qa">
+  <p>Every plan can also draw on 16 lessons from improvement work inside a real factory. A few of them:</p>
+  <ul>
+    <li>Lead time is mostly waiting. Measure the wait, not just the work.</li>
+    <li>Split "planned to wait" from "forgotten" before you blame the floor.</li>
+    <li>The material kit is its own wait.</li>
+    <li>Capture output at the machine, with almost no typing.</li>
+    <li>Remove what nobody uses, even if you built it.</li>
+    <li>A problem needs an owner before it needs a system.</li>
+  </ul>
+  <p>They are patterns, with no company names and no figures. It uses one only when it fits what you found, and it never presents a lesson as your own result.</p>
+    </div>
+  </details>
+  <details class="q q0">
+    <summary><h2>It 5S's your Claude Code too</h2></summary>
+    <div class="qa">
+  <p>Over time Claude Code gets messy like any workbench: skills you never use, a CLAUDE.md that keeps growing, memory notes that are out of date, two tools doing the same job.</p>
+  <p>Say <code>5S my Claude Code</code>. It scans your setup, read-only, and scores the 5S. Then it shows you a plan. Only after your yes does it tidy up: unused skills go to an archive folder, broken headers get fixed, CLAUDE.md is trimmed.</p>
+  <p><b>It never deletes anything.</b> It keeps an undo list, and it never touches your keys, passwords, permissions or anything IT manages.</p>
+    </div>
+  </details>
+  <details class="q q1">
+    <summary><h2>Two ways to run it</h2></summary>
+    <div class="qa">
+  <div class="two">
+    <div class="way a"><h3>A · No install, any AI chat</h3><p>Open <code>paste-prompt.md</code>, copy the box into a new chat, free plans included, and answer one question at a time. About 30 to 45 minutes. At the end it hands you a factory memory card to paste in next time.</p></div>
+    <div class="way b"><h3>B · Claude Code skill</h3><p>For people who already use Claude Code (needs Claude Pro, USD 20/month). Move the folder to your skills folder, drop your SOP, an export or photos into <code>sop-in/</code>, and say <code>lean machine</code>. It reads your real files and photos, does the sums with a script, builds the fix with you and tests it on your real file, remembers your factory between hunts, and keeps a log of hours found, hours actually saved and your 5S score before and after.</p></div>
+  </div>
+    </div>
+  </details>
+  <details class="q q2">
     <summary><h2>What's inside the download</h2></summary>
     <div class="qa">
   <ul>
     <li><code>paste-prompt.md</code>: the no-install version.</li>
     <li><code>SKILL.md</code>: the Claude Code skill.</li>
-    <li><code>tis-resources.md</code>: the free and paid TIS pages it may point you to, only when one fits a finding in your waste map.</li>
-    <li><code>examples/</code>: a worked hunt on an invented company, labelled EXAMPLE.</li>
+    <li><code>references/insider-lessons.md</code>: 16 lessons from inside a real factory, with no names and no figures. Worth reading on its own.</li>
+    <li><code>references/lean-by-area.md</code>: walk questions, waste examples and 5S for the shop floor, engineering, process flow and the office, plus the 5 Whys and the one-page Lean Plan.</li>
+    <li><code>references/claude-code-5s.md</code>: the 5S routine for your Claude Code setup.</li>
+    <li><code>scripts/claude_5s_scan.py</code>: the read-only scan of your Claude Code setup. Plain Python, nothing to install.</li>
+    <li><code>tis-resources.md</code>: the free and paid TIS pages it may point you to, only when one fits a finding.</li>
+    <li><code>examples/</code>: three worked examples on invented factories, labelled EXAMPLE: an office supplier follow-up, a shop-floor changeover, and a Claude Code 5S.</li>
   </ul>
     </div>
   </details>
@@ -314,15 +369,16 @@
   <div class="honest">
     <h3>The honest limits</h3>
     <ul>
-      <li>It uses only your numbers. Hours saved and the 5S score come from your answers until you time the before and after.</li>
-      <li>It is a structured AI interview built on lean methods, not a specially trained model. It runs inside the AI chat you already use.</li>
-      <li>It finds waste in office workflows: reports, data entry, chasing, approvals, documents. It is not a shop-floor time study.</li>
-      <li>Follow your company's rules on putting work information into AI tools. Placeholders like "Customer A" work just as well.</li>
+      <li>It uses only your numbers. Hours are estimates from your answers until you time the before and after.</li>
+      <li>The AI cannot see your floor. You walk it and answer, or send photos. It does not replace a proper time study.</li>
+      <li>It is a structured AI guide built on lean methods, not a specially trained model. It runs inside the AI tool you already use.</li>
+      <li>Changes to safety (guards, lifting, chemicals, electrical, layout) need your safety officer's OK. Cutting inspection or traceability steps needs your quality owner's OK.</li>
+      <li>Follow your company's rules on putting work information and photos into AI tools. Placeholders like "Customer A" or "machine 3" work just as well.</li>
     </ul>
   </div>
   <div class="pricebox" id="price">
-    <div><b>USD 3.99</b><small>once · yours to keep · every update free</small></div>
-    <a class="btn" href="https://buy.stripe.com/7sYdRb0PN22Zdkpety0kE0b" data-buy="wastehunt">Get it →</a>
+    <div><b>USD 9.99</b><small>once · yours to keep · every update free</small></div>
+    <a class="btn" href="https://buy.stripe.com/7sYbJ3563373a8d2KQ0kE0j" data-buy="wastehunt">Get it →</a>
   </div>
   <p class="fine">No refund guarantee: it is a download you keep, so read the honest limits above first. After payment you land on your download page; bookmark it. Stuck? Reply to your receipt and a human answers, usually within a day. <a href="index.html#shelf">Back to the solutions →</a></p>
 </main>
@@ -334,8 +390,8 @@
 </footer>
 <script>
 (function(){
-  var CH = [{"n": "You pick one weekly task", "d": 9.5, "c": [[0, "You pick one task you redo every week."], [3, "It asks one question at a time."], [6.2, "It wants what really happens, not what the paper says."]]}, {"n": "It checks the SOP against real life", "d": 8.5, "c": [[0, "It compares the written SOP with real life."], [4.9, "The hidden steps are where the hours go."]]}, {"n": "It maps the waste", "d": 11.5, "c": [[0, "Every step gets its hours and its waste."], [7.3, "It adds them up with a script, from your own numbers."], [9.2, "It tells you plainly: this is today, not a promise."]]}, {"n": "The 5S check", "d": 7.5, "c": [[0, "Then a 5S check on the files behind the task."], [5.5, "One score now. Score it again next month."]]}, {"n": "Cut before you automate", "d": 9, "c": [[0, "Cut before you automate."], [4.6, "Some hunts save hours with no tool at all."]]}, {"n": "Then what to automate", "d": 9, "c": [[0, "Then it ranks what to automate."], [4.4, "It says what should stay human."], [5.6, "You get a build guide, and a test on a real week."]]}, {"n": "Your turn", "d": 4, "end": true, "c": [[0, "Anything that leaves the company stays your click."]]}];
-  var TYPE = [[0.3, 2.4, "My weekly supplier follow-up. It eats my week."], [4.2, 5.4, "Yes, from 2019."]];
+  var CH = [{"n": "You pick one thing. It goes to see", "d": 10, "c": [[0, "You pick one thing that eats your hours."], [3.3, "It goes to see. One question at a time."], [7.4, "It wants what really happens at the machine."]]}, {"n": "It maps the waste", "d": 12, "c": [[0, "Every step gets its hours and its waste."], [6.8, "It adds them up with a script, never by eye."], [8.9, "An estimate from your own numbers. Not a promise."]]}, {"n": "5S, from a photo", "d": 8.8, "c": [[0, "Send a photo. It scores what it can see."], [5.7, "What it cannot see, it asks. It never guesses."]]}, {"n": "The real cause", "d": 9, "c": [[0, "It takes the biggest waste and asks why."], [6.3, "It stops at something a person can change."], [7.7, "It never stops at \"someone was careless\"."]]}, {"n": "Cut first. Then the new standard", "d": 10.2, "c": [[0, "Cut before you automate."], [5.8, "The quality check stays. Its owner says yes to any change near it."], [7.2, "Then it writes the new way down, so it stays lean."]]}, {"n": "Your one-page Lean Plan", "d": 11.2, "c": [[0, "Everything lands on one page."], [6.7, "Owners and dates stay yours."], [8.9, "It saves only with your OK. The next plan starts from your own factory."]]}, {"n": "Your turn", "d": 4, "end": true, "c": [[0, "Anything that leaves or commits the company stays your click."]]}];
+  var TYPE = [[0.3, 2.5, "lean machine. The changeover on machine 3 takes forever."], [5.4, 6.6, "95 minutes. About 12 times a month."], [22.2, 23.2, "Here is a photo of the bench."], [57.6, 58.1, "Yes."]];
   var $ = function(id){ return document.getElementById(id); };
   var stage = $('stage'); if (!stage) return;
   var starts = [], TOTAL = 0; CH.forEach(function(c){ starts.push(TOTAL); TOTAL += c.d; });
@@ -344,6 +400,7 @@
     var o = { e:e, t:+e.getAttribute('data-t'), on:false };
     if (e.hasAttribute('data-count')) { o.count = +e.getAttribute('data-count'); o.d = +e.getAttribute('data-d'); o.val = -1; o.isCount = true; o.dec = +(e.getAttribute('data-dec') || 0); o.pre = e.hasAttribute('data-pre') ? e.getAttribute('data-pre') : 'RM '; o.suf = e.getAttribute('data-suf') || ''; }
     return o; });
+  var hls = [].slice.call(col.querySelectorAll('[data-hl]')).map(function(e){ return { e:e, t:+e.getAttribute('data-hl'), on:false }; });
   var chips = $('chips'), chipEls = [];
   CH.forEach(function(c, k){ if (c.end) return; var b = document.createElement('button'); b.type = 'button'; b.textContent = k + 1; var sp = document.createElement('span'); sp.textContent = ' · ' + c.n; b.appendChild(sp); b.setAttribute('aria-label', 'Part ' + (k + 1) + ': ' + c.n); b.addEventListener('click', function(){ T = starts[k] + .001; ended = false; userPaused = false; render(); if (!playing) play(); }); chips.appendChild(b); chipEls.push(b); });
 
@@ -363,6 +420,7 @@
       if (o.isCount) { var f = on ? Math.min(1, (T - o.t) / o.d) : 0, k = Math.pow(10, o.dec), val = Math.round(o.count * f * k) / k; if (val !== o.val) { o.e.textContent = o.pre + val.toLocaleString('en-US', { minimumFractionDigits:o.dec, maximumFractionDigits:o.dec }) + o.suf; o.val = val; } }
     });
     var fin = T >= END_T; if (fin !== finOn) { endEl.classList.toggle('in', fin); finOn = fin; }
+    hls.forEach(function(o){ var on = T >= o.t; if (on !== o.on) { o.e.classList.toggle('hl', on); o.on = on; } });
     /* the text box */
     var txt = null; TYPE.forEach(function(x){ if (T >= x[0] && T < x[1] + .08) txt = x[2].slice(0, Math.ceil(Math.min(1, (T - x[0]) / (x[1] - x[0])) * x[2].length)); });
     if (txt !== lastTyped) { lastTyped = txt; typed.textContent = txt == null ? 'Reply to Claude…' : txt; typed.className = txt == null ? 'ph' : 'live'; inputBar.classList.toggle('has', txt != null); }
