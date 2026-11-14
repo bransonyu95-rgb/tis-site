@@ -797,7 +797,8 @@
   }
   var planText = '';
   function showPlan(k){
-    var chk = plusDays(7), dl = $('plandl'); dl.textContent = '';
+    var n = 7; while (new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + n).getDay() !== 1) n++;
+    var chk = plusDays(n), dl = $('plandl'); dl.textContent = '';
     var rows = [['The waste', null], ['Go and see', MON[k]], ['Ask why', ASK[k]], ['Cut first', CUT[k]], ['Check again', niceDate(chk) + '. Did the number move?']];
     rows.forEach(function(r){ dl.appendChild(el('dt', '', r[0])); var dd = el('dd', '', r[1]); if (r[1] === null) { dd.textContent = ''; dd.appendChild(el('b', '', W[k].p)); dd.appendChild(document.createTextNode(' (lean name: ' + W[k].n + ')')); } dl.appendChild(dd); });
     planText = 'My small Lean Plan\nThe waste: ' + W[k].p + ' (' + W[k].n + ')\nGo and see: ' + MON[k] + '\nAsk why: ' + ASK[k] + '\nCut first: ' + CUT[k] + '\nCheck again: ' + niceDate(chk) + '. Did the number move?';
@@ -830,8 +831,8 @@
       if (p && !p.ans && today() > p.d) {
         txt += ' Your plan was about ' + W[p.k].p + '. Did the Monday step work?';
         [['It worked', 'y'], ['Not yet', 'n']].forEach(function(o){ var x = el('button', '', o[0]); x.type = 'button'; x.addEventListener('click', function(){
-          p.ans = o[1]; if (o[1] === 'y') mem.wins = (mem.wins || 0) + 1; save(); bq.textContent = '';
-          bt.textContent = o[1] === 'y' ? 'Good. Now write the new way down, so it does not slide back. Then hunt the next one.' + wins() : 'No rush. Try one small step this week. If you tried and the number did not move, ask why one more time.';
+          if (o[1] === 'y') { p.ans = 'y'; mem.wins = (mem.wins || 0) + 1; } else p.d = today(); save(); bq.textContent = '';
+          bt.textContent = o[1] === 'y' ? 'Good. Now write the new way down, so it does not slide back. Then hunt the next one.' + wins() : 'No rush. Try one small step this week. If you tried and the number did not move, ask why one more time. I will ask again next time.';
           if (o[1] === 'y') { sfx.win(); confetti(40); } else tone(520, 0, .12);
         }); bq.appendChild(x); });
       } else if (p && !p.ans) txt += ' Your plan is about ' + W[p.k].p + '. Try the Monday step, and I will ask how it went.' + wins();
