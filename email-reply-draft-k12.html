@@ -357,7 +357,7 @@
   var view = $('view'), col = $('col'), typed = $('typed'), inputBar = typed.parentNode;
   var steps = [].slice.call(col.querySelectorAll('[data-t]')).map(function(e){
     var o = { e:e, t:+e.getAttribute('data-t'), on:false };
-    if (e.hasAttribute('data-count')) { o.count = +e.getAttribute('data-count'); o.d = +e.getAttribute('data-d'); o.val = -1; o.isCount = true; }
+    if (e.hasAttribute('data-count')) { o.count = +e.getAttribute('data-count'); o.d = +e.getAttribute('data-d'); o.val = -1; o.isCount = true; o.dec = +(e.getAttribute('data-dec') || 0); o.pre = e.hasAttribute('data-pre') ? e.getAttribute('data-pre') : 'RM '; o.suf = e.getAttribute('data-suf') || ''; }
     return o; });
   var chips = $('chips'), chipEls = [];
   CH.forEach(function(c, k){ if (c.end) return; var b = document.createElement('button'); b.type = 'button'; b.textContent = k + 1; var sp = document.createElement('span'); sp.textContent = ' · ' + c.n; b.appendChild(sp); b.setAttribute('aria-label', 'Part ' + (k + 1) + ': ' + c.n); b.addEventListener('click', function(){ T = starts[k] + .001; ended = false; userPaused = false; render(); if (!playing) play(); }); chips.appendChild(b); chipEls.push(b); });
@@ -375,7 +375,7 @@
     steps.forEach(function(o){
       var on = T >= o.t;
       if (!o.isCount && on !== o.on) { o.e.classList.toggle('in', on); o.on = on; changed = true; }
-      if (o.isCount) { var f = on ? Math.min(1, (T - o.t) / o.d) : 0, val = Math.round(o.count * f); if (val !== o.val) { o.e.textContent = 'RM ' + val.toLocaleString('en-US'); o.val = val; } }
+      if (o.isCount) { var f = on ? Math.min(1, (T - o.t) / o.d) : 0, k = Math.pow(10, o.dec), val = Math.round(o.count * f * k) / k; if (val !== o.val) { o.e.textContent = o.pre + val.toLocaleString('en-US', { minimumFractionDigits:o.dec, maximumFractionDigits:o.dec }) + o.suf; o.val = val; } }
     });
     var fin = T >= END_T; if (fin !== finOn) { endEl.classList.toggle('in', fin); finOn = fin; }
     /* the text box */
