@@ -589,7 +589,7 @@
     if (best) L.push(["You were fastest on " + W[best].p + ". That is the waste you already notice at work."]);
     if (worst) L.push([W[worst].p + " hid from you. " + WHY[worst]]);
     else L.push(["Nothing hid from you today. Here is the hard part: seeing it at your own work, where it looks normal."]);
-    if (n) L.push(["You also tapped " + (n === 1 ? "one thing that was" : n + " things that were") + " real work. One was: \"" + run.wrong[n - 1][2].replace(/^"|"$/g, '') + "\" Careful there. Cutting real work is waste too."]);
+    if (n) L.push(["You also tapped " + (n === 1 ? "something that was" : n + " things that were") + " not waste" + (n === 1 ? ": \"" : ". One was: \"") + run.wrong[n - 1][2].replace(/^"|"$/g, '') + "\" Careful there. Cutting the wrong thing is waste too."]);
     if (t) L.push(["Your Insider type is " + t.n + ". " + t.why + (worst && worst === t.hide ? " Today the game agreed." : "")]);
     var step = worst || (t && t.hide) || best || 'W';
     L.push([MON[step]]);
