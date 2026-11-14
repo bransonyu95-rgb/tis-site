@@ -131,9 +131,22 @@
     .duo small { font-family:'Patrick Hand',cursive; font-size:1.05rem; color:#444; display:block; }
     .duo b { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.35rem; line-height:1.15; display:block; margin:2px 0 4px; }
     .duo p { font-size:.95rem; line-height:1.4; }
-    .typebox { border:3px solid var(--ink); border-left:12px solid var(--blue); border-radius:var(--wob); padding:16px 20px; margin:20px 0; background:#eff6ff; }
-    .typebox h3, .nextbox h3, .toolbox h3 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.3rem; line-height:1.15; margin-bottom:6px; }
-    .typebox p, .nextbox p, .toolbox p { font-size:1rem; margin-bottom:8px; max-width:64ch; }
+    .talk { border:3px solid var(--ink); border-radius:18px; padding:18px 20px 16px; margin:20px 0; background:#eff6ff; box-shadow:8px 8px 0 var(--ink); }
+    .chat { display:grid; gap:10px; margin:6px 0 4px; }
+    .msg { display:grid; grid-template-columns:38px minmax(0,1fr); gap:9px; align-items:end; max-width:620px; animation:msgin .3s cubic-bezier(.2,.9,.3,1.5) 1; }
+    .msg img { width:38px; height:38px; border-radius:50%; border:2.5px solid var(--ink); display:block; }
+    .msg p { background:#fff; border:2.5px solid var(--ink); border-radius:16px 16px 16px 4px; padding:9px 13px 10px; font-size:1rem; line-height:1.45; margin:0; max-width:none; }
+    .msg p a { color:var(--blue); font-weight:700; white-space:nowrap; }
+    .msg.me { grid-template-columns:minmax(0,1fr); justify-self:end; } .msg.me p { background:var(--pink); border-radius:16px 16px 4px 16px; font-family:'Patrick Hand',cursive; font-size:1.2rem; padding:5px 16px 6px; }
+    .msg.typing p { display:inline-flex; gap:5px; align-items:center; width:62px; padding:13px 13px; }
+    .msg.typing p i { width:8px; height:8px; border-radius:50%; background:#111; animation:dot 1s ease-in-out infinite; } .msg.typing p i:nth-child(2) { animation-delay:.15s; } .msg.typing p i:nth-child(3) { animation-delay:.3s; }
+    @keyframes dot { 0%,100% { opacity:.25; transform:translateY(0); } 40% { opacity:1; transform:translateY(-4px); } }
+    @keyframes msgin { from { opacity:0; transform:translateY(10px) scale(.96); } to { opacity:1; transform:none; } }
+    .pick { display:grid; grid-template-columns:repeat(4,1fr); gap:9px; margin:12px 0 2px; }
+    .pick button { cursor:pointer; font-family:'Patrick Hand',cursive; font-size:1.08rem; line-height:1.15; color:var(--ink); background:var(--c,#fff); border:2.5px solid var(--ink); border-radius:14px; padding:9px 6px; box-shadow:3px 3px 0 var(--ink); transition:transform .15s cubic-bezier(.2,.9,.3,1.6), box-shadow .15s ease; }
+    .pick button:hover { transform:translate(-2px,-3px) rotate(-1deg); box-shadow:6px 7px 0 var(--ink); } .pick button:active { transform:translate(2px,2px); box-shadow:1px 1px 0 var(--ink); }
+    .talk h3, .nextbox h3, .toolbox h3 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.3rem; line-height:1.15; margin-bottom:6px; }
+    .nextbox p, .toolbox p { font-size:1rem; margin-bottom:8px; max-width:64ch; }
     .nextbox { border:3px dashed var(--ink); border-radius:18px; padding:16px 20px; margin:20px 0; background:#fafaf9; }
     .toolbox { border:3px solid var(--ink); border-radius:18px; padding:18px 22px; margin:20px 0; background:#fff; box-shadow:8px 8px 0 var(--ink); }
     .copied { font-family:'Patrick Hand',cursive; font-size:1.1rem; color:#047857; }
@@ -152,9 +165,10 @@
       .hud .dots i { width:11px; height:11px; margin-right:3px; border-width:2px; } .hud .hearts { font-size:1.05rem; letter-spacing:1px; }
       .hud .mini { font-size:.92rem; padding:0 9px; } .host { margin-top:6px; } .say { min-height:52px; }
       .hello { align-items:start; }
+      .pick { grid-template-columns:repeat(2,1fr); } .talk { padding:15px 13px 13px; box-shadow:5px 5px 0 var(--ink); } .msg p { font-size:.95rem; }
       .duo { grid-template-columns:1fr; } .panel { padding:18px 16px 16px; box-shadow:5px 5px 0 var(--ink); } .stars { font-size:2.6rem; }
     }
-    @media (prefers-reduced-motion: reduce) { .screen.on, .stp.new, .it .stampx, .it.no, .stars u, .host.bump img { animation:none; } .cf, .plus { display:none; } .btn, .it, .tile { transition:none; } }
+    @media (prefers-reduced-motion: reduce) { .screen.on, .stp.new, .it .stampx, .it.no, .stars u, .host.bump img, .msg { animation:none; } .cf, .plus { display:none; } .btn, .it, .tile { transition:none; } }
   </style>
   <link rel="icon" type="image/png" href="assets/favicon.png?v=3d2">
 </head>
@@ -259,7 +273,12 @@
       </div>
     </div>
 
-    <div class="typebox" id="typebox"></div>
+    <div class="talk">
+      <h3>Ah Hock's read on your hunt</h3>
+      <div class="chat" id="chat" aria-live="polite"></div>
+      <div class="pick" id="pick"></div>
+      <p class="fine" style="margin-top:10px">This comes from how you played just now. It is a game, not a test.</p>
+    </div>
 
     <div class="card8">
       <div class="ttl"><b>Your stamp card</b><span id="cardnote3"></span></div>
@@ -299,6 +318,26 @@
     S: { n:'Unused talent',   p:'Wasted talent',           c:'#93c5fd', clue:'Look for a skilled person on a simple job.' }
   };
   var ORDER = ['W','T','I','M','X','O','D','S'];
+  var WHY = {
+    W:"It hides because nobody is doing anything wrong. The work just sits, and sitting makes no noise.",
+    T:"It hides because everyone feels helpful. Each forward looks like work.",
+    I:"It hides because a pile looks like a lot of work. Really it is work that has stopped.",
+    M:"It hides because it feels like working. You are busy, but nothing is getting made.",
+    X:"It hides because it looks like good work. Nobody complains about extra care.",
+    O:"It hides because it looks productive. The thing got made. Nobody asked if anyone wanted it.",
+    D:"It hides because fixing feels like work, and the fixer looks like a hero.",
+    S:"It hides because the person is busy. Busy looks fine from far away."
+  };
+  var MON = {
+    W:"On Monday, pick one thing that is waiting for someone. Write down the day it started waiting. That number is your waste.",
+    T:"On Monday, take one job and count the hands it passes through. Ask which hands changed anything.",
+    I:"On Monday, count one pile: unread emails, open quotes or half-done parts. Write the number down. Count it again on Friday.",
+    M:"On Monday, time how long it takes to find one file from last month. More than half a minute means that folder needs 5S.",
+    X:"On Monday, pick one report or form. Ask the person who gets it which parts they really use.",
+    O:"On Monday, pick one thing you make every week. Ask who used the last one.",
+    D:"On Monday, write down one thing you had to do twice. Then write where the mistake first got in.",
+    S:"On Monday, list what your most skilled person did in one hour. Circle the part only they could do."
+  };
 
   /* ---------- the scenes: [look, label, text, waste code or '', what Ah Hock says] ---------- */
   var SCENES = [
@@ -432,7 +471,7 @@
 
   /* ---------- one run through the open scenes ---------- */
   var run, cur, tick;
-  function startRun(from){ run = { idx:from, scenes:[], kind:{}, pts:0 }; mem.plays = (mem.plays || 0) + 1; save(); playScene(); }
+  function startRun(from){ run = { idx:from, scenes:[], kind:{}, pts:0, wrong:[] }; mem.plays = (mem.plays || 0) + 1; save(); playScene(); }
   function shuffle(a){ a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
   function drawHud(){
     var d = $('dots'); d.textContent = ''; for (var i = 0; i < cur.total; i++) d.appendChild(el('i', i < cur.found ? 'f' : ''));
@@ -467,7 +506,7 @@
       drawHud(); if (cur.found === cur.total) { cur.over = true; setTimeout(endScene, 1500); }
     } else {
       b.disabled = true; b.classList.add('no'); setTimeout(function(){ b.classList.remove('no'); b.classList.add('ok'); }, 420);
-      cur.hearts--; cur.miss++; cur.combo = 0; sfx.miss();
+      cur.hearts--; cur.miss++; cur.combo = 0; run.wrong.push(it); sfx.miss();
       speak('Not that one.', it[4], 'bad', 'shocked'); drawHud();
       if (cur.hearts <= 0) { cur.over = true; setTimeout(function(){
         Array.prototype.forEach.call($('board').children, function(n){ var c = n.__it[3]; if (c && !n.disabled) { n.disabled = true; n.classList.add('hit', 'rev'); stamp(n, c, true); cur.lost.push(n.__it); (run.kind[c] = run.kind[c] || { t:[], lost:0 }).lost++; } });
@@ -518,18 +557,7 @@
     $('hid').textContent = worst ? W[worst].p : 'Nothing hid today'; $('hidp').textContent = worst ? 'Lean name: ' + W[worst].n + '. ' + (run.kind[worst].lost ? 'It got past you today. ' : 'It took you the longest. ') + W[worst].clue : 'Every waste you met, you caught fast.';
     resultText = 'I caught ' + found + ' of ' + total + ' wastes in Ah Hock\'s day. Rank: ' + rank + '.' + (best ? ' Sharpest eye: ' + W[best].p + '.' : '') + (worst ? ' The one that hid from me: ' + W[worst].p + '.' : '') + ' Try it: https://theindustrialscribe.com/spot-the-waste.html';
 
-    var tb = $('typebox'); tb.textContent = ''; var t = TYPES[myType];
-    if (t) {
-      tb.appendChild(el('h3', '', 'You are ' + t.n + '. Here is what that says.'));
-      tb.appendChild(el('p', '', 'Built to catch: ' + W[t.good].p + '. Likely to hide from you: ' + W[t.hide].p + '. ' + t.why));
-      tb.appendChild(el('p', '', worst ? (worst === t.hide ? 'Today the game agreed with your type. Now you know where to look on Monday.' : 'Today the game said ' + W[worst].p + ' instead. Two places to look on Monday.') : 'Today nothing hid from you. Look for ' + W[t.hide].p + ' at your own desk on Monday.'));
-      tb.appendChild(el('p', 'fine', 'A guess from your Insider type. For fun, not science.'));
-    } else {
-      tb.appendChild(el('h3', '', 'Which waste hides from people like you?'));
-      tb.appendChild(el('p', '', 'How you work decides what you walk past. Take the Insider Test, come back, and this box will tell you which waste your type catches and which one hides from it.'));
-      var a = el('a', 'btn two', 'Which Insider are you? →'); a.href = 'insider-test.html'; tb.appendChild(a);
-      tb.appendChild(el('p', 'fine', 'Free. About 7 minutes. It asks for your email partway through.'));
-    }
+    startTalk(ratio, best, worst);
 
     var got = drawCard('stamps3', 'cardnote3', null);
     var nb = $('nextbox'); nb.textContent = ''; var locked = SCENES.filter(function(s){ return !isOpen(s); });
@@ -537,6 +565,51 @@
     else { nb.appendChild(el('h3', '', 'You have played every scene so far.')); nb.appendChild(el('p', '', got < 8 ? 'You have ' + got + ' of 8 stamps. Go back and catch the rest.' : 'Your card is full. Try for three stars on every scene.')); }
     show('s-final'); sfx.win(); confetti(60);
   }
+  /* ---------- Ah Hock talks it through, then asks one question back ---------- */
+  var talkT = [];
+  function bubble(txt, me, link){
+    var m = el('div', 'msg' + (me ? ' me' : '')); if (!me) { var i = el('img'); i.src = 'assets/ah-hock-mark.jpg'; i.alt = ''; i.width = 38; i.height = 38; m.appendChild(i); }
+    var p = el('p', '', txt); if (link) { p.appendChild(document.createTextNode(' ')); var a = el('a', '', link[0]); a.href = link[1]; p.appendChild(a); } m.appendChild(p); return m;
+  }
+  function talk(list, done){
+    var box = $('chat'), i = 0;
+    (function next(){
+      if (i >= list.length) { if (done) done(); return; }
+      var item = list[i++];
+      if (reduced) { box.appendChild(bubble(item[0], false, item[1])); next(); return; }
+      var ty = el('div', 'msg typing'), im = el('img'); im.src = 'assets/ah-hock-mark.jpg'; im.alt = ''; im.width = 38; im.height = 38; ty.appendChild(im);
+      var tp = el('p'); tp.appendChild(el('i')); tp.appendChild(el('i')); tp.appendChild(el('i')); ty.appendChild(tp); box.appendChild(ty);
+      talkT.push(setTimeout(function(){ ty.remove(); box.appendChild(bubble(item[0], false, item[1])); tone(720, 0, .05, 'sine', .05); talkT.push(setTimeout(next, 380)); }, 600 + Math.min(900, item[0].length * 7)));
+    })();
+  }
+  function startTalk(ratio, best, worst){
+    talkT.forEach(clearTimeout); talkT = []; $('chat').textContent = ''; $('pick').textContent = '';
+    var t = TYPES[myType], L = [], n = run.wrong.length;
+    L.push([ratio >= .9 ? "You have the eye. Most people walk past these every day." : ratio >= .6 ? "Good hunt. You see more than most people do." : ratio >= .3 ? "Not bad. You are starting to see it." : "First hunts are hard. The eye comes with practice."]);
+    if (best) L.push(["You were fastest on " + W[best].p + ". That is the waste you already notice at work."]);
+    if (worst) L.push([W[worst].p + " hid from you. " + WHY[worst]]);
+    else L.push(["Nothing hid from you today. Here is the hard part: seeing it at your own work, where it looks normal."]);
+    if (n) L.push(["You also tapped " + (n === 1 ? "one thing that was" : n + " things that were") + " real work. One was: \"" + run.wrong[n - 1][2].replace(/^"|"$/g, '') + "\" Careful there. Cutting real work is waste too."]);
+    if (t) L.push(["Your Insider type is " + t.n + ". " + t.why + (worst && worst === t.hide ? " Today the game agreed." : "")]);
+    var step = worst || (t && t.hide) || best || 'W';
+    L.push([MON[step]]);
+    L.push(["Now you tell me. Which one do you see most at your own work?"]);
+    talk(L, function(){
+      var pk = $('pick');
+      ORDER.forEach(function(k){ var b = el('button', '', W[k].p); b.type = 'button'; b.style.setProperty('--c', W[k].c); b.addEventListener('click', function(){ answer(k, worst, step, t); }); pk.appendChild(b); });
+    });
+  }
+  function answer(k, worst, step, t){
+    $('pick').textContent = ''; $('chat').appendChild(bubble(W[k].p, true)); tone(880, 0, .08);
+    mem.pick = k; save();
+    var R = [];
+    R.push([k === worst ? "The same one that hid from you in the game. That is not luck. " + WHY[k] : "Then start there. " + WHY[k]]);
+    R.push([k === step ? "So the Monday step I gave you is the one. Do it before anything else." : MON[k]]);
+    R.push(["Want help doing that on one real task, step by step? That is what The Waste Hunt is for.", ['See The Waste Hunt →', 'waste-hunt.html']]);
+    if (!t) R.push(["One more thing. How you work decides what you walk past. Find your type, come back, and I will tell you which waste hides from it.", ['Which Insider are you? →', 'insider-test.html']]);
+    talk(R);
+  }
+
   $('copy').addEventListener('click', function(){
     var done = function(){ $('copied').textContent = 'Copied. Paste it to a colleague.'; };
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(resultText).then(done, function(){ $('copied').textContent = resultText; });
@@ -550,7 +623,7 @@
     var got = drawCard('stamps', 'cardnote', null); drawTiles();
     var starSum = 0; for (var k in mem.best) starSum += mem.best[k];
     var b = $('back');
-    if (mem.plays > 0) { var t = TYPES[myType]; b.textContent = 'Welcome back' + (t ? ', ' + t.n.replace('The ', '') : '') + '! ' + got + ' of 8 stamps and ' + starSum + ' stars so far.' + (got < 8 ? ' ' + (8 - got) + ' still hiding.' : ''); b.classList.add('on'); $('go').textContent = 'Hunt again →'; }
+    if (mem.plays > 0) { var t = TYPES[myType]; b.textContent = 'Welcome back' + (t ? ', ' + t.n.replace('The ', '') : '') + '! ' + got + ' of 8 stamps and ' + starSum + ' stars so far.' + (got < 8 ? ' ' + (8 - got) + ' still hiding.' : '') + (mem.pick && W[mem.pick] ? ' Last time you said ' + W[mem.pick].p + ' is your biggest one. Did you try the Monday step?' : ''); b.classList.add('on'); $('go').textContent = 'Hunt again →'; }
     show('s-intro');
   }
   $('go').addEventListener('click', function(){ var first = 0; for (var i = 0; i < SCENES.length; i++) if (isOpen(SCENES[i]) && (mem.best[SCENES[i].id] || 0) < 3) { first = i; break; } startRun(first); });
