@@ -111,6 +111,9 @@
     .study .lab { font-family:'Permanent Marker',cursive; font-size:.9rem; background:var(--yellow); border-radius:6px; padding:1px 8px; align-self:flex-start; }
     .study h3 { margin:10px 0 6px; font-size:1.45rem; line-height:1.15; }
     .study .sub { font-size:1rem; color:#333; }
+    .forwho, .box.cs .forwho { font-family:'Patrick Hand',cursive; font-size:1.22rem; line-height:1.25; color:var(--ink); margin:0 0 6px; }
+    .forwho span { background:linear-gradient(transparent 58%, var(--yellow) 58%); }
+    .study .why { font-size:1rem; margin:0 0 8px; } .study { scroll-margin-top:90px; }
     .study h4 { font-family:'Patrick Hand',cursive; font-weight:400; font-size:1.2rem; margin:8px 0 2px; color:var(--blue); }
     .study ul { list-style:none; margin:0 0 8px; } .study li { padding-left:22px; position:relative; margin:4px 0; font-size:.96rem; }
     .study li::before { content:''; position:absolute; left:2px; top:.55em; width:10px; height:5px; border-left:3px solid var(--mint); border-bottom:3px solid var(--mint); transform:rotate(-45deg); }
@@ -399,15 +402,15 @@
 
       <div class="studies" id="studies">
         <h3 class="sh">Real case studies, USD 18.99 each.</h3>
-        <p>Two PDFs from one factory office. Each one tells the problem, how it was fixed, the real numbers, and what was never measured. <a href="#cases">What's inside each one ↓</a></p>
+        <p>The tool does the job. This is the story behind it: what went wrong in a real factory, what we changed, and the real numbers. Two PDFs from one factory office, and each one says what was never measured. <a href="#cases">What's inside each one ↓</a></p>
         <div class="box cs" data-rv>
           <img src="assets/cover-cs-casedesk-s.jpg" alt="Cover of How I Stopped Losing Promises in Email Threads" width="720" height="556" loading="lazy">
-          <div><h3>How I Stopped Losing Promises in Email Threads</h3><p>I kept losing what I promised in emails. This is how I fixed it. 28 pages, with real numbers from one person over seven weeks.</p></div>
+          <div><h3>How I Stopped Losing Promises in Email Threads</h3><p class="forwho"><span>For the boss who needs proof, or the person who wants to build their own.</span></p><p>I kept losing what I promised in emails. This is how I fixed it. 28 pages, with real numbers from one person over seven weeks.</p></div>
           <div class="price"><b>USD 18.99</b><small>once · PDF</small><a class="btn" href="https://buy.stripe.com/bJe14p2XVePL4NTfxC0kE0i" data-buy="casedesk">Get it</a></div>
         </div>
         <div class="box cs" data-rv style="--d:80ms">
           <img src="assets/cover-cs-sowhat-s.jpg" alt="Cover of Building So-What Reports" width="720" height="556" loading="lazy">
-          <div><h3>Building So-What Reports: Every Number Says What to Do Next</h3><p>The reports got "okay, noted" and nothing more. This is how one office changed them. 23 pages, built on 856,850 real operations.</p></div>
+          <div><h3>Building So-What Reports: Every Number Says What to Do Next</h3><p class="forwho"><span>For the boss who needs proof, or the person who wants to build their own.</span></p><p>The reports got "okay, noted" and nothing more. This is how one office changed them. 23 pages, built on 856,850 real operations.</p></div>
           <div class="price"><b>USD 18.99</b><small>once · PDF</small><a class="btn" href="https://buy.stripe.com/dRm7sNcyv22Zbchdpu0kE0h" data-buy="sowhat">Get it</a></div>
         </div>
       </div>
@@ -461,40 +464,44 @@
 
 <section class="sec gap" id="cases"><div class="in">
   <h2 data-rv>Real case studies.</h2>
-  <p data-rv style="--d:70ms">Not blog posts. Two PDFs on building effective AI agents, written from one factory office in the semiconductor supply chain: the problem, the pattern that solved it, the real counts, the six-test scorecard, and what was never measured. Anonymised: no company, customer or colleague names, no amounts, no part numbers. USD 18.99 each, yours to keep.</p>
+  <p data-rv style="--d:70ms">Not blog posts. Two PDFs on building effective AI agents, written from one factory office in the semiconductor supply chain: the problem, how it was fixed, the real counts, six honest tests of whether it worked, and what was never measured. Anonymised: no company, customer or colleague names, no amounts, no part numbers. USD 18.99 each, yours to keep.</p>
   <div class="cases">
-    <article class="study" data-rv>
+    <article class="study" id="cs-casedesk" data-rv>
       <img src="assets/cover-cs-casedesk.jpg" alt="Cover of How I Stopped Losing Promises in Email Threads, a 28-page case study" width="720" height="556" loading="lazy">
       <span class="lab">Case study 01 · 28 pages</span>
       <h3>How I Stopped Losing Promises in Email Threads</h3>
+      <p class="forwho"><span>For the boss who needs proof, or the person who wants to build their own.</span></p>
+      <p class="why">The tool does the job. This is the story behind it: what went wrong in a real factory, what we changed, and the real numbers.</p>
       <p class="sub">The Reply Is Drafted Before I Open the Email. The AI files every email into a case, remembers what was promised, and drafts the reply. I check it and press Send.</p>
       <h4>Inside</h4>
       <ul>
         <li>The problem as situation, complication and resolution, and the use cases the desk serves</li>
-        <li>The architecture: a supervised desk on top of a script pipeline, with one real case walked end to end</li>
+        <li>How it is built: the AI does the steps, a person checks, with one real case walked end to end</li>
         <li>Which steps are scripts and which are the model, how it judges, what it suggests</li>
-        <li>The six-test scorecard with evidence, the method for finding the room to improve, and the one next decision</li>
+        <li>Six honest tests of whether it worked, with the evidence, the method for finding the room to improve, and the one next decision</li>
       </ul>
       <h4>The numbers</h4>
       <ul class="nums">
         <li><b>124</b> cases tracked over seven weeks</li>
         <li><b>420</b> of my own sent emails used to learn my voice</li>
-        <li><b>6</b> customers covered by the written doctrine, up from three</li>
+        <li><b>6</b> customers covered by written rules for each customer, up from three</li>
       </ul>
-      <p class="hon">Honest limits: counts from one person's desk, not a study of many. The reply-drafting part of this method is in the shop as <a href="email-reply.html">Agentic AI: Email Assistant</a>. The full Case Desk kit is coming; no price yet.</p>
+      <p class="hon">Honest limits: counts from one person's desk, not a study of many. The reply-drafting part of this method is in the shop as <a href="email-reply.html">Agentic AI: Email Assistant</a>.</p>
       <div class="buyrow"><a class="btn" href="https://buy.stripe.com/bJe14p2XVePL4NTfxC0kE0i" data-buy="casedesk">Get the PDF <span class="px">USD 18.99 once</span></a></div>
     </article>
-    <article class="study" data-rv style="--d:80ms">
+    <article class="study" id="cs-sowhat" data-rv style="--d:80ms">
       <img src="assets/cover-cs-sowhat.jpg" alt="Cover of Building So-What Reports, a 23-page case study" width="720" height="556" loading="lazy">
       <span class="lab">Case study 02 · 23 pages</span>
       <h3>Building So-What Reports: Every Number Says What to Do Next</h3>
+      <p class="forwho"><span>For the boss who needs proof, or the person who wants to build their own.</span></p>
+      <p class="why">The tool does the job. This is the story behind it: what went wrong in a real factory, what we changed, and the real numbers.</p>
       <p class="sub">How one factory office stopped getting "okay, noted" and started getting decisions, from slide decks and dashboards built on 856,850 real operations.</p>
       <h4>Inside</h4>
       <ul>
         <li>The three reporting systems rebuilt around one question: "so what must happen next?"</li>
-        <li>The pattern: a script pipeline with a so-what layer on top, with a worked example</li>
+        <li>The pattern: the numbers, plus one line saying what to do next, with a worked example</li>
         <li>The eight rules these systems taught, each from a real failure</li>
-        <li>The six-test scorecard with evidence, what going higher means, what not to build, and one next decision</li>
+        <li>Six honest tests of whether it worked, with the evidence, what going higher means, what not to build, and one next decision</li>
       </ul>
       <h4>The numbers</h4>
       <ul class="nums">
