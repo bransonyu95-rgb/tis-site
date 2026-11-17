@@ -124,12 +124,13 @@
     .fold { position:relative; width:100%; aspect-ratio:430/300; margin:2px 0 16px; perspective:900px; cursor:pointer; outline:none; -webkit-tap-highlight-color:transparent; }
     .fold .fb { position:absolute; left:4%; right:4%; bottom:0; height:68%; background:linear-gradient(155deg, var(--f1), var(--f2)); border:3px solid var(--ink); border-radius:4px 14px 14px 14px; box-shadow:6px 6px 0 var(--ink); }
     .fold .fb::before { content:''; position:absolute; left:-3px; top:-20px; width:36%; height:20px; background:var(--f1); border:3px solid var(--ink); border-bottom:0; border-radius:10px 14px 0 0; }
-    .fold .fs { position:absolute; left:22%; width:56%; aspect-ratio:720/556; bottom:7%; background:#fff; border:3px solid var(--ink); border-radius:8px; overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:6px;
+    .fold .fs { position:absolute; left:25%; width:50%; aspect-ratio:720/556; bottom:7%; background:#fff; border:3px solid var(--ink); border-radius:8px; overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:6px;
       transform:translateY(0) rotate(0); transition:transform .55s cubic-bezier(.34,1.56,.64,1); will-change:transform; }
-    .fold .fs b { font-family:'Permanent Marker',cursive; font-weight:400; font-size:clamp(1.3rem,3.2vw,2rem); line-height:1; color:var(--ink); }
-    .fold .fs span { font-family:'Patrick Hand',cursive; font-size:1.05rem; line-height:1.15; color:#333; margin-top:4px; }
+    .fold .fs b { font-family:'Permanent Marker',cursive; font-weight:400; font-size:clamp(1.05rem,5vw,1.55rem); line-height:1; color:var(--ink); }
+    .fold .fs span { font-family:'Patrick Hand',cursive; font-size:clamp(.86rem,3.6vw,1.02rem); line-height:1.12; color:#333; margin-top:4px; max-width:50%; }
     .fold .fs.c { padding:0; } .fold .fs.c img { width:100%; height:100%; object-fit:cover; display:block; border:0; border-radius:0; margin:0; }
-    .fold .fs.a { background:#FEF3C7; } .fold .fs.b { background:#E0F2FE; }
+    .fold .fs.a { background:#FEF3C7; align-items:flex-start; justify-content:flex-start; text-align:left; padding:9px 10px; }
+    .fold .fs.b { background:#E0F2FE; align-items:flex-end; justify-content:flex-start; text-align:right; padding:9px 10px; }
     .fold .ff { position:absolute; left:4%; right:4%; bottom:0; height:46%; border:3px solid var(--ink); border-radius:12px; transform-origin:50% 100%;
       background:linear-gradient(160deg, rgba(255,255,255,.55), rgba(255,255,255,.18)); -webkit-backdrop-filter:blur(7px) saturate(1.5); backdrop-filter:blur(7px) saturate(1.5);
       box-shadow:inset 0 2px 0 rgba(255,255,255,.85), inset 0 -18px 30px rgba(255,255,255,.18);
@@ -138,14 +139,14 @@
     .fold .ff u { text-decoration:none; font-family:'Patrick Hand',cursive; font-size:1.1rem; color:var(--ink); transition:opacity .2s ease; }
     .fold.open .ff, .fold:focus-visible .ff { transform:rotateX(-34deg); }
     .fold.open .ff u, .fold:focus-visible .ff u { opacity:0; }
-    .fold.open .fs.a, .fold:focus-visible .fs.a { transform:translate(-34%,-34%) rotate(-10deg); }
-    .fold.open .fs.b, .fold:focus-visible .fs.b { transform:translate(34%,-34%) rotate(10deg); transition-delay:.06s; }
-    .fold.open .fs.c, .fold:focus-visible .fs.c { transform:translateY(-44%) rotate(-1.5deg) scale(1.04); transition-delay:.12s; }
+    .fold.open .fs.a, .fold:focus-visible .fs.a { transform:translate(-52%,-30%) rotate(-11deg); }
+    .fold.open .fs.b, .fold:focus-visible .fs.b { transform:translate(52%,-30%) rotate(11deg); transition-delay:.06s; }
+    .fold.open .fs.c, .fold:focus-visible .fs.c { transform:translateY(-42%) rotate(-1.5deg) scale(1.03); transition-delay:.12s; }
     @media (hover:hover) {
       .fold:hover .ff { transform:rotateX(-34deg); } .fold:hover .ff u { opacity:0; }
-      .fold:hover .fs.a { transform:translate(-34%,-34%) rotate(-10deg); }
-      .fold:hover .fs.b { transform:translate(34%,-34%) rotate(10deg); transition-delay:.06s; }
-      .fold:hover .fs.c { transform:translateY(-44%) rotate(-1.5deg) scale(1.04); transition-delay:.12s; }
+      .fold:hover .fs.a { transform:translate(-52%,-30%) rotate(-11deg); }
+      .fold:hover .fs.b { transform:translate(52%,-30%) rotate(11deg); transition-delay:.06s; }
+      .fold:hover .fs.c { transform:translateY(-42%) rotate(-1.5deg) scale(1.03); transition-delay:.12s; }
     }
     @media (prefers-reduced-motion: reduce) { .fold .fs, .fold .ff { transition:none; } }
     .letters { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; background:#e0f2fe; border:3px solid var(--ink); border-radius:var(--wob); padding:34px 36px; scroll-margin-top:90px; }
@@ -500,7 +501,7 @@
         <div class="fs a"><b>124</b><span>cases in seven weeks</span></div>
         <div class="fs b"><b>291</b><span>replies written</span></div>
         <div class="fs c"><img src="assets/cover-cs-casedesk.jpg" alt="" width="720" height="556" loading="lazy"></div>
-        <div class="ff"><i>Case study 01</i><u>peek inside</u></div>
+        <div class="ff"><i>28-page PDF</i><u>peek inside</u></div>
       </div>
       <span class="lab">Case study 01 · 28 pages</span>
       <h3>How I Stopped Losing Promises in Email Threads</h3>
@@ -529,10 +530,10 @@
     <article class="study" id="cs-sowhat" data-rv style="--d:80ms">
       <div class="fold" tabindex="0" role="img" aria-label="A folder holding the case study Building So-What Reports, 23 pages" style="--f1:#7DD3FC; --f2:#38BDF8;">
         <div class="fb"></div>
-        <div class="fs a"><b>856,850</b><span>factory steps</span></div>
-        <div class="fs b"><b>99.64%</b><span>same as a trusted report</span></div>
+        <div class="fs a"><b>99.64%</b><span>same as a trusted report</span></div>
+        <div class="fs b"><b>8</b><span>rules from real mistakes</span></div>
         <div class="fs c"><img src="assets/cover-cs-sowhat.jpg" alt="" width="720" height="556" loading="lazy"></div>
-        <div class="ff"><i>Case study 02</i><u>peek inside</u></div>
+        <div class="ff"><i>23-page PDF</i><u>peek inside</u></div>
       </div>
       <span class="lab">Case study 02 · 23 pages</span>
       <h3>Building So-What Reports: Every Number Says What to Do Next</h3>
