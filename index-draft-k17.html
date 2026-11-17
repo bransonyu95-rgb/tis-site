@@ -120,13 +120,7 @@
     .study .nums li::before { display:none; } .study .nums li { padding-left:0; } .study .nums b { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.25rem; color:var(--ink); margin-right:6px; }
     .study .hon { font-family:'Patrick Hand',cursive; font-size:1.05rem; color:#555; margin:8px 0 14px; }
     .study .buyrow { margin-top:auto; }
-    .study .by { font-size:.9rem; color:#555; margin:0 0 8px; }
-    .abs { border-top:3px solid var(--ink); border-bottom:3px solid var(--ink); padding:10px 0 4px; margin:10px 0 10px; }
-    .abs h4 { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); margin:0 0 6px; }
-    .abs p { font-size:.96rem; line-height:1.55; margin:0 0 8px; max-width:none; }
-    .abs p b { font-weight:800; }
-    .study .kw { font-size:.9rem; color:#333; margin:0 0 10px; } .study .kw b { font-weight:800; }
-    .study ol.toc { margin:0 0 8px 20px; padding:0; } .study ol.toc li { padding-left:2px; margin:2px 0; font-size:.94rem; } .study ol.toc li::before { display:none; }
+    .study .tell { font-size:1rem; line-height:1.55; margin:0 0 8px; }
     .letters { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; background:#e0f2fe; border:3px solid var(--ink); border-radius:var(--wob); padding:34px 36px; scroll-margin-top:90px; }
     .letters p { margin:0 0 8px; }
     /* how it works */
@@ -409,7 +403,7 @@
 
       <div class="studies" id="studies">
         <h3 class="sh">Real case studies, USD 18.99 each.</h3>
-        <p>The tool does the job. This is the story behind it: what went wrong in a real factory, what we changed, and the real numbers. Two PDFs from one factory office, and each one says what was never measured. <a href="#cases">Read the summary of each one ↓</a></p>
+        <p>The tool does the job. This is the story behind it: what went wrong in a real factory, what we changed, and the real numbers. Two PDFs from one factory office, and each one says what was never measured. <a href="#cases">What's inside each one ↓</a></p>
         <div class="box cs" data-rv>
           <img src="assets/cover-cs-casedesk-s.jpg" alt="Cover of How I Stopped Losing Promises in Email Threads" width="720" height="556" loading="lazy">
           <div><h3>How I Stopped Losing Promises in Email Threads</h3><p class="forwho"><span>For the boss who needs proof, or the person who wants to build their own.</span></p><p>I kept losing what I promised in emails. This is how I fixed it. 28 pages, with real numbers from one person over seven weeks.</p></div>
@@ -471,39 +465,34 @@
 
 <section class="sec gap" id="cases"><div class="in">
   <h2 data-rv>Real case studies.</h2>
-  <p data-rv style="--d:70ms">Not blog posts. Two written case studies from one factory office in the semiconductor supply chain. Each one is set out the way a research paper is: the background, the aim, the method, the findings in real counts, and the limits. Anonymised: no company, customer or colleague names, no amounts, no part numbers. USD 18.99 each, yours to keep.</p>
+  <p data-rv style="--d:70ms">Not blog posts. Two real stories from one factory office in the semiconductor supply chain. Each PDF tells you what went wrong, what was done about it, the real numbers, and what is still not known. No company names, no customer names, no prices, no part numbers. USD 18.99 each, yours to keep.</p>
   <div class="cases">
     <article class="study" id="cs-casedesk" data-rv>
       <img src="assets/cover-cs-casedesk.jpg" alt="Cover of How I Stopped Losing Promises in Email Threads, a 28-page case study" width="720" height="556" loading="lazy">
       <span class="lab">Case study 01 · 28 pages</span>
       <h3>How I Stopped Losing Promises in Email Threads</h3>
       <p class="forwho"><span>For the boss who needs proof, or the person who wants to build their own.</span></p>
-      <p class="by">A case study by Ah Hock, The Industrial Scribe · November 2026 · PDF</p>
-      <h4>Key numbers</h4>
+      <p class="why">The tool does the job. This is the story behind it: what went wrong in a real factory, what we changed, and the real numbers.</p>
+      <h4>What went wrong</h4>
+      <p class="tell">A lot of email came in. Most of it was only copied to me. A promise was made in one email. Then the email went quiet, and the promise got lost. Sometimes the same question got answered two times.</p>
+      <h4>What I did</h4>
+      <p class="tell">Now every email goes into a case. A case is like one folder for one topic. It remembers what was promised, who must do it, and by when. The AI writes the reply first. I read it. I press Send. It never sends by itself.</p>
+      <h4>What happened</h4>
       <ul class="nums">
-        <li><b>124</b> cases tracked over seven weeks</li>
-        <li><b>583</b> follow-up tasks closed, 289 of them within one day</li>
-        <li><b>291</b> replies drafted for a person to check and send</li>
+        <li><b>124</b> cases looked after in seven weeks</li>
+        <li><b>583</b> to-dos finished, 289 of them within one day</li>
+        <li><b>291</b> replies written for me to check and send</li>
       </ul>
-      <div class="abs">
-        <h4>Summary</h4>
-        <p><b>Background.</b> One person in a factory office in the semiconductor supply chain was copied on most of the email that arrived. Replies waited too long. A promise made in a thread was lost when the thread went quiet. The same question was decided twice.</p>
-        <p><b>Aim.</b> To test whether every email can be filed into a case that records what was promised, who owes it and by when, with the reply drafted before the case is opened, and with nothing sent unless a person sends it.</p>
-        <p><b>Method.</b> A study of one working desk over seven weeks, 17 September to 6 November 2026. Steps with one right answer (filing, checking, counting the days a thread has waited) were done by fixed programs with no AI. The AI read, judged and drafted. The person read every draft and pressed Send. The design was then scored against six tests.</p>
-        <p><b>Findings.</b> 124 cases and 1,040 follow-up tasks were tracked. 583 tasks (56%) were closed, 289 of them within one day. 291 replies were drafted. In a sample check, the facts taken from emails were exact in 15 of 15 cases. Who owned a task and how urgent it was were wrong about 15% of the time, which led to written rules. Five of the six tests were passed.</p>
-        <p><b>Limitations.</b> One person, one office, seven weeks. It is not a study of many offices. The main measure, how long a thread waits for an answer, was recorded, but its change over time was not reported.</p>
-      </div>
-      <p class="kw"><b>Keywords:</b> email follow-up · promises and owners · reply drafting · a person checks before sending · building effective AI agents</p>
-      <h4>Contents</h4>
-      <ol class="toc">
-        <li>Executive summary</li>
-        <li>The problem and the use cases</li>
-        <li>How it is built, with one real case walked end to end</li>
-        <li>Is it effective, and where is the room to improve?</li>
-        <li>Looking forward</li>
-        <li>Next steps, then the results in numbers and a glossary</li>
-      </ol>
-      <p class="hon">Related solution: the reply-drafting part of this method is in the shop as <a href="email-reply.html">Agentic AI: Email Assistant</a>.</p>
+      <h4>What I still don't know</h4>
+      <p class="tell">This is one desk, not many offices. I count how long an email waits for an answer. I have not yet shown if that wait is getting shorter.</p>
+      <h4>What's in the PDF</h4>
+      <ul>
+        <li>The problem, told simply</li>
+        <li>How it is built, with one real case walked from start to end</li>
+        <li>Which steps the computer does alone, and which steps the AI does</li>
+        <li>Six honest tests: did it work? And what to fix next</li>
+      </ul>
+      <p class="hon">The reply-writing part is in the shop as <a href="email-reply.html">Agentic AI: Email Assistant</a>.</p>
       <div class="buyrow"><a class="btn" href="https://buy.stripe.com/bJe14p2XVePL4NTfxC0kE0i" data-buy="casedesk">Get the PDF <span class="px">USD 18.99 once</span></a></div>
     </article>
     <article class="study" id="cs-sowhat" data-rv style="--d:80ms">
@@ -511,32 +500,27 @@
       <span class="lab">Case study 02 · 23 pages</span>
       <h3>Building So-What Reports: Every Number Says What to Do Next</h3>
       <p class="forwho"><span>For the boss who needs proof, or the person who wants to build their own.</span></p>
-      <p class="by">A case study by Ah Hock, The Industrial Scribe · November 2026 · PDF</p>
-      <h4>Key numbers</h4>
+      <p class="why">The tool does the job. This is the story behind it: what went wrong in a real factory, what we changed, and the real numbers.</p>
+      <h4>What went wrong</h4>
+      <p class="tell">The office made lots of reports. The numbers were right. But the boss looked, said "okay, noted", and nothing happened. The report showed a number. It did not say what to do.</p>
+      <h4>What I did</h4>
+      <p class="tell">I made every report answer one question: "So what do we do next?" The computer does all the sums, so no number is a guess. Every title says what the number proves. If nobody uses a page, it goes in the bin.</p>
+      <h4>What happened</h4>
       <ul class="nums">
-        <li><b>856,850</b> operations turned into 10 customer decks and 5 shop-level decks</li>
-        <li><b>99.64%</b> match against a reference report on 39,222 steps</li>
-        <li><b>3</b> spreadsheets replaced by one shared production view</li>
+        <li><b>856,850</b> factory steps turned into 10 customer slide decks and 5 shop slide decks</li>
+        <li><b>99.64%</b> the same as a trusted report, checked on 39,222 steps</li>
+        <li><b>3</b> spreadsheets became one shared page</li>
       </ul>
-      <div class="abs">
-        <h4>Summary</h4>
-        <p><b>Background.</b> A factory office in the semiconductor supply chain made many reports, and the numbers in them were usually right. Managers answered "okay, noted" and nothing moved. Titles named a topic and did not say what the data proved. Numbers that needed different actions were added together. Some sentences were copied from one customer's slides into another's, where they were not true.</p>
-        <p><b>Aim.</b> To rebuild three reporting systems around one question, "so what must happen next?", and to write down the rules that make a report lead to a decision.</p>
-        <p><b>Method.</b> A study of three working systems in one office, with counts up to 31 October 2026. Fixed programs did every calculation, and no AI produced a number. Every title and claim was filled in from the data or deleted. An AI checker read each page against its own numbers, and a second one rebuilt the key figures of the biggest analysis from the raw data. The design was then scored against six tests.</p>
-        <p><b>Findings.</b> 856,850 operations became 10 customer decks and 5 shop-level decks. The method matched a reference report on 99.64% of 39,222 steps. More than 20 typed sentences that were wrong for some customers are now computed. One shared production view replaced 3 departmental spreadsheets. Average idle days moved from about 43 to 26 when lots that were waiting by plan were counted separately. That was a change of definition, not a gain. Eight rules came out of the work, each from a real failure. Five of the six tests were passed.</p>
-        <p><b>Limitations.</b> One office. How often a deck changed a decision was never tracked. Time saved was never measured. One 37-slide deck still carries typed figures.</p>
-      </div>
-      <p class="kw"><b>Keywords:</b> management reports · titles that say what the data proves · "so what" · dashboards · checking every claim against the data</p>
-      <h4>Contents</h4>
-      <ol class="toc">
-        <li>Executive summary</li>
-        <li>The problem and the use cases</li>
-        <li>The pattern, a worked example and the eight rules</li>
-        <li>Is it effective, and where is the room to improve?</li>
-        <li>Looking forward</li>
-        <li>Next steps, then the results in numbers and a glossary</li>
-      </ol>
-      <p class="hon">Related solution: the method it describes grew into <a href="okay-noted.html">Agentic AI: Visualize to Persuade</a>.</p>
+      <h4>What I still don't know</h4>
+      <p class="tell">I never counted how many times a report changed a decision. I never measured the time saved. So the PDF does not claim them.</p>
+      <h4>What's in the PDF</h4>
+      <ul>
+        <li>The three reports I rebuilt</li>
+        <li>One real example: a number that looked bad, but was not</li>
+        <li>Eight rules, each one learned from a real mistake</li>
+        <li>Six honest tests: did it work? And what to fix next</li>
+      </ul>
+      <p class="hon">This way of working grew into <a href="okay-noted.html">Agentic AI: Visualize to Persuade</a>.</p>
       <div class="buyrow"><a class="btn" href="https://buy.stripe.com/dRm7sNcyv22Zbchdpu0kE0h" data-buy="sowhat">Get the PDF <span class="px">USD 18.99 once</span></a></div>
     </article>
   </div>
