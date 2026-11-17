@@ -153,7 +153,8 @@
     .fold.hf { display:block; text-decoration:none; color:var(--ink); aspect-ratio:430/330; margin:0; }
     .hf:focus-visible { outline:3px solid var(--blue); outline-offset:5px; border-radius:14px; }
     .hf .fb, .hf .ft, .hf .fp { display:block; }
-    .hf .ff { height:46%; flex-direction:column; align-items:flex-start; justify-content:flex-end; padding:0 12px 9px; }
+    .hf .ff { height:46%; flex-direction:column; align-items:flex-start; justify-content:flex-end; padding:0 12px 9px;
+      background:linear-gradient(160deg, color-mix(in srgb, var(--f1) 62%, transparent), color-mix(in srgb, var(--f2) 30%, transparent)); }
     .hf .ff i { font-size:clamp(.95rem,2vw,1.28rem); line-height:1.05; }
     .hf .ff em { font-style:normal; font-family:'Patrick Hand',cursive; font-size:clamp(.84rem,1.5vw,1.05rem); line-height:1.15; margin-top:3px; }
     .hf .ft { position:absolute; left:9%; width:82%; height:50%; bottom:6%; background:#fff; border:3px solid var(--ink); border-radius:8px; overflow:hidden; transition:transform .55s cubic-bezier(.34,1.56,.64,1); will-change:transform; }
@@ -709,7 +710,7 @@
       var cur = { ry: -0.35, hx: 0, hy: 0, al: 0, ar: 0 }, mx = 0, my = 0, t0 = performance.now(), running = false;
       window.addEventListener('pointermove', function(e){ mx = (e.clientX / window.innerWidth) * 2 - 1; my = (e.clientY / window.innerHeight) * 2 - 1; }, { passive: true });
       function target(p){
-        if (p < 0.12) return window.__fold ? { ry: -0.62, hx: 0.10, hy: -0.18, al: 0, ar: -1.25 } : { ry: -0.35, hx: 0, hy: 0, al: 0, ar: 0 };   /* showing the folders, or hello */
+        if (p < 0.12) return { ry: -0.62, hx: 0.10, hy: -0.18, al: 0, ar: -1.25 };   /* showing the two folders */
         if (p < 0.62) return { ry: -0.62, hx: 0.10, hy: -0.18, al: 0, ar: -1.25 };       /* pointing at the tools */
         if (p < 0.94) return { ry: -0.15, hx: 0.04, hy: 0, al: 0.12, ar: -0.12 };        /* explaining */
         return { ry: 0, hx: -0.06, hy: 0, al: 0.55, ar: -0.55 };                         /* there you go */
