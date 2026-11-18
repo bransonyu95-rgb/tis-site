@@ -108,6 +108,12 @@
     .case > a:hover { text-decoration:underline; }
     .study { border:3px solid var(--ink); border-radius:18px; background:#fff; padding:18px 22px 22px; display:flex; flex-direction:column; box-shadow:8px 8px 0 var(--ink); }
     .study img { width:100%; height:auto; border:3px solid var(--ink); border-radius:12px; margin-bottom:14px; }
+    @media (min-width: 861px) {
+      .cases .study:last-child:nth-child(odd) { grid-column:1 / -1; display:grid; grid-template-columns:minmax(0,42%) minmax(0,1fr); column-gap:30px; align-content:start; }
+      .cases .study:last-child:nth-child(odd) > img { grid-column:1; grid-row:1 / span 14; align-self:start; margin-bottom:0; }
+      .cases .study:last-child:nth-child(odd) > :not(img) { grid-column:2; justify-self:start; }
+      .cases .study:last-child:nth-child(odd) > ul, .cases .study:last-child:nth-child(odd) > p { justify-self:stretch; }
+    }
     .study .lab { font-family:'Permanent Marker',cursive; font-size:.9rem; background:var(--yellow); border-radius:6px; padding:1px 8px; align-self:flex-start; }
     .study h3 { margin:10px 0 6px; font-size:1.45rem; line-height:1.15; }
     .study .sub { font-size:1rem; color:#333; }
@@ -321,7 +327,7 @@
 
 <main>
 <section class="sec"><div class="in stage" id="stage">
-  <div class="pin"><div class="fig"><div class="sayslot"><p class="say" id="say" aria-hidden="true"></p></div><div class="frame3d"><canvas id="c3d" aria-label="Ah Hock, a 3D figure that reacts as you scroll"></canvas><img class="fallback" src="assets/ah-hock-full.png" alt="Ah Hock, standing" width="600" height="800"></div><div class="under"><span class="tag" id="tag">scroll ↓</span><span class="meter" id="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span></div></div></div>
+  <div class="pin"><div class="fig"><div class="sayslot"><p class="say" id="say" aria-hidden="true"></p></div><div class="frame3d"><canvas id="c3d" aria-label="Ah Hock, a 3D figure that reacts as you scroll"></canvas><img class="fallback" src="assets/ah-hock-full.png" alt="Ah Hock, standing" width="600" height="800"></div><div class="under"><span class="tag" id="tag">scroll ↓</span><span class="meter" id="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></div></div>
   <div class="story">
     <div class="hero">
       <p class="eyebrow">The Industrial Scribe · built by an insider, inside a real factory</p>
