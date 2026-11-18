@@ -1368,6 +1368,7 @@
     quiz.hidden = true; gate.hidden = false;
     window.scrollTo(0, sec.getBoundingClientRect().top + window.scrollY - 90);
     if (armed) return; armed = true;
+    try { window.dispatchEvent(new Event('pointerdown')); } catch(e){}      /* makes sure the email box has started loading, whatever the visitor tapped with */
     mlbox = document.querySelector('#letters .ml-embedded'); if (mlbox) { home = mlbox.parentNode; $('gateform').appendChild(mlbox); }
     var tries = 0, brand = setInterval(function(){
       var b = gate.querySelector('.ml-form-embedSubmit button.primary'), inp = gate.querySelector('input[type="email"]');
