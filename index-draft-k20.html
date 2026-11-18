@@ -289,14 +289,15 @@
     /* a circle of light behind each folder, slow comic rays, and an "Open me!" sticker */
     .hf::before { content:''; position:absolute; z-index:-1; left:50%; top:60%; width:150%; aspect-ratio:1; border-radius:50%; pointer-events:none;
       translate:-50% -50%;
-      background:radial-gradient(circle closest-side, #fff 0%, color-mix(in srgb, var(--f1) 90%, #fff) 30%, color-mix(in srgb, var(--f2) 45%, transparent) 62%, transparent 100%),
-                 repeating-conic-gradient(from 0deg, color-mix(in srgb, var(--f2) 70%, transparent) 0 8deg, transparent 8deg 22.5deg);
+      background:radial-gradient(circle closest-side, #fff 0%, color-mix(in srgb, var(--f1) 90%, #fff) 30%, color-mix(in srgb, var(--g, var(--f2)) 50%, transparent) 62%, transparent 100%),
+                 repeating-conic-gradient(from 0deg, color-mix(in srgb, var(--g, var(--f2)) 78%, transparent) 0 8deg, transparent 8deg 22.5deg);
       -webkit-mask:radial-gradient(circle closest-side, #000 52%, transparent 100%); mask:radial-gradient(circle closest-side, #000 52%, transparent 100%);
       animation:hfspin 26s linear infinite, hfglow 2.2s ease-in-out infinite; }
+    .hf[data-fold="a"] { --g:#F59E0B; }   /* a deeper yellow, so the light shows on a white page */
     .hf[data-fold="b"]::before { animation-delay:0s, -1.1s; animation-direction:reverse, normal; }
     @keyframes hfspin { to { rotate:360deg; } }
     @keyframes hfglow { 0%,100% { scale:.9; opacity:.6; } 50% { scale:1.06; opacity:1; } }
-    .hf::after { content:'Open me!'; position:absolute; z-index:6; right:-6px; top:-4px; font-family:'Permanent Marker',cursive; font-size:clamp(.82rem,1.7vw,1.05rem); line-height:1;
+    .hf::after { content:'Open me!'; position:absolute; z-index:6; right:-8px; top:-18px; font-family:'Permanent Marker',cursive; font-size:clamp(.82rem,1.7vw,1.05rem); line-height:1;
       background:var(--pink); color:var(--ink); border:3px solid var(--ink); border-radius:100px; padding:6px 12px 5px; box-shadow:3px 3px 0 var(--ink);
       rotate:7deg; animation:hfnudge 1.5s ease-in-out infinite; pointer-events:none; }
     .hf[data-fold="b"]::after { background:#fff; animation-delay:-.75s; }
@@ -304,7 +305,7 @@
     @media (hover:hover) { .hf:hover::after { background:var(--yellow); animation-duration:.5s; } }
     .hero h1, .hero .lead, .hero .act, .lesson h2, .lesson .lead, .lesson .lno { position:relative; z-index:1; }
     /* the page body already clips sideways, so the light can fade out past the edges */
-    @media (max-width: 860px) { .hf::before { width:132%; } .hf::after { right:-4px; top:2px; padding:5px 9px 4px; } }
+    @media (max-width: 860px) { .hf::before { width:132%; } .hf::after { right:-4px; top:-26px; padding:5px 9px 4px; } .hfolds { margin-top:38px; } .lesson .hfolds { margin-top:34px; } }
     @media (prefers-reduced-motion: reduce) { .hf::before, .hf::after { animation:none; } }
     @media (max-width: 860px) {
       .hfolds { gap:14px; margin:16px 0 2px; } .fold.hf { aspect-ratio:1/1; }
