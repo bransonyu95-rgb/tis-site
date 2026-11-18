@@ -340,7 +340,9 @@
     @media (max-width: 860px) { .paths { grid-template-columns:repeat(2,1fr); } .quiz, .gate, .res { padding:18px 16px 14px; } .qdots .d2 { width:56px; height:56px; } .qdots .d1 { width:46px; height:46px; } .qdots .d0 { width:36px; height:36px; } }
     /* wherever the page asks the visitor to tap or choose, the choices move and a pointing hand says so */
     .taphint { position:relative; z-index:1; font-family:'Patrick Hand',cursive; font-size:1.45rem; line-height:1.2; margin:12px 2px 0; }
-    .taphint b { display:inline-block; font-weight:400; font-size:1.7rem; margin-right:8px; vertical-align:-2px; animation:tapbob 1s ease-in-out infinite; }
+    .taphint b { display:inline-block; position:relative; z-index:5; font-weight:400; font-size:1.7rem; margin-right:8px; vertical-align:-2px; pointer-events:none; animation:tapbob 1s ease-in-out infinite;
+      translate:var(--hx, 0px) var(--hy, 0px); transition:translate .13s ease-out, scale .15s ease; }
+    .taphint b.fly { scale:1.35; filter:drop-shadow(2px 3px 0 rgba(17,17,17,.35)); }   /* the hand has left its line and is following the mouse */
     .qbody .taphint, #qbody .taphint { text-align:center; }
     @keyframes tapbob { 0%,100% { transform:translateY(3px); } 50% { transform:translateY(-5px); } }
     @keyframes ask { 0%,68%,100% { transform:none; } 78% { transform:translateY(-8px) rotate(-2deg); } 88% { transform:translateY(0) rotate(1.5deg); } }
@@ -1517,6 +1519,32 @@
   var saved = ''; try { saved = localStorage.getItem('tis-insider-type') || ''; } catch(e){}
   if (T[saved]) reveal(saved, false);
   tick();
+})();
+
+/* the pointing hand follows the mouse: while the mouse is over a set of choices, the hand flies to just under it and points up */
+(function(){
+  if (!window.matchMedia || !window.matchMedia('(hover:hover)').matches) return;      /* phones have no mouse: the hand stays on its line and bobs */
+  var hints = [].slice.call(document.querySelectorAll('.taphint')).map(function(h){
+    var g = h.previousElementSibling; while (g && !g.matches('.qdots, .qz, .mg, .chips')) g = g.previousElementSibling;
+    return { h: h, b: h.querySelector('b'), g: g };
+  }).filter(function(o){ return o.b && o.g; });
+  if (!hints.length) return;
+  var mx = -1, my = -1, queued = false;
+  function place(){
+    queued = false;
+    hints.forEach(function(o){
+      if (!o.h.offsetParent) return;                                    /* this hint is hidden: its question is already answered */
+      var a = o.g.getBoundingClientRect(), c = o.h.getBoundingClientRect(), pad = 26;
+      var inside = mx >= Math.min(a.left, c.left) - pad && mx <= Math.max(a.right, c.right) + pad && my >= a.top - pad && my <= c.bottom + pad;
+      if (!inside) { o.b.style.setProperty('--hx', '0px'); o.b.style.setProperty('--hy', '0px'); o.b.classList.remove('fly'); return; }
+      var hx = c.left + o.b.offsetLeft + o.b.offsetWidth / 2, hy = c.top + o.b.offsetTop + o.b.offsetHeight / 2;
+      o.b.style.setProperty('--hx', Math.round(mx - hx) + 'px'); o.b.style.setProperty('--hy', Math.round(my + 30 - hy) + 'px'); o.b.classList.add('fly');
+    });
+  }
+  function ask(){ if (!queued) { queued = true; requestAnimationFrame(place); } }
+  window.addEventListener('pointermove', function(e){ if (e.pointerType && e.pointerType !== 'mouse') return; mx = e.clientX; my = e.clientY; ask(); }, { passive: true });
+  window.addEventListener('scroll', ask, { passive: true });
+  document.addEventListener('mouseleave', function(){ mx = my = -1; ask(); });
 })();
 </script>
 <script src="tis-dopamine.js" defer></script>
