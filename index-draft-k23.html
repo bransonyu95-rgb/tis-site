@@ -350,7 +350,7 @@
     html.dopen .nudge { display:none; }
     #lockpill { background:var(--yellow); }
     #l-ask ~ .lesson { transition:filter .7s ease, opacity .7s ease; }
-    html.lockq #l-ask ~ .lesson { filter:blur(8px); opacity:.5; pointer-events:none; -webkit-user-select:none; user-select:none; }
+    html.lockq #l-ask ~ .lesson { filter:blur(8px); opacity:.5; pointer-events:none; -webkit-user-select:none; user-select:none; transition:none; }   /* blurred at once, cleared slowly */
     @media (max-width: 860px) { .paths { grid-template-columns:repeat(2,1fr); } .quiz, .gate, .res { padding:18px 16px 14px; } .qdots .d2 { width:56px; height:56px; } .qdots .d1 { width:46px; height:46px; } .qdots .d0 { width:36px; height:36px; } }
     /* wherever the page asks the visitor to tap or choose, the choices move and a pointing hand says so */
     .taphint { position:relative; z-index:1; font-family:'Patrick Hand',cursive; font-size:1.45rem; line-height:1.2; margin:12px 2px 0; }
@@ -1159,7 +1159,8 @@
       var cur = { ry: -0.35, hx: 0, hy: 0, al: 0, ar: 0 }, t0 = performance.now(), running = false;
       /* where the visitor is: -1..1 from Ah Hock's own face to the mouse or the finger. He looks back at you when it goes quiet. */
       var lx = 0, ly = 0, tx = 0, ty = 0, seen = 0, glance = 0, lastY = window.scrollY, eb = eyes.map(function(e){ return e.position.clone(); });
-      function lookAt(x, y){ var r = wrap.getBoundingClientRect(); seen = performance.now();
+      function lookAt(x, y){ if (!isFinite(x) || !isFinite(y)) return;      /* a made-up event carries no position: ignore it, or Ah Hock vanishes */
+        var r = wrap.getBoundingClientRect(); seen = performance.now();
         tx = Math.max(-1, Math.min(1, (x - (r.left + r.width / 2)) / (window.innerWidth * 0.5))); ty = Math.max(-1, Math.min(1, (y - (r.top + r.height * 0.3)) / (window.innerHeight * 0.5))); }
       window.addEventListener('pointermove', function(e){ lookAt(e.clientX, e.clientY); }, { passive: true });
       window.addEventListener('pointerdown', function(e){ lookAt(e.clientX, e.clientY); }, { passive: true });
@@ -1180,6 +1181,7 @@
         hero.rotation.y = cur.ry + Math.sin(t * 0.7) * 0.03 + spin;
         hero.position.y = Math.sin(t * 1.7) * 0.006 + (cheering ? Math.abs(Math.sin((window.__cheerUntil - now) / (window.__cheerMs || 900) * Math.PI * (window.__hops || 1))) * 0.15 : 0);
         if (now - seen > 4000) { tx *= 0.96; ty *= 0.96; }
+        if (!isFinite(tx) || !isFinite(ty) || !isFinite(lx) || !isFinite(ly)) { tx = ty = lx = ly = 0; }
         lx += (tx - lx) * 0.12; ly += (ty - ly) * 0.12; glance *= 0.93;
         var gy = Math.max(-1, Math.min(1, ly + glance * 0.7));
         head.rotation.x = cur.hx + gy * 0.26 + Math.sin(t * 1.1) * 0.015;
