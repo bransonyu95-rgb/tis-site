@@ -13,6 +13,7 @@ Ah Hock publishes only what he has run on real work, uses real numbers, and neve
 - Real case studies (PDF, USD 18.99 each, on the homepage): "How I Stopped Losing Promises in Email Threads: The Reply Is Drafted Before I Open the Email" (28 pages, the AI files every email into a case, remembers what was promised and drafts the reply, real numbers from one user over seven weeks) and "Building So-What Reports: Every Number Says What to Do Next" (23 pages, decks and dashboards built on 856,850 real operations; time saved and decisions changed were never tracked). Both on building effective AI agents, anonymised.
 - The Build Your AI Back-Office kit is no longer sold (withdrawn November 2026). Past buyers keep their download page and free updates.
 - [About Ah Hock](https://theindustrialscribe.com/about.html): Who writes this and the rules he writes by
+- [Spot the Waste (free game)](https://theindustrialscribe.com/spot-the-waste.html): A free game from Ah Hock. Eight wastes hide in one factory workday. Tap them, ask why until you find the real cause, and leave with a small lean plan for Monday.
 - [The Insider Test (free)](https://theindustrialscribe.com/insider-test.html): 30-question test on how you work in a factory office and how you use AI; gives your type and an AI direction for your job
 - [The Pre-Ship Checklist (free)](https://theindustrialscribe.com/free-checklist.html): Free 10-point checklist to run before any deck goes to a boss or a customer
 
