@@ -86,7 +86,7 @@
     .cam3d img { position:absolute; inset:0; width:100%; height:100%; margin:0; border:0; border-radius:0; object-fit:cover; }
     .cam3d canvas { position:absolute; inset:0; width:100%; height:100%; display:block; opacity:0; transition:opacity .3s ease; }
     .cam3d.live canvas { opacity:1; } .cam3d.live img { visibility:hidden; }
-    .cam3d.big { width:100%; height:230px; margin:0 0 10px; cursor:default; }
+    .cam3d.big { width:100%; height:205px; margin:0 0 10px; cursor:default; }
     .cam3d .prop { position:absolute; left:8px; bottom:8px; width:84px; height:84px; display:none; }
     .cam3d .prop.on { display:block; animation:pop .4s cubic-bezier(.2,.9,.3,2.2) 1; }
     .cam3d .prop img { position:static; width:100%; height:100%; border:3px solid var(--ink); border-radius:10px; visibility:visible; box-shadow:3px 3px 0 var(--ink); }
@@ -391,10 +391,12 @@
     clearTimeout(idleT);
     setTimeout(function(){                            /* the card is edge-on now: move him to the other side */
       if (on && hasVideo) {
+        front.style.minHeight = Math.max(front.offsetHeight, 470) + 'px';
         if (!video) { video = document.createElement('video'); video.src = 'assets/ah-hock-intro.mp4'; video.poster = 'assets/ah-hock-intro-poster.jpg'; video.controls = true; video.playsInline = true; video.preload = 'metadata'; slot.appendChild(video); cap.hidden = true; dots.hidden = true; }
         try { video.currentTime = 0; var p = video.play(); if (p && p.catch) p.catch(function(){}); } catch (e) {}
-      } else if (on) { slot.appendChild(stageEl); stageEl.classList.add('big'); if (live) st.view('story'); tell(); }
-      else { if (video) video.pause(); stop(); home.insertBefore(stageEl, homeNext); stageEl.classList.remove('big'); if (live) { st.view('photo'); st.show('neutral', ''); idleT = setTimeout(idle, 2500); } }
+      } else if (on) { front.style.minHeight = Math.max(front.offsetHeight, 470) + 'px';      /* the card keeps its size while he is on the back */
+        slot.appendChild(stageEl); stageEl.classList.add('big'); if (live) st.view('story'); tell(); }
+      else { if (video) video.pause(); stop(); home.insertBefore(stageEl, homeNext); front.style.minHeight = ''; stageEl.classList.remove('big'); if (live) { st.view('photo'); st.show('neutral', ''); idleT = setTimeout(idle, 2500); } }
     }, 350);
   });
   var els = document.querySelectorAll('[data-rv]');

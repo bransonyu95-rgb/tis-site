@@ -24,7 +24,7 @@ window.TISStage = function(canvas, opt){
     scene.add(new THREE.HemisphereLight(0xffffff, 0xcfc6b8, 0.95));
     var key = new THREE.DirectionalLight(0xfff3e2, 0.85); key.position.set(-2.4, 3.2, 3.2); scene.add(key);
     var rim = new THREE.DirectionalLight(0xffffff, 0.4); rim.position.set(2.2, 2.4, -3); scene.add(rim);
-    var CAMS = { photo: [1.27, 1.95], story: [1.06, 3.55] }, cy = CAMS.photo[0], cz = CAMS.photo[1], lw = 0, lh = 0;
+    var CAMS = { photo: [1.27, 1.95], story: [1.08, 3.2] }, cy = CAMS.photo[0], cz = CAMS.photo[1], lw = 0, lh = 0;
     function size(){ var w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h || (w === lw && h === lh)) return; lw = w; lh = h; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); }
     new THREE.GLTFLoader().load((opt.model || 'assets/ah-hock.glb'), function(g){
       var root = g.scene; scene.add(root); root.updateMatrixWorld(true);
