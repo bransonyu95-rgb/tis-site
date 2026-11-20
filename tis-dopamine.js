@@ -115,7 +115,8 @@
 /* TIS insider-test pop-up: after 10s on listed pages, once per visitor */
 (function () {
   var path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-  var skip = ['backoffice.html', 'insider-test.html', 'insider-report-r7q4.html'];
+  /* not on the homepage (the type test is built into it) and not on Meet Ah Hock (it would cover his story) */
+  var skip = ['backoffice.html', 'insider-test.html', 'insider-report-r7q4.html', 'index.html', 'about.html'];
   if (skip.indexOf(path) !== -1 || /^(dl-|wm\d)/.test(path)) return;
   if (document.querySelector('meta[name="robots"][content*="noindex"]')) return;
   if (/[?&]nopop\b/.test(location.search)) return;
