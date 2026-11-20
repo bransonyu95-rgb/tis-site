@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>document.documentElement.classList.add('js')</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Meet Ah Hock — The Industrial Scribe</title>
+  <meta name="description" content="Ah Hock is not his real name. Not an engineer either: an office worker who presents, plans and does technical work with frameworks and AI. He teaches you the same.">
+    <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Industrial Scribe">
+  <meta property="og:title" content="Meet Ah Hock">
+  <meta property="og:description" content="Ah Hock is not his real name. Not an engineer either: an office worker who presents, plans and does technical work with frameworks and AI. He teaches you the same.">
+  <meta property="og:url" content="https://theindustrialscribe.com/about.html">
+  <meta property="og:image" content="https://theindustrialscribe.com/assets/ahhock-3d.jpg">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "AboutPage", "name": "Meet Ah Hock", "url": "https://theindustrialscribe.com/about.html", "description": "Ah Hock is not his real name. Not an engineer either: an office worker who presents, plans and does technical work with frameworks and AI. He teaches you the same.", "mainEntity": {"@type": "Person", "name": "Ah Hock", "description": "Pen name of a factory office worker in Malaysia who writes The Industrial Scribe", "url": "https://theindustrialscribe.com/about.html"}, "publisher": {"@type": "Organization", "name": "The Industrial Scribe", "url": "https://theindustrialscribe.com/", "logo": "https://theindustrialscribe.com/assets/apple-touch-icon.png", "sameAs": ["https://www.instagram.com/the.industrial.scribe/"]}}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#111; --blue:#2563eb; --pink:#EC4899; --mint:#10B981; --yellow:#FBBF24; --sky:#38BDF8; --coral:#FB923C;
+      --wob:255px 15px 225px 15px/15px 225px 15px 255px; --wob2:15px 225px 15px 255px/255px 15px 225px 15px; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Plus Jakarta Sans',sans-serif; background:#fff; color:var(--ink); line-height:1.6; font-size:17px; }
+    .sec { padding:0 5%; } .in { max-width:1100px; margin:0 auto; } .gap { padding-top:120px; }
+    h1 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:clamp(2.4rem,4.8vw,4.4rem); line-height:1.05; letter-spacing:-.01em; }
+    h2 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:clamp(1.9rem,3vw,2.6rem); line-height:1.1; margin:0 0 16px;
+         background:linear-gradient(transparent 62%, var(--yellow) 62%, var(--yellow) 94%, transparent 94%); display:inline-block; padding:0 6px; }
+    p { margin-bottom:1rem; max-width:64ch; }
+    .lead { font-size:1.2rem; line-height:1.55; }
+    .hand { font-family:'Patrick Hand',cursive; font-size:1.3rem; line-height:1.4; }
+    a { color:var(--blue); }
+    .btn { display:inline-block; font-family:'Patrick Hand',cursive; font-size:1.5rem; line-height:1.2; background:var(--pink); color:var(--ink); text-decoration:none;
+      padding:12px 32px; border:3px solid var(--ink); border-radius:var(--wob); transition:background .15s ease, transform .1s ease; cursor:pointer; }
+    .btn:hover { background:#f472b6; } .btn:active { transform:scale(.97); }
+    .btn:focus-visible, .flip:focus-visible { outline:3px solid var(--blue); outline-offset:3px; }
+    .sticker { background:#fff; border:3px solid var(--ink); border-radius:var(--wob); padding:4px; height:auto; display:block; }
+
+    /* hero + the badge */
+    .hero { display:grid; grid-template-columns:1.25fr 1fr; gap:56px; align-items:center; padding-top:48px; }
+    .hero .lead { margin:22px 0 26px; }
+    .act { display:flex; flex-wrap:wrap; align-items:center; gap:14px 22px; }
+    .act .alt { font-family:'Patrick Hand',cursive; font-size:1.25rem; color:var(--ink); }
+    .holder { position:relative; background:var(--blue); border:3px solid var(--ink); border-radius:var(--wob2); padding:70px 34px 30px; }
+    .strap { position:absolute; left:50%; top:-3px; width:46px; height:70px; transform:translateX(-50%); background:var(--pink); border:3px solid var(--ink); border-top:0; }
+    .clip { position:absolute; left:50%; top:58px; width:64px; height:22px; transform:translateX(-50%); background:#d4d4d4; border:3px solid var(--ink); border-radius:6px; z-index:3; }
+    .badge-wrap { perspective:1400px; max-width:340px; margin:0 auto; }
+    .badge { position:relative; transform-style:preserve-3d; transition:transform .7s cubic-bezier(.3,1.3,.5,1); }
+    .face { background:#fff; border:3px solid var(--ink); border-radius:18px; padding:22px 22px 18px; backface-visibility:hidden; -webkit-backface-visibility:hidden; }
+    .face .co { display:flex; justify-content:space-between; align-items:center; font-weight:700; font-size:.94rem; margin-bottom:12px; }
+    .redact { display:inline-block; width:120px; height:16px; background:var(--ink); vertical-align:middle; }
+    .face img { width:150px; height:auto; display:block; margin:0 auto 12px; border:3px solid var(--ink); border-radius:12px; }
+    .face dl { display:grid; grid-template-columns:auto 1fr; gap:4px 12px; font-size:.94rem; }
+    .face dt { font-weight:700; } .face dd { margin:0; }
+    .face .stripe { margin:14px -22px -18px; height:22px; background:var(--yellow); border-top:3px solid var(--ink); border-radius:0 0 15px 15px; }
+    .back { position:absolute; inset:0; transform:rotateY(180deg); display:flex; flex-direction:column; justify-content:center; background:#e0f2fe; }
+    .js .badge .back, .js .badge.flipped .front { visibility:hidden; transition:visibility 0s linear .35s; }
+    .js .badge.flipped .back, .js .badge .front { visibility:visible; transition:visibility 0s linear .35s; }
+    .back h3 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.6rem; margin-bottom:12px; }
+    .back ul { list-style:none; } .back li { padding:7px 0 7px 26px; position:relative; }
+    .back li::before { content:''; position:absolute; left:2px; top:1em; width:12px; height:7px; border-left:3px solid var(--mint); border-bottom:3px solid var(--mint); transform:rotate(-45deg); }
+    .badge.flipped { transform:rotateY(180deg); }
+    .flip { display:block; margin:18px auto 0; background:#fff; border:3px solid var(--ink); border-radius:var(--wob); font-family:'Patrick Hand',cursive; font-size:1.3rem; padding:8px 24px; cursor:pointer; transition:transform .15s ease; }
+    .flip:hover { background:#fef9c3; }
+    html:not(.js) .back { position:relative; transform:none; margin-top:14px; }
+    html:not(.js) .flip { display:none; }
+
+    /* the top: three things he makes, shown at once */
+    .hero h1 em { font-style:normal; color:var(--blue); }
+    .show { position:relative; max-width:560px; margin:20px 0 0; }
+    .tabs { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 -3px; padding-left:10px; position:relative; z-index:2; }
+    .tab { font-family:'Permanent Marker',cursive; font-size:1rem; line-height:1.1; background:#fff; color:var(--ink); border:3px solid var(--ink); border-bottom:0; border-radius:12px 12px 0 0; padding:9px 13px 8px; cursor:pointer; animation:ask 3s ease-in-out infinite; }
+    .tab:nth-child(2) { animation-delay:.15s; } .tab:nth-child(3) { animation-delay:.3s; }
+    .tab.on { background:var(--yellow); animation:none; padding-bottom:11px; }
+    @media (hover:hover) { .tab:hover { animation:none; background:#FEF3C7; } .tab.on:hover { background:var(--yellow); } }
+    @keyframes ask { 0%,68%,100% { transform:none; } 78% { transform:translateY(-7px) rotate(-2deg); } 88% { transform:translateY(0) rotate(1.5deg); } }
+    .demo { position:relative; height:226px; background:var(--yellow); border:3px solid var(--ink); border-radius:16px; box-shadow:6px 6px 0 var(--ink); overflow:hidden; }
+    .pane { position:absolute; inset:0; padding:16px; display:none; } .pane.on { display:block; }
+    .dname { font-size:1.05rem; line-height:1.45; margin:14px 2px 0; max-width:none; } .dname b { display:block; font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.3rem; line-height:1.15; margin-bottom:2px; }
+    .dname a { white-space:nowrap; font-weight:700; }
+    .taphint { font-family:'Patrick Hand',cursive; font-size:1.3rem; line-height:1.2; margin:8px 2px 18px; } .taphint b { display:inline-block; font-weight:400; font-size:1.5rem; margin-right:8px; animation:tapbob 1s ease-in-out infinite; }
+    @keyframes tapbob { 0%,100% { transform:translateY(3px); } 50% { transform:translateY(-5px); } }
+    /* demo 1: an email comes in, the reply writes itself, a hand presses Send */
+    .mail { position:absolute; background:#fff; border:3px solid var(--ink); border-radius:12px; padding:9px 12px 10px; }
+    .mail i { display:block; font-style:normal; font-family:'Patrick Hand',cursive; font-size:1.05rem; line-height:1.1; margin-bottom:7px; }
+    .mail u { display:block; height:9px; margin:0 0 7px; background:#D1D5DB; border-radius:5px; text-decoration:none; } .mail u.s { width:55%; }
+    .mail.in { left:16px; top:16px; width:44%; } .mail.out { right:16px; bottom:16px; width:58%; background:#ECFDF5; }
+    .mail.out u { background:var(--mint); width:0; } .send { position:absolute; right:10px; bottom:9px; font-family:'Permanent Marker',cursive; font-weight:400; font-size:.95rem; line-height:1; background:var(--pink); border:2.5px solid var(--ink); border-radius:8px; padding:5px 10px; }
+    .hand { position:absolute; right:-26px; bottom:-34px; font-size:1.9rem; line-height:1; opacity:0; } .sent { position:absolute; right:8px; top:-16px; font-style:normal; font-family:'Permanent Marker',cursive; font-size:.95rem; background:var(--mint); border:2.5px solid var(--ink); border-radius:8px; padding:2px 9px; transform:scale(0) rotate(6deg); }
+    .run .mail.in { animation:slidein .45s ease-out both; } .run .mail.out { animation:slidein .45s ease-out .55s both; }
+    .run .t1 { animation:type .5s ease-out 1.05s forwards; --w:100%; } .run .t2 { animation:type .5s ease-out 1.55s forwards; --w:100%; } .run .t3 { animation:type .4s ease-out 2.05s forwards; --w:55%; }
+    .run .hand { animation:reach .7s ease-out 2.55s forwards; } .run .send { animation:press .3s ease 3.25s 1; } .run .sent { animation:stamp .35s cubic-bezier(.2,.9,.3,2.2) 3.5s forwards; }
+    @keyframes slidein { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
+    @keyframes type { to { width:var(--w); } }
+    @keyframes reach { from { opacity:0; transform:translate(40px,30px); } to { opacity:1; transform:translate(-44px,-40px); } }
+    @keyframes press { 50% { transform:scale(.82); } }
+    @keyframes stamp { to { transform:scale(1) rotate(6deg); } }
+    /* demo 2: the bars grow, and the slide says which one to do first */
+    .slide { position:absolute; inset:16px; background:#fff; border:3px solid var(--ink); border-radius:12px; padding:10px 14px 12px; display:flex; flex-direction:column; }
+    .ttl { font-style:normal; font-family:'Permanent Marker',cursive; font-size:1.2rem; line-height:1.1; align-self:flex-start; background:var(--pink); border:2.5px solid var(--ink); border-radius:8px; padding:3px 10px; transform:scale(0); transform-origin:0 50%; }
+    .bars { flex:1; display:flex; align-items:flex-end; gap:5%; padding:8px 4% 0; border-bottom:3px solid var(--ink); } .bars s { flex:1; height:0; background:#CBD5E1; border:3px solid var(--ink); border-bottom:0; border-radius:6px 6px 0 0; text-decoration:none; }
+    .run .bars s { animation:grow .6s cubic-bezier(.3,1.3,.5,1) forwards; } .run .bars s:nth-child(2) { animation-delay:.12s; } .run .bars s:nth-child(3) { animation-delay:.24s; } .run .bars s:nth-child(4) { animation-delay:.36s; } .run .bars s:nth-child(5) { animation-delay:.48s; }
+    .run .bars s:first-child { animation:grow .6s cubic-bezier(.3,1.3,.5,1) forwards, hot .4s ease 1.5s forwards; } .run .ttl { animation:stampflat .4s cubic-bezier(.2,.9,.3,2.2) 1.3s forwards; }
+    @keyframes grow { to { height:var(--h); } } @keyframes hot { to { background:var(--pink); } } @keyframes stampflat { to { transform:scale(1); } }
+    /* demo 3: five steps, the two that add nothing drop out, the clock runs */
+    .stepz { position:absolute; left:16px; top:14px; right:92px; list-style:none; } .stepz li { background:#fff; border:3px solid var(--ink); border-radius:9px; font-family:'Patrick Hand',cursive; font-size:1.02rem; line-height:1; padding:6px 10px; margin:0 0 5px; overflow:hidden; white-space:nowrap; }
+    .run .stepz li { animation:slidein .35s ease-out both; } .run .stepz li:nth-child(2) { animation-delay:.1s; } .run .stepz li:nth-child(3) { animation-delay:.2s; } .run .stepz li:nth-child(4) { animation-delay:.3s; } .run .stepz li:nth-child(5) { animation-delay:.4s; }
+    .run .stepz li.x { animation:slidein .35s ease-out .1s both, bad .3s ease 1.3s forwards, gone .45s ease 2.2s forwards; } .run .stepz li.x:nth-child(4) { animation:slidein .35s ease-out .3s both, bad .3s ease 1.5s forwards, gone .45s ease 2.5s forwards; }
+    @keyframes bad { to { background:#FECACA; text-decoration:line-through; } } @keyframes gone { to { opacity:0; height:0; padding-top:0; padding-bottom:0; margin:0; border-width:0; transform:translateX(40px); } }
+    .watch { position:absolute; right:22px; top:20px; font-size:3rem; line-height:1; animation:tick 1.2s steps(6) infinite; } @keyframes tick { to { transform:rotate(360deg); } }
+    .cut { position:absolute; right:14px; bottom:16px; font-family:'Permanent Marker',cursive; font-weight:400; font-size:1rem; background:var(--mint); border:2.5px solid var(--ink); border-radius:8px; padding:3px 9px; transform:scale(0) rotate(-4deg); } .run .cut { animation:stamp2 .35s cubic-bezier(.2,.9,.3,2.2) 3s forwards; } @keyframes stamp2 { to { transform:scale(1) rotate(-4deg); } }
+    .mini { position:relative; padding:14% 12% 0; text-align:left; }
+    .mini::before { content:''; position:absolute; inset:9%; background:#fff; border:3px solid var(--ink); border-radius:10px; }
+    .mini i, .mini u, .mini b { position:relative; display:block; }
+    .mini i { font-style:normal; font-family:'Patrick Hand',cursive; font-size:.7rem; line-height:1.2; margin:4% 0 6% 6%; }
+    .mini u { height:7%; min-height:6px; margin:0 12% 7% 6%; background:#D1D5DB; border-radius:4px; text-decoration:none; } .mini u.s { margin-right:42%; }
+    .mini b { position:absolute; right:15%; bottom:15%; font-family:'Permanent Marker',cursive; font-weight:400; font-size:.7rem; line-height:1; background:var(--pink); border:2.5px solid var(--ink); border-radius:8px; padding:3px 6px; animation:pulse 1.6s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.14); } }
+    .hero .hand { margin:-8px 0 20px; }
+    /* the living name card */
+    .cam3d { position:relative; width:190px; height:190px; margin:0 auto 12px; border:3px solid var(--ink); border-radius:12px; background:var(--yellow); overflow:hidden; cursor:pointer; }
+    .cam3d img { position:absolute; inset:0; width:100%; height:100%; margin:0; border:0; border-radius:0; object-fit:cover; }
+    .cam3d canvas { position:absolute; inset:0; width:100%; height:100%; display:block; opacity:0; transition:opacity .3s ease; }
+    .cam3d.live canvas { opacity:1; } .cam3d.live img { visibility:hidden; }
+    .cam3d.big { width:100%; height:205px; margin:0 0 10px; cursor:default; }
+    .cam3d .prop { position:absolute; left:8px; bottom:8px; width:84px; height:84px; display:none; }
+    .cam3d .prop.on { display:block; animation:pop .4s cubic-bezier(.2,.9,.3,2.2) 1; }
+    .cam3d .prop img { position:static; width:100%; height:100%; border:3px solid var(--ink); border-radius:10px; visibility:visible; box-shadow:3px 3px 0 var(--ink); }
+    .cam3d .prop .mini { display:block; width:100%; height:100%; border:3px solid var(--ink); border-radius:10px; box-shadow:3px 3px 0 var(--ink); background:var(--yellow); }
+    @keyframes pop { 0% { transform:scale(0); } 70% { transform:scale(1.1); } 100% { transform:scale(1); } }
+    .back { justify-content:flex-start; padding:16px 16px 14px; }
+    .back h3 { font-size:1.35rem; margin-bottom:8px; }
+    .back .cap { font-family:'Patrick Hand',cursive; font-size:1.42rem; line-height:1.2; min-height:3.6em; margin:0 0 6px; max-width:none; }
+    .back .cap.in { animation:capin .3s ease 1; } @keyframes capin { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+    .back .dots { display:flex; gap:5px; justify-content:center; } .back .dots i { width:9px; height:9px; border-radius:50%; border:2px solid var(--ink); background:#fff; } .back .dots i.on { background:var(--pink); }
+    .back .again { margin:8px auto 0; font-family:'Patrick Hand',cursive; font-size:1.15rem; background:#fff; border:2.5px solid var(--ink); border-radius:100px; padding:2px 14px; cursor:pointer; animation:nudge 1.4s ease-in-out infinite; }
+    .back .again[hidden] { display:none; }
+    .back video { width:100%; height:auto; max-height:330px; border:3px solid var(--ink); border-radius:12px; background:var(--yellow); display:block; }
+    .flip { animation:nudge 1.5s ease-in-out infinite; } .flip b { display:inline-block; font-weight:400; }
+    @keyframes nudge { 0%,100% { transform:translateY(0) scale(1); } 50% { transform:translateY(-5px) scale(1.05); } }
+    /* what they taught me */
+    .taught { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:22px; }
+    .tcard { position:relative; background:#fff; border:3px solid var(--ink); border-top:12px solid var(--c); border-radius:16px; padding:26px 16px 14px; box-shadow:6px 6px 0 var(--ink); }
+    .tcard b { position:absolute; top:-26px; left:14px; width:38px; height:38px; display:grid; place-items:center; font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.2rem; background:var(--c); border:3px solid var(--ink); border-radius:50%; }
+    .tcard h3 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.2rem; line-height:1.15; margin:0 0 8px; }
+    .tcard p { font-size:1rem; line-height:1.45; margin:0; }
+    .myrules { margin-top:34px; background:#e0f2fe; border:3px solid var(--ink); border-radius:var(--wob2); padding:20px 26px; }
+    .myrules h3 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.4rem; margin-bottom:8px; }
+    .myrules ul { list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:2px 28px; } .myrules li { padding:5px 0 5px 26px; position:relative; }
+    .myrules li::before { content:''; position:absolute; left:2px; top:.95em; width:12px; height:7px; border-left:3px solid var(--mint); border-bottom:3px solid var(--mint); transform:rotate(-45deg); }
+    @media (max-width: 860px) { .taught { grid-template-columns:1fr 1fr; gap:26px 14px; } .myrules ul { grid-template-columns:1fr; } .tab { font-size:.86rem; padding:8px 9px 7px; } .tabs { gap:5px; padding-left:4px; } .demo { height:214px; } .stepz { right:74px; } .watch { font-size:2.4rem; right:16px; } }
+    @media (prefers-reduced-motion: reduce) { .tab, .taphint b, .watch, .mini b, .flip, .back .again, .back .cap.in, .cam3d .prop.on { animation:none; }
+      .mail.out u { width:100%; } .mail.out u.s { width:55%; } .hand { display:none; } .sent, .ttl, .cut { transform:none; } .bars s { height:var(--h); } .stepz li.x { background:#FECACA; text-decoration:line-through; } .run * { animation:none !important; } }
+
+    /* where my work goes */
+    .split { display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:center; }
+    .split img { width:100%; max-width:320px; justify-self:center; }
+    .tiers { display:grid; gap:18px; margin-top:6px; }
+    .tier { border:3px solid var(--ink); border-radius:var(--wob); padding:18px 22px; }
+    .tier h3 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.35rem; margin-bottom:4px; }
+    .tier p { margin:0; }
+    .state { font-family:'Patrick Hand',cursive; font-size:1.6rem; line-height:1.3; margin-top:34px; max-width:none; }
+    .state b { color:var(--blue); font-weight:400; }
+
+    /* shift log */
+    .log { display:grid; grid-template-columns:1fr 1.15fr; gap:48px; align-items:start; }
+    .slipbed { background:var(--mint); border:3px solid var(--ink); border-radius:var(--wob2); padding:34px 30px; }
+    .slip { background:#fff; padding:24px 24px 36px; transform:rotate(-1deg);
+      clip-path:polygon(0 0,100% 0,100% 100%,95.83% calc(100% - 12px),91.67% 100%,87.5% calc(100% - 12px),83.33% 100%,79.17% calc(100% - 12px),75% 100%,70.83% calc(100% - 12px),66.67% 100%,62.5% calc(100% - 12px),58.33% 100%,54.17% calc(100% - 12px),50% 100%,45.83% calc(100% - 12px),41.67% 100%,37.5% calc(100% - 12px),33.33% 100%,29.17% calc(100% - 12px),25% 100%,20.83% calc(100% - 12px),16.67% 100%,12.5% calc(100% - 12px),8.33% 100%,4.17% calc(100% - 12px),0 100%); }
+    .slip .t { font-weight:700; margin-bottom:12px; }
+    .slip .item { padding:12px 0; border-bottom:3px dotted #c9c9c4; }
+    .slip .item:last-child { border-bottom:0; }
+    .slip b { display:block; }
+    .slip .was { text-decoration:line-through; text-decoration-thickness:2px; color:#555; }
+    .slip .now { background:linear-gradient(transparent 55%, #a7f3d0 55%); }
+
+    /* the message, on a yellow field */
+    .field { background:var(--yellow); margin-top:140px; padding-top:100px; padding-bottom:100px; }
+    .field .in { display:grid; grid-template-columns:1.5fr 1fr; gap:48px; align-items:center; }
+    .field h2 { background:none; padding:0; font-size:clamp(2.1rem,3.6vw,3.2rem); }
+    .field .sticker { width:100%; max-width:280px; justify-self:center; transform:rotate(3deg); }
+
+    /* why the cartoon */
+    .two { display:grid; grid-template-columns:1fr 1fr 1.2fr; gap:28px; align-items:center; }
+    .two img { width:100%; }
+    .two .sticker:first-child { transform:rotate(-3deg); } .two .sticker:nth-child(2) { transform:rotate(2deg); }
+
+    .letters { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; background:#e0f2fe; border:3px solid var(--ink); border-radius:var(--wob); padding:34px 36px; }
+    .letters p { margin:0 0 8px; }
+    .letters h2 { background:none; padding:0; }
+    .next { font-family:'Patrick Hand',cursive; font-size:1.3rem; text-align:center; margin:48px auto 0; }
+
+    .js [data-rv] { opacity:0; transform:translateY(24px); transition:opacity .55s ease, transform .55s ease; transition-delay:var(--d,0ms); }
+    .js [data-rv].shown { opacity:1; transform:none; }
+    .badge-wrap.sway { animation:sway 5s ease-in-out infinite; transform-origin:50% -60px; }
+    @keyframes sway { 0%,100% { transform:rotate(-1.5deg); } 50% { transform:rotate(1.5deg); } }
+    @media (prefers-reduced-motion: reduce) {
+      .js [data-rv] { opacity:1; transform:none; transition:none; }
+      .badge, .btn, .flip { transition:none; } .badge-wrap.sway { animation:none; }
+    }
+    @media (max-width: 860px) {
+      .gap { padding-top:88px; }
+      .hero, .split, .log, .field .in, .two, .letters { grid-template-columns:1fr; }
+      .hero { gap:40px; padding-top:28px; }
+      .holder { padding:66px 18px 24px; }
+      .split img { max-width:200px; } .field .sticker { max-width:200px; }
+      .two img { max-width:220px; justify-self:center; }
+      .field { margin-top:100px; padding-top:72px; padding-bottom:72px; }
+      .letters { padding:26px 22px; gap:16px; }
+      .state { font-size:1.35rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="tis-theme.css?v=k5">
+  <link rel="stylesheet" href="tis-dopamine.css">
+  <!-- MailerLite Universal -->
+  <script>
+  (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+  .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+  n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+  (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+  ml('account', '2607218');
+  </script>
+  <!-- End MailerLite Universal -->
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=3d2">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3d2">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo logo2"><img src="assets/ah-hock-mark.jpg" alt="" width="44" height="44"><span class="lt"><b>The Industrial <i>Scribe</i></b><small>Agentic AI in manufacturing</small></span></a>
+    <div class="nav-links">
+      <a href="index.html#shelf">Solutions</a>
+      <a href="index.html#cases">Case studies</a>
+      <a href="about.html">Meet Ah Hock</a>
+      <a href="index.html#shelf" class="nav-cta">See the solutions</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<section class="sec"><div class="in hero">
+  <div>
+    <h1 data-rv>Hi, I'm Ah Hock.<br><em>I make Agentic AI solutions.</em></h1>
+    <div class="show" id="show" data-rv style="--d:80ms">
+      <div class="tabs" id="tabs" role="tablist" aria-label="Three solutions">
+        <button type="button" class="tab on" role="tab" data-i="0">Email Assistant</button>
+        <button type="button" class="tab" role="tab" data-i="1">Visualize to Persuade</button>
+        <button type="button" class="tab" role="tab" data-i="2">The Lean Machine</button>
+      </div>
+      <div class="demo" id="demo" aria-hidden="true">
+        <div class="pane p0 on run">
+          <div class="mail in"><i>Customer</i><u></u><u class="s"></u></div>
+          <div class="mail out"><i>Your reply</i><u class="t1"></u><u class="t2"></u><u class="t3 s"></u><b class="send">Send</b><span class="hand">👆</span><em class="sent">Sent ✓</em></div>
+        </div>
+        <div class="pane p1">
+          <div class="slide"><i class="ttl">Do this one first →</i><div class="bars"><s style="--h:92%"></s><s style="--h:62%"></s><s style="--h:46%"></s><s style="--h:31%"></s><s style="--h:20%"></s></div></div>
+        </div>
+        <div class="pane p2">
+          <ul class="stepz"><li>Order comes in</li><li class="x">Wait for a signature</li><li>Cut the part</li><li class="x">Search for the drawing</li><li>Ship it</li></ul>
+          <span class="watch">⏱</span><b class="cut">5 steps → 3</b>
+        </div>
+      </div>
+      <p class="dname" id="dname" aria-live="polite"><b>Agentic AI: Email Assistant</b> It reads the email. It writes the reply your way. You press Send. <a href="email-reply.html">Watch it work →</a></p>
+    </div>
+    <p class="taphint"><b aria-hidden="true">👆</b>Tap a name</p>
+    <p class="lead" data-rv style="--d:140ms">I make them inside a real factory. I sit with the people who use them. They tell me what is wrong, and I fix it. <strong>Take what they taught me. That could be you.</strong></p>
+    <p class="hand" data-rv style="--d:170ms">Ah Hock is not my real name. I am an office worker, not an engineer.</p>
+    <div class="act" data-rv style="--d:200ms">
+      <a class="btn" href="index.html#shelf">See what I made →</a>
+      <a class="alt" href="index.html#l-who">Which Insider are you? →</a>
+    </div>
+  </div>
+  <div class="holder" data-rv style="--d:120ms">
+    <span class="strap" aria-hidden="true"></span><span class="clip" aria-hidden="true"></span>
+    <div class="badge-wrap sway">
+      <div class="badge" id="badge">
+        <div class="face front" id="front">
+          <div class="co"><span>STAFF PASS</span><span class="redact" role="img" aria-label="Employer name blacked out"></span></div>
+          <div class="cam3d" id="cam3d"><img src="assets/ahhock-3d.jpg" alt="Ah Hock, the 3D character where the photo should be" width="540" height="540"><canvas id="c3d" aria-label="Ah Hock, moving. Tap him."></canvas><span class="prop" id="prop" aria-hidden="true"></span></div>
+          <dl>
+            <dt>Name</dt><dd>Ah Hock (not my real name)</dd>
+            <dt>Dept</dt><dd>Factory office</dd>
+            <dt>Job</dt><dd>Office worker. Technical output anyway.</dd>
+            <dt>Tools</dt><dd>Frameworks + AI</dd>
+            <dt>Status</dt><dd>Still inside, full-time, today</dd>
+          </dl>
+          <div class="stripe"></div>
+        </div>
+        <div class="face back" id="back">
+          <h3>My story, in 30 seconds</h3>
+          <div class="slot" id="slot"></div>
+          <p class="cap" id="cap" aria-live="polite"></p>
+          <div class="dots" id="dots" aria-hidden="true"></div>
+          <button type="button" class="again" id="again" hidden>↻ Tell me again</button>
+        </div>
+      </div>
+    </div>
+    <button class="flip" id="flip" aria-pressed="false" aria-controls="badge"><b aria-hidden="true">👆</b> Flip it. I tell you my story ↻</button>
+  </div>
+</div></section>
+
+<section class="sec gap"><div class="in">
+  <h2 data-rv>The people next to me taught me four things.</h2>
+  <div class="taught">
+    <div class="tcard" data-rv style="--c:var(--pink)"><b>1</b><h3>Only make what someone asks for.</h3><p>Every screen I added started with a real question from someone.</p></div>
+    <div class="tcard" data-rv style="--c:var(--sky); --d:70ms"><b>2</b><h3>Use their own files.</h3><p>The planner's seven views were built from the planner's own sheets.</p></div>
+    <div class="tcard" data-rv style="--c:var(--mint); --d:140ms"><b>3</b><h3>Hide a number nobody trusts.</h3><p>One target showed zero against seventy. I switched it off the first time.</p></div>
+    <div class="tcard" data-rv style="--c:var(--coral); --d:210ms"><b>4</b><h3>Nobody uses it? Take it down.</h3><p>I built a wall board. It looked right. Nobody used it. It is gone.</p></div>
+  </div>
+  <div class="myrules" data-rv>
+    <h3>And my own rules</h3>
+    <ul>
+      <li>Only publish what I've run on real work</li>
+      <li>Real numbers, nothing invented</li>
+      <li>No customer names, ever</li>
+      <li>No jargon, mamak-table English only</li>
+      <li>For office staff, never for programmers</li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="sec gap"><div class="in split">
+  <div>
+    <h2 data-rv>Where my work goes</h2>
+    <div class="tiers">
+      <div class="tier" data-rv style="border-left:12px solid var(--sky); --d:60ms;">
+        <h3>High-tech equipment</h3>
+        <p>I work on the supply side of <strong>high-tech equipment</strong>: precision parts and modules for machines where "roughly correct" does not exist. At that tier, a wrong number in a report costs real money.</p>
+      </div>
+      <div class="tier" data-rv style="border-left:12px solid var(--pink); --d:120ms;">
+        <h3>And beyond</h3>
+        <p>The same precision work supports production lines in <strong>other regulated industries</strong>, places where the numbers have to be right the first time.</p>
+      </div>
+    </div>
+    <p class="state" data-rv>If my insight survives at that tier, <b>it will survive your office.</b></p>
+  </div>
+  <img class="sticker" data-rv style="--d:120ms; transform:rotate(3deg);" src="assets/obj-3d-machine-solo.jpg" alt="A small 3D precision machine" width="320" height="320" loading="lazy">
+</div></section>
+
+<section class="sec gap"><div class="in log">
+  <div>
+    <h2 data-rv>What AI changed for me</h2>
+    <p data-rv style="--d:70ms">Nobody taught me this. I'm not from the technical side. I present, I plan, I do content and strategy. But with a framework and AI, I produce work from fields I never studied.</p>
+    <p data-rv style="--d:110ms">That's the entire message of this site.</p>
+  </div>
+  <div class="slipbed" data-rv style="--d:140ms">
+    <div class="slip">
+      <div class="t">My week, before and after</div>
+      <div class="item"><b>Weekly production report</b><span class="was">hours collecting the numbers</span><br><span class="now">an automated flow that refreshes every 30 minutes</span></div>
+      <div class="item"><b>SOPs</b><span class="was">three months on the to-do list</span><br><span class="now">described once, then a few clicks away</span></div>
+      <div class="item"><b>Presentations</b><span class="was">built slide by slide</span><br><span class="now">I do the strategy, AI does the organising</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec field"><div class="in">
+  <div>
+    <h2 data-rv>You don't need to be from the field.</h2>
+    <p class="hand" data-rv style="--d:70ms">You need a framework, and the nerve to use it.</p>
+    <p data-rv style="--d:120ms">And here's the real secret: <strong>there is no standard method.</strong> High volume, high mix, OEM, tier-1: the right way to report, plan and negotiate depends on what <em>your</em> business is. That's what I teach. Diagnose first, then customise.</p>
+  </div>
+  <img class="sticker" data-rv style="--d:120ms" src="assets/ahhock-3d-shocked.jpg" alt="Ah Hock, surprised" width="540" height="540" loading="lazy">
+</div></section>
+
+<section class="sec gap"><div class="in">
+  <h2 data-rv>Why the cartoon?</h2>
+  <div class="two">
+    <img class="sticker" data-rv src="assets/ahhock-3d-desk.jpg" alt="Ah Hock at his desk with a laptop" width="540" height="540" loading="lazy">
+    <img class="sticker" data-rv style="--d:80ms" src="assets/ahhock-3d-smile.jpg" alt="Ah Hock smiling and waving" width="540" height="540" loading="lazy">
+    <p class="hand" data-rv style="--d:140ms; margin:0;">I still work in the industry. Who I am doesn't matter; <strong>what works does.</strong> The guy in the blue polo is me. He's also you.</p>
+  </div>
+</div></section>
+
+<section class="sec gap"><div class="in">
+  <div class="letters tis-mlbox" data-rv>
+    <div>
+      <h2>The Insider Letters</h2>
+      <p>One real factory-office AI move per week, from Ah Hock's desk. Sign up and your first email brings the free <strong>10-point Pre-Ship Checklist</strong>. No spam, unsubscribe anytime.</p>
+    </div>
+    <div class="ml-embedded" data-form="dOrix4"></div>
+  </div>
+  <p class="next">Want to find your own waste? <a href="waste-hunt.html">Start with The Lean Machine →</a></p>
+</div></section>
+</main>
+
+<footer>
+  <div><span class="handle">@the.industrial.scribe</span> · theindustrialscribe.com</div>
+  <div class="quiet">Written from inside a real Malaysian manufacturing office.</div>
+  <div class="flinks"><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="refunds.html">Refunds</a> · <a href="https://www.instagram.com/the.industrial.scribe/">Instagram</a> · <a href="mailto:theindustrialscribe@gmail.com">Email</a></div>
+  <div class="quiet">© 2026 The Industrial Scribe. Independent; not affiliated with or endorsed by Anthropic. Claude is a trademark of Anthropic, PBC.</div>
+</footer>
+
+<script src="tis-ahhock-stage.js"></script>
+<script>
+(function(){
+  var badge = document.getElementById('badge'), flip = document.getElementById('flip'),
+      front = document.getElementById('front'), back = document.getElementById('back');
+  back.setAttribute('aria-hidden', 'true');
+  var stageEl = document.getElementById('cam3d'), slot = document.getElementById('slot'), cap = document.getElementById('cap'), dots = document.getElementById('dots'),
+      again = document.getElementById('again'), prop = document.getElementById('prop'), home = stageEl.parentNode, homeNext = stageEl.nextSibling;
+  var MINI = '<span class="mini"><i>To: customer</i><u></u><u></u><u class="s"></u><b>Send</b></span>';
+  /* the story: ten short lines, about 30 seconds. [words, pose, face, picture]. The same lines are the script of the video. */
+  var LINES = [["Hi. I'm Ah Hock.", 'wave', 'happy', ''],
+               ['Look what I make.', 'present_left', 'happy', ''],
+               ['A reply. The AI wrote it. I check it. I press Send.', 'explain', '', MINI],
+               ['A report. It says what to do next.', 'present_left', '', '<img src="assets/obj-3d-doc-deck.jpg" alt="">'],
+               ['A map. It shows where the time goes.', 'present_left', '', '<img src="assets/obj-3d-doc-wastemap.jpg" alt="">'],
+               ['I make them inside a real factory.', 'neutral', 'determined', ''],
+               ['I sit with the people who use them.', 'explain_both', '', ''],
+               ['They tell me what is wrong. I fix it.', 'thumbs_up', 'happy', ''],
+               ['Take what they taught me.', 'explain_both', 'happy', ''],
+               ['That could be you.', 'point_camera', 'wink', '']];
+  LINES.forEach(function(){ dots.appendChild(document.createElement('i')); });
+  /* the showcase at the top: three solutions, one moving demo at a time. It turns by itself until the visitor taps a name. */
+  var SHOW = [['Agentic AI: Email Assistant', 'It reads the email. It writes the reply your way. You press Send.', 'email-reply.html'],
+              ['Agentic AI: Visualize to Persuade', 'It turns your numbers into slides that say what to do next.', 'okay-noted.html'],
+              ['Agentic AI: The Lean Machine', 'It shows where the time goes, and what to stop doing.', 'waste-hunt.html']];
+  var tabs = [].slice.call(document.querySelectorAll('#tabs .tab')), panes = [].slice.call(document.querySelectorAll('#demo .pane')), dname = document.getElementById('dname'), si = 0, auto = 0, hold = 0;
+  function showcase(n){
+    si = n; tabs.forEach(function(b, k){ b.classList.toggle('on', k === n); b.setAttribute('aria-selected', k === n); });
+    panes.forEach(function(p, k){ p.classList.remove('run'); p.classList.toggle('on', k === n); }); void panes[n].offsetWidth; panes[n].classList.add('run');
+    dname.textContent = ''; var b = document.createElement('b'); b.textContent = SHOW[n][0]; dname.appendChild(b); dname.appendChild(document.createTextNode(SHOW[n][1] + ' '));
+    var a = document.createElement('a'); a.href = SHOW[n][2]; a.textContent = 'Watch it work →'; dname.appendChild(a);
+  }
+  tabs.forEach(function(b, k){ b.addEventListener('click', function(){ hold = Date.now() + 20000; showcase(k); }); });
+  auto = setInterval(function(){ if (document.hidden || Date.now() < hold) return; var r = document.getElementById('show').getBoundingClientRect(); if (r.bottom < 0 || r.top > window.innerHeight) return; showcase((si + 1) % SHOW.length); }, 5600);
+  var st = null, live = false, flipped = false, telling = false, li = -1, timer = 0, idleT = 0, video = null, hasVideo = false;
+  function idle(){                                   /* on the front he never stands still: a small move every few seconds */
+    clearTimeout(idleT); if (!live || flipped) return;
+    var m = [['wave', 'happy'], ['thumbs_up', 'happy'], ['look_up', ''], ['smile', 'wink'], ['think', ''], ['shrug', 'cheeky']][Math.floor(Math.random() * 6)];
+    st.show(m[0], m[1]); idleT = setTimeout(function(){ if (!flipped) st.show('neutral', ''); idleT = setTimeout(idle, 3200 + Math.random() * 2500); }, 1700);
+  }
+  if (window.TISStage) st = window.TISStage(document.getElementById('c3d'), { onReady: function(){ live = true; stageEl.classList.add('live'); st.show('wave', 'happy'); idleT = setTimeout(function(){ st.show('neutral', ''); idleT = setTimeout(idle, 2500); }, 2400); } });
+  stageEl.addEventListener('click', function(){       /* tap him on the front: a big face and a hop */
+    if (!live || flipped) return; var f = [['cheer', 'grin'], ['proud', 'love'], ['shrug', 'cheeky'], ['shock', 'shocked'], ['thumbs_up', 'smug'], ['smile', 'bliss']][Math.floor(Math.random() * 6)];
+    clearTimeout(idleT); st.show(f[0], f[1]); st.hop(); idleT = setTimeout(function(){ st.show('neutral', ''); idleT = setTimeout(idle, 3000); }, 1800);
+  });
+  function say(n){
+    li = n; var L = LINES[n], words = L[0].split(' ').length;
+    cap.textContent = L[0]; cap.classList.remove('in'); void cap.offsetWidth; cap.classList.add('in');
+    [].forEach.call(dots.children, function(d, k){ d.classList.toggle('on', k <= n); });
+    prop.innerHTML = L[3]; prop.classList.remove('on'); if (L[3]) { void prop.offsetWidth; prop.classList.add('on'); }
+    if (live) { st.show(L[1], L[2]); st.talk(words * 300); }
+    timer = setTimeout(function(){ if (!telling) return; if (n + 1 < LINES.length) say(n + 1); else { telling = false; again.hidden = false; } }, 900 + 330 * words);
+  }
+  function tell(){ clearTimeout(timer); telling = true; again.hidden = true; say(0); }
+  function stop(){ telling = false; clearTimeout(timer); prop.classList.remove('on'); prop.innerHTML = ''; again.hidden = true; }
+  again.addEventListener('click', tell);
+  /* the Blender video, when it exists, takes over the back of the card */
+  try { fetch('assets/ah-hock-intro.mp4', { method: 'HEAD' }).then(function(r){ hasVideo = r.ok && /video/.test(r.headers.get('content-type') || ''); }).catch(function(){}); } catch (e) {}
+  flip.addEventListener('click', function(){
+    var on = !badge.classList.contains('flipped'); flipped = on;
+    badge.classList.toggle('flipped', on);
+    flip.setAttribute('aria-pressed', on);
+    front.setAttribute('aria-hidden', on); back.setAttribute('aria-hidden', !on);
+    flip.innerHTML = on ? 'Flip it back ↻' : '<b aria-hidden="true">👆</b> Flip it. I tell you my story ↻';
+    clearTimeout(idleT);
+    setTimeout(function(){                            /* the card is edge-on now: move him to the other side */
+      if (on && hasVideo) {
+        front.style.minHeight = Math.max(front.offsetHeight, 470) + 'px';
+        if (!video) { video = document.createElement('video'); video.src = 'assets/ah-hock-intro.mp4'; video.poster = 'assets/ah-hock-intro-poster.jpg'; video.controls = true; video.playsInline = true; video.preload = 'metadata'; slot.appendChild(video); cap.hidden = true; dots.hidden = true; }
+        try { video.currentTime = 0; var p = video.play(); if (p && p.catch) p.catch(function(){}); } catch (e) {}
+      } else if (on) { front.style.minHeight = Math.max(front.offsetHeight, 470) + 'px';      /* the card keeps its size while he is on the back */
+        slot.appendChild(stageEl); stageEl.classList.add('big'); if (live) st.view('story'); tell(); }
+      else { if (video) video.pause(); stop(); home.insertBefore(stageEl, homeNext); front.style.minHeight = ''; stageEl.classList.remove('big'); if (live) { st.view('photo'); st.show('neutral', ''); idleT = setTimeout(idle, 2500); } }
+    }, 350);
+  });
+  var els = document.querySelectorAll('[data-rv]');
+  var showAll = function(){ els.forEach(function(e){ e.classList.add('shown'); }); };
+  if (!('IntersectionObserver' in window)) { showAll(); return; }
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('shown'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+  els.forEach(function(e){ if (e.getBoundingClientRect().top < window.innerHeight) e.classList.add('shown'); else io.observe(e); });
+  setTimeout(function(){ if (!document.querySelector('[data-rv]:not(.shown)')) return; showAll(); io.disconnect(); }, 1500);
+})();
+</script>
+<script src="tis-dopamine.js" defer></script>
+</body>
+</html>
