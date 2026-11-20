@@ -66,6 +66,55 @@
     html:not(.js) .back { position:relative; transform:none; margin-top:14px; }
     html:not(.js) .flip { display:none; }
 
+    /* the top: three things he makes, shown at once */
+    .hero h1 em { font-style:normal; color:var(--blue); }
+    .outs { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:22px 0 4px; max-width:560px; }
+    .out { margin:0; text-align:center; animation:bobo 3s ease-in-out infinite; } .out:nth-child(2) { animation-delay:-1s; } .out:nth-child(3) { animation-delay:-2s; }
+    @keyframes bobo { 0%,100% { transform:translateY(0) rotate(-1deg); } 50% { transform:translateY(-6px) rotate(1deg); } }
+    .out img, .out .mini { display:block; width:100%; aspect-ratio:1; height:auto; border:3px solid var(--ink); border-radius:16px; box-shadow:5px 5px 0 var(--ink); background:var(--yellow); }
+    .out figcaption { font-family:'Patrick Hand',cursive; font-size:1.12rem; line-height:1.2; margin-top:10px; }
+    .mini { position:relative; padding:14% 12% 0; text-align:left; }
+    .mini::before { content:''; position:absolute; inset:9%; background:#fff; border:3px solid var(--ink); border-radius:10px; }
+    .mini i, .mini u, .mini b { position:relative; display:block; }
+    .mini i { font-style:normal; font-family:'Patrick Hand',cursive; font-size:clamp(.7rem,1.5vw,.95rem); line-height:1.2; margin:4% 0 6% 6%; }
+    .mini u { height:7%; min-height:6px; margin:0 12% 7% 6%; background:#D1D5DB; border-radius:4px; text-decoration:none; } .mini u.s { margin-right:42%; }
+    .mini b { position:absolute; right:15%; bottom:15%; font-family:'Permanent Marker',cursive; font-weight:400; font-size:clamp(.7rem,1.5vw,.95rem); line-height:1; background:var(--pink); border:2.5px solid var(--ink); border-radius:8px; padding:4px 9px; animation:pulse 1.6s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.14); } }
+    .hero .hand { margin:-8px 0 20px; }
+    /* the living name card */
+    .cam3d { position:relative; width:190px; height:190px; margin:0 auto 12px; border:3px solid var(--ink); border-radius:12px; background:var(--yellow); overflow:hidden; cursor:pointer; }
+    .cam3d img { position:absolute; inset:0; width:100%; height:100%; margin:0; border:0; border-radius:0; object-fit:cover; }
+    .cam3d canvas { position:absolute; inset:0; width:100%; height:100%; display:block; opacity:0; transition:opacity .3s ease; }
+    .cam3d.live canvas { opacity:1; } .cam3d.live img { visibility:hidden; }
+    .cam3d.big { width:100%; height:205px; margin:0 0 10px; cursor:default; }
+    .cam3d .prop { position:absolute; left:8px; bottom:8px; width:84px; height:84px; display:none; }
+    .cam3d .prop.on { display:block; animation:pop .4s cubic-bezier(.2,.9,.3,2.2) 1; }
+    .cam3d .prop img { position:static; width:100%; height:100%; border:3px solid var(--ink); border-radius:10px; visibility:visible; box-shadow:3px 3px 0 var(--ink); }
+    .cam3d .prop .mini { display:block; width:100%; height:100%; border:3px solid var(--ink); border-radius:10px; box-shadow:3px 3px 0 var(--ink); background:var(--yellow); }
+    @keyframes pop { 0% { transform:scale(0); } 70% { transform:scale(1.1); } 100% { transform:scale(1); } }
+    .back { justify-content:flex-start; padding:16px 16px 14px; }
+    .back h3 { font-size:1.35rem; margin-bottom:8px; }
+    .back .cap { font-family:'Patrick Hand',cursive; font-size:1.42rem; line-height:1.2; min-height:3.6em; margin:0 0 6px; max-width:none; }
+    .back .cap.in { animation:capin .3s ease 1; } @keyframes capin { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+    .back .dots { display:flex; gap:5px; justify-content:center; } .back .dots i { width:9px; height:9px; border-radius:50%; border:2px solid var(--ink); background:#fff; } .back .dots i.on { background:var(--pink); }
+    .back .again { margin:8px auto 0; font-family:'Patrick Hand',cursive; font-size:1.15rem; background:#fff; border:2.5px solid var(--ink); border-radius:100px; padding:2px 14px; cursor:pointer; animation:nudge 1.4s ease-in-out infinite; }
+    .back .again[hidden] { display:none; }
+    .back video { width:100%; height:auto; max-height:330px; border:3px solid var(--ink); border-radius:12px; background:var(--yellow); display:block; }
+    .flip { animation:nudge 1.5s ease-in-out infinite; } .flip b { display:inline-block; font-weight:400; }
+    @keyframes nudge { 0%,100% { transform:translateY(0) scale(1); } 50% { transform:translateY(-5px) scale(1.05); } }
+    /* what they taught me */
+    .taught { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:22px; }
+    .tcard { position:relative; background:#fff; border:3px solid var(--ink); border-top:12px solid var(--c); border-radius:16px; padding:26px 16px 14px; box-shadow:6px 6px 0 var(--ink); }
+    .tcard b { position:absolute; top:-26px; left:14px; width:38px; height:38px; display:grid; place-items:center; font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.2rem; background:var(--c); border:3px solid var(--ink); border-radius:50%; }
+    .tcard h3 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.2rem; line-height:1.15; margin:0 0 8px; }
+    .tcard p { font-size:1rem; line-height:1.45; margin:0; }
+    .myrules { margin-top:34px; background:#e0f2fe; border:3px solid var(--ink); border-radius:var(--wob2); padding:20px 26px; }
+    .myrules h3 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.4rem; margin-bottom:8px; }
+    .myrules ul { list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:2px 28px; } .myrules li { padding:5px 0 5px 26px; position:relative; }
+    .myrules li::before { content:''; position:absolute; left:2px; top:.95em; width:12px; height:7px; border-left:3px solid var(--mint); border-bottom:3px solid var(--mint); transform:rotate(-45deg); }
+    @media (max-width: 860px) { .taught { grid-template-columns:1fr 1fr; gap:26px 14px; } .myrules ul { grid-template-columns:1fr; } .outs { gap:10px; } .out figcaption { font-size:1rem; } }
+    @media (prefers-reduced-motion: reduce) { .out, .mini b, .flip, .back .again, .back .cap.in, .cam3d .prop.on { animation:none; } }
+
     /* where my work goes */
     .split { display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:center; }
     .split img { width:100%; max-width:320px; justify-self:center; }
@@ -155,11 +204,17 @@
 <main>
 <section class="sec"><div class="in hero">
   <div>
-    <h1 data-rv>Just call me Ah Hock.</h1>
-    <p class="lead" data-rv style="--d:80ms">Not my real name. Every Malaysian factory office has an Ah Hock. And here's the honest part: <strong>I'm not an engineer.</strong> I'm the office worker who presents well, plans well, and does technical work anyway, with frameworks and AI.</p>
-    <div class="act" data-rv style="--d:160ms">
-      <a class="btn" href="backoffice.html">See what I built →</a>
-      <a class="alt" href="insider-test.html">Which Insider are you? →</a>
+    <h1 data-rv>Hi, I'm Ah Hock.<br><em>I make these.</em></h1>
+    <div class="outs" data-rv style="--d:80ms">
+      <figure class="out"><span class="mini" aria-hidden="true"><i>To: customer</i><u></u><u></u><u class="s"></u><b>Send</b></span><figcaption>A reply. I check it and press Send.</figcaption></figure>
+      <figure class="out"><img src="assets/obj-3d-doc-deck.jpg" alt="Three slides, the front one a bar chart" width="600" height="600"><figcaption>A report that says what to do next.</figcaption></figure>
+      <figure class="out"><img src="assets/obj-3d-doc-wastemap.jpg" alt="A clipboard of steps marked red and green, with a stopwatch" width="600" height="600"><figcaption>A map of where the time goes.</figcaption></figure>
+    </div>
+    <p class="lead" data-rv style="--d:140ms">I make them inside a real factory. I sit with the people who use them. They tell me what is wrong, and I fix it. <strong>Take what they taught me. That could be you.</strong></p>
+    <p class="hand" data-rv style="--d:170ms">Ah Hock is not my real name. I am an office worker, not an engineer.</p>
+    <div class="act" data-rv style="--d:200ms">
+      <a class="btn" href="index.html#shelf">See what I made →</a>
+      <a class="alt" href="index.html#l-who">Which Insider are you? →</a>
     </div>
   </div>
   <div class="holder" data-rv style="--d:120ms">
@@ -168,7 +223,7 @@
       <div class="badge" id="badge">
         <div class="face front" id="front">
           <div class="co"><span>STAFF PASS</span><span class="redact" role="img" aria-label="Employer name blacked out"></span></div>
-          <img src="assets/ahhock-3d.jpg" alt="Ah Hock, the 3D character where the photo should be" width="540" height="540">
+          <div class="cam3d" id="cam3d"><img src="assets/ahhock-3d.jpg" alt="Ah Hock, the 3D character where the photo should be" width="540" height="540"><canvas id="c3d" aria-label="Ah Hock, moving. Tap him."></canvas><span class="prop" id="prop" aria-hidden="true"></span></div>
           <dl>
             <dt>Name</dt><dd>Ah Hock (not my real name)</dd>
             <dt>Dept</dt><dd>Factory office</dd>
@@ -179,18 +234,35 @@
           <div class="stripe"></div>
         </div>
         <div class="face back" id="back">
-          <h3>The Ah Hock rules</h3>
-          <ul>
-            <li>Only publish what I've run on real work</li>
-            <li>Real numbers, nothing invented</li>
-            <li>No customer names, ever</li>
-            <li>No jargon, mamak-table English only</li>
-            <li>For office staff, never for programmers</li>
-          </ul>
+          <h3>My story, in 30 seconds</h3>
+          <div class="slot" id="slot"></div>
+          <p class="cap" id="cap" aria-live="polite"></p>
+          <div class="dots" id="dots" aria-hidden="true"></div>
+          <button type="button" class="again" id="again" hidden>↻ Tell me again</button>
         </div>
       </div>
     </div>
-    <button class="flip" id="flip" aria-pressed="false" aria-controls="badge">Flip the badge ↻</button>
+    <button class="flip" id="flip" aria-pressed="false" aria-controls="badge"><b aria-hidden="true">👆</b> Flip it. I tell you my story ↻</button>
+  </div>
+</div></section>
+
+<section class="sec gap"><div class="in">
+  <h2 data-rv>The people next to me taught me four things.</h2>
+  <div class="taught">
+    <div class="tcard" data-rv style="--c:var(--pink)"><b>1</b><h3>Only make what someone asks for.</h3><p>Every screen I added started with a real question from someone.</p></div>
+    <div class="tcard" data-rv style="--c:var(--sky); --d:70ms"><b>2</b><h3>Use their own files.</h3><p>The planner's seven views were built from the planner's own sheets.</p></div>
+    <div class="tcard" data-rv style="--c:var(--mint); --d:140ms"><b>3</b><h3>Hide a number nobody trusts.</h3><p>One target showed zero against seventy. I switched it off the first time.</p></div>
+    <div class="tcard" data-rv style="--c:var(--coral); --d:210ms"><b>4</b><h3>Nobody uses it? Take it down.</h3><p>I built a wall board. It looked right. Nobody used it. It is gone.</p></div>
+  </div>
+  <div class="myrules" data-rv>
+    <h3>And my own rules</h3>
+    <ul>
+      <li>Only publish what I've run on real work</li>
+      <li>Real numbers, nothing invented</li>
+      <li>No customer names, ever</li>
+      <li>No jargon, mamak-table English only</li>
+      <li>For office staff, never for programmers</li>
+    </ul>
   </div>
 </div></section>
 
@@ -265,17 +337,67 @@
   <div class="quiet">© 2026 The Industrial Scribe. Independent; not affiliated with or endorsed by Anthropic. Claude is a trademark of Anthropic, PBC.</div>
 </footer>
 
+<script src="tis-ahhock-stage.js"></script>
 <script>
 (function(){
   var badge = document.getElementById('badge'), flip = document.getElementById('flip'),
       front = document.getElementById('front'), back = document.getElementById('back');
   back.setAttribute('aria-hidden', 'true');
+  var stageEl = document.getElementById('cam3d'), slot = document.getElementById('slot'), cap = document.getElementById('cap'), dots = document.getElementById('dots'),
+      again = document.getElementById('again'), prop = document.getElementById('prop'), home = stageEl.parentNode, homeNext = stageEl.nextSibling;
+  var MINI = '<span class="mini"><i>To: customer</i><u></u><u></u><u class="s"></u><b>Send</b></span>';
+  /* the story: ten short lines, about 30 seconds. [words, pose, face, picture]. The same lines are the script of the video. */
+  var LINES = [["Hi. I'm Ah Hock.", 'wave', 'happy', ''],
+               ['Look what I make.', 'present_left', 'happy', ''],
+               ['A reply. The AI wrote it. I check it. I press Send.', 'explain', '', MINI],
+               ['A report. It says what to do next.', 'present_left', '', '<img src="assets/obj-3d-doc-deck.jpg" alt="">'],
+               ['A map. It shows where the time goes.', 'present_left', '', '<img src="assets/obj-3d-doc-wastemap.jpg" alt="">'],
+               ['I make them inside a real factory.', 'neutral', 'determined', ''],
+               ['I sit with the people who use them.', 'explain_both', '', ''],
+               ['They tell me what is wrong. I fix it.', 'thumbs_up', 'happy', ''],
+               ['Take what they taught me.', 'explain_both', 'happy', ''],
+               ['That could be you.', 'point_camera', 'wink', '']];
+  LINES.forEach(function(){ dots.appendChild(document.createElement('i')); });
+  var st = null, live = false, flipped = false, telling = false, li = -1, timer = 0, idleT = 0, video = null, hasVideo = false;
+  function idle(){                                   /* on the front he never stands still: a small move every few seconds */
+    clearTimeout(idleT); if (!live || flipped) return;
+    var m = [['wave', 'happy'], ['thumbs_up', 'happy'], ['look_up', ''], ['smile', 'wink'], ['think', ''], ['shrug', 'cheeky']][Math.floor(Math.random() * 6)];
+    st.show(m[0], m[1]); idleT = setTimeout(function(){ if (!flipped) st.show('neutral', ''); idleT = setTimeout(idle, 3200 + Math.random() * 2500); }, 1700);
+  }
+  if (window.TISStage) st = window.TISStage(document.getElementById('c3d'), { onReady: function(){ live = true; stageEl.classList.add('live'); st.show('wave', 'happy'); idleT = setTimeout(function(){ st.show('neutral', ''); idleT = setTimeout(idle, 2500); }, 2400); } });
+  stageEl.addEventListener('click', function(){       /* tap him on the front: a big face and a hop */
+    if (!live || flipped) return; var f = [['cheer', 'grin'], ['proud', 'love'], ['shrug', 'cheeky'], ['shock', 'shocked'], ['thumbs_up', 'smug'], ['smile', 'bliss']][Math.floor(Math.random() * 6)];
+    clearTimeout(idleT); st.show(f[0], f[1]); st.hop(); idleT = setTimeout(function(){ st.show('neutral', ''); idleT = setTimeout(idle, 3000); }, 1800);
+  });
+  function say(n){
+    li = n; var L = LINES[n], words = L[0].split(' ').length;
+    cap.textContent = L[0]; cap.classList.remove('in'); void cap.offsetWidth; cap.classList.add('in');
+    [].forEach.call(dots.children, function(d, k){ d.classList.toggle('on', k <= n); });
+    prop.innerHTML = L[3]; prop.classList.remove('on'); if (L[3]) { void prop.offsetWidth; prop.classList.add('on'); }
+    if (live) { st.show(L[1], L[2]); st.talk(words * 300); }
+    timer = setTimeout(function(){ if (!telling) return; if (n + 1 < LINES.length) say(n + 1); else { telling = false; again.hidden = false; } }, 900 + 330 * words);
+  }
+  function tell(){ clearTimeout(timer); telling = true; again.hidden = true; say(0); }
+  function stop(){ telling = false; clearTimeout(timer); prop.classList.remove('on'); prop.innerHTML = ''; again.hidden = true; }
+  again.addEventListener('click', tell);
+  /* the Blender video, when it exists, takes over the back of the card */
+  try { fetch('assets/ah-hock-intro.mp4', { method: 'HEAD' }).then(function(r){ hasVideo = r.ok && /video/.test(r.headers.get('content-type') || ''); }).catch(function(){}); } catch (e) {}
   flip.addEventListener('click', function(){
-    var on = !badge.classList.contains('flipped');
+    var on = !badge.classList.contains('flipped'); flipped = on;
     badge.classList.toggle('flipped', on);
     flip.setAttribute('aria-pressed', on);
     front.setAttribute('aria-hidden', on); back.setAttribute('aria-hidden', !on);
-    flip.textContent = on ? 'Flip it back ↻' : 'Flip the badge ↻';
+    flip.innerHTML = on ? 'Flip it back ↻' : '<b aria-hidden="true">👆</b> Flip it. I tell you my story ↻';
+    clearTimeout(idleT);
+    setTimeout(function(){                            /* the card is edge-on now: move him to the other side */
+      if (on && hasVideo) {
+        front.style.minHeight = Math.max(front.offsetHeight, 470) + 'px';
+        if (!video) { video = document.createElement('video'); video.src = 'assets/ah-hock-intro.mp4'; video.poster = 'assets/ah-hock-intro-poster.jpg'; video.controls = true; video.playsInline = true; video.preload = 'metadata'; slot.appendChild(video); cap.hidden = true; dots.hidden = true; }
+        try { video.currentTime = 0; var p = video.play(); if (p && p.catch) p.catch(function(){}); } catch (e) {}
+      } else if (on) { front.style.minHeight = Math.max(front.offsetHeight, 470) + 'px';      /* the card keeps its size while he is on the back */
+        slot.appendChild(stageEl); stageEl.classList.add('big'); if (live) st.view('story'); tell(); }
+      else { if (video) video.pause(); stop(); home.insertBefore(stageEl, homeNext); front.style.minHeight = ''; stageEl.classList.remove('big'); if (live) { st.view('photo'); st.show('neutral', ''); idleT = setTimeout(idle, 2500); } }
+    }, 350);
   });
   var els = document.querySelectorAll('[data-rv]');
   var showAll = function(){ els.forEach(function(e){ e.classList.add('shown'); }); };
