@@ -69,8 +69,8 @@
     /* the top: three things he makes, shown at once */
     .hero h1 em { font-style:normal; color:var(--blue); }
     .show { position:relative; max-width:560px; margin:20px 0 0; }
-    .tabs { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 -3px; padding-left:10px; position:relative; z-index:2; }
-    .tab { font-family:'Permanent Marker',cursive; font-size:1rem; line-height:1.1; background:#fff; color:var(--ink); border:3px solid var(--ink); border-bottom:0; border-radius:12px 12px 0 0; padding:9px 13px 8px; cursor:pointer; animation:ask 3s ease-in-out infinite; }
+    .tabs { display:grid; grid-template-columns:repeat(3,1fr); align-items:end; gap:6px; margin:0 0 -3px; padding:0 10px; position:relative; z-index:2; }
+    .tab { font-family:'Permanent Marker',cursive; font-size:.95rem; line-height:1.1; text-align:center; background:#fff; color:var(--ink); border:3px solid var(--ink); border-bottom:0; border-radius:12px 12px 0 0; padding:9px 6px 8px; min-height:52px; cursor:pointer; animation:ask 3s ease-in-out infinite; }
     .tab:nth-child(2) { animation-delay:.15s; } .tab:nth-child(3) { animation-delay:.3s; }
     .tab.on { background:var(--yellow); animation:none; padding-bottom:11px; }
     @media (hover:hover) { .tab:hover { animation:none; background:#FEF3C7; } .tab.on:hover { background:var(--yellow); } }
@@ -87,10 +87,10 @@
     .mail u { display:block; height:9px; margin:0 0 7px; background:#D1D5DB; border-radius:5px; text-decoration:none; } .mail u.s { width:55%; }
     .mail.in { left:16px; top:16px; width:44%; } .mail.out { right:16px; bottom:16px; width:58%; background:#ECFDF5; }
     .mail.out u { background:var(--mint); width:0; } .send { position:absolute; right:10px; bottom:9px; font-family:'Permanent Marker',cursive; font-weight:400; font-size:.95rem; line-height:1; background:var(--pink); border:2.5px solid var(--ink); border-radius:8px; padding:5px 10px; }
-    .hand { position:absolute; right:-26px; bottom:-34px; font-size:1.9rem; line-height:1; opacity:0; } .sent { position:absolute; right:8px; top:-16px; font-style:normal; font-family:'Permanent Marker',cursive; font-size:.95rem; background:var(--mint); border:2.5px solid var(--ink); border-radius:8px; padding:2px 9px; transform:scale(0) rotate(6deg); }
+    .fing { position:absolute; right:-26px; bottom:-34px; font-size:1.9rem; line-height:1; opacity:0; } .sent { position:absolute; right:8px; top:-16px; font-style:normal; font-family:'Permanent Marker',cursive; font-size:.95rem; background:var(--mint); border:2.5px solid var(--ink); border-radius:8px; padding:2px 9px; transform:scale(0) rotate(6deg); }
     .run .mail.in { animation:slidein .45s ease-out both; } .run .mail.out { animation:slidein .45s ease-out .55s both; }
     .run .t1 { animation:type .5s ease-out 1.05s forwards; --w:100%; } .run .t2 { animation:type .5s ease-out 1.55s forwards; --w:100%; } .run .t3 { animation:type .4s ease-out 2.05s forwards; --w:55%; }
-    .run .hand { animation:reach .7s ease-out 2.55s forwards; } .run .send { animation:press .3s ease 3.25s 1; } .run .sent { animation:stamp .35s cubic-bezier(.2,.9,.3,2.2) 3.5s forwards; }
+    .run .fing { animation:reach .7s ease-out 2.55s forwards; } .run .send { animation:press .3s ease 3.25s 1; } .run .sent { animation:stamp .35s cubic-bezier(.2,.9,.3,2.2) 3.5s forwards; }
     @keyframes slidein { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
     @keyframes type { to { width:var(--w); } }
     @keyframes reach { from { opacity:0; transform:translate(40px,30px); } to { opacity:1; transform:translate(-44px,-40px); } }
@@ -149,9 +149,9 @@
     .myrules h3 { font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.4rem; margin-bottom:8px; }
     .myrules ul { list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:2px 28px; } .myrules li { padding:5px 0 5px 26px; position:relative; }
     .myrules li::before { content:''; position:absolute; left:2px; top:.95em; width:12px; height:7px; border-left:3px solid var(--mint); border-bottom:3px solid var(--mint); transform:rotate(-45deg); }
-    @media (max-width: 860px) { .taught { grid-template-columns:1fr 1fr; gap:26px 14px; } .myrules ul { grid-template-columns:1fr; } .tab { font-size:.86rem; padding:8px 9px 7px; } .tabs { gap:5px; padding-left:4px; } .demo { height:214px; } .stepz { right:74px; } .watch { font-size:2.4rem; right:16px; } }
+    @media (max-width: 860px) { .taught { grid-template-columns:1fr 1fr; gap:26px 14px; } .myrules ul { grid-template-columns:1fr; } .tab { font-size:.84rem; padding:8px 4px 7px; } .tabs { gap:4px; padding:0 4px; } .demo { height:214px; } .stepz { right:74px; } .watch { font-size:2.4rem; right:16px; } }
     @media (prefers-reduced-motion: reduce) { .tab, .taphint b, .watch, .mini b, .flip, .back .again, .back .cap.in, .cam3d .prop.on { animation:none; }
-      .mail.out u { width:100%; } .mail.out u.s { width:55%; } .hand { display:none; } .sent, .ttl, .cut { transform:none; } .bars s { height:var(--h); } .stepz li.x { background:#FECACA; text-decoration:line-through; } .run * { animation:none !important; } }
+      .mail.out u { width:100%; } .mail.out u.s { width:55%; } .fing { display:none; } .sent, .ttl, .cut { transform:none; } .bars s { height:var(--h); } .stepz li.x { background:#FECACA; text-decoration:line-through; } .run * { animation:none !important; } }
 
     /* where my work goes */
     .split { display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:center; }
@@ -252,7 +252,7 @@
       <div class="demo" id="demo" aria-hidden="true">
         <div class="pane p0 on run">
           <div class="mail in"><i>Customer</i><u></u><u class="s"></u></div>
-          <div class="mail out"><i>Your reply</i><u class="t1"></u><u class="t2"></u><u class="t3 s"></u><b class="send">Send</b><span class="hand">👆</span><em class="sent">Sent ✓</em></div>
+          <div class="mail out"><i>Your reply</i><u class="t1"></u><u class="t2"></u><u class="t3 s"></u><b class="send">Send</b><span class="fing">👆</span><em class="sent">Sent ✓</em></div>
         </div>
         <div class="pane p1">
           <div class="slide"><i class="ttl">Do this one first →</i><div class="bars"><s style="--h:92%"></s><s style="--h:62%"></s><s style="--h:46%"></s><s style="--h:31%"></s><s style="--h:20%"></s></div></div>
