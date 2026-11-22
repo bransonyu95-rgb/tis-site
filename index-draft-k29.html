@@ -70,7 +70,13 @@
     @media (hover:hover) { .prob:hover { animation:none; transform:translate(-2px,-3px); box-shadow:9px 9px 0 var(--ink); background:color-mix(in srgb, var(--c) 14%, #fff); } }
     .hero .taphint { margin:14px 2px 0; } .hero .probs + .taphint + .lead { margin:14px 0 18px; }
     .more2 { font-family:'Patrick Hand',cursive; font-size:1.2rem; color:var(--ink); }
-    @media (max-width: 860px) { .prob { grid-template-columns:1fr; padding:12px 14px; gap:8px; } .prob .a { text-align:left; display:flex; align-items:center; gap:10px; } .prob .a i { margin-top:0; } .probs { gap:12px; margin-top:16px; } }
+    @media (max-width: 860px) {
+      .prob { grid-template-columns:1fr; padding:9px 12px 10px; gap:5px; border-left-width:11px; } .prob .q { font-size:1.02rem; } .prob .a { text-align:left; display:flex; align-items:center; gap:10px; } .prob .a i { margin-top:0; } .probs { gap:10px; margin-top:12px; }
+      /* a phone's first screen must show all three problems: a shorter menu, a smaller headline, and no "scroll" tag under Ah Hock while at the top */
+      .nav-links a[href="#how"], .nav-links a[href="#faq"] { display:none; }
+      .hero h1 { font-size:1.6rem; } .hero .eyebrow { margin:0 0 6px; font-size:1.02rem; }
+      html.attop .fig .under { display:none; }
+    }
     @media (prefers-reduced-motion: reduce) { .prob { animation:none; } }
     .cue { font-family:'Patrick Hand',cursive; font-size:1.15rem; color:#444; display:inline-flex; align-items:center; gap:10px; }
     .cue svg { width:18px; height:28px; flex:none; } .cue .dot { animation:wheel 1.6s ease-in-out infinite; }
@@ -1706,6 +1712,9 @@
 /* the first screen: tap a problem, and the Solutions folder opens at that one, with its buy button */
 (function(){
   var rows = [].slice.call(document.querySelectorAll('#probs .prob')); if (!rows.length) return;
+  var first = document.querySelector('.story .lesson');
+  function top(){ document.documentElement.classList.toggle('attop', !first || first.getBoundingClientRect().top > window.innerHeight * 0.6); }
+  window.addEventListener('scroll', top, { passive: true }); window.addEventListener('resize', top); top();
   var SAY = { b1: ['Visualize to Persuade.', 'It turns your numbers into slides that say what to do next. USD 9.99, pay once.'],
               b2: ['Email Assistant.', 'It reads the email and writes the reply your way. You press Send. USD 9.99, pay once.'],
               b3: ['The Lean Machine.', 'It shows where the time goes, and what to stop doing. USD 9.99, pay once.'] };
