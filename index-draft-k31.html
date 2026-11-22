@@ -68,20 +68,16 @@
     .nav-links a.on { color:var(--blue); }
     @media (max-width: 1020px) { .grid { grid-template-columns:repeat(2,1fr); } }
     @media (max-width: 760px) {
-      .wrap { padding:0 16px; } .top { padding:30px 0 22px; } html { scroll-padding-top:16px; }
+      .wrap { padding:0 16px; } .top { padding:24px 0 18px; } .top p { margin-top:12px; } html { scroll-padding-top:16px; }
       .nav-inner { flex-direction:row !important; flex-wrap:nowrap !important; padding:8px 0 !important; min-height:0 !important; }
       .logo2 small { display:none; } .logo2 b { font-size:1rem !important; } .logo2 img { width:36px !important; height:36px !important; }
-      .nav-links { display:none !important; }
-      .tabs { display:flex; }
-      .feat { grid-template-columns:1fr; } .feat .pic { min-height:0; aspect-ratio:3/2; border-right:0; border-bottom:2.5px solid var(--ink); }
+      .nav-links a:not(.keep) { display:none; }
+      .feat { grid-template-columns:1fr; } .feat .pic { min-height:0; aspect-ratio:16/9; border-right:0; border-bottom:2.5px solid var(--ink); }
       .feat .body { padding:20px 18px 20px; } .feat .foot { margin-top:18px; }
       .row { padding-top:40px; } .grid { gap:14px; margin-top:18px; }
       .card .body { padding:12px 12px 12px; } .card .name { font-size:.98rem; } .card .line { font-size:.88rem; } .by { font-size:0; gap:0; } .badge { font-size:.68rem; left:8px; top:8px; padding:4px 9px; }
     }
     @media (max-width: 420px) { .grid { grid-template-columns:1fr 1fr; gap:12px; } .card .line { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; } }
-    /* on a phone the four menu words sit as chips under the headline */
-    .tabs { display:none; gap:8px; margin-top:20px; overflow-x:auto; padding-bottom:4px; -webkit-overflow-scrolling:touch; }
-    .tabs a { flex:none; text-decoration:none; color:var(--ink); font-weight:700; font-size:.9rem; border:2px solid var(--ink); border-radius:999px; padding:7px 14px; background:#fff; }
     @media (prefers-reduced-motion: reduce) { .price i, .go i { animation:none; } .card, .card .pic img { transition:none; } html { scroll-behavior:auto; } }
   </style>
   <link rel="stylesheet" href="tis-theme.css?v=k5">
@@ -97,7 +93,7 @@
       <a href="#solutions">Solutions</a>
       <a href="#studies">Case studies</a>
       <a href="#free">Free</a>
-      <a href="about.html">Meet Ah Hock</a>
+      <a href="about.html" class="keep">Meet Ah Hock</a>
     </div>
   </div>
 </nav>
@@ -106,7 +102,6 @@
   <header class="top">
     <h1>AI helpers for factory office work.</h1>
     <p>Agentic AI solutions, real case studies and free tools. Buy only the one you need. Pay once, and it is yours.</p>
-    <div class="tabs"><a href="#solutions">Solutions</a><a href="#studies">Case studies</a><a href="#free">Free</a><a href="about.html">Meet Ah Hock</a></div>
   </header>
 
   <a class="card feat" href="email-reply.html">
