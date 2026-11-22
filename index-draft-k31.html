@@ -23,9 +23,11 @@
     /* every choice is the same kind of card: picture, badge, name, one line, maker, price */
     .card { display:flex; flex-direction:column; text-decoration:none; color:var(--ink); background:#fff; border:2.5px solid var(--ink); border-radius:18px; overflow:hidden;
       box-shadow:0 4px 0 var(--ink); transition:transform .16s ease, box-shadow .16s ease; }
-    .card .pic { position:relative; display:block; aspect-ratio:16/10; background:var(--sun); border-bottom:2.5px solid var(--ink); overflow:hidden; }
-    .card .pic img, .card .pic svg { display:block; width:100%; height:100%; object-fit:cover; transition:transform .3s ease; }
-    .card.cs .pic { background:var(--blue); } .card.cs .pic img { object-position:0 0; }
+    .card .pic { position:relative; display:block; aspect-ratio:3/2; background:var(--sun); border-bottom:2.5px solid var(--ink); overflow:hidden; }
+    .card .pic img, .card .pic svg { display:block; width:100%; height:100%; object-fit:contain; transition:transform .3s ease;
+      -webkit-mask-image:linear-gradient(to right, transparent 16%, #000 26%, #000 74%, transparent 84%); mask-image:linear-gradient(to right, transparent 16%, #000 26%, #000 74%, transparent 84%); }
+    .card .pic svg, .card.cs .pic img, .feat .pic img { -webkit-mask-image:none; mask-image:none; } .card.cs .pic img, .feat .pic img { object-fit:cover; }
+    .card.cs .pic { background:var(--blue); } .card.cs .pic img { object-position:0 0; } .card.cs .badge { top:auto; bottom:12px; }
     .badge { position:absolute; left:12px; top:12px; font-size:.74rem; font-weight:700; letter-spacing:.02em; padding:5px 11px; border-radius:999px; border:2px solid var(--ink); background:#fff; color:var(--ink); }
     .badge.t-blue { background:var(--blue); color:#fff; } .badge.t-mint { background:var(--mint); } .badge.t-ink { background:#fff; }
     .card .body { display:flex; flex-direction:column; flex:1; padding:16px 16px 14px; }
@@ -71,7 +73,7 @@
       .logo2 small { display:none; } .logo2 b { font-size:1rem !important; } .logo2 img { width:36px !important; height:36px !important; }
       .nav-links { display:none !important; }
       .tabs { display:flex; }
-      .feat { grid-template-columns:1fr; } .feat .pic { min-height:0; aspect-ratio:16/10; border-right:0; border-bottom:2.5px solid var(--ink); }
+      .feat { grid-template-columns:1fr; } .feat .pic { min-height:0; aspect-ratio:3/2; border-right:0; border-bottom:2.5px solid var(--ink); }
       .feat .body { padding:20px 18px 20px; } .feat .foot { margin-top:18px; }
       .row { padding-top:40px; } .grid { gap:14px; margin-top:18px; }
       .card .body { padding:12px 12px 12px; } .card .name { font-size:.98rem; } .card .line { font-size:.88rem; } .by { font-size:0; gap:0; } .badge { font-size:.68rem; left:8px; top:8px; padding:4px 9px; }
@@ -123,7 +125,7 @@
     <p class="sub">Each one does one job. Pay once.</p>
     <div class="grid">
       <a class="card " href="email-reply.html">
-        <span class="pic"><img src="assets/ahhock-3d-desk.jpg" alt="Ah Hock at his desk with a laptop" loading="lazy" width="600" height="375" style="object-position:50% 30%"><span class="badge t-blue">Agentic AI</span></span>
+        <span class="pic"><img src="assets/ahhock-3d-desk.jpg" alt="Ah Hock at his desk with a laptop" loading="lazy" width="600" height="375"><span class="badge t-blue">Agentic AI</span></span>
         <span class="body">
           <span class="name">Agentic AI: Email Assistant</span>
           <span class="line">It reads the email and writes the reply your way. You press Send.</span>
@@ -147,11 +149,11 @@
         </span>
       </a>
       <a class="card " href="swimlanes.html">
-        <span class="pic"><svg viewBox="0 0 600 375" role="img" aria-label="Three lanes: you, the AI and a script, with one step marked in red"><rect x="110" y="62" width="380" height="250" rx="26" fill="#fff" stroke="#111" stroke-width="6"/>
+        <span class="pic"><svg viewBox="0 0 600 375" role="img" aria-label="Three lanes: you, the AI and a script, with one step marked in red"><g transform="translate(30,46) scale(.9)"><rect x="110" y="62" width="380" height="250" rx="26" fill="#fff" stroke="#111" stroke-width="6"/>
 <g font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="20" fill="#111"><text x="134" y="118">You</text><text x="134" y="194">AI</text><text x="134" y="270">Script</text></g>
 <g stroke="#111" stroke-width="3" opacity=".18"><line x1="126" y1="146" x2="474" y2="146"/><line x1="126" y1="222" x2="474" y2="222"/></g>
 <path d="M232 111 H300 V187 H368 V263 H436 V187" fill="none" stroke="#111" stroke-width="5" stroke-linejoin="round"/>
-<g stroke="#111" stroke-width="5"><circle cx="232" cy="111" r="15" fill="#38BDF8"/><circle cx="300" cy="187" r="15" fill="#10B981"/><circle cx="368" cy="263" r="15" fill="#10B981"/><circle cx="436" cy="187" r="15" fill="#EF4444"/></g></svg><span class="badge t-ink">For Claude Code</span></span>
+<g stroke="#111" stroke-width="5"><circle cx="232" cy="111" r="15" fill="#38BDF8"/><circle cx="300" cy="187" r="15" fill="#10B981"/><circle cx="368" cy="263" r="15" fill="#10B981"/><circle cx="436" cy="187" r="15" fill="#EF4444"/></g></g></svg><span class="badge t-ink">For Claude Code</span></span>
         <span class="body">
           <span class="name">Workflow Swimlanes</span>
           <span class="line">It draws what your AI really did, step by step. Mistakes show in red.</span>
@@ -197,7 +199,7 @@
         </span>
       </a>
       <a class="card " href="insider-test.html">
-        <span class="pic"><img src="assets/ahhock-3d-point.jpg" alt="Ah Hock pointing" loading="lazy" width="600" height="375" style="object-position:50% 20%"><span class="badge t-mint">Test · 30 questions</span></span>
+        <span class="pic"><img src="assets/ahhock-3d-point.jpg" alt="Ah Hock pointing" loading="lazy" width="600" height="375"><span class="badge t-mint">Test · 30 questions</span></span>
         <span class="body">
           <span class="name">Which Insider Are You?</span>
           <span class="line">How you really work in a factory office. Get your type.</span>
@@ -213,7 +215,7 @@
         </span>
       </a>
       <a class="card " href="index.html">
-        <span class="pic"><img src="assets/ahhock-3d-smile.jpg" alt="Ah Hock smiling and waving" loading="lazy" width="600" height="375" style="object-position:50% 20%"><span class="badge t-mint">Lessons</span></span>
+        <span class="pic"><img src="assets/ahhock-3d-smile.jpg" alt="Ah Hock smiling and waving" loading="lazy" width="600" height="375"><span class="badge t-mint">Lessons</span></span>
         <span class="body">
           <span class="name">Factory Lessons with Ah Hock</span>
           <span class="line">Time, waste, 5S and lean, in small steps.</span>
