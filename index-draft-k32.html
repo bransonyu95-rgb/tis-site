@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>AI helpers for factory office work | The Industrial Scribe</title>
+  <meta name="description" content="Agentic AI solutions, real case studies and free tools for factory office work. Buy only the one you need. Pay once.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#111; --blue:#2563eb; --pink:#EC4899; --mint:#10B981; --yellow:#FBBF24; --sky:#38BDF8; --coral:#FB923C; --sun:#F8BD21; --soft:#5b5b5b; }
+    * { box-sizing:border-box; } html { scroll-padding-top:84px; }
+    body { margin:0; font-family:'Plus Jakarta Sans',sans-serif; color:var(--ink); background:#fff; -webkit-font-smoothing:antialiased; }
+    .wrap { max-width:1140px; margin:0 auto; padding:0 24px; }
+
+    /* the top: one headline, one line */
+    .top { padding:64px 0 34px; }
+    .top h1 { font-size:clamp(2.1rem,4.4vw,3.5rem); font-weight:800; letter-spacing:-.03em; line-height:1.06; margin:0; max-width:17ch; }
+    .top p { font-size:clamp(1.05rem,1.5vw,1.22rem); line-height:1.55; color:var(--soft); margin:16px 0 0; max-width:52ch; }
+
+    /* every choice is the same kind of card: picture, badge, name, one line, maker, price */
+    .card { display:flex; flex-direction:column; text-decoration:none; color:var(--ink); background:#fff; border:2.5px solid var(--ink); border-radius:18px; overflow:hidden;
+      box-shadow:0 4px 0 var(--ink); transition:transform .16s ease, box-shadow .16s ease; }
+    .card .pic { position:relative; display:block; aspect-ratio:3/2; background:var(--sun); border-bottom:2.5px solid var(--ink); overflow:hidden; }
+    .card .pic img, .card .pic svg { display:block; width:100%; height:100%; object-fit:contain; transition:transform .3s ease;
+      -webkit-mask-image:linear-gradient(to right, transparent 16%, #000 26%, #000 74%, transparent 84%); mask-image:linear-gradient(to right, transparent 16%, #000 26%, #000 74%, transparent 84%); }
+    .card .pic svg, .card.cs .pic img, .feat .pic img { -webkit-mask-image:none; mask-image:none; } .card.cs .pic img, .feat .pic img { object-fit:cover; }
+    .card.cs .pic { background:var(--blue); } .card.cs .pic img { object-position:0 0; } .card.cs .badge { top:auto; bottom:12px; }
+    .badge { position:absolute; left:12px; top:12px; font-size:.74rem; font-weight:700; letter-spacing:.02em; padding:5px 11px; border-radius:999px; border:2px solid var(--ink); background:#fff; color:var(--ink); }
+    .badge.t-blue { background:var(--blue); color:#fff; } .badge.t-mint { background:var(--mint); } .badge.t-ink { background:#fff; }
+    .card .body { display:flex; flex-direction:column; flex:1; padding:16px 16px 14px; }
+    .card .name { font-weight:800; font-size:1.08rem; line-height:1.25; letter-spacing:-.01em; }
+    .card .line { font-size:.95rem; line-height:1.5; color:var(--soft); margin-top:8px; }
+    .card .foot { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:auto; padding-top:16px; }
+    .by { display:inline-flex; align-items:center; gap:8px; font-size:.86rem; color:var(--soft); }
+    .by img { width:26px; height:26px; border-radius:50%; border:2px solid var(--ink); background:var(--yellow); }
+    .price { font-weight:800; font-size:1rem; white-space:nowrap; }
+    .price i { display:inline-block; font-style:normal; margin-left:7px; color:var(--blue); animation:nudge 2.4s ease-in-out infinite; }
+    .grid .card:nth-child(2) .price i { animation-delay:.2s; } .grid .card:nth-child(3) .price i { animation-delay:.4s; } .grid .card:nth-child(4) .price i { animation-delay:.6s; }
+    @keyframes nudge { 0%,70%,100% { transform:translateX(0); } 82% { transform:translateX(6px); } }
+    .card:focus-visible { outline:3px solid var(--blue); outline-offset:4px; }
+    .card:active { transform:translateY(3px); box-shadow:0 1px 0 var(--ink); }
+    @media (hover:hover) { .card:hover { transform:translateY(-5px); box-shadow:0 9px 0 var(--ink); } .card:hover .pic img, .card:hover .pic svg { transform:scale(1.05); } }
+
+    /* the one in front */
+    .feat { display:grid; grid-template-columns:1.12fr 1fr; flex-direction:row; border-radius:22px; }
+    .feat .pic { aspect-ratio:auto; min-height:340px; border-bottom:0; border-right:2.5px solid var(--ink); }
+    .feat .body { padding:34px 34px 30px; justify-content:center; }
+    .feat .badge { position:static; align-self:flex-start; margin-bottom:16px; }
+    .feat .name { font-size:clamp(1.5rem,2.5vw,2.05rem); line-height:1.15; letter-spacing:-.02em; }
+    .feat .line { font-size:1.06rem; margin-top:12px; max-width:40ch; }
+    .feat .by { margin-top:18px; }
+    .feat .foot { margin-top:22px; padding-top:0; justify-content:flex-start; gap:18px; flex-wrap:wrap; }
+    .feat .price { font-size:1.2rem; } .feat .price small { font-weight:600; font-size:.9rem; color:var(--soft); margin-left:6px; }
+    /* the picture in front: the same numbers on two slides */
+    .feat .pic.ba { display:flex; align-items:center; justify-content:center; gap:12px; padding:30px 20px 38px; }
+    .sl { display:flex; flex-direction:column; flex:1; min-width:0; background:#fff; border:2.5px solid var(--ink); border-radius:14px; padding:13px 13px 12px; box-shadow:0 4px 0 var(--ink); }
+    .sl .txt { display:block; } .sl .tag { display:block; font-size:.66rem; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--soft); }
+    .sl.new .tag { color:var(--blue); }
+    .sl .ti { display:block; font-weight:800; font-size:.98rem; line-height:1.22; letter-spacing:-.01em; margin-top:6px; min-height:3.7em; }
+    .sl.old .ti { font-weight:600; color:#555; }
+    .bars { position:relative; display:flex; align-items:flex-end; gap:6px; height:112px; margin-top:8px; border-bottom:2.5px solid var(--ink); }
+    .bars i { flex:1; height:calc(var(--h) * 1%); background:var(--c, #d4d4d4); border-radius:4px 4px 0 0; transform-origin:50% 100%; }
+    .sl.new .bars i { animation:grow .9s cubic-bezier(.2,.8,.2,1) .3s both; } .sl.new .bars i:nth-child(2) { animation-delay:.42s; }
+    .bars b { position:absolute; left:40%; top:2px; font-size:1.7rem; font-weight:800; letter-spacing:-.03em; color:var(--pink); line-height:1; animation:pop .5s ease 1.1s both; }
+    @keyframes grow { from { transform:scaleY(0); } } @keyframes pop { from { opacity:0; transform:scale(.6); } }
+    .arr { flex:none; font-size:1.5rem; font-weight:800; }
+    .ex { position:absolute; right:14px; bottom:10px; font-size:.68rem; font-weight:600; color:#5a4300; }
+    .go { display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:1rem; background:var(--pink); color:var(--ink); border:2.5px solid var(--ink); border-radius:999px; padding:11px 22px; box-shadow:0 3px 0 var(--ink); }
+    .go i { display:inline-block; font-style:normal; animation:nudge 2.4s ease-in-out infinite; }
+
+    /* three in front, one under the other, all the same shape */
+    .stack { display:grid; gap:26px; }
+    .nt, .ls { display:flex; flex-direction:column; justify-content:flex-end; height:112px; margin-top:8px; }
+    .nt { gap:6px; }
+    .nt i { display:flex; align-items:center; gap:7px; font-style:normal; font-size:.74rem; font-weight:700; line-height:1.25; padding:7px 9px; border-radius:9px; background:#f1f1f1; color:#666; }
+    .nt i::before { content:''; flex:none; width:8px; height:8px; border-radius:50%; background:#bdbdbd; }
+    .sl.new .nt i { background:#FDE7F2; color:var(--ink); } .sl.new .nt i::before { background:var(--pink); }
+    .sl mark { color:inherit; background:#FBCFE8; border-radius:4px; padding:0 3px; }
+    .ls i { display:flex; justify-content:space-between; align-items:center; gap:8px; font-style:normal; font-size:.76rem; font-weight:600; line-height:1.2; color:#666; padding:5px 0; border-top:1.5px solid #e6e6e6; white-space:nowrap; }
+    .ls i:first-child { border-top:0; }
+    .sl.new .ls i { color:var(--ink); } .ls i b { font-weight:800; }
+    .sl.old .ls i b { font-size:.64rem; font-weight:700; background:#e9e9e9; padding:2px 8px; border-radius:999px; }
+    .ls i.cut s { text-decoration-thickness:2px; text-decoration-color:var(--pink); color:#666; }
+    .ls i.cut b { font-size:.68rem; background:var(--pink); color:var(--ink); padding:2px 8px; border-radius:999px; }
+    /* the small one under them */
+    .strip { display:grid; grid-template-columns:210px 1fr auto; align-items:stretch; }
+    .strip .pic { aspect-ratio:auto; min-height:128px; border-bottom:0; border-right:2.5px solid var(--ink); }
+    .strip .body { justify-content:center; padding:16px 22px; }
+    .strip .badge { position:static; align-self:flex-start; margin-bottom:8px; }
+    .strip .foot { margin:0; padding:0 26px 0 6px; align-items:center; }
+
+    /* the rows */
+    .row { padding:56px 0 0; }
+    .row h2 { font-size:clamp(1.45rem,2.4vw,1.9rem); font-weight:800; letter-spacing:-.02em; margin:0; }
+    .row .sub { font-size:1rem; color:var(--soft); margin:8px 0 0; max-width:60ch; line-height:1.5; }
+    .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:24px; }
+    .note { font-size:.9rem; line-height:1.6; color:var(--soft); margin:44px 0 0; max-width:78ch; }
+
+    /* the watch row: short videos that play in place */
+    .whead { display:flex; align-items:flex-end; justify-content:space-between; gap:20px; }
+    .wnav { display:flex; gap:10px; flex:none; }
+    .wb { width:44px; height:44px; border-radius:50%; border:2.5px solid var(--ink); background:#fff; color:var(--ink); font:inherit; font-weight:800; font-size:1.1rem; line-height:1; cursor:pointer; box-shadow:0 3px 0 var(--ink); transition:transform .12s ease, box-shadow .12s ease, opacity .2s ease; }
+    .wb:active { transform:translateY(3px); box-shadow:0 0 0 var(--ink); } .wb[disabled] { opacity:.3; cursor:default; }
+    .wrow { display:grid; grid-auto-flow:column; grid-auto-columns:190px; gap:18px; margin:20px -6px 0; padding:6px 6px 16px; overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x proximity; scroll-padding-left:6px; scrollbar-width:thin; }
+    .vid { position:relative; display:block; aspect-ratio:9/16; border:2.5px solid var(--ink); border-radius:18px; overflow:hidden; background:#1a1a1a; color:#fff; text-decoration:none; box-shadow:0 4px 0 var(--ink); scroll-snap-align:start; transition:transform .16s ease, box-shadow .16s ease; }
+    .vid img, .vid video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+    .vid video { opacity:0; transition:opacity .25s ease; } .vid.pv video { opacity:1; }
+    .vid::after { content:''; position:absolute; left:0; right:0; bottom:0; height:46%; background:linear-gradient(to top, rgba(0,0,0,.88), rgba(0,0,0,0)); pointer-events:none; }
+    .vt { position:absolute; left:12px; right:12px; bottom:12px; z-index:2; font-weight:800; font-size:1rem; line-height:1.22; letter-spacing:-.01em; }
+    .vt small { display:block; font-size:.72rem; font-weight:700; letter-spacing:.02em; color:#FBCFE8; margin-bottom:4px; }
+    .pl { position:absolute; left:50%; top:44%; z-index:2; width:54px; height:54px; margin:-27px 0 0 -27px; border-radius:50%; background:var(--pink); border:2.5px solid var(--ink); box-shadow:0 3px 0 var(--ink); animation:beat 2.6s ease-in-out infinite; transition:opacity .2s ease; }
+    .pl::before { content:''; position:absolute; left:55%; top:50%; transform:translate(-50%,-50%); border-style:solid; border-width:10px 0 10px 16px; border-color:transparent transparent transparent var(--ink); }
+    .vid:nth-child(2) .pl { animation-delay:.25s; } .vid:nth-child(3) .pl { animation-delay:.5s; } .vid:nth-child(4) .pl { animation-delay:.75s; } .vid:nth-child(5) .pl { animation-delay:1s; } .vid:nth-child(6) .pl { animation-delay:1.25s; }
+    @keyframes beat { 0%,60%,100% { transform:scale(1); } 75% { transform:scale(1.16); } }
+    .vid.pv .pl { opacity:0; }
+    .vid:focus-visible { outline:3px solid var(--blue); outline-offset:4px; }
+    .vid:active { transform:translateY(3px); box-shadow:0 1px 0 var(--ink); }
+    @media (hover:hover) { .vid:hover { transform:translateY(-5px); box-shadow:0 9px 0 var(--ink); } }
+    /* the player */
+    .vmod { position:fixed; inset:0; z-index:200; display:flex; align-items:center; justify-content:center; padding:16px; background:rgba(10,10,10,.86); }
+    .vmod[hidden] { display:none; }
+    .vbox { position:relative; display:flex; flex-direction:column; align-items:center; gap:12px; }
+    .vbox video { display:block; height:min(74vh, 860px); aspect-ratio:9/16; max-width:92vw; background:#000; border:2.5px solid #fff; border-radius:18px; }
+    .vx { position:absolute; right:-10px; top:-10px; z-index:2; width:44px; height:44px; border-radius:50%; border:2.5px solid var(--ink); background:#fff; color:var(--ink); font:inherit; font-weight:800; font-size:1.3rem; line-height:1; cursor:pointer; box-shadow:0 3px 0 var(--ink); }
+    .vcap { margin:0; max-width:min(92vw, 520px); text-align:center; color:#fff; font-size:.95rem; line-height:1.5; }
+    .vcap a { display:inline-block; margin-top:8px; font-weight:700; color:var(--ink); background:var(--pink); border:2.5px solid var(--ink); border-radius:999px; padding:9px 18px; text-decoration:none; box-shadow:0 3px 0 #fff; }
+    @media (max-width: 760px) {
+      .wnav { display:none; } .wrow { grid-auto-columns:142px; gap:12px; margin-top:14px; }
+      .vt { left:10px; right:10px; bottom:10px; font-size:.86rem; } .vt small { font-size:.66rem; } .pl { width:46px; height:46px; margin:-23px 0 0 -23px; }
+      .vbox video { height:auto; width:min(88vw, calc((100vh - 190px) * 9 / 16)); } .vx { right:-6px; top:-14px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .pl { animation:none; } .vid, .vid video { transition:none; } }
+
+    /* the menu: four words */
+    .nav-links a.on { color:var(--blue); }
+    @media (max-width: 1020px) { .grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width: 760px) {
+      .wrap { padding:0 16px; } .top { padding:24px 0 18px; } .top p { margin-top:12px; } html { scroll-padding-top:16px; }
+      .nav-inner { flex-direction:row !important; flex-wrap:nowrap !important; padding:8px 0 !important; min-height:0 !important; }
+      .logo2 small { display:none; } .logo2 b { font-size:1rem !important; } .logo2 img { width:36px !important; height:36px !important; }
+      .nav-links a:not(.keep) { display:none; }
+      .feat { grid-template-columns:1fr; } .feat .pic { min-height:0; aspect-ratio:16/9; border-right:0; border-bottom:2.5px solid var(--ink); }
+      .feat .body { padding:18px 18px 20px; } .feat .foot { margin-top:16px; } .feat .by { display:none; } .feat .badge { margin-bottom:10px; }
+      .feat .pic.ba { aspect-ratio:auto; flex-direction:column; gap:6px; padding:14px 14px 28px; } .sl { flex-direction:row; align-items:center; gap:12px; width:100%; padding:9px 11px; box-shadow:0 3px 0 var(--ink); }
+      .sl .txt { flex:1; min-width:0; } .sl .ti { min-height:0; font-size:.9rem; margin-top:3px; } .sl .bars { flex:none; width:42%; height:54px; margin-top:0; gap:4px; } .bars b { font-size:1.15rem; } .arr { transform:rotate(90deg); font-size:1.1rem; line-height:1; } .ex { bottom:7px; }
+      .stack { gap:18px; } .nt, .ls { flex:none; width:47%; height:auto; margin-top:0; justify-content:center; } .nt { gap:4px; } .nt i { font-size:.62rem; padding:4px 6px; gap:5px; } .ls i { font-size:.62rem; padding:3px 0; gap:4px; } .ls i.cut b, .sl.old .ls i b { font-size:.56rem; padding:1px 5px; }
+      .strip { grid-template-columns:104px 1fr; } .strip .pic { min-height:0; } .strip .body { padding:12px 12px 4px; } .strip .foot { grid-column:2; padding:0 12px 12px; justify-content:flex-start; }
+      .row { padding-top:40px; } .grid { gap:14px; margin-top:18px; }
+      .card .body { padding:12px 12px 12px; } .card .name { font-size:.98rem; } .card .line { font-size:.88rem; } .by { font-size:0; gap:0; } .feat .name { font-size:1.4rem; } .feat .line { font-size:1rem; } .badge { font-size:.68rem; left:8px; top:8px; padding:4px 9px; }
+    }
+    @media (max-width: 420px) { .grid { grid-template-columns:1fr 1fr; gap:12px; } }
+    @media (prefers-reduced-motion: reduce) { .price i, .go i, .sl.new .bars i, .bars b { animation:none; } .card, .card .pic img { transition:none; } html { scroll-behavior:auto; } }
+  </style>
+  <link rel="stylesheet" href="tis-theme.css?v=k5">
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=3d2">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3d2">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="logo logo2"><img src="assets/ah-hock-mark.jpg" alt="" width="44" height="44"><span class="lt"><b>The Industrial <i>Scribe</i></b><small>Agentic AI in manufacturing</small></span></a>
+    <div class="nav-links">
+      <a href="#solutions">Solutions</a>
+      <a href="#studies">Case studies</a>
+      <a href="#free">Free</a>
+      <a href="about.html" class="keep">Meet Ah Hock</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+  <header class="top">
+    <h1>AI helpers for factory office work.</h1>
+    <p>Agentic AI solutions, real case studies and free tools. Buy only the one you need. Pay once, and it is yours.</p>
+  </header>
+
+  <span id="shelf"></span>
+  <section class="stack" id="solutions">
+    <a class="card feat" href="okay-noted.html">
+      <span class="pic ba" role="img" aria-label="The same numbers on two slides. A normal slide is titled Downtime analysis, with every bar a different colour. The Visualize to Persuade slide is titled Two machines cause 70% of our downtime, with only those two bars in colour. Example numbers.">
+        <span class="sl old" aria-hidden="true"><span class="txt"><span class="tag">A normal slide</span><span class="ti">Downtime analysis</span></span><span class="bars"><i style="--h:24;--c:#38BDF8"></i><i style="--h:100;--c:#FB923C"></i><i style="--h:17;--c:#10B981"></i><i style="--h:67;--c:#A78BFA"></i><i style="--h:12;--c:#FBBF24"></i><i style="--h:19;--c:#F87171"></i></span></span>
+        <span class="arr" aria-hidden="true">→</span>
+        <span class="sl new" aria-hidden="true"><span class="txt"><span class="tag">Visualize to Persuade</span><span class="ti">Two machines cause 70% of our downtime</span></span><span class="bars"><i style="--h:100;--c:#EC4899"></i><i style="--h:67;--c:#EC4899"></i><i style="--h:24"></i><i style="--h:19"></i><i style="--h:17"></i><i style="--h:12"></i><b>70%</b></span></span>
+        <span class="ex" aria-hidden="true">Example numbers</span>
+      </span>
+      <span class="body">
+        <span class="badge t-blue">Agentic AI</span>
+        <span class="name">Agentic AI: Visualize to Persuade</span>
+        <span class="line">Other tools start with the chart. Visualize to Persuade starts with the person who must say yes. You bring the facts. Visualize to Persuade carries the rest.</span>
+        <span class="by"><img src="assets/ah-hock-mark.jpg" alt="" width="26" height="26">Ah Hock</span>
+        <span class="foot"><span class="price">USD 9.99<small>pay once</small></span><span class="go">See how it works <i aria-hidden="true">→</i></span></span>
+      </span>
+    </a>
+    <a class="card feat" href="email-reply.html">
+      <span class="pic ba" role="img" aria-label="The same late delivery, two replies. A normal reply says: Sorry for the delay, we are looking into it. It could be for anyone. The Email Assistant reply says: The parts ship on 20 Nov, sorry our update was late. It is built on two things it found first: Customer A likes the date first, and you promised an update on 2 Nov. Example reply.">
+        <span class="sl old" aria-hidden="true"><span class="txt"><span class="tag">A normal reply</span><span class="ti">Sorry for the delay. We are looking into it.</span></span><span class="nt"><i>Could be for anyone</i></span></span>
+        <span class="arr" aria-hidden="true">→</span>
+        <span class="sl new" aria-hidden="true"><span class="txt"><span class="tag">Email Assistant</span><span class="ti">The parts ship on <mark>20 Nov</mark>. Sorry our update was late.</span></span><span class="nt"><i>Customer A likes the date first</i><i>Update promised on 2 Nov</i></span></span>
+        <span class="ex" aria-hidden="true">Example reply</span>
+      </span>
+      <span class="body">
+        <span class="badge t-blue">Agentic AI</span>
+        <span class="name">Agentic AI: Email Assistant</span>
+        <span class="line">Other tools start with the reply. Email Assistant starts with the customer: what each one likes, and what you promised them. You stop digging through old emails. Email Assistant carries them, and you press Send.</span>
+        <span class="by"><img src="assets/ah-hock-mark.jpg" alt="" width="26" height="26">Ah Hock</span>
+        <span class="foot"><span class="price">USD 9.99<small>pay once</small></span><span class="go">See how it works <i aria-hidden="true">→</i></span></span>
+      </span>
+    </a>
+    <a class="card feat" href="waste-hunt.html">
+      <span class="pic ba" role="img" aria-label="The same week of work, two answers. A normal fix makes the Friday report faster and keeps every step. The Lean Machine counts the hours each step takes in a month, finds that nobody reads the Friday report, and says to stop it first. Example numbers.">
+        <span class="sl old" aria-hidden="true"><span class="txt"><span class="tag">A normal fix</span><span class="ti">Friday report, made faster</span></span><span class="ls"><i>Chase suppliers</i><i>Search the inbox</i><i>Phone calls</i><i>Friday report <b>faster</b></i></span></span>
+        <span class="arr" aria-hidden="true">→</span>
+        <span class="sl new" aria-hidden="true"><span class="txt"><span class="tag">The Lean Machine</span><span class="ti">Nobody reads this report. Stop it first.</span></span><span class="ls"><i>Chase suppliers <b>5.4 h</b></i><i>Search the inbox <b>5.4 h</b></i><i>Phone calls <b>2.9 h</b></i><i class="cut"><s>Friday report</s> <b>2.2 h · stop</b></i></span></span>
+        <span class="ex" aria-hidden="true">Example numbers</span>
+      </span>
+      <span class="body">
+        <span class="badge t-blue">Agentic AI</span>
+        <span class="name">Agentic AI: The Lean Machine</span>
+        <span class="line">Other tools make slow work faster. The Lean Machine first finds the work nobody needs, so you can stop it. You answer small questions. The Lean Machine does the counting.</span>
+        <span class="by"><img src="assets/ah-hock-mark.jpg" alt="" width="26" height="26">Ah Hock</span>
+        <span class="foot"><span class="price">USD 9.99<small>pay once</small></span><span class="go">See how it works <i aria-hidden="true">→</i></span></span>
+      </span>
+    </a>
+    <a class="card strip" href="swimlanes.html">
+      <span class="pic"><svg viewBox="0 0 600 375" role="img" aria-label="Three lanes: you, the AI and a script, with one step marked in red"><g transform="translate(30,46) scale(.9)"><rect x="110" y="62" width="380" height="250" rx="26" fill="#fff" stroke="#111" stroke-width="6"/>
+<g font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="20" fill="#111"><text x="134" y="118">You</text><text x="134" y="194">AI</text><text x="134" y="270">Script</text></g>
+<g stroke="#111" stroke-width="3" opacity=".18"><line x1="126" y1="146" x2="474" y2="146"/><line x1="126" y1="222" x2="474" y2="222"/></g>
+<path d="M232 111 H300 V187 H368 V263 H436 V187" fill="none" stroke="#111" stroke-width="5" stroke-linejoin="round"/>
+<g stroke="#111" stroke-width="5"><circle cx="232" cy="111" r="15" fill="#38BDF8"/><circle cx="300" cy="187" r="15" fill="#10B981"/><circle cx="368" cy="263" r="15" fill="#10B981"/><circle cx="436" cy="187" r="15" fill="#EF4444"/></g></g></svg></span>
+      <span class="body"><span class="badge t-ink">For Claude Code</span><span class="name">Workflow Swimlanes</span><span class="line">It draws what your AI really did, step by step. Mistakes show in red.</span></span>
+      <span class="foot"><span class="price">USD 0.99<i aria-hidden="true">→</i></span></span>
+    </a>
+  </section>
+
+  <section class="row" id="watch">
+    <div class="whead">
+      <div>
+        <h2>Watch</h2>
+        <p class="sub">Short videos from Ah Hock's office. The stories are made up. Tap one to play, with sound.</p>
+      </div>
+      <div class="wnav" aria-hidden="true"><button type="button" class="wb" data-d="-1" tabindex="-1">←</button><button type="button" class="wb" data-d="1" tabindex="-1">→</button></div>
+    </div>
+    <div class="wrow" id="wrow">
+      <a class="vid" href="video/okay-noted.mp4" data-note="A made-up story, just for a laugh." data-lw="For real reports: Agentic AI: Visualize to Persuade" data-lh="okay-noted.html" aria-label="Play the video: The boss says &quot;Okay, noted&quot;. 41 seconds."><img src="video/okay-noted.jpg" alt="" loading="lazy" width="432" height="768"><span class="pl" aria-hidden="true"></span><span class="vt"><small>Story · 0:41</small>The boss says &quot;Okay, noted&quot;</span></a>
+      <a class="vid" href="video/version-fourteen.mp4" data-note="A made-up story, just for a laugh." data-lw="For real customer emails: Agentic AI: Email Assistant" data-lh="email-reply.html" aria-label="Play the video: Version 14 of one reply. 48 seconds."><img src="video/version-fourteen.jpg" alt="" loading="lazy" width="432" height="768"><span class="pl" aria-hidden="true"></span><span class="vt"><small>Story · 0:48</small>Version 14 of one reply</span></a>
+      <a class="vid" href="video/promised-friday.mp4" data-note="A made-up story, just for a laugh." data-lw="For real customer emails: Agentic AI: Email Assistant" data-lh="email-reply.html" aria-label="Play the video: Promised Friday. Friday is a holiday.. 32 seconds."><img src="video/promised-friday.jpg" alt="" loading="lazy" width="432" height="768"><span class="pl" aria-hidden="true"></span><span class="vt"><small>Story · 0:32</small>Promised Friday. Friday is a holiday.</span></a>
+      <a class="vid" href="video/forty-screws.mp4" data-note="A made-up story, just for a laugh." data-lw="For real slow work: Agentic AI: The Lean Machine" data-lh="waste-hunt.html" aria-label="Play the video: Forty screws, four signatures. 28 seconds."><img src="video/forty-screws.jpg" alt="" loading="lazy" width="432" height="768"><span class="pl" aria-hidden="true"></span><span class="vt"><small>Story · 0:28</small>Forty screws, four signatures</span></a>
+      <a class="vid" href="video/before-his-lunch.mp4" data-note="A made-up story, just for a laugh." data-lw="See the Agentic AI solutions" data-lh="#solutions" aria-label="Play the video: The quotation, before lunch. 32 seconds."><img src="video/before-his-lunch.jpg" alt="" loading="lazy" width="432" height="768"><span class="pl" aria-hidden="true"></span><span class="vt"><small>Story · 0:32</small>The quotation, before lunch</span></a>
+      <a class="vid" href="video/lead-time.mp4" data-note="A made-up story, just for a laugh." data-lw="See the Agentic AI solutions" data-lh="#solutions" aria-label="Play the video: What is the lead time?. 31 seconds."><img src="video/lead-time.jpg" alt="" loading="lazy" width="432" height="768"><span class="pl" aria-hidden="true"></span><span class="vt"><small>Story · 0:31</small>What is the lead time?</span></a>
+      <a class="vid" href="video/noted-thanks.mp4" data-note="A made-up story, just for a laugh." data-lw="For real customer emails: Agentic AI: Email Assistant" data-lh="email-reply.html" aria-label="Play the video: Waiting for the customer to reply. 18 seconds."><img src="video/noted-thanks.jpg" alt="" loading="lazy" width="432" height="768"><span class="pl" aria-hidden="true"></span><span class="vt"><small>Story · 0:18</small>Waiting for the customer to reply</span></a>
+      <a class="vid" href="video/stamping-press.mp4" data-note="A simple model of a real machine, slowed down." data-lw="More free lessons: Factory Lessons with Ah Hock" data-lh="lessons.html" aria-label="Play the video: How a stamping press works. 62 seconds."><img src="video/stamping-press.jpg" alt="" loading="lazy" width="432" height="768"><span class="pl" aria-hidden="true"></span><span class="vt"><small>How it works · 1:02</small>How a stamping press works</span></a>
+    </div>
+  </section>
+
+  <span id="cases"></span>
+  <section class="row" id="studies">
+    <h2>Case Studies</h2>
+    <p class="sub">The story behind the tool: what went wrong in a real factory, what we changed, and the real numbers.</p>
+    <div class="grid">
+      <a class="card cs" href="lessons.html#cs-casedesk">
+        <span class="pic"><img src="assets/cover-cs-casedesk.jpg" alt="Cover of the case study" loading="lazy" width="600" height="375"><span class="badge t-ink">PDF · 28 pages</span></span>
+        <span class="body">
+          <span class="name">How I Stopped Losing Promises in Email Threads</span>
+          <span class="line">I kept losing what I promised in emails. This is how I fixed it, with the real numbers.</span>
+          <span class="foot"><span class="by"><img src="assets/ah-hock-mark.jpg" alt="" width="26" height="26">Ah Hock</span><span class="price">USD 18.99<i aria-hidden="true">→</i></span></span>
+        </span>
+      </a>
+      <a class="card cs" href="lessons.html#cs-sowhat">
+        <span class="pic"><img src="assets/cover-cs-sowhat.jpg" alt="Cover of the case study" loading="lazy" width="600" height="375"><span class="badge t-ink">PDF · 23 pages</span></span>
+        <span class="body">
+          <span class="name">Building So-What Reports</span>
+          <span class="line">The reports got "okay, noted" and nothing more. This is how one office changed them.</span>
+          <span class="foot"><span class="by"><img src="assets/ah-hock-mark.jpg" alt="" width="26" height="26">Ah Hock</span><span class="price">USD 18.99<i aria-hidden="true">→</i></span></span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <section class="row" id="free">
+    <h2>Free</h2>
+    <p class="sub">Play, test yourself, or learn. No payment.</p>
+    <div class="grid">
+      <a class="card " href="spot-the-waste.html">
+        <span class="pic"><img src="assets/obj-3d-machine-solo.jpg" alt="A small factory machine" loading="lazy" width="600" height="375"><span class="badge t-mint">Game</span></span>
+        <span class="body">
+          <span class="name">Spot the Waste</span>
+          <span class="line">Eight wastes hide in one factory workday. Tap them.</span>
+          <span class="foot"><span class="by"><img src="assets/ah-hock-mark.jpg" alt="" width="26" height="26">Ah Hock</span><span class="price">Free<i aria-hidden="true">→</i></span></span>
+        </span>
+      </a>
+      <a class="card " href="insider-test.html">
+        <span class="pic"><img src="assets/ahhock-3d-point.jpg" alt="Ah Hock pointing" loading="lazy" width="600" height="375"><span class="badge t-mint">Test · 30 questions</span></span>
+        <span class="body">
+          <span class="name">Which Insider Are You?</span>
+          <span class="line">How you really work in a factory office. Get your type.</span>
+          <span class="foot"><span class="by"><img src="assets/ah-hock-mark.jpg" alt="" width="26" height="26">Ah Hock</span><span class="price">Free<i aria-hidden="true">→</i></span></span>
+        </span>
+      </a>
+      <a class="card " href="free-checklist.html">
+        <span class="pic"><img src="assets/obj-3d-doc-sop.jpg" alt="A checklist with a pencil" loading="lazy" width="600" height="375"><span class="badge t-mint">Checklist</span></span>
+        <span class="body">
+          <span class="name">The Pre-Ship Checklist</span>
+          <span class="line">Ten checks before a deck goes to a boss or a customer.</span>
+          <span class="foot"><span class="by"><img src="assets/ah-hock-mark.jpg" alt="" width="26" height="26">Ah Hock</span><span class="price">Free<i aria-hidden="true">→</i></span></span>
+        </span>
+      </a>
+      <a class="card " href="lessons.html">
+        <span class="pic"><img src="assets/ahhock-3d-smile.jpg" alt="Ah Hock smiling and waving" loading="lazy" width="600" height="375"><span class="badge t-mint">Lessons</span></span>
+        <span class="body">
+          <span class="name">Factory Lessons with Ah Hock</span>
+          <span class="line">Time, waste, 5S and lean, in small steps.</span>
+          <span class="foot"><span class="by"><img src="assets/ah-hock-mark.jpg" alt="" width="26" height="26">Ah Hock</span><span class="price">Free<i aria-hidden="true">→</i></span></span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <p class="note">Most of these work in any AI chat, even a free one. The Claude Code versions, and Workflow Swimlanes, need Claude Pro (USD 20 a month, paid to Anthropic). No refunds, so please read what each one can and cannot do before you buy.</p>
+</main>
+
+<footer>
+  <div><span class="handle">@the.industrial.scribe</span> · theindustrialscribe.com</div>
+  <div class="quiet">Written from inside a real Malaysian manufacturing office.</div>
+  <div class="flinks"><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="refunds.html">Refunds</a> · <a href="https://www.instagram.com/the.industrial.scribe/">Instagram</a> · <a href="mailto:theindustrialscribe@gmail.com">Email</a></div>
+  <div class="quiet">© 2026 The Industrial Scribe. Independent; not affiliated with or endorsed by Anthropic. Claude is a trademark of Anthropic, PBC.</div>
+</footer>
+<div class="vmod" id="vmod" hidden role="dialog" aria-modal="true" aria-label="Video player">
+  <div class="vbox">
+    <button type="button" class="vx" id="vx" aria-label="Close the video">×</button>
+    <video id="vplay" controls playsinline preload="none"></video>
+    <p class="vcap"><span id="vnote"></span><br><a id="vlink" href="#solutions"></a></p>
+  </div>
+</div>
+<script>
+(function(){
+  var row=document.getElementById('wrow'), mod=document.getElementById('vmod'), pl=document.getElementById('vplay'),
+      note=document.getElementById('vnote'), link=document.getElementById('vlink'), x=document.getElementById('vx'), from=null;
+  if(!row||!mod) return;
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches, canHover=matchMedia('(hover:hover)').matches;
+  function stopPeek(a){ var v=a.querySelector('video'); a.classList.remove('pv'); if(v){ v.pause(); } }
+  function open(a){
+    [].forEach.call(row.querySelectorAll('.vid'), stopPeek);
+    from=a; note.textContent=a.getAttribute('data-note'); link.textContent=a.getAttribute('data-lw')+' \u2192'; link.href=a.getAttribute('data-lh');
+    pl.poster=a.querySelector('img').src; pl.src=a.href; mod.hidden=false; document.documentElement.style.overflow='hidden';
+    var p=pl.play(); if(p&&p.catch) p.catch(function(){}); x.focus();
+  }
+  function close(){
+    if(mod.hidden) return; pl.pause(); pl.removeAttribute('src'); pl.load(); mod.hidden=true; document.documentElement.style.overflow='';
+    if(from) from.focus({preventScroll:true}); from=null;
+  }
+  row.addEventListener('click', function(e){ var a=e.target.closest('.vid'); if(!a) return; e.preventDefault(); open(a); });
+  x.addEventListener('click', close);
+  mod.addEventListener('click', function(e){ if(e.target===mod) close(); });
+  link.addEventListener('click', close);
+  addEventListener('keydown', function(e){ if(e.key==='Escape') close(); if(e.key==='Tab'&&!mod.hidden){ var f=[x,pl,link], i=f.indexOf(document.activeElement); if(e.shiftKey&&i<=0){ e.preventDefault(); link.focus(); } else if(!e.shiftKey&&i===f.length-1){ e.preventDefault(); x.focus(); } } });
+  /* a silent peek when the pointer rests on a tile (computer only) */
+  if(canHover&&!calm){
+    [].forEach.call(row.querySelectorAll('.vid'), function(a){
+      var t;
+      a.addEventListener('mouseenter', function(){ t=setTimeout(function(){
+        var v=a.querySelector('video');
+        if(!v){ v=document.createElement('video'); v.muted=true; v.loop=true; v.playsInline=true; v.preload='auto'; v.setAttribute('aria-hidden','true'); v.tabIndex=-1; v.src=a.href; a.insertBefore(v, a.querySelector('.pl')); v.addEventListener('playing', function(){ if(a.matches(':hover')) a.classList.add('pv'); }); }
+        var p=v.play(); if(p&&p.catch) p.catch(function(){});
+      }, 180); });
+      a.addEventListener('mouseleave', function(){ clearTimeout(t); stopPeek(a); });
+    });
+  }
+  /* the two round arrows */
+  var bs=document.querySelectorAll('.wb');
+  function ends(){ var max=row.scrollWidth-row.clientWidth-2; bs[0].disabled=row.scrollLeft<=2; bs[1].disabled=row.scrollLeft>=max; }
+  [].forEach.call(bs, function(b){ b.addEventListener('click', function(){ row.scrollBy({left:(+b.getAttribute('data-d'))*624, behavior:calm?'auto':'smooth'}); }); });
+  row.addEventListener('scroll', ends, {passive:true}); addEventListener('resize', ends); ends();
+})();
+</script>
+<script>addEventListener('load',function(){if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setTimeout(function(){document.documentElement.style.scrollBehavior='smooth'},600)});</script>
+</body>
+</html>
