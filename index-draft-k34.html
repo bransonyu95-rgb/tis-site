@@ -239,7 +239,14 @@
     html[data-theme=light] .holo .wb { border-color:rgba(17,17,17,.55); background:rgba(255,255,255,.8); color:var(--ink); }
     html[data-theme=light] .hticks button { background:rgba(17,17,17,.16); } html[data-theme=light] .hticks button i { background:linear-gradient(90deg, #2563eb, #EC4899); }
     @media (hover:hover) { html[data-theme=light] .holo .wb:hover { border-color:#2563eb; box-shadow:0 0 18px rgba(37,99,235,.5); } }
-    @media (max-width: 760px) { .tsw .tw { display:none; } .nav-links { gap:8px 12px !important; flex-wrap:nowrap !important; } }
+    /* on a phone the switch floats in the corner, in reach of the thumb */
+    @media (max-width: 760px) {
+      .tsw .tw { display:none; }
+      .tsw { position:fixed; right:12px; bottom:calc(12px + env(safe-area-inset-bottom)); z-index:150; padding:6px; border-radius:999px; background:#fff; border:2.5px solid var(--ink); box-shadow:0 3px 0 var(--ink); }
+      .tk { box-shadow:none; }
+      html[data-theme=dark] .tsw { background:#0D1330; border-color:#7dd3fc; box-shadow:0 0 18px rgba(56,189,248,.6); } html[data-theme=dark] .tk { box-shadow:none; }
+      html[data-theme=dark] nav { -webkit-backdrop-filter:none; backdrop-filter:none; background:rgba(6,8,20,.96); }
+    }
     @media (prefers-reduced-motion: reduce) { .tk i { animation:none; transition:none; } }
 
     /* the menu: four words */
