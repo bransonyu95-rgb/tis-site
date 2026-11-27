@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Layout draft: a course page | The Industrial Scribe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#111; --blue:#2563eb; --pink:#EC4899; --mint:#10B981; --yellow:#FBBF24; --sky:#38BDF8; --coral:#FB923C; --sun:#F8BD21; --soft:#5b5b5b; --wob:255px 15px 225px 15px / 15px 225px 15px 255px; }
+    * { box-sizing:border-box; } html { scroll-padding-top:76px; }
+    body { margin:0; font-family:'Plus Jakarta Sans',sans-serif; color:var(--ink); background:#fff; -webkit-font-smoothing:antialiased; }
+    .wrap { max-width:1140px; margin:0 auto; padding:0 24px; }
+    .hand { font-family:'Patrick Hand',cursive; }
+
+    /* the honest strip: this page is a layout draft */
+    .draft { background:var(--yellow); border-bottom:3px solid var(--ink); text-align:center; padding:8px 16px; font-family:'Patrick Hand',cursive; font-size:1.08rem; line-height:1.35; }
+    .draft b { font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:.8rem; letter-spacing:.06em; background:var(--ink); color:#fff; border-radius:999px; padding:3px 10px; margin-right:8px; white-space:nowrap; }
+    .eg { display:inline-block; font-family:'Patrick Hand',cursive; font-size:.98rem; line-height:1; background:#fff; border:2px dashed var(--ink); border-radius:var(--wob); padding:5px 12px; transform:rotate(-2deg); white-space:nowrap; }
+
+    /* 1. title and who teaches it */
+    .head { padding:40px 0 0; }
+    .crumb { font-size:.86rem; font-weight:700; color:var(--soft); margin:0 0 12px; } .crumb a { color:var(--blue); text-decoration:none; }
+    .head h1 { font-size:clamp(2rem,4.4vw,3.3rem); font-weight:800; letter-spacing:-.03em; line-height:1.06; margin:0; max-width:19ch; }
+    .teach { display:flex; align-items:center; gap:12px; margin:16px 0 0; font-size:1.05rem; line-height:1.4; color:var(--soft); }
+    .teach img { flex:none; width:44px; height:44px; border-radius:50%; border:2.5px solid var(--ink); background:var(--yellow); }
+    .teach b { color:var(--ink); }
+    .nums { display:flex; flex-wrap:wrap; gap:10px; margin:20px 0 0; padding:0; list-style:none; }
+    .nums li { display:inline-flex; align-items:baseline; gap:6px; font-weight:700; font-size:.95rem; border:2.5px solid var(--ink); border-radius:999px; padding:6px 14px; background:#fff; box-shadow:0 3px 0 var(--ink); }
+    .nums li b { font-size:1.15rem; font-weight:800; } .nums li:first-child { background:var(--mint); }
+    /* 2. the tabs */
+    .tabs { display:flex; gap:6px; margin:26px 0 0; border-bottom:3px solid var(--ink); }
+    .tabs a, .bar .bt a { font-weight:800; font-size:1rem; color:var(--ink); text-decoration:none; padding:10px 16px; border:3px solid transparent; border-bottom:0; border-radius:14px 14px 0 0; margin-bottom:-3px; }
+    .tabs a.on { background:#fff; border-color:var(--ink); border-bottom:3px solid #fff; }
+    .tabs a:not(.on):hover { color:var(--blue); }
+
+    /* two columns: the page, and the buy card that follows you */
+    .cols { display:grid; grid-template-columns:minmax(0,1fr) 348px; gap:44px; align-items:start; padding-top:30px; }
+    section { scroll-margin-top:76px; }
+    h2 { font-size:clamp(1.45rem,2.4vw,1.9rem); font-weight:800; letter-spacing:-.02em; line-height:1.15; margin:0; }
+    .h2row { display:flex; align-items:center; flex-wrap:wrap; gap:12px 16px; }
+    .sub { font-size:1rem; color:var(--soft); margin:8px 0 0; line-height:1.5; max-width:56ch; }
+    .blk { padding-top:52px; }
+
+    /* 3. the trailer slot */
+    .trail { position:relative; display:block; width:100%; aspect-ratio:16/9; padding:0; border:2.5px solid var(--ink); border-radius:22px; background:var(--sun); overflow:hidden; box-shadow:0 5px 0 var(--ink); cursor:pointer; font:inherit; color:var(--ink); transition:transform .16s ease, box-shadow .16s ease; }
+    .trail img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+    .trail .pl { position:absolute; left:50%; top:50%; width:92px; height:92px; margin:-46px 0 0 -46px; border-radius:50%; background:var(--pink); border:3px solid var(--ink); box-shadow:0 4px 0 var(--ink); animation:beat 2.4s ease-in-out infinite; }
+    .trail .pl::before { content:''; position:absolute; left:55%; top:50%; transform:translate(-50%,-50%); border-style:solid; border-width:17px 0 17px 28px; border-color:transparent transparent transparent var(--ink); }
+    .trail .tag { position:absolute; left:16px; top:16px; font-weight:800; font-size:.8rem; background:#fff; border:2.5px solid var(--ink); border-radius:999px; padding:6px 13px; }
+    .trail .eg { position:absolute; right:16px; bottom:16px; }
+    .trail:active { transform:translateY(3px); box-shadow:0 2px 0 var(--ink); }
+    @keyframes beat { 0%,60%,100% { transform:scale(1); } 75% { transform:scale(1.12); } }
+    /* 4. the pitch: two short paragraphs */
+    .pitch { margin-top:26px; } .pitch p { font-size:clamp(1.08rem,1.5vw,1.2rem); line-height:1.6; margin:0 0 14px; max-width:58ch; }
+    .for { display:flex; gap:14px; align-items:flex-start; margin-top:20px; border:2.5px solid var(--ink); border-radius:18px; background:#F3F7FF; padding:16px 18px; max-width:620px; }
+    .for b { display:block; font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--blue); margin-bottom:4px; } .for p { margin:0; font-size:1rem; line-height:1.5; }
+
+    /* 5. what you will learn = the lesson list, with minutes */
+    .list { list-style:none; margin:22px 0 0; padding:0; border:2.5px solid var(--ink); border-radius:20px; overflow:hidden; box-shadow:0 5px 0 var(--ink); background:#fff; }
+    .unit { display:flex; align-items:baseline; flex-wrap:wrap; gap:6px 12px; padding:14px 18px; background:color-mix(in srgb, var(--c) 22%, #fff); border-top:2.5px solid var(--ink); scroll-margin-top:76px; }
+    .unit:first-child { border-top:0; }
+    .unit .un { font-size:.72rem; font-weight:800; letter-spacing:.07em; text-transform:uppercase; background:var(--ink); color:#fff; border-radius:999px; padding:3px 10px; }
+    .unit b { font-size:1.12rem; font-weight:800; } .unit small { margin-left:auto; font-size:.86rem; font-weight:700; color:#333; }
+    .les { display:grid; grid-template-columns:64px minmax(0,1fr) auto; align-items:center; gap:14px; padding:10px 18px; border-top:1.5px solid #e4e4e4; transition:background .15s ease, transform .15s ease; }
+    .les .th { position:relative; display:flex; align-items:flex-end; width:64px; height:44px; border:2px solid var(--ink); border-radius:10px; background:var(--c); padding:4px 7px; }
+    .les .th b { font-size:.8rem; font-weight:800; }
+    .les .th::after { content:''; position:absolute; right:8px; top:50%; transform:translateY(-50%); border-style:solid; border-width:7px 0 7px 11px; border-color:transparent transparent transparent var(--ink); transition:transform .15s ease; }
+    .les .lw b { display:block; font-size:1.02rem; font-weight:700; line-height:1.3; } .les .lw small { font-size:.8rem; color:var(--soft); }
+    .les .mn { font-weight:800; font-size:.92rem; white-space:nowrap; font-variant-numeric:tabular-nums; }
+    @media (hover:hover) { .les:hover { background:#FFF9E6; } .les:hover .th::after { transform:translateY(-50%) translateX(3px); } }
+    .sum { display:flex; flex-wrap:wrap; gap:8px 22px; margin:14px 2px 0; font-weight:800; font-size:.98rem; } .sum span b { color:var(--blue); }
+
+    /* 6. what you will make */
+    .make { display:grid; grid-template-columns:1fr 1.05fr; margin-top:22px; border:2.5px solid var(--ink); border-radius:22px; overflow:hidden; box-shadow:0 5px 0 var(--ink); background:#fff; }
+    .make .pic { position:relative; background:var(--sun); border-right:2.5px solid var(--ink); min-height:260px; }
+    .make .pic img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+    .make .pic .tag { position:absolute; left:14px; top:14px; font-weight:800; font-size:.78rem; background:#fff; border:2.5px solid var(--ink); border-radius:999px; padding:5px 12px; }
+    .make .txt { padding:24px 24px 22px; } .make h3 { font-size:1.35rem; font-weight:800; letter-spacing:-.01em; margin:0; line-height:1.2; }
+    .make ul { margin:14px 0 0; padding:0; list-style:none; } .make li { position:relative; padding:7px 0 7px 30px; font-size:1.02rem; line-height:1.45; }
+    .make li::before { content:''; position:absolute; left:2px; top:11px; width:16px; height:16px; border-radius:50%; background:var(--mint); border:2px solid var(--ink); }
+    .none { margin-top:18px; font-family:'Patrick Hand',cursive; font-size:1.1rem; line-height:1.4; color:#333; border:2px dashed #999; border-radius:16px; padding:12px 16px; max-width:620px; }
+
+    /* the buy card: it stays beside you all the way down */
+    .buy { position:sticky; top:76px; border:2.5px solid var(--ink); border-radius:22px; background:#fff; box-shadow:0 6px 0 var(--ink); padding:22px 22px 20px; }
+    .buy .pr { display:flex; align-items:center; gap:12px; flex-wrap:wrap; } .buy .pr b { font-size:2.1rem; font-weight:800; letter-spacing:-.03em; line-height:1; }
+    .once { margin:10px 0 0; font-weight:800; font-size:1.05rem; } .once span { background:linear-gradient(transparent 58%, #FBCFE8 58%); }
+    .go { display:flex; align-items:center; justify-content:center; gap:10px; width:100%; margin-top:16px; font:inherit; font-weight:800; font-size:1.1rem; color:var(--ink); background:var(--pink); border:3px solid var(--ink); border-radius:var(--wob); padding:14px 18px; cursor:pointer; box-shadow:0 4px 0 var(--ink); transition:transform .12s ease, box-shadow .12s ease; }
+    .go i { display:inline-block; font-style:normal; animation:nudge 2.4s ease-in-out infinite; }
+    .go:active { transform:translateY(4px); box-shadow:0 0 0 var(--ink); }
+    @keyframes nudge { 0%,70%,100% { transform:translateX(0); } 82% { transform:translateX(6px); } }
+    @media (hover:hover) { .go:hover { transform:translateY(-2px); box-shadow:0 6px 0 var(--ink); } .trail:hover { transform:translateY(-4px); box-shadow:0 9px 0 var(--ink); } }
+    .in { list-style:none; margin:18px 0 0; padding:14px 0 0; border-top:2px solid var(--ink); } .in li { display:flex; justify-content:space-between; gap:12px; padding:5px 0; font-size:.98rem; } .in li b { font-weight:800; text-align:right; }
+    .ul { margin:14px 0 0; padding:12px 0 0; border-top:2px solid var(--ink); } .ul ul { list-style:none; margin:0; padding:0; } .ul p { margin:0 0 6px; font-size:.78rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--soft); }
+    .ul a { display:flex; align-items:center; gap:10px; padding:5px 0; font-weight:700; font-size:.98rem; color:var(--ink); text-decoration:none; } .ul a i { flex:none; width:14px; height:14px; border-radius:4px; border:2px solid var(--ink); } .ul a small { margin-left:auto; font-weight:600; color:var(--soft); } .ul a:hover { color:var(--blue); }
+    .bio { display:flex; gap:12px; align-items:flex-start; margin-top:14px; padding-top:14px; border-top:2px solid var(--ink); } .bio img { flex:none; width:46px; height:46px; border-radius:50%; border:2.5px solid var(--ink); background:var(--yellow); } .bio p { margin:0; font-size:.92rem; line-height:1.45; color:var(--soft); } .bio b { display:block; color:var(--ink); font-size:1rem; }
+    .know { margin:14px 0 0; padding:12px 14px; border-radius:14px; background:#F6F6F2; font-size:.9rem; line-height:1.5; color:#333; } .know b { display:block; margin-bottom:2px; color:var(--ink); }
+
+    /* the slim dark bar that comes down when you scroll */
+    .bar { position:fixed; left:0; right:0; top:0; z-index:120; background:#111; color:#fff; border-bottom:3px solid var(--pink); transform:translateY(-110%); transition:transform .28s cubic-bezier(.2,.8,.2,1); }
+    .bar.on { transform:none; }
+    .bar .wrap { display:flex; align-items:center; gap:18px; min-height:56px; }
+    .bar .bn { min-width:0; flex:1; } .bar .bn b { display:block; font-weight:800; font-size:1rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; } .bar .bn small { font-size:.8rem; color:#cfcfcf; }
+    .bar .bt { display:flex; gap:2px; } .bar .bt a { color:#fff; font-size:.92rem; padding:7px 12px; border:0; border-radius:999px; margin:0; } .bar .bt a.on { background:#fff; color:#111; }
+    .bar .go { width:auto; margin:0; padding:8px 18px; font-size:.95rem; border-color:#fff; box-shadow:none; }
+    /* on a phone the price and the button sit at the bottom */
+    .dock { display:none; }
+    .toast { position:fixed; left:50%; bottom:28px; z-index:200; transform:translate(-50%, 30px); opacity:0; pointer-events:none; max-width:min(92vw, 460px); background:#111; color:#fff; font-family:'Patrick Hand',cursive; font-size:1.15rem; line-height:1.3; text-align:center; border:3px solid var(--yellow); border-radius:var(--wob); padding:12px 20px; transition:transform .3s cubic-bezier(.2,1.4,.4,1), opacity .25s ease; }
+    .toast.on { opacity:1; transform:translate(-50%, 0); }
+
+    @media (max-width: 960px) {
+      .cols { grid-template-columns:1fr; gap:0; } .buy { position:static; margin-top:44px; } .bar .go { display:none; }
+      .dock { display:flex; align-items:center; gap:12px; position:fixed; left:0; right:0; bottom:0; z-index:110; background:#fff; border-top:3px solid var(--ink); padding:10px 16px calc(10px + env(safe-area-inset-bottom)); }
+      .dock p { margin:0; flex:1; min-width:0; line-height:1.2; } .dock p b { display:block; font-size:1.25rem; font-weight:800; letter-spacing:-.02em; } .dock p small { font-size:.8rem; font-weight:700; color:var(--soft); }
+      .dock .go { width:auto; margin:0; padding:11px 20px; font-size:1rem; } body { padding-bottom:78px; } .toast { bottom:96px; }
+    }
+    @media (max-width: 760px) {
+      .wrap { padding:0 16px; } .head { padding-top:24px; } html { scroll-padding-top:64px; }
+      .nav-inner { flex-direction:row !important; flex-wrap:nowrap !important; padding:8px 0 !important; min-height:0 !important; }
+      .logo2 small { display:none; } .logo2 b { font-size:1rem !important; } .logo2 img { width:36px !important; height:36px !important; } .nav-links a:not(.keep) { display:none; }
+      .teach { font-size:.98rem; } .nums li { font-size:.86rem; padding:5px 11px; } .tabs a { padding:9px 12px; font-size:.95rem; }
+      .trail { border-radius:18px; } .trail .pl { width:68px; height:68px; margin:-34px 0 0 -34px; } .trail .pl::before { border-width:12px 0 12px 20px; } .trail .tag { left:10px; top:10px; font-size:.72rem; } .trail .eg { right:10px; bottom:10px; }
+      .blk { padding-top:40px; } .les { grid-template-columns:48px minmax(0,1fr) auto; gap:10px; padding:10px 12px; } .les .th { width:48px; height:36px; } .les .th::after { display:none; } .les .lw b { font-size:.96rem; } .les .mn { font-size:.82rem; }
+      .unit { padding:12px; } .make { grid-template-columns:1fr; } .make .pic { min-height:0; aspect-ratio:16/10; border-right:0; border-bottom:2.5px solid var(--ink); } .make .txt { padding:18px 16px; }
+      .bar .bn small { display:none; } .bar .wrap { gap:8px; min-height:50px; } .bar .bt a { padding:6px 9px; font-size:.84rem; } .draft { font-size:.98rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { .trail .pl, .go i { animation:none; } .bar, .toast, .trail, .go { transition:none; } }
+  </style>
+  <link rel="stylesheet" href="tis-theme.css?v=k5">
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=3d2">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3d2">
+</head>
+<body>
+
+<p class="draft" role="note"><b>LAYOUT DRAFT</b>The course name, the lessons, the minutes and the price on this page are examples. Nothing is for sale.</p>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo logo2"><img src="assets/ah-hock-mark.jpg" alt="" width="44" height="44"><span class="lt"><b>The Industrial <i>Scribe</i></b><small>Agentic AI in manufacturing</small></span></a>
+    <div class="nav-links">
+      <a href="index.html#solutions">Solutions</a>
+      <a href="index.html#studies">Case studies</a>
+      <a href="index.html#free">Free</a>
+      <a href="about.html" class="keep">Meet Ah Hock</a>
+    </div>
+  </div>
+</nav>
+
+<div class="bar" id="bar" aria-hidden="true">
+  <div class="wrap">
+    <div class="bn"><b>See the Waste in a Factory Office</b><small>14 short lessons · 54 minutes</small></div>
+    <div class="bt"><a href="#info" tabindex="-1">Information</a><a href="#lessons" tabindex="-1">Lessons</a><a href="#project" tabindex="-1">Project</a></div>
+    <button type="button" class="go" data-buy tabindex="-1">Get this course <i aria-hidden="true">→</i></button>
+  </div>
+</div>
+
+<main class="wrap">
+  <header class="head">
+    <p class="crumb"><a href="index.html">Home</a> · Courses</p>
+    <h1>See the Waste in a Factory Office</h1>
+    <p class="teach"><img src="assets/ah-hock-mark.jpg" alt="" width="44" height="44"><span>A course by <b>Ah Hock</b>, written from inside a real Malaysian manufacturing office</span></p>
+    <ul class="nums">
+      <li>Beginner</li>
+      <li><b data-n="14">14</b> short lessons</li>
+      <li><b data-n="54">54</b> minutes in all</li>
+      <li><b data-n="1">1</b> thing you make</li>
+    </ul>
+    <div class="tabs" id="tabs"><a href="#info" class="on">Information</a><a href="#lessons">Lessons</a><a href="#project">Project</a></div>
+  </header>
+
+  <div class="cols">
+    <div class="main">
+      <section id="info">
+        <button type="button" class="trail" id="trail" aria-label="Play the trailer">
+          <img src="assets/ahhock-3d-point.jpg" alt="" width="600" height="375">
+          <span class="tag">Trailer · about 1 minute</span>
+          <span class="pl" aria-hidden="true"></span>
+          <span class="eg">not made yet</span>
+        </button>
+        <div class="pitch">
+          <p>Every factory office has work that nobody needs. A report that nobody reads. A form that four people sign. You can feel it, and soon you will be able to point at it.</p>
+          <p>In this course Ah Hock shows you one small step in each short lesson. You learn to see the waste, then to count it in hours. At the end you hold one page that you made: your own waste map.</p>
+        </div>
+        <div class="for"><div><b>Who it is for</b><p>Fresh graduates and people changing career who want a factory office job. No factory job needed to start: you practise on a made-up factory.</p></div></div>
+      </section>
+
+      <section class="blk" id="lessons">
+        <div class="h2row"><h2>What you will learn</h2><span class="eg">example lessons</span></div>
+        <p class="sub">Every lesson is one short video. Each one is 3 to 5 minutes, so you can watch one in a tea break.</p>
+        <ul class="list">
+      <li class="unit" id="u1" style="--c:var(--sky)"><span class="un">Unit 1</span><b>Start here</b><small>2 lessons · 7 min</small></li>
+      <li class="les" style="--c:var(--sky)"><span class="th" aria-hidden="true"><b>01</b></span><span class="lw"><b>Meet Ah Hock and the practice factory</b><small>Lesson 1</small></span><span class="mn">3 min 05 sec</span></li>
+      <li class="les" style="--c:var(--sky)"><span class="th" aria-hidden="true"><b>02</b></span><span class="lw"><b>What a waste map is</b><small>Lesson 2</small></span><span class="mn">3 min 40 sec</span></li>
+      <li class="unit" id="u2" style="--c:var(--mint)"><span class="un">Unit 2</span><b>See</b><small>4 lessons · 16 min</small></li>
+      <li class="les" style="--c:var(--mint)"><span class="th" aria-hidden="true"><b>03</b></span><span class="lw"><b>Go and see: watch one hour of real work</b><small>Lesson 3</small></span><span class="mn">4 min 15 sec</span></li>
+      <li class="les" style="--c:var(--mint)"><span class="th" aria-hidden="true"><b>04</b></span><span class="lw"><b>The eight wastes, one by one</b><small>Lesson 4</small></span><span class="mn">4 min 50 sec</span></li>
+      <li class="les" style="--c:var(--mint)"><span class="th" aria-hidden="true"><b>05</b></span><span class="lw"><b>Waiting: the waste that hides</b><small>Lesson 5</small></span><span class="mn">3 min 20 sec</span></li>
+      <li class="les" style="--c:var(--mint)"><span class="th" aria-hidden="true"><b>06</b></span><span class="lw"><b>Work nobody asked for</b><small>Lesson 6</small></span><span class="mn">3 min 35 sec</span></li>
+      <li class="unit" id="u3" style="--c:var(--coral)"><span class="un">Unit 3</span><b>Count</b><small>4 lessons · 16 min</small></li>
+      <li class="les" style="--c:var(--coral)"><span class="th" aria-hidden="true"><b>07</b></span><span class="lw"><b>Write down what you do in one week</b><small>Lesson 7</small></span><span class="mn">4 min 05 sec</span></li>
+      <li class="les" style="--c:var(--coral)"><span class="th" aria-hidden="true"><b>08</b></span><span class="lw"><b>Turn it into hours a month</b><small>Lesson 8</small></span><span class="mn">4 min 30 sec</span></li>
+      <li class="les" style="--c:var(--coral)"><span class="th" aria-hidden="true"><b>09</b></span><span class="lw"><b>Find the biggest three</b><small>Lesson 9</small></span><span class="mn">3 min 15 sec</span></li>
+      <li class="les" style="--c:var(--coral)"><span class="th" aria-hidden="true"><b>10</b></span><span class="lw"><b>Ask why, five times</b><small>Lesson 10</small></span><span class="mn">4 min 40 sec</span></li>
+      <li class="unit" id="u4" style="--c:var(--pink)"><span class="un">Unit 4</span><b>Your project</b><small>4 lessons · 15 min</small></li>
+      <li class="les" style="--c:var(--pink)"><span class="th" aria-hidden="true"><b>11</b></span><span class="lw"><b>Draw your waste map</b><small>Lesson 11</small></span><span class="mn">4 min 55 sec</span></li>
+      <li class="les" style="--c:var(--pink)"><span class="th" aria-hidden="true"><b>12</b></span><span class="lw"><b>Cut before you automate</b><small>Lesson 12</small></span><span class="mn">3 min 50 sec</span></li>
+      <li class="les" style="--c:var(--pink)"><span class="th" aria-hidden="true"><b>13</b></span><span class="lw"><b>Show it to one person</b><small>Lesson 13</small></span><span class="mn">3 min 25 sec</span></li>
+      <li class="les" style="--c:var(--pink)"><span class="th" aria-hidden="true"><b>14</b></span><span class="lw"><b>What to do next</b><small>Lesson 14</small></span><span class="mn">3 min 00 sec</span></li>
+        </ul>
+        <p class="sum"><span><b>4</b> units</span><span><b>14</b> lessons</span><span><b>54</b> minutes in all</span></p>
+      </section>
+
+      <section class="blk" id="project">
+        <h2>What you will make</h2>
+        <p class="sub">Every course ends in one thing you made yourself. In this one it is a single page.</p>
+        <div class="make">
+          <div class="pic"><img src="assets/obj-3d-doc-wastemap.jpg" alt="A one-page waste map" loading="lazy" width="600" height="375"><span class="tag">Your project</span></div>
+          <div class="txt">
+            <h3>Your own waste map, on one page</h3>
+            <ul>
+              <li>A list of the work you do in one week.</li>
+              <li>How many hours a month each piece of work takes.</li>
+              <li>The three to stop first, and why.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="none">Projects by other students and reviews will show here once there are real ones. Until then this space stays empty.</p>
+      </section>
+    </div>
+
+    <aside class="buy" id="buy" aria-label="Buy this course">
+      <p class="pr"><b>USD 00.00</b><span class="eg">example price</span></p>
+      <p class="once"><span>Pay once. Keep it forever.</span></p>
+      <button type="button" class="go" data-buy>Get this course <i aria-hidden="true">→</i></button>
+      <ul class="in">
+        <li>Lessons <b>14 short videos</b></li>
+        <li>Length <b>54 minutes in all</b></li>
+        <li>You make <b>1 waste map</b></li>
+        <li>Level <b>Beginner</b></li>
+        <li>Test <b>No test, no marks</b></li>
+      </ul>
+      <div class="ul">
+        <p>The units</p>
+        <ul>
+          <li><a href="#u1"><i style="background:var(--sky)"></i>Start here<small>2 lessons</small></a></li>
+          <li><a href="#u2"><i style="background:var(--mint)"></i>See<small>4 lessons</small></a></li>
+          <li><a href="#u3"><i style="background:var(--coral)"></i>Count<small>4 lessons</small></a></li>
+          <li><a href="#u4"><i style="background:var(--pink)"></i>Your project<small>4 lessons</small></a></li>
+        </ul>
+      </div>
+      <div class="bio"><img src="assets/ah-hock-mark.jpg" alt="" width="46" height="46"><p><b>Ah Hock</b>A career in factory sales and customer-facing roles. He writes from inside a real Malaysian manufacturing office.</p></div>
+      <p class="know"><b>Good to know</b>This course does not promise a job. No refunds, so please read the lesson list before you buy.</p>
+    </aside>
+  </div>
+</main>
+
+<div class="dock"><p><b>USD 00.00</b><small>Pay once. Keep it forever.</small></p><button type="button" class="go" data-buy>Get this course <i aria-hidden="true">→</i></button></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<footer>
+  <div><span class="handle">@the.industrial.scribe</span> · theindustrialscribe.com</div>
+  <div class="quiet">Written from inside a real Malaysian manufacturing office.</div>
+  <div class="flinks"><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="refunds.html">Refunds</a> · <a href="https://www.instagram.com/the.industrial.scribe/">Instagram</a> · <a href="mailto:theindustrialscribe@gmail.com">Email</a></div>
+  <div class="quiet">© 2026 The Industrial Scribe. Independent; not affiliated with or endorsed by Anthropic. Claude is a trademark of Anthropic, PBC.</div>
+</footer>
+
+<script>
+(function(){
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches, bar=document.getElementById('bar'), head=document.querySelector('.head h1'),
+      toast=document.getElementById('toast'), tt=0, ids=['info','lessons','project'];
+  function say(t){ toast.textContent=t; toast.classList.add('on'); clearTimeout(tt); tt=setTimeout(function(){ toast.classList.remove('on'); }, 3200); }
+  [].forEach.call(document.querySelectorAll('[data-buy]'), function(b){ b.addEventListener('click', function(){ say('This is a layout draft. Nothing is for sale yet.'); }); });
+  document.getElementById('trail').addEventListener('click', function(){ say('The trailer is not made yet. It will play here.'); });
+  /* the dark bar and the tab that is lit */
+  function tick(){
+    var on=head.getBoundingClientRect().bottom<0; bar.classList.toggle('on', on); bar.setAttribute('aria-hidden', on?'false':'true');
+    [].forEach.call(bar.querySelectorAll('a,button'), function(a){ a.tabIndex=on?0:-1; });
+    var cur=ids[0]; ids.forEach(function(id){ if(document.getElementById(id).getBoundingClientRect().top<140) cur=id; });
+    [].forEach.call(document.querySelectorAll('.tabs a, .bar .bt a'), function(a){ a.classList.toggle('on', a.getAttribute('href')==='#'+cur); });
+  }
+  addEventListener('scroll', tick, {passive:true}); addEventListener('resize', tick); tick();
+  /* the numbers count up once */
+  if(!calm){ [].forEach.call(document.querySelectorAll('.nums b[data-n]'), function(b){ var n=+b.getAttribute('data-n'), t0=performance.now(); (function f(t){ var k=Math.min(1,(t-t0)/900); b.textContent=Math.round(n*(1-Math.pow(1-k,3))); if(k<1) requestAnimationFrame(f); })(t0); }); }
+  addEventListener('load', function(){ if(!calm) setTimeout(function(){ document.documentElement.style.scrollBehavior='smooth'; }, 600); });
+})();
+</script>
+</body>
+</html>
