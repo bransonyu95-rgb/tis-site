@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--tis-mode:head--><script>(function(){var t;try{t=localStorage.getItem('tis-theme')}catch(e){}if(t!=='light'&&t!=='dark')t='light';document.documentElement.setAttribute('data-theme',t)})();</script><!--/tis-mode:head-->
   <meta name="robots" content="noindex">
   <title>Your Kit + Tools are ready — The Industrial Scribe</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,8 +27,61 @@
     a { color: #2563eb; }
   </style>
   <link rel="icon" type="image/png" href="assets/favicon.png?v=3d2">
+<!--tis-mode:css--><style id="tis-dark">
+.tsw { display:inline-flex; align-items:center; gap:8px; margin:0; padding:4px 2px; border:0; background:none; cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif; font-size:.82rem; font-weight:700; color:#111; -webkit-tap-highlight-color:transparent; flex:none; }
+.tsw .tw { opacity:.45; transition:opacity .25s ease; } html:not([data-theme=dark]) .tsw .l, html[data-theme=dark] .tsw .d { opacity:1; }
+.tsw .tk { position:relative; flex:none; width:52px; height:28px; border-radius:999px; border:2.5px solid #111; background:#fff; box-shadow:0 2px 0 #111; transition:background .3s ease, border-color .3s ease, box-shadow .3s ease; }
+.tsw .tk i { position:absolute; left:3px; top:3px; width:17px; height:17px; border-radius:50%; background:#FBBF24; border:2px solid #111; box-sizing:border-box; transition:transform .38s cubic-bezier(.3,1.5,.5,1), background .3s ease, box-shadow .3s ease, border-color .3s ease; animation:tswpeek 1.1s ease-in-out 1.4s 2; }
+@keyframes tswpeek { 0%,100% { translate:0 0; } 45% { translate:9px 0; } }
+@keyframes tswpeekb { 0%,100% { translate:0 0; } 45% { translate:-9px 0; } }
+.tsw:focus-visible { outline:3px solid #2563eb; outline-offset:3px; border-radius:999px; }
+.tsw:active .tk i { scale:.86; }
+html[data-theme=dark] .tsw { color:#EEF1FF; }
+html[data-theme=dark] .tsw .tk { background:#0D1330; border-color:#7dd3fc; box-shadow:0 0 16px rgba(56,189,248,.6); }
+html[data-theme=dark] .tsw .tk i { transform:translateX(24px); background:transparent; border-color:transparent; box-shadow:inset -6px -2px 0 0 #EEF1FF; animation-name:tswpeekb; }
+::view-transition-old(root), ::view-transition-new(root) { animation:none; mix-blend-mode:normal; }
+html.theming *, html.theming *::before, html.theming *::after { transition:background-color .45s ease, color .45s ease, border-color .45s ease, box-shadow .45s ease !important; }
+.tsw.float { position:fixed; right:12px; top:12px; z-index:150; padding:6px 10px; border-radius:999px; background:#fff; border:2.5px solid #111; box-shadow:0 3px 0 #111; }
+.tsw.float .tk { box-shadow:none; }
+html[data-theme=dark] .tsw.float { background:#0D1330; border-color:#7dd3fc; box-shadow:0 0 18px rgba(56,189,248,.6); }
+@media (max-width: 1180px) { .tsw:not(.float) .tw { display:none; } }
+@media (max-width: 760px) {
+  .tsw .tw { display:none; }
+  .tsw, .tsw.float { position:fixed; right:12px; top:auto; bottom:calc(12px + env(safe-area-inset-bottom)); z-index:150; padding:6px; border-radius:999px; background:#fff; border:2.5px solid #111; box-shadow:0 3px 0 #111; }
+  .tsw .tk { box-shadow:none; }
+  html[data-theme=dark] .tsw { background:#0D1330; border-color:#7dd3fc; box-shadow:0 0 18px rgba(56,189,248,.6); }
+  html[data-theme=dark] .tsw .tk { box-shadow:none; }
+}
+@media (prefers-reduced-motion: reduce) { .tsw .tk i { animation:none; transition:none; } }
+html[data-theme=dark] { color-scheme:dark; --tis-d:initial; --tis-b: ; }
+html[data-theme=dark] body::before { content:''; position:fixed; inset:0; z-index:-1; pointer-events:none; background:radial-gradient(60% 50% at 88% -8%, rgba(37,99,235,.30), transparent 70%), radial-gradient(48% 44% at -6% 38%, rgba(236,72,153,.17), transparent 70%), radial-gradient(50% 40% at 100% 90%, rgba(56,189,248,.12), transparent 70%); }
+html[data-theme=dark] body{background-color:#060814;background-image:none;color:var(--tis-d,#eef1ff) var(--tis-b,#111827);--tis-d:initial;--tis-b: }
+html[data-theme=dark] .hero img{border-color:#9db7ea;background-color:#0d1330;background-image:none;--tis-d:initial;--tis-b: }
+:where(html[data-theme=dark] .hero img){color:var(--tis-d,var(--tis-fix,inherit)) var(--tis-b,#111111)}
+html[data-theme=dark] .sub{color:var(--tis-d,#98a5c8) var(--tis-b,#555555)}
+html[data-theme=dark] .dl-btn{background-color:#10b981;background-image:none;color:#ffffff;border-color:#9db7ea;--tis-d: ;--tis-b:initial;--tis-fix:#EEF1FF}
+html[data-theme=dark] .dl-btn.blue{background-color:#2563eb;background-image:none;--tis-d:initial;--tis-b: }
+:where(html[data-theme=dark] .dl-btn.blue){color:var(--tis-d,var(--tis-fix,inherit)) var(--tis-b,#111111)}
+html[data-theme=dark] .steps{border-color:#9db7ea;border-left-color:#2563eb}
+html[data-theme=dark] .honest{color:var(--tis-d,#7889b7) var(--tis-b,#777777)}
+html[data-theme=dark] code{background-color:#121938;background-image:none;--tis-d:initial;--tis-b: }
+:where(html[data-theme=dark] code){color:var(--tis-d,var(--tis-fix,inherit)) var(--tis-b,#111111)}
+html[data-theme=dark] a{color:var(--tis-d,#6692f1) var(--tis-b,#2563eb)}
+html[data-theme=dark] [data-dk="1"]{border-left-color:#38bdf8 !important}
+html[data-theme=dark] [data-dk="2"]{border-left-color:#fbbf24 !important}
+html[data-theme=dark] [data-dk="3"]{border-left-color:#fb923c !important}
+
+
+/* colours a page script writes straight onto a tag (the browser spells them as rgb) */
+html[data-theme=dark] [style*="background: rgb(255, 255, 255)"], html[data-theme=dark] [style*="background-color: rgb(255, 255, 255)"] { background-color:#0D1330 !important; }
+html[data-theme=dark] [style*="solid rgb(17, 17, 17)"] { border-color:#9DB7EA !important; }
+html[data-theme=dark] [style*="background: rgb(251, 191, 36)"] { color:#111 !important; }
+/* the quiz paints one result name in near-black */
+html[data-theme=dark] [style*="rgb(17, 24, 39)"], html[data-theme=dark] [style*="#111827"] { color:#EEF1FF !important; border-left-color:#9DB7EA !important; }
+</style><!--/tis-mode:css-->
 </head>
 <body>
+<!--tis-mode:sw--><button type="button" class="tsw float" id="tsw" role="switch" aria-checked="false" aria-label="Dark background"><span class="tw l" aria-hidden="true">Light</span><span class="tk" aria-hidden="true"><i></i></span><span class="tw d" aria-hidden="true">Dark</span></button><!--/tis-mode:sw-->
 <div class="wrap">
   <div class="hero"><img src="assets/ahhock-3d-smile.jpg" alt="Ah Hock, pleased" width="540" height="540"></div>
   <h1>Your Kit + Tools are ready.</h1>
@@ -39,13 +93,13 @@
     <p style="margin-top:8px;">Unzip it, open the folder in Claude Code, type <code>start day zero</code>. Before that, the 5-minute preview shows exactly what happens: <a href="walkthrough-w5p2.html">▶ the interactive walkthrough →</a></p>
   </div>
 
-  <div class="steps" style="border-left-color:#38BDF8;">
+  <div class="steps" data-dk="1" style="border-left-color:#38BDF8;">
     <h3>2 · Workflow Swimlanes</h3>
     <a class="dl-btn blue" href="downloads/tis-swimlane-skill.zip">⬇ Download the swimlane skill (zip)</a>
     <p style="margin-top:8px;">Point it at any automation you run with Claude Code and it draws what your AI was supposed to do and what it actually did, from the logs on your own computer. The README inside has the two-line install.</p>
   </div>
 
-  <div class="steps" style="border-left-color:#FBBF24;">
+  <div class="steps" data-dk="2" style="border-left-color:#FBBF24;">
     <h3>3 · Agentic AI: The Lean Machine <small style="font-family:'Patrick Hand',cursive;font-weight:400;">(was The Waste Hunt)</small></h3>
     <a class="dl-btn blue" href="downloads/tis-lean-machine.zip">⬇ Download The Lean Machine (zip)</a>
     <p style="margin-top:8px;">It walks one part of your work with you (the shop floor, engineering, one order, or the office), maps the waste, scores the 5S, finds the real cause, says what to cut first, then guides you to automate what is left. Two ways to run it: open <code>paste-prompt.md</code> and paste the box into any AI chat (free plans work, 30 to 45 minutes), or drop the folder into your Claude Code skills folder and say <code>lean machine</code>. The README inside has both.</p>
@@ -53,7 +107,7 @@
     <p style="margin-top:8px;">The original Know Your Business Nature module is still yours: <a href="wm01-k7x9.html">open it →</a> · <a href="downloads/TIS-Module-01-Know-Your-Business-Nature.pdf">PDF copy →</a></p>
   </div>
 
-  <div class="steps" style="border-left-color:#FB923C;">
+  <div class="steps" data-dk="3" style="border-left-color:#FB923C;">
     <h3>Setup, honestly timed</h3>
     <ol>
       <li>You need Claude Pro (USD 20/month at claude.com) and Claude Code installed. 10 to 15 minutes once, Windows or Mac.</li>
@@ -63,5 +117,24 @@
   </div>
   <p class="honest">Tutorials land on this page as they are made, free.</p>
 </div>
+<!--tis-mode:js--><script>
+(function(){
+  var root=document.documentElement, sw=document.getElementById('tsw'); if(!sw) return;
+  var calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function show(){ sw.setAttribute('aria-checked', root.getAttribute('data-theme')==='dark'?'true':'false'); }
+  function set(t){
+    var apply=function(){ root.setAttribute('data-theme', t); show(); try{ window.dispatchEvent(new CustomEvent('tis-theme',{detail:t})); }catch(e){} };
+    try{ localStorage.setItem('tis-theme', t); }catch(e){}
+    if(calm){ apply(); return; }
+    if(!document.startViewTransition){ root.classList.add('theming'); apply(); setTimeout(function(){ root.classList.remove('theming'); }, 520); return; }
+    var r=sw.querySelector('.tk').getBoundingClientRect(), x=r.left+r.width/2, y=r.top+r.height/2, R=Math.hypot(Math.max(x, innerWidth-x), Math.max(y, innerHeight-y));
+    var vt=document.startViewTransition(apply);
+    vt.ready.then(function(){ root.animate({clipPath:['circle(0px at '+x+'px '+y+'px)', 'circle('+R+'px at '+x+'px '+y+'px)']}, {duration:700, easing:'cubic-bezier(.4,0,.2,1)', pseudoElement:'::view-transition-new(root)'}); }).catch(function(){});
+  }
+  sw.addEventListener('click', function(){ set(root.getAttribute('data-theme')==='dark'?'light':'dark'); });
+  addEventListener('pageshow', function(){ var t; try{ t=localStorage.getItem('tis-theme'); }catch(e){} if((t==='light'||t==='dark') && t!==root.getAttribute('data-theme')){ root.setAttribute('data-theme', t); } show(); });
+  show();
+})();
+</script><!--/tis-mode:js-->
 </body>
 </html>

@@ -582,6 +582,7 @@
     vt.ready.then(function(){ root.animate({clipPath:['circle(0px at '+x+'px '+y+'px)', 'circle('+R+'px at '+x+'px '+y+'px)']}, {duration:700, easing:'cubic-bezier(.4,0,.2,1)', pseudoElement:'::view-transition-new(root)'}); }).catch(function(){});
   }
   sw.addEventListener('click', function(){ set(root.getAttribute('data-theme')==='dark'?'light':'dark'); });
+  addEventListener('pageshow', function(){ var t; try{ t=localStorage.getItem('tis-theme'); }catch(e){} if((t==='light'||t==='dark') && t!==root.getAttribute('data-theme')){ root.setAttribute('data-theme', t); } show(); });
   show();
 })();
 </script>
